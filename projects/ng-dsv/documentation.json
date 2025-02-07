@@ -1,0 +1,442 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [],
+    "modules": [],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "ActionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  onArchiveTask: fn(),\n  onPinTask: fn(),\n}"
+            },
+            {
+                "name": "ActionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/src/lib/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  libelle: '',\n}"
+            },
+            {
+                "name": "ActionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/src/lib/card/card.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  onArchiveTask: fn(),\n  onPinTask: fn(),\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    task: {\n      id: '1',\n      title: 'Test Task',\n      state: 'TASK_INBOX',\n    },\n  },\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/src/lib/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    libelle: 'Click me',\n  },\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/src/lib/card/card.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    task: {\n      id: '1',\n      title: 'Test Task',\n      state: 'TASK_INBOX',\n    },\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<NgDsvComponent>",
+                "defaultValue": "{\n  title: 'Task',\n  component: NgDsvComponent,\n  //👇 Our exports that end in \"Data\" are not stories.\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  args: {\n    ...ActionsData,\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/src/lib/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<DsvButtonComponent>",
+                "defaultValue": "{\n  title: 'dsv/Button',\n  component: DsvButtonComponent,\n  //👇 Our exports that end in \"Data\" are not stories.\n  excludeStories: /.*Data$/,\n\n  tags: ['autodocs'],\n  args: {\n    ...ActionsData,\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/src/lib/card/card.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<DsvCardComponent>",
+                "defaultValue": "{\n  title: 'dsv/Card',\n  component: DsvCardComponent,\n  tags: ['autodocs'],\n  args: {\n    ...ActionsData,\n  },\n}"
+            },
+            {
+                "name": "preview",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/.storybook/preview.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Preview",
+                "defaultValue": "{\n  parameters: {\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/i,\n      },\n    },\n  },\n  decorators: [\n    componentWrapperDecorator((story) => `<dsv-theme>${story}</dsv-theme>`),\n    componentWrapperDecorator(DsvThemeComponent),\n  ],\n}"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<NgDsvComponent>",
+                "file": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<DsvButtonComponent>",
+                "file": "projects/ng-dsv/src/lib/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<DsvCardComponent>",
+                "file": "projects/ng-dsv/src/lib/card/card.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts": [
+                {
+                    "name": "ActionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  onArchiveTask: fn(),\n  onPinTask: fn(),\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    task: {\n      id: '1',\n      title: 'Test Task',\n      state: 'TASK_INBOX',\n    },\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<NgDsvComponent>",
+                    "defaultValue": "{\n  title: 'Task',\n  component: NgDsvComponent,\n  //👇 Our exports that end in \"Data\" are not stories.\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  args: {\n    ...ActionsData,\n  },\n}"
+                }
+            ],
+            "projects/ng-dsv/src/lib/button/button.component.stories.ts": [
+                {
+                    "name": "ActionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/src/lib/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  libelle: '',\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/src/lib/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    libelle: 'Click me',\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/src/lib/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<DsvButtonComponent>",
+                    "defaultValue": "{\n  title: 'dsv/Button',\n  component: DsvButtonComponent,\n  //👇 Our exports that end in \"Data\" are not stories.\n  excludeStories: /.*Data$/,\n\n  tags: ['autodocs'],\n  args: {\n    ...ActionsData,\n  },\n}"
+                }
+            ],
+            "projects/ng-dsv/src/lib/card/card.component.stories.ts": [
+                {
+                    "name": "ActionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/src/lib/card/card.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  onArchiveTask: fn(),\n  onPinTask: fn(),\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/src/lib/card/card.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    task: {\n      id: '1',\n      title: 'Test Task',\n      state: 'TASK_INBOX',\n    },\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/src/lib/card/card.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<DsvCardComponent>",
+                    "defaultValue": "{\n  title: 'dsv/Card',\n  component: DsvCardComponent,\n  tags: ['autodocs'],\n  args: {\n    ...ActionsData,\n  },\n}"
+                }
+            ],
+            "projects/ng-dsv/.storybook/preview.ts": [
+                {
+                    "name": "preview",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/.storybook/preview.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Preview",
+                    "defaultValue": "{\n  parameters: {\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/i,\n      },\n    },\n  },\n  decorators: [\n    componentWrapperDecorator((story) => `<dsv-theme>${story}</dsv-theme>`),\n    componentWrapperDecorator(DsvThemeComponent),\n  ],\n}"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<NgDsvComponent>",
+                    "file": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "projects/ng-dsv/src/lib/button/button.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<DsvButtonComponent>",
+                    "file": "projects/ng-dsv/src/lib/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "projects/ng-dsv/src/lib/card/card.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<DsvCardComponent>",
+                    "file": "projects/ng-dsv/src/lib/card/card.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ]
+        }
+    },
+    "routes": [],
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "projects/ng-dsv/.storybook/preview.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "preview",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/src/lib/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ActionsData",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/src/lib/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/src/lib/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/src/lib/button/button.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/src/lib/card/card.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ActionsData",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/src/lib/card/card.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/src/lib/card/card.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/src/lib/card/card.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ActionsData",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

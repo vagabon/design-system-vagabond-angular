@@ -11,6 +11,11 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "isolatedModules": true,
+    "paths": {
+      "ng-dsv": [
+        "./dist/ng-dsv"
+      ]
+    },
     "esModuleInterop": true,
     "sourceMap": true,
     "declaration": false,
