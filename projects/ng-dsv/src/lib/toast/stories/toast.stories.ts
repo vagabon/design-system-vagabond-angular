@@ -30,17 +30,35 @@ type Story = StoryObj<DsvToastComponent>;
   imports: [DsvButtonComponent],
   template: `
     <div class="flex">
-      <dsv-button color="success" (click)="click()">Success</dsv-button>
-      <dsv-button color="info" (click)="click('info')">Info</dsv-button>
-      <dsv-button color="warning" (click)="click('warning')"
-        >Warning</dsv-button
-      >
-      <dsv-button color="error" (click)="click('error')">Error</dsv-button>
+      <dsv-button
+        color="success"
+        (click)="click()"
+        icon="ri-check-fill"
+        libelle="Success"
+      ></dsv-button>
+      <dsv-button
+        color="info"
+        (click)="click('info')"
+        icon="ri-information-2-line"
+        libelle="Info"
+      ></dsv-button>
+      <dsv-button
+        color="warning"
+        (click)="click('warning')"
+        icon="ri-alert-line"
+        libelle="Warning"
+      ></dsv-button>
+      <dsv-button
+        color="error"
+        (click)="click('error')"
+        icon="ri-close-line"
+        libelle="Error"
+      ></dsv-button>
     </div>
   `,
 })
 class PrimaryButtonDemo {
-  constructor(private toastService: ToastService) {}
+  constructor(private readonly toastService: ToastService) {}
 
   click(type: ToastType = 'success') {
     this.toastService.showToast({ text: 'test', type: type });

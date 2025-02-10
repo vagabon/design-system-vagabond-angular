@@ -10,7 +10,6 @@ export const ActionsData = {
 const meta: Meta<NgDsvComponent> = {
   title: 'Task',
   component: NgDsvComponent,
-  //👇 Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/,
   tags: ['autodocs'],
   args: {

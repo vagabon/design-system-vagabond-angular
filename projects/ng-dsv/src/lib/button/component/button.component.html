@@ -1,5 +1,10 @@
-<button class="dsv-button" [ngClass]="(icon ? 'icon' : '') + ' ' + color">
-  {{ libelle }}
+<button class="dsv-button"
+  [ngClass]="(icon ? 'icon' : '') + ' ' + color + ' ' + width + ' ' + variant + ' ' + (fullwidth ? 'fullwidth' : '')"
+  [disabled]="disabled" *ngIf="show">
   <i [class]="icon" *ngIf="icon"></i>
+  <span *ngIf="libelle">
+    {{ libelle }}
+  </span>
   <ng-content></ng-content>
+  <i [class]="iconEnd" *ngIf="iconEnd"></i>
 </button>
