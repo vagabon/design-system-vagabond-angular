@@ -1,0 +1,11 @@
+html { font-size: 12px !important; }
+
+button {  
+    cursor: pointer;
+    font-size: 1rem;
+}
+div, p, i { font-size: 1rem; }
+
+.flex { display: flex; flex-direction: row; gap: 5px; }
+.flex1 { flex: 1; }
+.margin5 { margin: 5px; }

@@ -1,0 +1,65 @@
+.dsv-toast-container {
+    position: fixed;
+    bottom: 0px; right: 0px;
+    display: flex; flex-direction: column; gap: 8px;
+    overflow: hidden; padding: 5px;
+
+    .dsv-toast {
+        font-size: 1.5rem;
+        border-radius: 2px;
+        box-shadow: 0 0px 0px 0.5px rgba(0, 0, 0, 0.4);
+        min-width: 300px;
+        padding: 10px 15px;
+        pointer-events: all;
+        position: relative;
+        display: flex; align-items: center; flex-direction: row; gap: 8px;
+    
+        &.success { border-left: 4px solid var(--success); i { color: var(--success) } }
+        &.info { border-left: 4px solid var(--info); i { color: var(--info) } }
+        &.warning { border-left: 4px solid var(--warning); i { color: var(--warning) } }
+        &.error { border-left: 4px solid var(--error); i { color: var(--error) } }
+
+        .close-button {
+            position: absolute; top: 6px; right: 10px; font-size: 1rem;
+            border: 0; background-color: inherit; cursor: pointer;
+        }
+        .close-button:hover {
+            background-color: #f9f9f9; border-radius: 5px;
+        }
+        ::ng-deep .dark & .close-button {
+            color: #ffffff;
+        }
+        ::ng-deep .dark & .close-button:hover {
+            background-color: #212121 !important;
+        }
+        
+        .loader-container {
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%;
+            .loader {
+                border:1px solid #b8b8b8;
+            }
+        }
+
+        
+        position: relative;
+        opacity: 0;
+        transform: translateX(100%);
+        animation: slideInRight 0.5s ease-out forwards;
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        ::ng-deep .light & {
+            background-color: #ffffff; color: #000000;
+        }
+
+        ::ng-deep .dark & {
+            background-color: #000000; color: #ffffff;
+        }
+    }
+}

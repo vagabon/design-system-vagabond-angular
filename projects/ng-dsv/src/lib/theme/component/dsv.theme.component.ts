@@ -9,7 +9,7 @@ export type Theme = {
   selector: 'dsv-theme',
   standalone: true,
   imports: [],
-  template: `<ng-content></ng-content>`,
+  template: `<div class="dsv-theme"><ng-content></ng-content></div>`,
   styleUrls: ['./dsv.theme.component.scss'],
 })
 export class DsvThemeComponent {
@@ -23,7 +23,6 @@ export class DsvThemeComponent {
   text = 'red';
 
   ngOnInit() {
-    console.log('init');
     this.background = this.theme.primary;
     this.text = this.theme.text;
   }

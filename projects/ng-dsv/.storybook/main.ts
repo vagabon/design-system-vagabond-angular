@@ -11,5 +11,8 @@ const config: StorybookConfig = {
     name: '@storybook/angular',
     options: {},
   },
+  env: (config) => ({
+    ...config,
+  }),
 };
 export default config;
