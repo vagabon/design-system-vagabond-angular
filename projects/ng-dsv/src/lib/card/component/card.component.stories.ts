@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { DsvCardComponent } from './card.component';
 
 export const ActionsData = {
+  avatar: 'dfds',
   title: 'un Titre',
   subtitle: 'un subtitle',
   image:

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 export type ButtonColorType =
-  | 'premium'
+  | 'primary'
   | 'success'
   | 'info'
   | 'warning'
@@ -19,7 +19,7 @@ export type ButtonVariantType = 'text' | 'outlined' | 'contained';
 })
 export class DsvButtonComponent {
   @Input() libelle: string = '';
-  @Input() color: string = 'primary';
+  @Input() color: ButtonColorType = 'primary';
   @Input() icon: string = '';
   @Input() iconEnd: string = '';
   @Input() width: ButtonWidthType = 'medium';

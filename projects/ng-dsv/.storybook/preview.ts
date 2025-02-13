@@ -27,11 +27,13 @@ const preview: Preview = {
       imports: [DsvThemeComponent, DsvThemeSwitchComponent],
     }),
     componentWrapperDecorator((story) => {
-      return `<dsv-theme [theme]='${themeString}' class="flex flex1 margin5">
-        <div style='margin-bottom: 20px'>
-          <dsv-theme-switch></dsv-theme-switch>
+      return `<dsv-theme [theme]='${themeString}' class="flex flex1" >
+        <div style='padding: 5px'>
+          <div style='margin-bottom: 20px'>
+            <dsv-theme-switch></dsv-theme-switch>
+          </div>
+          ${story}
         </div>
-        ${story}
       </dsv-theme>`;
     }),
   ],

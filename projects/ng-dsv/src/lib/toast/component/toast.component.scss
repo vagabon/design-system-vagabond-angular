@@ -5,7 +5,7 @@
     overflow: hidden; padding: 5px;
 
     .dsv-toast {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         border-radius: 2px;
         box-shadow: 0 0px 0px 0.5px rgba(0, 0, 0, 0.4);
         min-width: 300px;
@@ -25,10 +25,10 @@
             }
         }
 
-        &.success { border-left: 4px solid var(--success); i { color: var(--success); font-size: 1.5rem !important; } }
-        &.info { border-left: 4px solid var(--info); i { color: var(--info); font-size: 1.5rem !important; } }
-        &.warning { border-left: 4px solid var(--warning); i { color: var(--warning); font-size: 1.5rem !important; } }
-        &.error { border-left: 4px solid var(--error); i { color: var(--error); font-size: 1.5rem !important; } }
+        &.success { border-left: 4px solid var(--success); i { color: var(--success); font-size: 1.2rem !important; } }
+        &.info { border-left: 4px solid var(--info); i { color: var(--info); font-size: 1.2rem !important; } }
+        &.warning { border-left: 4px solid var(--warning); i { color: var(--warning); font-size: 1.2rem !important; } }
+        &.error { border-left: 4px solid var(--error); i { color: var(--error); font-size: 1.2rem !important; } }
 
         .close-button {
             position: absolute; top: 6px; right: 10px; font-size: 1rem;

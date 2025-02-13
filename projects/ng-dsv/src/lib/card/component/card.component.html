@@ -1,7 +1,7 @@
 <div class='dsv-card'>
     <img src="{{image}}" [alt]="alt" *ngIf="image" />
     <div class="dsv-card-header">
-        <div class="dsv-avatar"></div>
+        <dsv-avatar [avatar]="avatar" *ngIf="avatar"></dsv-avatar>
         <div>
             <h2>{{title}}</h2>
             <div class="dsv-card-subtitle">{{subtitle}}</div>

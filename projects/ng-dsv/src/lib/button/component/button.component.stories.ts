@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/angular';
-import { DsvButtonComponent } from './button.component';
+import { ButtonColorType, DsvButtonComponent } from './button.component';
 
 export const ActionsData = {
   libelle: '',
@@ -11,6 +11,14 @@ export const ActionsData = {
   disabled: false,
 };
 
+export const buttonColors: ButtonColorType[] = [
+  'primary',
+  'success',
+  'info',
+  'warning',
+  'error',
+];
+
 const meta: Meta<DsvButtonComponent> = {
   title: 'dsv/Button',
   component: DsvButtonComponent,
@@ -19,16 +27,16 @@ const meta: Meta<DsvButtonComponent> = {
   argTypes: {
     color: {
       control: 'select',
-      options: ['premium', 'success', 'info', 'warning', 'error'],
+      options: buttonColors,
     },
-    width: { control: 'select', options: ['small', 'medium', 'large', 'full'] },
+    width: { control: 'select', options: ['small', 'medium', 'large'] },
     variant: {
       control: 'select',
       options: ['text', 'outlined', 'contained'],
     },
   },
   args: {
-    ...ActionsData,
+    ...(ActionsData as DsvButtonComponent),
     width: 'medium',
     variant: 'contained',
   },
