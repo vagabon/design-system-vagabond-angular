@@ -122,6 +122,16 @@
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  avatar: 'vagabond',\n  color: 'primary',\n}"
+            },
+            {
+                "name": "ActionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -146,7 +156,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\n  title: 'un Titre',\n  subtitle: 'un subtitle',\n  image:\n    'https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630',\n  content:\n    '<h3>Du contenu</h3><p>un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long </p>',\n}"
+                "defaultValue": "{\n  avatar: 'dfds',\n  title: 'un Titre',\n  subtitle: 'un subtitle',\n  image:\n    'https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630',\n  content:\n    '<h3>Du contenu</h3><p>un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long </p>',\n}"
             },
             {
                 "name": "ActionsData",
@@ -182,11 +192,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    callback: undefined,\n  },\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    callback: fn(),\n  },\n}"
+                "defaultValue": "{\n  args: {\n    callback: undefined,\n  },\n}"
             },
             {
                 "name": "Default",
@@ -227,6 +247,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<NgDsvComponent>",
                 "defaultValue": "{\n  title: 'Task',\n  component: NgDsvComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  args: {\n    ...ActionsData,\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<DsvAccordionComponent>",
+                "defaultValue": "{\n  title: 'dsv/Accordion',\n  component: DsvAccordionComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    color: {\n      control: 'select',\n      options: ['primary', 'success', 'info', 'warning', 'error'],\n    },\n    callback: { action: 'callback' },\n  },\n  args: {\n    ...(ActionsData as DsvAccordionComponent),\n  },\n}"
             },
             {
                 "name": "meta",
@@ -297,6 +327,26 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "JSON.stringify(theme)"
+            },
+            {
+                "name": "WithCallback",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    callback: fn(),\n  },\n}"
+            },
+            {
+                "name": "WithCallback",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    callback: fn(),\n  },\n}"
             }
         ],
         "functions": [],
@@ -307,6 +357,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<NgDsvComponent>",
                 "file": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<DsvAccordionComponent>",
+                "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -391,6 +452,48 @@
                     "defaultValue": "{\n  title: 'Task',\n  component: NgDsvComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  args: {\n    ...ActionsData,\n  },\n}"
                 }
             ],
+            "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts": [
+                {
+                    "name": "ActionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  avatar: 'vagabond',\n  color: 'primary',\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    callback: undefined,\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<DsvAccordionComponent>",
+                    "defaultValue": "{\n  title: 'dsv/Accordion',\n  component: DsvAccordionComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    color: {\n      control: 'select',\n      options: ['primary', 'success', 'info', 'warning', 'error'],\n    },\n    callback: { action: 'callback' },\n  },\n  args: {\n    ...(ActionsData as DsvAccordionComponent),\n  },\n}"
+                },
+                {
+                    "name": "WithCallback",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    callback: fn(),\n  },\n}"
+                }
+            ],
             "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts": [
                 {
                     "name": "ActionsData",
@@ -410,7 +513,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    callback: fn(),\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    callback: undefined,\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -421,6 +524,16 @@
                     "deprecationMessage": "",
                     "type": "Meta<DsvAvatarComponent>",
                     "defaultValue": "{\n  title: 'dsv/Avatar',\n  component: DsvAvatarComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    color: {\n      control: 'select',\n      options: ['primary', 'success', 'info', 'warning', 'error'],\n    },\n    callback: { action: 'callback' },\n  },\n  args: {\n    ...(ActionsData as DsvAvatarComponent),\n  },\n}"
+                },
+                {
+                    "name": "WithCallback",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    callback: fn(),\n  },\n}"
                 }
             ],
             "projects/ng-dsv/src/lib/button/component/button.component.stories.ts": [
@@ -474,7 +587,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
-                    "defaultValue": "{\n  title: 'un Titre',\n  subtitle: 'un subtitle',\n  image:\n    'https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630',\n  content:\n    '<h3>Du contenu</h3><p>un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long </p>',\n}"
+                    "defaultValue": "{\n  avatar: 'dfds',\n  title: 'un Titre',\n  subtitle: 'un subtitle',\n  image:\n    'https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630',\n  content:\n    '<h3>Du contenu</h3><p>un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long </p>',\n}"
                 },
                 {
                     "name": "Default",
@@ -578,6 +691,19 @@
                     "kind": 183
                 }
             ],
+            "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<DsvAccordionComponent>",
+                    "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts": [
                 {
                     "name": "Story",
@@ -668,6 +794,56 @@
                 "status": "low"
             },
             {
+                "filePath": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ActionsData",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "WithCallback",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -693,6 +869,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "WithCallback",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
