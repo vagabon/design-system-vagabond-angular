@@ -1,0 +1,12 @@
+:host {
+    display: flex;
+    width: calc(100% - 20px);
+    padding: 10px !important;
+    background-color: rgb(18, 18, 18);
+    color: rgb(255, 255, 255);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05));
+    position: relative;
+    overflow-anchor: none;
+    transition: margin 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0px;
+}

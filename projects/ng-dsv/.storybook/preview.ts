@@ -3,8 +3,8 @@ import {
   moduleMetadata,
   type Preview,
 } from '@storybook/angular';
-import { DsvThemeSwitchComponent } from '../src/lib/theme/switch/component/dsv.theme.switch.component';
-import { DsvThemeComponent } from './../src/lib/theme/component/dsv.theme.component';
+import { DsvThemeComponent } from './../ds/theme/component/dsv.theme.component';
+import { DsvThemeSwitchComponent } from './../ds/theme/switch/component/dsv.theme.switch.component';
 
 const theme = {
   primary: '#2943c6',

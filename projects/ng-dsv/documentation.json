@@ -9,8 +9,8 @@
     "components": [
         {
             "name": "PrimaryButtonDemo",
-            "id": "component-PrimaryButtonDemo-2ac24b68980523815c75ca3eca5fc24a47173998456174d2f4e6a87e2dfa53cca840bf4ad51b85e18b468e72a5de490e8ea388055de078455f6b55964b2e4b73",
-            "file": "projects/ng-dsv/src/lib/toast/stories/toast.stories.ts",
+            "id": "component-PrimaryButtonDemo-4ccf99968a8ad09948c1d8a44f199312b673922d91247e4650cb0b86c762984d62d52dcd97186e4e5c894d07885cd644e71704d421c56798ee5472ef3779d8b6",
+            "file": "projects/ng-dsv/ds/toast/stories/toast.stories.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -72,7 +72,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport {\n  componentWrapperDecorator,\n  moduleMetadata,\n  type Meta,\n  type StoryObj,\n} from '@storybook/angular';\nimport { DsvButtonComponent } from '../../button/public-api';\nimport { ToastType } from '../dto/toast.dto';\nimport { DsvToastComponent } from '../public-api';\nimport { ToastService } from './../service/toast.service';\n\nexport const ActionsData = {};\n\nconst meta: Meta<DsvToastComponent> = {\n  title: 'dsv/Toast',\n  component: DsvToastComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  args: {\n    ...ActionsData,\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<DsvToastComponent>;\n\n@Component({\n  selector: 'toast-button-demo',\n  imports: [DsvButtonComponent],\n  template: `\n    <div class=\"flex\">\n      <dsv-button\n        color=\"success\"\n        (click)=\"click()\"\n        icon=\"ri-check-fill\"\n        libelle=\"Success\"\n      ></dsv-button>\n      <dsv-button\n        color=\"info\"\n        (click)=\"click('info')\"\n        icon=\"ri-information-2-line\"\n        libelle=\"Info\"\n      ></dsv-button>\n      <dsv-button\n        color=\"warning\"\n        (click)=\"click('warning')\"\n        icon=\"ri-alert-line\"\n        libelle=\"Warning\"\n      ></dsv-button>\n      <dsv-button\n        color=\"error\"\n        (click)=\"click('error')\"\n        icon=\"ri-close-line\"\n        libelle=\"Error\"\n      ></dsv-button>\n    </div>\n  `,\n})\nclass PrimaryButtonDemo {\n  constructor(private readonly toastService: ToastService) {}\n\n  click(type: ToastType = 'success') {\n    this.toastService.showToast({ text: 'test', type: type });\n  }\n}\n\nexport const Default: Story = {\n  args: {},\n  decorators: [\n    moduleMetadata({\n      imports: [PrimaryButtonDemo],\n    }),\n    componentWrapperDecorator((story) => {\n      return `<div style=\"height: 30vh\"><toast-button-demo />${story}</div>`;\n    }),\n  ],\n};\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport {\n  componentWrapperDecorator,\n  moduleMetadata,\n  type Meta,\n  type StoryObj,\n} from '@storybook/angular';\nimport { DsvButtonComponent } from '../../button';\nimport { DsvToastComponent } from '../component/toast.component';\nimport { ToastType } from '../dto/toast.dto';\nimport { ToastService } from '../service/toast.service';\n\nexport const ActionsData = {};\n\nconst meta: Meta<DsvToastComponent> = {\n  title: 'dsv/Toast',\n  component: DsvToastComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  args: {\n    ...ActionsData,\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<DsvToastComponent>;\n\n@Component({\n  selector: 'toast-button-demo',\n  imports: [DsvButtonComponent],\n  template: `\n    <div class=\"flex\">\n      <dsv-button\n        color=\"success\"\n        (click)=\"click()\"\n        icon=\"ri-check-fill\"\n        libelle=\"Success\"\n      ></dsv-button>\n      <dsv-button\n        color=\"info\"\n        (click)=\"click('info')\"\n        icon=\"ri-information-2-line\"\n        libelle=\"Info\"\n      ></dsv-button>\n      <dsv-button\n        color=\"warning\"\n        (click)=\"click('warning')\"\n        icon=\"ri-alert-line\"\n        libelle=\"Warning\"\n      ></dsv-button>\n      <dsv-button\n        color=\"error\"\n        (click)=\"click('error')\"\n        icon=\"ri-close-line\"\n        libelle=\"Error\"\n      ></dsv-button>\n    </div>\n  `,\n})\nclass PrimaryButtonDemo {\n  constructor(private readonly toastService: ToastService) {}\n\n  click(type: ToastType = 'success') {\n    this.toastService.showToast({ text: 'test', type: type });\n  }\n}\n\nexport const Default: Story = {\n  args: {},\n  decorators: [\n    moduleMetadata({\n      imports: [PrimaryButtonDemo],\n    }),\n    componentWrapperDecorator((story) => {\n      return `<div style=\"height: 30vh\"><toast-button-demo />${story}</div>`;\n    }),\n  ],\n};\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -112,17 +112,7 @@
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n  onArchiveTask: fn(),\n  onPinTask: fn(),\n}"
-            },
-            {
-                "name": "ActionsData",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
@@ -132,7 +122,7 @@
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
+                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
@@ -142,17 +132,7 @@
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/button/component/button.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n  libelle: '',\n  color: 'primary',\n  icon: 'ri-spam-fill',\n  iconEnd: '',\n  fullwidth: false,\n  show: true,\n  disabled: false,\n}"
-            },
-            {
-                "name": "ActionsData",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/card/component/card.component.stories.ts",
+                "file": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
@@ -162,37 +142,17 @@
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/toast/stories/toast.stories.ts",
+                "file": "projects/ng-dsv/ds/toast/stories/toast.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{}"
             },
             {
-                "name": "buttonColors",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/button/component/button.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "ButtonColorType[]",
-                "defaultValue": "[\n  'primary',\n  'success',\n  'info',\n  'warning',\n  'error',\n]"
-            },
-            {
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {\n    task: {\n      id: '1',\n      title: 'Test Task',\n      state: 'TASK_INBOX',\n    },\n  },\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -202,7 +162,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
+                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -212,17 +172,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/button/component/button.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {\n    libelle: 'Click me',\n  },\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/card/component/card.component.stories.ts",
+                "file": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -232,7 +182,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/toast/stories/toast.stories.ts",
+                "file": "projects/ng-dsv/ds/toast/stories/toast.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -242,17 +192,7 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<NgDsvComponent>",
-                "defaultValue": "{\n  title: 'Task',\n  component: NgDsvComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  args: {\n    ...ActionsData,\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<DsvAccordionComponent>",
@@ -262,7 +202,7 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
+                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<DsvAvatarComponent>",
@@ -272,17 +212,7 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/button/component/button.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<DsvButtonComponent>",
-                "defaultValue": "{\n  title: 'dsv/Button',\n  component: DsvButtonComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    color: {\n      control: 'select',\n      options: buttonColors,\n    },\n    width: { control: 'select', options: ['small', 'medium', 'large'] },\n    variant: {\n      control: 'select',\n      options: ['text', 'outlined', 'contained'],\n    },\n  },\n  args: {\n    ...(ActionsData as DsvButtonComponent),\n    width: 'medium',\n    variant: 'contained',\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/card/component/card.component.stories.ts",
+                "file": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<DsvCardComponent>",
@@ -292,7 +222,7 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/toast/stories/toast.stories.ts",
+                "file": "projects/ng-dsv/ds/toast/stories/toast.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<DsvToastComponent>",
@@ -332,7 +262,7 @@
                 "name": "WithCallback",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -342,7 +272,7 @@
                 "name": "WithCallback",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
+                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -355,19 +285,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<NgDsvComponent>",
-                "file": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
                 "rawtype": "StoryObj<DsvAccordionComponent>",
-                "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -378,18 +297,7 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "StoryObj<DsvAvatarComponent>",
-                "file": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<DsvButtonComponent>",
-                "file": "projects/ng-dsv/src/lib/button/component/button.component.stories.ts",
+                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -400,7 +308,7 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "StoryObj<DsvCardComponent>",
-                "file": "projects/ng-dsv/src/lib/card/component/card.component.stories.ts",
+                "file": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -411,7 +319,7 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "StoryObj<DsvToastComponent>",
-                "file": "projects/ng-dsv/src/lib/toast/stories/toast.stories.ts",
+                "file": "projects/ng-dsv/ds/toast/stories/toast.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -420,44 +328,12 @@
         ],
         "enumerations": [],
         "groupedVariables": {
-            "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts": [
+            "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts": [
                 {
                     "name": "ActionsData",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  onArchiveTask: fn(),\n  onPinTask: fn(),\n}"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    task: {\n      id: '1',\n      title: 'Test Task',\n      state: 'TASK_INBOX',\n    },\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<NgDsvComponent>",
-                    "defaultValue": "{\n  title: 'Task',\n  component: NgDsvComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  args: {\n    ...ActionsData,\n  },\n}"
-                }
-            ],
-            "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts": [
-                {
-                    "name": "ActionsData",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
@@ -467,7 +343,7 @@
                     "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -477,7 +353,7 @@
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<DsvAccordionComponent>",
@@ -487,19 +363,19 @@
                     "name": "WithCallback",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {\n    callback: fn(),\n  },\n}"
                 }
             ],
-            "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts": [
+            "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts": [
                 {
                     "name": "ActionsData",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
@@ -509,7 +385,7 @@
                     "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -519,7 +395,7 @@
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<DsvAvatarComponent>",
@@ -529,61 +405,19 @@
                     "name": "WithCallback",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {\n    callback: fn(),\n  },\n}"
                 }
             ],
-            "projects/ng-dsv/src/lib/button/component/button.component.stories.ts": [
+            "projects/ng-dsv/ds/card/component/card.component.stories.ts": [
                 {
                     "name": "ActionsData",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/button/component/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  libelle: '',\n  color: 'primary',\n  icon: 'ri-spam-fill',\n  iconEnd: '',\n  fullwidth: false,\n  show: true,\n  disabled: false,\n}"
-                },
-                {
-                    "name": "buttonColors",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/button/component/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "ButtonColorType[]",
-                    "defaultValue": "[\n  'primary',\n  'success',\n  'info',\n  'warning',\n  'error',\n]"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/button/component/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    libelle: 'Click me',\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/button/component/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<DsvButtonComponent>",
-                    "defaultValue": "{\n  title: 'dsv/Button',\n  component: DsvButtonComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    color: {\n      control: 'select',\n      options: buttonColors,\n    },\n    width: { control: 'select', options: ['small', 'medium', 'large'] },\n    variant: {\n      control: 'select',\n      options: ['text', 'outlined', 'contained'],\n    },\n  },\n  args: {\n    ...(ActionsData as DsvButtonComponent),\n    width: 'medium',\n    variant: 'contained',\n  },\n}"
-                }
-            ],
-            "projects/ng-dsv/src/lib/card/component/card.component.stories.ts": [
-                {
-                    "name": "ActionsData",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/card/component/card.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
@@ -593,7 +427,7 @@
                     "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/card/component/card.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -603,19 +437,19 @@
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/card/component/card.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<DsvCardComponent>",
                     "defaultValue": "{\n  title: 'dsv/Card',\n  component: DsvCardComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  args: {\n    ...ActionsData,\n  },\n}"
                 }
             ],
-            "projects/ng-dsv/src/lib/toast/stories/toast.stories.ts": [
+            "projects/ng-dsv/ds/toast/stories/toast.stories.ts": [
                 {
                     "name": "ActionsData",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/toast/stories/toast.stories.ts",
+                    "file": "projects/ng-dsv/ds/toast/stories/toast.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
@@ -625,7 +459,7 @@
                     "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/toast/stories/toast.stories.ts",
+                    "file": "projects/ng-dsv/ds/toast/stories/toast.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -635,7 +469,7 @@
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/src/lib/toast/stories/toast.stories.ts",
+                    "file": "projects/ng-dsv/ds/toast/stories/toast.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<DsvToastComponent>",
@@ -678,78 +512,52 @@
         "groupedFunctions": {},
         "groupedEnumerations": {},
         "groupedTypeAliases": {
-            "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<NgDsvComponent>",
-                    "file": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts": [
+            "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "rawtype": "StoryObj<DsvAccordionComponent>",
-                    "file": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 183
                 }
             ],
-            "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts": [
+            "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "rawtype": "StoryObj<DsvAvatarComponent>",
-                    "file": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 183
                 }
             ],
-            "projects/ng-dsv/src/lib/button/component/button.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<DsvButtonComponent>",
-                    "file": "projects/ng-dsv/src/lib/button/component/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "projects/ng-dsv/src/lib/card/component/card.component.stories.ts": [
+            "projects/ng-dsv/ds/card/component/card.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "rawtype": "StoryObj<DsvCardComponent>",
-                    "file": "projects/ng-dsv/src/lib/card/component/card.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 183
                 }
             ],
-            "projects/ng-dsv/src/lib/toast/stories/toast.stories.ts": [
+            "projects/ng-dsv/ds/toast/stories/toast.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "rawtype": "StoryObj<DsvToastComponent>",
-                    "file": "projects/ng-dsv/src/lib/toast/stories/toast.stories.ts",
+                    "file": "projects/ng-dsv/ds/toast/stories/toast.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -794,7 +602,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                "filePath": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -804,7 +612,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                "filePath": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -814,7 +622,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                "filePath": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -824,7 +632,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                "filePath": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -834,7 +642,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/src/lib/accordion/component/accordion.component.stories.ts",
+                "filePath": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
@@ -844,7 +652,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
+                "filePath": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -854,7 +662,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
+                "filePath": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -864,7 +672,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
+                "filePath": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -874,7 +682,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
+                "filePath": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -884,7 +692,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/src/lib/avatar/component/avatar.component.stories.ts",
+                "filePath": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
@@ -894,7 +702,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/src/lib/button/component/button.component.stories.ts",
+                "filePath": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -904,17 +712,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/src/lib/button/component/button.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "buttonColors",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ng-dsv/src/lib/button/component/button.component.stories.ts",
+                "filePath": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -924,7 +722,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/src/lib/button/component/button.component.stories.ts",
+                "filePath": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -934,7 +732,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/src/lib/button/component/button.component.stories.ts",
+                "filePath": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
@@ -944,87 +742,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/src/lib/card/component/card.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "ActionsData",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ng-dsv/src/lib/card/component/card.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Default",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ng-dsv/src/lib/card/component/card.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ng-dsv/src/lib/card/component/card.component.stories.ts",
-                "type": "type alias",
-                "linktype": "miscellaneous",
-                "linksubtype": "typealias",
-                "name": "Story",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "ActionsData",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Default",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ng-dsv/src/lib/ng-dsv.component.stories.ts",
-                "type": "type alias",
-                "linktype": "miscellaneous",
-                "linksubtype": "typealias",
-                "name": "Story",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ng-dsv/src/lib/toast/stories/toast.stories.ts",
+                "filePath": "projects/ng-dsv/ds/toast/stories/toast.stories.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "PrimaryButtonDemo",
@@ -1033,7 +751,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/src/lib/toast/stories/toast.stories.ts",
+                "filePath": "projects/ng-dsv/ds/toast/stories/toast.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1043,7 +761,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/src/lib/toast/stories/toast.stories.ts",
+                "filePath": "projects/ng-dsv/ds/toast/stories/toast.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1053,7 +771,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/src/lib/toast/stories/toast.stories.ts",
+                "filePath": "projects/ng-dsv/ds/toast/stories/toast.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1063,7 +781,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/src/lib/toast/stories/toast.stories.ts",
+                "filePath": "projects/ng-dsv/ds/toast/stories/toast.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",

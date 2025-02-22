@@ -1,0 +1,29 @@
+:host {
+    --background: var(--background);
+    --background-dark: var(--background-dark);
+    --text: var(--text);
+    --text-dark: var(--text-dark);
+    --primary: var(--primary);
+    --primary: var(--secondary);
+    --success: var(--success);
+    --info: var(--info);
+    --warning: var(--warning);
+    --error: var(--error);
+}
+
+.dsv-theme { 
+    flex: 1; font-size: 1rem !important; height: 100%;
+    min-height: 100px; padding-bottom: 50px;
+
+    ::ng-deep .light & {
+        background-color: var(--background);
+        color: var(--text);
+    }
+
+    ::ng-deep .dark & {
+        background-color: var(--background-dark);
+        * {            
+            color: var(--text-dark);
+        }
+    }
+}
