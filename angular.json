@@ -83,7 +83,10 @@
                 "input": "projects/showcase/public"
               }
             ],
-            "styles": ["projects/showcase/src/styles.scss"],
+            "styles": [
+              "node_modules/remixicon/fonts/remixicon.css",
+              "projects/showcase/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {

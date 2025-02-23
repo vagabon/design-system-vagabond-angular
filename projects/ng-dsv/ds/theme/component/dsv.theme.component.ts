@@ -1,28 +1,28 @@
 import { Component, HostBinding, Input } from '@angular/core';
 
 export type ThemeType = {
-  background: string;
-  backgroundDark: string;
-  text: string;
-  textDark: string;
-  primary: string;
-  secondary: string;
-  success: string;
-  info: string;
-  warning: string;
-  error: string;
+  background?: string;
+  backgroundDark?: string;
+  text?: string;
+  textDark?: string;
+  primary?: string;
+  secondary?: string;
+  success?: string;
+  info?: string;
+  warning?: string;
+  error?: string;
 };
 
 @Component({
   selector: 'dsv-theme',
   standalone: true,
   imports: [],
-  template: `<div class="dsv-theme"><ng-content></ng-content></div>`,
+  templateUrl: './dsv.theme.component.html',
   styleUrls: ['./dsv.theme.component.scss'],
 })
 export class DsvThemeComponent {
   @Input()
-  theme!: ThemeType;
+  theme: ThemeType = {};
 
   @HostBinding('style.--background')
   background!: string;
@@ -55,8 +55,8 @@ export class DsvThemeComponent {
   error!: string;
 
   ngOnInit() {
-    this.background = this.theme.background ?? '#fff';
-    this.backgroundDark = this.theme.backgroundDark ?? '#121212';
+    this.background = this.theme.background ?? 'rgb(220, 220, 220)';
+    this.backgroundDark = this.theme.backgroundDark ?? 'rgb(31, 31, 31)';
     this.text = this.theme.text ?? '#000';
     this.textDark = this.theme.textDark ?? '#fff';
     this.primary = this.theme.primary ?? '#AAA';

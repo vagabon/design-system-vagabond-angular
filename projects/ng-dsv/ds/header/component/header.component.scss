@@ -1,0 +1,54 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    /*position: fixed;*/
+    top: 0px;
+    left: auto;
+    right: 0px;
+    background-color: var(--white);
+    color: var(--text);
+    z-index: 1201;
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    .dsv-header-content {
+        position: relative;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        padding-left: 16px;
+        padding-right: 16px;
+        min-height: 56px;
+        user-select: none;
+
+        .dsv-header-logo {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            font-size: 1.3rem;
+            flex: 1;
+            gap: 10px;
+
+            img {
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+            }
+
+            span {
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+::ng-deep .dark dsv-header {
+    background-color: var(--background-dark);
+
+    * {
+        color: var(--text-dark);
+    }
+}

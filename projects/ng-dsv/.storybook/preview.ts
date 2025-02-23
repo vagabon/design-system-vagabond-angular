@@ -7,8 +7,8 @@ import { DsvThemeComponent } from './../ds/theme/component/dsv.theme.component';
 import { DsvThemeSwitchComponent } from './../ds/theme/switch/component/dsv.theme.switch.component';
 
 const theme = {
+  background: 'rgb(245, 245, 245)',
   primary: '#2943c6',
-  text: '#FFF',
 };
 const themeString = JSON.stringify(theme);
 
@@ -28,7 +28,7 @@ const preview: Preview = {
     }),
     componentWrapperDecorator((story) => {
       return `<dsv-theme [theme]='${themeString}' class="flex flex1" >
-        <div style='padding: 5px'>
+        <div style='padding: 5px; margin-bottom: 40px; min-height: 200px;'>
           <div style='margin-bottom: 20px'>
             <dsv-theme-switch></dsv-theme-switch>
           </div>

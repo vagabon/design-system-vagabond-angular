@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, output } from '@angular/core';
 import { ColorType } from '@ng-vagabond-lab/ng-dsv/type';
 
 export type ButtonWidthType = 'small' | 'medium' | 'large';
@@ -22,4 +22,12 @@ export class DsvButtonComponent {
   @Input() fullwidth: boolean = false;
   @Input() show: boolean = true;
   @Input() disabled: boolean = false;
+
+  callback = output<void>();
+
+  doClick(event: Event) {
+    event.stopPropagation();
+    event.preventDefault();
+    !this.disabled && this.callback.emit();
+  }
 }

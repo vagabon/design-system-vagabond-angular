@@ -2,12 +2,12 @@ import { Injectable, signal, WritableSignal } from '@angular/core';
 
 export type ThemeMode = 'dark' | 'light';
 
-console.log(localStorage.getItem('theme'));
+console.log('default theme :', localStorage.getItem('theme'));
 
 @Injectable({
   providedIn: 'root',
 })
-export class ThemeSwitchService {
+export class ThemeService {
   themeMode: WritableSignal<ThemeMode> = signal(
     (localStorage.getItem('theme') as ThemeMode) ?? 'light'
   );

@@ -1,10 +1,10 @@
 import { type Meta, type StoryObj } from '@storybook/angular';
-import { fn } from '@storybook/test';
 import { DsvAccordionComponent } from './accordion.component';
 
 export const ActionsData = {
-  avatar: 'vagabond',
-  color: 'primary',
+  open: false,
+  title: 'vagabond',
+  content: 'primary<br/>',
 };
 
 const meta: Meta<DsvAccordionComponent> = {
@@ -12,15 +12,9 @@ const meta: Meta<DsvAccordionComponent> = {
   component: DsvAccordionComponent,
   excludeStories: /.*Data$/,
   tags: ['autodocs'],
-  argTypes: {
-    color: {
-      control: 'select',
-      options: ['primary', 'success', 'info', 'warning', 'error'],
-    },
-    callback: { action: 'callback' },
-  },
+  argTypes: {},
   args: {
-    ...(ActionsData as DsvAccordionComponent),
+    ...ActionsData,
   },
 };
 
@@ -28,13 +22,8 @@ export default meta;
 type Story = StoryObj<DsvAccordionComponent>;
 
 export const Default: Story = {
-  args: {
-    callback: undefined,
-  },
-};
-
-export const WithCallback: Story = {
-  args: {
-    callback: fn(),
-  },
+  args: {},
+  render: (args: DsvAccordionComponent & { content?: string }) => ({
+    template: `<dsv-accordion open="${args.open}" title="${args.title}"> ${args.content} </dsv-accordion>`,
+  }),
 };

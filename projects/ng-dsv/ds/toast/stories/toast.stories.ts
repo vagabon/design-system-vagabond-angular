@@ -32,25 +32,25 @@ type Story = StoryObj<DsvToastComponent>;
     <div class="flex">
       <dsv-button
         color="success"
-        (click)="click()"
+        (callback)="click()"
         icon="ri-check-fill"
         libelle="Success"
       ></dsv-button>
       <dsv-button
         color="info"
-        (click)="click('info')"
+        (callback)="click('info')"
         icon="ri-information-2-line"
         libelle="Info"
       ></dsv-button>
       <dsv-button
         color="warning"
-        (click)="click('warning')"
+        (callback)="click('warning')"
         icon="ri-alert-line"
         libelle="Warning"
       ></dsv-button>
       <dsv-button
         color="error"
-        (click)="click('error')"
+        (callback)="click('error')"
         icon="ri-close-line"
         libelle="Error"
       ></dsv-button>

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { ThemeSwitchService } from '../service/dsv.theme.switch.service';
+import { Component } from '@angular/core';
 import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
+import { ThemeService } from '../../public-api';
 
 export type Theme = {
   primary: string;
@@ -15,13 +15,13 @@ export type Theme = {
   templateUrl: `./dsv.theme.switch.component.html`,
 })
 export class DsvThemeSwitchComponent {
-  themeSwitchService = inject(ThemeSwitchService);
+  constructor(private themeService: ThemeService) {}
 
   switchTheme() {
-    this.themeSwitchService.switchTheme();
+    this.themeService.switchTheme();
   }
 
   isLightMode() {
-    return this.themeSwitchService.themeMode() === 'light';
+    return this.themeService.themeMode() === 'light';
   }
 }

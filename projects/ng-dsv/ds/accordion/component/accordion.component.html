@@ -1,3 +1,8 @@
-TITLE
-
-<div class="dsv-accordion"></div>
+<div class="dsv-accordion-header" (click)="doToogle()">
+  {{ title }}
+  <i class="ri-arrow-up-s-line" *ngIf="isOpen()"></i>
+  <i class="ri-arrow-down-s-line" *ngIf="!isOpen()"></i>
+</div>
+<div class="dsv-accordion-text" [class.open]="isOpen()">
+  <ng-content></ng-content>
+</div>
