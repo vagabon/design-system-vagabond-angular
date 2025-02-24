@@ -22,8 +22,8 @@ export class DsvMenuComponent implements OnInit {
   @Input() showFooter: boolean = true;
 
   constructor(
-    private menuService: MenuService,
-    private elementRef: ElementRef
+    private readonly menuService: MenuService,
+    private readonly elementRef: ElementRef
   ) {
     effect(() => {
       const menu = document.getElementsByTagName('dsv-menu')[0];

@@ -11,7 +11,7 @@ import { MenuService } from '../../public-api';
   styleUrls: ['./menu.button.component.scss'],
 })
 export class DsvMenuButtonComponent {
-  constructor(private menuService: MenuService) {}
+  constructor(private readonly menuService: MenuService) {}
 
   doToogleMenu() {
     this.menuService.toogleMenu();

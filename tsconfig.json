@@ -1,15 +1,8 @@
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@ng-vagabond-lab/ng-dsv/*": [
-        "./projects/ng-dsv/*"
-      ],
-      "@ng-vagabond-lab/ng-dsv": [
-        "./projects/ng-dsv"
-      ]
+      "@ng-vagabond-lab/ng-dsv/*": ["./projects/ng-dsv/*"]
     },
     "outDir": "./dist/out-tsc",
     "strict": true,
@@ -26,10 +19,7 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    "lib": ["ES2022", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

@@ -15,7 +15,7 @@ export type Theme = {
   templateUrl: `./dsv.theme.switch.component.html`,
 })
 export class DsvThemeSwitchComponent {
-  constructor(private themeService: ThemeService) {}
+  constructor(private readonly themeService: ThemeService) {}
 
   switchTheme() {
     this.themeService.switchTheme();

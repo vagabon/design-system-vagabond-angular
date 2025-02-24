@@ -14,7 +14,7 @@ export class DsvItemComponent {
   @Input() text: string = '';
   @Input() url!: string;
 
-  constructor(private router: Router) {}
+  constructor(private readonly router: Router) {}
 
   doClick() {
     this.url && this.router.navigate([this.url]);

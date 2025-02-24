@@ -24,13 +24,4 @@ export class DsvToastComponent {
       }
     });
   }
-
-  ngOnInit() {
-    this.toastService.showToast({
-      text: 'test',
-      type: 'success',
-      filled: true,
-      duration: 10000,
-    });
-  }
 }

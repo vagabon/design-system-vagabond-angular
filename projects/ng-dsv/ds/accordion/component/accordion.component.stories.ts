@@ -4,7 +4,8 @@ import { DsvAccordionComponent } from './accordion.component';
 export const ActionsData = {
   open: false,
   title: 'vagabond',
-  content: 'primary<br/>',
+  content:
+    'primary<br/>text text text text text text text text text text text text <br/>fdfdsfsd',
 };
 
 const meta: Meta<DsvAccordionComponent> = {

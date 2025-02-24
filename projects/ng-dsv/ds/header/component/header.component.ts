@@ -18,7 +18,10 @@ export class DsvHeaderComponent {
   @Input() title: string = '';
   @Input() withMenu: boolean = true;
 
-  constructor(private router: Router, private menuService: MenuService) {}
+  constructor(
+    private readonly router: Router,
+    private readonly menuService: MenuService
+  ) {}
 
   doToogleMenu() {
     this.menuService.toogleMenu();

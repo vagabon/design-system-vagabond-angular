@@ -1,4 +1,4 @@
-<div class="dsv-avatar" [ngClass]="color + ' ' + (callback ? 'callback' : '')" (click)="triggerEvent()">
+<a class="dsv-avatar" [ngClass]="color + ' ' + (callback ? 'callback' : '')" (click)="triggerEvent()">
   <span *ngIf="!isImage()">{{showAvatar()}}</span>
   <img src="{{avatar}}" *ngIf="isImage()" alt="avatar" />
-</div>
+</a>
