@@ -1,4 +1,6 @@
-import { type Meta, type StoryObj } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
+import { DsvHeaderComponent } from '../../header';
+import { DsvItemComponent } from '../../item';
 import { DsvMenuComponent } from './menu.component';
 
 export const ActionsData = {
@@ -11,6 +13,11 @@ const meta: Meta<DsvMenuComponent> = {
   component: DsvMenuComponent,
   excludeStories: /.*Data$/,
   tags: ['autodocs'],
+  decorators: [
+    moduleMetadata({
+      imports: [DsvHeaderComponent, DsvItemComponent],
+    }),
+  ],
   argTypes: {},
   args: {
     ...ActionsData,
@@ -23,6 +30,14 @@ type Story = StoryObj<DsvMenuComponent>;
 export const Default: Story = {
   args: {},
   render: (args: any) => ({
-    template: `<dsv-menu showFooter="${args.showFooter}"> ${args.content} </dsv-menu>`,
+    template: `<dsv-header img="https://ownyourchatbots.com/images/logo.png" title="dsqdsq"> 
+      </dsv-header>
+      <dsv-menu [showFooter]="${args.showFooter}"> 
+        <dsv-item text="text"></dsv-item>
+        <dsv-item text="text"></dsv-item>
+        <dsv-item text="text"></dsv-item>
+        <dsv-item text="text"></dsv-item>
+      </dsv-menu>
+    `,
   }),
 };

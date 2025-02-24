@@ -2,8 +2,6 @@ import { Injectable, signal, WritableSignal } from '@angular/core';
 
 export type ThemeMode = 'dark' | 'light';
 
-console.log('default theme :', localStorage.getItem('theme'));
-
 @Injectable({
   providedIn: 'root',
 })
