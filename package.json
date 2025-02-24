@@ -7,7 +7,7 @@
     "build": "run-s lib:build showcase:build",
     "test": "ng test --browsers=Chrome",
     "test:coverage": "ng test --no-watch --code-coverage --browsers=Chrome",
-    "test:coverage:headless": "ng test --no-watch --code-coverage --browsers=CustomChromeHeadless",
+    "test:coverage:headless": "ng test @ng-vagabond-lab/ng-dsv --no-watch --code-coverage --browsers=CustomChromeHeadless",
     "lib:build": "ng build @ng-vagabond-lab/ng-dsv",
     "lib:watch": "ng build @ng-vagabond-lab/ng-dsv --watch --configuration development",
     "lib:test": "ng test @ng-vagabond-lab/ng-dsv",
@@ -19,7 +19,8 @@
     "showcase:test": "ng test showcase",
     "showcase:test-coverage": "ng test showcase --no-watch --code-coverage",
     "storybook": "ng run @ng-vagabond-lab/ng-dsv:storybook",
-    "build-storybook": "ng run @ng-vagabond-lab/ng-dsv:build-storybook"
+    "build-storybook": "ng run @ng-vagabond-lab/ng-dsv:build-storybook",
+    "sonar": "npm run test:coverage:headless && npx sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.host.url=http://localhost:9000"
   },
   "dependencies": {
     "@angular/animations": "~19.1.7",
@@ -60,7 +61,6 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "~19.1.2",
-    "npm-run-all": "~4.1.5",
     "storybook": "^8.5.8",
     "typescript": "~5.7.3",
     "wait-on": "~8.0.2"
