@@ -13,6 +13,7 @@ export class DsvItemComponent {
   @Input() icon: string = '';
   @Input() text: string = '';
   @Input() url!: string;
+  @Input() small: boolean = false;
 
   constructor(private readonly router: Router) {}
 

@@ -1,4 +1,4 @@
-<a class="text" (click)="doClick()">
+<a class="text" (click)="doClick()" [class.small]="small">
   <i *ngIf="icon" class="ri-{{ icon }}-line"></i>
   {{ text }}
 </a>

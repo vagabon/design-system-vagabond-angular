@@ -4,9 +4,11 @@ import { DsvItemComponent } from './item.component';
 
 export const ActionsData: {
   text: string;
+  small: boolean;
   callback: () => void;
 } = {
   text: 'My webapp',
+  small: true,
   callback: fn(),
 };
 

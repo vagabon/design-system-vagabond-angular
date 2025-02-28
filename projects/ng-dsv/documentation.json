@@ -142,21 +142,21 @@
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/container/component/container.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n  content: 'content',\n  column: false,\n}"
-            },
-            {
-                "name": "ActionsData",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n  avatar: 'dfds',\n  title: 'un Titre',\n  subtitle: 'un subtitle',\n  image:\n    'https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630',\n  content:\n    '<h3>Du contenu</h3><p>un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long </p>',\n}"
+            },
+            {
+                "name": "ActionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/container/component/container.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  content: 'content',\n  column: false,\n}"
             },
             {
                 "name": "ActionsData",
@@ -242,21 +242,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/container/component/container.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n  render: (args: DsvContainerComponent & { content?: string }) => ({\n    template: `<dsv-container > ${args.content} </dsv-container>`,\n  }),\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  render: (args: DsvCardComponent & { content?: string }) => ({\n    template: `<dsv-card title=\"${args.title}\" subtitle=\"${args.subtitle}\" image=\"${args.image}\"> ${args.content} </dsv-card>`,\n  }),\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/container/component/container.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  render: (args: DsvContainerComponent & { content?: string }) => ({\n    template: `<dsv-container > ${args.content} </dsv-container>`,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -332,21 +332,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/container/component/container.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<DsvContainerComponent>",
-                "defaultValue": "{\n  title: 'dsv/Container',\n  component: DsvContainerComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<DsvCardComponent>",
                 "defaultValue": "{\n  title: 'dsv/Card',\n  component: DsvCardComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  args: {\n    ...ActionsData,\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/container/component/container.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<DsvContainerComponent>",
+                "defaultValue": "{\n  title: 'dsv/Container',\n  component: DsvContainerComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
             },
             {
                 "name": "meta",
@@ -468,8 +468,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<DsvContainerComponent>",
-                "file": "projects/ng-dsv/ds/container/component/container.component.stories.ts",
+                "rawtype": "StoryObj<DsvCardComponent>",
+                "file": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -479,8 +479,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<DsvCardComponent>",
-                "file": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
+                "rawtype": "StoryObj<DsvContainerComponent>",
+                "file": "projects/ng-dsv/ds/container/component/container.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -649,38 +649,6 @@
                     "defaultValue": "{\n  title: 'dsv/Button',\n  component: DsvButtonComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    color: {\n      control: 'select',\n      options: buttonColors,\n    },\n    width: { control: 'select', options: ['small', 'medium', 'large'] },\n    variant: {\n      control: 'select',\n      options: ['text', 'outlined', 'contained'],\n    },\n  },\n  args: {\n    ...ActionsData,\n    width: 'medium',\n    variant: 'contained',\n  },\n}"
                 }
             ],
-            "projects/ng-dsv/ds/container/component/container.component.stories.ts": [
-                {
-                    "name": "ActionsData",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/container/component/container.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  content: 'content',\n  column: false,\n}"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/container/component/container.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  render: (args: DsvContainerComponent & { content?: string }) => ({\n    template: `<dsv-container > ${args.content} </dsv-container>`,\n  }),\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/container/component/container.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<DsvContainerComponent>",
-                    "defaultValue": "{\n  title: 'dsv/Container',\n  component: DsvContainerComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
-                }
-            ],
             "projects/ng-dsv/ds/card/component/card.component.stories.ts": [
                 {
                     "name": "ActionsData",
@@ -711,6 +679,38 @@
                     "deprecationMessage": "",
                     "type": "Meta<DsvCardComponent>",
                     "defaultValue": "{\n  title: 'dsv/Card',\n  component: DsvCardComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  args: {\n    ...ActionsData,\n  },\n}"
+                }
+            ],
+            "projects/ng-dsv/ds/container/component/container.component.stories.ts": [
+                {
+                    "name": "ActionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/container/component/container.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  content: 'content',\n  column: false,\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/container/component/container.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  render: (args: DsvContainerComponent & { content?: string }) => ({\n    template: `<dsv-container > ${args.content} </dsv-container>`,\n  }),\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/container/component/container.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<DsvContainerComponent>",
+                    "defaultValue": "{\n  title: 'dsv/Container',\n  component: DsvContainerComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
                 }
             ],
             "projects/ng-dsv/ds/header/component/header.component.stories.ts": [
@@ -916,19 +916,6 @@
                     "kind": 183
                 }
             ],
-            "projects/ng-dsv/ds/container/component/container.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<DsvContainerComponent>",
-                    "file": "projects/ng-dsv/ds/container/component/container.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "projects/ng-dsv/ds/card/component/card.component.stories.ts": [
                 {
                     "name": "Story",
@@ -936,6 +923,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<DsvCardComponent>",
                     "file": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "projects/ng-dsv/ds/container/component/container.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<DsvContainerComponent>",
+                    "file": "projects/ng-dsv/ds/container/component/container.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
