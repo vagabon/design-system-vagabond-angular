@@ -52,6 +52,10 @@
             "configDir": "projects/ng-dsv/.storybook",
             "browserTarget": "@ng-vagabond-lab/ng-dsv:build",
             "compodoc": true,
+            "styles": [
+              "node_modules/remixicon/fonts/remixicon.css",
+              "projects/ng-dsv/assets/global.scss"
+            ],
             "compodocArgs": ["-e", "json", "-d", "projects/ng-dsv"],
             "outputDir": "storybook-static"
           }

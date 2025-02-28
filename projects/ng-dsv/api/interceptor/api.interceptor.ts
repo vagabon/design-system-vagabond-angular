@@ -11,6 +11,7 @@ import { ApiService } from '../service/api.service';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const httpClient = inject(HttpClient);
+  const apiService = inject(ApiService);
   return next(getToken(req)).pipe(
     catchError((error) => {
       if (
@@ -18,7 +19,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
         !req.url.includes('auth/') &&
         error.status === 401
       ) {
-        return handle401Error(httpClient, req, next);
+        return handle401Error(httpClient, apiService, req, next);
       }
 
       return throwError(() => error);
@@ -40,6 +41,7 @@ const getToken = <T>(req: HttpRequest<T>) => {
 
 const handle401Error = <T>(
   httpClient: HttpClient,
+  apiService: ApiService,
   request: HttpRequest<T>,
   next: HttpHandlerFn
 ) => {
@@ -48,8 +50,6 @@ const handle401Error = <T>(
   const jwtRefresh = JSON.parse(
     localStorage.getItem('user-connected')!
   )?.jwtRefresh;
-
-  const apiService = inject(ApiService);
 
   return httpClient
     .post(apiService.baseUrl + '/auth/refresh-token', {
