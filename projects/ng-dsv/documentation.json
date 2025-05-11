@@ -172,21 +172,21 @@
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/item/component/item.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "literal type",
-                "defaultValue": "{\n  text: 'My webapp',\n  callback: fn(),\n}"
-            },
-            {
-                "name": "ActionsData",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/menu/component/menu.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n  showFooter: true,\n  content: 'content',\n}"
+            },
+            {
+                "name": "ActionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/item/component/item.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "literal type",
+                "defaultValue": "{\n  text: 'My webapp',\n  small: true,\n  callback: fn(),\n}"
             },
             {
                 "name": "ActionsData",
@@ -272,21 +272,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/item/component/item.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/menu/component/menu.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-header img=\"https://ownyourchatbots.com/images/logo.png\" title=\"dsqdsq\"> \n      </dsv-header>\n      <dsv-menu [showFooter]=\"${args.showFooter}\"> \n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n      </dsv-menu>\n    `,\n  }),\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/item/component/item.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
             },
             {
                 "name": "Default",
@@ -362,21 +362,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/item/component/item.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<DsvItemComponent>",
-                "defaultValue": "{\n  title: 'dsv/Item',\n  component: DsvItemComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/menu/component/menu.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<DsvMenuComponent>",
                 "defaultValue": "{\n  title: 'dsv/Menu',\n  component: DsvMenuComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [DsvHeaderComponent, DsvItemComponent],\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/item/component/item.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<DsvItemComponent>",
+                "defaultValue": "{\n  title: 'dsv/Item',\n  component: DsvItemComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
             },
             {
                 "name": "meta",
@@ -501,8 +501,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<DsvItemComponent>",
-                "file": "projects/ng-dsv/ds/item/component/item.component.stories.ts",
+                "rawtype": "StoryObj<DsvMenuComponent>",
+                "file": "projects/ng-dsv/ds/menu/component/menu.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -512,8 +512,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<DsvMenuComponent>",
-                "file": "projects/ng-dsv/ds/menu/component/menu.component.stories.ts",
+                "rawtype": "StoryObj<DsvItemComponent>",
+                "file": "projects/ng-dsv/ds/item/component/item.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -745,38 +745,6 @@
                     "defaultValue": "{\n  title: 'dsv/Header',\n  component: DsvHeaderComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
                 }
             ],
-            "projects/ng-dsv/ds/item/component/item.component.stories.ts": [
-                {
-                    "name": "ActionsData",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/item/component/item.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "literal type",
-                    "defaultValue": "{\n  text: 'My webapp',\n  callback: fn(),\n}"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/item/component/item.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/item/component/item.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<DsvItemComponent>",
-                    "defaultValue": "{\n  title: 'dsv/Item',\n  component: DsvItemComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
-                }
-            ],
             "projects/ng-dsv/ds/menu/component/menu.component.stories.ts": [
                 {
                     "name": "ActionsData",
@@ -807,6 +775,38 @@
                     "deprecationMessage": "",
                     "type": "Meta<DsvMenuComponent>",
                     "defaultValue": "{\n  title: 'dsv/Menu',\n  component: DsvMenuComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [DsvHeaderComponent, DsvItemComponent],\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+                }
+            ],
+            "projects/ng-dsv/ds/item/component/item.component.stories.ts": [
+                {
+                    "name": "ActionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/item/component/item.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "defaultValue": "{\n  text: 'My webapp',\n  small: true,\n  callback: fn(),\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/item/component/item.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/item/component/item.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<DsvItemComponent>",
+                    "defaultValue": "{\n  title: 'dsv/Item',\n  component: DsvItemComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
                 }
             ],
             "projects/ng-dsv/ds/toast/stories/toast.stories.ts": [
@@ -955,19 +955,6 @@
                     "kind": 183
                 }
             ],
-            "projects/ng-dsv/ds/item/component/item.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<DsvItemComponent>",
-                    "file": "projects/ng-dsv/ds/item/component/item.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "projects/ng-dsv/ds/menu/component/menu.component.stories.ts": [
                 {
                     "name": "Story",
@@ -975,6 +962,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<DsvMenuComponent>",
                     "file": "projects/ng-dsv/ds/menu/component/menu.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "projects/ng-dsv/ds/item/component/item.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<DsvItemComponent>",
+                    "file": "projects/ng-dsv/ds/item/component/item.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",

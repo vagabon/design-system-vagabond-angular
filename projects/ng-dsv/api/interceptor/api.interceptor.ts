@@ -6,20 +6,29 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { inject } from '@angular/core';
+import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
 import { catchError, switchMap, throwError } from 'rxjs';
-import { ApiService } from '../service/api.service';
+import { ApiService } from '../public-api';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const httpClient = inject(HttpClient);
   const apiService = inject(ApiService);
-  return next(getToken(req)).pipe(
+  const storageService = inject(StorageService);
+
+  return next(getToken(req, storageService)).pipe(
     catchError((error) => {
       if (
         error instanceof HttpErrorResponse &&
         !req.url.includes('auth/') &&
         error.status === 401
       ) {
-        return handle401Error(httpClient, apiService, req, next);
+        return handle401Error(
+          httpClient,
+          apiService,
+          storageService,
+          req,
+          next
+        );
       }
 
       return throwError(() => error);
@@ -27,8 +36,9 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   );
 };
 
-const getToken = <T>(req: HttpRequest<T>) => {
-  const jwt = JSON.parse(localStorage.getItem('user-connected')!)?.jwt;
+const getToken = <T>(req: HttpRequest<T>, storageService: StorageService) => {
+  const jwt =
+    storageService.getItem('user-connected')?.['jwt' as keyof {}] ?? '';
   if (!req.url.includes('/auth/')) {
     const headers = req.headers.set('Authorization', `Bearer ${jwt}`);
 
@@ -42,14 +52,15 @@ const getToken = <T>(req: HttpRequest<T>) => {
 const handle401Error = <T>(
   httpClient: HttpClient,
   apiService: ApiService,
+  storageService: StorageService,
   request: HttpRequest<T>,
   next: HttpHandlerFn
 ) => {
   console.log('401 error');
 
-  const jwtRefresh = JSON.parse(
-    localStorage.getItem('user-connected')!
-  )?.jwtRefresh;
+  const jwtRefresh =
+    storageService.getItem('user-connected')?.['jwtRefresh' as keyof {}] ?? '';
+  console.log(jwtRefresh);
 
   return httpClient
     .post(apiService.baseUrl + '/auth/refresh-token', {
@@ -57,8 +68,8 @@ const handle401Error = <T>(
     })
     .pipe(
       switchMap((response) => {
-        localStorage.setItem('user-connected', JSON.stringify(response));
-        return next(getToken(request));
+        storageService.setItem('user-connected', JSON.stringify(response));
+        return next(getToken(request, storageService));
       })
     );
 };

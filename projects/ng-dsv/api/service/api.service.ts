@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { JSONObject } from '../dto/api.dto';
 
 @Injectable({
@@ -7,8 +7,7 @@ import { JSONObject } from '../dto/api.dto';
 })
 export class ApiService {
   baseUrl!: string;
-
-  constructor(private readonly httpClient: HttpClient) {}
+  httpClient = inject(HttpClient);
 
   setBaseUrl(url: string) {
     this.baseUrl = url;

@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { DsvContainerComponent } from '@ng-vagabond-lab/ng-dsv/ds/container';
 import { DsvThemeSwitchComponent } from '@ng-vagabond-lab/ng-dsv/ds/theme';
+import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
 import { MenuService } from '../public-api';
 
 @Component({
@@ -23,29 +24,34 @@ export class DsvMenuComponent implements OnInit {
 
   constructor(
     private readonly menuService: MenuService,
-    private readonly elementRef: ElementRef
+    private readonly elementRef: ElementRef,
+    private readonly storageService: StorageService
   ) {
     effect(() => {
-      const menu = document.getElementsByTagName('dsv-menu')[0];
-      const collapse = document.getElementById('collapse');
-      if (this.menuService.isMenuOpen()) {
-        menu?.classList?.add('open');
-        collapse?.classList.add('show');
-      } else {
-        menu?.classList?.remove('open');
-        collapse?.classList.remove('show');
+      if (this.storageService.isPlatformBrowser()) {
+        const menu = document.getElementsByTagName('dsv-menu')[0];
+        const collapse = document.getElementById('collapse');
+        if (this.menuService.isMenuOpen()) {
+          menu?.classList?.add('open');
+          collapse?.classList.add('show');
+        } else {
+          menu?.classList?.remove('open');
+          collapse?.classList.remove('show');
+        }
       }
     });
   }
 
   ngOnInit() {
-    this.menuService.isMenuOpen() &&
+    this.storageService.isPlatformBrowser() &&
+      this.menuService.isMenuOpen() &&
       document.getElementsByTagName('dsv-container')[0].classList.add('show');
   }
 
   @HostListener('document:click', ['$event'])
   onClickOutside(event: Event) {
     if (
+      this.storageService.isPlatformBrowser() &&
       this.menuService.isMenuOpen() &&
       !this.elementRef.nativeElement.contains(event.target)
     ) {

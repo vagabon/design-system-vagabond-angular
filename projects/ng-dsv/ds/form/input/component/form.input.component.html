@@ -1,0 +1,13 @@
+<div [formGroup]="form">
+  @if(withLabel) {
+  <label [for]="field">{{ field }}</label>
+  }
+  <input
+    type="text"
+    [formControlName]="field"
+    class="form-control"
+    [id]="field"
+    (keydown.enter)="onEnter()"
+  />
+  <i class="icon ri-search-line"></i>
+</div>

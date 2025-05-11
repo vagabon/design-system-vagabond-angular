@@ -1,0 +1,11 @@
+:host {
+    width: 100%;
+    height: 100%;
+
+    form {
+        flex-direction: column;
+        display: block;
+        margin-top: 0em;
+        unicode-bidi: isolate;
+    }
+}

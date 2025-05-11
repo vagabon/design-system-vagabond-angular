@@ -1,20 +1,28 @@
 :host {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 10px;
     user-select: none;
 
-    &:hover {
+    a {
+        margin: 5px 10px;
+        padding: 10px;
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    & a:hover {
         background-color: rgb(217, 217, 217);
         cursor: pointer;
     }
 
+    i {
+        margin-right: 10px;
+    }
+
     .text {
         font-size: 1.2rem;
-        display: flex;
-        gap: 10px;
-        flex: 1;
         font-weight: bold;
 
         &.small {
@@ -24,7 +32,7 @@
 }
 
 ::ng-deep .dark dsv-item {
-    &:hover {
-        background-color: rgb(49, 49, 49);
+    & a:hover {
+        background-color: rgb(49, 49, 49) !important;
     }
 }

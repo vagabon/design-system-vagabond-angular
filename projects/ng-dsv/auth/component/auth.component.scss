@@ -1,0 +1,19 @@
+.auth-button button {
+    margin: 0px;
+    padding: 0px;
+    background: transparent;
+    border: 0px;
+}
+
+.profile {
+    display: flex;
+    gap: 0.5rem;
+    flex-flow: nowrap;
+    align-items: center;
+
+    img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+}

@@ -1,4 +1,5 @@
-import { Injectable, signal, WritableSignal } from '@angular/core';
+import { inject, Injectable, signal, WritableSignal } from '@angular/core';
+import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
 
 export type ThemeMode = 'dark' | 'light';
 
@@ -6,22 +7,28 @@ export type ThemeMode = 'dark' | 'light';
   providedIn: 'root',
 })
 export class ThemeService {
+  storageService: StorageService = inject(StorageService);
+
   themeMode: WritableSignal<ThemeMode> = signal(
-    (localStorage.getItem('theme') as ThemeMode) ?? 'light'
+    (this.storageService.getItem('theme') as ThemeMode) ?? 'light'
   );
 
   constructor() {
-    let html = document.getElementsByTagName('body')[0];
-    html.classList.add(this.themeMode());
+    if (this.storageService.isPlatformBrowser()) {
+      let html = document.getElementsByTagName('body')[0];
+      html.classList.add(this.themeMode());
+    }
   }
 
   switchTheme() {
-    let html = document.getElementsByTagName('body')[0];
-    html.classList.remove(this.themeMode());
+    if (this.storageService.isPlatformBrowser()) {
+      let html = document.getElementsByTagName('body')[0];
+      html.classList.remove(this.themeMode());
 
-    let newMode: ThemeMode = this.themeMode() === 'dark' ? 'light' : 'dark';
-    this.themeMode.set(newMode);
-    localStorage.setItem('theme', newMode);
-    html.classList.add(newMode);
+      let newMode: ThemeMode = this.themeMode() === 'dark' ? 'light' : 'dark';
+      this.themeMode.set(newMode);
+      this.storageService.setItem('theme', newMode);
+      html.classList.add(newMode);
+    }
   }
 }

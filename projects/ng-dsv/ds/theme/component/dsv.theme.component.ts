@@ -55,8 +55,8 @@ export class DsvThemeComponent {
   error!: string;
 
   ngOnInit() {
-    this.background = this.theme.background ?? 'rgb(220, 220, 220)';
-    this.backgroundDark = this.theme.backgroundDark ?? 'rgb(31, 31, 31)';
+    this.background = this.theme.background ?? '#dcdcdc';
+    this.backgroundDark = this.theme.backgroundDark ?? '#1f1f1f';
     this.text = this.theme.text ?? '#000';
     this.textDark = this.theme.textDark ?? '#fff';
     this.primary = this.theme.primary ?? '#AAA';

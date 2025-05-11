@@ -1,0 +1,17 @@
+<div class="auth-button">
+  <button
+    id="google-signin-button"
+    [style]="authService.userConnected() === null ? '' : 'display: none;'"
+  ></button>
+</div>
+
+@if(authService.userConnected()) {
+<div class="profile">
+  <img [src]="authService.userConnected()?.user?.avatar" alt="profile" />
+  <dsv-button
+    (callback)="logout()"
+    icon="ri-logout-box-line"
+    color="inherit"
+  ></dsv-button>
+</div>
+}
