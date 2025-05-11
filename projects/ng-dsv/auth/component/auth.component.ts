@@ -22,7 +22,7 @@ export class AuthComponent {
   protected authService = inject(AuthService);
   private readonly environmentService = inject(EnvironmentService);
 
-  private ssrRendered = signal(false);
+  private readonly ssrRendered = signal(false);
 
   constructor() {
     afterNextRender(() => {
