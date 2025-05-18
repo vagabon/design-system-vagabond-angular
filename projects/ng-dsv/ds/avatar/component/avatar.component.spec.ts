@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DsvAvatarComponent } from './avatar.component';
 
-describe('ChatbotModelComponent', () => {
+describe('DsvAvatarComponent', () => {
   let component: DsvAvatarComponent;
   let fixture: ComponentFixture<DsvAvatarComponent>;
 
@@ -16,9 +16,8 @@ describe('ChatbotModelComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should render new model', () => {
-    const mockCallback = jasmine.createSpy('callback');
-    component.callback = mockCallback;
+  it('should render', () => {
+    spyOn(component.callback, 'emit');
     fixture.detectChanges();
     expect(component).toBeTruthy();
     expect(fixture.debugElement.query(By.css('.open'))).toBeFalsy();
@@ -27,6 +26,6 @@ describe('ChatbotModelComponent', () => {
       fixture.debugElement.nativeElement.querySelector('.dsv-avatar');
     link.click();
     fixture.detectChanges();
-    expect(mockCallback).toHaveBeenCalled();
+    expect(component.callback.emit).toHaveBeenCalled();
   });
 });

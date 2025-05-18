@@ -1,11 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  Input,
-  signal,
-  SimpleChanges,
-  WritableSignal,
-} from '@angular/core';
+import { Component, effect, input, signal } from '@angular/core';
 
 @Component({
   selector: 'dsv-accordion',
@@ -15,16 +9,16 @@ import {
   styleUrls: ['./accordion.component.scss'],
 })
 export class DsvAccordionComponent {
-  @Input() open: boolean = false;
-  @Input() title: string = '';
-  @Input() color: string = '';
+  open = input<boolean>(false);
+  title = input<string>('');
+  color = input<string>('');
 
-  isOpen: WritableSignal<boolean> = signal(this.open);
+  isOpen = signal<boolean>(this.open());
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['open']) {
-      this.isOpen.set(Boolean(changes['open'].currentValue === 'true'));
-    }
+  constructor() {
+    effect(() => {
+      this.isOpen.set(this.open());
+    });
   }
 
   doToogle() {

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ThemeService } from '../../public-api';
 import { DsvThemeSwitchComponent } from './dsv.theme.switch.component';
 
-describe('ChatbotModelComponent', () => {
+describe('DsvThemeSwitchComponent', () => {
   let component: DsvThemeSwitchComponent;
   let fixture: ComponentFixture<DsvThemeSwitchComponent>;
   let themeService: ThemeService;
@@ -18,7 +18,7 @@ describe('ChatbotModelComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should render new model', () => {
+  it('should render', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
 

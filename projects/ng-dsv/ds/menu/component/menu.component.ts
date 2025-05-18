@@ -4,7 +4,7 @@ import {
   effect,
   ElementRef,
   HostListener,
-  Input,
+  input,
   OnInit,
 } from '@angular/core';
 import { DsvContainerComponent } from '@ng-vagabond-lab/ng-dsv/ds/container';
@@ -20,7 +20,7 @@ import { MenuService } from '../public-api';
   styleUrls: ['./menu.component.scss'],
 })
 export class DsvMenuComponent implements OnInit {
-  @Input() showFooter: boolean = true;
+  showFooter = input<boolean>(true);
 
   constructor(
     private readonly menuService: MenuService,

@@ -1,4 +1,4 @@
-import { Component, Input, Signal } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -9,16 +9,13 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './form.input.component.scss',
 })
 export class FormInputComponent {
-  @Input()
-  form!: FormGroup;
-  @Input()
-  field!: string;
-  @Input()
-  withLabel: boolean = true;
+  form = input.required<FormGroup>();
+  field = input.required<string>();
+  withLabel = input<boolean>(true);
 
-  @Input({ required: true }) onSend!: Signal<() => void>;
+  onSend = output<string>();
 
   onEnter() {
-    this.onSend()();
+    this.onSend.emit(this.form().value[this.field()]);
   }
 }

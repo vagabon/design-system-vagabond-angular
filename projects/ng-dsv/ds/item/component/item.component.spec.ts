@@ -1,8 +1,9 @@
+import { InputSignal, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { DsvItemComponent } from './item.component';
 
-describe('ChatbotModelComponent', () => {
+describe('DsvItemComponent', () => {
   let component: DsvItemComponent;
   let fixture: ComponentFixture<DsvItemComponent>;
   let router: Router;
@@ -31,7 +32,7 @@ describe('ChatbotModelComponent', () => {
   });
 
   const doIt = (url: string = '') => {
-    component.url = url;
+    component.url = signal(url) as unknown as InputSignal<string | undefined>;
     fixture.detectChanges();
     expect(component).toBeTruthy();
 

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DsvAccordionComponent } from './accordion.component';
 
-describe('ChatbotModelComponent', () => {
+describe('DsvAccordionComponent', () => {
   let component: DsvAccordionComponent;
   let fixture: ComponentFixture<DsvAccordionComponent>;
 
@@ -16,7 +16,7 @@ describe('ChatbotModelComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should render new model', () => {
+  it('should render', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
     expect(fixture.debugElement.query(By.css('.open'))).toBeFalsy();

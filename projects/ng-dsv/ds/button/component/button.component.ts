@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { ColorType } from '@ng-vagabond-lab/ng-dsv/type';
 
 export type ButtonWidthType = 'small' | 'medium' | 'large';
@@ -13,21 +13,21 @@ export type ButtonVariantType = 'text' | 'outlined' | 'contained';
   styleUrls: ['./button.component.scss'],
 })
 export class DsvButtonComponent {
-  @Input() libelle: string = '';
-  @Input() color: ColorType = 'primary';
-  @Input() icon: string = '';
-  @Input() iconEnd: string = '';
-  @Input() width: ButtonWidthType = 'medium';
-  @Input() variant: ButtonVariantType = 'contained';
-  @Input() fullwidth: boolean = false;
-  @Input() show: boolean = true;
-  @Input() disabled: boolean = false;
+  libelle = input<string>('');
+  color = input<ColorType>('primary');
+  icon = input<string>('');
+  iconEnd = input<string>('');
+  width = input<ButtonWidthType>('medium');
+  variant = input<ButtonVariantType>('contained');
+  fullwidth = input<boolean>(false);
+  show = input<boolean>(true);
+  disabled = input<boolean>(false);
 
   callback = output<void>();
 
   doClick(event: Event) {
     event.stopPropagation();
     event.preventDefault();
-    !this.disabled && this.callback.emit();
+    !this.disabled() && this.callback.emit();
   }
 }

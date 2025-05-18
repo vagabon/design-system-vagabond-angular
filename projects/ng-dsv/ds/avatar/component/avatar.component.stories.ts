@@ -20,7 +20,7 @@ const meta: Meta<DsvAvatarComponent> = {
     callback: { action: 'callback' },
   },
   args: {
-    ...(ActionsData as DsvAvatarComponent),
+    ...(ActionsData as any),
   },
 };
 
@@ -28,9 +28,10 @@ export default meta;
 type Story = StoryObj<DsvAvatarComponent>;
 
 export const Default: Story = {
-  args: {
-    callback: undefined,
-  },
+  args: {},
+  render: (args: any) => ({
+    template: `<dsv-avatar avatar="${args.avatar}" >  </dsv-avatar>`,
+  }),
 };
 
 export const WithCallback: Story = {

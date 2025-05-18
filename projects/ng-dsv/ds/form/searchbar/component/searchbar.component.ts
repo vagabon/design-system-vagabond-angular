@@ -1,4 +1,4 @@
-import { Component, Input, Signal, signal } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import {
   BaseFormComponent,
   FormComponent,
@@ -12,18 +12,16 @@ import {
   templateUrl: './searchbar.component.html',
 })
 export class SearchbarComponent extends BaseFormComponent {
-  @Input()
-  search: string = '';
-  @Input({ required: true })
-  onSearch!: Signal<(search: string) => void>;
+  search = input<string>('');
+  onSearch = output<string>();
 
   afterInit() {
     this.form = this.formBuilder.group({
-      search: [this.search],
+      search: [this.search()],
     });
   }
 
-  onTap = signal(() => {
-    this.onSearch()(this.form.value.search);
-  });
+  onTap(value: string) {
+    this.onSearch.emit(value);
+  }
 }

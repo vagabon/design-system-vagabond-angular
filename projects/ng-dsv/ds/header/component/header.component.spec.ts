@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DsvHeaderComponent } from './header.component';
 
-describe('ChatbotModelComponent', () => {
+describe('DsvHeaderComponent', () => {
   let component: DsvHeaderComponent;
   let fixture: ComponentFixture<DsvHeaderComponent>;
 
@@ -15,7 +15,7 @@ describe('ChatbotModelComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should render new model', () => {
+  it('should render', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
   });

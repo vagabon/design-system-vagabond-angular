@@ -1,5 +1,5 @@
 import { provideHttpClient } from '@angular/common/http';
-import { signal } from '@angular/core';
+import { InputSignal, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { SearchbarComponent } from './searchbar.component';
 
@@ -14,9 +14,8 @@ describe('SearchbarComponent', () => {
   it('should create the app', () => {
     const fixture = TestBed.createComponent(SearchbarComponent);
     const app = fixture.componentInstance;
-    app.search = 'search';
-    const onSearchSpy = jasmine.createSpy('onSearchSpy');
-    app.onSearch = signal(onSearchSpy);
+    app.search = signal('search') as unknown as InputSignal<string>;
+    spyOn(app.onSearch, 'emit');
 
     fixture.detectChanges();
 
@@ -32,6 +31,6 @@ describe('SearchbarComponent', () => {
     fixture.detectChanges();
 
     expect(app).toBeTruthy();
-    expect(onSearchSpy).toHaveBeenCalledWith('search');
+    expect(app.onSearch.emit).toHaveBeenCalledWith('search');
   });
 });

@@ -1,8 +1,11 @@
 <div class="dsv-header-content">
   <a class="dsv-header-logo" (click)="goToHome()">
-    <dsv-menu-button *ngIf="withMenu"></dsv-menu-button>
-    <img src="{{ img }}" alt="logo" *ngIf="img" />
-    <span>{{ title }}</span>
+    @if (withMenu()) {
+    <dsv-menu-button />
+    } @if(img()) {
+    <img src="{{ img() }}" alt="logo" />
+    }
+    <span>{{ title() }}</span>
   </a>
   <ng-content></ng-content>
 </div>

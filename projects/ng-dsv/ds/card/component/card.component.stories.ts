@@ -26,7 +26,7 @@ type Story = StoryObj<DsvCardComponent>;
 
 export const Default: Story = {
   args: {},
-  render: (args: DsvCardComponent & { content?: string }) => ({
+  render: (args: any) => ({
     template: `<dsv-card title="${args.title}" subtitle="${args.subtitle}" image="${args.image}"> ${args.content} </dsv-card>`,
   }),
 };

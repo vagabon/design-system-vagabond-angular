@@ -1,8 +1,11 @@
 <a class="dsv-accordion-header" (click)="doToogle()">
-  {{ title }}
-  <i class="ri-arrow-up-s-line" *ngIf="isOpen()"></i>
-  <i class="ri-arrow-down-s-line" *ngIf="!isOpen()"></i>
+  {{ title() }}
+  @if(isOpen() === true) {
+  <i class="ri-arrow-up-s-line"></i>
+  } @else {
+  <i class="ri-arrow-down-s-line"></i>
+  }
 </a>
-<div class="dsv-accordion-text" [class.open]="isOpen()">
+<div class="dsv-accordion-text" [class.open]="isOpen() === true">
   <ng-content></ng-content>
 </div>

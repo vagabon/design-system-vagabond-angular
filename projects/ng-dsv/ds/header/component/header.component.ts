@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   DsvMenuButtonComponent,
@@ -14,9 +14,9 @@ import {
   styleUrls: ['./header.component.scss'],
 })
 export class DsvHeaderComponent {
-  @Input() img!: string;
-  @Input() title: string = '';
-  @Input() withMenu: boolean = true;
+  img = input<string>();
+  title = input<string>('');
+  withMenu = input<boolean>(true);
 
   constructor(
     private readonly router: Router,

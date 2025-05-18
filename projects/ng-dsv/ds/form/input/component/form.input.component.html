@@ -1,12 +1,12 @@
-<div [formGroup]="form">
-  @if(withLabel) {
-  <label [for]="field">{{ field }}</label>
+<div [formGroup]="form()">
+  @if(withLabel()) {
+  <label [for]="field()">{{ field() }}</label>
   }
   <input
     type="text"
-    [formControlName]="field"
+    [formControlName]="field()"
     class="form-control"
-    [id]="field"
+    [id]="field()"
     (keydown.enter)="onEnter()"
   />
   <i class="icon ri-search-line"></i>

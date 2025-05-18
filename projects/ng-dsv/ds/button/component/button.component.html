@@ -1,24 +1,30 @@
+@if (show()) {
 <button
   class="dsv-button"
   (click)="doClick($event)"
   [ngClass]="
-    (icon ? 'icon' : '') +
+    (icon() ? 'icon' : '') +
     ' ' +
-    color +
+    color() +
     ' ' +
-    width +
+    width() +
     ' ' +
-    variant +
+    variant() +
     ' ' +
-    (fullwidth ? 'fullwidth' : '')
+    (fullwidth() ? 'fullwidth' : '')
   "
-  [disabled]="disabled"
-  *ngIf="show"
+  [disabled]="disabled()"
 >
-  <i [class]="icon" *ngIf="icon"></i>
-  <span *ngIf="libelle">
-    {{ libelle }}
+  @if(icon()) {
+  <i [class]="icon()"></i>
+  } @if(libelle()) {
+  <span>
+    {{ libelle() }}
   </span>
+  }
   <ng-content></ng-content>
-  <i [class]="iconEnd" *ngIf="iconEnd"></i>
+  @if (iconEnd()) {
+  <i [class]="iconEnd()"></i>
+  }
 </button>
+}

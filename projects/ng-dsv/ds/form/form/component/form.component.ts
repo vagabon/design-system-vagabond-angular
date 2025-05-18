@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -9,14 +9,13 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './form.component.scss',
 })
 export class FormComponent {
-  @Input()
-  form!: FormGroup;
+  form = input.required<FormGroup>();
 
   constructor() {}
 
   onSubmit() {
-    if (this.form.valid) {
-      console.log('Formulaire envoyé !', this.form.value);
+    if (this.form().valid) {
+      console.log('Formulaire envoyé !', this.form().value);
     }
   }
 }

@@ -3,6 +3,6 @@
     [form]="form"
     field="search"
     [withLabel]="false"
-    [onSend]="onTap"
+    (onSend)="onTap($event)"
   ></form-input>
 </app-form>

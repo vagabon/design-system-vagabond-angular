@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ToastService } from '../service/toast.service';
 import { DsvToastComponent } from './toast.component';
 
-describe('ChatbotModelComponent', () => {
+describe('DsvToastComponent', () => {
   let component: DsvToastComponent;
   let fixture: ComponentFixture<DsvToastComponent>;
   let toastService: ToastService;
@@ -19,7 +19,7 @@ describe('ChatbotModelComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should render new model', () => {
+  it('should render', () => {
     toastService.toasts = signal([
       {
         uuid: 'uuid',

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { DsvAvatarComponent } from '@ng-vagabond-lab/ng-dsv/ds/avatar';
 
 @Component({
@@ -10,9 +10,9 @@ import { DsvAvatarComponent } from '@ng-vagabond-lab/ng-dsv/ds/avatar';
   styleUrls: ['./card.component.scss'],
 })
 export class DsvCardComponent {
-  @Input() avatar?: string;
-  @Input() title: string = '';
-  @Input() subtitle: string = '';
-  @Input() image: string = '';
-  @Input() alt: string = '';
+  avatar = input<string>();
+  title = input<string>('');
+  subtitle = input<string>('');
+  image = input<string>();
+  alt = input<string>();
 }

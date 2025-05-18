@@ -1,17 +1,33 @@
 <div class="dsv-toast-container">
-  <div class="dsv-toast" *ngFor="let toast of toastService.toastShows()"
-    [ngClass]="toast.type + ' ' + (toast.filled ? 'filled' : '')">
-    <button class="close-button" type="button" (click)="toastService.closeToast(toast.uuid!)">
+  @for(toast of toastService.toastShows(); track toast.uuid) {
+  <div
+    class="dsv-toast"
+    [ngClass]="toast.type + ' ' + (toast.filled ? 'filled' : '')"
+  >
+    <button
+      class="close-button"
+      type="button"
+      (click)="toastService.closeToast(toast.uuid!)"
+    >
       X
     </button>
-    <i class="ri-check-fill" *ngIf="toast.type === 'success'"></i>
-    <i class="ri-information-2-line" *ngIf="toast.type === 'info'"></i>
-    <i class="ri-alert-line" *ngIf="toast.type === 'warning'"></i>
-    <i class="ri-close-line" *ngIf="toast.type === 'error'"></i>
+    @if (toast.type === 'success') {
+    <i class="ri-check-fill"></i>
+    } @else if (toast.type === 'info') {
+    <i class="ri-information-2-line"></i>
+    } @else if (toast.type === 'warning') {
+    <i class="ri-alert-line"></i>
+    } @else if (toast.type === 'error') {
+    <i class="ri-close-line"></i>
+    }
 
     {{ toast.text }}
     <div class="loader-container">
-      <div class="loader" [style.width]="(toast.durationLeft! / toast.duration!) * 100 + '%'"></div>
+      <div
+        class="loader"
+        [style.width]="(toast.durationLeft! / toast.duration!) * 100 + '%'"
+      ></div>
     </div>
   </div>
+  }
 </div>

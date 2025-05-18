@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MenuService } from '../../public-api';
 import { DsvMenuButtonComponent } from './menu.button.component';
 
-describe('ChatbotModelComponent', () => {
+describe('DsvMenuButtonComponent', () => {
   let component: DsvMenuButtonComponent;
   let fixture: ComponentFixture<DsvMenuButtonComponent>;
   let menuService: MenuService;
@@ -18,7 +18,7 @@ describe('ChatbotModelComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should render new model', () => {
+  it('should render', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
 

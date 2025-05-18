@@ -1,15 +1,18 @@
-<div class='dsv-card'>
-    <img src="{{image}}" [alt]="alt" *ngIf="image" />
-    <div class="dsv-card-header">
-        <dsv-avatar [avatar]="avatar" *ngIf="avatar"></dsv-avatar>
-        <div>
-            <h2>{{title}}</h2>
-            <div class="dsv-card-subtitle">{{subtitle}}</div>
-        </div>
-        <div class="dsv-actions">
-        </div>
+<div class="dsv-card">
+  @if (image()) {
+  <img src="{{ image() }}" [alt]="alt()" />
+  }
+  <div class="dsv-card-header">
+    @if(avatar()){
+    <dsv-avatar [avatar]="avatar()!"></dsv-avatar>
+    }
+    <div>
+      <h2>{{ title() }}</h2>
+      <div class="dsv-card-subtitle">{{ subtitle() }}</div>
     </div>
-    <div class="dsv-card-content">
-        <ng-content></ng-content>
-    </div>
+    <div class="dsv-actions"></div>
+  </div>
+  <div class="dsv-card-content">
+    <ng-content></ng-content>
+  </div>
 </div>

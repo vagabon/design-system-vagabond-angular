@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,14 +10,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./item.component.scss'],
 })
 export class DsvItemComponent {
-  @Input() icon: string = '';
-  @Input() text: string = '';
-  @Input() url!: string;
-  @Input() small: boolean = false;
+  icon = input<string>('');
+  text = input<string>('');
+  url = input<string>();
+  small = input<boolean>(false);
 
   constructor(private readonly router: Router) {}
 
   doClick() {
-    this.url && this.router.navigate([this.url]);
+    this.url() && this.router.navigate([this.url()]);
   }
 }

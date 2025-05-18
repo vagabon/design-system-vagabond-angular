@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DsvButtonComponent } from './button.component';
 
-describe('ChatbotModelComponent', () => {
+describe('DsvButtonComponent', () => {
   let component: DsvButtonComponent;
   let fixture: ComponentFixture<DsvButtonComponent>;
 
@@ -15,7 +15,7 @@ describe('ChatbotModelComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should render new model', () => {
+  it('should render', () => {
     const mockCallback = jasmine.createSpyObj('callback', ['emit']);
     component.callback = mockCallback;
     fixture.detectChanges();
