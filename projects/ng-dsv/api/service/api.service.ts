@@ -6,7 +6,7 @@ import { JSONObject } from '../dto/api.dto';
   providedIn: 'root',
 })
 export class ApiService {
-  baseUrl!: string;
+  baseUrl: string = '';
   httpClient = inject(HttpClient);
 
   setBaseUrl(url: string) {
