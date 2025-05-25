@@ -15,11 +15,12 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const apiService = inject(ApiService);
   const storageService = inject(StorageService);
 
-  return next(getToken(req, storageService)).pipe(
+  return next(getToken(req, apiService, storageService)).pipe(
     catchError((error) => {
       if (
         error instanceof HttpErrorResponse &&
         !req.url.includes('auth/') &&
+        req.url.includes(apiService.baseUrl) &&
         error.status === 401
       ) {
         return handle401Error(
@@ -36,10 +37,14 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   );
 };
 
-const getToken = <T>(req: HttpRequest<T>, storageService: StorageService) => {
+const getToken = <T>(
+  req: HttpRequest<T>,
+  apiService: ApiService,
+  storageService: StorageService
+) => {
   const jwt =
     storageService.getItem('user-connected')?.['jwt' as keyof {}] ?? '';
-  if (!req.url.includes('/auth/')) {
+  if (!req.url.includes('/auth/') && req.url.includes(apiService.baseUrl)) {
     const headers = req.headers.set('Authorization', `Bearer ${jwt}`);
 
     return req.clone({
@@ -56,12 +61,8 @@ const handle401Error = <T>(
   request: HttpRequest<T>,
   next: HttpHandlerFn
 ) => {
-  console.log('401 error');
-
   const jwtRefresh =
     storageService.getItem('user-connected')?.['jwtRefresh' as keyof {}] ?? '';
-  console.log(jwtRefresh);
-
   return httpClient
     .post(apiService.baseUrl + '/auth/refresh-token', {
       refreshToken: jwtRefresh,
@@ -69,7 +70,7 @@ const handle401Error = <T>(
     .pipe(
       switchMap((response) => {
         storageService.setItem('user-connected', JSON.stringify(response));
-        return next(getToken(request, storageService));
+        return next(getToken(request, apiService, storageService));
       })
     );
 };

@@ -19,7 +19,11 @@ export class AuthGoogleService {
     });
     google.accounts.id.renderButton(
       document.getElementById('google-signin-button')!,
-      { theme: 'outline', size: 'medium' }
+      {
+        theme: 'outline',
+        size: 'medium',
+        type: 'icon',
+      }
     );
   }
 
