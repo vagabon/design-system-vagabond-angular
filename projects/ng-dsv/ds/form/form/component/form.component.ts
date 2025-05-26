@@ -11,8 +11,6 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 export class FormComponent {
   form = input.required<FormGroup>();
 
-  constructor() {}
-
   onSubmit() {
     if (this.form().valid) {
       console.log('Formulaire envoyé !', this.form().value);

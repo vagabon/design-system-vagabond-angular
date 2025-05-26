@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, signal, WritableSignal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { EnvironmentDto } from '../public-api';
 
 @Injectable({ providedIn: 'root' })
 export class EnvironmentService {
-  public isScrollDown = signal(false);
-  public env: WritableSignal<EnvironmentDto | undefined> = signal(undefined);
+  private readonly httpClient = inject(HttpClient);
 
-  constructor(private readonly httpClient: HttpClient) {
+  public isScrollDown = signal<boolean>(false);
+  public env = signal<EnvironmentDto | undefined>(undefined);
+
+  constructor() {
     this.loadEnv();
   }
 

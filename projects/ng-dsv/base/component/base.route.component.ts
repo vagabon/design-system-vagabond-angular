@@ -10,8 +10,6 @@ export abstract class BaseRouteComponent implements OnInit, OnDestroy {
 
   routeObservable: Subscription | null = null;
 
-  constructor() {}
-
   ngOnInit() {
     this.routeObservable = this.activatedRoute.params.subscribe((params) => {
       this.ngOnInitAfter(params);

@@ -1,4 +1,4 @@
-import { inject, Injectable, signal, WritableSignal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
 
 export type ThemeMode = 'dark' | 'light';
@@ -9,7 +9,7 @@ export type ThemeMode = 'dark' | 'light';
 export class ThemeService {
   storageService: StorageService = inject(StorageService);
 
-  themeMode: WritableSignal<ThemeMode> = signal(
+  themeMode = signal<ThemeMode>(
     (this.storageService.getItem('theme') as ThemeMode) ?? 'light'
   );
 

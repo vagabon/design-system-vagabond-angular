@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { MAX_TOASTS, ToastService } from '../service/toast.service';
 
 export type Theme = {
@@ -15,7 +15,9 @@ export type Theme = {
   styleUrls: ['./toast.component.scss'],
 })
 export class DsvToastComponent {
-  constructor(protected toastService: ToastService) {
+  protected readonly toastService = inject(ToastService);
+
+  constructor() {
     effect(() => {
       for (const toast of this.toastService.toasts()) {
         if (this.toastService.toastShows().length < MAX_TOASTS) {

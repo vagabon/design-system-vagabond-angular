@@ -1,5 +1,5 @@
-import { Injectable, signal, WritableSignal } from '@angular/core';
-import { IToastDto } from '../dto/toast.dto';
+import { Injectable, signal } from '@angular/core';
+import { ToastDto } from '../dto/toast.dto';
 
 export const MAX_TOASTS = 10;
 export const DURATION_DEFAULT = 5000;
@@ -9,10 +9,10 @@ export const DURATION_TIMEOUT = 10;
   providedIn: 'root',
 })
 export class ToastService {
-  toastShows: WritableSignal<IToastDto[]> = signal([]);
-  toasts: WritableSignal<IToastDto[]> = signal([]);
+  toastShows = signal<ToastDto[]>([]);
+  toasts = signal<ToastDto[]>([]);
 
-  showToast(toast: IToastDto) {
+  showToast(toast: ToastDto) {
     toast.uuid = crypto.randomUUID();
     toast.type = toast.type ?? 'success';
     toast.duration = toast.duration ?? DURATION_DEFAULT;
@@ -21,7 +21,7 @@ export class ToastService {
     this.toasts.update((toasts) => [...toasts, toast]);
   }
 
-  consumeToast(toast: IToastDto) {
+  consumeToast(toast: ToastDto) {
     this.toastShows.update((toasts) => [...toasts, toast]);
     let duration = 0;
     const interval = setInterval(() => {

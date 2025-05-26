@@ -1,4 +1,4 @@
-export interface IPageableDto<T> {
+export interface PageableDto<T> {
   totalPages?: number;
   totalElements?: number;
   size?: number;

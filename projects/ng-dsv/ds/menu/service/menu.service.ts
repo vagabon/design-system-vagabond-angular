@@ -1,11 +1,11 @@
-import { Injectable, signal, WritableSignal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { BaseService } from '@ng-vagabond-lab/ng-dsv/base';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MenuService extends BaseService {
-  isMenuOpen: WritableSignal<boolean> = signal(false);
+  isMenuOpen = signal<boolean>(false);
 
   toogleMenu() {
     this.isMenuOpen.update((toogle) => !toogle);

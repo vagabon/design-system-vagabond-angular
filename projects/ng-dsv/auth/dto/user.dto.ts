@@ -1,6 +1,6 @@
-import { IApiDto } from '@ng-vagabond-lab/ng-dsv/api';
+import { ApiDto } from '@ng-vagabond-lab/ng-dsv/api';
 
-export interface IUserDto extends IApiDto {
+export interface UserDto extends ApiDto {
   avatar?: string;
   creationDate?: string;
   facebookId?: string;
@@ -9,13 +9,13 @@ export interface IUserDto extends IApiDto {
   profiles?: [];
 }
 
-export interface IUserConnectedDto {
+export interface UserConnectedDto {
   googleToken?: string;
   jwt?: string;
   jwtRefresh?: string;
-  user?: IUserDto;
+  user?: UserDto;
 }
 
-export interface IGoogleRequest {
+export interface GoogleRequest {
   googleToken: string;
 }

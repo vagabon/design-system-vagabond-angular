@@ -9,8 +9,7 @@ declare const google: any;
 })
 export class AuthGoogleService {
   private readonly authService = inject(AuthService);
-
-  constructor(private readonly environmentService: EnvironmentService) {}
+  private readonly environmentService = inject(EnvironmentService);
 
   initGoogleAuth() {
     google.accounts.id.initialize({

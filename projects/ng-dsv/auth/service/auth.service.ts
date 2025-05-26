@@ -1,17 +1,17 @@
-import { Injectable, signal, WritableSignal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { ApiService } from '@ng-vagabond-lab/ng-dsv/api';
-import { IUserConnectedDto } from '../dto/user.dto';
+import { UserConnectedDto } from '../dto/user.dto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  userConnected: WritableSignal<IUserConnectedDto | null> = signal(null);
+  userConnected = signal<UserConnectedDto | null>(null);
 
   constructor(private readonly apiService: ApiService) {}
 
   googleLogin(credential: string) {
-    this.apiService.post<IUserConnectedDto>(
+    this.apiService.post<UserConnectedDto>(
       'auth/google-identity-connect',
       {
         googleToken: credential,

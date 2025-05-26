@@ -1,6 +1,6 @@
 export type ToastType = 'success' | 'error' | 'warning' | 'info';
 
-export interface IToastDto {
+export interface ToastDto {
   uuid?: string;
   text: string;
   isClose?: boolean;

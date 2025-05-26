@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   DsvMenuButtonComponent,
@@ -14,14 +14,12 @@ import {
   styleUrls: ['./header.component.scss'],
 })
 export class DsvHeaderComponent {
+  private readonly router = inject(Router);
+  private readonly menuService = inject(MenuService);
+
   img = input<string>();
   title = input<string>('');
   withMenu = input<boolean>(true);
-
-  constructor(
-    private readonly router: Router,
-    private readonly menuService: MenuService
-  ) {}
 
   doToogleMenu() {
     this.menuService.toogleMenu();

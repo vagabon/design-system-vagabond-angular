@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
 import { MenuService } from '../../public-api';
 
@@ -11,7 +11,7 @@ import { MenuService } from '../../public-api';
   styleUrls: ['./menu.button.component.scss'],
 })
 export class DsvMenuButtonComponent {
-  constructor(private readonly menuService: MenuService) {}
+  private readonly menuService = inject(MenuService);
 
   doToogleMenu() {
     this.menuService.toogleMenu();

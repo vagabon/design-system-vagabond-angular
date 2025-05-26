@@ -13,9 +13,9 @@ const DSV_CONTAINER = 'dsv-container';
   styleUrls: ['./container.component.scss'],
 })
 export class DsvContainerComponent {
-  column = input<boolean>(false);
-
   private readonly storageService = inject(StorageService);
+
+  column = input<boolean>(false);
 
   constructor() {
     effect(() => {
