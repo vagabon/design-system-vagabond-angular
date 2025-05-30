@@ -116,7 +116,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\n  open: true,\n  title: 'vagabond',\n  content:\n    'primary<br/>text text text text text text text text text text text text <br/>fdfdsfsd',\n}"
+                "defaultValue": "{\n  open: false,\n  title: 'vagabond',\n  content:\n    'primary<br/>text text text text text text text text text text text text <br/>fdfdsfsd',\n}"
             },
             {
                 "name": "ActionsData",
@@ -216,7 +216,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-accordion open=\"${args.open}\" title=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n  }),\n}"
+                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-accordion [open]=\"${args.open}\" title=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -226,7 +226,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    callback: undefined,\n  },\n}"
+                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-avatar avatar=\"${args.avatar}\" >  </dsv-avatar>`,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -399,6 +399,16 @@
                 "defaultValue": "{\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/i,\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [DsvThemeComponent, DsvThemeSwitchComponent],\n    }),\n    componentWrapperDecorator((story) => {\n      return `<dsv-theme [theme]='${themeString}' class=\"flex flex1\" >\n        <div style='padding: 5px; margin-bottom: 40px; min-height: 200px;'>\n          <div style='margin-bottom: 20px'>\n            <dsv-theme-switch></dsv-theme-switch>\n          </div>\n          ${story}\n        </div>\n      </dsv-theme>`;\n    }),\n  ],\n}"
             },
             {
+                "name": "Second",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-accordion [open]=\"true\" title=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n  }),\n}"
+            },
+            {
                 "name": "theme",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -542,7 +552,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
-                    "defaultValue": "{\n  open: true,\n  title: 'vagabond',\n  content:\n    'primary<br/>text text text text text text text text text text text text <br/>fdfdsfsd',\n}"
+                    "defaultValue": "{\n  open: false,\n  title: 'vagabond',\n  content:\n    'primary<br/>text text text text text text text text text text text text <br/>fdfdsfsd',\n}"
                 },
                 {
                     "name": "Default",
@@ -552,7 +562,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-accordion open=\"${args.open}\" title=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n  }),\n}"
+                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-accordion [open]=\"${args.open}\" title=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n  }),\n}"
                 },
                 {
                     "name": "meta",
@@ -563,6 +573,16 @@
                     "deprecationMessage": "",
                     "type": "Meta<DsvAccordionComponent>",
                     "defaultValue": "{\n  title: 'dsv/Accordion',\n  component: DsvAccordionComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+                },
+                {
+                    "name": "Second",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-accordion [open]=\"true\" title=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n  }),\n}"
                 }
             ],
             "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts": [
@@ -584,7 +604,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    callback: undefined,\n  },\n}"
+                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-avatar avatar=\"${args.avatar}\" >  </dsv-avatar>`,\n  }),\n}"
                 },
                 {
                     "name": "meta",
@@ -1057,6 +1077,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Second",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
