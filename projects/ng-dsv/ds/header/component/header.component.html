@@ -1,9 +1,10 @@
 <div class="dsv-header-content">
   <a class="dsv-header-logo" (click)="goToHome()">
     @if (withMenu()) {
-    <dsv-menu-button />
-    } @if(img()) {
-    <img src="{{ img() }}" alt="logo" />
+      <dsv-menu-button />
+    }
+    @if (img()) {
+      <img src="{{ img() }}" alt="logo" />
     }
     <span>{{ title() }}</span>
   </a>

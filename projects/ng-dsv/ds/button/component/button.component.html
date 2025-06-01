@@ -1,30 +1,31 @@
 @if (show()) {
-<button
-  class="dsv-button"
-  (click)="doClick($event)"
-  [ngClass]="
-    (icon() ? 'icon' : '') +
-    ' ' +
-    color() +
-    ' ' +
-    width() +
-    ' ' +
-    variant() +
-    ' ' +
-    (fullwidth() ? 'fullwidth' : '')
-  "
-  [disabled]="disabled()"
->
-  @if(icon()) {
-  <i [class]="icon()"></i>
-  } @if(libelle()) {
-  <span>
-    {{ libelle() }}
-  </span>
-  }
-  <ng-content></ng-content>
-  @if (iconEnd()) {
-  <i [class]="iconEnd()"></i>
-  }
-</button>
+  <button
+    class="dsv-button"
+    (click)="doClick($event)"
+    [ngClass]="
+      (icon() ? 'icon' : '') +
+      ' ' +
+      color() +
+      ' ' +
+      width() +
+      ' ' +
+      variant() +
+      ' ' +
+      (fullwidth() ? 'fullwidth' : '')
+    "
+    [disabled]="disabled()"
+  >
+    @if (icon()) {
+      <i [class]="icon()"></i>
+    }
+    @if (libelle()) {
+      <span>
+        {{ libelle() }}
+      </span>
+    }
+    <ng-content></ng-content>
+    @if (iconEnd()) {
+      <i [class]="iconEnd()"></i>
+    }
+  </button>
 }
