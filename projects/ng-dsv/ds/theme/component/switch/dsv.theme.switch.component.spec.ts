@@ -8,7 +8,7 @@ describe('DsvThemeSwitchComponent', () => {
   let themeService: ThemeService;
 
   beforeEach(async () => {
-    (window as any).google = { accounts: { id: { prompt: () => {} } } };
+    (window as any).google = { accounts: { id: { prompt: () => { } } } };
     await TestBed.configureTestingModule({
       imports: [DsvThemeSwitchComponent],
       providers: [],

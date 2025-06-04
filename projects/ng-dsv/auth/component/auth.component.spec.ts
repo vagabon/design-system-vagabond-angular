@@ -1,8 +1,8 @@
 import { provideHttpClient } from '@angular/common/http';
-import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { AuthService } from '@ng-vagabond-lab/ng-dsv/auth';
+import { AuthGoogleService, AuthService } from '@ng-vagabond-lab/ng-dsv/auth';
+import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
 import { AuthComponent } from './auth.component';
 
 describe('AuthComponent', () => {
@@ -10,10 +10,31 @@ describe('AuthComponent', () => {
   let fixture: ComponentFixture<AuthComponent>;
   let authService: AuthService;
 
+  const environmentServiceMock = {
+    env: jasmine.createSpy('env').and.returnValue(true),
+  };
+
+  const authServiceMock = {
+    userConnected: jasmine.createSpy('userConnected').and.returnValue(null),
+    loginFromCache: jasmine.createSpy('loginFromCache'),
+    logout: jasmine.createSpy('logout'),
+  };
+
   beforeEach(async () => {
+
+    const authGoogleServiceMock = {
+      loginWithGoogle: jasmine.createSpy('loginWithGoogle'),
+      initGoogleAuth: jasmine.createSpy('initGoogleAuth'),
+    };
+
     await TestBed.configureTestingModule({
       imports: [AuthComponent],
-      providers: [provideHttpClient()],
+      providers: [
+        provideHttpClient(),
+        { provide: AuthService, useValue: authServiceMock },
+        { provide: AuthGoogleService, useValue: authGoogleServiceMock },
+        { provide: EnvironmentService, useValue: environmentServiceMock }
+      ],
     }).compileComponents();
 
     authService = TestBed.inject(AuthService);
@@ -26,15 +47,19 @@ describe('AuthComponent', () => {
   });
 
   it('should render login', () => {
-    spyOn(authService, 'userConnected').and.callFake(
-      signal({
-        user: { id: 1 },
-      })
-    );
+    authServiceMock.userConnected.and.returnValue({ user: { id: '1' } });
     fixture.detectChanges();
     expect(fixture.debugElement.query(By.css('.profile'))).toBeTruthy();
     fixture.debugElement.nativeElement
       .querySelector('.profile dsv-button')
       .click();
+  });
+
+  it('should call logout when logout is triggered', () => {
+    authServiceMock.userConnected.and.returnValue({ user: { id: '1' } });
+    fixture.detectChanges();
+    const button = fixture.nativeElement.querySelector('.dsv-button');
+    button.click();
+    expect(authServiceMock.logout).toHaveBeenCalled();
   });
 });

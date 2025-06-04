@@ -9,10 +9,6 @@ export class EnvironmentService {
   public isScrollDown = signal<boolean>(false);
   public env = signal<EnvironmentDto | undefined>(undefined);
 
-  constructor() {
-    this.loadEnv();
-  }
-
   loadEnv() {
     this.httpClient.get<EnvironmentDto>('./env.json').subscribe({
       next: (res) => {
