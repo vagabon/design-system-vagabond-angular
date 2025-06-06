@@ -22,6 +22,7 @@ export class DsvButtonComponent {
   fullwidth = input<boolean>(false);
   show = input<boolean>(true);
   disabled = input<boolean>(false);
+  noHover = input<boolean>(false);
 
   callback = output<void>();
 

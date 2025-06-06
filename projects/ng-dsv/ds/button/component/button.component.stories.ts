@@ -9,6 +9,7 @@ export const ActionsData: {
   icon: string;
   iconEnd: string;
   fullwidth: boolean;
+  noHover: boolean;
   show: boolean;
   disabled: boolean;
   callback: () => void;
@@ -18,12 +19,14 @@ export const ActionsData: {
   icon: 'ri-spam-fill',
   iconEnd: '',
   fullwidth: false,
+  noHover: false,
   show: true,
   disabled: false,
   callback: fn(),
 };
 
 export const buttonColors: ColorType[] = [
+  'default',
   'primary',
   'success',
   'info',
@@ -41,11 +44,11 @@ const meta: Meta<DsvButtonComponent> = {
       control: 'select',
       options: buttonColors,
     },
-    width: { control: 'select', options: ['small', 'medium', 'large'] },
     variant: {
       control: 'select',
       options: ['text', 'outlined', 'contained'],
     },
+    width: { control: 'select', options: ['small', 'medium', 'large'] },
   },
   args: {
     ...ActionsData,

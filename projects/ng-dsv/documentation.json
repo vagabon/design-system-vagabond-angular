@@ -122,21 +122,21 @@
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
+                "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n  avatar: 'vagabond',\n  color: 'primary',\n}"
+                "type": "literal type",
+                "defaultValue": "{\n  libelle: 'Click me',\n  color: 'primary',\n  icon: 'ri-spam-fill',\n  iconEnd: '',\n  fullwidth: false,\n  noHover: false,\n  show: true,\n  disabled: false,\n  callback: fn(),\n}"
             },
             {
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
+                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "literal type",
-                "defaultValue": "{\n  libelle: 'Click me',\n  color: 'primary',\n  icon: 'ri-spam-fill',\n  iconEnd: '',\n  fullwidth: false,\n  show: true,\n  disabled: false,\n  callback: fn(),\n}"
+                "type": "object",
+                "defaultValue": "{\n  avatar: 'vagabond',\n  color: 'primary',\n}"
             },
             {
                 "name": "ActionsData",
@@ -206,7 +206,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "ColorType[]",
-                "defaultValue": "[\n  'primary',\n  'success',\n  'info',\n  'warning',\n  'error',\n]"
+                "defaultValue": "[\n  'default',\n  'primary',\n  'success',\n  'info',\n  'warning',\n  'error',\n]"
             },
             {
                 "name": "Default",
@@ -222,21 +222,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-avatar avatar=\"${args.avatar}\" >  </dsv-avatar>`,\n  }),\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    libelle: 'Click me',\n  },\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-avatar avatar=\"${args.avatar}\" >  </dsv-avatar>`,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -312,21 +312,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
+                "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<DsvAvatarComponent>",
-                "defaultValue": "{\n  title: 'dsv/Avatar',\n  component: DsvAvatarComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    color: {\n      control: 'select',\n      options: ['primary', 'success', 'info', 'warning', 'error'],\n    },\n    callback: { action: 'callback' },\n  },\n  args: {\n    ...(ActionsData as any),\n  },\n}"
+                "type": "Meta<DsvButtonComponent>",
+                "defaultValue": "{\n  title: 'dsv/Button',\n  component: DsvButtonComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    color: {\n      control: 'select',\n      options: buttonColors,\n    },\n    variant: {\n      control: 'select',\n      options: ['text', 'outlined', 'contained'],\n    },\n    width: { control: 'select', options: ['small', 'medium', 'large'] },\n  },\n  args: {\n    ...ActionsData,\n    width: 'medium',\n    variant: 'contained',\n  },\n}"
             },
             {
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
+                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<DsvButtonComponent>",
-                "defaultValue": "{\n  title: 'dsv/Button',\n  component: DsvButtonComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    color: {\n      control: 'select',\n      options: buttonColors,\n    },\n    width: { control: 'select', options: ['small', 'medium', 'large'] },\n    variant: {\n      control: 'select',\n      options: ['text', 'outlined', 'contained'],\n    },\n  },\n  args: {\n    ...ActionsData,\n    width: 'medium',\n    variant: 'contained',\n  },\n}"
+                "type": "Meta<DsvAvatarComponent>",
+                "defaultValue": "{\n  title: 'dsv/Avatar',\n  component: DsvAvatarComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    color: {\n      control: 'select',\n      options: ['primary', 'success', 'info', 'warning', 'error'],\n    },\n    callback: { action: 'callback' },\n  },\n  args: {\n    ...(ActionsData as any),\n  },\n}"
             },
             {
                 "name": "meta",
@@ -456,8 +456,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<DsvAvatarComponent>",
-                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
+                "rawtype": "StoryObj<DsvButtonComponent>",
+                "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -467,8 +467,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<DsvButtonComponent>",
-                "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
+                "rawtype": "StoryObj<DsvAvatarComponent>",
+                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -585,6 +585,48 @@
                     "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-accordion [open]=\"true\" title=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n  }),\n}"
                 }
             ],
+            "projects/ng-dsv/ds/button/component/button.component.stories.ts": [
+                {
+                    "name": "ActionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "defaultValue": "{\n  libelle: 'Click me',\n  color: 'primary',\n  icon: 'ri-spam-fill',\n  iconEnd: '',\n  fullwidth: false,\n  noHover: false,\n  show: true,\n  disabled: false,\n  callback: fn(),\n}"
+                },
+                {
+                    "name": "buttonColors",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ColorType[]",
+                    "defaultValue": "[\n  'default',\n  'primary',\n  'success',\n  'info',\n  'warning',\n  'error',\n]"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    libelle: 'Click me',\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<DsvButtonComponent>",
+                    "defaultValue": "{\n  title: 'dsv/Button',\n  component: DsvButtonComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    color: {\n      control: 'select',\n      options: buttonColors,\n    },\n    variant: {\n      control: 'select',\n      options: ['text', 'outlined', 'contained'],\n    },\n    width: { control: 'select', options: ['small', 'medium', 'large'] },\n  },\n  args: {\n    ...ActionsData,\n    width: 'medium',\n    variant: 'contained',\n  },\n}"
+                }
+            ],
             "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts": [
                 {
                     "name": "ActionsData",
@@ -625,48 +667,6 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {\n    callback: fn(),\n  },\n}"
-                }
-            ],
-            "projects/ng-dsv/ds/button/component/button.component.stories.ts": [
-                {
-                    "name": "ActionsData",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "literal type",
-                    "defaultValue": "{\n  libelle: 'Click me',\n  color: 'primary',\n  icon: 'ri-spam-fill',\n  iconEnd: '',\n  fullwidth: false,\n  show: true,\n  disabled: false,\n  callback: fn(),\n}"
-                },
-                {
-                    "name": "buttonColors",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "ColorType[]",
-                    "defaultValue": "[\n  'primary',\n  'success',\n  'info',\n  'warning',\n  'error',\n]"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    libelle: 'Click me',\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<DsvButtonComponent>",
-                    "defaultValue": "{\n  title: 'dsv/Button',\n  component: DsvButtonComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    color: {\n      control: 'select',\n      options: buttonColors,\n    },\n    width: { control: 'select', options: ['small', 'medium', 'large'] },\n    variant: {\n      control: 'select',\n      options: ['text', 'outlined', 'contained'],\n    },\n  },\n  args: {\n    ...ActionsData,\n    width: 'medium',\n    variant: 'contained',\n  },\n}"
                 }
             ],
             "projects/ng-dsv/ds/card/component/card.component.stories.ts": [
@@ -910,19 +910,6 @@
                     "kind": 183
                 }
             ],
-            "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<DsvAvatarComponent>",
-                    "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "projects/ng-dsv/ds/button/component/button.component.stories.ts": [
                 {
                     "name": "Story",
@@ -930,6 +917,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<DsvButtonComponent>",
                     "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<DsvAvatarComponent>",
+                    "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",

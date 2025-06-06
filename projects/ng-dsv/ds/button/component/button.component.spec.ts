@@ -6,7 +6,7 @@ describe('DsvButtonComponent', () => {
   let fixture: ComponentFixture<DsvButtonComponent>;
 
   beforeEach(async () => {
-    (window as any).google = { accounts: { id: { prompt: () => {} } } };
+    (window as any).google = { accounts: { id: { prompt: () => { } } } };
     await TestBed.configureTestingModule({
       imports: [DsvButtonComponent],
       providers: [],

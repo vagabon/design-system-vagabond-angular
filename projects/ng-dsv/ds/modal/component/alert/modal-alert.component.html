@@ -1,0 +1,13 @@
+<app-modal [id]="id()" [title]="title()">
+  {{ text() }}
+  <div ngProjectAs="modal-footer">
+    @if (buttonClose()) {
+      <dsv-button (callback)="doClickClose()" color="error">
+        {{ buttonClose() }}
+      </dsv-button>
+    }
+    <dsv-button (callback)="doClick()" color="success">
+      {{ button() }}
+    </dsv-button>
+  </div>
+</app-modal>

@@ -50,6 +50,10 @@ button.dsv-button {
         background-color: transparent;
         box-shadow: none;
 
+        &.default {
+            color: var(--text);
+        }
+
         &.primary {
             color: var(--primary);
         }
@@ -68,6 +72,10 @@ button.dsv-button {
 
         &.error {
             color: var(--error);
+        }
+
+        &.outlined.default {
+            border: 1px solid var(--text);
         }
 
         &.outlined.primary {
@@ -96,6 +104,10 @@ button.dsv-button {
         color: var(--text) !important;
     }
 
+    &.contained.default {
+        background-color: var(--text);
+    }
+
     &.contained.primary {
         background-color: var(--primary);
     }
@@ -120,7 +132,7 @@ button.dsv-button {
         background-color: var(--error);
     }
 
-    &:not(:disabled):hover {
+    &:not(:disabled):not(.no-hover):hover {
         transform: scale(1.00);
         opacity: 1.2;
 
@@ -142,6 +154,22 @@ button.dsv-button {
         &.contained.inherit {
             color: var(--white) !important;
             filter: hue-rotate(5deg);
+        }
+
+        &.text,
+        &.outlined {
+            &.default {
+                color: var(--text-dark);
+            }
+        }
+
+        &.outlined.default {
+            border: 1px solid var(--text-dark);
+        }
+
+        &.contained.default {
+            background-color: var(--text-dark);
+            color: var(--text);
         }
     }
 }

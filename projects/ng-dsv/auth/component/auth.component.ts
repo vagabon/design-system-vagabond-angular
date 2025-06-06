@@ -6,13 +6,17 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
+import { ModalAlertComponent, ModalButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/modal';
 import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
 import { AuthGoogleService, AuthService } from '../public-api';
 
 @Component({
   selector: 'app-auth',
-  imports: [CommonModule, DsvButtonComponent],
+  imports: [
+    CommonModule,
+    ModalButtonComponent,
+    ModalAlertComponent
+  ],
   standalone: true,
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],

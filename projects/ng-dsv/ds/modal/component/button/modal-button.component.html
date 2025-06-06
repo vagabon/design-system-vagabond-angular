@@ -1,0 +1,10 @@
+<dsv-button
+  [color]="icon() ? 'default' : color()"
+  [icon]="icon()"
+  [variant]="icon() ? 'text' : 'contained'"
+  color="inherit"
+  (callback)="doToogle()"
+>
+  {{ text() }}
+  <ng-content></ng-content>
+</dsv-button>

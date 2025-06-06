@@ -60,6 +60,9 @@ describe('AuthComponent', () => {
     fixture.detectChanges();
     const button = fixture.nativeElement.querySelector('.dsv-button');
     button.click();
+    fixture.detectChanges();
+    const button2 = fixture.nativeElement.querySelectorAll('.dsv-button');
+    button2[3].click();
     expect(authServiceMock.logout).toHaveBeenCalled();
   });
 });

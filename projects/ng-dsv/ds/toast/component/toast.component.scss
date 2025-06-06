@@ -1,5 +1,6 @@
 .dsv-toast-container {
     position: fixed;
+    z-index: 100000000;
     bottom: 0px;
     right: 0px;
     display: flex;
@@ -9,7 +10,7 @@
     padding: 5px;
 
     .dsv-toast {
-        font-size: 1.2rem;
+        font-size: 1rem;
         border-radius: 2px;
         box-shadow: 0 0px 0px 0.5px rgba(0, 0, 0, 0.4);
         min-width: 300px;
@@ -70,7 +71,7 @@
 
         .close-button {
             position: absolute;
-            top: 6px;
+            top: 13px;
             right: 10px;
             font-size: 0.75rem;
             border: 0;
@@ -83,14 +84,6 @@
             border-radius: 5px;
         }
 
-        ::ng-deep .dark & .close-button {
-            color: #ffffff;
-        }
-
-        ::ng-deep .dark & .close-button:hover {
-            background-color: #212121 !important;
-        }
-
         .loader-container {
             position: absolute;
             bottom: 0;
@@ -101,15 +94,23 @@
                 border: 1px solid #b8b8b8;
             }
         }
-
-        ::ng-deep .light & {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        ::ng-deep .dark & {
-            background-color: #000000;
-            color: #ffffff;
-        }
     }
+}
+
+::ng-deep .dark .dsv-toast .close-button {
+    color: #ffffff;
+}
+
+::ng-deep .dark .dsv-toast .close-button:hover {
+    background-color: #212121 !important;
+}
+
+::ng-deep .light .dsv-toast {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+::ng-deep .dark .dsv-toast {
+    background-color: #212121;
+    color: #ffffff;
 }
