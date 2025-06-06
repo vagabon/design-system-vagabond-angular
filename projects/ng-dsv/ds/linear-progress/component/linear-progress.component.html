@@ -1,0 +1,9 @@
+@if (load()) {
+  <div class="progress-container">
+    <div
+      class="progress-bar"
+      [style.width]="indeterminate() ? null : value + '%'"
+      [class.indeterminate]="indeterminate()"
+    ></div>
+  </div>
+}
