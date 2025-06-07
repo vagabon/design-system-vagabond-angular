@@ -1,4 +1,4 @@
-import { Component, HostBinding, input } from '@angular/core';
+import { Component, effect, HostBinding, input } from '@angular/core';
 
 export type ThemeType = {
   background?: string;
@@ -53,16 +53,18 @@ export class DsvThemeComponent {
   @HostBinding('style.--error')
   error!: string;
 
-  ngOnInit() {
-    this.background = this.theme().background ?? '#dcdcdc';
-    this.backgroundDark = this.theme().backgroundDark ?? '#1f1f1f';
-    this.text = this.theme().text ?? '#000';
-    this.textDark = this.theme().textDark ?? '#fff';
-    this.primary = this.theme().primary ?? '#AAA';
-    this.secondary = this.theme().secondary ?? '#AAA';
-    this.success = this.theme().success ?? '#439746';
-    this.info = this.theme().info ?? '#1b78c4';
-    this.warning = this.theme().warning ?? '#dca603';
-    this.error = this.theme().error ?? '#da1709';
+  constructor() {
+    effect(() => {
+      this.background = this.theme().background ?? '#dcdcdc';
+      this.backgroundDark = this.theme().backgroundDark ?? '#1f1f1f';
+      this.text = this.theme().text ?? '#000';
+      this.textDark = this.theme().textDark ?? '#fff';
+      this.primary = this.theme().primary ?? '#AAA';
+      this.secondary = this.theme().secondary ?? '#AAA';
+      this.success = this.theme().success ?? '#439746';
+      this.info = this.theme().info ?? '#1b78c4';
+      this.warning = this.theme().warning ?? '#dca603';
+      this.error = this.theme().error ?? '#da1709';
+    });
   }
 }

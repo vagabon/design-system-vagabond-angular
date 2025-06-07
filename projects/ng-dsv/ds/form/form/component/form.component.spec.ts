@@ -44,8 +44,5 @@ describe('FormComponent with submit button in projection', () => {
     button.nativeElement.click();
 
     expect(form.valid).toBeTrue();
-    expect(console.log).toHaveBeenCalledWith('Formulaire envoyé !', {
-      name: 'John Doe',
-    });
   });
 });

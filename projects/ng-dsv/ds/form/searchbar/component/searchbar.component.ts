@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, effect, input, output } from '@angular/core';
 import {
   BaseFormComponent,
   FormComponent,
@@ -15,13 +15,16 @@ export class SearchbarComponent extends BaseFormComponent {
   search = input<string>('');
   onSearch = output<string>();
 
-  afterInit() {
-    this.form = this.formBuilder.group({
-      search: [this.search()],
+  constructor() {
+    super();
+    effect(() => {
+      this.form = this.formBuilder.group({
+        search: [this.search()],
+      });
     });
   }
 
-  onTap(value: string) {
+  onSend(value: string) {
     this.onSearch.emit(value);
   }
 }

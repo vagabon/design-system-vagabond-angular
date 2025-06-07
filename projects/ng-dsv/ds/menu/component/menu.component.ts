@@ -4,8 +4,7 @@ import {
   effect,
   ElementRef,
   HostListener,
-  input,
-  OnInit,
+  input
 } from '@angular/core';
 import { DsvContainerComponent } from '@ng-vagabond-lab/ng-dsv/ds/container';
 import { DsvThemeSwitchComponent } from '@ng-vagabond-lab/ng-dsv/ds/theme';
@@ -19,7 +18,7 @@ import { MenuService } from '../public-api';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
-export class DsvMenuComponent implements OnInit {
+export class DsvMenuComponent {
   showFooter = input<boolean>(true);
 
   constructor(
@@ -39,13 +38,10 @@ export class DsvMenuComponent implements OnInit {
           collapse?.classList.remove('show');
         }
       }
-    });
-  }
 
-  ngOnInit() {
-    this.storageService.isPlatformBrowser() &&
       this.menuService.isMenuOpen() &&
-      document.getElementsByTagName('dsv-container')[0].classList.add('show');
+        document.getElementsByTagName('dsv-container')[0].classList.add('show');
+    });
   }
 
   @HostListener('document:click', ['$event'])

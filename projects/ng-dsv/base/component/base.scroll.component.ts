@@ -18,6 +18,7 @@ export abstract class BaseScrollComponent {
         map((event: Scroll) => event.position)
       )
       .subscribe(() => {
+        this.environmentService.isScrollDown.set(false);
         const divScroll = document.getElementById('scroll');
         divScroll?.scrollTo(0, this.scrollService.getScroll() ?? 0);
         setTimeout(() => {
