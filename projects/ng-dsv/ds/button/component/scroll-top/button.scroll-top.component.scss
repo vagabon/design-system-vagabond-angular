@@ -1,0 +1,9 @@
+:host {
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+}
+
+::ng-deep .dsv-button {
+    border-radius: 50px !important;
+}

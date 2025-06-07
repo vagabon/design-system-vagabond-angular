@@ -8,6 +8,7 @@ export abstract class BaseFormComponent {
   protected readonly formBuilder = inject(FormBuilder);
   protected form!: FormGroup;
 
+  //FIXME : remove this for signal
   ngOnInit() {
     this.afterInit();
   }
