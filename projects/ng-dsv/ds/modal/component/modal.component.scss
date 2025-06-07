@@ -48,20 +48,20 @@
 
 ::ng-deep .light .modal {
     .modal-content {
-        background-color: var(--text-dark);
+        background-color: var(--text-dark) !important;
     }
 
     .modal-footer {
-        background-color: var(--text-dark);
+        background-color: var(--text-dark) !important;
     }
 }
 
 ::ng-deep .dark .modal {
-    background: var(--background-dark);
+    background: var(--background-dark) !important;
 }
 
 ::ng-deep .dark .modal-header {
-    border-color: var(--text-dark);
+    border-color: var(--text-dark) !important;
 }
 
 @media screen and (max-width: 600px) {

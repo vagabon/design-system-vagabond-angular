@@ -2,7 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import { ToastDto } from '../dto/toast.dto';
 
 export const MAX_TOASTS = 10;
-export const DURATION_DEFAULT = 10000;
+export const DURATION_DEFAULT = 5000;
 export const DURATION_TIMEOUT = 10;
 
 @Injectable({
