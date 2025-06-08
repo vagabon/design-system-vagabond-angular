@@ -1,4 +1,4 @@
-import { signal } from '@angular/core';
+import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ToastService } from '../service/toast.service';
 import { DsvToastComponent } from './toast.component';
@@ -9,10 +9,12 @@ describe('DsvToastComponent', () => {
   let toastService: ToastService;
 
   beforeEach(async () => {
-    (window as any).google = { accounts: { id: { prompt: () => {} } } };
+    (window as any).google = { accounts: { id: { prompt: () => { } } } };
     await TestBed.configureTestingModule({
       imports: [DsvToastComponent],
-      providers: [],
+      providers: [
+        provideZonelessChangeDetection(),
+      ],
     }).compileComponents();
     toastService = TestBed.inject(ToastService);
     fixture = TestBed.createComponent(DsvToastComponent);

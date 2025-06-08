@@ -1,5 +1,5 @@
 import { provideHttpClient } from '@angular/common/http';
-import { InputSignal, signal } from '@angular/core';
+import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { SearchbarComponent } from './searchbar.component';
 
@@ -7,7 +7,9 @@ describe('SearchbarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [SearchbarComponent],
-      providers: [provideHttpClient()],
+      providers: [
+        provideZonelessChangeDetection(), provideHttpClient()
+      ],
     }).compileComponents();
   });
 

@@ -1,4 +1,4 @@
-import { PLATFORM_ID } from '@angular/core';
+import { PLATFORM_ID, provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { StorageService } from './storage.service';
 
@@ -11,6 +11,7 @@ describe('StorageService', () => {
 
         TestBed.configureTestingModule({
             providers: [
+                provideZonelessChangeDetection(),
                 StorageService,
                 { provide: PLATFORM_ID, useValue: platformId },
             ],

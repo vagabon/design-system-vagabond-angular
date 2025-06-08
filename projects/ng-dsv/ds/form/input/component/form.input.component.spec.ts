@@ -1,5 +1,5 @@
 import { provideHttpClient } from '@angular/common/http';
-import { InputSignal, signal } from '@angular/core';
+import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FormInputComponent } from './form.input.component';
@@ -8,7 +8,9 @@ describe('FormInputComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [FormInputComponent],
-      providers: [provideHttpClient()],
+      providers: [
+        provideZonelessChangeDetection(), provideHttpClient()
+      ],
     }).compileComponents();
   });
 

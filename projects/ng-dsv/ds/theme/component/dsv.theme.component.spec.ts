@@ -1,3 +1,4 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DsvThemeComponent } from './dsv.theme.component';
 
@@ -6,10 +7,12 @@ describe('DsvThemeComponent', () => {
   let fixture: ComponentFixture<DsvThemeComponent>;
 
   beforeEach(async () => {
-    (window as any).google = { accounts: { id: { prompt: () => {} } } };
+    (window as any).google = { accounts: { id: { prompt: () => { } } } };
     await TestBed.configureTestingModule({
       imports: [DsvThemeComponent],
-      providers: [],
+      providers: [
+        provideZonelessChangeDetection(),
+      ],
     }).compileComponents();
     fixture = TestBed.createComponent(DsvThemeComponent);
     component = fixture.componentInstance;

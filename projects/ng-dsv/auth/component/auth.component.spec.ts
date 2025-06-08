@@ -1,4 +1,5 @@
 import { provideHttpClient } from '@angular/common/http';
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { AuthGoogleService, AuthService } from '@ng-vagabond-lab/ng-dsv/auth';
@@ -30,6 +31,7 @@ describe('AuthComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AuthComponent],
       providers: [
+        provideZonelessChangeDetection(),
         provideHttpClient(),
         { provide: AuthService, useValue: authServiceMock },
         { provide: AuthGoogleService, useValue: authGoogleServiceMock },

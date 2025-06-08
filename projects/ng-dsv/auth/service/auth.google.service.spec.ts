@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
 import { of } from 'rxjs';
@@ -16,8 +17,8 @@ describe('AuthGoogleService', () => {
           initialize: (data: any) => {
             data.callback('credential');
           },
-          renderButton: () => {},
-          prompt: () => {},
+          renderButton: () => { },
+          prompt: () => { },
         },
       },
     };
@@ -30,6 +31,7 @@ describe('AuthGoogleService', () => {
     TestBed.configureTestingModule({
       imports: [],
       providers: [
+        provideZonelessChangeDetection(),
         AuthGoogleService,
         {
           provide: HttpClient,

@@ -1,3 +1,4 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
 import { ThemeService } from './dsv.theme.service';
@@ -15,7 +16,10 @@ describe('ThemeService', () => {
     storageServiceMock.getItem.and.returnValue('dark');
 
     TestBed.configureTestingModule({
-      providers: [{ provide: StorageService, useValue: storageServiceMock }],
+      providers: [
+        provideZonelessChangeDetection(),
+        { provide: StorageService, useValue: storageServiceMock }
+      ],
     });
 
     body = document.createElement('body');

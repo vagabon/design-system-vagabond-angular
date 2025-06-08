@@ -1,3 +1,4 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DsvMenuComponent } from './menu.component';
 
@@ -6,10 +7,10 @@ describe('DsvMenuComponent', () => {
   let fixture: ComponentFixture<DsvMenuComponent>;
 
   beforeEach(async () => {
-    (window as any).google = { accounts: { id: { prompt: () => {} } } };
+    (window as any).google = { accounts: { id: { prompt: () => { } } } };
     await TestBed.configureTestingModule({
       imports: [DsvMenuComponent],
-      providers: [],
+      providers: [provideZonelessChangeDetection()],
     }).compileComponents();
     fixture = TestBed.createComponent(DsvMenuComponent);
     component = fixture.componentInstance;

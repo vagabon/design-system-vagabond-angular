@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 import { ApiLoadService } from './api.load.service';
@@ -19,6 +20,7 @@ describe('ApiService', () => {
 
     TestBed.configureTestingModule({
       providers: [
+        provideZonelessChangeDetection(),
         ApiService,
         { provide: HttpClient, useValue: httpClientSpy },
         { provide: ApiLoadService, useValue: apiLoadServiceMock },

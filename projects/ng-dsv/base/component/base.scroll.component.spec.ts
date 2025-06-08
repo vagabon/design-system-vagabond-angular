@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
@@ -36,6 +36,7 @@ describe('BaseScrollComponent', () => {
         TestBed.configureTestingModule({
             declarations: [],
             providers: [
+                provideZonelessChangeDetection(),
                 { provide: ScrollService, useValue: scrollServiceMock },
                 { provide: EnvironmentService, useValue: environmentServiceMock },
                 { provide: Router, useValue: { events: routerEvents$.asObservable() } },

@@ -18,7 +18,8 @@ export class ToastService {
     toast.duration = toast.duration ?? DURATION_DEFAULT;
     toast.durationLeft = toast.duration;
     toast.filled = toast.filled ?? false;
-    this.toasts.update((toasts) => [...toasts, toast]);
+    const find = this.toastShows().find((t) => t.text === toast.text);
+    !find && this.toasts.update((toasts) => [...toasts, toast]);
   }
 
   consumeToast(toast: ToastDto) {

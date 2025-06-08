@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { provideZonelessChangeDetection } from '@angular/core';
 import { UiSdkComponent } from './ui-sdk.component';
 
 describe('UiSdkComponent', () => {
@@ -9,6 +10,9 @@ describe('UiSdkComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [UiSdkComponent],
+      providers: [
+        provideZonelessChangeDetection(),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(UiSdkComponent);

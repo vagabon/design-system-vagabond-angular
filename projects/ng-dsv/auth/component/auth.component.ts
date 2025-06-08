@@ -4,8 +4,10 @@ import {
   Component,
   effect,
   inject,
+  output,
   signal,
 } from '@angular/core';
+import { ID } from '@ng-vagabond-lab/ng-dsv/api';
 import { ModalAlertComponent, ModalButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/modal';
 import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
 import { AuthGoogleService, AuthService } from '../public-api';
@@ -22,11 +24,13 @@ import { AuthGoogleService, AuthService } from '../public-api';
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent {
-  private readonly authGoogleService = inject(AuthGoogleService);
-  protected authService = inject(AuthService);
-  private readonly environmentService = inject(EnvironmentService);
+  readonly authGoogleService = inject(AuthGoogleService);
+  readonly authService = inject(AuthService);
+  readonly environmentService = inject(EnvironmentService);
 
-  private readonly ssrRendered = signal(false);
+  readonly initMember = output<ID>();
+
+  readonly ssrRendered = signal(false);
 
   constructor() {
     afterNextRender(() => {
@@ -36,9 +40,7 @@ export class AuthComponent {
       if (this.authService.userConnected() === null) {
         this.ssrRendered() && this.authGoogleService.loginWithGoogle();
       } else {
-        //this.memberService.initMember(
-        //  this.authService.userConnected()?.user?.id
-        //);
+        this.initMember.emit(this.authService.userConnected()?.user?.id);
       }
     });
     effect(() => {

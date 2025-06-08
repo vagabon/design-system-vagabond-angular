@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -12,6 +13,7 @@ describe('AuthService', () => {
 
     TestBed.configureTestingModule({
       providers: [
+        provideZonelessChangeDetection(),
         AuthService,
         {
           provide: HttpClient,

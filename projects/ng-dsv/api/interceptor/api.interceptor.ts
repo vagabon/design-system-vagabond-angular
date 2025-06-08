@@ -6,6 +6,7 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { inject } from '@angular/core';
+import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
 import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
 import { catchError, switchMap, throwError } from 'rxjs';
 import { ApiService } from '../public-api';
@@ -14,6 +15,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const httpClient = inject(HttpClient);
   const apiService = inject(ApiService);
   const storageService = inject(StorageService);
+  const toastService = inject(ToastService);
 
   return next(getToken(req, apiService, storageService)).pipe(
     catchError((error) => {
@@ -31,6 +33,13 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
           next
         );
       }
+
+      console.log(error);
+
+      toastService.showToast({
+        type: 'error',
+        text: error.error.debugMessage,
+      })
 
       return throwError(() => error);
     })

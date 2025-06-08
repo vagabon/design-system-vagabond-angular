@@ -1,4 +1,4 @@
-import { InputSignal, signal } from '@angular/core';
+import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { DsvItemComponent } from './item.component';
@@ -9,10 +9,10 @@ describe('DsvItemComponent', () => {
   let router: Router;
 
   beforeEach(async () => {
-    (window as any).google = { accounts: { id: { prompt: () => {} } } };
+    (window as any).google = { accounts: { id: { prompt: () => { } } } };
     await TestBed.configureTestingModule({
       imports: [DsvItemComponent],
-      providers: [],
+      providers: [provideZonelessChangeDetection()],
     }).compileComponents();
     router = TestBed.inject(Router);
     fixture = TestBed.createComponent(DsvItemComponent);

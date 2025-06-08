@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { EnvironmentDto } from '../public-api';
@@ -17,6 +18,7 @@ describe('EnvironmentService', () => {
         let httpClientSpyObj = jasmine.createSpyObj('HttpClient', ['get', 'post']);
         TestBed.configureTestingModule({
             providers: [
+                provideZonelessChangeDetection(),
                 EnvironmentService,
                 {
                     provide: HttpClient,

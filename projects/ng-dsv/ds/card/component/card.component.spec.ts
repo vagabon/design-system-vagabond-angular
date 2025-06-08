@@ -1,3 +1,4 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DsvCardComponent } from './card.component';
 
@@ -6,10 +7,12 @@ describe('DsvCardComponent', () => {
   let fixture: ComponentFixture<DsvCardComponent>;
 
   beforeEach(async () => {
-    (window as any).google = { accounts: { id: { prompt: () => {} } } };
+    (window as any).google = { accounts: { id: { prompt: () => { } } } };
     await TestBed.configureTestingModule({
       imports: [DsvCardComponent],
-      providers: [],
+      providers: [
+        provideZonelessChangeDetection(),
+      ],
     }).compileComponents();
     fixture = TestBed.createComponent(DsvCardComponent);
     component = fixture.componentInstance;

@@ -1,3 +1,4 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DsvButtonComponent } from './button.component';
 
@@ -9,7 +10,9 @@ describe('DsvButtonComponent', () => {
     (window as any).google = { accounts: { id: { prompt: () => { } } } };
     await TestBed.configureTestingModule({
       imports: [DsvButtonComponent],
-      providers: [],
+      providers: [
+        provideZonelessChangeDetection(),
+      ],
     }).compileComponents();
     fixture = TestBed.createComponent(DsvButtonComponent);
     component = fixture.componentInstance;
