@@ -4,15 +4,15 @@ export type Primitif = string | number | boolean | undefined | null;
 export type JSONValue =
   | Primitif
   | {
-      [x: string]: JSONValue;
-    }
+    [x: string]: JSONValue;
+  }
   | Array<JSONValue>
   | ApiDto;
 
 export type JSONObject =
   | {
-      [x: string]: JSONValue;
-    }
+    [x: string]: JSONValue;
+  }
   | Array<JSONObject>
   | ApiDto;
 

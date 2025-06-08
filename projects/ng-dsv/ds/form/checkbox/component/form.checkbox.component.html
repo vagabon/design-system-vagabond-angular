@@ -1,0 +1,13 @@
+<div [formGroup]="form()">
+  @if (withLabel()) {
+    <label [for]="field()">{{ field() }}</label>
+  }
+  <div>
+    <input
+      type="checkbox"
+      [formControlName]="field()"
+      class="form-control"
+      [id]="field()"
+    />
+  </div>
+</div>

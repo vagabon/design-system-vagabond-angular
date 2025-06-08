@@ -38,7 +38,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
       toastService.showToast({
         type: 'error',
-        text: error.error.debugMessage,
+        text: error.error.debugMessage ?? error.error.message ?? error.message,
       })
 
       return throwError(() => error);

@@ -7,10 +7,4 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export abstract class BaseFormComponent {
   protected readonly formBuilder = inject(FormBuilder);
   protected form!: FormGroup;
-
-  onSubmit() {
-    if (this.form.valid) {
-      console.log('Formulaire envoyé !', this.form.value);
-    }
-  }
 }

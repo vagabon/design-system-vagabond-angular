@@ -23,12 +23,18 @@ export class DsvButtonComponent {
   show = input<boolean>(true);
   disabled = input<boolean>(false);
   noHover = input<boolean>(false);
+  type = input<string>('');
+
+  prevent = input<boolean>(true);
 
   callback = output<void>();
 
   doClick(event: Event) {
-    event.stopPropagation();
-    event.preventDefault();
+    if (this.prevent() && this.type() !== 'submit') {
+      event.stopPropagation();
+      event.preventDefault();
+
+    }
     !this.disabled() && this.callback.emit();
   }
 }

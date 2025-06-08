@@ -1,0 +1,13 @@
+<div>{{ page() + 1 }} / {{ max() }}</div>
+<dsv-button
+  color="inherit"
+  icon="ri-arrow-left-s-line"
+  [disabled]="page() === 0"
+  (callback)="gotoPage(page() - 1)"
+/>
+<dsv-button
+  color="inherit"
+  icon="ri-arrow-right-s-line"
+  [disabled]="page() + 1 >= max()"
+  (callback)="gotoPage(page() + 1)"
+/>

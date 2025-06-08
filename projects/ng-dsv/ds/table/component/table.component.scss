@@ -1,0 +1,93 @@
+:host {
+    overflow: auto;
+    width: 100%;
+
+    table {
+        table-layout: fixed;
+        min-width: 100%;
+        display: table;
+        border-collapse: collapse;
+        border-spacing: 0px;
+
+        thead {
+            display: table-header-group;
+
+            tr {
+                background-color: var(--text);
+                color: var(--text-dark);
+                display: table-row;
+                vertical-align: middle;
+                outline: 0px;
+                height: 32px;
+
+                th {
+                    font-family: Roboto, Helvetica, Arial, sans-serif;
+                    font-weight: 500;
+                    font-size: 0.875rem;
+                    line-height: 1.5rem;
+                    letter-spacing: 0.01071em;
+                    display: table-cell;
+                    vertical-align: inherit;
+                    border-bottom: 1px solid rgb(224, 224, 224);
+                    text-align: left;
+                    padding: 6px 16px;
+
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
+        }
+
+        tbody {
+            display: table-row-group;
+            background-color: var(--text-dark);
+
+            tr {
+
+                display: table-row;
+                vertical-align: middle;
+                outline: 0px;
+                height: 32px;
+
+                td {
+                    cursor: pointer;
+                    font-weight: 400;
+                    font-size: 0.875rem;
+                    line-height: 1.43;
+                    letter-spacing: 0.01071em;
+                    display: table-cell;
+                    vertical-align: inherit;
+                    border-bottom: 1px solid rgb(224, 224, 224);
+                    text-align: left;
+                    padding: 6px 16px;
+
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+
+                    max-width: 200px;
+                }
+            }
+        }
+    }
+}
+
+::ng-deep .dark table {
+    thead {
+        tr {
+            background-color: var(--text-dark) !important;
+            color: var(--text) !important;
+        }
+    }
+
+    tbody {
+        display: table-row-group;
+        background-color: var(--text) !important;
+
+        td {
+            cursor: pointer;
+            border-bottom: 1px solid rgb(81, 81, 81) !important;
+        }
+    }
+}

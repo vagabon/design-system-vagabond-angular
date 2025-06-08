@@ -21,7 +21,7 @@ export class DsvItemComponent {
   icon = input<string>('');
   text = input<string>('');
   url = input<string>();
-  small = input<boolean>(false);
+  small = input<boolean>(true);
 
   callback = output<void>();
 
@@ -34,7 +34,7 @@ export class DsvItemComponent {
   doClick() {
     if (this.url()) {
       this.router.navigate([this.url()]);
-      this.isCallback() && this.callback.emit();
     }
+    this.isCallback() && this.callback.emit();
   }
 }

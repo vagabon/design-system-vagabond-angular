@@ -1,13 +1,21 @@
 <div [formGroup]="form()">
   @if (withLabel()) {
-    <label [for]="field()">{{ field() }}</label>
+    <label [for]="field()">{{ field() }} {{ required() ? "*" : "" }}</label>
   }
   <input
-    type="text"
+    [type]="type()"
     [formControlName]="field()"
     class="form-control"
+    [class.icon]="icon()"
+    [class.error]="error()"
     [id]="field()"
+    (change)="onChange()"
     (keydown.enter)="onEnter()"
   />
-  <i class="icon ri-search-line"></i>
+  @if (icon()) {
+    <i [class]="icon()"></i>
+  }
+  @if (error() !== "") {
+    <div class="error-content">{{ error() }}</div>
+  }
 </div>

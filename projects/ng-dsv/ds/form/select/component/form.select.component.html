@@ -1,0 +1,19 @@
+<div [formGroup]="form()">
+  @if (withLabel()) {
+    <label [for]="field()">{{ field() }}</label>
+  }
+  <div>
+    <select
+      [id]="field()"
+      [formControlName]="field()"
+      class="form-control"
+      (change)="doChange()"
+    >
+      @for (list of list(); track list.id) {
+        <option [value]="list.id">
+          {{ list.name }}
+        </option>
+      }
+    </select>
+  </div>
+</div>

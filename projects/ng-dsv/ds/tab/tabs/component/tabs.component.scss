@@ -1,0 +1,24 @@
+:host {
+
+    overflow: hidden;
+    min-height: 48px;
+    display: flex;
+    width: 100%;
+
+    &>div {
+        margin-bottom: 0px;
+        position: relative;
+        display: inline-block;
+        flex: 1 1 auto;
+        overflow: auto;
+        overflow-x: hidden;
+        width: 100%;
+
+        &>div {
+            display: flex;
+            overflow: visible !important;
+            margin: 3px 0px;
+        }
+
+    }
+}

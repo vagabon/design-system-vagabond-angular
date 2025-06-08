@@ -1,8 +1,9 @@
-<app-form [form]="form">
-  <form-input
+<app-form [form]="form" textValid="">
+  <dsv-form-input
     [form]="form"
     field="search"
     [withLabel]="false"
     (onSend)="onSend($event)"
-  ></form-input>
+    icon="icon ri-search-line"
+  ></dsv-form-input>
 </app-form>

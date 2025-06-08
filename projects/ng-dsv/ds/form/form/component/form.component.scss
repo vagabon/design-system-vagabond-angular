@@ -8,4 +8,11 @@
         margin-top: 0em;
         unicode-bidi: isolate;
     }
+
+    .form-buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        padding-top: 10px;
+    }
 }

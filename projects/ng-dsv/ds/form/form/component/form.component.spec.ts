@@ -2,6 +2,7 @@ import { Component, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { provideTranslateService } from '@ngx-translate/core';
 import { FormComponent } from './form.component';
 
 @Component({
@@ -25,7 +26,7 @@ describe('FormComponent with submit button in projection', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TestHostComponent],
-      providers: [provideZonelessChangeDetection()],
+      providers: [provideZonelessChangeDetection(), provideTranslateService()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TestHostComponent);

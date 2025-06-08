@@ -28,17 +28,17 @@ button.dsv-button {
 
     &.small,
     &.small>i {
-        font-size: 0.8rem !important;
+        font-size: 0.8rem;
     }
 
     &.medium,
     &.medium>i {
-        font-size: 1rem !important;
+        font-size: 1rem;
     }
 
     &.large,
     &.large>i {
-        font-size: 1.5rem !important;
+        font-size: 1.5rem;
     }
 
     &.fullwidth {
@@ -101,7 +101,7 @@ button.dsv-button {
 
     &.contained.inherit {
         background-color: inherit;
-        color: var(--text) !important;
+        color: var(--text);
     }
 
     &.contained.default {
@@ -147,12 +147,12 @@ button.dsv-button {
     }
 
     &:disabled {
-        background: rgb(91, 91, 91) !important;
+        background: rgb(91, 91, 91);
     }
 
     ::ng-deep .dark & {
         &.contained.inherit {
-            color: var(--white) !important;
+            color: var(--white);
             filter: hue-rotate(5deg);
         }
 
