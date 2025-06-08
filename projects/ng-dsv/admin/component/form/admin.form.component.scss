@@ -1,0 +1,42 @@
+:host {
+
+    .form-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        &>div {
+            display: flex;
+            width: 100%;
+        }
+
+        .width50 {
+            width: 49%;
+        }
+
+        .m2m {
+            flex: 1;
+            margin: 10px 0px;
+            display: flex;
+            flex-direction: row;
+            justify-content: end;
+            gap: 10px;
+
+            .chip {
+                border-radius: 15px;
+                background-color: var(--background);
+                padding: 5px 5px 5px 20px;
+            }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .form-container {
+        .width50 {
+            width: 100% !important;
+        }
+
+    }
+}

@@ -1,0 +1,15 @@
+<app-modal-button id="m2m" icon="ri-add-line" />
+<app-modal id="m2m" title="Ajouter un élément">
+  <form-searchbar
+    [search]="search()"
+    (onSearch)="doSearch($event)"
+  ></form-searchbar>
+  <div>
+    @for (data of datas(); track data.id) {
+      <dsv-item
+        [text]="getValue(data, m2em().name)"
+        (callback)="clickItem(data)"
+      />
+    }
+  </div>
+</app-modal>

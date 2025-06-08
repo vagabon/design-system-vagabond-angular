@@ -1,0 +1,10 @@
+::ng-deep admin-search-modal .modal {
+    width: 70% !important;
+    left: 15% !important;
+    height: 65% !important;
+    top: 20% !important;
+
+    .modal-content {
+        align-content: flex-start !important;
+    }
+}

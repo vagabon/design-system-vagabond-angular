@@ -1,0 +1,13 @@
+<dsv-tabs-component [tabs]="tabs()" [active]="tab()" />
+<dsv-table
+  [cells]="tabConfig()?.cells!"
+  [datas]="adminService.datas().content!"
+  [max]="adminService.tabs().max!"
+  [url]="'/admin/' + tab()"
+></dsv-table>
+<app-paginate-component
+  [page]="page()"
+  [max]="adminService.datas().totalPages!"
+  [nb]="adminService.datas().totalElements!"
+  (callback)="gotoPage($event)"
+/>

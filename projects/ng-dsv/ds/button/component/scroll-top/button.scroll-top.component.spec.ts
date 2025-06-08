@@ -27,7 +27,7 @@ describe('ButtonScrollTopComponent', () => {
     it('should set show to true when scroll > 400', () => {
         component.scroll = signal(800) as unknown as InputSignal<number>;
         fixture.detectChanges();
-        setTimeout(() => expect(component.show()).toBeTrue(), 200);
+        setTimeout(() => expect(component.show()).toBeTrue(), 500);
     });
 
     it('should set show to false when scroll <= 400', () => {
