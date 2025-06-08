@@ -27,9 +27,6 @@ export class FormInputComponent {
   onChange() {
     const error = this.form().controls[this.field()].errors;
     let errorText = "";
-    if (error) {
-      console.log(error);
-    }
     if (error?.['required']) {
       errorText = "Ce champ est obligatoire";
     }
