@@ -1,5 +1,4 @@
 import { type Meta, type StoryObj } from '@storybook/angular';
-import { fn } from '@storybook/test';
 import { DsvAvatarComponent } from './avatar.component';
 
 export const ActionsData = {
@@ -36,6 +35,6 @@ export const Default: Story = {
 
 export const WithCallback: Story = {
   args: {
-    callback: fn(),
+    callback: () => { },
   },
 };

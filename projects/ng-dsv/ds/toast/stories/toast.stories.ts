@@ -58,10 +58,10 @@ type Story = StoryObj<DsvToastComponent>;
   `,
 })
 class PrimaryButtonDemo {
-  constructor(private readonly toastService: ToastService) {}
+  constructor(private readonly toastService: ToastService) { }
 
   click(type: ToastType = 'success') {
-    this.toastService.showToast({ text: 'test', type: type });
+    this.toastService.showToast({ text: type, type: type });
   }
 }
 

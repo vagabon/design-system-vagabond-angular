@@ -1,5 +1,4 @@
 import { type Meta, type StoryObj } from '@storybook/angular';
-import { fn } from '@storybook/test';
 import { DsvItemComponent } from './item.component';
 
 export const ActionsData: {
@@ -9,7 +8,7 @@ export const ActionsData: {
 } = {
   text: 'My webapp',
   small: true,
-  callback: fn(),
+  callback: () => { },
 };
 
 const meta: Meta<DsvItemComponent> = {

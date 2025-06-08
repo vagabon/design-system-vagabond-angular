@@ -1,6 +1,5 @@
 import { ColorType } from '@ng-vagabond-lab/ng-dsv/type';
 import { type Meta, type StoryObj } from '@storybook/angular';
-import { fn } from '@storybook/test';
 import { DsvButtonComponent } from './button.component';
 
 export const ActionsData: {
@@ -22,7 +21,7 @@ export const ActionsData: {
   noHover: false,
   show: true,
   disabled: false,
-  callback: fn(),
+  callback: () => { },
 };
 
 export const buttonColors: ColorType[] = [

@@ -1,4 +1,6 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import {
+  applicationConfig,
   componentWrapperDecorator,
   moduleMetadata,
   type Preview,
@@ -23,6 +25,9 @@ const preview: Preview = {
     },
   },
   decorators: [
+    applicationConfig({
+      providers: [provideZonelessChangeDetection()]
+    }),
     moduleMetadata({
       imports: [DsvThemeComponent, DsvThemeSwitchComponent],
     }),
