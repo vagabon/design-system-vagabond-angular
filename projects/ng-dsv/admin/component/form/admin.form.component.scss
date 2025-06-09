@@ -32,6 +32,10 @@
     }
 }
 
+::ng-deep .dark .chip {
+    background-color: #424242 !important;
+}
+
 @media (max-width: 800px) {
     .form-container {
         .width50 {

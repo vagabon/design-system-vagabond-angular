@@ -32,9 +32,11 @@ export class FormComponent {
   onSubmit() {
     if (this.form().valid) {
       this.callback.emit(this.form().value);
-      this.toastService.showToast({
-        text: this.formValid(),
-      })
+      if (this.textValid() !== '') {
+        this.toastService.showToast({
+          text: this.formValid(),
+        })
+      }
     } else {
       this.toastService.showToast({
         text: 'Erreur dans le formulaire !',

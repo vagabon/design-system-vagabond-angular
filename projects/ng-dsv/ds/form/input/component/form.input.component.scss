@@ -38,7 +38,6 @@
         i {
             position: absolute;
             z-index: 1000;
-            color: black;
             top: 10px;
             left: 5px;
         }
@@ -51,6 +50,7 @@
 }
 
 ::ng-deep .dark .form-control {
+    color-scheme: dark;
     background-color: var(--background-dark) !important;
     color: var(--text-dark) !important;
 }

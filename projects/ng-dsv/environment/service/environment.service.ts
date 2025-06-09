@@ -6,7 +6,6 @@ import { EnvironmentDto } from '../public-api';
 export class EnvironmentService {
   private readonly httpClient = inject(HttpClient);
 
-  public isScrollDown = signal<boolean>(false);
   public env = signal<EnvironmentDto | undefined>(undefined);
 
   loadEnv() {

@@ -37,7 +37,7 @@ describe('ButtonScrollTopComponent', () => {
 
     it('should scroll to top when scrollToTop is called', () => {
         const scrollElement = document.createElement('div');
-        scrollElement.id = 'scroll';
+        scrollElement.className = 'scroll';
         scrollElement.scrollTo = jasmine.createSpy('scrollTo');
 
         document.body.appendChild(scrollElement);
@@ -46,6 +46,6 @@ describe('ButtonScrollTopComponent', () => {
 
         expect(scrollElement.scrollTo).toHaveBeenCalledWith(0, 0);
 
-        document.body.removeChild(scrollElement); // clean DOM
+        document.body.removeChild(scrollElement);
     });
 });

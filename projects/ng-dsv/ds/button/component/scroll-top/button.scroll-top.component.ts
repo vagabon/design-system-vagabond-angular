@@ -22,6 +22,9 @@ export class ButtonScrollTopComponent {
     }
 
     scrollToTop() {
-        document.getElementById('scroll')?.scrollTo(0, 0);
+        const scrolls = document.getElementsByClassName('scroll');
+        Array.from(scrolls).forEach(scroll => {
+            scroll?.scrollTo(0, 0);
+        })
     }
 }

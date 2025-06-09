@@ -32,9 +32,6 @@ export class AdminFormContainer extends BaseRouteComponent {
             this.tabConfig.set(tab);
             this.findById(this.routeParams()?.['id']);
         });
-        effect(() => {
-
-        });
     }
 
     findById(id: string) {
