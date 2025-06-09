@@ -1,7 +1,7 @@
 import { Component, inject, input, output } from "@angular/core";
 import { ScrollService } from "@ng-vagabond-lab/ng-dsv/base";
 
-export const SCROLL_BOTTOM_MIN = 50;
+export const SCROLL_BOTTOM_MIN = 100;
 
 @Component({
     selector: 'dsv-scroll-infinite',

@@ -10,6 +10,7 @@ import {
   imports: [FormComponent, FormInputComponent],
   standalone: true,
   templateUrl: './searchbar.component.html',
+  styleUrls: ['./searchbar.component.scss'],
 })
 export class SearchbarComponent extends BaseFormComponent {
   search = input<string>('');

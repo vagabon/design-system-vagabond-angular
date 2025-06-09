@@ -17,6 +17,7 @@
         display: flex;
         -webkit-box-align: center;
         align-items: center;
+        justify-content: space-between;
         padding-left: 16px;
         padding-right: 16px;
         min-height: 56px;
@@ -27,7 +28,6 @@
             justify-content: flex-start;
             align-items: center;
             font-size: 1.3rem;
-            flex: 1;
             gap: 10px;
 
             img {

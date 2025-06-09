@@ -34,7 +34,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
         );
       }
 
-      console.log(error);
+      console.error(error);
 
       toastService.showToast({
         type: 'error',

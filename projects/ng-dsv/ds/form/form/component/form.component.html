@@ -1,6 +1,9 @@
 <form [formGroup]="form()" (ngSubmit)="onSubmit()" class="form-container">
   <ng-content></ng-content>
-  <div class="form-buttons">
+  <div
+    class="form-buttons"
+    [style.display]="urlBack() && textValid() !== '' ? '' : 'none'"
+  >
     @if (urlBack()) {
       <dsv-button
         color="default"
@@ -11,7 +14,7 @@
       >
     }
     @if (textValid() && textValid() !== "") {
-      <dsv-button type="submit" color="success">{{
+      <dsv-button type="submit" color="primary">{{
         textValid()! | translate
       }}</dsv-button>
     }

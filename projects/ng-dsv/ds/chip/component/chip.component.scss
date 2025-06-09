@@ -1,0 +1,20 @@
+.chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background-color: var(--background);
+    padding: 10px 20px !important;
+
+    & span {
+        opacity: 0.8;
+    }
+
+    &.with-delete {
+        padding: 5px 5px 5px 20px !important;
+    }
+}
+
+::ng-deep .dark .chip {
+    background-color: #424242 !important;
+}

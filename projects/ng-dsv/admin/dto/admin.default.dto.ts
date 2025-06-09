@@ -14,16 +14,9 @@ export const ADMIN_PROFILE_M2M = {
 };
 
 export const ADMIN_INPUT = [
-    { name: 'creationDate', label: 'AUTH.FIELDS.CREATE_DATE', type: 'datetime-local', required: false, className: 'width50' },
-    { name: 'updatedDate', label: 'AUTH.FIELDS.UPDATE_DATE', type: 'datetime-local', required: false, className: 'width50' },
-    {
-        name: 'deletedDate',
-        label: 'AUTH.FIELDS.DELETE_DATE',
-        type: 'datetime-local',
-        required: false,
-        className: 'width50',
-        disabled: true,
-    },
+    { name: 'creationDate', label: 'AUTH.FIELDS.CREATE_DATE', type: 'datetime-local', className: 'width50', disabled: true, },
+    { name: 'updatedDate', label: 'AUTH.FIELDS.UPDATE_DATE', type: 'datetime-local', className: 'width50', disabled: true, },
+    { name: 'deletedDate', label: 'AUTH.FIELDS.DELETE_DATE', type: 'datetime-local', className: 'width50', disabled: true, },
     { name: 'active', label: 'AUTH.FIELDS.ACTIVE', type: 'switch', required: false, className: 'width50' },
 ];
 

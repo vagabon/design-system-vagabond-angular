@@ -20,7 +20,8 @@ export abstract class BaseAppScrollComponent {
         const divScrolls = document.getElementsByClassName('scroll');
         Array.from(divScrolls).forEach(scroll => {
           scroll?.scrollTo(0, this.scrollService.getScroll() ?? 0);
-        })
+        });
+        this.scrollService.scroll.set(this.scrollService.getScroll() ?? 0);
       });
 
     effect(() => {

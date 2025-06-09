@@ -1,7 +1,7 @@
 import { Component, effect, input, output } from "@angular/core";
 import { FormControl, ReactiveFormsModule, Validators } from "@angular/forms";
 import { ApiDto, ID } from "@ng-vagabond-lab/ng-dsv/api";
-import { DsvButtonComponent } from "@ng-vagabond-lab/ng-dsv/ds/button";
+import { DsvChipComponent } from "@ng-vagabond-lab/ng-dsv/ds/chip";
 import { BaseFormComponent, FormCheckboxComponent, FormComponent, FormInputComponent } from "@ng-vagabond-lab/ng-dsv/ds/form";
 import { AdminSearchModalContainer } from "../../container/modal/admin.search.modal.container";
 import { FormDto } from "../../dto/admin.dto";
@@ -11,7 +11,7 @@ import { FormDto } from "../../dto/admin.dto";
     standalone: true,
     imports: [
         ReactiveFormsModule,
-        DsvButtonComponent,
+        DsvChipComponent,
         FormComponent,
         FormInputComponent,
         AdminSearchModalContainer,
@@ -39,7 +39,7 @@ export class AdminFormComponent extends BaseFormComponent {
                     value = (value as string).substring(0, 16);
                 }
                 const required = conf.required || false;
-                formControl[conf.name] = new FormControl(value, required ? Validators.required : null);
+                formControl[conf.name] = new FormControl({ value, disabled: conf.disabled ?? false }, required ? Validators.required : null);
             })
             this.form = this.formBuilder.group(formControl);
         })
@@ -49,7 +49,7 @@ export class AdminFormComponent extends BaseFormComponent {
         this.callback.emit(data);
     }
 
-    removeValue(name: string, id: ID) {
+    removeValue = (name: string, id: ID) => () => {
         this.form.value[name] = this.form.value[name].filter((value: ApiDto) => value.id !== id);
     }
 

@@ -2,7 +2,11 @@
   <div class="form-container">
     @for (field of formConf(); track field.name) {
       <div [class.width50]="field.className === 'width50'">
-        @if (field.type === "text" || field.type === "datetime-local") {
+        @if (
+          field.type === "text" ||
+          field.type === "textarea" ||
+          field.type === "datetime-local"
+        ) {
           <dsv-form-input
             [form]="form"
             [field]="field.name"
@@ -17,15 +21,10 @@
           <div class="m2m">
             <div class="m2m-content">
               @for (value of form.value[field.name]; track value.id) {
-                <div class="chip">
-                  {{ value.name }}
-                  <dsv-button
-                    icon="ri-delete-bin-line"
-                    variant="text"
-                    color="error"
-                    (callback)="removeValue(field.name, value.id)"
-                  ></dsv-button>
-                </div>
+                <dsv-chip
+                  [text]="value.name"
+                  (delete)="removeValue(field.name, value.id)()"
+                />
               }
               <admin-search-modal
                 [m2em]="field.m2m!"

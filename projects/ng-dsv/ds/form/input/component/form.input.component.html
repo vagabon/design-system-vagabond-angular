@@ -2,16 +2,25 @@
   @if (withLabel()) {
     <label [for]="field()">{{ field() }} {{ required() ? "*" : "" }}</label>
   }
-  <input
-    [type]="type()"
-    [formControlName]="field()"
-    class="form-control"
-    [class.icon]="icon()"
-    [class.error]="error()"
-    [id]="field()"
-    (change)="onChange()"
-    (keydown.enter)="onEnter()"
-  />
+  @if (type() === "textarea") {
+    <textarea
+      [id]="field()"
+      [formControlName]="field()"
+      class="form-control"
+      [class.error]="error()"
+    ></textarea>
+  } @else {
+    <input
+      [id]="field()"
+      [type]="type()"
+      [formControlName]="field()"
+      class="form-control"
+      [class.icon]="icon()"
+      [class.error]="error()"
+      (change)="onChange()"
+      (keydown.enter)="onEnter()"
+    />
+  }
   @if (icon()) {
     <i [class]="icon()"></i>
   }
