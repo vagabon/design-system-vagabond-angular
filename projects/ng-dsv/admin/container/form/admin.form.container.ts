@@ -48,7 +48,6 @@ export class AdminFormContainer extends BaseRouteComponent {
             ...this.adminService.data(),
             ...data
         }
-        console.log(dataFusion, data);
         if (!dataFusion.id) {
             this.adminService.post(this.tabConfig()?.name!, dataFusion);
         } else {

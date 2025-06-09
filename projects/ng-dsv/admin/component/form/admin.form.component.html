@@ -4,6 +4,7 @@
       <div [class.width50]="field.className === 'width50'">
         @if (
           field.type === "text" ||
+          field.type === "number" ||
           field.type === "textarea" ||
           field.type === "datetime-local"
         ) {
