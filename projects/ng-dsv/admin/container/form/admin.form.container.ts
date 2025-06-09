@@ -27,10 +27,15 @@ export class AdminFormContainer extends BaseRouteComponent {
     constructor() {
         super();
         effect(() => {
+            const id = this.routeParams()?.['id'];
             this.tab.set(this.routeParams()?.['type']);
             const tab = this.adminService.tabs()?.tabs.find((tab) => tab.name === this.tab());
             this.tabConfig.set(tab);
-            this.findById(this.routeParams()?.['id']);
+            if (isNaN(id)) {
+                this.adminService.data.set({} as ApiDto);
+            } else {
+                this.findById(this.routeParams()?.['id']);
+            }
         });
     }
 
@@ -39,9 +44,15 @@ export class AdminFormContainer extends BaseRouteComponent {
     }
 
     sendForm(data: ApiDto) {
-        this.adminService.put(this.tabConfig()?.name!, {
+        const dataFusion = {
             ...this.adminService.data(),
             ...data
-        });
+        }
+        console.log(dataFusion, data);
+        if (!dataFusion.id) {
+            this.adminService.post(this.tabConfig()?.name!, dataFusion);
+        } else {
+            this.adminService.put(this.tabConfig()?.name!, dataFusion);
+        }
     }
 }

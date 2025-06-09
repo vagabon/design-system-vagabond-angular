@@ -147,6 +147,7 @@ button.dsv-button {
     }
 
     &:disabled {
+        cursor: auto !important;
         background: rgb(91, 91, 91);
     }
 

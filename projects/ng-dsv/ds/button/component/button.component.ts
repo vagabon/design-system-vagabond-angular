@@ -23,7 +23,7 @@ export class DsvButtonComponent {
   show = input<boolean>(true);
   disabled = input<boolean>(false);
   noHover = input<boolean>(false);
-  type = input<string>('');
+  type = input<string>('button');
 
   prevent = input<boolean>(true);
 

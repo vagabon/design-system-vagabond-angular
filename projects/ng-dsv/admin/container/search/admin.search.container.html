@@ -1,13 +1,25 @@
 <dsv-tabs-component [tabs]="tabs()" [active]="tab()" />
-<dsv-table
-  [cells]="tabConfig()?.cells!"
-  [datas]="adminService.datas().content!"
-  [max]="adminService.tabs().max!"
-  [url]="'/admin/' + tab()"
-></dsv-table>
-<app-paginate-component
-  [page]="page()"
-  [max]="adminService.datas().totalPages!"
-  [nb]="adminService.datas().totalElements!"
-  (callback)="gotoPage($event)"
-/>
+<dsv-card>
+  <div class="admin-header">
+    <span>Résulat : {{ adminService.datas().totalElements }}</span>
+    <dsv-button
+      variant="contained"
+      color="primary"
+      icon="ri-add-line"
+      [routerLink]="'/admin/' + tab() + '/add'"
+      [prevent]="false"
+    ></dsv-button>
+  </div>
+  <dsv-table
+    [cells]="tabConfig()?.cells!"
+    [datas]="adminService.datas().content!"
+    [max]="adminService.tabs().max!"
+    [url]="'/admin/' + tab()"
+  ></dsv-table>
+  <app-paginate-component
+    [page]="page()"
+    [max]="adminService.datas().totalPages!"
+    [nb]="adminService.datas().totalElements!"
+    (callback)="gotoPage($event)"
+  />
+</dsv-card>

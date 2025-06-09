@@ -24,16 +24,25 @@ export class TableComponent {
     max = input<number>(10);
 
     showDatas = signal<string[][]>([]);
+    links = signal<(string | null)[]>([]);
 
     constructor() {
         effect(() => {
             let datas: JSONObject[] = this.datas();
             if (this.max() > 0) {
                 datas = [];
+                const links = [];
                 for (let i = 0; i < this.max(); i++) {
-                    const data = this.datas()?.[i] ? this.datas()[i] : { id: i + 1 } as JSONObject;
+                    let data = this.datas()?.[i];
+                    if (data) {
+                        links.push(data['id' as keyof JSONObject]);
+                    } else {
+                        data = { id: -1 * (i + 1) } as JSONObject
+                        links.push(null);
+                    }
                     datas.push(data);
                 }
+                this.links.set(links);
             }
 
             const showDatas: string[][] = [];

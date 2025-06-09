@@ -51,7 +51,6 @@
                 height: 32px;
 
                 td {
-                    cursor: pointer;
                     font-weight: 400;
                     font-size: 0.875rem;
                     line-height: 1.43;
@@ -67,6 +66,10 @@
                     white-space: nowrap;
 
                     max-width: 200px;
+
+                    &.cursor {
+                        cursor: pointer;
+                    }
                 }
             }
         }
@@ -76,17 +79,16 @@
 ::ng-deep .dark table {
     thead {
         tr {
-            background-color: var(--text-dark) !important;
+            background-color: var(--background) !important;
             color: var(--text) !important;
         }
     }
 
     tbody {
         display: table-row-group;
-        background-color: var(--text) !important;
+        background-color: var(--background-dark) !important;
 
         td {
-            cursor: pointer;
             border-bottom: 1px solid rgb(81, 81, 81) !important;
         }
     }

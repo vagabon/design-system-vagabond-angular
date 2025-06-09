@@ -11,7 +11,8 @@
       <tr>
         @for (cell of cells(); track cell.name; let indexData = $index) {
           <td
-            [routerLink]="url() + '/' + data[0]"
+            [class.cursor]="links()[index]"
+            [routerLink]="links()[index]"
             [style.maxWidth]="cell.width"
           >
             {{ data[indexData + 1] }}

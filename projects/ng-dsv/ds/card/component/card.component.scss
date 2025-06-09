@@ -1,9 +1,13 @@
+:host {
+    width: 100%;
+}
+
 .dsv-card {
     width: auto;
     border: 1px solid rgb(211, 211, 211);
     border-radius: 4px;
     font-size: 1rem;
-    margin: 5px;
+    margin: 10px;
     color: var(--text);
     background-color: var(--white);
 
@@ -32,6 +36,8 @@
     }
 
     .dsv-card-content {
+        display: flex;
+        flex-direction: column;
         padding: 10px;
     }
 }

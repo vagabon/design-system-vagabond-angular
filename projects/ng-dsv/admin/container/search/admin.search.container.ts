@@ -1,5 +1,8 @@
 import { Component, effect, inject, signal } from "@angular/core";
+import { RouterLink } from "@angular/router";
 import { BaseRouteComponent } from "@ng-vagabond-lab/ng-dsv/base";
+import { DsvButtonComponent } from "@ng-vagabond-lab/ng-dsv/ds/button";
+import { DsvCardComponent } from "@ng-vagabond-lab/ng-dsv/ds/card";
 import { PaginateComponent } from "@ng-vagabond-lab/ng-dsv/ds/paginate";
 import { TabDto, TabsComponent } from "@ng-vagabond-lab/ng-dsv/ds/tab";
 import { TableComponent } from "@ng-vagabond-lab/ng-dsv/ds/table";
@@ -12,9 +15,12 @@ import { AdminService } from "../../service/admin.service";
     selector: "app-admin-search",
     standalone: true,
     imports: [
+        DsvCardComponent,
+        DsvButtonComponent,
         TabsComponent,
         TableComponent,
-        PaginateComponent
+        PaginateComponent,
+        RouterLink
     ],
     templateUrl: "./admin.search.container.html",
     styleUrls: ["./admin.search.container.scss"]
@@ -56,4 +62,5 @@ export class AdminSearchContainer extends BaseRouteComponent {
         this.page.set(page);
         this.adminService.get(this.tabConfig()?.name!, this.tabConfig()?.findByChamps!, '', page, this.adminService.tabs()?.max);
     }
+
 }

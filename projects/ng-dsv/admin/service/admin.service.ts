@@ -22,6 +22,13 @@ export class AdminService {
         this.apiService.get<PageableDto<ApiDto[]>>(encodeURI(url), callbackResponse)
     }
 
+    post(endpoint: string, data: ApiDto) {
+        const url = '/' + endpoint;
+        this.apiService.post<ApiDto>(encodeURI(url), data, (response) => {
+            this.data.set(response);
+        })
+    }
+
     put(endpoint: string, data: ApiDto) {
         const url = '/' + endpoint;
         this.apiService.put<ApiDto>(encodeURI(url), data, (response) => {

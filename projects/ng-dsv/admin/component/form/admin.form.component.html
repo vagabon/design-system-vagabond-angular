@@ -15,21 +15,23 @@
         }
         @if (field.type === "m2m") {
           <div class="m2m">
-            @for (value of form.value[field.name]; track value.id) {
-              <div class="chip">
-                {{ value.name }}
-                <dsv-button
-                  icon="ri-delete-bin-line"
-                  variant="text"
-                  color="error"
-                  (callback)="removeValue(field.name, value.id)"
-                ></dsv-button>
-              </div>
-            }
-            <admin-search-modal
-              [m2em]="field.m2m!"
-              (callback)="addValue(field.name)($event)"
-            />
+            <div class="m2m-content">
+              @for (value of form.value[field.name]; track value.id) {
+                <div class="chip">
+                  {{ value.name }}
+                  <dsv-button
+                    icon="ri-delete-bin-line"
+                    variant="text"
+                    color="error"
+                    (callback)="removeValue(field.name, value.id)"
+                  ></dsv-button>
+                </div>
+              }
+              <admin-search-modal
+                [m2em]="field.m2m!"
+                (callback)="addValue(field.name)($event)"
+              />
+            </div>
           </div>
         }
       </div>
