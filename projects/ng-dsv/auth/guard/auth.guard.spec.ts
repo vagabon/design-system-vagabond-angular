@@ -9,7 +9,7 @@ describe('authGuard', () => {
     let injector: EnvironmentInjector;
 
     beforeEach(() => {
-        mockAuthService = jasmine.createSpyObj<AuthService>('AuthService', ['userConnected']);
+        mockAuthService = jasmine.createSpyObj<AuthService>('AuthService', ['userConnected', 'loginFromCache']);
         mockRouter = jasmine.createSpyObj<Router>('Router', ['navigate']);
 
 

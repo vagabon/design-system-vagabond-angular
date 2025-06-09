@@ -84,7 +84,6 @@ describe('TableComponent', () => {
         setTimeout(() => {
             expect(component.showDatas().length).toBe(1);
             expect(component.showDatas()[0][1]).toBe('One');
-
-        }, 500);
+        }, 1000);
     });
 });

@@ -16,6 +16,7 @@ export const authGuard: CanActivateFn = (
         return false;
     }
 
+    authService.loginFromCache();
     const profiles = authService.userConnected()?.user?.profiles;
     if (hasRole(requiredRole, profiles)) {
         return true;
