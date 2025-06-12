@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -7,13 +7,15 @@ import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 export class StorageService {
   private readonly platformId = inject(PLATFORM_ID);
 
+  suffixe = signal<string>('');
+
   isPlatformBrowser() {
     return isPlatformBrowser(this.platformId);
   }
 
   setItem(key: string, value: unknown): void {
     if (isPlatformBrowser(this.platformId)) {
-      localStorage.setItem(key, JSON.stringify(value));
+      localStorage.setItem(key + this.suffixe(), JSON.stringify(value));
     }
   }
 
@@ -27,7 +29,7 @@ export class StorageService {
 
   getItem<T>(key: string): T | null {
     if (isPlatformBrowser(this.platformId)) {
-      const item = localStorage.getItem(key);
+      const item = localStorage.getItem(key + this.suffixe());
       return item ? this.parse(item) : null;
     }
     return null;
@@ -35,7 +37,7 @@ export class StorageService {
 
   removeItem(key: string): void {
     if (isPlatformBrowser(this.platformId)) {
-      localStorage.removeItem(key);
+      localStorage.removeItem(key + this.suffixe());
     }
   }
 

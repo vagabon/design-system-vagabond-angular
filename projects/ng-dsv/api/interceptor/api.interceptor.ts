@@ -2,8 +2,7 @@ import {
   HttpClient,
   HttpErrorResponse,
   HttpHandlerFn,
-  HttpInterceptorFn,
-  HttpRequest,
+  HttpRequest
 } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
@@ -11,11 +10,12 @@ import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
 import { catchError, switchMap, throwError } from 'rxjs';
 import { ApiService } from '../public-api';
 
-export const authInterceptor: HttpInterceptorFn = (req, next) => {
+export const authInterceptor = (suffixe: string) => (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
   const httpClient = inject(HttpClient);
   const apiService = inject(ApiService);
   const storageService = inject(StorageService);
   const toastService = inject(ToastService);
+  storageService.suffixe.set(suffixe);
 
   return next(getToken(req, apiService, storageService)).pipe(
     catchError((error) => {
@@ -51,8 +51,7 @@ const getToken = <T>(
   apiService: ApiService,
   storageService: StorageService
 ) => {
-  const jwt =
-    storageService.getItem('user-connected')?.['jwt' as keyof {}] ?? '';
+  const jwt = JSON.parse(storageService.getItem('user-connected') as string)?.['jwt' as keyof {}];
   if (!req.url.includes('/auth/') && req.url.includes(apiService.baseUrl)) {
     const headers = req.headers.set('Authorization', `Bearer ${jwt}`);
 
@@ -71,7 +70,7 @@ const handle401Error = <T>(
   next: HttpHandlerFn
 ) => {
   const jwtRefresh =
-    storageService.getItem('user-connected')?.['jwtRefresh' as keyof {}] ?? '';
+    JSON.parse(storageService.getItem('user-connected') as string)?.['jwtRefresh' as keyof {}];
   return httpClient
     .post(apiService.baseUrl + '/auth/refresh-token', {
       refreshToken: jwtRefresh,
