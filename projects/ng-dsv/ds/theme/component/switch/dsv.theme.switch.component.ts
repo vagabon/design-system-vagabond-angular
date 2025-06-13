@@ -10,7 +10,6 @@ export type Theme = {
 
 @Component({
   selector: 'dsv-theme-switch',
-  standalone: true,
   imports: [CommonModule, DsvButtonComponent],
   templateUrl: `./dsv.theme.switch.component.html`,
 })

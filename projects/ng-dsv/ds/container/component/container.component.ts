@@ -7,7 +7,6 @@ const DSV_CONTAINER = 'dsv-container';
 
 @Component({
   selector: 'dsv-container',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.scss'],

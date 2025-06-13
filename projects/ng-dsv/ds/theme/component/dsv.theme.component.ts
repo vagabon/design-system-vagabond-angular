@@ -15,8 +15,6 @@ export type ThemeType = {
 
 @Component({
   selector: 'dsv-theme',
-  standalone: true,
-  imports: [],
   templateUrl: './dsv.theme.component.html',
   styleUrls: ['./dsv.theme.component.scss'],
 })

@@ -8,7 +8,6 @@ import { LinearProgressComponent } from './linear-progress.component';
     [value]="value"
     [indeterminate]="indeterminate"
   ></app-linear-progress>`,
-  standalone: true,
   imports: [LinearProgressComponent],
 })
 class TestHostComponent {

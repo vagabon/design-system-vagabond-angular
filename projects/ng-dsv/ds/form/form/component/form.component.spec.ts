@@ -11,7 +11,6 @@ import { FormComponent } from './form.component';
       <button type="submit">Submit</button>
     </app-form>
   `,
-  standalone: true,
   imports: [FormComponent, ReactiveFormsModule],
 })
 class TestHostComponent {

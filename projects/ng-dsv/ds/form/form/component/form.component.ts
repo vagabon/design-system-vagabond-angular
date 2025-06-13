@@ -8,13 +8,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-form',
-  imports: [
-    ReactiveFormsModule,
-    DsvButtonComponent,
-    RouterLink,
-    TranslatePipe
-  ],
-  standalone: true,
+  imports: [ReactiveFormsModule, DsvButtonComponent, RouterLink, TranslatePipe],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
 })
@@ -35,13 +29,13 @@ export class FormComponent {
       if (this.textValid() !== '') {
         this.toastService.showToast({
           text: this.formValid(),
-        })
+        });
       }
     } else {
       this.toastService.showToast({
         text: 'Erreur dans le formulaire !',
-        type: 'error'
-      })
+        type: 'error',
+      });
     }
   }
 }

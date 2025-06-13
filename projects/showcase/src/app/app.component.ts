@@ -9,7 +9,6 @@ import { DsvThemeComponent } from '../../../ng-dsv/ds/theme';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [
     RouterOutlet,
     DsvButtonComponent,

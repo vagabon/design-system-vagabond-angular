@@ -8,7 +8,6 @@ import {
 
 @Component({
   selector: 'dsv-header',
-  standalone: true,
   imports: [CommonModule, DsvMenuButtonComponent],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],

@@ -4,7 +4,6 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'dsv-form-input',
   imports: [ReactiveFormsModule],
-  standalone: true,
   templateUrl: './form.input.component.html',
   styleUrl: './form.input.component.scss',
 })
@@ -26,9 +25,9 @@ export class FormInputComponent {
 
   onChange() {
     const error = this.form().controls[this.field()].errors;
-    let errorText = "";
+    let errorText = '';
     if (error?.['required']) {
-      errorText = "Ce champ est obligatoire";
+      errorText = 'Ce champ est obligatoire';
     }
     this.error.set(errorText);
   }

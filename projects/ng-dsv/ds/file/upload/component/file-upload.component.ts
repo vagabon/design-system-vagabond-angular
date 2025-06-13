@@ -3,13 +3,11 @@ import { FileUploadDirective } from '../direcitve/file-upload-directives';
 
 @Component({
   selector: 'dsv-file-upload',
-  standalone: true,
   imports: [FileUploadDirective],
   templateUrl: './file-upload.component.html',
-  styleUrls: ['./file-upload.component.scss']
+  styleUrls: ['./file-upload.component.scss'],
 })
 export class FileUploadComponent {
-
   multiple = input<boolean>(false);
   fileType = input<string>('');
   dragDropEnabled = input<boolean>(true);

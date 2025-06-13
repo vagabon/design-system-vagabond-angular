@@ -7,7 +7,6 @@ export type ButtonVariantType = 'text' | 'outlined' | 'contained';
 
 @Component({
   selector: 'dsv-button',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
@@ -33,7 +32,6 @@ export class DsvButtonComponent {
     if (this.prevent() && this.type() !== 'submit') {
       event.stopPropagation();
       event.preventDefault();
-
     }
     !this.disabled() && this.callback.emit();
   }

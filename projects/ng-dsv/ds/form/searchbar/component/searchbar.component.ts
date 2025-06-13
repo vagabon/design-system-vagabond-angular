@@ -8,7 +8,6 @@ import {
 @Component({
   selector: 'form-searchbar',
   imports: [FormComponent, FormInputComponent],
-  standalone: true,
   templateUrl: './searchbar.component.html',
   styleUrls: ['./searchbar.component.scss'],
 })

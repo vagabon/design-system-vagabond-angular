@@ -1,16 +1,17 @@
-import { Component, inject, input, signal } from "@angular/core";
-import { ApiService } from "@ng-vagabond-lab/ng-dsv/api";
+import { Component, inject, input, signal } from '@angular/core';
+import { ApiService } from '@ng-vagabond-lab/ng-dsv/api';
 
 @Component({
-    selector: "dsv-file-show",
-    standalone: true,
-    templateUrl: "./file.show.container.html",
+  selector: 'dsv-file-show',
+  templateUrl: './file.show.container.html',
 })
 export class FileShowContainer {
-    apiService = inject(ApiService);
+  apiService = inject(ApiService);
 
-    src = input.required<string>();
-    alt = input<string>('Apperçu du Meme');
+  src = input.required<string>();
+  alt = input<string>('Apperçu du Meme');
 
-    fileUrl = signal<string>(this.apiService.baseUrl + '/file/download?fileName=');
+  fileUrl = signal<string>(
+    this.apiService.baseUrl + '/file/download?fileName=',
+  );
 }

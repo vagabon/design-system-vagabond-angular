@@ -4,7 +4,6 @@ import { ColorType } from '@ng-vagabond-lab/ng-dsv/type';
 
 @Component({
   selector: 'dsv-avatar',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './avatar.component.html',
   styleUrls: ['./avatar.component.scss'],

@@ -4,7 +4,6 @@ import { DsvAvatarComponent } from '@ng-vagabond-lab/ng-dsv/ds/avatar';
 
 @Component({
   selector: 'dsv-card',
-  standalone: true,
   imports: [CommonModule, DsvAvatarComponent],
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],

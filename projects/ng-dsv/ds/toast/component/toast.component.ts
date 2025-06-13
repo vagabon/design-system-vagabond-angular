@@ -9,7 +9,6 @@ export type Theme = {
 
 @Component({
   selector: 'dsv-toast',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './toast.component.html',
   styleUrls: ['./toast.component.scss'],
