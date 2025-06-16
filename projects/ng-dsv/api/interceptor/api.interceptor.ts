@@ -52,7 +52,7 @@ const getToken = <T>(
   storageService: StorageService
 ) => {
   const jwt = JSON.parse(storageService.getItem('user-connected') as string)?.['jwt' as keyof {}];
-  if (!req.url.includes('/auth/') && req.url.includes(apiService.baseUrl)) {
+  if (!req.url.includes('/auth/') && req.url.includes(apiService.baseUrl) && jwt) {
     const headers = req.headers.set('Authorization', `Bearer ${jwt}`);
 
     return req.clone({
