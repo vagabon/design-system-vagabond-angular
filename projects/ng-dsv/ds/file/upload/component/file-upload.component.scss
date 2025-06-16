@@ -5,6 +5,10 @@
   align-items: center;
   justify-content: center;
 
+  label {
+    padding: 20px;
+  }
+
   .drag-zone {
     width: 80%;
     min-height: 200px;

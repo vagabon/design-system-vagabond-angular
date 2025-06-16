@@ -31,7 +31,6 @@ export class DsvAvatarComponent {
       this.avatarLetter.set(this.avatar().substring(0, 1).toUpperCase() ?? '?');
       const listeners =
         this.callback['listeners' as keyof OutputEmitterRef<void>];
-      console.log(this.callback);
       this.isCallback.set(listeners?.length > 0);
     });
   }

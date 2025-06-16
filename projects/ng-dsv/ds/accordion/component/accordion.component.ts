@@ -1,9 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { Component, effect, input, signal } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'dsv-accordion',
-  imports: [CommonModule],
+  imports: [TranslatePipe],
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.scss'],
 })

@@ -1,11 +1,55 @@
-html { font-size: 16px !important; }
-
-button {  
-    cursor: pointer;
-    font-size: 1rem;
+html,
+body {
+    padding: 0px !important;
+    margin: 0px !important;
+    width: 100% !important;
+    height: 100% !important;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
 }
-div, p, i { font-size: 1rem; }
 
-.flex { display: flex; flex-direction: row; gap: 5px; }
-.flex1 { flex: 1; }
-.margin5 { margin: 5px; }
+body {
+    overflow-x: hidden;
+}
+
+app-root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    cursor: pointer;
+}
+
+p {
+    line-height: 1.5rem;
+    margin: 0;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex1 {
+    flex: 1;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+h2 {
+    font-size: 1.2rem;
+}
+
+.card-container .subtitle {
+    color: rgb(91, 90, 90);
+}
+
+.dark .card-container .subtitle {
+    color: rgba(255, 255, 255, 0.7);
+}

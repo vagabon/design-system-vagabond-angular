@@ -1,12 +1,13 @@
 import { Component, effect, input, output, signal } from '@angular/core';
 import { ColorType } from '@ng-vagabond-lab/ng-dsv/type';
+import { TranslatePipe } from '@ngx-translate/core';
 
 export type ButtonWidthType = 'small' | 'medium' | 'large';
 export type ButtonVariantType = 'text' | 'outlined' | 'contained';
 
 @Component({
   selector: 'dsv-button',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
 })

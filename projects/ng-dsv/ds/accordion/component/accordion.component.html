@@ -1,5 +1,5 @@
 <a class="dsv-accordion-header" (click)="doToogle()">
-  {{ title() }}
+  {{ title() | translate }}
   @if (isOpen() === true) {
     <i class="ri-arrow-up-s-line"></i>
   } @else {

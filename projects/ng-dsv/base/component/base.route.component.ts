@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
+  selector: 'app-base-route',
   template: '',
 })
 export abstract class BaseRouteComponent {

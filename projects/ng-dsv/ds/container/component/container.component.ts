@@ -1,9 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, inject, input } from '@angular/core';
-import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
+import { Component, HostBinding, input } from '@angular/core';
 
 const COLUMN_CLASS = 'column';
-const DSV_CONTAINER = 'dsv-container';
 
 @Component({
   selector: 'dsv-container',
@@ -12,17 +10,13 @@ const DSV_CONTAINER = 'dsv-container';
   styleUrls: ['./container.component.scss'],
 })
 export class DsvContainerComponent {
-  private readonly storageService = inject(StorageService);
 
   column = input<boolean>(false);
 
-  constructor() {
-    effect(() => {
-      this.storageService.isPlatformBrowser() &&
-        this.column() &&
-        document
-          .getElementsByTagName(DSV_CONTAINER)[0]
-          .classList.add(COLUMN_CLASS);
-    });
+  @HostBinding('class')
+  get hostClasses(): string {
+    const classes: string[] = ['dsv-container'];
+    this.column() && classes.push(COLUMN_CLASS);
+    return classes.join(' ');
   }
 }

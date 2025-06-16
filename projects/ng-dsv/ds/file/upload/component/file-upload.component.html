@@ -11,5 +11,9 @@
     #fileInput
     class="visually-hidden"
   />
-  <ng-content></ng-content>
+  @if (!file()) {
+    <ng-content></ng-content>
+  } @else {
+    <img [src]="file()" alt="Aperçu du Meme" width="100%" />
+  }
 </label>

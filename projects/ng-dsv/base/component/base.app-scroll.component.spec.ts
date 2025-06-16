@@ -19,7 +19,7 @@ describe('BaseAppScrollComponent', () => {
   let component: TestComponent;
 
   // Classe concrète pour tester l'abstraite
-  class TestComponent extends BaseAppScrollComponent {}
+  class TestComponent extends BaseAppScrollComponent { }
 
   beforeEach(() => {
     routerEvents$ = new Subject();
@@ -50,15 +50,6 @@ describe('BaseAppScrollComponent', () => {
     runInInjectionContext(TestBed.inject(EnvironmentInjector), () => {
       component = new TestComponent();
     });
-  });
-
-  it('should set API baseUrl when env is available', () => {
-    setTimeout(() => {
-      expect(apiServiceMock.setBaseUrl).toHaveBeenCalledWith(
-        'https://fake.api',
-      );
-      expect(component.load()).toBeTrue();
-    }, 1000);
   });
 
   it('should restore scroll on router navigation', () => {

@@ -48,10 +48,10 @@
     }
 }
 
-::ng-deep .dark dsv-avatar {
+::ng-deep .dark .dsv-avatar {
     border-color: var(--text);
 }
 
-::ng-deep .dark dsv-avatar.callback:hover {
+::ng-deep .dark .dsv-avatar.callback:hover {
     border-color: #2b2b2b;
 }

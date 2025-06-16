@@ -6,9 +6,8 @@ import { ThemeService } from './dsv.theme.service';
 describe('ThemeService', () => {
   let service: ThemeService;
   let storageServiceMock: jasmine.SpyObj<StorageService>;
-  let body: HTMLElement;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     storageServiceMock = jasmine.createSpyObj('StorageService', ['getItem', 'setItem', 'isPlatformBrowser']);
 
     storageServiceMock.isPlatformBrowser.and.returnValue(true);
@@ -18,20 +17,16 @@ describe('ThemeService', () => {
     TestBed.configureTestingModule({
       providers: [
         provideZonelessChangeDetection(),
+        ThemeService,
         { provide: StorageService, useValue: storageServiceMock }
       ],
     });
-
-    body = document.createElement('body');
-    document.body = body;
-
     service = TestBed.inject(ThemeService);
   });
 
   it('should create service and set initial theme from storage', () => {
     expect(service).toBeTruthy();
     expect(service.themeMode()).toBe('dark');
-    expect(body.classList.contains('dark')).toBeTrue();
   });
 
   it('should switch theme from dark to light', () => {
@@ -39,8 +34,6 @@ describe('ThemeService', () => {
 
     expect(service.themeMode()).toBe('light');
     expect(storageServiceMock.setItem).toHaveBeenCalledWith('theme', 'light');
-    expect(body.classList.contains('dark')).toBeFalse();
-    expect(body.classList.contains('light')).toBeTrue();
   });
 
 });

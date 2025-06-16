@@ -1,6 +1,7 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { provideTranslateService } from '@ngx-translate/core';
 import { DsvAccordionComponent } from './accordion.component';
 
 describe('DsvAccordionComponent', () => {
@@ -12,7 +13,9 @@ describe('DsvAccordionComponent', () => {
     await TestBed.configureTestingModule({
       imports: [DsvAccordionComponent],
       providers: [
-        provideZonelessChangeDetection(),],
+        provideZonelessChangeDetection(),
+        provideTranslateService()
+      ],
     }).compileComponents();
     fixture = TestBed.createComponent(DsvAccordionComponent);
     component = fixture.componentInstance;

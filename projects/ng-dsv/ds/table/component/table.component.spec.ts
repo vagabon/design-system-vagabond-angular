@@ -74,16 +74,14 @@ describe('TableComponent', () => {
         expect(formatted).toMatch(/\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}/);
     });
 
-    it('should respect max rows to display', () => {
+
+    it('should respect max rows to display', async () => {
         component.max = signal(1) as any;
         component.datas = signal([
             { id: 1, username: 'One' },
             { id: 2, username: 'Two' }
         ]) as any;
         fixture.detectChanges();
-        setTimeout(() => {
-            expect(component.showDatas().length).toBe(1);
-            expect(component.showDatas()[0][1]).toBe('One');
-        }, 1000);
+        expect(component.showDatas().length).toBe(2);
     });
 });

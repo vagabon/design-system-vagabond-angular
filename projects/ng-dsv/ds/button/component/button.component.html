@@ -1,16 +1,16 @@
 @if (show()) {
   <button
     [class]="classes()"
-    (click)="doClick($event)"
     [type]="type()"
     [disabled]="disabled()"
+    (click)="doClick($event)"
   >
     @if (icon()) {
       <i [class]="icon()"></i>
     }
     @if (libelle()) {
       <span>
-        {{ libelle() }}
+        {{ libelle() | translate }}
       </span>
     }
     <ng-content></ng-content>

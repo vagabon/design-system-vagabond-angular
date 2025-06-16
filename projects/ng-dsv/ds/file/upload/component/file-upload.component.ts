@@ -1,4 +1,4 @@
-import { Component, ElementRef, input, output, ViewChild } from '@angular/core';
+import { Component, ElementRef, input, output, signal, ViewChild } from '@angular/core';
 import { FileUploadDirective } from '../direcitve/file-upload-directives';
 
 @Component({
@@ -9,15 +9,22 @@ import { FileUploadDirective } from '../direcitve/file-upload-directives';
 })
 export class FileUploadComponent {
   multiple = input<boolean>(false);
-  fileType = input<string>('');
+  fileType = input<string>('image/*');
   dragDropEnabled = input<boolean>(true);
 
   filesChanged = output<FileList>();
+
+  file = signal<string | undefined>(undefined);
 
   @ViewChild('fileInput')
   inputRef!: ElementRef<HTMLInputElement>;
 
   addFiles(files: FileList): void {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.file.set(reader.result as string);
+    };
+    reader.readAsDataURL(files.item(0) as Blob);
     this.filesChanged.emit(files);
   }
 

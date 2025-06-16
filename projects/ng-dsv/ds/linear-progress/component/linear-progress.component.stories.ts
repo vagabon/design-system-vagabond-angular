@@ -1,16 +1,13 @@
 import { type Meta, type StoryObj } from '@storybook/angular';
-import { DsvItemComponent } from './item.component';
+import { LinearProgressComponent } from './linear-progress.component';
 
 export const ActionsData = {
-  icon: "add",
-  text: 'My webapp',
-  small: true,
-  callback: () => { },
+  load: true,
 };
 
-const meta: Meta<DsvItemComponent> = {
-  title: 'dsv/Item',
-  component: DsvItemComponent,
+const meta: Meta<LinearProgressComponent> = {
+  title: 'dsv/Progress/linear',
+  component: LinearProgressComponent,
   excludeStories: /.*Data$/,
   tags: ['autodocs'],
   argTypes: {},
@@ -20,7 +17,7 @@ const meta: Meta<DsvItemComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<DsvItemComponent>;
+type Story = StoryObj<LinearProgressComponent>;
 
 export const Default: Story = {
   args: {},

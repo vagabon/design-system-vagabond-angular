@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/angular';
 import { DsvAccordionComponent } from './accordion.component';
 
-export const ActionsData = {
+const ActionsData = {
   open: false,
   title: 'vagabond',
   content:

@@ -6,7 +6,7 @@ import {
   type StoryObj,
 } from '@storybook/angular';
 import { DsvButtonComponent } from '../../button';
-import { DsvToastComponent } from '../component/toast.component';
+import { DsvToastComponent } from './toast.component';
 import { ToastType } from '../dto/toast.dto';
 import { ToastService } from '../service/toast.service';
 
@@ -29,7 +29,7 @@ type Story = StoryObj<DsvToastComponent>;
   selector: 'toast-button-demo',
   imports: [DsvButtonComponent],
   template: `
-    <div class="flex">
+    <div class="flex" style="gap: 5px;">
       <dsv-button
         color="success"
         (callback)="click()"
