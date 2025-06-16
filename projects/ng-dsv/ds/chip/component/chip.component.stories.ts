@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { fn } from '@storybook/test';
 import { DsvChipComponent } from './chip.component';
 
 export const ActionsData = {
@@ -31,7 +30,7 @@ export const Default: Story = {
 
 export const WithDelete: Story = {
   args: {
-    delete: fn(),
+    delete: () => { },
   },
 
 };
