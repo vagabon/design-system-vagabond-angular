@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component, input, output } from '@angular/core';
+import { Component, effect, input, output, signal } from '@angular/core';
 import { ColorType } from '@ng-vagabond-lab/ng-dsv/type';
 
 export type ButtonWidthType = 'small' | 'medium' | 'large';
@@ -7,7 +6,7 @@ export type ButtonVariantType = 'text' | 'outlined' | 'contained';
 
 @Component({
   selector: 'dsv-button',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
 })
@@ -27,6 +26,24 @@ export class DsvButtonComponent {
   prevent = input<boolean>(true);
 
   callback = output<void>();
+
+  classes = signal<string>('');
+
+  constructor() {
+    effect(() => {
+      const classes = [
+        'dsv-button',
+        this.color(),
+        this.width(),
+        this.variant(),
+      ];
+      this.icon() && classes.push('icon');
+      this.libelle() !== '' && classes.push('padding');
+      this.fullwidth() && classes.push('fullwidth');
+      this.noHover() && classes.push('no-hover');
+      this.classes.set(classes.join(' '));
+    });
+  }
 
   doClick(event: Event) {
     if (this.prevent() && this.type() !== 'submit') {

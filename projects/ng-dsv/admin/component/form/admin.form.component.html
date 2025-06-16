@@ -1,7 +1,7 @@
 <app-form [form]="form" [urlBack]="urlBack()!" (callback)="sendForm($event)">
   <div class="form-container">
     @for (field of formConf(); track field.name) {
-      <div [class.width50]="field.className === 'width50'">
+      <div [class]="field.className ?? ''">
         @if (
           field.type === "text" ||
           field.type === "number" ||

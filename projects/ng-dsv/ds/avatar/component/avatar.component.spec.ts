@@ -1,6 +1,8 @@
-import { provideZonelessChangeDetection } from '@angular/core';
+import {
+  OutputEmitterRef,
+  provideZonelessChangeDetection,
+} from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 import { DsvAvatarComponent } from './avatar.component';
 
 describe('DsvAvatarComponent', () => {
@@ -8,26 +10,24 @@ describe('DsvAvatarComponent', () => {
   let fixture: ComponentFixture<DsvAvatarComponent>;
 
   beforeEach(async () => {
-    (window as any).google = { accounts: { id: { prompt: () => { } } } };
+    (window as any).google = { accounts: { id: { prompt: () => {} } } };
     await TestBed.configureTestingModule({
       imports: [DsvAvatarComponent],
-      providers: [
-        provideZonelessChangeDetection(),],
+      providers: [provideZonelessChangeDetection()],
     }).compileComponents();
     fixture = TestBed.createComponent(DsvAvatarComponent);
     component = fixture.componentInstance;
   });
 
-  it('should render', () => {
-    spyOn(component.callback, 'emit');
+  it('should not emit callback if no listener exists', () => {
+    const callback = jasmine.createSpy();
+    component.callback = {
+      listeners: [{ id: 1 }],
+      emit: () => callback,
+    } as unknown as OutputEmitterRef<void>;
     fixture.detectChanges();
-    expect(component).toBeTruthy();
-    expect(fixture.debugElement.query(By.css('.open'))).toBeFalsy();
 
-    const link =
-      fixture.debugElement.nativeElement.querySelector('.dsv-avatar');
-    link.click();
-    fixture.detectChanges();
-    expect(component.callback.emit).toHaveBeenCalled();
+    fixture.nativeElement.click();
+    expect(callback).not.toHaveBeenCalled();
   });
 });

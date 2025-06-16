@@ -1,20 +1,8 @@
 @if (show()) {
   <button
-    class="dsv-button"
+    [class]="classes()"
     (click)="doClick($event)"
-    [ngClass]="
-      (icon() ? 'icon' : '') +
-      ' ' +
-      color() +
-      ' ' +
-      width() +
-      ' ' +
-      variant() +
-      ' ' +
-      (fullwidth() ? 'fullwidth' : '')
-    "
     [type]="type()"
-    [class.no-hover]="noHover()"
     [disabled]="disabled()"
   >
     @if (icon()) {

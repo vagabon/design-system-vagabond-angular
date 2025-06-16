@@ -1,11 +1,5 @@
-<a
-  class="dsv-avatar"
-  [ngClass]="color() + ' ' + (isCallback() ? 'callback' : '')"
-  (click)="triggerEvent()"
->
-  @if (isImage()) {
-    <img src="{{ avatar() }}" alt="avatar" />
-  } @else {
-    <span>{{ showAvatar() }}</span>
-  }
-</a>
+@if (isImage()) {
+  <img [src]="avatar()" alt="avatar" />
+} @else {
+  <span>{{ avatarLetter() }}</span>
+}

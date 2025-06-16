@@ -29,12 +29,12 @@ type Story = StoryObj<DsvAvatarComponent>;
 export const Default: Story = {
   args: {},
   render: (args: any) => ({
-    template: `<dsv-avatar avatar="${args.avatar}" >  </dsv-avatar>`,
+    template: `<dsv-avatar avatar="${args.avatar}" color="${args.color}">  </dsv-avatar>`,
   }),
 };
 
 export const WithCallback: Story = {
   args: {
-    callback: () => { },
+    callback: () => {},
   },
 };

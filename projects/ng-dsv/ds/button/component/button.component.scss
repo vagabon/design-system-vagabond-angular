@@ -1,4 +1,4 @@
-button.dsv-button {
+button {
     display: inline-flex;
     flex-direction: row;
     gap: 5px;
@@ -16,15 +16,19 @@ button.dsv-button {
 
     outline: 0px;
     margin: 0px;
+    padding: 6px;
     text-decoration: none;
     border-width: 0px;
     border-radius: 4px;
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    padding: 6px;
     font-size: 1rem;
     min-width: 10px;
     line-height: 1;
+
+    &.padding {
+        padding: 8px 10px;
+    }
 
     &.small,
     &.small>i {
@@ -148,7 +152,7 @@ button.dsv-button {
 
     &:disabled {
         cursor: auto !important;
-        background: rgb(91, 91, 91);
+        background: rgb(91, 91, 91) !important;
     }
 
     ::ng-deep .dark & {
