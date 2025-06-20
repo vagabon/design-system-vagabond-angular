@@ -1,5 +1,5 @@
-import { Component, input, output, signal } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, effect, input, output } from '@angular/core';
+import { FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'dsv-form-input',
@@ -12,23 +12,20 @@ export class FormInputComponent {
   field = input.required<string>();
   type = input<string>('text');
   withLabel = input<boolean>(true);
-  required = input<boolean>(true);
+  required = input<boolean>(false);
   icon = input<string>();
 
   onSend = output<string>();
 
-  error = signal<string>('');
+  isRequired = false;
+
+  constructor() {
+    effect(() => {
+      this.isRequired = this.form().get(this.field())?.hasValidator?.(Validators.required) ?? false;
+    })
+  }
 
   onEnter() {
     this.onSend.emit(this.form().value[this.field()]);
-  }
-
-  onChange() {
-    const error = this.form().controls[this.field()].errors;
-    let errorText = '';
-    if (error?.['required']) {
-      errorText = 'Ce champ est obligatoire';
-    }
-    this.error.set(errorText);
   }
 }

@@ -5,9 +5,9 @@ import {
   HostListener,
   input,
   output,
-  OutputEmitterRef,
-  signal,
+  signal
 } from '@angular/core';
+import { isCallback } from '@ng-vagabond-lab/ng-dsv/base';
 import { ColorType } from '@ng-vagabond-lab/ng-dsv/type';
 
 @Component({
@@ -29,9 +29,7 @@ export class DsvAvatarComponent {
     effect(() => {
       this.isImage.set(this.avatar().startsWith('http'));
       this.avatarLetter.set(this.avatar().substring(0, 1).toUpperCase() ?? '?');
-      const listeners =
-        this.callback['listeners' as keyof OutputEmitterRef<void>];
-      this.isCallback.set(listeners?.length > 0);
+      this.isCallback.set(isCallback(this.callback));
     });
   }
 

@@ -2,19 +2,19 @@ import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/co
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiDto } from '@ng-vagabond-lab/ng-dsv/api';
-import { SelectComponent } from './form.select.component';
+import { FormSelectComponent } from './form.select.component';
 
 describe('SelectComponent', () => {
-    let component: SelectComponent;
-    let fixture: ComponentFixture<SelectComponent>;
+    let component: FormSelectComponent;
+    let fixture: ComponentFixture<FormSelectComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [SelectComponent],
+            imports: [FormSelectComponent],
             providers: [provideZonelessChangeDetection()]
         }).compileComponents();
 
-        fixture = TestBed.createComponent(SelectComponent);
+        fixture = TestBed.createComponent(FormSelectComponent);
         component = fixture.componentInstance;
 
         const form = new FormGroup({

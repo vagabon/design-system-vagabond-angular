@@ -1,13 +1,22 @@
 <div [formGroup]="form()">
   @if (withLabel()) {
-    <label [for]="field()">{{ field() }} {{ required() ? "*" : "" }}</label>
+    <label
+      [for]="field()"
+      [class.error]="
+        form().get(field())?.touched && form().get(field())?.invalid
+      "
+    >
+      {{ field() }} {{ isRequired ? "*" : "" }}
+    </label>
   }
   @if (type() === "textarea") {
     <textarea
       [id]="field()"
       [formControlName]="field()"
       class="form-control"
-      [class.error]="error()"
+      [class.error]="
+        form().get(field())?.touched && form().get(field())?.invalid
+      "
     ></textarea>
   } @else {
     <input
@@ -16,15 +25,20 @@
       [formControlName]="field()"
       class="form-control"
       [class.icon]="icon()"
-      [class.error]="error()"
-      (change)="onChange()"
+      [class.error]="
+        form().get(field())?.touched && form().get(field())?.invalid
+      "
       (keydown.enter)="onEnter()"
     />
   }
   @if (icon()) {
     <i [class]="icon()"></i>
   }
-  @if (error() !== "") {
-    <div class="error-content">{{ error() }}</div>
+  @if (form().get(field())?.touched && form().get(field())?.invalid) {
+    <div class="error-content">
+      @if (form().get(field())?.errors?.["required"]) {
+        <div>Le champ est requis.</div>
+      }
+    </div>
   }
 </div>

@@ -1,11 +1,13 @@
 import {
   Component,
+  effect,
   inject,
   input,
   output,
-  OutputEmitterRef,
+  signal
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { isCallback } from '@ng-vagabond-lab/ng-dsv/base';
 
 @Component({
   selector: 'dsv-item',
@@ -22,10 +24,12 @@ export class DsvItemComponent {
 
   callback = output<void>();
 
-  isCallback() {
-    const listeners =
-      this.callback['listeners' as keyof OutputEmitterRef<void>];
-    return listeners?.length > 0;
+  isCallback = signal<boolean>(false);
+
+  constructor() {
+    effect(() => {
+      this.isCallback.set(isCallback(this.callback));
+    });
   }
 
   doClick() {

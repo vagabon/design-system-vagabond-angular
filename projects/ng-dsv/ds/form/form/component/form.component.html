@@ -1,5 +1,7 @@
 <form [formGroup]="form()" (ngSubmit)="onSubmit()" class="form-container">
-  <ng-content></ng-content>
+  <div>
+    <ng-content></ng-content>
+  </div>
   <div
     class="form-buttons"
     [style.display]="urlBack() && textValid() !== '' ? '' : 'none'"

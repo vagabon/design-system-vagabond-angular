@@ -4,6 +4,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { AuthGoogleService, AuthService } from '@ng-vagabond-lab/ng-dsv/auth';
 import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
+import { provideTranslateService } from '@ngx-translate/core';
 import { AuthComponent } from './auth.component';
 
 describe('AuthComponent', () => {
@@ -33,6 +34,7 @@ describe('AuthComponent', () => {
       providers: [
         provideZonelessChangeDetection(),
         provideHttpClient(),
+        provideTranslateService(),
         { provide: AuthService, useValue: authServiceMock },
         { provide: AuthGoogleService, useValue: authGoogleServiceMock },
         { provide: EnvironmentService, useValue: environmentServiceMock }

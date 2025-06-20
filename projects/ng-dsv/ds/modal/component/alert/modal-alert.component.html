@@ -3,11 +3,11 @@
   <div ngProjectAs="modal-footer">
     @if (buttonClose()) {
       <dsv-button (callback)="doClickClose()" color="error">
-        {{ buttonClose() }}
+        {{ buttonClose()! | translate }}
       </dsv-button>
     }
     <dsv-button (callback)="doClick()" color="success">
-      {{ button() }}
+      {{ button() | translate }}
     </dsv-button>
   </div>
 </app-modal>

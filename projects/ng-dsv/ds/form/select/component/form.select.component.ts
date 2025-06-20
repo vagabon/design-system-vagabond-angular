@@ -1,5 +1,5 @@
-import { Component, input, output } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, effect, input, output } from '@angular/core';
+import { FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ApiDto } from '@ng-vagabond-lab/ng-dsv/api';
 
 @Component({
@@ -11,7 +11,7 @@ import { ApiDto } from '@ng-vagabond-lab/ng-dsv/api';
     './form.select.component.scss',
   ],
 })
-export class SelectComponent {
+export class FormSelectComponent {
   form = input.required<FormGroup>();
   field = input.required<string>();
   withLabel = input<boolean>(true);
@@ -19,6 +19,14 @@ export class SelectComponent {
   list = input<(ApiDto & { name: string })[]>([]);
 
   change = output<string>();
+
+  isRequired = false;
+
+  constructor() {
+    effect(() => {
+      this.isRequired = this.form().get(this.field())?.hasValidator?.(Validators.required) ?? false;
+    })
+  }
 
   doChange() {
     this.change.emit(this.form().value[this.field()]);

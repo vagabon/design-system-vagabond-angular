@@ -24,6 +24,7 @@ export class FormComponent {
   callback = output<ApiDto>();
 
   onSubmit() {
+    this.form().markAllAsTouched();
     if (this.form().valid) {
       this.callback.emit(this.form().value);
       if (this.textValid() !== '') {

@@ -5,6 +5,11 @@
     justify-content: center;
     gap: 5px;
     padding: 10px 5px;
+
+}
+
+::ng-deep app-paginate-component button {
+    border-radius: 50% !important;
 }
 
 ::ng-deep app-paginate-component button:disabled {

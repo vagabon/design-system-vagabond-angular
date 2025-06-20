@@ -41,19 +41,4 @@ describe('FormInputComponent', () => {
 
     expect(component.onSend.emit).toHaveBeenCalledWith('test value');
   });
-
-  it('should set error when field is invalid', () => {
-    component.form().get('testField')?.markAsTouched();
-    component.form().get('testField')?.setValue('');
-    component.onChange();
-
-    expect(component.error()).toBe('Ce champ est obligatoire');
-  });
-
-  it('should clear error when field is valid', () => {
-    component.form().get('testField')?.setValue('valid');
-    component.onChange();
-
-    expect(component.error()).toBe('');
-  });
 });

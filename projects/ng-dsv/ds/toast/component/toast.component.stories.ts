@@ -6,9 +6,9 @@ import {
   type StoryObj,
 } from '@storybook/angular';
 import { DsvButtonComponent } from '../../button';
-import { DsvToastComponent } from './toast.component';
 import { ToastType } from '../dto/toast.dto';
 import { ToastService } from '../service/toast.service';
+import { DsvToastComponent } from './toast.component';
 
 export const ActionsData = {};
 
@@ -61,7 +61,7 @@ class PrimaryButtonDemo {
   constructor(private readonly toastService: ToastService) { }
 
   click(type: ToastType = 'success') {
-    this.toastService.showToast({ text: type, type: type });
+    this.toastService.showToast({ text: type + ' ' + Math.floor(Math.random() * 101), type: type });
   }
 }
 

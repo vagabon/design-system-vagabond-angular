@@ -7,12 +7,13 @@ import {
   signal,
 } from '@angular/core';
 import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ModalService } from '../../service/modal.service';
 import { ModalComponent } from '../modal.component';
 
 @Component({
   selector: 'app-modal-alert',
-  imports: [ModalComponent, DsvButtonComponent],
+  imports: [ModalComponent, DsvButtonComponent, TranslatePipe],
   templateUrl: './modal-alert.component.html',
 })
 export class ModalAlertComponent {
@@ -29,7 +30,7 @@ export class ModalAlertComponent {
 
   constructor() {
     effect(() => {
-      this.isOpen.set(this.modalService.getSignal(this.id()));
+      this.isOpen.set(this.modalService.getSignal(this.id() ?? false));
     });
   }
 

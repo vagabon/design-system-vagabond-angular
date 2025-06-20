@@ -4,9 +4,16 @@
 
     form {
         flex-direction: column;
-        display: block;
+        display: flex;
         margin-top: 0em;
         unicode-bidi: isolate;
+
+        &>div:nth-child(1) {
+            flex-direction: column;
+            display: flex;
+            gap: 10px;
+            overflow: auto;
+        }
     }
 
     .form-buttons {

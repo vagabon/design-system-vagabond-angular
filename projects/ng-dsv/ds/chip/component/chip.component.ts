@@ -3,9 +3,9 @@ import {
   effect,
   input,
   output,
-  OutputEmitterRef,
-  signal,
+  signal
 } from '@angular/core';
+import { isCallback } from '@ng-vagabond-lab/ng-dsv/base';
 import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
 
 @Component({
@@ -23,9 +23,7 @@ export class DsvChipComponent {
 
   constructor() {
     effect(() => {
-      this.isDelete.set(
-        this.delete['listeners' as keyof OutputEmitterRef<void>]?.length > 0,
-      );
+      this.isDelete.set(isCallback(this.delete));
     });
   }
 

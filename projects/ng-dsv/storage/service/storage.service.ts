@@ -22,7 +22,8 @@ export class StorageService {
   parse(value: string) {
     try {
       return JSON.parse(value);
-    } catch (_) {
+    } catch (exception) {
+      console.error(exception);
       return value;
     }
   }

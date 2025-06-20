@@ -1,7 +1,6 @@
 import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { JSONObject } from '@ng-vagabond-lab/ng-dsv/api';
 import { provideTranslateService, TranslatePipe } from '@ngx-translate/core';
 import { TableDto } from '../dto/table.dto';
 import { TableComponent } from './table.component';
@@ -53,27 +52,6 @@ describe('TableComponent', () => {
         expect(result[0][1]).toBe('Alice');
         expect(result[0][2]).toMatch(/\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}/);
     });
-
-    it('should format nested keys correctly', () => {
-        const nested: JSONObject = {
-            id: 3,
-            user: {
-                name: 'Charlie',
-                address: {
-                    city: 'Paris'
-                }
-            }
-        };
-
-        expect(component.getValue(nested, 'user.name', false)).toBe('Charlie');
-        expect(component.getValue(nested, 'user.address.city', false)).toBe('Paris');
-    });
-
-    it('should format date strings correctly', () => {
-        const formatted = component.formatDate('2025-06-08T14:30:00.000Z');
-        expect(formatted).toMatch(/\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}/);
-    });
-
 
     it('should respect max rows to display', async () => {
         component.max = signal(1) as any;

@@ -1,3 +1,11 @@
 :host {
     width: 100%;
+
+    &>div {
+
+        .form-control {
+            width: calc(100% - 10px);
+            height: 31px;
+        }
+    }
 }
