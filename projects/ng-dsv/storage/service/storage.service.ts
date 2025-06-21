@@ -23,7 +23,7 @@ export class StorageService {
     try {
       return JSON.parse(value);
     } catch (exception) {
-      console.error(exception);
+      console.log(exception);
       return value;
     }
   }

@@ -1,5 +1,6 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideTranslateService } from '@ngx-translate/core';
 import { DsvChipComponent } from './chip.component';
 
 describe('DsvChipComponent', () => {
@@ -11,6 +12,7 @@ describe('DsvChipComponent', () => {
       imports: [DsvChipComponent],
       providers: [
         provideZonelessChangeDetection(),
+        provideTranslateService(),
       ],
     }).compileComponents();
     fixture = TestBed.createComponent(DsvChipComponent);

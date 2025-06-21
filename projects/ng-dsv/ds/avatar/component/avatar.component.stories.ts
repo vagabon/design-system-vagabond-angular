@@ -1,3 +1,4 @@
+import { colorControls } from '@ng-vagabond-lab/ng-dsv/type';
 import { type Meta, type StoryObj } from '@storybook/angular';
 import { DsvAvatarComponent } from './avatar.component';
 
@@ -12,10 +13,7 @@ const meta: Meta<DsvAvatarComponent> = {
   excludeStories: /.*Data$/,
   tags: ['autodocs'],
   argTypes: {
-    color: {
-      control: 'select',
-      options: ['primary', 'success', 'info', 'warning', 'error'],
-    },
+    ...colorControls as Meta<DsvAvatarComponent>['argTypes'],
     callback: { action: 'callback' },
   },
   args: {
@@ -27,14 +25,13 @@ export default meta;
 type Story = StoryObj<DsvAvatarComponent>;
 
 export const Default: Story = {
-  args: {},
   render: (args: any) => ({
-    template: `<dsv-avatar avatar="${args.avatar}" color="${args.color}">  </dsv-avatar>`,
+    template: `<dsv-avatar avatar="${args.avatar}" color="${args.color}" variant="${args.variant}" width="${args.width}" show="${args.show}" show="${args.show}"></dsv-avatar>`,
   }),
 };
 
 export const WithCallback: Story = {
   args: {
-    callback: () => {},
+    callback: () => { },
   },
 };

@@ -2,9 +2,8 @@ import { type Meta, type StoryObj } from '@storybook/angular';
 import { PaginateComponent } from './paginate.component';
 
 export const ActionsData = {
-  page: 2,
+  page: 0,
   max: 10,
-  nb: 300,
   callback: () => { }
 };
 

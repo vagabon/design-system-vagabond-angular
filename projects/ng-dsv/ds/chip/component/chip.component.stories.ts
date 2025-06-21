@@ -1,8 +1,12 @@
+import { colorControls } from '@ng-vagabond-lab/ng-dsv/type';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { DsvChipComponent } from './chip.component';
 
 export const ActionsData = {
   text: 'text',
+  width: 'small',
+  variant: 'contained',
+  color: 'default',
 };
 
 const meta: Meta<DsvChipComponent> = {
@@ -11,10 +15,11 @@ const meta: Meta<DsvChipComponent> = {
   excludeStories: /.*Data$/,
   tags: ['autodocs'],
   argTypes: {
+    ...colorControls as Meta<DsvChipComponent>['argTypes'],
     delete: { action: 'function', control: false },
   },
   args: {
-    ...ActionsData,
+    ...ActionsData as Meta<DsvChipComponent>['args'],
   },
 };
 
@@ -23,9 +28,6 @@ type Story = StoryObj<DsvChipComponent>;
 
 export const Default: Story = {
   args: {},
-  render: (args: any) => ({
-    template: `<dsv-chip text="${args.text}"></dsv-chip>`,
-  }),
 };
 
 export const WithDelete: Story = {

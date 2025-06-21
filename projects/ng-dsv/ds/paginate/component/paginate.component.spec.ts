@@ -17,7 +17,6 @@ describe('PaginateComponent', () => {
 
         component.page = signal(1) as unknown as InputSignal<number>;
         component.max = signal(10) as unknown as InputSignal<number>;
-        component.nb = signal(100) as unknown as InputSignal<number>;
 
         fixture.detectChanges();
     });

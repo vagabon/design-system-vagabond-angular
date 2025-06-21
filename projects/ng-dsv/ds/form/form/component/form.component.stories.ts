@@ -16,7 +16,7 @@ export const ActionsData = {
     <app-form [form]="form" [urlBack]="urlBack" (callback)="callback()">
       <dsv-form-input [form]="form" field="name" />
       <dsv-form-input [form]="form" type="number" field="number" />
-      <dsv-form-input [form]="form" type="datetime-locale" field="date" />
+      <dsv-form-input [form]="form" type="datetime-local" field="date" />
       <dsv-form-input [form]="form" type="textarea" field="textarea" />
       <dsv-form-select [form]="form" field="select" [list]="[{id: '', name: ''}, {id: '1', name: 'Test'}]" />
       <dsv-form-checkbox [form]="form" field="checkbox" />
@@ -37,7 +37,7 @@ class StoryWrapperComponent {
     date: new FormControl(''),
     textarea: new FormControl('', [Validators.required]),
     select: new FormControl('', [Validators.required]),
-    checkbox: new FormControl(false, [Validators.required]),
+    checkbox: new FormControl(false),
   });
 
   urlBack?: string;

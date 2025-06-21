@@ -23,6 +23,7 @@
             <div class="m2m-content">
               @for (value of form.value[field.name]; track value.id) {
                 <dsv-chip
+                  color="default"
                   [text]="value.name"
                   (delete)="removeValue(field.name, value.id)()"
                 />

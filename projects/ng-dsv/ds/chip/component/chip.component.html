@@ -1,12 +1,12 @@
-<div class="chip" [class.with-delete]="isDelete()">
+<div [class]="classes()">
   <span>
-    {{ text() }}
+    {{ text() | translate }}
   </span>
   @if (isDelete()) {
     <dsv-button
       icon="ri-delete-bin-line"
       variant="text"
-      color="error"
+      color="inherit"
       (callback)="doDelete()"
     ></dsv-button>
   }

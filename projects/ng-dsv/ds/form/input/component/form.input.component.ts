@@ -1,9 +1,11 @@
-import { Component, effect, input, output } from '@angular/core';
-import { FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, input, output } from '@angular/core';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormErrorComponent } from '../../error/component/form.error.component';
+import { FormLabelComponent } from '../../label/component/form.label.component';
 
 @Component({
   selector: 'dsv-form-input',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, FormLabelComponent, FormErrorComponent],
   templateUrl: './form.input.component.html',
   styleUrl: './form.input.component.scss',
 })
@@ -16,14 +18,6 @@ export class FormInputComponent {
   icon = input<string>();
 
   onSend = output<string>();
-
-  isRequired = false;
-
-  constructor() {
-    effect(() => {
-      this.isRequired = this.form().get(this.field())?.hasValidator?.(Validators.required) ?? false;
-    })
-  }
 
   onEnter() {
     this.onSend.emit(this.form().value[this.field()]);

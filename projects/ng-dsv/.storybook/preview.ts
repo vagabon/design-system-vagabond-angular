@@ -1,5 +1,5 @@
 import { provideZonelessChangeDetection } from '@angular/core';
-import { provideRouter, withInMemoryScrolling } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { provideTranslateService } from '@ngx-translate/core';
 import {
   applicationConfig,
@@ -7,12 +7,13 @@ import {
   moduleMetadata,
   type Preview,
 } from '@storybook/angular';
+import { of } from 'rxjs';
 import { DsvThemeSwitchComponent } from '../ds/theme';
 import { DsvThemeComponent } from './../ds/theme/component/dsv.theme.component';
 
 const theme = {
   background: 'rgb(245, 245, 245)',
-  primary: '#2943c6',
+  primary: 'rgb(48, 100, 197)',
 };
 const themeString = JSON.stringify(theme);
 
@@ -31,12 +32,21 @@ const preview: Preview = {
       providers: [
         provideZonelessChangeDetection(),
         provideTranslateService(),
-        provideRouter(
-          [],
-          withInMemoryScrolling({
-            scrollPositionRestoration: 'enabled',
-          }),
-        ),
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            params: of({ id: '' }),
+            queryParams: of({}),
+            fragment: of(null),
+            data: of({}),
+            url: of([]),
+            snapshot: {
+              paramMap: new Map(),
+              queryParamMap: new Map(),
+              data: {},
+            },
+          }
+        }
       ],
     }),
     moduleMetadata({
@@ -44,14 +54,15 @@ const preview: Preview = {
     }),
     componentWrapperDecorator((story) => {
       return `
-      <dsv-theme [theme]='${themeString}' class="flex flex1" >
-        <div style='padding: 5px; margin-bottom: 40px; min-height: 400px; position: relative; display: flex; flex-direction: column; align-items: baseline;'>
-          <div style='margin-bottom: 20px'>
-            <dsv-theme-switch></dsv-theme-switch>
+        <dsv-theme [theme]='${themeString}' class="flex flex1" >
+          <div style='padding: 5px; margin-bottom: 40px; min-height: 100px; position: relative; display: flex; flex-direction: column; '>
+            <div style='margin-bottom: 20px'>
+              <dsv-theme-switch></dsv-theme-switch>
+            </div>
+            ${story}
           </div>
-          ${story}
-        </div>
-      </dsv-theme>`;
+        </dsv-theme>
+      `;
     }),
   ],
 };

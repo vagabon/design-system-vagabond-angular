@@ -1,0 +1,9 @@
+@if (show()) {
+  <label
+    [for]="label()"
+    class="text"
+    [class.error]="field().touched && field().invalid"
+  >
+    {{ label() }} {{ isRequired() ? "*" : "" }}
+  </label>
+}

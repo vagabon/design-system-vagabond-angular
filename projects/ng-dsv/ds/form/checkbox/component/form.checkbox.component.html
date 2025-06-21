@@ -1,7 +1,9 @@
 <div [formGroup]="form()">
-  @if (withLabel()) {
-    <label [for]="field()">{{ field() }}</label>
-  }
+  <dsv-form-label
+    [label]="field()"
+    [field]="form().get(field())!"
+    [show]="withLabel()"
+  />
   <div>
     <input
       type="checkbox"

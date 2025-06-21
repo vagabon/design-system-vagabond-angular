@@ -2,11 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, effect, inject } from '@angular/core';
 import { MAX_TOASTS, ToastService } from '../service/toast.service';
 
-export type Theme = {
-  primary: string;
-  text: string;
-};
-
 @Component({
   selector: 'dsv-toast',
   imports: [CommonModule],

@@ -1,10 +1,11 @@
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 import { TabDto } from '../dto/tab.dto';
 
 @Component({
   selector: 'app-tab-component',
-  imports: [RouterLink],
+  imports: [TranslatePipe, RouterLink],
   templateUrl: './tab.component.html',
   styleUrls: ['./tab.component.scss'],
 })

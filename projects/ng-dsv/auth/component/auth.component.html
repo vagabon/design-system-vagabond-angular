@@ -8,7 +8,7 @@
 @if (authService.userConnected()) {
   <div class="profile">
     <img [src]="authService.userConnected()?.user?.avatar" alt="profile" />
-    <app-modal-button id="logout" icon="ri-logout-box-line"> </app-modal-button>
+    <app-modal-button id="logout" icon="ri-logout-box-line" />
   </div>
   <app-modal-alert
     id="logout"

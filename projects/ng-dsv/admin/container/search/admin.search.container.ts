@@ -6,7 +6,6 @@ import { DsvCardComponent } from '@ng-vagabond-lab/ng-dsv/ds/card';
 import { PaginateComponent } from '@ng-vagabond-lab/ng-dsv/ds/paginate';
 import { TabDto, TabsComponent } from '@ng-vagabond-lab/ng-dsv/ds/tab';
 import { TableComponent } from '@ng-vagabond-lab/ng-dsv/ds/table';
-import { v4 as uuidv4 } from 'uuid';
 import { AdminTabDto } from '../../dto/admin.dto';
 import { AdminService } from '../../service/admin.service';
 
@@ -48,7 +47,7 @@ export class AdminSearchContainer extends BaseRouteComponent {
       if (tabs) {
         tabs.forEach((tab) => {
           const tabsDto = {} as TabDto;
-          tabsDto.id = uuidv4();
+          tabsDto.id = tab.name;
           tabsDto.title = tab.name;
           tabsDto.url = '/admin/' + tab.name;
           tabsDtos.push(tabsDto);

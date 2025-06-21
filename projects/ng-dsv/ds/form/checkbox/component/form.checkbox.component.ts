@@ -1,9 +1,10 @@
 import { Component, input, output } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormLabelComponent } from '../../label/component/form.label.component';
 
 @Component({
   selector: 'dsv-form-checkbox',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, FormLabelComponent],
   templateUrl: './form.checkbox.component.html',
   styleUrls: [
     '../../input/component/form.input.component.scss',

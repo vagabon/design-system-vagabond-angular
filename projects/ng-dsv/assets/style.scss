@@ -1,0 +1,137 @@
+.inherit {
+    background-color: inherit;
+    color: inherit;
+}
+
+.default {
+    background-color: var(--text);
+    color: var(--text-dark);
+}
+
+.primary {
+    background-color: var(--primary);
+    color: var(--text-dark);
+}
+
+.secondary {
+    background-color: var(--secondary);
+    color: var(--text-dark);
+}
+
+.success {
+    background-color: var(--success);
+    color: var(--text-dark);
+}
+
+.info {
+    background-color: var(--info);
+    color: var(--text-dark);
+}
+
+.warning {
+    background-color: var(--warning);
+    color: var(--text-dark);
+}
+
+.error {
+    background-color: var(--error);
+    color: var(--text-dark);
+}
+
+.text,
+.outlined {
+    background-color: transparent;
+    box-shadow: none;
+
+    &.default {
+        color: var(--text);
+    }
+
+    &.primary {
+        color: var(--primary);
+    }
+
+    &.success {
+        color: var(--success);
+    }
+
+    &.info {
+        color: var(--info);
+    }
+
+    &.warning {
+        color: var(--warning);
+    }
+
+    &.error {
+        color: var(--error);
+    }
+
+    &.outlined.default {
+        border: 1px solid var(--text);
+    }
+
+    &.outlined.primary {
+        border: 1px solid var(--primary);
+    }
+
+    &.outlined.success {
+        border: 1px solid var(--success);
+    }
+
+    &.outlined.info {
+        border: 1px solid var(--info);
+    }
+
+    &.outlined.warning {
+        border: 1px solid var(--warning);
+    }
+
+    &.outlined.error {
+        border: 1px solid var(--error);
+    }
+}
+
+.dark {
+
+    .default {
+        background-color: var(--text-dark);
+        color: var(--text);
+    }
+
+    .inherit {
+        filter: hue-rotate(5deg);
+    }
+
+    .text,
+    .outlined {
+        .default {
+            color: var(--text-dark);
+        }
+    }
+
+    .outlined.default {
+        border: 1px solid var(--text-dark);
+    }
+}
+
+
+
+.small,
+.small>i {
+    font-size: 1rem;
+}
+
+.medium,
+.medium>i {
+    font-size: 1.25rem;
+}
+
+.large,
+.large>i {
+    font-size: 1.5rem;
+}
+
+.fullwidth {
+    width: 100%;
+}

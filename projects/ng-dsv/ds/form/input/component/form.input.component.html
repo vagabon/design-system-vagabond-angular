@@ -1,14 +1,9 @@
 <div [formGroup]="form()">
-  @if (withLabel()) {
-    <label
-      [for]="field()"
-      [class.error]="
-        form().get(field())?.touched && form().get(field())?.invalid
-      "
-    >
-      {{ field() }} {{ isRequired ? "*" : "" }}
-    </label>
-  }
+  <dsv-form-label
+    [label]="field()"
+    [field]="form().get(field())!"
+    [show]="withLabel()"
+  />
   @if (type() === "textarea") {
     <textarea
       [id]="field()"
@@ -34,11 +29,5 @@
   @if (icon()) {
     <i [class]="icon()"></i>
   }
-  @if (form().get(field())?.touched && form().get(field())?.invalid) {
-    <div class="error-content">
-      @if (form().get(field())?.errors?.["required"]) {
-        <div>Le champ est requis.</div>
-      }
-    </div>
-  }
+  <dsv-form-error [field]="form().get(field())!" />
 </div>

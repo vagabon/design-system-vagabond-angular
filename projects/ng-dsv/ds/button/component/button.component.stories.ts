@@ -1,37 +1,19 @@
-import { ColorType } from '@ng-vagabond-lab/ng-dsv/type';
+import { colorControls } from '@ng-vagabond-lab/ng-dsv/type';
 import { type Meta, type StoryObj } from '@storybook/angular';
 import { DsvButtonComponent } from './button.component';
 
-export const ActionsData: {
-  libelle: string;
-  color: ColorType;
-  icon: string;
-  iconEnd: string;
-  fullwidth: boolean;
-  noHover: boolean;
-  show: boolean;
-  disabled: boolean;
-  callback: () => void;
-} = {
+export const ActionsData = {
   libelle: 'Click me',
+  width: 'small',
+  variant: 'contained',
   color: 'primary',
   icon: 'ri-spam-fill',
   iconEnd: '',
-  fullwidth: false,
   noHover: false,
   show: true,
   disabled: false,
   callback: () => { },
 };
-
-export const buttonColors: ColorType[] = [
-  'default',
-  'primary',
-  'success',
-  'info',
-  'warning',
-  'error',
-];
 
 const meta: Meta<DsvButtonComponent> = {
   title: 'dsv/Button',
@@ -39,20 +21,10 @@ const meta: Meta<DsvButtonComponent> = {
   excludeStories: /.*Data$/,
   tags: ['autodocs'],
   argTypes: {
-    color: {
-      control: 'select',
-      options: buttonColors,
-    },
-    variant: {
-      control: 'select',
-      options: ['text', 'outlined', 'contained'],
-    },
-    width: { control: 'select', options: ['small', 'medium', 'large'] },
+    ...colorControls as Meta<DsvButtonComponent>['argTypes'],
   },
   args: {
-    ...ActionsData,
-    width: 'medium',
-    variant: 'contained',
+    ...ActionsData as Meta<DsvButtonComponent>['args'],
   },
 };
 

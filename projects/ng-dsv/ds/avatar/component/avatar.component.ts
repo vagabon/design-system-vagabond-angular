@@ -8,7 +8,7 @@ import {
   signal
 } from '@angular/core';
 import { isCallback } from '@ng-vagabond-lab/ng-dsv/base';
-import { ColorType } from '@ng-vagabond-lab/ng-dsv/type';
+import { BaseColorComponent } from '@ng-vagabond-lab/ng-dsv/ds/color';
 
 @Component({
   selector: 'dsv-avatar',
@@ -16,9 +16,8 @@ import { ColorType } from '@ng-vagabond-lab/ng-dsv/type';
   templateUrl: './avatar.component.html',
   styleUrls: ['./avatar.component.scss'],
 })
-export class DsvAvatarComponent {
+export class DsvAvatarComponent extends BaseColorComponent {
   avatar = input<string>('');
-  color = input<ColorType>('primary');
   callback = output<void>();
 
   avatarLetter = signal<string>('');
@@ -26,6 +25,7 @@ export class DsvAvatarComponent {
   isCallback = signal<boolean>(false);
 
   constructor() {
+    super();
     effect(() => {
       this.isImage.set(this.avatar().startsWith('http'));
       this.avatarLetter.set(this.avatar().substring(0, 1).toUpperCase() ?? '?');
@@ -35,15 +35,13 @@ export class DsvAvatarComponent {
 
   @HostBinding('class')
   get hostClasses(): string {
-    const classes: string[] = ['dsv-avatar', this.color()];
+    const classes: string[] = [this.color()];
     this.isCallback() && classes.push('callback');
-    return classes.join(' ');
+    return this.getClasses('dsv-avatar', classes);
   }
 
   @HostListener('click')
   onClick() {
-    if (this.isCallback()) {
-      this.callback?.emit();
-    }
+    this.isCallback() && this.callback?.emit();
   }
 }

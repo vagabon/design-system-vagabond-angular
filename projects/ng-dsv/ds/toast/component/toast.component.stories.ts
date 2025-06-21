@@ -72,7 +72,9 @@ export const Default: Story = {
       imports: [PrimaryButtonDemo],
     }),
     componentWrapperDecorator((story) => {
-      return `<div style="height: 30vh"><toast-button-demo />${story}</div>`;
+      return `
+        <div style="height: 300px"><toast-button-demo />${story}</div>
+      `;
     }),
   ],
 };

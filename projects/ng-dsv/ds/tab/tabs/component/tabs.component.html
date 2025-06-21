@@ -3,7 +3,7 @@
     @for (tab of tabs(); track tab.id) {
       <app-tab-component
         [tab]="tab"
-        [isSelected]="active().trim() === tab.title.trim()"
+        [isSelected]="active().trim() === tab.id.trim()"
       />
     }
   </div>

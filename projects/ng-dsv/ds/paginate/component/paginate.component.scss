@@ -15,6 +15,7 @@
 ::ng-deep app-paginate-component button:disabled {
     background: transparent !important;
     color: rgba(0, 0, 0, 0.26) !important;
+    background: inherit !important;
 }
 
 ::ng-deep .dark app-paginate-component button:disabled {

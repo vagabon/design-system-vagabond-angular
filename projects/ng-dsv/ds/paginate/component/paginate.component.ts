@@ -10,7 +10,6 @@ import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
 export class PaginateComponent {
   page = input.required<number>();
   max = input.required<number>();
-  nb = input.required<number>();
 
   callback = output<number>();
 

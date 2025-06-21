@@ -1,10 +1,12 @@
-import { Component, effect, input, output } from '@angular/core';
-import { FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, input, output } from '@angular/core';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ApiDto } from '@ng-vagabond-lab/ng-dsv/api';
+import { FormLabelComponent } from '../../label/component/form.label.component';
+import { FormErrorComponent } from '../../error/component/form.error.component';
 
 @Component({
   selector: 'dsv-form-select',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, FormLabelComponent, FormErrorComponent],
   templateUrl: './form.select.component.html',
   styleUrls: [
     '../../input/component/form.input.component.scss',
@@ -19,14 +21,6 @@ export class FormSelectComponent {
   list = input<(ApiDto & { name: string })[]>([]);
 
   change = output<string>();
-
-  isRequired = false;
-
-  constructor() {
-    effect(() => {
-      this.isRequired = this.form().get(this.field())?.hasValidator?.(Validators.required) ?? false;
-    })
-  }
 
   doChange() {
     this.change.emit(this.form().value[this.field()]);

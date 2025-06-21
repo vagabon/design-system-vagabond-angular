@@ -19,7 +19,6 @@
   <app-paginate-component
     [page]="page()"
     [max]="adminService.datas().totalPages!"
-    [nb]="adminService.datas().totalElements!"
     (callback)="gotoPage($event)"
   />
 </dsv-card>

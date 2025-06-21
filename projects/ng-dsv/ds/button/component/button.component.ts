@@ -1,9 +1,6 @@
-import { Component, effect, input, output, signal } from '@angular/core';
-import { ColorType } from '@ng-vagabond-lab/ng-dsv/type';
+import { Component, effect, input, output } from '@angular/core';
+import { BaseColorComponent } from '@ng-vagabond-lab/ng-dsv/ds/color';
 import { TranslatePipe } from '@ngx-translate/core';
-
-export type ButtonWidthType = 'small' | 'medium' | 'large';
-export type ButtonVariantType = 'text' | 'outlined' | 'contained';
 
 @Component({
   selector: 'dsv-button',
@@ -11,15 +8,10 @@ export type ButtonVariantType = 'text' | 'outlined' | 'contained';
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
 })
-export class DsvButtonComponent {
+export class DsvButtonComponent extends BaseColorComponent {
   libelle = input<string>('');
-  color = input<ColorType>('primary');
   icon = input<string>('');
   iconEnd = input<string>('');
-  width = input<ButtonWidthType>('medium');
-  variant = input<ButtonVariantType>('contained');
-  fullwidth = input<boolean>(false);
-  show = input<boolean>(true);
   disabled = input<boolean>(false);
   noHover = input<boolean>(false);
   type = input<string>('button');
@@ -28,21 +20,15 @@ export class DsvButtonComponent {
 
   callback = output<void>();
 
-  classes = signal<string>('');
-
   constructor() {
+    super();
     effect(() => {
-      const classes = [
-        'dsv-button',
-        this.color(),
-        this.width(),
-        this.variant(),
-      ];
+      const classes: string[] = [];
       this.icon() && classes.push('icon');
       this.libelle() !== '' && classes.push('padding');
-      this.fullwidth() && classes.push('fullwidth');
       this.noHover() && classes.push('no-hover');
-      this.classes.set(classes.join(' '));
+
+      this.setClasses('dsv-button', classes);
     });
   }
 

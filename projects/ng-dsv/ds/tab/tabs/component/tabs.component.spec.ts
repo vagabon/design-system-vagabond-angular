@@ -1,6 +1,7 @@
 import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
+import { provideTranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { TabDto } from '../../public-api';
 import { TabsComponent } from './tabs.component';
@@ -14,6 +15,7 @@ describe('TabsComponent', () => {
             imports: [TabsComponent],
             providers: [
                 provideZonelessChangeDetection(),
+                provideTranslateService(),
                 {
                     provide: ActivatedRoute,
                     useValue: {

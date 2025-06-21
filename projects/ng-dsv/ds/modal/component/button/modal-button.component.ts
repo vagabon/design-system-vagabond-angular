@@ -9,12 +9,12 @@ import { ModalService } from '../../service/modal.service';
   templateUrl: './modal-button.component.html',
 })
 export class ModalButtonComponent {
+  modalService = inject(ModalService);
+
   id = input.required<string>();
   icon = input<string>('');
   text = input<string>('');
   color = input<ColorType>('primary');
-
-  modalService = inject(ModalService);
 
   doToogle = () => {
     this.modalService.toggle(this.id());

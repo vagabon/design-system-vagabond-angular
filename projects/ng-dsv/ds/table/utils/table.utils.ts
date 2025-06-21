@@ -4,7 +4,7 @@ import { formatDate } from "@ng-vagabond-lab/ng-dsv/date";
 export const initTable = (datas: JSONObject[], max: number) => {
     const links = [];
     const newDatas = [];
-    for (let i = 0; i < max; i++) {
+    for (let i = 0, length = (max > 0 ? max : datas.length); i < length; i++) {
         let data = datas?.[i];
         if (data) {
             links.push(data['id' as keyof JSONObject]);
