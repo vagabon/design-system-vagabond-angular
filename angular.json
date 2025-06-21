@@ -55,7 +55,8 @@
             "compodoc": true,
             "styles": [
               "node_modules/remixicon/fonts/remixicon.css",
-              "projects/ng-dsv/assets/global.scss"
+              "projects/ng-dsv/assets/global.scss",
+              "projects/ng-dsv/assets/style.scss"
             ],
             "compodocArgs": ["-e", "json", "-d", "projects/ng-dsv"],
             "outputDir": "storybook-static"
@@ -90,7 +91,8 @@
             ],
             "styles": [
               "node_modules/remixicon/fonts/remixicon.css",
-              "projects/showcase/src/styles.scss"
+              "projects/ng-dsv/assets/global.scss",
+              "projects/ng-dsv/assets/style.scss"
             ],
             "scripts": []
           },
