@@ -135,3 +135,10 @@
 .fullwidth {
     width: 100%;
 }
+
+dsv-tooltip>*:not(.dsv-tooltip) {
+    cursor: context-menu;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

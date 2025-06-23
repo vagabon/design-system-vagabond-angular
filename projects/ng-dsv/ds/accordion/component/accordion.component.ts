@@ -9,7 +9,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class DsvAccordionComponent {
   open = input<boolean>(false);
-  title = input<string>('');
+  titleText = input<string>('');
   color = input<string>('');
 
   isOpen = signal<boolean>(this.open());

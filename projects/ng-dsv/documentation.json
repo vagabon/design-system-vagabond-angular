@@ -227,7 +227,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\n  libelle: 'Click me',\n  width: 'medium',\n  variant: 'contained',\n  color: 'primary',\n  icon: 'ri-spam-fill',\n  iconEnd: '',\n  noHover: false,\n  show: true,\n  disabled: false,\n  callback: () => { },\n}"
+                "defaultValue": "{\n  libelle: 'Click me',\n  width: 'small',\n  variant: 'contained',\n  color: 'primary',\n  icon: 'ri-spam-fill',\n  iconEnd: '',\n  noHover: false,\n  show: true,\n  disabled: false,\n  callback: () => { },\n}"
             },
             {
                 "name": "ActionsData",
@@ -247,7 +247,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\n  text: 'text',\n  width: 'medium',\n  variant: 'contained',\n  color: 'default',\n}"
+                "defaultValue": "{\n  text: 'text',\n  width: 'small',\n  variant: 'contained',\n  color: 'default',\n}"
             },
             {
                 "name": "ActionsData",
@@ -303,21 +303,21 @@
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/modal/component/modal.component.stories.ts",
+                "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\n  id: 'modale',\n  title: 'title',\n  class: 'class',\n}"
+                "defaultValue": "{\n  page: 0,\n  max: 10,\n  callback: () => { }\n}"
             },
             {
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
+                "file": "projects/ng-dsv/ds/modal/component/modal.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\n  page: 2,\n  max: 10,\n  nb: 300,\n  callback: () => { }\n}"
+                "defaultValue": "{\n  id: 'modale',\n  title: 'title',\n  class: 'class',\n}"
             },
             {
                 "name": "ActionsData",
@@ -338,6 +338,16 @@
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{}"
+            },
+            {
+                "name": "ActionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/tooltip/component/tooltip.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  text: 'Voici un texte plus long pour tester le comportement du tooltip avec plus de contenu.',\n}"
             },
             {
                 "name": "ActionsData",
@@ -390,6 +400,16 @@
                 "defaultValue": "{\n  id: 'modale',\n  title: 'title',\n  text: 'text',\n  button: 'oui',\n  buttonClose: 'non',\n}"
             },
             {
+                "name": "ActionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/tab/tabs/component/tabs.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  tabs: [\n    { id: 'home', title: 'Accueil', url: '/tab1' },\n    { id: 'settings', title: 'Paramètres', url: '/tab2' }\n  ],\n  active: 'home'\n}"
+            },
+            {
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -397,7 +417,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-accordion [open]=\"${args.open}\" title=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n  }),\n}"
+                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-accordion [open]=\"${args.open}\" titleText=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -407,7 +427,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    callback: undefined\n  },\n}"
+                "defaultValue": "{\n  render: (args: any) => ({\n    template: `<dsv-avatar avatar=\"${args.avatar}\" color=\"${args.color}\" variant=\"${args.variant}\" width=\"${args.width}\" show=\"${args.show}\" show=\"${args.show}\"></dsv-avatar>`,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -427,7 +447,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-card title=\"${args.title}\" subtitle=\"${args.subtitle}\" image=\"${args.image}\"> ${args.content} </dsv-card>`,\n  }),\n}"
+                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-card titleText=\"${args.title}\" subtitle=\"${args.subtitle}\" image=\"${args.image}\"> ${args.content} </dsv-card>`,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -457,7 +477,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-header img=\"${args.img}\" title=\"${args.title}\"> ${args.content} </dsv-header>`,\n  }),\n}"
+                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-header img=\"${args.img}\" titleText=\"${args.title}\"> ${args.content} </dsv-header>`,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -487,17 +507,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-header img=\"https://ownyourchatbots.com/images/logo.png\" title=\"dsqdsq\"> \n      </dsv-header>\n      <dsv-menu [showFooter]=\"${args.showFooter}\"> \n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n      </dsv-menu>\n    `,\n  }),\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ng-dsv/ds/modal/component/modal.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `\n      <app-modal-button id=\"${args.id}\" text=\"Clic\">\n        <app-modal id=\"${args.id}\" title=\"${args.title}\" class=\"${args.class}\">\n          Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, \n          when an unknown printer took a galley of type and scrambled it to make a type specimen book. \n          It has survived not only five centuries, but also the leap into electronic typesetting, \n          remaining essentially unchanged. It was popularised in the 1960s with the release of \n          Letraset sheets containing Lorem Ipsum passages, and more recently with desktop \n          publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n        </app-modal>\n      </app-modal-button>\n    `,\n  }),\n}"
+                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-header img=\"https://ownyourchatbots.com/images/logo.png\" titleText=\"dsqdsq\"> \n      </dsv-header>\n      <dsv-menu [showFooter]=\"${args.showFooter}\"> \n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n      </dsv-menu>\n    `,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -508,6 +518,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/modal/component/modal.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `\n      <app-modal-button id=\"${args.id}\" text=\"Clic\">\n        <app-modal id=\"${args.id}\" titleText=\"${args.title}\" class=\"${args.class}\">\n          Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, \n          when an unknown printer took a galley of type and scrambled it to make a type specimen book. \n          It has survived not only five centuries, but also the leap into electronic typesetting, \n          remaining essentially unchanged. It was popularised in the 1960s with the release of \n          Letraset sheets containing Lorem Ipsum passages, and more recently with desktop \n          publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n        </app-modal>\n      </app-modal-button>\n    `,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -528,6 +548,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  decorators: [\n    moduleMetadata({\n      imports: [PrimaryButtonDemo],\n    }),\n    componentWrapperDecorator((story) => {\n      return `\n        <div style=\"height: 300px\"><toast-button-demo />${story}</div>\n      `;\n    }),\n  ],\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/tooltip/component/tooltip.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    ...ActionsData,\n  },\n  render: (args: any) => ({\n    template: `\n      <div style=\"display: flex; gap: 10px; margin: 30px 0px;\">\n        <dsv-tooltip text=\"${args.text}\" position=\"right\">\n          <button>Survoler moi (right)</ button >\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" >\n          <button>Survoler moi (top)</ button >\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" position=\"bottom\">\n          <button>Survoler moi (bottom)</ button >\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" position=\"left\">\n          <button>Survoler moi (left)</ button >\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" position=\"right\">\n          <button>Survoler moi (right > left)</ button >\n        </dsv-tooltip>\n      </div>\n    `,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -577,7 +607,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `\n      <app-modal-button id=\"${args.id}\" text=\"Clic\">\n        <app-modal-alert \n          id=\"${args.id}\" \n          title=\"${args.title}\" \n          text=\"${args.text}\" \n          button=\"${args.button}\" \n          buttonClose=\"${args.buttonClose}\" \n          (callback)=\"${args.callback}\">\n        </app-modal-alert>\n      </app-modal-button>\n    `,\n  }),\n}"
+                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `\n      <app-modal-button id=\"${args.id}\" text=\"Clic\">\n        <app-modal-alert \n          id=\"${args.id}\" \n          titleText=\"${args.title}\" \n          text=\"${args.text}\" \n          button=\"${args.button}\" \n          buttonClose=\"${args.buttonClose}\" \n          (callback)=\"${args.callback}\">\n        </app-modal-alert>\n      </app-modal-button>\n    `,\n  }),\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/tab/tabs/component/tabs.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    ...ActionsData,\n  },\n}"
             },
             {
                 "name": "meta",
@@ -683,21 +723,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/modal/component/modal.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<ModalComponent>",
-                "defaultValue": "{\n  title: 'dsv/Modal',\n  component: ModalComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [ModalButtonComponent, TranslatePipe],\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<PaginateComponent>",
                 "defaultValue": "{\n  title: 'dsv/Paginate',\n  component: PaginateComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/modal/component/modal.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ModalComponent>",
+                "defaultValue": "{\n  title: 'dsv/Modal',\n  component: ModalComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [ModalButtonComponent, TranslatePipe],\n    }),\n    storyBig\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
             },
             {
                 "name": "meta",
@@ -718,6 +758,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<DsvToastComponent>",
                 "defaultValue": "{\n  title: 'dsv/Toast',\n  component: DsvToastComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  args: {\n    ...ActionsData,\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/tooltip/component/tooltip.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<DsvTooltipComponent>",
+                "defaultValue": "{\n  title: 'dsv/Tooltip',\n  component: DsvTooltipComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n}"
             },
             {
                 "name": "meta",
@@ -767,7 +817,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ModalAlertComponent>",
-                "defaultValue": "{\n  title: 'dsv/Modal/alert',\n  component: ModalAlertComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [ModalButtonComponent, TranslatePipe],\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+                "defaultValue": "{\n  title: 'dsv/Modal/alert',\n  component: ModalAlertComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [ModalButtonComponent, TranslatePipe],\n    }),\n    storyBig\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/tab/tabs/component/tabs.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<TabsComponent>",
+                "defaultValue": "{\n  title: 'dsv/Tabs',\n  component: TabsComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n}"
             },
             {
                 "name": "preview",
@@ -777,7 +837,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Preview",
-                "defaultValue": "{\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/i,\n      },\n    },\n  },\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideZonelessChangeDetection(),\n        provideTranslateService(),\n        provideRouter(\n          [{ path: '**', redirectTo: '', pathMatch: 'full' }],\n          withInMemoryScrolling({\n            scrollPositionRestoration: 'enabled',\n          }),\n        ),\n      ],\n    }),\n    moduleMetadata({\n      imports: [DsvThemeComponent, DsvThemeSwitchComponent],\n    }),\n    componentWrapperDecorator((story) => {\n      return `\n        <dsv-theme [theme]='${themeString}' class=\"flex flex1\" >\n          <div style='padding: 5px; margin-bottom: 40px; min-height: 100px; position: relative; display: flex; flex-direction: column; '>\n            <div style='margin-bottom: 20px'>\n              <dsv-theme-switch></dsv-theme-switch>\n            </div>\n            ${story}\n          </div>\n        </dsv-theme>\n      `;\n    }),\n  ],\n}"
+                "defaultValue": "{\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/i,\n      },\n    },\n  },\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideZonelessChangeDetection(),\n        provideTranslateService(),\n        {\n          provide: ActivatedRoute,\n          useValue: {\n            params: of({ id: '' }),\n            queryParams: of({}),\n            fragment: of(null),\n            data: of({}),\n            url: of([]),\n            snapshot: {\n              paramMap: new Map(),\n              queryParamMap: new Map(),\n              data: {},\n            },\n          }\n        }\n      ],\n    }),\n    moduleMetadata({\n      imports: [DsvThemeComponent, DsvThemeSwitchComponent],\n    }),\n    componentWrapperDecorator((story) => {\n      return `\n        <dsv-theme [theme]='${themeString}' class=\"flex flex1\" >\n          <div style='padding: 5px; margin-bottom: 40px; min-height: 100px; position: relative; display: flex; flex-direction: column; '>\n            <div style='margin-bottom: 20px'>\n              <dsv-theme-switch></dsv-theme-switch>\n            </div>\n            ${story}\n          </div>\n        </dsv-theme>\n      `;\n    }),\n  ],\n}"
             },
             {
                 "name": "Second",
@@ -787,7 +847,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-accordion [open]=\"true\" title=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n  }),\n}"
+                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-accordion [open]=\"true\" titleText=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n  }),\n}"
             },
             {
                 "name": "theme",
@@ -946,8 +1006,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ModalComponent>",
-                "file": "projects/ng-dsv/ds/modal/component/modal.component.stories.ts",
+                "rawtype": "StoryObj<PaginateComponent>",
+                "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -957,8 +1017,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<PaginateComponent>",
-                "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
+                "rawtype": "StoryObj<ModalComponent>",
+                "file": "projects/ng-dsv/ds/modal/component/modal.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -981,6 +1041,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<DsvToastComponent>",
                 "file": "projects/ng-dsv/ds/toast/component/toast.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<DsvTooltipComponent>",
+                "file": "projects/ng-dsv/ds/tooltip/component/tooltip.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1040,6 +1111,17 @@
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<TabsComponent>",
+                "file": "projects/ng-dsv/ds/tab/tabs/component/tabs.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
             }
         ],
         "enumerations": [],
@@ -1063,7 +1145,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-accordion [open]=\"${args.open}\" title=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n  }),\n}"
+                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-accordion [open]=\"${args.open}\" titleText=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n  }),\n}"
                 },
                 {
                     "name": "meta",
@@ -1083,7 +1165,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-accordion [open]=\"true\" title=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n  }),\n}"
+                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-accordion [open]=\"true\" titleText=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n  }),\n}"
                 }
             ],
             "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts": [
@@ -1105,7 +1187,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    callback: undefined\n  },\n}"
+                    "defaultValue": "{\n  render: (args: any) => ({\n    template: `<dsv-avatar avatar=\"${args.avatar}\" color=\"${args.color}\" variant=\"${args.variant}\" width=\"${args.width}\" show=\"${args.show}\" show=\"${args.show}\"></dsv-avatar>`,\n  }),\n}"
                 },
                 {
                     "name": "meta",
@@ -1137,7 +1219,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
-                    "defaultValue": "{\n  libelle: 'Click me',\n  width: 'medium',\n  variant: 'contained',\n  color: 'primary',\n  icon: 'ri-spam-fill',\n  iconEnd: '',\n  noHover: false,\n  show: true,\n  disabled: false,\n  callback: () => { },\n}"
+                    "defaultValue": "{\n  libelle: 'Click me',\n  width: 'small',\n  variant: 'contained',\n  color: 'primary',\n  icon: 'ri-spam-fill',\n  iconEnd: '',\n  noHover: false,\n  show: true,\n  disabled: false,\n  callback: () => { },\n}"
                 },
                 {
                     "name": "Default",
@@ -1179,7 +1261,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-card title=\"${args.title}\" subtitle=\"${args.subtitle}\" image=\"${args.image}\"> ${args.content} </dsv-card>`,\n  }),\n}"
+                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-card titleText=\"${args.title}\" subtitle=\"${args.subtitle}\" image=\"${args.image}\"> ${args.content} </dsv-card>`,\n  }),\n}"
                 },
                 {
                     "name": "meta",
@@ -1201,7 +1283,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
-                    "defaultValue": "{\n  text: 'text',\n  width: 'medium',\n  variant: 'contained',\n  color: 'default',\n}"
+                    "defaultValue": "{\n  text: 'text',\n  width: 'small',\n  variant: 'contained',\n  color: 'default',\n}"
                 },
                 {
                     "name": "Default",
@@ -1285,7 +1367,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-header img=\"${args.img}\" title=\"${args.title}\"> ${args.content} </dsv-header>`,\n  }),\n}"
+                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-header img=\"${args.img}\" titleText=\"${args.title}\"> ${args.content} </dsv-header>`,\n  }),\n}"
                 },
                 {
                     "name": "meta",
@@ -1381,7 +1463,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-header img=\"https://ownyourchatbots.com/images/logo.png\" title=\"dsqdsq\"> \n      </dsv-header>\n      <dsv-menu [showFooter]=\"${args.showFooter}\"> \n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n      </dsv-menu>\n    `,\n  }),\n}"
+                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-header img=\"https://ownyourchatbots.com/images/logo.png\" titleText=\"dsqdsq\"> \n      </dsv-header>\n      <dsv-menu [showFooter]=\"${args.showFooter}\"> \n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n      </dsv-menu>\n    `,\n  }),\n}"
                 },
                 {
                     "name": "meta",
@@ -1392,6 +1474,38 @@
                     "deprecationMessage": "",
                     "type": "Meta<DsvMenuComponent>",
                     "defaultValue": "{\n  title: 'dsv/Menu',\n  component: DsvMenuComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [DsvHeaderComponent, DsvItemComponent],\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+                }
+            ],
+            "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts": [
+                {
+                    "name": "ActionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  page: 0,\n  max: 10,\n  callback: () => { }\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<PaginateComponent>",
+                    "defaultValue": "{\n  title: 'dsv/Paginate',\n  component: PaginateComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
                 }
             ],
             "projects/ng-dsv/ds/modal/component/modal.component.stories.ts": [
@@ -1413,7 +1527,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `\n      <app-modal-button id=\"${args.id}\" text=\"Clic\">\n        <app-modal id=\"${args.id}\" title=\"${args.title}\" class=\"${args.class}\">\n          Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, \n          when an unknown printer took a galley of type and scrambled it to make a type specimen book. \n          It has survived not only five centuries, but also the leap into electronic typesetting, \n          remaining essentially unchanged. It was popularised in the 1960s with the release of \n          Letraset sheets containing Lorem Ipsum passages, and more recently with desktop \n          publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n        </app-modal>\n      </app-modal-button>\n    `,\n  }),\n}"
+                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `\n      <app-modal-button id=\"${args.id}\" text=\"Clic\">\n        <app-modal id=\"${args.id}\" titleText=\"${args.title}\" class=\"${args.class}\">\n          Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, \n          when an unknown printer took a galley of type and scrambled it to make a type specimen book. \n          It has survived not only five centuries, but also the leap into electronic typesetting, \n          remaining essentially unchanged. It was popularised in the 1960s with the release of \n          Letraset sheets containing Lorem Ipsum passages, and more recently with desktop \n          publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n        </app-modal>\n      </app-modal-button>\n    `,\n  }),\n}"
                 },
                 {
                     "name": "meta",
@@ -1423,39 +1537,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ModalComponent>",
-                    "defaultValue": "{\n  title: 'dsv/Modal',\n  component: ModalComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [ModalButtonComponent, TranslatePipe],\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
-                }
-            ],
-            "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts": [
-                {
-                    "name": "ActionsData",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  page: 2,\n  max: 10,\n  nb: 300,\n  callback: () => { }\n}"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<PaginateComponent>",
-                    "defaultValue": "{\n  title: 'dsv/Paginate',\n  component: PaginateComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+                    "defaultValue": "{\n  title: 'dsv/Modal',\n  component: ModalComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [ModalButtonComponent, TranslatePipe],\n    }),\n    storyBig\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
                 }
             ],
             "projects/ng-dsv/ds/table/component/table.component.stories.ts": [
@@ -1520,6 +1602,38 @@
                     "deprecationMessage": "",
                     "type": "Meta<DsvToastComponent>",
                     "defaultValue": "{\n  title: 'dsv/Toast',\n  component: DsvToastComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  args: {\n    ...ActionsData,\n  },\n}"
+                }
+            ],
+            "projects/ng-dsv/ds/tooltip/component/tooltip.component.stories.ts": [
+                {
+                    "name": "ActionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/tooltip/component/tooltip.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  text: 'Voici un texte plus long pour tester le comportement du tooltip avec plus de contenu.',\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/tooltip/component/tooltip.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    ...ActionsData,\n  },\n  render: (args: any) => ({\n    template: `\n      <div style=\"display: flex; gap: 10px; margin: 30px 0px;\">\n        <dsv-tooltip text=\"${args.text}\" position=\"right\">\n          <button>Survoler moi (right)</ button >\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" >\n          <button>Survoler moi (top)</ button >\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" position=\"bottom\">\n          <button>Survoler moi (bottom)</ button >\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" position=\"left\">\n          <button>Survoler moi (left)</ button >\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" position=\"right\">\n          <button>Survoler moi (right > left)</ button >\n        </dsv-tooltip>\n      </div>\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/tooltip/component/tooltip.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<DsvTooltipComponent>",
+                    "defaultValue": "{\n  title: 'dsv/Tooltip',\n  component: DsvTooltipComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n}"
                 }
             ],
             "projects/ng-dsv/ds/button/component/scroll-top/button.scroll-top.component.stories.ts": [
@@ -1669,7 +1783,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `\n      <app-modal-button id=\"${args.id}\" text=\"Clic\">\n        <app-modal-alert \n          id=\"${args.id}\" \n          title=\"${args.title}\" \n          text=\"${args.text}\" \n          button=\"${args.button}\" \n          buttonClose=\"${args.buttonClose}\" \n          (callback)=\"${args.callback}\">\n        </app-modal-alert>\n      </app-modal-button>\n    `,\n  }),\n}"
+                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `\n      <app-modal-button id=\"${args.id}\" text=\"Clic\">\n        <app-modal-alert \n          id=\"${args.id}\" \n          titleText=\"${args.title}\" \n          text=\"${args.text}\" \n          button=\"${args.button}\" \n          buttonClose=\"${args.buttonClose}\" \n          (callback)=\"${args.callback}\">\n        </app-modal-alert>\n      </app-modal-button>\n    `,\n  }),\n}"
                 },
                 {
                     "name": "meta",
@@ -1679,7 +1793,39 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ModalAlertComponent>",
-                    "defaultValue": "{\n  title: 'dsv/Modal/alert',\n  component: ModalAlertComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [ModalButtonComponent, TranslatePipe],\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+                    "defaultValue": "{\n  title: 'dsv/Modal/alert',\n  component: ModalAlertComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [ModalButtonComponent, TranslatePipe],\n    }),\n    storyBig\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+                }
+            ],
+            "projects/ng-dsv/ds/tab/tabs/component/tabs.component.stories.ts": [
+                {
+                    "name": "ActionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/tab/tabs/component/tabs.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  tabs: [\n    { id: 'home', title: 'Accueil', url: '/tab1' },\n    { id: 'settings', title: 'Paramètres', url: '/tab2' }\n  ],\n  active: 'home'\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/tab/tabs/component/tabs.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    ...ActionsData,\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/tab/tabs/component/tabs.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<TabsComponent>",
+                    "defaultValue": "{\n  title: 'dsv/Tabs',\n  component: TabsComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n}"
                 }
             ],
             "projects/ng-dsv/.storybook/preview.ts": [
@@ -1691,7 +1837,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Preview",
-                    "defaultValue": "{\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/i,\n      },\n    },\n  },\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideZonelessChangeDetection(),\n        provideTranslateService(),\n        provideRouter(\n          [{ path: '**', redirectTo: '', pathMatch: 'full' }],\n          withInMemoryScrolling({\n            scrollPositionRestoration: 'enabled',\n          }),\n        ),\n      ],\n    }),\n    moduleMetadata({\n      imports: [DsvThemeComponent, DsvThemeSwitchComponent],\n    }),\n    componentWrapperDecorator((story) => {\n      return `\n        <dsv-theme [theme]='${themeString}' class=\"flex flex1\" >\n          <div style='padding: 5px; margin-bottom: 40px; min-height: 100px; position: relative; display: flex; flex-direction: column; '>\n            <div style='margin-bottom: 20px'>\n              <dsv-theme-switch></dsv-theme-switch>\n            </div>\n            ${story}\n          </div>\n        </dsv-theme>\n      `;\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/i,\n      },\n    },\n  },\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideZonelessChangeDetection(),\n        provideTranslateService(),\n        {\n          provide: ActivatedRoute,\n          useValue: {\n            params: of({ id: '' }),\n            queryParams: of({}),\n            fragment: of(null),\n            data: of({}),\n            url: of([]),\n            snapshot: {\n              paramMap: new Map(),\n              queryParamMap: new Map(),\n              data: {},\n            },\n          }\n        }\n      ],\n    }),\n    moduleMetadata({\n      imports: [DsvThemeComponent, DsvThemeSwitchComponent],\n    }),\n    componentWrapperDecorator((story) => {\n      return `\n        <dsv-theme [theme]='${themeString}' class=\"flex flex1\" >\n          <div style='padding: 5px; margin-bottom: 40px; min-height: 100px; position: relative; display: flex; flex-direction: column; '>\n            <div style='margin-bottom: 20px'>\n              <dsv-theme-switch></dsv-theme-switch>\n            </div>\n            ${story}\n          </div>\n        </dsv-theme>\n      `;\n    }),\n  ],\n}"
                 },
                 {
                     "name": "theme",
@@ -1848,19 +1994,6 @@
                     "kind": 183
                 }
             ],
-            "projects/ng-dsv/ds/modal/component/modal.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<ModalComponent>",
-                    "file": "projects/ng-dsv/ds/modal/component/modal.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts": [
                 {
                     "name": "Story",
@@ -1868,6 +2001,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<PaginateComponent>",
                     "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "projects/ng-dsv/ds/modal/component/modal.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ModalComponent>",
+                    "file": "projects/ng-dsv/ds/modal/component/modal.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -1894,6 +2040,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<DsvToastComponent>",
                     "file": "projects/ng-dsv/ds/toast/component/toast.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "projects/ng-dsv/ds/tooltip/component/tooltip.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<DsvTooltipComponent>",
+                    "file": "projects/ng-dsv/ds/tooltip/component/tooltip.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -1959,6 +2118,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<ModalAlertComponent>",
                     "file": "projects/ng-dsv/ds/modal/component/alert/modal-alert.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "projects/ng-dsv/ds/tab/tabs/component/tabs.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<TabsComponent>",
+                    "file": "projects/ng-dsv/ds/tab/tabs/component/tabs.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -2722,6 +2894,46 @@
                 "status": "low"
             },
             {
+                "filePath": "projects/ng-dsv/ds/tab/tabs/component/tabs.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ActionsData",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/tab/tabs/component/tabs.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/tab/tabs/component/tabs.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/tab/tabs/component/tabs.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/ng-dsv/ds/table/component/table.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -2802,6 +3014,46 @@
             },
             {
                 "filePath": "projects/ng-dsv/ds/toast/component/toast.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/tooltip/component/tooltip.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ActionsData",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/tooltip/component/tooltip.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/tooltip/component/tooltip.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/tooltip/component/tooltip.component.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",

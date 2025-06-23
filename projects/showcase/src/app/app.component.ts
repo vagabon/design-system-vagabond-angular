@@ -22,5 +22,4 @@ import { DsvThemeComponent } from '../../../ng-dsv/ds/theme';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'showcase';
 }

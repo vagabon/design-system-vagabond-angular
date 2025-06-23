@@ -1,8 +1,8 @@
+import { storyBig } from '@ng-vagabond-lab/ng-dsv/type';
 import { TranslatePipe } from '@ngx-translate/core';
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { ModalButtonComponent } from '../button/modal-button.component';
 import { ModalAlertComponent } from './modal-alert.component';
-import { storyBig } from '@ng-vagabond-lab/ng-dsv/type';
 
 export const ActionsData = {
   id: 'modale',
@@ -39,7 +39,7 @@ export const Default: Story = {
       <app-modal-button id="${args.id}" text="Clic">
         <app-modal-alert 
           id="${args.id}" 
-          title="${args.title}" 
+          titleText="${args.title}" 
           text="${args.text}" 
           button="${args.button}" 
           buttonClose="${args.buttonClose}" 

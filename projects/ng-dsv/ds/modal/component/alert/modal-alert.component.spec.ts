@@ -42,7 +42,7 @@ describe('ModalAlertComponent', () => {
 
     component = fixture.componentInstance;
     component.id = signal('testModal') as unknown as InputSignal<string>;
-    component.title = signal('title') as unknown as InputSignal<string>;
+    component.titleText = signal('title') as unknown as InputSignal<string>;
     component.text = signal('text') as unknown as InputSignal<string>;
     component.button = signal('oui') as unknown as InputSignal<string>;
     component.buttonClose = signal('non') as unknown as InputSignal<string | undefined>;

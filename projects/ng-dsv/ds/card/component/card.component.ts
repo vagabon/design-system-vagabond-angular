@@ -10,7 +10,7 @@ import { DsvAvatarComponent } from '@ng-vagabond-lab/ng-dsv/ds/avatar';
 })
 export class DsvCardComponent {
   avatar = input<string>();
-  title = input<string>('');
+  titleText = input<string>('');
   subtitle = input<string>('');
   image = input<string>();
   alt = input<string>();

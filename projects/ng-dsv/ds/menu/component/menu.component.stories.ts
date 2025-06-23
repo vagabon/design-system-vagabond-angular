@@ -30,7 +30,9 @@ type Story = StoryObj<DsvMenuComponent>;
 export const Default: Story = {
   args: {},
   render: (args: any) => ({
-    template: `<dsv-header img="https://ownyourchatbots.com/images/logo.png" title="dsqdsq"> 
+    template: `
+    <div style="height: 300px">
+      <dsv-header img="https://ownyourchatbots.com/images/logo.png" titleText="dsqdsq"> 
       </dsv-header>
       <dsv-menu [showFooter]="${args.showFooter}"> 
         <dsv-item text="text"></dsv-item>
@@ -38,6 +40,7 @@ export const Default: Story = {
         <dsv-item text="text"></dsv-item>
         <dsv-item text="text"></dsv-item>
       </dsv-menu>
+    </div>
     `,
   }),
 };

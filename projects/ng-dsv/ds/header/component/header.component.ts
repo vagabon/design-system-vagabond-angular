@@ -17,7 +17,7 @@ export class DsvHeaderComponent {
   private readonly menuService = inject(MenuService);
 
   img = input<string>();
-  title = input<string>('');
+  titleText = input<string>('');
   withMenu = input<boolean>(true);
 
   doToogleMenu() {

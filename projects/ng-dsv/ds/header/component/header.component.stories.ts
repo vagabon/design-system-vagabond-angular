@@ -24,6 +24,6 @@ type Story = StoryObj<DsvHeaderComponent>;
 export const Default: Story = {
   args: {},
   render: (args: any) => ({
-    template: `<dsv-header img="${args.img}" title="${args.title}"> ${args.content} </dsv-header>`,
+    template: `<dsv-header img="${args.img}" titleText="${args.title}"> ${args.content} </dsv-header>`,
   }),
 };

@@ -35,7 +35,7 @@ export const Default: Story = {
   render: (args: any) => ({
     template: `
       <app-modal-button id="${args.id}" text="Clic">
-        <app-modal id="${args.id}" title="${args.title}" class="${args.class}">
+        <app-modal id="${args.id}" titleText="${args.title}" class="${args.class}">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
           Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
           when an unknown printer took a galley of type and scrambled it to make a type specimen book. 

@@ -18,7 +18,7 @@ import { ModalComponent } from '../modal.component';
 })
 export class ModalAlertComponent {
   id = input.required<string>();
-  title = input<string>('title');
+  titleText = input<string>('title');
   text = input<string>('text');
   button = input<string>('button');
   buttonClose = input<string>();

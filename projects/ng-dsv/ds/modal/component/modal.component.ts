@@ -11,7 +11,7 @@ import { ModalService } from '../service/modal.service';
 })
 export class ModalComponent {
   id = input.required<string>();
-  title = input.required<string>();
+  titleText = input.required<string>();
   class = input<string>('');
 
   isOpen = signal<boolean>(false);
