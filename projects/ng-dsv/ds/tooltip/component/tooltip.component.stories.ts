@@ -1,8 +1,9 @@
 import { type Meta, type StoryObj } from '@storybook/angular';
+import { DsvButtonComponent } from '../../button';
 import { DsvTooltipComponent } from './tooltip.component';
 
 export const ActionsData = {
-  text: 'Voici un texte plus long pour tester le comportement du tooltip avec plus de contenu.',
+  text: 'Voici un texte long pour tester le comportement du tooltip avec plus de contenu.',
 };
 
 const meta: Meta<DsvTooltipComponent> = {
@@ -21,22 +22,25 @@ export const Default: Story = {
     ...ActionsData,
   },
   render: (args: any) => ({
+    moduleMetadata: {
+      imports: [DsvButtonComponent],
+    },
     template: `
-      <div style="display: flex; gap: 10px; margin: 30px 0px;">
+      <div style="display: flex; gap: 10px; margin: 30px 0px; flex-wrap: wrap;">
         <dsv-tooltip text="${args.text}" position="right">
-          <button>Survoler moi (right)</ button >
+          <dsv-button>Survoler moi (right)</dsv-button>
         </dsv-tooltip>
         <dsv-tooltip text="${args.text}" >
-          <button>Survoler moi (top)</ button >
+          <dsv-button>(top)</dsv-button>
         </dsv-tooltip>
         <dsv-tooltip text="${args.text}" position="bottom">
-          <button>Survoler moi (bottom)</ button >
+          <dsv-button>(bottom)</dsv-button>
         </dsv-tooltip>
         <dsv-tooltip text="${args.text}" position="left">
-          <button>Survoler moi (left)</ button >
+          <dsv-button>(left)</dsv-button>
         </dsv-tooltip>
         <dsv-tooltip text="${args.text}" position="right">
-          <button>Survoler moi (right > left)</ button >
+          <dsv-button>(right > left)</dsv-button>
         </dsv-tooltip>
       </div>
     `,

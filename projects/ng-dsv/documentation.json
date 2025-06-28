@@ -393,6 +393,16 @@
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  options: [\n    { id: 'home', icon: 'Accueil', text: 'Option 1' },\n    { id: 'settings', icon: 'Paramètres', text: 'Option 2' },\n    { id: 'Déconnexion', icon: 'Paramètres', text: 'Option 3' }\n  ]\n}"
+            },
+            {
+                "name": "ActionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/modal/component/alert/modal-alert.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -507,7 +517,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-header img=\"https://ownyourchatbots.com/images/logo.png\" titleText=\"dsqdsq\"> \n      </dsv-header>\n      <dsv-menu [showFooter]=\"${args.showFooter}\"> \n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n      </dsv-menu>\n    `,\n  }),\n}"
+                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `\n    <div style=\"height: 300px\">\n      <dsv-header img=\"https://ownyourchatbots.com/images/logo.png\" titleText=\"dsqdsq\"> \n      </dsv-header>\n      <dsv-menu [showFooter]=\"${args.showFooter}\"> \n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n      </dsv-menu>\n    </div>\n    `,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -598,6 +608,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    urlBack: '/dashboard',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <app-form [form]=\"form\" [urlBack]=\"urlBack\" (callback)=\"callback()\">\n            <dsv-form-input [form]=\"form\" field=\"name\" />\n            <dsv-form-input [form]=\"form\" type=\"number\" field=\"number\" />\n            <dsv-form-input [form]=\"form\" type=\"datetime-locale\" field=\"date\" />\n            <dsv-form-input [form]=\"form\" type=\"textarea\" field=\"textarea\" />\n            <dsv-form-select [form]=\"form\" field=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-checkbox [form]=\"form\" field=\"checkbox\" />\n          </app-form>\n        `,\n      },\n    },\n  },\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    ...ActionsData,\n  },\n  render: (args: any) => ({\n    template: `\n      <div style=\"display: flex; gap: 10px; margin: 0px 0px; height: 300px;\">\n        <dsv-menu-contextual buttonClick='left' [options]=\"${args.options}\">\n          <button>Clique Gauche</ button >\n        </dsv-menu-contextual>\n        <dsv-menu-contextual buttonClick='right' options=\"${args.options}\">\n          <button>Clique droit</ button >\n          \n        </dsv-menu-contextual>\n      </div>\n    `,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -808,6 +828,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<StoryWrapperComponent>",
                 "defaultValue": "{\n  title: 'dsv/Form',\n  component: StoryWrapperComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  parameters: {\n    controls: { exclude: ['form'] },\n  },\n  decorators: [\n    moduleMetadata({\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<DsvMenuContextualComponent>",
+                "defaultValue": "{\n  title: 'dsv/Menu/contextual',\n  component: DsvMenuContextualComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n}"
             },
             {
                 "name": "meta",
@@ -1096,6 +1126,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<StoryWrapperComponent>",
                 "file": "projects/ng-dsv/ds/form/form/component/form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<DsvMenuContextualComponent>",
+                "file": "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1463,7 +1504,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-header img=\"https://ownyourchatbots.com/images/logo.png\" titleText=\"dsqdsq\"> \n      </dsv-header>\n      <dsv-menu [showFooter]=\"${args.showFooter}\"> \n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n      </dsv-menu>\n    `,\n  }),\n}"
+                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `\n    <div style=\"height: 300px\">\n      <dsv-header img=\"https://ownyourchatbots.com/images/logo.png\" titleText=\"dsqdsq\"> \n      </dsv-header>\n      <dsv-menu [showFooter]=\"${args.showFooter}\"> \n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n        <dsv-item text=\"text\"></dsv-item>\n      </dsv-menu>\n    </div>\n    `,\n  }),\n}"
                 },
                 {
                     "name": "meta",
@@ -1762,6 +1803,38 @@
                     "deprecationMessage": "",
                     "type": "Meta<StoryWrapperComponent>",
                     "defaultValue": "{\n  title: 'dsv/Form',\n  component: StoryWrapperComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  parameters: {\n    controls: { exclude: ['form'] },\n  },\n  decorators: [\n    moduleMetadata({\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+                }
+            ],
+            "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts": [
+                {
+                    "name": "ActionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  options: [\n    { id: 'home', icon: 'Accueil', text: 'Option 1' },\n    { id: 'settings', icon: 'Paramètres', text: 'Option 2' },\n    { id: 'Déconnexion', icon: 'Paramètres', text: 'Option 3' }\n  ]\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    ...ActionsData,\n  },\n  render: (args: any) => ({\n    template: `\n      <div style=\"display: flex; gap: 10px; margin: 0px 0px; height: 300px;\">\n        <dsv-menu-contextual buttonClick='left' [options]=\"${args.options}\">\n          <button>Clique Gauche</ button >\n        </dsv-menu-contextual>\n        <dsv-menu-contextual buttonClick='right' options=\"${args.options}\">\n          <button>Clique droit</ button >\n          \n        </dsv-menu-contextual>\n      </div>\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<DsvMenuContextualComponent>",
+                    "defaultValue": "{\n  title: 'dsv/Menu/contextual',\n  component: DsvMenuContextualComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n}"
                 }
             ],
             "projects/ng-dsv/ds/modal/component/alert/modal-alert.component.stories.ts": [
@@ -2105,6 +2178,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<StoryWrapperComponent>",
                     "file": "projects/ng-dsv/ds/form/form/component/form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<DsvMenuContextualComponent>",
+                    "file": "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -2725,6 +2811,46 @@
             },
             {
                 "filePath": "projects/ng-dsv/ds/linear-progress/component/linear-progress.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ActionsData",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",

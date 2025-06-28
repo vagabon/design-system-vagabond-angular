@@ -12,7 +12,8 @@ export class DsvTooltipComponent {
     text = input<string>('');
     position = input<TooltipPosition>(TooltipPositionEnum.TOP);
 
-    visible = signal(false);
+    visible = signal<boolean>(false);
+    opacity = signal<number>(0);
 
     positionClass = signal<TooltipPosition>(TooltipPositionEnum.TOP);
 
@@ -32,6 +33,7 @@ export class DsvTooltipComponent {
 
     @HostListener('mouseleave')
     onMouseLeave() {
+        this.opacity.set(0);
         this.visible.set(false);
     }
 
@@ -42,6 +44,7 @@ export class DsvTooltipComponent {
             const rect = tooltipEl.getBoundingClientRect();
 
             this.positionClass.set(getTooltipPosition(this.position(), rect));
+            this.opacity.set(0.9);
         });
     }
 }
