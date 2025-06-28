@@ -1,5 +1,5 @@
 import { Component, ElementRef, HostListener, inject, input, output, signal } from "@angular/core";
-import { CLICK_LEFT, CLICK_RIGHT, MenuContextualClickType, MenuContextualDto } from "../../dto/menu.contextual";
+import { CLICK_BOTH, CLICK_LEFT, CLICK_RIGHT, MenuContextualClickType, MenuContextualDto } from "../../dto/menu.contextual";
 
 @Component({
     selector: 'dsv-menu-contextual',
@@ -9,7 +9,7 @@ import { CLICK_LEFT, CLICK_RIGHT, MenuContextualClickType, MenuContextualDto } f
 export class DsvMenuContextualComponent {
     readonly elementRef = inject(ElementRef);
 
-    buttonClick = input<MenuContextualClickType>(CLICK_LEFT);
+    buttonClick = input<MenuContextualClickType>(CLICK_BOTH);
     options = input<MenuContextualDto[]>([]);
 
     callback = output<string>();
@@ -28,7 +28,7 @@ export class DsvMenuContextualComponent {
     onClick(event: MouseEvent) {
         if (!this.elementRef.nativeElement.contains(event.target)) {
             this.closeMenu();
-        } else if (this.buttonClick() === CLICK_LEFT) {
+        } else if (this.buttonClick() === CLICK_LEFT || this.buttonClick() === CLICK_BOTH) {
             console.log('fuck')
             this.toogleMenu();
         }
@@ -39,7 +39,7 @@ export class DsvMenuContextualComponent {
         event.preventDefault();
         if (!this.elementRef.nativeElement.contains(event.target)) {
             this.closeMenu();
-        } else if (this.buttonClick() === CLICK_RIGHT) {
+        } else if (this.buttonClick() === CLICK_RIGHT || this.buttonClick() === CLICK_BOTH) {
             this.toogleMenu();
         }
     }

@@ -43,10 +43,17 @@ export const Default: Story = {
     template: `
       <div style="display: flex; gap: 10px; margin: 0px 0px; height: 200px;">
         <dsv-menu-contextual buttonClick='left' [options]="options">
-          <dsv-button [prevent]="false">Clique Gauche</dsv-button>
+          <dsv-button [prevent]="false">Clic Gauche</dsv-button>
         </dsv-menu-contextual>
         <dsv-menu-contextual buttonClick='right' [options]="options">
-          <dsv-button [prevent]="false">Clique Droit</dsv-button>
+          <dsv-button [prevent]="false">Clic Droit</dsv-button>
+        </dsv-menu-contextual>
+        <dsv-menu-contextual buttonClick='both' [options]="[
+              { id: 'home', icon: 'ri-home-2-line', text: '' },
+              { id: 'settings', icon: 'ri-tools-line', text: '' },
+              { id: 'Déconnexion', icon: 'ri-logout-box-line', color: 'error', text: '' }
+            ]">
+          <dsv-button [prevent]="false">Icon</dsv-button>
         </dsv-menu-contextual>
       </div>
     `,

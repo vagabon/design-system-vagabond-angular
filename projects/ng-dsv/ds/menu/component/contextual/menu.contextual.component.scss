@@ -14,7 +14,7 @@
     max-height: 0;
     overflow: hidden;
     transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 }
 
 .context-menu.visible {
