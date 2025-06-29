@@ -5,6 +5,7 @@
 
     div.scroll {
         overflow: auto;
+        scrollbar-width: thin;
         width: 100%;
     }
 }

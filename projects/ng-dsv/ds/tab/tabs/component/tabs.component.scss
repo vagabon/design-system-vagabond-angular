@@ -11,12 +11,14 @@
         display: inline-block;
         flex: 1 1 auto;
         overflow: auto;
+        scrollbar-width: thin;
         overflow-x: hidden;
         width: 100%;
 
         &>div {
             display: flex;
             overflow: auto;
+            scrollbar-width: thin;
             margin: 0px 10px;
         }
 

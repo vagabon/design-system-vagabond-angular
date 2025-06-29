@@ -19,6 +19,7 @@
             display: flex;
             flex: 1;
             overflow: auto;
+            scrollbar-width: thin;
             padding: 10px 0px;
 
             .m2m-content {

@@ -31,6 +31,7 @@
     .modal-content {
         flex: 1;
         overflow: auto;
+        scrollbar-width: thin;
         padding: 10px;
         align-content: center;
     }
