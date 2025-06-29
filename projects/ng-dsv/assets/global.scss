@@ -10,6 +10,11 @@ body {
 
 body {
     overflow-x: hidden;
+    scrollbar-color: rgb(117, 117, 117) rgb(245, 245, 245);
+}
+
+body.dark {
+    scrollbar-color: rgb(169, 169, 169) rgb(56, 56, 56);
 }
 
 app-root {
