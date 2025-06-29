@@ -4,6 +4,7 @@
       <app-tab-component
         [tab]="tab"
         [isSelected]="active().trim() === tab.id.trim()"
+        (callback)="doClick($event)"
       />
     }
   </div>

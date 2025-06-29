@@ -41,7 +41,7 @@ export const Default: Story = {
     },
     props: args,
     template: `
-      <div style="display: flex; gap: 10px; margin: 0px 0px; height: 200px;">
+      <div style="display: flex; gap: 10px; margin: 0px 0px; height: 200px; justify-content: center; align-items: baseline;">
         <dsv-menu-contextual buttonClick='left' [options]="options">
           <dsv-button [prevent]="false">Clic Gauche</dsv-button>
         </dsv-menu-contextual>

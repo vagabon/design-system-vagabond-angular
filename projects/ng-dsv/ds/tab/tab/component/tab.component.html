@@ -1,3 +1,7 @@
-<button [routerLink]="tab().url" [class.selected]="isSelected()">
+<button
+  [routerLink]="tab().url ?? null"
+  [class.selected]="isSelected()"
+  (click)="doClick($event, tab())"
+>
   {{ tab().title | translate }}
 </button>
