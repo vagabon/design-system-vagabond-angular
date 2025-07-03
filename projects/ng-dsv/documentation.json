@@ -303,21 +303,21 @@
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n  page: 0,\n  max: 10,\n  callback: () => { }\n}"
-            },
-            {
-                "name": "ActionsData",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/modal/component/modal.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n  id: 'modale',\n  title: 'title',\n  class: 'class',\n}"
+            },
+            {
+                "name": "ActionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  page: 0,\n  max: 10,\n  callback: () => { }\n}"
             },
             {
                 "name": "ActionsData",
@@ -347,7 +347,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\n  text: 'Voici un texte plus long pour tester le comportement du tooltip avec plus de contenu.',\n}"
+                "defaultValue": "{\n  text: 'Voici un texte long pour tester le comportement du tooltip avec plus de contenu.',\n}"
             },
             {
                 "name": "ActionsData",
@@ -397,7 +397,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\n  options: [\n    { id: 'home', icon: 'Accueil', text: 'Option 1' },\n    { id: 'settings', icon: 'Paramètres', text: 'Option 2' },\n    { id: 'Déconnexion', icon: 'Paramètres', text: 'Option 3' }\n  ]\n}"
+                "defaultValue": "{\n  options\n}"
             },
             {
                 "name": "ActionsData",
@@ -467,7 +467,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    delete: () => { },\n  },\n  render: (args: any) => ({\n    template: `\n      <div class=\"flex flex-row gap10\">\n        <dsv-chip text=\"${args.text}\" width=\"${args.width}\" variant=\"${args.variant}\" color=\"${args.color}\" [fullwidth]=\"${args.fullwidth}\" />\n        <dsv-chip text=\"${args.text}\" width=\"${args.width}\" variant=\"${args.variant}\" color=\"${args.color}\" [fullwidth]=\"${args.fullwidth}\" (delete)=\"delete\" />\n      </div>\n    `,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -523,21 +523,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/modal/component/modal.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `\n      <app-modal-button id=\"${args.id}\" text=\"Clic\">\n        <app-modal id=\"${args.id}\" titleText=\"${args.title}\" class=\"${args.class}\">\n          Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, \n          when an unknown printer took a galley of type and scrambled it to make a type specimen book. \n          It has survived not only five centuries, but also the leap into electronic typesetting, \n          remaining essentially unchanged. It was popularised in the 1960s with the release of \n          Letraset sheets containing Lorem Ipsum passages, and more recently with desktop \n          publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n        </app-modal>\n      </app-modal-button>\n    `,\n  }),\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
             },
             {
                 "name": "Default",
@@ -567,7 +567,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    ...ActionsData,\n  },\n  render: (args: any) => ({\n    template: `\n      <div style=\"display: flex; gap: 10px; margin: 30px 0px;\">\n        <dsv-tooltip text=\"${args.text}\" position=\"right\">\n          <button>Survoler moi (right)</ button >\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" >\n          <button>Survoler moi (top)</ button >\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" position=\"bottom\">\n          <button>Survoler moi (bottom)</ button >\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" position=\"left\">\n          <button>Survoler moi (left)</ button >\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" position=\"right\">\n          <button>Survoler moi (right > left)</ button >\n        </dsv-tooltip>\n      </div>\n    `,\n  }),\n}"
+                "defaultValue": "{\n  args: {\n    ...ActionsData,\n  },\n  render: (args: any) => ({\n    moduleMetadata: {\n      imports: [DsvButtonComponent],\n    },\n    template: `\n      <div style=\"display: flex; gap: 10px; margin: 30px 0px; flex-wrap: wrap;\">\n        <dsv-tooltip text=\"${args.text}\" position=\"right\">\n          <dsv-button>Survoler moi (right)</dsv-button>\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" >\n          <dsv-button>(top)</dsv-button>\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" position=\"bottom\">\n          <dsv-button>(bottom)</dsv-button>\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" position=\"left\">\n          <dsv-button>(left)</dsv-button>\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" position=\"right\">\n          <dsv-button>(right > left)</dsv-button>\n        </dsv-tooltip>\n      </div>\n    `,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -617,7 +617,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    ...ActionsData,\n  },\n  render: (args: any) => ({\n    template: `\n      <div style=\"display: flex; gap: 10px; margin: 0px 0px; height: 300px;\">\n        <dsv-menu-contextual buttonClick='left' [options]=\"${args.options}\">\n          <button>Clique Gauche</ button >\n        </dsv-menu-contextual>\n        <dsv-menu-contextual buttonClick='right' options=\"${args.options}\">\n          <button>Clique droit</ button >\n          \n        </dsv-menu-contextual>\n      </div>\n    `,\n  }),\n}"
+                "defaultValue": "{\n  render: (args: any) => ({\n    moduleMetadata: {\n      imports: [DsvButtonComponent],\n    },\n    props: args,\n    template: `\n      <div style=\"display: flex; gap: 10px; margin: 0px 0px; height: 200px; justify-content: center; align-items: baseline;\">\n        <dsv-menu-contextual buttonClick='left' [options]=\"options\">\n          <dsv-button [prevent]=\"false\">Clic Gauche</dsv-button>\n        </dsv-menu-contextual>\n        <dsv-menu-contextual buttonClick='right' [options]=\"options\">\n          <dsv-button [prevent]=\"false\">Clic Droit</dsv-button>\n        </dsv-menu-contextual>\n        <dsv-menu-contextual buttonClick='both' [options]=\"[\n              { id: 'home', icon: 'ri-home-2-line', text: '' },\n              { id: 'settings', icon: 'ri-tools-line', text: '' },\n              { id: 'Déconnexion', icon: 'ri-logout-box-line', color: 'error', text: '' }\n            ]\">\n          <dsv-button [prevent]=\"false\">Icon</dsv-button>\n        </dsv-menu-contextual>\n      </div>\n    `,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -743,21 +743,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<PaginateComponent>",
-                "defaultValue": "{\n  title: 'dsv/Paginate',\n  component: PaginateComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/modal/component/modal.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ModalComponent>",
                 "defaultValue": "{\n  title: 'dsv/Modal',\n  component: ModalComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [ModalButtonComponent, TranslatePipe],\n    }),\n    storyBig\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<PaginateComponent>",
+                "defaultValue": "{\n  title: 'dsv/Paginate',\n  component: PaginateComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
             },
             {
                 "name": "meta",
@@ -837,7 +837,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<DsvMenuContextualComponent>",
-                "defaultValue": "{\n  title: 'dsv/Menu/contextual',\n  component: DsvMenuContextualComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n}"
+                "defaultValue": "{\n  title: 'dsv/Menu/contextual',\n  component: DsvMenuContextualComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    options: {\n      control: {\n        type: 'object',\n      },\n    },\n  },\n  args: {\n    ...ActionsData,\n  },\n}"
             },
             {
                 "name": "meta",
@@ -858,6 +858,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<TabsComponent>",
                 "defaultValue": "{\n  title: 'dsv/Tabs',\n  component: TabsComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n}"
+            },
+            {
+                "name": "options",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "MenuContextualDto[]",
+                "defaultValue": "[\n  { id: 'home', icon: 'ri-home-2-line', text: 'Option 1' },\n  { id: 'settings', icon: 'ri-tools-line', text: 'Option 2' },\n  { id: 'Déconnexion', icon: 'ri-logout-box-line', color: 'error', text: 'Déconnexion' },\n  { id: 'tululu', text: 'Option 4', divider: true }\n]"
             },
             {
                 "name": "preview",
@@ -1036,8 +1046,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<PaginateComponent>",
-                "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
+                "rawtype": "StoryObj<ModalComponent>",
+                "file": "projects/ng-dsv/ds/modal/component/modal.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1047,8 +1057,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ModalComponent>",
-                "file": "projects/ng-dsv/ds/modal/component/modal.component.stories.ts",
+                "rawtype": "StoryObj<PaginateComponent>",
+                "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1334,7 +1344,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    delete: () => { },\n  },\n  render: (args: any) => ({\n    template: `\n      <div class=\"flex flex-row gap10\">\n        <dsv-chip text=\"${args.text}\" width=\"${args.width}\" variant=\"${args.variant}\" color=\"${args.color}\" [fullwidth]=\"${args.fullwidth}\" />\n        <dsv-chip text=\"${args.text}\" width=\"${args.width}\" variant=\"${args.variant}\" color=\"${args.color}\" [fullwidth]=\"${args.fullwidth}\" (delete)=\"delete\" />\n      </div>\n    `,\n  }),\n}"
                 },
                 {
                     "name": "meta",
@@ -1517,38 +1527,6 @@
                     "defaultValue": "{\n  title: 'dsv/Menu',\n  component: DsvMenuComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [DsvHeaderComponent, DsvItemComponent],\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
                 }
             ],
-            "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts": [
-                {
-                    "name": "ActionsData",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  page: 0,\n  max: 10,\n  callback: () => { }\n}"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<PaginateComponent>",
-                    "defaultValue": "{\n  title: 'dsv/Paginate',\n  component: PaginateComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
-                }
-            ],
             "projects/ng-dsv/ds/modal/component/modal.component.stories.ts": [
                 {
                     "name": "ActionsData",
@@ -1579,6 +1557,38 @@
                     "deprecationMessage": "",
                     "type": "Meta<ModalComponent>",
                     "defaultValue": "{\n  title: 'dsv/Modal',\n  component: ModalComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [ModalButtonComponent, TranslatePipe],\n    }),\n    storyBig\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+                }
+            ],
+            "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts": [
+                {
+                    "name": "ActionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  page: 0,\n  max: 10,\n  callback: () => { }\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<PaginateComponent>",
+                    "defaultValue": "{\n  title: 'dsv/Paginate',\n  component: PaginateComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
                 }
             ],
             "projects/ng-dsv/ds/table/component/table.component.stories.ts": [
@@ -1654,7 +1664,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
-                    "defaultValue": "{\n  text: 'Voici un texte plus long pour tester le comportement du tooltip avec plus de contenu.',\n}"
+                    "defaultValue": "{\n  text: 'Voici un texte long pour tester le comportement du tooltip avec plus de contenu.',\n}"
                 },
                 {
                     "name": "Default",
@@ -1664,7 +1674,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    ...ActionsData,\n  },\n  render: (args: any) => ({\n    template: `\n      <div style=\"display: flex; gap: 10px; margin: 30px 0px;\">\n        <dsv-tooltip text=\"${args.text}\" position=\"right\">\n          <button>Survoler moi (right)</ button >\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" >\n          <button>Survoler moi (top)</ button >\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" position=\"bottom\">\n          <button>Survoler moi (bottom)</ button >\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" position=\"left\">\n          <button>Survoler moi (left)</ button >\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" position=\"right\">\n          <button>Survoler moi (right > left)</ button >\n        </dsv-tooltip>\n      </div>\n    `,\n  }),\n}"
+                    "defaultValue": "{\n  args: {\n    ...ActionsData,\n  },\n  render: (args: any) => ({\n    moduleMetadata: {\n      imports: [DsvButtonComponent],\n    },\n    template: `\n      <div style=\"display: flex; gap: 10px; margin: 30px 0px; flex-wrap: wrap;\">\n        <dsv-tooltip text=\"${args.text}\" position=\"right\">\n          <dsv-button>Survoler moi (right)</dsv-button>\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" >\n          <dsv-button>(top)</dsv-button>\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" position=\"bottom\">\n          <dsv-button>(bottom)</dsv-button>\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" position=\"left\">\n          <dsv-button>(left)</dsv-button>\n        </dsv-tooltip>\n        <dsv-tooltip text=\"${args.text}\" position=\"right\">\n          <dsv-button>(right > left)</dsv-button>\n        </dsv-tooltip>\n      </div>\n    `,\n  }),\n}"
                 },
                 {
                     "name": "meta",
@@ -1814,7 +1824,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
-                    "defaultValue": "{\n  options: [\n    { id: 'home', icon: 'Accueil', text: 'Option 1' },\n    { id: 'settings', icon: 'Paramètres', text: 'Option 2' },\n    { id: 'Déconnexion', icon: 'Paramètres', text: 'Option 3' }\n  ]\n}"
+                    "defaultValue": "{\n  options\n}"
                 },
                 {
                     "name": "Default",
@@ -1824,7 +1834,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    ...ActionsData,\n  },\n  render: (args: any) => ({\n    template: `\n      <div style=\"display: flex; gap: 10px; margin: 0px 0px; height: 300px;\">\n        <dsv-menu-contextual buttonClick='left' [options]=\"${args.options}\">\n          <button>Clique Gauche</ button >\n        </dsv-menu-contextual>\n        <dsv-menu-contextual buttonClick='right' options=\"${args.options}\">\n          <button>Clique droit</ button >\n          \n        </dsv-menu-contextual>\n      </div>\n    `,\n  }),\n}"
+                    "defaultValue": "{\n  render: (args: any) => ({\n    moduleMetadata: {\n      imports: [DsvButtonComponent],\n    },\n    props: args,\n    template: `\n      <div style=\"display: flex; gap: 10px; margin: 0px 0px; height: 200px; justify-content: center; align-items: baseline;\">\n        <dsv-menu-contextual buttonClick='left' [options]=\"options\">\n          <dsv-button [prevent]=\"false\">Clic Gauche</dsv-button>\n        </dsv-menu-contextual>\n        <dsv-menu-contextual buttonClick='right' [options]=\"options\">\n          <dsv-button [prevent]=\"false\">Clic Droit</dsv-button>\n        </dsv-menu-contextual>\n        <dsv-menu-contextual buttonClick='both' [options]=\"[\n              { id: 'home', icon: 'ri-home-2-line', text: '' },\n              { id: 'settings', icon: 'ri-tools-line', text: '' },\n              { id: 'Déconnexion', icon: 'ri-logout-box-line', color: 'error', text: '' }\n            ]\">\n          <dsv-button [prevent]=\"false\">Icon</dsv-button>\n        </dsv-menu-contextual>\n      </div>\n    `,\n  }),\n}"
                 },
                 {
                     "name": "meta",
@@ -1834,7 +1844,17 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<DsvMenuContextualComponent>",
-                    "defaultValue": "{\n  title: 'dsv/Menu/contextual',\n  component: DsvMenuContextualComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n}"
+                    "defaultValue": "{\n  title: 'dsv/Menu/contextual',\n  component: DsvMenuContextualComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    options: {\n      control: {\n        type: 'object',\n      },\n    },\n  },\n  args: {\n    ...ActionsData,\n  },\n}"
+                },
+                {
+                    "name": "options",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MenuContextualDto[]",
+                    "defaultValue": "[\n  { id: 'home', icon: 'ri-home-2-line', text: 'Option 1' },\n  { id: 'settings', icon: 'ri-tools-line', text: 'Option 2' },\n  { id: 'Déconnexion', icon: 'ri-logout-box-line', color: 'error', text: 'Déconnexion' },\n  { id: 'tululu', text: 'Option 4', divider: true }\n]"
                 }
             ],
             "projects/ng-dsv/ds/modal/component/alert/modal-alert.component.stories.ts": [
@@ -2067,19 +2087,6 @@
                     "kind": 183
                 }
             ],
-            "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<PaginateComponent>",
-                    "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "projects/ng-dsv/ds/modal/component/modal.component.stories.ts": [
                 {
                     "name": "Story",
@@ -2087,6 +2094,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<ModalComponent>",
                     "file": "projects/ng-dsv/ds/modal/component/modal.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<PaginateComponent>",
+                    "file": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -2845,6 +2865,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "options",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

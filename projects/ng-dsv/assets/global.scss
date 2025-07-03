@@ -36,6 +36,14 @@ p {
     display: flex;
 }
 
+.flex-row {
+    flex-direction: row;
+}
+
+.gap10 {
+    gap: 10px;
+}
+
 .flex1 {
     flex: 1;
 }

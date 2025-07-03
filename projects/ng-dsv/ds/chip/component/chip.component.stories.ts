@@ -27,7 +27,31 @@ export default meta;
 type Story = StoryObj<DsvChipComponent>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    delete: () => { },
+  },
+  render: (args: any) => ({
+    props: {
+      delete: args.delete,
+    },
+    template: `
+      <div class="flex flex-row gap10">
+        <dsv-chip text="${args.text}" width="${args.width}" variant="${args.variant}" color="${args.color}" [fullwidth]="${args.fullwidth}" />
+        <dsv-chip text="${args.text}" width="${args.width}" variant="${args.variant}" color="${args.color}" [fullwidth]="${args.fullwidth}" (delete)="delete" />
+      </div>
+    `
+  }),
+};
+
+export const NoDelete: Story = {
+  args: {
+  },
+  render: (args: any) => ({
+    template: `
+      <dsv-chip text="${args.text}" width="${args.width}" variant="${args.variant}" color="${args.color}" [fullwidth]="${args.fullwidth}" />
+    `
+  }),
+
 };
 
 export const WithDelete: Story = {
