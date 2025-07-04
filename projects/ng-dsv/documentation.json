@@ -467,7 +467,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    delete: () => { },\n  },\n  render: (args: any) => ({\n    template: `\n      <div class=\"flex flex-row gap10\">\n        <dsv-chip text=\"${args.text}\" width=\"${args.width}\" variant=\"${args.variant}\" color=\"${args.color}\" [fullwidth]=\"${args.fullwidth}\" />\n        <dsv-chip text=\"${args.text}\" width=\"${args.width}\" variant=\"${args.variant}\" color=\"${args.color}\" [fullwidth]=\"${args.fullwidth}\" (delete)=\"delete\" />\n      </div>\n    `,\n  }),\n}"
+                "defaultValue": "{\n  args: {\n    delete: () => { },\n  },\n  render: (args: any) => ({\n    props: {\n      delete: args.delete,\n    },\n    template: `\n      <div class=\"flex flex-row gap10\">\n        <dsv-chip text=\"${args.text}\" width=\"${args.width}\" variant=\"${args.variant}\" color=\"${args.color}\" [fullwidth]=\"${args.fullwidth}\" />\n        <dsv-chip text=\"${args.text}\" width=\"${args.width}\" variant=\"${args.variant}\" color=\"${args.color}\" [fullwidth]=\"${args.fullwidth}\" (delete)=\"delete\" />\n      </div>\n    `\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -858,6 +858,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<TabsComponent>",
                 "defaultValue": "{\n  title: 'dsv/Tabs',\n  component: TabsComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n}"
+            },
+            {
+                "name": "NoDelete",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/chip/component/chip.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n  },\n  render: (args: any) => ({\n    template: `\n      <dsv-chip text=\"${args.text}\" width=\"${args.width}\" variant=\"${args.variant}\" color=\"${args.color}\" [fullwidth]=\"${args.fullwidth}\" />\n    `\n  }),\n\n}"
             },
             {
                 "name": "options",
@@ -1344,7 +1354,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    delete: () => { },\n  },\n  render: (args: any) => ({\n    template: `\n      <div class=\"flex flex-row gap10\">\n        <dsv-chip text=\"${args.text}\" width=\"${args.width}\" variant=\"${args.variant}\" color=\"${args.color}\" [fullwidth]=\"${args.fullwidth}\" />\n        <dsv-chip text=\"${args.text}\" width=\"${args.width}\" variant=\"${args.variant}\" color=\"${args.color}\" [fullwidth]=\"${args.fullwidth}\" (delete)=\"delete\" />\n      </div>\n    `,\n  }),\n}"
+                    "defaultValue": "{\n  args: {\n    delete: () => { },\n  },\n  render: (args: any) => ({\n    props: {\n      delete: args.delete,\n    },\n    template: `\n      <div class=\"flex flex-row gap10\">\n        <dsv-chip text=\"${args.text}\" width=\"${args.width}\" variant=\"${args.variant}\" color=\"${args.color}\" [fullwidth]=\"${args.fullwidth}\" />\n        <dsv-chip text=\"${args.text}\" width=\"${args.width}\" variant=\"${args.variant}\" color=\"${args.color}\" [fullwidth]=\"${args.fullwidth}\" (delete)=\"delete\" />\n      </div>\n    `\n  }),\n}"
                 },
                 {
                     "name": "meta",
@@ -1355,6 +1365,16 @@
                     "deprecationMessage": "",
                     "type": "Meta<DsvChipComponent>",
                     "defaultValue": "{\n  title: 'dsv/Chip',\n  component: DsvChipComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    ...colorControls as Meta<DsvChipComponent>['argTypes'],\n    delete: { action: 'function', control: false },\n  },\n  args: {\n    ...ActionsData as Meta<DsvChipComponent>['args'],\n  },\n}"
+                },
+                {
+                    "name": "NoDelete",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/chip/component/chip.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n  },\n  render: (args: any) => ({\n    template: `\n      <dsv-chip text=\"${args.text}\" width=\"${args.width}\" variant=\"${args.variant}\" color=\"${args.color}\" [fullwidth]=\"${args.fullwidth}\" />\n    `\n  }),\n\n}"
                 },
                 {
                     "name": "WithDelete",
@@ -2526,6 +2546,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/chip/component/chip.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "NoDelete",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
