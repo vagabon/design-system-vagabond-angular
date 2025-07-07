@@ -1,12 +1,14 @@
 <div class="dsv-header-content">
-  <a class="dsv-header-logo" (click)="goToHome()">
+  <div class="flex gap10 align-center">
     @if (withMenu()) {
       <dsv-menu-button />
     }
-    @if (img()) {
-      <img src="{{ img() }}" alt="logo" />
-    }
-    <span>{{ titleText() }}</span>
-  </a>
+    <a class="dsv-header-logo" (click)="goToHome()">
+      @if (img()) {
+        <img src="{{ img() }}" alt="logo" />
+      }
+      <span>{{ titleText() }}</span>
+    </a>
+  </div>
   <ng-content></ng-content>
 </div>
