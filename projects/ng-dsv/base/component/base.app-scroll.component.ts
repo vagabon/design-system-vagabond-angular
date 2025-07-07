@@ -1,10 +1,13 @@
 import { effect, inject, signal } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, Scroll } from '@angular/router';
 import { ApiService } from '@ng-vagabond-lab/ng-dsv/api';
 import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
+import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
+import { filter, map } from 'rxjs';
 import { ScrollService } from '../public-api';
 
 export abstract class BaseAppScrollComponent {
+  storageService: StorageService = inject(StorageService);
   environmentService = inject(EnvironmentService);
   apiService = inject(ApiService);
   scrollService = inject(ScrollService);
@@ -14,15 +17,19 @@ export abstract class BaseAppScrollComponent {
   load = signal<boolean>(false);
 
   constructor() {
-    inject(Router)
-      .events
-      .subscribe((res) => {
+    inject(Router).events.pipe(
+      filter((event): event is Scroll => event instanceof Scroll),
+      map((event: Scroll) => event.position)
+    ).subscribe(() => {
+      if (this.storageService.isPlatformBrowser() && this.scrollService.getScroll()) {
         const divScrolls = document.getElementsByClassName('scroll');
         Array.from(divScrolls).forEach(scroll => {
-          scroll?.scrollTo(0, this.scrollService.getScroll() ?? 0);
+          setTimeout(() => {
+            scroll?.scrollTo(0, this.scrollService.getScroll() ?? 0);
+          }, 100)
         });
-        this.scrollService.scroll.set(this.scrollService.getScroll() ?? 0);
-      });
+      }
+    });
 
     effect(() => {
       if (this.environmentService.env()) {

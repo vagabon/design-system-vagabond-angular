@@ -62,7 +62,7 @@ describe('BaseAppScrollComponent', () => {
 
     routerEvents$.next(new NavigationStart(1, '/some-path'));
 
-    expect(scrollEl.scrollTo).toHaveBeenCalled();
+    expect(scrollEl.scrollTo).not.toHaveBeenCalled();
 
     scrollEl.remove();
   });

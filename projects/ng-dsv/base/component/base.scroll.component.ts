@@ -1,14 +1,8 @@
-import { effect, inject } from '@angular/core';
-import { ScrollService } from '../public-api';
+import { inject } from '@angular/core';
+import { BaseSeoContainer, ScrollService } from '../public-api';
 
-export abstract class BaseScrollComponent {
+export abstract class BaseScrollComponent extends BaseSeoContainer {
   readonly scrollService = inject(ScrollService);
-
-  constructor() {
-
-    effect(() => {
-    });
-  }
 
   loadMore() {
     if (!this.scrollService.getlocked()) {

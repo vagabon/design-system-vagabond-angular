@@ -1,0 +1,27 @@
+@if (!load() || src() === "") {
+  <dsv-skeleton>
+    <svg
+      [attr.viewBox]="'0 0 ' + width() + ' ' + height()"
+      xmlns="http://www.w3.org/2000/svg"
+    ></svg>
+  </dsv-skeleton>
+}
+@if (src() !== "" && !error()) {
+  <img
+    [src]="src()"
+    [alt]="alt()"
+    [width]="width()"
+    [height]="height()"
+    (load)="doLoad()"
+    (error)="onImageError()"
+    [style.aspect-ratio]="aspectRatio()"
+    [class.hidden]="!load()"
+  />
+} @else if (error()) {
+  <img
+    [src]="empty()"
+    [alt]="alt()"
+    (load)="doLoad()"
+    [style.aspect-ratio]="aspectRatio()"
+  />
+}

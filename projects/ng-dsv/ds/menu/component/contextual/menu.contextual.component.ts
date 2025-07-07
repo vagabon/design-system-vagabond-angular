@@ -29,7 +29,6 @@ export class DsvMenuContextualComponent {
         if (!this.elementRef.nativeElement.contains(event.target)) {
             this.closeMenu();
         } else if (this.buttonClick() === CLICK_LEFT || this.buttonClick() === CLICK_BOTH) {
-            console.log('fuck')
             this.toogleMenu();
         }
     }

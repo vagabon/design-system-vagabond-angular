@@ -32,12 +32,13 @@ p {
     margin: 0;
 }
 
-.flex {
+.flex,
+.flex-column {
     display: flex;
 }
 
-.flex-row {
-    flex-direction: row;
+.flex-column {
+    flex-direction: column;
 }
 
 .gap10 {
@@ -46,6 +47,10 @@ p {
 
 .flex1 {
     flex: 1;
+}
+
+.hidden {
+    display: none;
 }
 
 a {

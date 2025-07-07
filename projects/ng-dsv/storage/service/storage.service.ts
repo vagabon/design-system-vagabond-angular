@@ -23,7 +23,7 @@ export class StorageService {
     try {
       return JSON.parse(value);
     } catch (exception) {
-      console.log(value, (exception as string).toString().split('\n').slice(0, 3).join('\n'));
+      console.error(value, (exception as string).toString().split('\n').slice(0, 3).join('\n'));
       return value;
     }
   }
