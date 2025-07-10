@@ -106,7 +106,7 @@
         },
         {
             "name": "StoryWrapperComponent",
-            "id": "component-StoryWrapperComponent-21587f28edff54cfde1345d29a3332444d86512b4f915e761b9633473ada2ea3a74658759c3c8b257936fd5fd5e67d60f63e764b20073d7f7b118d4f480d14ad",
+            "id": "component-StoryWrapperComponent-f1f85615040cfb8dd9acb6de4ce0b74cf9cb3fa7a4fd5bc0be1482ebac1d116448f0cfee823d7e6453d32e4d6751c8d2b658dc41d280fe339d72eea9cbae05b3",
             "file": "projects/ng-dsv/ds/form/form/component/form.component.stories.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -118,7 +118,7 @@
             "styles": [
                 "\n      :host {\n        width: 100%;\n      }\n    "
             ],
-            "template": "<app-form [form]=\"form\" [urlBack]=\"urlBack\" (callback)=\"callback()\">\n  <dsv-form-input [form]=\"form\" field=\"name\" />\n  <dsv-form-input [form]=\"form\" type=\"number\" field=\"number\" />\n  <dsv-form-input [form]=\"form\" type=\"datetime-local\" field=\"date\" />\n  <dsv-form-input [form]=\"form\" type=\"textarea\" field=\"textarea\" />\n  <dsv-form-select [form]=\"form\" field=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n  <dsv-form-checkbox [form]=\"form\" field=\"checkbox\" />\n</app-form>\n",
+            "template": "<app-form [form]=\"form\" urlBack=\"urlBack\" (callback)=\"callback($event)\">\n  <dsv-form-input [form]=\"form\" field=\"name\" />\n  <dsv-form-input [form]=\"form\" type=\"number\" field=\"number\" />\n  <dsv-form-input [form]=\"form\" type=\"range\" field=\"range\" />\n  <dsv-form-input [form]=\"form\" type=\"datetime-local\" field=\"date\" />\n  <dsv-form-input [form]=\"form\" type=\"textarea\" field=\"textarea\" />\n  <dsv-form-select [form]=\"form\" field=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n  <dsv-form-checkbox [form]=\"form\" field=\"checkbox\" />\n</app-form>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -134,18 +134,18 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 44
+                    "line": 47
                 },
                 {
                     "name": "form",
-                    "defaultValue": "new FormGroup({\n    name: new FormControl('', [Validators.required]),\n    number: new FormControl(''),\n    date: new FormControl(''),\n    textarea: new FormControl('', [Validators.required]),\n    select: new FormControl('', [Validators.required]),\n    checkbox: new FormControl(false),\n  })",
+                    "defaultValue": "new FormGroup({\n    name: new FormControl('', [Validators.required]),\n    number: new FormControl(''),\n    range: new FormControl(50),\n    date: new FormControl(''),\n    textarea: new FormControl('', [Validators.required]),\n    select: new FormControl('', [Validators.required]),\n    checkbox: new FormControl(false),\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 34
+                    "line": 36
                 },
                 {
                     "name": "urlBack",
@@ -155,7 +155,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 43
+                    "line": 46
                 }
             ],
             "methodsClass": [],
@@ -189,7 +189,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';\nimport { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';\nimport { FormCheckboxComponent, FormInputComponent, FormSelectComponent } from '../../public-api';\nimport { FormComponent } from './form.component';\n\nexport const ActionsData = {\n  urlBack: '/',\n};\n\n@Component({\n  selector: 'storybook-wrapper',\n  standalone: true,\n  imports: [FormComponent, FormInputComponent, FormCheckboxComponent, FormSelectComponent, ReactiveFormsModule],\n  template: `\n    <app-form [form]=\"form\" [urlBack]=\"urlBack\" (callback)=\"callback()\">\n      <dsv-form-input [form]=\"form\" field=\"name\" />\n      <dsv-form-input [form]=\"form\" type=\"number\" field=\"number\" />\n      <dsv-form-input [form]=\"form\" type=\"datetime-local\" field=\"date\" />\n      <dsv-form-input [form]=\"form\" type=\"textarea\" field=\"textarea\" />\n      <dsv-form-select [form]=\"form\" field=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n      <dsv-form-checkbox [form]=\"form\" field=\"checkbox\" />\n    </app-form>\n  `,\n  styles: [\n    `\n      :host {\n        width: 100%;\n      }\n    `,\n  ]\n})\nclass StoryWrapperComponent {\n  form = new FormGroup({\n    name: new FormControl('', [Validators.required]),\n    number: new FormControl(''),\n    date: new FormControl(''),\n    textarea: new FormControl('', [Validators.required]),\n    select: new FormControl('', [Validators.required]),\n    checkbox: new FormControl(false),\n  });\n\n  urlBack?: string;\n  callback = () => alert('Callback appelé 🎉');\n}\n\nconst meta: Meta<StoryWrapperComponent> = {\n  title: 'dsv/Form',\n  component: StoryWrapperComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  parameters: {\n    controls: { exclude: ['form'] },\n  },\n  decorators: [\n    moduleMetadata({\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<StoryWrapperComponent>;\n\nexport const Default: Story = {\n  args: {\n    urlBack: '/dashboard',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <app-form [form]=\"form\" [urlBack]=\"urlBack\" (callback)=\"callback()\">\n            <dsv-form-input [form]=\"form\" field=\"name\" />\n            <dsv-form-input [form]=\"form\" type=\"number\" field=\"number\" />\n            <dsv-form-input [form]=\"form\" type=\"datetime-locale\" field=\"date\" />\n            <dsv-form-input [form]=\"form\" type=\"textarea\" field=\"textarea\" />\n            <dsv-form-select [form]=\"form\" field=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-checkbox [form]=\"form\" field=\"checkbox\" />\n          </app-form>\n        `,\n      },\n    },\n  },\n};",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';\nimport { JSONValue } from '@ng-vagabond-lab/ng-dsv/api';\nimport { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';\nimport { FormCheckboxComponent, FormInputComponent, FormSelectComponent } from '../../public-api';\nimport { FormComponent } from './form.component';\n\nexport const ActionsData = {\n  urlBack: '/',\n};\n\n@Component({\n  selector: 'storybook-wrapper',\n  standalone: true,\n  imports: [FormComponent, FormInputComponent, FormCheckboxComponent, FormSelectComponent, ReactiveFormsModule],\n  template: `\n    <app-form [form]=\"form\" urlBack=\"urlBack\" (callback)=\"callback($event)\">\n      <dsv-form-input [form]=\"form\" field=\"name\" />\n      <dsv-form-input [form]=\"form\" type=\"number\" field=\"number\" />\n      <dsv-form-input [form]=\"form\" type=\"range\" field=\"range\" />\n      <dsv-form-input [form]=\"form\" type=\"datetime-local\" field=\"date\" />\n      <dsv-form-input [form]=\"form\" type=\"textarea\" field=\"textarea\" />\n      <dsv-form-select [form]=\"form\" field=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n      <dsv-form-checkbox [form]=\"form\" field=\"checkbox\" />\n    </app-form>\n  `,\n  styles: [\n    `\n      :host {\n        width: 100%;\n      }\n    `,\n  ]\n})\nclass StoryWrapperComponent {\n  form = new FormGroup({\n    name: new FormControl('', [Validators.required]),\n    number: new FormControl(''),\n    range: new FormControl(50),\n    date: new FormControl(''),\n    textarea: new FormControl('', [Validators.required]),\n    select: new FormControl('', [Validators.required]),\n    checkbox: new FormControl(false),\n  });\n\n  urlBack?: string;\n  callback = (data: JSONValue) => {\n    console.log(data);\n    alert('Callback appelé 🎉');\n  }\n}\n\nconst meta: Meta<StoryWrapperComponent> = {\n  title: 'dsv/Form',\n  component: StoryWrapperComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  parameters: {\n    controls: { exclude: ['form'] },\n  },\n  decorators: [\n    moduleMetadata({\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<StoryWrapperComponent>;\n\nexport const Default: Story = {\n  args: {\n    urlBack: '/dashboard',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <app-form [form]=\"form\" [urlBack]=\"urlBack\" (callback)=\"callback()\">\n            <dsv-form-input [form]=\"form\" field=\"name\" />\n            <dsv-form-input [form]=\"form\" type=\"number\" field=\"number\" />\n            <dsv-form-input [form]=\"form\" type=\"range\" field=\"range\" />\n            <dsv-form-input [form]=\"form\" type=\"datetime-locale\" field=\"date\" />\n            <dsv-form-input [form]=\"form\" type=\"textarea\" field=\"textarea\" />\n            <dsv-form-select [form]=\"form\" field=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-checkbox [form]=\"form\" field=\"checkbox\" />\n          </app-form>\n        `,\n      },\n    },\n  },\n};",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n      :host {\n        width: 100%;\n      }\n    \n",
@@ -437,7 +437,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  render: (args: any) => ({\n    template: `<dsv-avatar avatar=\"${args.avatar}\" color=\"${args.color}\" variant=\"${args.variant}\" width=\"${args.width}\" show=\"${args.show}\" show=\"${args.show}\"></dsv-avatar>`,\n  }),\n}"
+                "defaultValue": "{\n  args: {\n    callback: () => { },\n  },\n  render: (args: any) => ({\n    props: {\n      callback: args.callback,\n    },\n    template: `\n      <div class=\"flex flex-row gap10\">\n        <dsv-avatar avatar=\"${args.avatar}\" color=\"${args.color}\" variant=\"${args.variant}\" width=\"${args.width}\" show=\"${args.show}\" show=\"${args.show}\"></dsv-avatar>\n        <dsv-avatar avatar=\"${args.avatar}\" color=\"${args.color}\" variant=\"${args.variant}\" width=\"${args.width}\" show=\"${args.show}\" show=\"${args.show}\" (callback)=\"callback\"></dsv-avatar>\n      </div>\n    `,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -607,7 +607,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    urlBack: '/dashboard',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <app-form [form]=\"form\" [urlBack]=\"urlBack\" (callback)=\"callback()\">\n            <dsv-form-input [form]=\"form\" field=\"name\" />\n            <dsv-form-input [form]=\"form\" type=\"number\" field=\"number\" />\n            <dsv-form-input [form]=\"form\" type=\"datetime-locale\" field=\"date\" />\n            <dsv-form-input [form]=\"form\" type=\"textarea\" field=\"textarea\" />\n            <dsv-form-select [form]=\"form\" field=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-checkbox [form]=\"form\" field=\"checkbox\" />\n          </app-form>\n        `,\n      },\n    },\n  },\n}"
+                "defaultValue": "{\n  args: {\n    urlBack: '/dashboard',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <app-form [form]=\"form\" [urlBack]=\"urlBack\" (callback)=\"callback()\">\n            <dsv-form-input [form]=\"form\" field=\"name\" />\n            <dsv-form-input [form]=\"form\" type=\"number\" field=\"number\" />\n            <dsv-form-input [form]=\"form\" type=\"range\" field=\"range\" />\n            <dsv-form-input [form]=\"form\" type=\"datetime-locale\" field=\"date\" />\n            <dsv-form-input [form]=\"form\" type=\"textarea\" field=\"textarea\" />\n            <dsv-form-select [form]=\"form\" field=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-checkbox [form]=\"form\" field=\"checkbox\" />\n          </app-form>\n        `,\n      },\n    },\n  },\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/form/input/component/form.input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    form: flatted.parse(flatted.stringify(new FormGroup({\n      exampleField: new FormControl(''),\n    }))),\n    field: 'exampleField',\n    type: 'text',\n    withLabel: true,\n    required: false,\n    icon: 'user-icon',\n  },\n}"
             },
             {
                 "name": "Default",
@@ -833,6 +843,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/ng-dsv/ds/form/input/component/form.input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<FormInputComponent>",
+                "defaultValue": "{\n  title: 'dsv/Form/input',\n  component: FormInputComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  parameters: {\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [\n        ReactiveFormsModule,\n      ],\n    }),\n  ],\n  argTypes: {\n    form: {\n      mapping: {\n        Default: new FormGroup({\n          exampleField: new FormControl(''),\n        })\n      }\n    },\n    type: {\n      control: {\n        type: 'select',\n        options: [\n          \"text\", \"password\", \"email\", \"number\", \"date\", \"time\", \"datetime-local\",\n          \"month\", \"week\", \"url\", \"search\", \"tel\", \"color\", \"range\", \"checkbox\",\n          \"radio\", \"file\", \"submit\", \"reset\", \"button\", \"image\", \"hidden\"\n        ],\n      },\n    },\n    onSend: { action: 'onSend' },\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -858,6 +878,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<TabsComponent>",
                 "defaultValue": "{\n  title: 'dsv/Tabs',\n  component: TabsComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n}"
+            },
+            {
+                "name": "NoCallback",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: (args: any) => ({\n    template: `<dsv-avatar avatar=\"${args.avatar}\" color=\"${args.color}\" variant=\"${args.variant}\" width=\"${args.width}\" show=\"${args.show}\" show=\"${args.show}\"></dsv-avatar>`,\n  }),\n}"
             },
             {
                 "name": "NoDelete",
@@ -1155,6 +1185,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<FormInputComponent>",
+                "file": "projects/ng-dsv/ds/form/input/component/form.input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<DsvMenuContextualComponent>",
                 "file": "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts",
                 "deprecated": false,
@@ -1248,7 +1289,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  render: (args: any) => ({\n    template: `<dsv-avatar avatar=\"${args.avatar}\" color=\"${args.color}\" variant=\"${args.variant}\" width=\"${args.width}\" show=\"${args.show}\" show=\"${args.show}\"></dsv-avatar>`,\n  }),\n}"
+                    "defaultValue": "{\n  args: {\n    callback: () => { },\n  },\n  render: (args: any) => ({\n    props: {\n      callback: args.callback,\n    },\n    template: `\n      <div class=\"flex flex-row gap10\">\n        <dsv-avatar avatar=\"${args.avatar}\" color=\"${args.color}\" variant=\"${args.variant}\" width=\"${args.width}\" show=\"${args.show}\" show=\"${args.show}\"></dsv-avatar>\n        <dsv-avatar avatar=\"${args.avatar}\" color=\"${args.color}\" variant=\"${args.variant}\" width=\"${args.width}\" show=\"${args.show}\" show=\"${args.show}\" (callback)=\"callback\"></dsv-avatar>\n      </div>\n    `,\n  }),\n}"
                 },
                 {
                     "name": "meta",
@@ -1259,6 +1300,16 @@
                     "deprecationMessage": "",
                     "type": "Meta<DsvAvatarComponent>",
                     "defaultValue": "{\n  title: 'dsv/Avatar',\n  component: DsvAvatarComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    ...colorControls as Meta<DsvAvatarComponent>['argTypes'],\n    callback: { action: 'callback' },\n  },\n  args: {\n    ...(ActionsData as any),\n  },\n}"
+                },
+                {
+                    "name": "NoCallback",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: (args: any) => ({\n    template: `<dsv-avatar avatar=\"${args.avatar}\" color=\"${args.color}\" variant=\"${args.variant}\" width=\"${args.width}\" show=\"${args.show}\" show=\"${args.show}\"></dsv-avatar>`,\n  }),\n}"
                 },
                 {
                     "name": "WithCallback",
@@ -1822,7 +1873,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    urlBack: '/dashboard',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <app-form [form]=\"form\" [urlBack]=\"urlBack\" (callback)=\"callback()\">\n            <dsv-form-input [form]=\"form\" field=\"name\" />\n            <dsv-form-input [form]=\"form\" type=\"number\" field=\"number\" />\n            <dsv-form-input [form]=\"form\" type=\"datetime-locale\" field=\"date\" />\n            <dsv-form-input [form]=\"form\" type=\"textarea\" field=\"textarea\" />\n            <dsv-form-select [form]=\"form\" field=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-checkbox [form]=\"form\" field=\"checkbox\" />\n          </app-form>\n        `,\n      },\n    },\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    urlBack: '/dashboard',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <app-form [form]=\"form\" [urlBack]=\"urlBack\" (callback)=\"callback()\">\n            <dsv-form-input [form]=\"form\" field=\"name\" />\n            <dsv-form-input [form]=\"form\" type=\"number\" field=\"number\" />\n            <dsv-form-input [form]=\"form\" type=\"range\" field=\"range\" />\n            <dsv-form-input [form]=\"form\" type=\"datetime-locale\" field=\"date\" />\n            <dsv-form-input [form]=\"form\" type=\"textarea\" field=\"textarea\" />\n            <dsv-form-select [form]=\"form\" field=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-checkbox [form]=\"form\" field=\"checkbox\" />\n          </app-form>\n        `,\n      },\n    },\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -1939,6 +1990,28 @@
                     "deprecationMessage": "",
                     "type": "Meta<TabsComponent>",
                     "defaultValue": "{\n  title: 'dsv/Tabs',\n  component: TabsComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n}"
+                }
+            ],
+            "projects/ng-dsv/ds/form/input/component/form.input.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/form/input/component/form.input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    form: flatted.parse(flatted.stringify(new FormGroup({\n      exampleField: new FormControl(''),\n    }))),\n    field: 'exampleField',\n    type: 'text',\n    withLabel: true,\n    required: false,\n    icon: 'user-icon',\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/form/input/component/form.input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<FormInputComponent>",
+                    "defaultValue": "{\n  title: 'dsv/Form/input',\n  component: FormInputComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  parameters: {\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [\n        ReactiveFormsModule,\n      ],\n    }),\n  ],\n  argTypes: {\n    form: {\n      mapping: {\n        Default: new FormGroup({\n          exampleField: new FormControl(''),\n        })\n      }\n    },\n    type: {\n      control: {\n        type: 'select',\n        options: [\n          \"text\", \"password\", \"email\", \"number\", \"date\", \"time\", \"datetime-local\",\n          \"month\", \"week\", \"url\", \"search\", \"tel\", \"color\", \"range\", \"checkbox\",\n          \"radio\", \"file\", \"submit\", \"reset\", \"button\", \"image\", \"hidden\"\n        ],\n      },\n    },\n    onSend: { action: 'onSend' },\n  },\n}"
                 }
             ],
             "projects/ng-dsv/.storybook/preview.ts": [
@@ -2224,6 +2297,19 @@
                     "kind": 183
                 }
             ],
+            "projects/ng-dsv/ds/form/input/component/form.input.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<FormInputComponent>",
+                    "file": "projects/ng-dsv/ds/form/input/component/form.input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts": [
                 {
                     "name": "Story",
@@ -2376,6 +2462,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "NoCallback",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -2741,6 +2837,36 @@
             },
             {
                 "filePath": "projects/ng-dsv/ds/form/form/component/form.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/form/input/component/form.input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/form/input/component/form.input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/form/input/component/form.input.component.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",

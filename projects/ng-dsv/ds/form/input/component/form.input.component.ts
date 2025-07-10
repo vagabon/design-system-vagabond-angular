@@ -3,6 +3,10 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormErrorComponent } from '../../error/component/form.error.component';
 import { FormLabelComponent } from '../../label/component/form.label.component';
 
+export type INPUT_TYPE = "text" | "password" | "textarea" | "email" | "number" | "date" | "time" | "datetime-local" |
+  "month" | "week" | "url" | "search" | "tel" | "color" | "range" | "checkbox" | "radio" | "file" | "submit" |
+  "reset" | "button" | "image" | "hidden";
+
 @Component({
   selector: 'dsv-form-input',
   imports: [ReactiveFormsModule, FormLabelComponent, FormErrorComponent],
@@ -12,7 +16,7 @@ import { FormLabelComponent } from '../../label/component/form.label.component';
 export class FormInputComponent {
   form = input.required<FormGroup>();
   field = input.required<string>();
-  type = input<string>('text');
+  type = input<INPUT_TYPE>('text');
   withLabel = input<boolean>(true);
   required = input<boolean>(false);
   icon = input<string>();

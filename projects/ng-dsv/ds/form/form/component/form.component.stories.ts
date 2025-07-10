@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { JSONValue } from '@ng-vagabond-lab/ng-dsv/api';
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { FormCheckboxComponent, FormInputComponent, FormSelectComponent } from '../../public-api';
 import { FormComponent } from './form.component';
@@ -13,9 +14,10 @@ export const ActionsData = {
   standalone: true,
   imports: [FormComponent, FormInputComponent, FormCheckboxComponent, FormSelectComponent, ReactiveFormsModule],
   template: `
-    <app-form [form]="form" [urlBack]="urlBack" (callback)="callback()">
+    <app-form [form]="form" urlBack="urlBack" (callback)="callback($event)">
       <dsv-form-input [form]="form" field="name" />
       <dsv-form-input [form]="form" type="number" field="number" />
+      <dsv-form-input [form]="form" type="range" field="range" />
       <dsv-form-input [form]="form" type="datetime-local" field="date" />
       <dsv-form-input [form]="form" type="textarea" field="textarea" />
       <dsv-form-select [form]="form" field="select" [list]="[{id: '', name: ''}, {id: '1', name: 'Test'}]" />
@@ -34,6 +36,7 @@ class StoryWrapperComponent {
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
     number: new FormControl(''),
+    range: new FormControl(50),
     date: new FormControl(''),
     textarea: new FormControl('', [Validators.required]),
     select: new FormControl('', [Validators.required]),
@@ -41,7 +44,10 @@ class StoryWrapperComponent {
   });
 
   urlBack?: string;
-  callback = () => alert('Callback appelé 🎉');
+  callback = (data: JSONValue) => {
+    console.log(data);
+    alert('Callback appelé 🎉');
+  }
 }
 
 const meta: Meta<StoryWrapperComponent> = {
@@ -76,6 +82,7 @@ export const Default: Story = {
           <app-form [form]="form" [urlBack]="urlBack" (callback)="callback()">
             <dsv-form-input [form]="form" field="name" />
             <dsv-form-input [form]="form" type="number" field="number" />
+            <dsv-form-input [form]="form" type="range" field="range" />
             <dsv-form-input [form]="form" type="datetime-locale" field="date" />
             <dsv-form-input [form]="form" type="textarea" field="textarea" />
             <dsv-form-select [form]="form" field="select" [list]="[{id: '', name: ''}, {id: '1', name: 'Test'}]" />
