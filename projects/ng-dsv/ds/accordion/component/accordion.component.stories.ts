@@ -29,9 +29,11 @@ export const Default: Story = {
   }),
 };
 
-export const Second: Story = {
-  args: {},
+export const Open: Story = {
+  args: {
+    open: true
+  },
   render: (args: any) => ({
-    template: `<dsv-accordion [open]="true" titleText="${args.title}"> ${args.content} </dsv-accordion>`,
+    template: `<dsv-accordion [open]="${args.open}" titleText="${args.title}"> ${args.content} </dsv-accordion>`,
   }),
 };

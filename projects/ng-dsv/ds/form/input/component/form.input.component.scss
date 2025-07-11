@@ -10,7 +10,6 @@
             font-family: inherit;
             display: block;
             width: calc(100% - 20px);
-            height: 20px;
             margin: 0px;
             padding: 6px;
             padding-left: 10px;
@@ -26,7 +25,6 @@
 
             &.icon {
                 padding-left: 25px;
-                width: calc(100% - 2.4rem);
             }
 
             &.error {
@@ -41,7 +39,7 @@
         i {
             position: absolute;
             z-index: 1000;
-            top: 15px;
+            top: 10px;
             left: 7px;
         }
 

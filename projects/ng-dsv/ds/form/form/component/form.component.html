@@ -2,10 +2,7 @@
   <div>
     <ng-content></ng-content>
   </div>
-  <div
-    class="form-buttons"
-    [style.display]="urlBack() && textValid() !== '' ? '' : 'none'"
-  >
+  <div class="form-buttons" [class.hidden]="!(urlBack() && textValid() !== '')">
     @if (urlBack()) {
       <dsv-button
         color="default"

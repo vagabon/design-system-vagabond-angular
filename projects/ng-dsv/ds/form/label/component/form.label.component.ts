@@ -8,7 +8,7 @@ import { AbstractControl, Validators } from "@angular/forms";
 })
 export class FormLabelComponent {
   label = input.required<string>();
-  field = input.required<AbstractControl<any, any>>();
+  field = input<AbstractControl>();
   show = input<boolean>(true);
 
   isRequired = signal<boolean>(false);

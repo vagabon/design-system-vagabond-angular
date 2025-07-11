@@ -1,7 +1,7 @@
 <div class="auth-button">
   <button
     id="google-signin-button"
-    [style]="authService.userConnected() === null ? '' : 'display: none;'"
+    [class.hidden]="authService.userConnected() !== null"
   ></button>
 </div>
 

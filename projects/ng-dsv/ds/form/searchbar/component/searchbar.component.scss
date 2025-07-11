@@ -1,5 +1,9 @@
 :host {
     display: flex;
     margin: 5px;
-    width: calc(100% - 13px);
+}
+
+::ng-deep form-searchbar input {
+    width: 100% !important;
+    overflow: hidden !important;
 }

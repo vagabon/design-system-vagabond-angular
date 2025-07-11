@@ -11,9 +11,8 @@ const meta: Meta<FormInputComponent> = {
     type: {
       control: 'select',
       options: [
-        "text", "password", "email", "number", "date", "time", "datetime-local",
-        "month", "week", "url", "search", "tel", "color", "range", "checkbox",
-        "radio", "file", "submit", "reset", "button", "image", "hidden"
+        "text", "password", "textarea", "email", "number", "date", "time", "datetime-local",
+        "month", "week", "url", "search", "tel", "color", "range", "file", "hidden"
       ],
     },
     onSend: { action: 'onSend' },
@@ -23,11 +22,14 @@ const meta: Meta<FormInputComponent> = {
 export default meta;
 type Story = StoryObj<FormInputComponent>;
 
-const MY_FORM: any = new FormGroup({
-  exampleField: new FormControl(''),
-})
+export interface CustomFormGroup extends FormGroup {
+  toJSON: () => null;
+}
 
-// Tell JSON.stringify to serialize it as null > No circular dependency
+const MY_FORM = new FormGroup({
+  exampleField: new FormControl(''),
+}) as unknown as CustomFormGroup;
+
 MY_FORM['toJSON'] = () => null;
 
 export const Default: Story = {

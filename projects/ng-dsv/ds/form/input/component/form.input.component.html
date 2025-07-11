@@ -1,9 +1,7 @@
 <div [formGroup]="form()">
-  <dsv-form-label
-    [label]="field()"
-    [field]="form().get(field())!"
-    [show]="withLabel()"
-  />
+  @if (withLabel()) {
+    <dsv-form-label [label]="field()" [field]="form().get(field())!" />
+  }
   @if (type() === "textarea") {
     <textarea
       [id]="field()"

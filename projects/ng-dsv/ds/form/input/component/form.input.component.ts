@@ -4,8 +4,7 @@ import { FormErrorComponent } from '../../error/component/form.error.component';
 import { FormLabelComponent } from '../../label/component/form.label.component';
 
 export type INPUT_TYPE = "text" | "password" | "textarea" | "email" | "number" | "date" | "time" | "datetime-local" |
-  "month" | "week" | "url" | "search" | "tel" | "color" | "range" | "checkbox" | "radio" | "file" | "submit" |
-  "reset" | "button" | "image" | "hidden";
+  "month" | "week" | "url" | "search" | "tel" | "color" | "range" | "file" | "hidden";
 
 @Component({
   selector: 'dsv-form-input',

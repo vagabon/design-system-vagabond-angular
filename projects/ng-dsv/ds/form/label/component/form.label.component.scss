@@ -1,5 +1,11 @@
 :host {
-    display: inline-block;
     margin-bottom: .5rem;
+    display: flex;
+    align-content: center;
     opacity: 0.65;
+    user-select: none;
+
+    label {
+        width: 100%;
+    }
 }

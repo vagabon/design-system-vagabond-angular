@@ -24,7 +24,7 @@
 
     .dsv-accordion-text {
         display: flex;
-        width: 100%;
+        width: calc(100% - 20px);
         overflow: hidden;
         padding: 0px 10px;
         opacity: 0;
