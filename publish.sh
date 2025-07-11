@@ -15,3 +15,5 @@ cd dist/ng-dsv
 npm publish --access public
 
 cd ../../ 
+
+npmi
