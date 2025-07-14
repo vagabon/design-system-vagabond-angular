@@ -5,7 +5,7 @@ import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
   providedIn: 'root',
 })
 export class StorageService {
-  platformService = inject(PlatformService);
+  public readonly platformService = inject(PlatformService);
 
   suffixe = signal<string>('');
 
