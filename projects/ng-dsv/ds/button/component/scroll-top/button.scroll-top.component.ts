@@ -1,6 +1,6 @@
 import { Component, effect, inject, input, signal } from '@angular/core';
+import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { DsvButtonComponent } from '../button.component';
-import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
 
 @Component({
   selector: 'app-scroll-top-button',
@@ -9,7 +9,7 @@ import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
   styleUrls: ['./button.scroll-top.component.scss'],
 })
 export class ButtonScrollTopComponent {
-  storageService: StorageService = inject(StorageService);
+  readonly platformService = inject(PlatformService);
 
   scroll = input<number>(0);
 
@@ -22,7 +22,7 @@ export class ButtonScrollTopComponent {
   }
 
   scrollToTop() {
-    if (this.storageService.isPlatformBrowser()) {
+    if (this.platformService.isPlatformBrowser()) {
       const scrolls = document.getElementsByClassName('scroll');
       Array.from(scrolls).forEach((scroll) => {
         scroll?.scrollTo(0, 0);

@@ -21,7 +21,7 @@
     "showcase:test-coverage": "ng test showcase --no-watch --code-coverage",
     "storybook": "ng run @ng-vagabond-lab/ng-dsv:storybook",
     "storybook:build": "ng run @ng-vagabond-lab/ng-dsv:build-storybook",
-    "sonar": "npm run test:coverage:headless && npx sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.host.url=http://localhost:9000"
+    "sonar": "npm run test:coverage:headless && npx sonar-scanner -Dsonar.token=$SONAR_TOKEN -Dsonar.host.url=http://localhost:9000"
   },
   "dependencies": {
     "@angular/animations": "~20.1.0",

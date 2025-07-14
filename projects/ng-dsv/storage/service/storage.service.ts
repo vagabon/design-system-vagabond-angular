@@ -1,20 +1,16 @@
-import { isPlatformBrowser } from '@angular/common';
-import { inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
+import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StorageService {
-  private readonly platformId = inject(PLATFORM_ID);
+  platformService = inject(PlatformService);
 
   suffixe = signal<string>('');
 
-  isPlatformBrowser() {
-    return isPlatformBrowser(this.platformId);
-  }
-
   setItem(key: string, value: unknown): void {
-    if (isPlatformBrowser(this.platformId)) {
+    if (this.platformService.isPlatformBrowser()) {
       localStorage.setItem(key + this.suffixe(), JSON.stringify(value));
     }
   }
@@ -29,7 +25,7 @@ export class StorageService {
   }
 
   getItem<T>(key: string): T | null {
-    if (isPlatformBrowser(this.platformId)) {
+    if (this.platformService.isPlatformBrowser()) {
       const item = localStorage.getItem(key + this.suffixe());
       return item ? this.parse(item) : null;
     }
@@ -37,13 +33,13 @@ export class StorageService {
   }
 
   removeItem(key: string): void {
-    if (isPlatformBrowser(this.platformId)) {
+    if (this.platformService.isPlatformBrowser()) {
       localStorage.removeItem(key + this.suffixe());
     }
   }
 
   clear(): void {
-    if (isPlatformBrowser(this.platformId)) {
+    if (this.platformService.isPlatformBrowser()) {
       localStorage.clear();
     }
   }

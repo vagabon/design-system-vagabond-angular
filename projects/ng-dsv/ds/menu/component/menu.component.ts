@@ -4,11 +4,12 @@ import {
   effect,
   ElementRef,
   HostListener,
+  inject,
   input,
 } from '@angular/core';
 import { DsvContainerComponent } from '@ng-vagabond-lab/ng-dsv/ds/container';
 import { DsvThemeSwitchComponent } from '@ng-vagabond-lab/ng-dsv/ds/theme';
-import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
+import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { MenuService } from '../public-api';
 
 @Component({
@@ -18,15 +19,15 @@ import { MenuService } from '../public-api';
   styleUrls: ['./menu.component.scss'],
 })
 export class DsvMenuComponent {
+  readonly platformService = inject(PlatformService);
+  readonly menuService = inject(MenuService);
+  readonly elementRef = inject(ElementRef);
+
   showFooter = input<boolean>(true);
 
-  constructor(
-    private readonly menuService: MenuService,
-    private readonly elementRef: ElementRef,
-    private readonly storageService: StorageService,
-  ) {
+  constructor() {
     effect(() => {
-      if (this.storageService.isPlatformBrowser()) {
+      if (this.platformService.isPlatformBrowser()) {
         const menu = document.getElementsByTagName('dsv-menu')[0];
         const collapse = document.getElementById('collapse');
         if (this.menuService.isMenuOpen()) {
@@ -46,7 +47,7 @@ export class DsvMenuComponent {
   @HostListener('document:click', ['$event'])
   onClickOutside(event: Event) {
     if (
-      this.storageService.isPlatformBrowser() &&
+      this.platformService.isPlatformBrowser() &&
       this.menuService.isMenuOpen() &&
       !this.elementRef.nativeElement.contains(event.target)
     ) {

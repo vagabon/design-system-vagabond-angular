@@ -1,6 +1,6 @@
 import { createEnvironmentInjector, EnvironmentInjector, runInInjectionContext } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
-import { AuthService } from '@ng-vagabond-lab/ng-dsv/auth';
+import { AuthService } from '@ng-vagabond-lab/ng-dsv/modules/auth';
 import { authGuard } from './auth.guard';
 
 describe('authGuard', () => {

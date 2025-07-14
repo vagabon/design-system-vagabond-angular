@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
+import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { Observable } from 'rxjs';
 import { JSONObject } from '../dto/api.dto';
 import { ApiLoadService } from './api.load.service';
@@ -12,7 +12,7 @@ export class ApiService {
   baseUrl: string = '';
   httpClient = inject(HttpClient);
   apiLoadService = inject(ApiLoadService);
-  storageService = inject(StorageService);
+  platformService = inject(PlatformService);
 
   setBaseUrl(url: string) {
     this.baseUrl = url;
@@ -58,13 +58,13 @@ export class ApiService {
   }
 
   info(url: string, data: JSONObject) {
-    if (this.storageService.isPlatformBrowser()) {
+    if (this.platformService.isPlatformBrowser()) {
       console.log(url, data);
     }
   }
 
   error(url: string, error: JSONObject) {
-    if (this.storageService.isPlatformBrowser()) {
+    if (this.platformService.isPlatformBrowser()) {
       console.error(url, error);
     }
   }

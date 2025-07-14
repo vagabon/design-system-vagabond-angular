@@ -19,16 +19,10 @@ describe('StorageService', () => {
 
         service = TestBed.inject(StorageService);
 
-        spyOn<any>(service, 'isPlatformBrowser').and.callThrough();
-
         spyOn(localStorage, 'setItem');
         spyOn(localStorage, 'getItem').and.returnValue(null);
         spyOn(localStorage, 'removeItem');
         spyOn(localStorage, 'clear');
-    });
-
-    it('should detect platform browser', () => {
-        expect(service.isPlatformBrowser()).toBeTrue();
     });
 
     it('setItem calls localStorage.setItem when platform is browser', () => {

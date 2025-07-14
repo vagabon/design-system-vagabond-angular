@@ -2,8 +2,8 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { AuthGoogleService, AuthService } from '@ng-vagabond-lab/ng-dsv/auth';
 import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
+import { AuthGoogleService, AuthService } from '@ng-vagabond-lab/ng-dsv/modules/auth';
 import { provideTranslateService } from '@ngx-translate/core';
 import { AuthComponent } from './auth.component';
 
