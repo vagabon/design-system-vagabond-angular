@@ -16,4 +16,4 @@ npm publish --access public
 
 cd ../../ 
 
-npmi
+npm install --force
