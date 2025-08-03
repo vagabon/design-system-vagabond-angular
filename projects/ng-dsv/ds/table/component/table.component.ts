@@ -33,7 +33,7 @@ export class TableComponent {
       datas.forEach((data) => {
         const showData: string[] = [];
         showData.push(getValue(data, 'id', false));
-        this.cells().forEach((cell) => {
+        this.cells() && this.cells().forEach((cell) => {
           showData.push(getValue(data, cell.name, cell.date ?? false));
         });
         showDatas.push(showData);

@@ -6,6 +6,7 @@ import { DsvCardComponent } from '@ng-vagabond-lab/ng-dsv/ds/card';
 import { PaginateComponent } from '@ng-vagabond-lab/ng-dsv/ds/paginate';
 import { TabDto, TabsComponent } from '@ng-vagabond-lab/ng-dsv/ds/tab';
 import { TableComponent } from '@ng-vagabond-lab/ng-dsv/ds/table';
+import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { AdminTabDto } from '../../dto/admin.dto';
 import { AdminService } from '../../service/admin.service';
 
@@ -24,6 +25,7 @@ import { AdminService } from '../../service/admin.service';
 })
 export class AdminSearchContainer extends BaseRouteComponent {
   adminService = inject(AdminService);
+  platformService = inject(PlatformService);
 
   tabs = signal<TabDto[]>([]);
   tab = signal<string>('user');
@@ -34,26 +36,30 @@ export class AdminSearchContainer extends BaseRouteComponent {
   constructor() {
     super();
     effect(() => {
-      this.tab.set(this.routeParams()?.['type']);
-      const tab = this.adminService
-        .tabs()
-        ?.tabs.find((tab) => tab.name === this.tab());
-      this.tabConfig.set(tab);
-      this.gotoPage(0);
+      if (this.platformService.isPlatformBrowser()) {
+        this.tab.set(this.routeParams()?.['type']);
+        const tab = this.adminService
+          .tabs()
+          ?.tabs.find((tab) => tab.name === this.tab());
+        this.tabConfig.set(tab);
+        this.gotoPage(0);
+      }
     });
     effect(() => {
-      const tabs = this.adminService.tabs()?.tabs;
-      const tabsDtos: TabDto[] = [];
-      if (tabs) {
-        tabs.forEach((tab) => {
-          const tabsDto = {} as TabDto;
-          tabsDto.id = tab.name;
-          tabsDto.title = tab.name;
-          tabsDto.url = '/admin/' + tab.name;
-          tabsDtos.push(tabsDto);
-        });
+      if (this.platformService.isPlatformBrowser()) {
+        const tabs = this.adminService.tabs()?.tabs;
+        const tabsDtos: TabDto[] = [];
+        if (tabs) {
+          tabs.forEach((tab) => {
+            const tabsDto = {} as TabDto;
+            tabsDto.id = tab.name;
+            tabsDto.title = tab.name;
+            tabsDto.url = '/admin/' + tab.name;
+            tabsDtos.push(tabsDto);
+          });
+        }
+        this.tabs.set(tabsDtos);
       }
-      this.tabs.set(tabsDtos);
     });
   }
 

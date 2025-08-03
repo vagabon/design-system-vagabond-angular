@@ -19,31 +19,23 @@ export class ApiService {
   }
 
   get<T>(url: string, callback: (data: T) => void) {
-    this.apiLoadService.load.set(true);
-    this.httpClient.get<T>(this.baseUrl + url).subscribe({
-      next: (res) => {
-        this.apiLoadService.load.set(false);
-        this.info(url, res as JSONObject);
-        callback(res);
-      },
-      error: (error: JSONObject) => {
-        this.apiLoadService.load.set(false);
-        this.error(url, error);
-      },
-    });
+    this.doSubscribe(url, this.httpClient.get<T>(this.baseUrl + url), callback);
   }
 
   post<T>(url: string, data: T, callback: (data: T) => void) {
-    this.apiLoadService.load.set(true);
     this.doSubscribe(url, this.httpClient.post<T>(this.baseUrl + url, data), callback);
   }
 
   put<T>(url: string, data: T, callback: (data: T) => void) {
-    this.apiLoadService.load.set(true);
     this.doSubscribe(url, this.httpClient.put<T>(this.baseUrl + url, data), callback);
   }
 
+  delete<T>(url: string, callback: (data: T) => void) {
+    this.doSubscribe(url, this.httpClient.delete<T>(this.baseUrl + url), callback);
+  }
+
   doSubscribe<T>(url: string, observable: Observable<T>, callback: (data: T) => void) {
+    this.apiLoadService.load.set(true);
     observable.subscribe({
       next: (res) => {
         this.apiLoadService.load.set(false);

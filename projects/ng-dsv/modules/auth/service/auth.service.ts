@@ -36,7 +36,7 @@ export class AuthService {
       typeof window !== 'undefined' &&
       JSON.parse(this.storageService?.getItem('user-connected')!);
     this.userConnected.set(userConnected);
-    console.info('userConnected', userConnected);
+    this.apiService.info('userConnected', userConnected);
     return userConnected;
   }
 

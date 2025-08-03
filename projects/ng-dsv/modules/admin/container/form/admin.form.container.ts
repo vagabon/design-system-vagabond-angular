@@ -3,6 +3,7 @@ import { ApiDto } from '@ng-vagabond-lab/ng-dsv/api';
 import { BaseRouteComponent } from '@ng-vagabond-lab/ng-dsv/base';
 import { DsvCardComponent } from '@ng-vagabond-lab/ng-dsv/ds/card';
 import { TabDto } from '@ng-vagabond-lab/ng-dsv/ds/tab';
+import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { AdminFormComponent } from '../../component/form/admin.form.component';
 import { AdminTabDto } from '../../dto/admin.dto';
 import { AdminService } from '../../service/admin.service';
@@ -15,6 +16,7 @@ import { AdminService } from '../../service/admin.service';
 })
 export class AdminFormContainer extends BaseRouteComponent {
   adminService = inject(AdminService);
+  platformService = inject(PlatformService);
 
   tabs = signal<TabDto[]>([]);
   tab = signal<string>('user');
@@ -23,16 +25,18 @@ export class AdminFormContainer extends BaseRouteComponent {
   constructor() {
     super();
     effect(() => {
-      const id = this.routeParams()?.['id'];
-      this.tab.set(this.routeParams()?.['type']);
-      const tab = this.adminService
-        .tabs()
-        ?.tabs.find((tab) => tab.name === this.tab());
-      this.tabConfig.set(tab);
-      if (isNaN(id)) {
-        this.adminService.data.set({} as ApiDto);
-      } else {
-        this.findById(this.routeParams()?.['id']);
+      if (this.platformService.isPlatformBrowser()) {
+        const id = this.routeParams()?.['id'];
+        this.tab.set(this.routeParams()?.['type']);
+        const tab = this.adminService
+          .tabs()
+          ?.tabs.find((tab) => tab.name === this.tab());
+        this.tabConfig.set(tab);
+        if (isNaN(id)) {
+          this.adminService.data.set({} as ApiDto);
+        } else {
+          this.findById(this.routeParams()?.['id']);
+        }
       }
     });
   }

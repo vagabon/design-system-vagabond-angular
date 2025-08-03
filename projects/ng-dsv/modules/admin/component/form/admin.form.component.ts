@@ -37,7 +37,7 @@ export class AdminFormComponent extends BaseFormComponent {
       this.formBuilder.control('a');
 
       let formControl = {} as { [key: string]: FormControl };
-      this.formConf().forEach((conf) => {
+      this.formConf() && this.formConf().forEach((conf) => {
         let value = this.data()[conf.name as keyof ApiDto];
         if (conf.type === 'datetime-local' && value) {
           value = (value as string).substring(0, 16);

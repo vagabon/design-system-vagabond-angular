@@ -1,11 +1,17 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivateFn, Router } from '@angular/router';
+import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { AuthService, hasRole } from '../public-api';
 
 export const authGuard: CanActivateFn = (
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
 ) => {
+    const platformService = inject(PlatformService);
+
+    if (!platformService.isPlatformBrowser()) {
+        return true;
+    }
+
     const authService = inject(AuthService);
     const router = inject(Router);
 
