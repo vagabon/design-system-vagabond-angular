@@ -33,3 +33,8 @@ export interface ApiDto {
   deletedDate?: string;
   active?: boolean;
 }
+
+export interface OrderState {
+  order: string;
+  orderAsc?: boolean;
+}
