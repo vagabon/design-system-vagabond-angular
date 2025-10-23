@@ -1,20 +1,20 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { Observable } from 'rxjs';
 import { ApiDto, ID, JSONObject, OrderState } from '../dto/api.dto';
-import { ApiLoadService } from './api.load.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  baseUrl: string = '';
   readonly httpClient = inject(HttpClient);
-  readonly apiLoadService = inject(ApiLoadService);
   readonly toastService = inject(ToastService);
   readonly platformService = inject(PlatformService);
+
+  load = signal<boolean>(false);
+  baseUrl: string = '';
 
   setBaseUrl(url: string) {
     this.baseUrl = url;
@@ -84,15 +84,15 @@ export class ApiService {
   }
 
   doSubscribe<T>(url: string, observable: Observable<T>, callback: (data: T) => void) {
-    this.apiLoadService.load.set(true);
+    this.load.set(true);
     observable.subscribe({
       next: (res) => {
-        this.apiLoadService.load.set(false);
+        this.load.set(false);
         this.info(url, res as JSONObject);
         callback(res);
       },
       error: (error: JSONObject) => {
-        this.apiLoadService.load.set(false);
+        this.load.set(false);
         this.error(url, error);
       },
     });

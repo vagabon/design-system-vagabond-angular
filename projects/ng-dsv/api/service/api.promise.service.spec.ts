@@ -4,7 +4,6 @@ import { TestBed } from '@angular/core/testing';
 import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { OrderState } from '../dto/api.dto';
-import { ApiLoadService } from './api.load.service';
 import { ApiPromiseService } from './api.promise.service';
 
 import { of, throwError } from 'rxjs';
@@ -14,13 +13,11 @@ describe('ApiPromiseService', () => {
     let httpClientSpy: jasmine.SpyObj<HttpClient>;
     let toastServiceSpy: jasmine.SpyObj<ToastService>;
     let platformServiceSpy: jasmine.SpyObj<PlatformService>;
-    let apiLoadServiceSpy: jasmine.SpyObj<ApiLoadService>;
 
     beforeEach(() => {
         const httpSpy = jasmine.createSpyObj('HttpClient', ['get', 'post', 'put', 'delete']);
         const toastSpy = jasmine.createSpyObj('ToastService', ['showToast']);
         const platformSpy = jasmine.createSpyObj('PlatformService', ['isPlatformBrowser']);
-        const apiLoadSpy = jasmine.createSpyObj('ApiLoadService', [], { load: { set: jasmine.createSpy() } });
 
         TestBed.configureTestingModule({
             providers: [
@@ -29,7 +26,6 @@ describe('ApiPromiseService', () => {
                 { provide: HttpClient, useValue: httpSpy },
                 { provide: ToastService, useValue: toastSpy },
                 { provide: PlatformService, useValue: platformSpy },
-                { provide: ApiLoadService, useValue: apiLoadSpy },
             ],
         });
 
@@ -37,7 +33,6 @@ describe('ApiPromiseService', () => {
         httpClientSpy = TestBed.inject(HttpClient) as jasmine.SpyObj<HttpClient>;
         toastServiceSpy = TestBed.inject(ToastService) as jasmine.SpyObj<ToastService>;
         platformServiceSpy = TestBed.inject(PlatformService) as jasmine.SpyObj<PlatformService>;
-        apiLoadServiceSpy = TestBed.inject(ApiLoadService) as jasmine.SpyObj<ApiLoadService>;
 
         service.setBaseUrl('http://test.com/api/');
         platformServiceSpy.isPlatformBrowser.and.returnValue(true);
@@ -59,8 +54,6 @@ describe('ApiPromiseService', () => {
         const data = await service.get<any>('users');
         expect(data).toEqual(mockData);
         expect(httpClientSpy.get).toHaveBeenCalledWith('http://test.com/api/users');
-        expect(apiLoadServiceSpy.load.set).toHaveBeenCalledWith(true);
-        expect(apiLoadServiceSpy.load.set).toHaveBeenCalledWith(false);
     });
 
     it('should call POST and return data', async () => {
@@ -147,7 +140,6 @@ describe('ApiPromiseService', () => {
         try {
             await service.get<any>('users');
         } catch (e) {
-            expect(apiLoadServiceSpy.load.set).toHaveBeenCalledWith(false);
             expect(console.error).toHaveBeenCalled();
         }
     });

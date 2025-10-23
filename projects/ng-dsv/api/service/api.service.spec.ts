@@ -2,28 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
-import { ApiLoadService } from './api.load.service';
 import { ApiService } from './api.service';
 
 describe('ApiService', () => {
   let service: ApiService;
   let httpClientSpy: jasmine.SpyObj<HttpClient>;
-  let apiLoadServiceMock: jasmine.SpyObj<ApiLoadService>;
 
   beforeEach(() => {
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get', 'post']);
-    apiLoadServiceMock = {
-      load: {
-        set: jasmine.createSpy('set'),
-      },
-    } as any;
 
     TestBed.configureTestingModule({
       providers: [
         provideZonelessChangeDetection(),
         ApiService,
         { provide: HttpClient, useValue: httpClientSpy },
-        { provide: ApiLoadService, useValue: apiLoadServiceMock },
       ],
     });
 
@@ -45,9 +37,7 @@ describe('ApiService', () => {
 
       service.get('test', callback);
 
-      expect(apiLoadServiceMock.load.set).toHaveBeenCalledWith(true);
       expect(httpClientSpy.get).toHaveBeenCalledWith('/api/test');
-      expect(apiLoadServiceMock.load.set).toHaveBeenCalledWith(false);
       expect(callback).toHaveBeenCalledWith(responseData);
     });
 
@@ -60,8 +50,6 @@ describe('ApiService', () => {
 
       service.get('fail', callback);
 
-      expect(apiLoadServiceMock.load.set).toHaveBeenCalledWith(true);
-      expect(apiLoadServiceMock.load.set).toHaveBeenCalledWith(false);
       expect(callback).not.toHaveBeenCalled();
     });
   });
@@ -77,9 +65,7 @@ describe('ApiService', () => {
 
       service.post('create', postData, callback);
 
-      expect(apiLoadServiceMock.load.set).toHaveBeenCalledWith(true);
       expect(httpClientSpy.post).toHaveBeenCalledWith('/api/create', postData);
-      expect(apiLoadServiceMock.load.set).toHaveBeenCalledWith(false);
       expect(callback).toHaveBeenCalledWith(response);
     });
 
@@ -93,8 +79,6 @@ describe('ApiService', () => {
 
       service.post('fail', postData, callback);
 
-      expect(apiLoadServiceMock.load.set).toHaveBeenCalledWith(true);
-      expect(apiLoadServiceMock.load.set).toHaveBeenCalledWith(false);
       expect(callback).not.toHaveBeenCalled();
     });
   });
