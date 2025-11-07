@@ -1,8 +1,19 @@
-import { storyBig } from '@ng-vagabond-lab/ng-dsv/type';
 import { TranslatePipe } from '@ngx-translate/core';
-import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
+import { moduleMetadata, StoryContext, StoryFn, type Meta, type StoryObj } from '@storybook/angular';
 import { ModalButtonComponent } from '../public-api';
 import { ModalComponent } from './modal.component';
+
+export const storyBig = (story: StoryFn) => {
+  const storyOutput = story({}, {} as StoryContext);
+  return {
+    ...storyOutput,
+    template: `
+          <div style="height: calc(300px - 10px); overflow: hidden;">
+            ${storyOutput.template}
+          </div>
+        `,
+  };
+}
 
 export const ActionsData = {
   id: 'modale',

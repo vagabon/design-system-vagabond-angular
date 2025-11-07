@@ -25,7 +25,7 @@ export class FileUploadDirective {
 
     @HostListener('dragenter', ['$event'])
     @HostListener('dragover', ['$event'])
-    private handleDragOver(event: DragEvent): void {
+    handleDragOver(event: DragEvent): void {
         if (!this._enabled) {
             return;
         }
@@ -35,7 +35,7 @@ export class FileUploadDirective {
 
     @HostListener('dragleave', ['$event'])
     @HostListener('dragend', ['$event'])
-    private handleDragEnd(event: DragEvent): void {
+    handleDragEnd(event: DragEvent): void {
         if (!this._enabled) {
             return;
         }
@@ -44,7 +44,7 @@ export class FileUploadDirective {
     }
 
     @HostListener('drop', ['$event'])
-    private handleDrop(event: UIEvent): void {
+    handleDrop(event: UIEvent): void {
         this.stopAndPreventDefault(event);
         this._dragInProgress = false;
         this.dropped.emit(event);

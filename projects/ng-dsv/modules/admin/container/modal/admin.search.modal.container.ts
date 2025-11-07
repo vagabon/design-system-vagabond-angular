@@ -7,7 +7,7 @@ import {
   signal,
 } from '@angular/core';
 import { ApiDto } from '@ng-vagabond-lab/ng-dsv/api';
-import { SearchbarComponent } from '@ng-vagabond-lab/ng-dsv/ds/form';
+import { SearchbarComponent } from '@ng-vagabond-lab/ng-dsv/ds/form/legacy';
 import { DsvItemComponent } from '@ng-vagabond-lab/ng-dsv/ds/item';
 import {
   ModalButtonComponent,

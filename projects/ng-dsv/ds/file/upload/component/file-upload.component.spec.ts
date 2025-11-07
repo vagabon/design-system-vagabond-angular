@@ -1,6 +1,6 @@
 import { ElementRef, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FileUploadDirective } from '../direcitve/file-upload-directives';
+import { FileUploadDirective } from '../directive/file-upload-directives';
 import { FileUploadComponent } from './file-upload.component';
 
 describe('FileUploadComponent', () => {

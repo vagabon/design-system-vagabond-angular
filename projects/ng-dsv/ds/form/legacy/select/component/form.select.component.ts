@@ -1,8 +1,8 @@
 import { Component, input, output } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ApiDto } from '@ng-vagabond-lab/ng-dsv/api';
-import { FormLabelComponent } from '../../label/component/form.label.component';
 import { FormErrorComponent } from '../../error/component/form.error.component';
+import { FormLabelComponent } from '../../label/component/form.label.component';
 
 @Component({
   selector: 'dsv-form-select',

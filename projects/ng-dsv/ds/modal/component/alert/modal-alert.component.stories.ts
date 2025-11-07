@@ -1,7 +1,7 @@
-import { storyBig } from '@ng-vagabond-lab/ng-dsv/type';
 import { TranslatePipe } from '@ngx-translate/core';
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { ModalButtonComponent } from '../button/modal-button.component';
+import { storyBig } from '../modal.component.stories';
 import { ModalAlertComponent } from './modal-alert.component';
 
 export const ActionsData = {

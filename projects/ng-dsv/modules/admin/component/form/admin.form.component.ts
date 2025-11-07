@@ -7,7 +7,7 @@ import {
   FormCheckboxComponent,
   FormComponent,
   FormInputComponent,
-} from '@ng-vagabond-lab/ng-dsv/ds/form';
+} from '@ng-vagabond-lab/ng-dsv/ds/form/legacy';
 import { AdminSearchModalContainer } from '../../container/modal/admin.search.modal.container';
 import { FormDto } from '../../dto/admin.dto';
 

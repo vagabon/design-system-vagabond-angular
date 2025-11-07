@@ -1,0 +1,30 @@
+<div>
+  @if (withLabel()) {
+    <dsv-form-signal-label [label]="fieldName()" [fieldName]="getSignal()" />
+  }
+  @if (type() === "textarea") {
+    <textarea
+      [id]="fieldName()"
+      [field]="getSignal()"
+      class="form-control"
+    ></textarea>
+  } @else if (getSignal()) {
+    <!-- [type]="type()" -->
+    <input
+      #input
+      [id]="fieldName()"
+      class="form-control"
+      [class.error]="isError()"
+      [field]="getSignal()"
+      [class.icon]="icon()"
+      (blur)="doOnSend()"
+      (keydown.enter)="doOnSend()"
+    />
+  }
+  @if (icon()) {
+    <i [class]="icon()"></i>
+  }
+  @if (getSignal()) {
+    <dsv-signal-form-error [errors]="getSignal()().errors()" />
+  }
+</div>

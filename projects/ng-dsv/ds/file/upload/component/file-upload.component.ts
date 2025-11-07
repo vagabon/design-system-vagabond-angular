@@ -1,5 +1,5 @@
 import { Component, ElementRef, input, output, signal, ViewChild } from '@angular/core';
-import { FileUploadDirective } from '../direcitve/file-upload-directives';
+import { FileUploadDirective } from '../directive/file-upload-directives';
 
 @Component({
   selector: 'dsv-file-upload',

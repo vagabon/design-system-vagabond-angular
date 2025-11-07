@@ -1,0 +1,21 @@
+<form (submit)="onSubmit($event)" class="form-container">
+  <div>
+    <ng-content></ng-content>
+  </div>
+  <div class="form-buttons" [class.hidden]="!(urlBack() && textValid() !== '')">
+    @if (urlBack()) {
+      <dsv-button
+        color="default"
+        variant="outlined"
+        [routerLink]="urlBack()"
+        [prevent]="false"
+        >{{ "RETOUR" | translate }}</dsv-button
+      >
+    }
+    @if (textValid() && textValid() !== "") {
+      <dsv-button type="submit" color="primary">{{
+        textValid()! | translate
+      }}</dsv-button>
+    }
+  </div>
+</form>

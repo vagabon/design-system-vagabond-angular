@@ -1,4 +1,3 @@
-import { StoryContext, StoryFn } from "@storybook/angular";
 
 export type ButtonWidthType = 'small' | 'medium' | 'large';
 export type ButtonVariantType = 'text' | 'outlined' | 'contained';
@@ -37,16 +36,4 @@ export const colorControls = {
   fullwidth: {
     control: 'boolean'
   },
-}
-
-export const storyBig = (story: StoryFn) => {
-  const storyOutput = story({}, {} as StoryContext);
-  return {
-    ...storyOutput,
-    template: `
-          <div style="height: calc(300px - 10px); overflow: hidden;">
-            ${storyOutput.template}
-          </div>
-        `,
-  };
 }

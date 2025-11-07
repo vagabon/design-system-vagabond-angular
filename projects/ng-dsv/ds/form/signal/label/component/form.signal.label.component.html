@@ -1,0 +1,9 @@
+@if (show()) {
+  <label
+    [for]="label()"
+    class="text"
+    [class.error]="fieldName()?.()?.errors()?.length! > 0"
+  >
+    {{ label() }} {{ isRequired() ? "*" : "" }}
+  </label>
+}
