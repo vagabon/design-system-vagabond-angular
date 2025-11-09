@@ -142,6 +142,96 @@
     "directives": [],
     "components": [
         {
+            "name": "FormSignalWrapperComponent",
+            "id": "component-FormSignalWrapperComponent-fdf5d031939513e72b5cde47972e4c338b7f627217fc9fc9ee124c1ad92630330cf76d92dfb8a085c25acb9660778a239491ccf126f2d7909127902fb73d21b5",
+            "file": "projects/ng-dsv/ds/form/signal/form/component/form.signal.component.stories.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-wrapper",
+            "styleUrls": [],
+            "styles": [
+                "\n      :host {\n        width: 100%;\n      }\n    "
+            ],
+            "template": "<app-form-signal [form]=\"myForm\" [urlBack]=\"urlBack()\" (callback)=\"callback($event)\">\n  <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"email\" fieldName=\"email\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n  <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n  <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n</app-form-signal>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "urlBack",
+                    "defaultValue": "'/'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 59,
+                    "required": false
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "callback",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 61
+                },
+                {
+                    "name": "myForm",
+                    "defaultValue": "form(signal({\n    name: '',\n    email: '',\n    number: 0,\n    range: 50,\n    date: '',\n    textarea: '',\n    select: '',\n    checkbox: false,\n  }), path => {\n    required(path.name);\n    minLength(path.name, 2);\n    maxLength(path.name, 10);\n    required(path.email);\n    pattern(path.email, /^\\w+@gmail.com$/, { message: \"L'email doit se terminer par gmail.com\" });\n    email(path.email);\n    required(path.textarea);\n    required(path.select);\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 39
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "FormSignalComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "FormSignalInputComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "FormSignalSelectComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "FormSignalCheckboxComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, input, signal } from '@angular/core';\nimport { email, form, maxLength, minLength, pattern, required } from '@angular/forms/signals';\nimport { JSONValue } from '@ng-vagabond-lab/ng-dsv/api';\nimport { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';\nimport { FormSignalCheckboxComponent } from '../../checkbox/component/form.signal.checkbox.component';\nimport { FormSignalInputComponent } from '../../public-api';\nimport { FormSignalSelectComponent } from '../../select/component/form.signal.select.component';\nimport { FormSignalComponent } from './form.signal.component';\n\nexport const ActionsData = {\n  urlBack: '/',\n};\n\n@Component({\n  selector: 'storybook-wrapper',\n  standalone: true,\n  imports: [FormSignalComponent, FormSignalInputComponent, FormSignalSelectComponent, FormSignalCheckboxComponent],\n  template: `\n    <app-form-signal [form]=\"myForm\" [urlBack]=\"urlBack()\" (callback)=\"callback($event)\">\n      <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"email\" fieldName=\"email\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n      <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n      <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n    </app-form-signal>\n  `,\n  styles: [\n    `\n      :host {\n        width: 100%;\n      }\n    `,\n  ]\n})\nclass FormSignalWrapperComponent {\n  myForm = form(signal({\n    name: '',\n    email: '',\n    number: 0,\n    range: 50,\n    date: '',\n    textarea: '',\n    select: '',\n    checkbox: false,\n  }), path => {\n    required(path.name);\n    minLength(path.name, 2);\n    maxLength(path.name, 10);\n    required(path.email);\n    pattern(path.email, /^\\w+@gmail.com$/, { message: \"L'email doit se terminer par gmail.com\" });\n    email(path.email);\n    required(path.textarea);\n    required(path.select);\n  });\n\n  urlBack = input<string>('/');\n\n  callback = (data: JSONValue) => {\n    console.log(data);\n  }\n}\n\nconst meta: Meta<FormSignalWrapperComponent> = {\n  title: 'dsv/Form/Signal',\n  component: FormSignalWrapperComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  parameters: {\n    controls: { exclude: ['form'] },\n  },\n  decorators: [\n    moduleMetadata({\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<FormSignalWrapperComponent>;\n\nexport const Default: Story = {\n  args: {\n    urlBack: '/',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <app-form-signal [form]=\"myForm\" [urlBack]=\"urlBack()\" (callback)=\"callback($event)\">\n            <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"email\" fieldName=\"email\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n            <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n          </app-form-signal>\n\n          \n          class FormComponent {\n            myForm = form(signal({\n              name: '',\n              email: '',\n              number: 0,\n              range: 50,\n              date: '',\n              textarea: '',\n              select: '',\n              checkbox: false,\n            }), path => {\n              required(path.name);\n              minLength(path.name, 2);\n              maxLength(path.name, 10);\n              required(path.email);\n              pattern(path.email, /^\\w+@gmail.com$/, { message: \"L'email doit se terminer par gmail.com\" });\n              email(path.email);\n              required(path.textarea);\n              required(path.select);\n            });\n\n            urlBack = input<string>('/');\n\n            callback = (data: JSONValue) => {\n              console.log(data);\n            }\n          }\n        `,\n      },\n    },\n  },\n};",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "\n      :host {\n        width: 100%;\n      }\n    \n",
+            "extends": []
+        },
+        {
             "name": "PrimaryButtonDemo",
             "id": "component-PrimaryButtonDemo-b714f087cd0be09141e9d8497ef358d7fe96dbf7859f3d2d6b645268bd985b3652d0e568f664cf6a6ec26b2a10c4470887fa04cc1debf0504f6e540e532af25f",
             "file": "projects/ng-dsv/ds/toast/component/toast.component.stories.ts",
@@ -586,96 +676,6 @@
             "styleUrlsData": "",
             "stylesData": "\n      :host {\n        width: 100%;\n      }\n    \n",
             "extends": []
-        },
-        {
-            "name": "StoryWrapperComponent",
-            "id": "component-StoryWrapperComponent-f84a2f352a2329444c060a05c6e2e2d9b995bafc8411127f0f05de62a14e480293197a830f27faaa6dacc93288499b4501fc1186e29695d1dae182cd185b1bce-1",
-            "file": "projects/ng-dsv/ds/form/signal/form/component/form.signal.component.stories.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "storybook-wrapper",
-            "styleUrls": [],
-            "styles": [
-                "\n      :host {\n        width: 100%;\n      }\n    "
-            ],
-            "template": "<app-form-signal [form]=\"myForm\" urlBack=\"urlBack\" (callback)=\"callback($event)\">\n  <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"email\" fieldName=\"email\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n  <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n  <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n</app-form-signal>\n",
-            "templateUrl": [],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "callback",
-                    "defaultValue": "() => {...}",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 60
-                },
-                {
-                    "name": "myForm",
-                    "defaultValue": "form(signal({\n    name: '',\n    email: '',\n    number: 0,\n    range: 50,\n    date: '',\n    textarea: '',\n    select: '',\n    checkbox: false,\n  }), path => {\n    required(path.name);\n    minLength(path.name, 2);\n    maxLength(path.name, 10);\n    required(path.email);\n    pattern(path.email, /^\\w+@gmail.com$/, { message: \"L'email doit se terminer par gmail.com\" });\n    email(path.email);\n    required(path.textarea);\n    required(path.select);\n  })",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 39
-                },
-                {
-                    "name": "urlBack",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 59
-                }
-            ],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "FormSignalComponent",
-                    "type": "component"
-                },
-                {
-                    "name": "FormSignalInputComponent",
-                    "type": "component"
-                },
-                {
-                    "name": "FormSignalSelectComponent",
-                    "type": "component"
-                },
-                {
-                    "name": "FormSignalCheckboxComponent",
-                    "type": "component"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, signal } from '@angular/core';\nimport { email, form, maxLength, minLength, pattern, required } from '@angular/forms/signals';\nimport { JSONValue } from '@ng-vagabond-lab/ng-dsv/api';\nimport { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';\nimport { FormSignalCheckboxComponent } from '../../checkbox/component/form.signal.checkbox.component';\nimport { FormSignalInputComponent } from '../../public-api';\nimport { FormSignalSelectComponent } from '../../select/component/form.signal.select.component';\nimport { FormSignalComponent } from './form.signal.component';\n\nexport const ActionsData = {\n  urlBack: '/',\n};\n\n@Component({\n  selector: 'storybook-wrapper',\n  standalone: true,\n  imports: [FormSignalComponent, FormSignalInputComponent, FormSignalSelectComponent, FormSignalCheckboxComponent],\n  template: `\n    <app-form-signal [form]=\"myForm\" urlBack=\"urlBack\" (callback)=\"callback($event)\">\n      <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"email\" fieldName=\"email\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n      <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n      <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n    </app-form-signal>\n  `,\n  styles: [\n    `\n      :host {\n        width: 100%;\n      }\n    `,\n  ]\n})\nclass StoryWrapperComponent {\n  myForm = form(signal({\n    name: '',\n    email: '',\n    number: 0,\n    range: 50,\n    date: '',\n    textarea: '',\n    select: '',\n    checkbox: false,\n  }), path => {\n    required(path.name);\n    minLength(path.name, 2);\n    maxLength(path.name, 10);\n    required(path.email);\n    pattern(path.email, /^\\w+@gmail.com$/, { message: \"L'email doit se terminer par gmail.com\" });\n    email(path.email);\n    required(path.textarea);\n    required(path.select);\n  });\n\n  urlBack?: string;\n  callback = (data: JSONValue) => {\n    console.log(data);\n    //alert('Callback appelé 🎉');\n  }\n}\n\nconst meta: Meta<StoryWrapperComponent> = {\n  title: 'dsv/Form/Signal',\n  component: StoryWrapperComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  parameters: {\n    controls: { exclude: ['form'] },\n  },\n  decorators: [\n    moduleMetadata({\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<StoryWrapperComponent>;\n\nexport const Default: Story = {\n  args: {\n    urlBack: '/dashboard',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <app-form-signal urlBack=\"urlBack\" (callback)=\"callback($event)\">\n            <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n            <dsv-form-signal-input [form]=\"myForm\" fieldName=\"email\" type=\"email\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n            <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n          </app-form-signal>\n        `,\n      },\n    },\n  },\n};",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "\n      :host {\n        width: 100%;\n      }\n    \n",
-            "extends": [],
-            "isDuplicate": true,
-            "duplicateId": 1,
-            "duplicateName": "StoryWrapperComponent-1"
         }
     ],
     "modules": [],
@@ -1199,7 +1199,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    urlBack: '/dashboard',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <app-form-signal urlBack=\"urlBack\" (callback)=\"callback($event)\">\n            <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n            <dsv-form-signal-input [form]=\"myForm\" fieldName=\"email\" type=\"email\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n            <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n          </app-form-signal>\n        `,\n      },\n    },\n  },\n}"
+                "defaultValue": "{\n  args: {\n    urlBack: '/',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <app-form-signal [form]=\"myForm\" [urlBack]=\"urlBack()\" (callback)=\"callback($event)\">\n            <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"email\" fieldName=\"email\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n            <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n          </app-form-signal>\n\n          \n          class FormComponent {\n            myForm = form(signal({\n              name: '',\n              email: '',\n              number: 0,\n              range: 50,\n              date: '',\n              textarea: '',\n              select: '',\n              checkbox: false,\n            }), path => {\n              required(path.name);\n              minLength(path.name, 2);\n              maxLength(path.name, 10);\n              required(path.email);\n              pattern(path.email, /^\\w+@gmail.com$/, { message: \"L'email doit se terminer par gmail.com\" });\n              email(path.email);\n              required(path.textarea);\n              required(path.select);\n            });\n\n            urlBack = input<string>('/');\n\n            callback = (data: JSONValue) => {\n              console.log(data);\n            }\n          }\n        `,\n      },\n    },\n  },\n}"
             },
             {
                 "name": "Default",
@@ -1528,8 +1528,8 @@
                 "file": "projects/ng-dsv/ds/form/signal/form/component/form.signal.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<StoryWrapperComponent>",
-                "defaultValue": "{\n  title: 'dsv/Form/Signal',\n  component: StoryWrapperComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  parameters: {\n    controls: { exclude: ['form'] },\n  },\n  decorators: [\n    moduleMetadata({\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+                "type": "Meta<FormSignalWrapperComponent>",
+                "defaultValue": "{\n  title: 'dsv/Form/Signal',\n  component: FormSignalWrapperComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  parameters: {\n    controls: { exclude: ['form'] },\n  },\n  decorators: [\n    moduleMetadata({\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
             },
             {
                 "name": "meta",
@@ -2036,7 +2036,7 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<StoryWrapperComponent>",
+                "rawtype": "StoryObj<FormSignalWrapperComponent>",
                 "file": "projects/ng-dsv/ds/form/signal/form/component/form.signal.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2883,7 +2883,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    urlBack: '/dashboard',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <app-form-signal urlBack=\"urlBack\" (callback)=\"callback($event)\">\n            <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n            <dsv-form-signal-input [form]=\"myForm\" fieldName=\"email\" type=\"email\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n            <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n          </app-form-signal>\n        `,\n      },\n    },\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    urlBack: '/',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <app-form-signal [form]=\"myForm\" [urlBack]=\"urlBack()\" (callback)=\"callback($event)\">\n            <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"email\" fieldName=\"email\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n            <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n          </app-form-signal>\n\n          \n          class FormComponent {\n            myForm = form(signal({\n              name: '',\n              email: '',\n              number: 0,\n              range: 50,\n              date: '',\n              textarea: '',\n              select: '',\n              checkbox: false,\n            }), path => {\n              required(path.name);\n              minLength(path.name, 2);\n              maxLength(path.name, 10);\n              required(path.email);\n              pattern(path.email, /^\\w+@gmail.com$/, { message: \"L'email doit se terminer par gmail.com\" });\n              email(path.email);\n              required(path.textarea);\n              required(path.select);\n            });\n\n            urlBack = input<string>('/');\n\n            callback = (data: JSONValue) => {\n              console.log(data);\n            }\n          }\n        `,\n      },\n    },\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -2892,8 +2892,8 @@
                     "file": "projects/ng-dsv/ds/form/signal/form/component/form.signal.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<StoryWrapperComponent>",
-                    "defaultValue": "{\n  title: 'dsv/Form/Signal',\n  component: StoryWrapperComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  parameters: {\n    controls: { exclude: ['form'] },\n  },\n  decorators: [\n    moduleMetadata({\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+                    "type": "Meta<FormSignalWrapperComponent>",
+                    "defaultValue": "{\n  title: 'dsv/Form/Signal',\n  component: FormSignalWrapperComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  parameters: {\n    controls: { exclude: ['form'] },\n  },\n  decorators: [\n    moduleMetadata({\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
                 }
             ],
             "projects/ng-dsv/ds/form/reactive/checkbox/component/form.reactive.checkbox.component.stories.ts": [
@@ -3571,7 +3571,7 @@
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<StoryWrapperComponent>",
+                    "rawtype": "StoryObj<FormSignalWrapperComponent>",
                     "file": "projects/ng-dsv/ds/form/signal/form/component/form.signal.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -4382,7 +4382,7 @@
                 "filePath": "projects/ng-dsv/ds/form/signal/form/component/form.signal.component.stories.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "StoryWrapperComponent",
+                "name": "FormSignalWrapperComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/4",
                 "status": "low"

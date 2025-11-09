@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { email, form, maxLength, minLength, pattern, required } from '@angular/forms/signals';
 import { JSONValue } from '@ng-vagabond-lab/ng-dsv/api';
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
@@ -16,7 +16,7 @@ export const ActionsData = {
   standalone: true,
   imports: [FormSignalComponent, FormSignalInputComponent, FormSignalSelectComponent, FormSignalCheckboxComponent],
   template: `
-    <app-form-signal [form]="myForm" urlBack="urlBack" (callback)="callback($event)">
+    <app-form-signal [form]="myForm" [urlBack]="urlBack()" (callback)="callback($event)">
       <dsv-form-signal-input [form]="myForm" fieldName="name" />
       <dsv-form-signal-input [form]="myForm" type="email" fieldName="email" />
       <dsv-form-signal-input [form]="myForm" type="number" fieldName="number" />
@@ -35,7 +35,7 @@ export const ActionsData = {
     `,
   ]
 })
-class StoryWrapperComponent {
+class FormSignalWrapperComponent {
   myForm = form(signal({
     name: '',
     email: '',
@@ -56,15 +56,16 @@ class StoryWrapperComponent {
     required(path.select);
   });
 
-  urlBack?: string;
+  urlBack = input<string>('/');
+
   callback = (data: JSONValue) => {
     console.log(data);
   }
 }
 
-const meta: Meta<StoryWrapperComponent> = {
+const meta: Meta<FormSignalWrapperComponent> = {
   title: 'dsv/Form/Signal',
-  component: StoryWrapperComponent,
+  component: FormSignalWrapperComponent,
   excludeStories: /.*Data$/,
   tags: ['autodocs'],
   parameters: {
@@ -81,17 +82,17 @@ const meta: Meta<StoryWrapperComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<StoryWrapperComponent>;
+type Story = StoryObj<FormSignalWrapperComponent>;
 
 export const Default: Story = {
   args: {
-    urlBack: '/dashboard',
+    urlBack: '/',
   },
   parameters: {
     docs: {
       source: {
         code: `
-          <app-form-signal [form]="myForm" urlBack="urlBack" (callback)="callback($event)">
+          <app-form-signal [form]="myForm" [urlBack]="urlBack()" (callback)="callback($event)">
             <dsv-form-signal-input [form]="myForm" fieldName="name" />
             <dsv-form-signal-input [form]="myForm" type="email" fieldName="email" />
             <dsv-form-signal-input [form]="myForm" type="number" fieldName="number" />
@@ -124,7 +125,8 @@ export const Default: Story = {
               required(path.select);
             });
 
-            urlBack?: string;
+            urlBack = input<string>('/');
+
             callback = (data: JSONValue) => {
               console.log(data);
             }
