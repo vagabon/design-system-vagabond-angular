@@ -1,11 +1,11 @@
 <div>
-  <dsv-form-signal-label
-    [label]="fieldName()"
-    [signal]="getSignal()()"
-    [show]="withLabel()"
-  />
-  <div>
-    @if (getSignal()) {
+  @if (getSignal()) {
+    <dsv-form-signal-label
+      [label]="fieldName()"
+      [signal]="getSignal()()"
+      [show]="withLabel()"
+    />
+    <div>
       <input
         type="checkbox"
         [id]="fieldName()"
@@ -14,6 +14,6 @@
         [field]="getSignal()"
         (change)="doChange()"
       />
-    }
-  </div>
+    </div>
+  }
 </div>

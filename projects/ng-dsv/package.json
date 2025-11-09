@@ -1,6 +1,6 @@
 {
   "name": "@ng-vagabond-lab/ng-dsv",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "scripts": {
     "publish": "npm publish --access public"
   },
