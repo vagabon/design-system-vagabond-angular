@@ -27,7 +27,6 @@ export class DsvImgComponent {
 
 
   onImageError() {
-    console.log('error');
     this.error.set(true);
   }
 }

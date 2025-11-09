@@ -9,6 +9,7 @@ export abstract class FormSignalInputBase<T> {
     fieldName = input.required<string>();
     withLabel = input<boolean>(true);
     required = input<boolean>(false);
+    debug = input<boolean>(false);
 
     isError = signal<boolean>(false);
 
@@ -37,7 +38,7 @@ export abstract class FormSignalInputBase<T> {
         const signal = this.getSignal();
         if (signal) {
             const value = signal().value();
-            console.log(signal, signal().errors(), value);
+            this.debug() && console.log(signal, signal().errors(), value);
             return value;
         }
         return undefined;

@@ -21,7 +21,6 @@ export class FormSignalErrorComponent {
 
     constructor() {
         effect(() => {
-            console.log(this.errors());
             let errorMessage = "";
             this.errors().forEach(error => {
                 switch (error.kind) {
