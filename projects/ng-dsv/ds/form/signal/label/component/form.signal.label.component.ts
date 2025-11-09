@@ -15,6 +15,7 @@ export class FormSignalLabelComponent<T> {
 
   constructor() {
     effect(() => {
+      // FIXME : remmettre le isRequired en dynamique
       //this.isRequired.set(this.field()?.hasValidator?.(Validators.required) ?? false);
     })
   }

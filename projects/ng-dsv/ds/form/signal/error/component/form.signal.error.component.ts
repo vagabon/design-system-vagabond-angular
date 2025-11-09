@@ -17,6 +17,7 @@ export class FormSignalErrorComponent {
         return classes.join(' ');
     }
 
+    // FIXME : ajouter d'autre erreurs
     isRequired() {
         return this.errors().some(error => error.kind === 'required');
     }
