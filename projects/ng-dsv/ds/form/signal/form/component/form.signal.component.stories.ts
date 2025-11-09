@@ -92,9 +92,9 @@ export const Default: Story = {
     docs: {
       source: {
         code: `
-          <app-form-signal urlBack="urlBack" (callback)="callback($event)">
+          <app-form-signal [form]="myForm" urlBack="urlBack" (callback)="callback($event)">
             <dsv-form-signal-input [form]="myForm" fieldName="name" />
-            <dsv-form-signal-input [form]="myForm" fieldName="email" type="email" />
+            <dsv-form-signal-input [form]="myForm" type="email" fieldName="email" />
             <dsv-form-signal-input [form]="myForm" type="number" fieldName="number" />
             <dsv-form-signal-input [form]="myForm" type="range" fieldName="range" />
             <dsv-form-signal-input [form]="myForm" type="datetime-local" fieldName="date" />
@@ -102,6 +102,35 @@ export const Default: Story = {
             <dsv-form-signal-select [form]="myForm" fieldName="select" [list]="[{id: '', name: ''}, {id: '1', name: 'Test'}]" />
             <dsv-form-signal-checkbox [form]="myForm" fieldName="checkbox" />
           </app-form-signal>
+
+          
+          class FormComponent {
+            myForm = form(signal({
+              name: '',
+              email: '',
+              number: 0,
+              range: 50,
+              date: '',
+              textarea: '',
+              select: '',
+              checkbox: false,
+            }), path => {
+              required(path.name);
+              minLength(path.name, 2);
+              maxLength(path.name, 10);
+              required(path.email);
+              pattern(path.email, /^\w+@gmail.com$/, { message: "L'email doit se terminer par gmail.com" });
+              email(path.email);
+              required(path.textarea);
+              required(path.select);
+            });
+
+            urlBack?: string;
+            callback = (data: JSONValue) => {
+              console.log(data);
+              //alert('Callback appelé 🎉');
+            }
+          }
         `,
       },
     },
