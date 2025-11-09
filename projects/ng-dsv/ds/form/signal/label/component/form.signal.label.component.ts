@@ -1,5 +1,5 @@
 import { Component, effect, input, signal } from "@angular/core";
-import { FieldTree } from "@angular/forms/signals";
+import { FieldState } from "@angular/forms/signals";
 
 @Component({
   selector: 'dsv-form-signal-label',
@@ -8,15 +8,14 @@ import { FieldTree } from "@angular/forms/signals";
 })
 export class FormSignalLabelComponent<T> {
   label = input.required<string>();
+  signal = input.required<FieldState<T>>();
   show = input<boolean>(true);
-  fieldName = input<FieldTree<T, string | number>>();
 
   isRequired = signal<boolean>(false);
 
   constructor() {
     effect(() => {
-      // FIXME : remmettre le isRequired en dynamique
-      //this.isRequired.set(this.field()?.hasValidator?.(Validators.required) ?? false);
+      this.isRequired.set(this.signal().required());
     })
   }
 }

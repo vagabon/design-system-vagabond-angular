@@ -1,6 +1,6 @@
 <div>
   @if (withLabel()) {
-    <dsv-form-signal-label [label]="fieldName()" [fieldName]="getSignal()" />
+    <dsv-form-signal-label [label]="fieldName()" [signal]="getSignal()()" />
   }
   @if (type() === "textarea") {
     <textarea

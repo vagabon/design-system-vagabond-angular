@@ -1,5 +1,5 @@
 @if (errors().length > 0) {
-  @if (isRequired()) {
-    <div>{{ "Le champ est obligatoire." | translate }}</div>
+  @if (error() !== "") {
+    <div>{{ error() | translate }}</div>
   }
 }

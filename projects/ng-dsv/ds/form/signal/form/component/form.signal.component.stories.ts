@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { form, required } from '@angular/forms/signals';
+import { email, form, maxLength, minLength, pattern, required } from '@angular/forms/signals';
 import { JSONValue } from '@ng-vagabond-lab/ng-dsv/api';
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { FormSignalCheckboxComponent } from '../../checkbox/component/form.signal.checkbox.component';
@@ -18,6 +18,7 @@ export const ActionsData = {
   template: `
     <app-form-signal [form]="myForm" urlBack="urlBack" (callback)="callback($event)">
       <dsv-form-signal-input [form]="myForm" fieldName="name" />
+      <dsv-form-signal-input [form]="myForm" type="email" fieldName="email" />
       <dsv-form-signal-input [form]="myForm" type="number" fieldName="number" />
       <dsv-form-signal-input [form]="myForm" type="range" fieldName="range" />
       <dsv-form-signal-input [form]="myForm" type="datetime-local" fieldName="date" />
@@ -37,6 +38,7 @@ export const ActionsData = {
 class StoryWrapperComponent {
   myForm = form(signal({
     name: '',
+    email: '',
     number: 0,
     range: 50,
     date: '',
@@ -45,6 +47,11 @@ class StoryWrapperComponent {
     checkbox: false,
   }), path => {
     required(path.name);
+    minLength(path.name, 2);
+    maxLength(path.name, 10);
+    required(path.email);
+    pattern(path.email, /^\w+@gmail.com$/, { message: "L'email doit se terminer par gmail.com" });
+    email(path.email);
     required(path.textarea);
     required(path.select);
   });
@@ -87,6 +94,7 @@ export const Default: Story = {
         code: `
           <app-form-signal urlBack="urlBack" (callback)="callback($event)">
             <dsv-form-signal-input [form]="myForm" fieldName="name" />
+            <dsv-form-signal-input [form]="myForm" fieldName="email" type="email" />
             <dsv-form-signal-input [form]="myForm" type="number" fieldName="number" />
             <dsv-form-signal-input [form]="myForm" type="range" fieldName="range" />
             <dsv-form-signal-input [form]="myForm" type="datetime-local" fieldName="date" />

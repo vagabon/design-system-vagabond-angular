@@ -1,11 +1,11 @@
 <div>
-  <dsv-form-signal-label
-    [label]="fieldName()"
-    [fieldName]="getSignal()"
-    [show]="withLabel()"
-  />
-  <div>
-    @if (getSignal()) {
+  @if (getSignal()) {
+    <dsv-form-signal-label
+      [label]="fieldName()"
+      [signal]="getSignal()()"
+      [show]="withLabel()"
+    />
+    <div>
       <select
         [id]="fieldName()"
         [field]="getSignal()"
@@ -25,6 +25,6 @@
         }
       </select>
       <dsv-signal-form-error [errors]="getSignal()().errors()" />
-    }
-  </div>
+    </div>
+  }
 </div>

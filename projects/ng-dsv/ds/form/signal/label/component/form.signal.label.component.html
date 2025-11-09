@@ -2,7 +2,7 @@
   <label
     [for]="label()"
     class="text"
-    [class.error]="fieldName()?.()?.errors()?.length! > 0"
+    [class.error]="signal().errors().length! > 0"
   >
     {{ label() }} {{ isRequired() ? "*" : "" }}
   </label>
