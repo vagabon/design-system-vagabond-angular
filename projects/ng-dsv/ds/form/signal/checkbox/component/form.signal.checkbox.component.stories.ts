@@ -1,15 +1,35 @@
+import { Component, input, signal } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Field, form } from '@angular/forms/signals';
 import { type Meta, type StoryObj } from '@storybook/angular';
-import { CustomFormGroup } from '../../../legacy/input/component/form.input.component.stories';
+import { CustomFormGroup } from '../../../reactive/input/component/form.reactive.input.component.stories';
 import { FormSignalCheckboxComponent } from './form.signal.checkbox.component';
 
 interface TestDto {
   myCheckbox: boolean;
 }
 
-const meta: Meta<FormSignalCheckboxComponent<TestDto>> = {
+@Component({
+  selector: 'story-signal-checkbox',
+  standalone: true,
+  imports: [FormSignalCheckboxComponent, Field],
+  template: `
+    @if (myForm) {
+      <dsv-form-signal-checkbox [form]="myForm" fieldName="myCheckbox" (onSend)="onSend($event)" />
+    }
+  `
+})
+class StorySignalChecbox {
+  value = input<boolean>(false);
+  myForm = form<TestDto>(signal({ myCheckbox: this.value() }), path => {
+  });
+  onSend = () => { };
+
+}
+
+const meta: Meta<StorySignalChecbox> = {
   title: 'dsv/Form/Signal/checkbox',
-  component: FormSignalCheckboxComponent,
+  component: StorySignalChecbox,
   excludeStories: /.*Data$/,
   tags: ['autodocs'],
   argTypes: {
@@ -17,7 +37,7 @@ const meta: Meta<FormSignalCheckboxComponent<TestDto>> = {
 };
 
 export default meta;
-type Story = StoryObj<FormSignalCheckboxComponent<TestDto>>;
+type Story = StoryObj<StorySignalChecbox>;
 
 const MY_FORM = new FormGroup({
   exampleField: new FormControl(''),
@@ -27,5 +47,15 @@ MY_FORM['toJSON'] = () => null;
 
 export const Default: Story = {
   args: {
+    value: true
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+          <dsv-form-signal-checkbox [form]="myForm" fieldName="myCheckbox" (onSend)="onSend($event)" />
+        `,
+      },
+    },
   },
 };

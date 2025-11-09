@@ -1,0 +1,31 @@
+<div [formGroup]="form()">
+  @if (withLabel()) {
+    <dsv-form-reactive-label [label]="field()" [field]="form().get(field())!" />
+  }
+  @if (type() === "textarea") {
+    <textarea
+      [id]="field()"
+      [formControlName]="field()"
+      class="form-control"
+      [class.error]="
+        form().get(field())?.touched && form().get(field())?.invalid
+      "
+    ></textarea>
+  } @else {
+    <input
+      [id]="field()"
+      [type]="type()"
+      [formControlName]="field()"
+      class="form-control"
+      [class.icon]="icon()"
+      [class.error]="
+        form().get(field())?.touched && form().get(field())?.invalid
+      "
+      (keydown.enter)="onEnter()"
+    />
+  }
+  @if (icon()) {
+    <i [class]="icon()"></i>
+  }
+  <dsv-form-reactive-error [field]="form().get(field())!" />
+</div>

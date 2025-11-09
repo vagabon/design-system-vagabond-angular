@@ -53,4 +53,13 @@ export const Default: Story = {
     value: 'name',
     type: 'text'
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+          <dsv-form-signal-input [form]="myForm" fieldName="name" [type]="type()" (onSend)="onSend($event)" />
+        `,
+      },
+    },
+  },
 };

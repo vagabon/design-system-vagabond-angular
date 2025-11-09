@@ -3,11 +3,11 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ApiDto, ID } from '@ng-vagabond-lab/ng-dsv/api';
 import { DsvChipComponent } from '@ng-vagabond-lab/ng-dsv/ds/chip';
 import {
-  BaseFormComponent,
-  FormCheckboxComponent,
-  FormComponent,
-  FormInputComponent,
-} from '@ng-vagabond-lab/ng-dsv/ds/form/legacy';
+  BaseFormReactiveComponent,
+  FormReactiveCheckboxComponent,
+  FormReactiveComponent,
+  FormReactiveInputComponent,
+} from '@ng-vagabond-lab/ng-dsv/ds/form/reactive';
 import { AdminSearchModalContainer } from '../../container/modal/admin.search.modal.container';
 import { FormDto } from '../../dto/admin.dto';
 
@@ -16,15 +16,15 @@ import { FormDto } from '../../dto/admin.dto';
   imports: [
     ReactiveFormsModule,
     DsvChipComponent,
-    FormComponent,
-    FormInputComponent,
+    FormReactiveComponent,
+    FormReactiveInputComponent,
+    FormReactiveCheckboxComponent,
     AdminSearchModalContainer,
-    FormCheckboxComponent,
   ],
   templateUrl: './admin.form.component.html',
   styleUrls: ['./admin.form.component.scss'],
 })
-export class AdminFormComponent extends BaseFormComponent {
+export class AdminFormComponent extends BaseFormReactiveComponent {
   urlBack = input<string>();
   data = input.required<ApiDto>();
   formConf = input.required<FormDto[]>();

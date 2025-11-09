@@ -10,7 +10,7 @@ import { TranslatePipe } from '@ngx-translate/core';
   selector: 'app-form-signal',
   imports: [DsvButtonComponent, RouterLink, TranslatePipe],
   templateUrl: './form.signal.component.html',
-  styleUrl: '../../../legacy/form/component/form.component.scss',
+  styleUrl: '../../../reactive/form/component/form.reactive.component.scss',
 })
 export class FormSignalComponent {
   toastService = inject(ToastService);

@@ -10,7 +10,7 @@ import {
   selector: 'form-signal-searchbar',
   imports: [FormSignalComponent, FormSignalInputComponent],
   templateUrl: './form.signal.searchbar.component.html',
-  styleUrls: ['../../../legacy/searchbar/component/searchbar.component.scss'],
+  styleUrls: ['../../../reactive/searchbar/component/reactive.searchbar.component.scss'],
 })
 export class FormSignalSearchbarComponent extends BaseFormSignalComponent {
   search = input<string>('');

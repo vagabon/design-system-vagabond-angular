@@ -7,7 +7,7 @@ import {
   signal,
 } from '@angular/core';
 import { ApiDto } from '@ng-vagabond-lab/ng-dsv/api';
-import { SearchbarComponent } from '@ng-vagabond-lab/ng-dsv/ds/form/legacy';
+import { ReactiveSearchbarComponent } from '@ng-vagabond-lab/ng-dsv/ds/form/reactive';
 import { DsvItemComponent } from '@ng-vagabond-lab/ng-dsv/ds/item';
 import {
   ModalButtonComponent,
@@ -23,7 +23,7 @@ import { AdminService } from '../../service/admin.service';
     DsvItemComponent,
     ModalButtonComponent,
     ModalComponent,
-    SearchbarComponent,
+    ReactiveSearchbarComponent,
   ],
   templateUrl: './admin.search.modal.container.html',
   styleUrls: ['./admin.search.modal.container.scss'],

@@ -1,0 +1,15 @@
+<div [formGroup]="form()">
+  <dsv-form-reactive-label
+    [label]="field()"
+    [field]="form().get(field())!"
+    [show]="withLabel()"
+  />
+  <div>
+    <input
+      type="checkbox"
+      [formControlName]="field()"
+      class="form-control"
+      [id]="field()"
+    />
+  </div>
+</div>

@@ -14,7 +14,12 @@
         [class.error]="isError()"
       >
         @for (list of list(); track list.id) {
-          <option [value]="list.id">
+          <option
+            [value]="list.id"
+            [selected]="
+              list.id?.toString() === getSignal()().value().toString()
+            "
+          >
             {{ list.name }}
           </option>
         }

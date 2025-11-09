@@ -13,7 +13,7 @@ import { FormSignalLabelComponent } from '../../label/component/form.signal.labe
     FormSignalErrorComponent
   ],
   templateUrl: './form.signal.input.component.html',
-  styleUrl: '../../../legacy/input/component/form.input.component.scss',
+  styleUrl: '../../../reactive/input/component/form.reactive.input.component.scss',
 })
 export class FormSignalInputComponent<T> extends FormSignalInputBase<T> implements AfterViewInit {
   @ViewChild('input')

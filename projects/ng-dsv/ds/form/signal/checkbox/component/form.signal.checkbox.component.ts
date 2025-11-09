@@ -8,8 +8,8 @@ import { FormSignalInputBase } from '../../public-api';
   imports: [Field, FormSignalLabelComponent],
   templateUrl: './form.signal.checkbox.component.html',
   styleUrls: [
-    '../../../legacy/input/component/form.input.component.scss',
-    '../../../legacy/checkbox/component/form.checkbox.component.scss',
+    '../../../reactive/input/component/form.reactive.input.component.scss',
+    '../../../reactive/checkbox/component/form.reactive.checkbox.component.scss',
   ],
 })
 export class FormSignalCheckboxComponent<T> extends FormSignalInputBase<T> {

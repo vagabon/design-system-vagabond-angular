@@ -1,0 +1,25 @@
+<div [formGroup]="form()">
+  <dsv-form-reactive-label
+    [label]="field()"
+    [field]="form().get(field())!"
+    [show]="withLabel()"
+  />
+  <div>
+    <select
+      [id]="field()"
+      [formControlName]="field()"
+      class="form-control"
+      (change)="doChange()"
+      [class.error]="
+        form().get(field())?.touched && form().get(field())?.invalid
+      "
+    >
+      @for (list of list(); track list.id) {
+        <option [value]="list.id">
+          {{ list.name }}
+        </option>
+      }
+    </select>
+    <dsv-form-reactive-error [field]="form().get(field())!" />
+  </div>
+</div>

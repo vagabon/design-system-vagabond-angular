@@ -6,7 +6,7 @@ import { TranslatePipe } from "@ngx-translate/core";
     selector: 'dsv-signal-form-error',
     imports: [TranslatePipe],
     templateUrl: './form.signal.error.component.html',
-    styleUrls: ['../../../legacy/error/component/form.error.component.scss']
+    styleUrls: ['../../../reactive/error/component/form.reactive.error.component.scss']
 })
 export class FormSignalErrorComponent {
     errors = input.required<ValidationErrorWithField[]>();

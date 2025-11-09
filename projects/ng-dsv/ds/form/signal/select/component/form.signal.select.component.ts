@@ -10,8 +10,8 @@ import { FormSignalInputBase } from '../../public-api';
   imports: [Field, FormSignalLabelComponent, FormSignalErrorComponent],
   templateUrl: './form.signal.select.component.html',
   styleUrls: [
-    '../../../legacy/input/component/form.input.component.scss',
-    '../../../legacy/select/component/form.select.component.scss',
+    '../../../reactive/input/component/form.reactive.input.component.scss',
+    '../../../reactive/select/component/form.reactive.select.component.scss',
   ],
 })
 export class FormSignalSelectComponent<T> extends FormSignalInputBase<T> {

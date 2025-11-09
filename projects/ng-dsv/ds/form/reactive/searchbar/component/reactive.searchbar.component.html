@@ -1,0 +1,10 @@
+<app-form-reactive [form]="form" textValid="">
+  <dsv-form-reactive-input
+    [form]="form"
+    field="search"
+    type="search"
+    [withLabel]="false"
+    (onSend)="onSend($event)"
+    icon="icon ri-search-line"
+  />
+</app-form-reactive>

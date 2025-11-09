@@ -33,7 +33,7 @@ export abstract class FormSignalInputBase<T> {
         this.getValue() && this.change.emit(this.getValue());
     }
 
-    private getValue() {
+    protected getValue() {
         const signal = this.getSignal();
         if (signal) {
             const value = signal().value();

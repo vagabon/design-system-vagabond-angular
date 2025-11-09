@@ -4,7 +4,7 @@ import { FieldTree } from "@angular/forms/signals";
 @Component({
   selector: 'dsv-form-signal-label',
   templateUrl: './form.signal.label.component.html',
-  styleUrls: ['../../../legacy/label/component/form.label.component.scss'],
+  styleUrls: ['../../../reactive/label/component/form.reactive.label.component.scss'],
 })
 export class FormSignalLabelComponent<T> {
   label = input.required<string>();

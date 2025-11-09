@@ -1,4 +1,8 @@
-<app-form [form]="form" [urlBack]="urlBack()!" (callback)="sendForm($event)">
+<app-form-reactive
+  [form]="form"
+  [urlBack]="urlBack()!"
+  (callback)="sendForm($event)"
+>
   <div class="form-container">
     @for (field of formConf(); track field.name) {
       <div [class]="field.className ?? ''">
@@ -8,7 +12,7 @@
           field.type === "textarea" ||
           field.type === "datetime-local"
         ) {
-          <dsv-form-input
+          <dsv-form-reactive-input
             [form]="form"
             [field]="field.name"
             [type]="field.type"
@@ -16,7 +20,7 @@
           />
         }
         @if (field.type === "switch") {
-          <dsv-form-checkbox [form]="form" [field]="field.name" />
+          <dsv-form-reactive-checkbox [form]="form" [field]="field.name" />
         }
         @if (field.type === "m2m") {
           <div class="m2m">
@@ -38,4 +42,4 @@
       </div>
     }
   </div>
-</app-form>
+</app-form-reactive>
