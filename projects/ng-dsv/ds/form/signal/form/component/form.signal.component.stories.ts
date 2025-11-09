@@ -59,7 +59,6 @@ class StoryWrapperComponent {
   urlBack?: string;
   callback = (data: JSONValue) => {
     console.log(data);
-    //alert('Callback appelé 🎉');
   }
 }
 
@@ -128,7 +127,6 @@ export const Default: Story = {
             urlBack?: string;
             callback = (data: JSONValue) => {
               console.log(data);
-              //alert('Callback appelé 🎉');
             }
           }
         `,
