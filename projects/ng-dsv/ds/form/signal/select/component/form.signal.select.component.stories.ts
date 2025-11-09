@@ -1,11 +1,15 @@
 import { FormControl, FormGroup } from '@angular/forms';
 import { type Meta, type StoryObj } from '@storybook/angular';
-import { CustomFormGroup } from '../../input/component/form.input.component.stories';
-import { FormSelectComponent } from './form.select.component';
+import { CustomFormGroup } from '../../../legacy/input/component/form.input.component.stories';
+import { FormSignalSelectComponent } from './form.signal.select.component';
 
-const meta: Meta<FormSelectComponent> = {
-  title: 'dsv/Form/Legacy/select',
-  component: FormSelectComponent,
+interface TestDto {
+  role: string;
+}
+
+const meta: Meta<FormSignalSelectComponent<TestDto>> = {
+  title: 'dsv/Form/Signal/select',
+  component: FormSignalSelectComponent,
   excludeStories: /.*Data$/,
   tags: ['autodocs'],
   argTypes: {
@@ -13,7 +17,7 @@ const meta: Meta<FormSelectComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<FormSelectComponent>;
+type Story = StoryObj<FormSignalSelectComponent<TestDto>>;
 
 const MY_FORM = new FormGroup({
   exampleField: new FormControl(''),
@@ -23,8 +27,6 @@ MY_FORM['toJSON'] = () => null;
 
 export const Default: Story = {
   args: {
-    form: MY_FORM,
-    field: 'exampleField',
     list: [
       { id: 1, name: 'name' },
       { id: 2, name: 'name 2' }

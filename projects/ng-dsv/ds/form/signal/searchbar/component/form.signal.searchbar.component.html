@@ -1,0 +1,10 @@
+<app-form-signal [form]="form" textValid="">
+  <dsv-form-signal-input
+    [form]="form"
+    fieldName="search"
+    type="search"
+    [withLabel]="false"
+    (onSend)="onSend($event)"
+    icon="icon ri-search-line"
+  ></dsv-form-signal-input>
+</app-form-signal>

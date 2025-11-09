@@ -4,7 +4,7 @@ import { CustomFormGroup } from '../../input/component/form.input.component.stor
 import { FormCheckboxComponent } from './form.checkbox.component';
 
 const meta: Meta<FormCheckboxComponent> = {
-  title: 'dsv/Form/checkbox',
+  title: 'dsv/Form/Legacy/checkbox',
   component: FormCheckboxComponent,
   excludeStories: /.*Data$/,
   tags: ['autodocs'],

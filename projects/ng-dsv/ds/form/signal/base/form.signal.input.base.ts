@@ -13,6 +13,7 @@ export abstract class FormSignalInputBase<T> {
     isError = signal<boolean>(false);
 
     onSend = output<string>();
+    change = output<string>();
 
     constructor() {
         effect(() => {
@@ -25,11 +26,20 @@ export abstract class FormSignalInputBase<T> {
     }
 
     doOnSend() {
+        this.getValue() && this.onSend.emit(this.getValue());
+    }
+
+    doChange() {
+        this.getValue() && this.change.emit(this.getValue());
+    }
+
+    private getValue() {
         const signal = this.getSignal();
         if (signal) {
             const value = signal().value();
             console.log(signal, signal().errors(), value);
-            this.onSend.emit(value as string);
+            return value;
         }
+        return undefined;
     }
 }

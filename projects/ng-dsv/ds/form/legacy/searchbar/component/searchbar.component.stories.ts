@@ -2,7 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/angular';
 import { SearchbarComponent } from './searchbar.component';
 
 const meta: Meta<SearchbarComponent> = {
-  title: 'dsv/Form/search',
+  title: 'dsv/Form/Legacy/search',
   component: SearchbarComponent,
   excludeStories: /.*Data$/,
   tags: ['autodocs'],

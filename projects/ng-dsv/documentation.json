@@ -30,12 +30,12 @@
         },
         {
             "name": "Test",
-            "id": "interface-Test-80d9caf2fba093e94d7ff35b0dcae348a4f1526842d6fe99188cbe819dad97b635c706e34f206ebce46ffaa2f98b853bd3b6b89586240ae2965f161497ac5d31",
+            "id": "interface-Test-fdd64619f841910c9ff574a221e747a6ad0905fc3244cb6532abc8f623d121bdd3c20f1ccfed017ba329680fe1d761abd53cd2b385be9006b2293ef4c68c210c",
             "file": "projects/ng-dsv/ds/form/signal/input/component/form.signal.input.component.stories.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component, input, signal } from '@angular/core';\nimport { Field, form, required } from '@angular/forms/signals';\nimport { type Meta, type StoryObj } from '@storybook/angular';\nimport { INPUT_TYPE } from '../../../legacy';\nimport { FormSignalInputComponent } from '../../public-api';\n\ninterface Test {\n  name: string;\n}\n\n@Component({\n  selector: 'story-signal-input',\n  standalone: true,\n  imports: [FormSignalInputComponent, Field],\n  template: `\n    @if (myForm) {\n      <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" [type]=\"type()\" (onSend)=\"onSend($event)\" />\n    }\n  `\n})\nclass StorySignalInput {\n  value = input<string>('name');\n  myForm = form<Test>(signal({ name: this.value() }), path => {\n    required(path.name);\n  });\n  type = input<INPUT_TYPE>('text');\n  onSend = () => { };\n}\n\nconst meta: Meta<StorySignalInput> = {\n  title: 'dsv/Form/Signal/input',\n  component: StorySignalInput,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: [\n        \"text\", \"password\", \"textarea\", \"email\", \"number\", \"date\", \"time\", \"datetime-local\",\n        \"month\", \"week\", \"url\", \"search\", \"tel\", \"color\", \"range\", \"file\", \"hidden\"\n      ],\n    },\n    onSend: { action: 'onSend' },\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<StorySignalInput>;\n\n\nexport const Default: Story = {\n  args: {\n    value: 'name',\n    type: 'text'\n  },\n};",
+            "sourceCode": "import { Component, input, signal } from '@angular/core';\nimport { Field, form, required } from '@angular/forms/signals';\nimport { INPUT_TYPE } from '@ng-vagabond-lab/ng-dsv/type';\nimport { type Meta, type StoryObj } from '@storybook/angular';\nimport { FormSignalInputComponent } from '../../public-api';\n\ninterface Test {\n  name: string;\n}\n\n@Component({\n  selector: 'story-signal-input',\n  standalone: true,\n  imports: [FormSignalInputComponent, Field],\n  template: `\n    @if (myForm) {\n      <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" [type]=\"type()\" (onSend)=\"onSend($event)\" />\n    }\n  `\n})\nclass StorySignalInput {\n  value = input<string>('name');\n  myForm = form<Test>(signal({ name: this.value() }), path => {\n    required(path.name);\n  });\n  type = input<INPUT_TYPE>('text');\n  onSend = () => { };\n}\n\nconst meta: Meta<StorySignalInput> = {\n  title: 'dsv/Form/Signal/input',\n  component: StorySignalInput,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: [\n        \"text\", \"password\", \"textarea\", \"email\", \"number\", \"date\", \"time\", \"datetime-local\",\n        \"month\", \"week\", \"url\", \"search\", \"tel\", \"color\", \"range\", \"file\", \"hidden\"\n      ],\n    },\n    onSend: { action: 'onSend' },\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<StorySignalInput>;\n\n\nexport const Default: Story = {\n  args: {\n    value: 'name',\n    type: 'text'\n  },\n};",
             "properties": [
                 {
                     "name": "name",
@@ -80,6 +80,59 @@
             "isDuplicate": true,
             "duplicateId": 1,
             "duplicateName": "Test-1"
+        },
+        {
+            "name": "TestDto",
+            "id": "interface-TestDto-0a321a1767ff0b4a6cb5030b15a7cc5fc8fcae586d26d5716bba6237c967e018aa75414813800c2132aa7efad503b2c93b9bee2835bfd1b76eeb2f3bc6c4a38d",
+            "file": "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { FormControl, FormGroup } from '@angular/forms';\nimport { type Meta, type StoryObj } from '@storybook/angular';\nimport { CustomFormGroup } from '../../../legacy/input/component/form.input.component.stories';\nimport { FormSignalCheckboxComponent } from './form.signal.checkbox.component';\n\ninterface TestDto {\n  myCheckbox: boolean;\n}\n\nconst meta: Meta<FormSignalCheckboxComponent<TestDto>> = {\n  title: 'dsv/Form/Signal/checkbox',\n  component: FormSignalCheckboxComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<FormSignalCheckboxComponent<TestDto>>;\n\nconst MY_FORM = new FormGroup({\n  exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup;\n\nMY_FORM['toJSON'] = () => null;\n\nexport const Default: Story = {\n  args: {\n  },\n};",
+            "properties": [
+                {
+                    "name": "myCheckbox",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "TestDto",
+            "id": "interface-TestDto-6dde42290f1be842f6b884aca98fbeac81bc5b120da99261791f83ad9a75ec5fc27650d46e9aae4553a3fd7c1bd13a6d4bbe39770aced8d0bcce9cf9028f1743-1",
+            "file": "projects/ng-dsv/ds/form/signal/select/component/form.signal.select.component.stories.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { FormControl, FormGroup } from '@angular/forms';\nimport { type Meta, type StoryObj } from '@storybook/angular';\nimport { CustomFormGroup } from '../../../legacy/input/component/form.input.component.stories';\nimport { FormSignalSelectComponent } from './form.signal.select.component';\n\ninterface TestDto {\n  role: string;\n}\n\nconst meta: Meta<FormSignalSelectComponent<TestDto>> = {\n  title: 'dsv/Form/Signal/select',\n  component: FormSignalSelectComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<FormSignalSelectComponent<TestDto>>;\n\nconst MY_FORM = new FormGroup({\n  exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup;\n\nMY_FORM['toJSON'] = () => null;\n\nexport const Default: Story = {\n  args: {\n    list: [\n      { id: 1, name: 'name' },\n      { id: 2, name: 'name 2' }\n    ]\n  },\n};",
+            "properties": [
+                {
+                    "name": "role",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": [],
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "TestDto-1"
         }
     ],
     "injectables": [],
@@ -187,7 +240,7 @@
         },
         {
             "name": "StorySignalInput",
-            "id": "component-StorySignalInput-80d9caf2fba093e94d7ff35b0dcae348a4f1526842d6fe99188cbe819dad97b635c706e34f206ebce46ffaa2f98b853bd3b6b89586240ae2965f161497ac5d31",
+            "id": "component-StorySignalInput-fdd64619f841910c9ff574a221e747a6ad0905fc3244cb6532abc8f623d121bdd3c20f1ccfed017ba329680fe1d761abd53cd2b385be9006b2293ef4c68c210c",
             "file": "projects/ng-dsv/ds/form/signal/input/component/form.signal.input.component.stories.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -270,7 +323,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, input, signal } from '@angular/core';\nimport { Field, form, required } from '@angular/forms/signals';\nimport { type Meta, type StoryObj } from '@storybook/angular';\nimport { INPUT_TYPE } from '../../../legacy';\nimport { FormSignalInputComponent } from '../../public-api';\n\ninterface Test {\n  name: string;\n}\n\n@Component({\n  selector: 'story-signal-input',\n  standalone: true,\n  imports: [FormSignalInputComponent, Field],\n  template: `\n    @if (myForm) {\n      <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" [type]=\"type()\" (onSend)=\"onSend($event)\" />\n    }\n  `\n})\nclass StorySignalInput {\n  value = input<string>('name');\n  myForm = form<Test>(signal({ name: this.value() }), path => {\n    required(path.name);\n  });\n  type = input<INPUT_TYPE>('text');\n  onSend = () => { };\n}\n\nconst meta: Meta<StorySignalInput> = {\n  title: 'dsv/Form/Signal/input',\n  component: StorySignalInput,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: [\n        \"text\", \"password\", \"textarea\", \"email\", \"number\", \"date\", \"time\", \"datetime-local\",\n        \"month\", \"week\", \"url\", \"search\", \"tel\", \"color\", \"range\", \"file\", \"hidden\"\n      ],\n    },\n    onSend: { action: 'onSend' },\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<StorySignalInput>;\n\n\nexport const Default: Story = {\n  args: {\n    value: 'name',\n    type: 'text'\n  },\n};",
+            "sourceCode": "import { Component, input, signal } from '@angular/core';\nimport { Field, form, required } from '@angular/forms/signals';\nimport { INPUT_TYPE } from '@ng-vagabond-lab/ng-dsv/type';\nimport { type Meta, type StoryObj } from '@storybook/angular';\nimport { FormSignalInputComponent } from '../../public-api';\n\ninterface Test {\n  name: string;\n}\n\n@Component({\n  selector: 'story-signal-input',\n  standalone: true,\n  imports: [FormSignalInputComponent, Field],\n  template: `\n    @if (myForm) {\n      <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" [type]=\"type()\" (onSend)=\"onSend($event)\" />\n    }\n  `\n})\nclass StorySignalInput {\n  value = input<string>('name');\n  myForm = form<Test>(signal({ name: this.value() }), path => {\n    required(path.name);\n  });\n  type = input<INPUT_TYPE>('text');\n  onSend = () => { };\n}\n\nconst meta: Meta<StorySignalInput> = {\n  title: 'dsv/Form/Signal/input',\n  component: StorySignalInput,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: [\n        \"text\", \"password\", \"textarea\", \"email\", \"number\", \"date\", \"time\", \"datetime-local\",\n        \"month\", \"week\", \"url\", \"search\", \"tel\", \"color\", \"range\", \"file\", \"hidden\"\n      ],\n    },\n    onSend: { action: 'onSend' },\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<StorySignalInput>;\n\n\nexport const Default: Story = {\n  args: {\n    value: 'name',\n    type: 'text'\n  },\n};",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -369,7 +422,7 @@
         },
         {
             "name": "StoryWrapperComponent",
-            "id": "component-StoryWrapperComponent-0de4c96c697c7572e506228df8d0c6b7fd32ea74fa3ba3b3b156dd36baba0d7047ca07dcaf55e0844da6ffa80b6a9f3c40422378fdff217651ed8781a392b9cf-1",
+            "id": "component-StoryWrapperComponent-1dbcb205c802c970f9d036bc6f5807a85bde4b3d83957123122f7647e89d6b27e1766cde717c366bc023609f43827f7d3d6464741939177f0c1413374b285ebf-1",
             "file": "projects/ng-dsv/ds/form/signal/form/component/form.signal.component.stories.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -381,7 +434,7 @@
             "styles": [
                 "\n      :host {\n        width: 100%;\n      }\n    "
             ],
-            "template": "<app-form-signal urlBack=\"urlBack\" (callback)=\"callback($event)\">\n  <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n  <!-- <dsv-form-select [form]=\"form\" field=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n  <dsv-form-checkbox [form]=\"form\" field=\"checkbox\" /> -->\n</app-form-signal>\n",
+            "template": "<app-form-signal [form]=\"myForm\" urlBack=\"urlBack\" (callback)=\"callback($event)\">\n  <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n  <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n  <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n</app-form-signal>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -397,18 +450,18 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 45
+                    "line": 53
                 },
                 {
                     "name": "myForm",
-                    "defaultValue": "form(signal({\n    name: '',\n    number: 0,\n    range: 50,\n    date: '',\n    textarea: '',\n  }))",
+                    "defaultValue": "form(signal({\n    name: '',\n    number: 0,\n    range: 50,\n    date: '',\n    textarea: '',\n    select: '',\n    checkbox: false,\n  }), path => {\n    required(path.name);\n    required(path.textarea);\n    required(path.select);\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 36
+                    "line": 38
                 },
                 {
                     "name": "urlBack",
@@ -418,7 +471,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 44
+                    "line": 52
                 }
             ],
             "methodsClass": [],
@@ -435,12 +488,20 @@
                 {
                     "name": "FormSignalInputComponent",
                     "type": "component"
+                },
+                {
+                    "name": "FormSignalSelectComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "FormSignalCheckboxComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, signal } from '@angular/core';\nimport { form } from '@angular/forms/signals';\nimport { JSONValue } from '@ng-vagabond-lab/ng-dsv/api';\nimport { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';\nimport { FormSignalInputComponent } from '../../public-api';\nimport { FormSignalComponent } from './form.signal.component';\n\nexport const ActionsData = {\n  urlBack: '/',\n};\n\n@Component({\n  selector: 'storybook-wrapper',\n  standalone: true,\n  imports: [FormSignalComponent, FormSignalInputComponent],\n  template: `\n    <app-form-signal urlBack=\"urlBack\" (callback)=\"callback($event)\">\n      <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n      <!-- <dsv-form-select [form]=\"form\" field=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n      <dsv-form-checkbox [form]=\"form\" field=\"checkbox\" /> -->\n    </app-form-signal>\n  `,\n  styles: [\n    `\n      :host {\n        width: 100%;\n      }\n    `,\n  ]\n})\nclass StoryWrapperComponent {\n  myForm = form(signal({\n    name: '',\n    number: 0,\n    range: 50,\n    date: '',\n    textarea: '',\n  }));\n\n  urlBack?: string;\n  callback = (data: JSONValue) => {\n    console.log(data);\n    alert('Callback appelé 🎉');\n  }\n}\n\nconst meta: Meta<StoryWrapperComponent> = {\n  title: 'dsv/Form/Signal',\n  component: StoryWrapperComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  parameters: {\n    controls: { exclude: ['form'] },\n  },\n  decorators: [\n    moduleMetadata({\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<StoryWrapperComponent>;\n\nexport const Default: Story = {\n  args: {\n    urlBack: '/dashboard',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <app-form-signal urlBack=\"urlBack\" (callback)=\"callback($event)\">\n            <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n            <!-- <dsv-form-select [form]=\"form\" field=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-checkbox [form]=\"form\" field=\"checkbox\" /> -->\n          </app-form-signal>\n        `,\n      },\n    },\n  },\n};",
+            "sourceCode": "import { Component, signal } from '@angular/core';\nimport { form, required } from '@angular/forms/signals';\nimport { JSONValue } from '@ng-vagabond-lab/ng-dsv/api';\nimport { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';\nimport { FormSignalCheckboxComponent } from '../../checkbox/component/form.signal.checkbox.component';\nimport { FormSignalInputComponent } from '../../public-api';\nimport { FormSignalSelectComponent } from '../../select/component/form.signal.select.component';\nimport { FormSignalComponent } from './form.signal.component';\n\nexport const ActionsData = {\n  urlBack: '/',\n};\n\n@Component({\n  selector: 'storybook-wrapper',\n  standalone: true,\n  imports: [FormSignalComponent, FormSignalInputComponent, FormSignalSelectComponent, FormSignalCheckboxComponent],\n  template: `\n    <app-form-signal [form]=\"myForm\" urlBack=\"urlBack\" (callback)=\"callback($event)\">\n      <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n      <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n      <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n    </app-form-signal>\n  `,\n  styles: [\n    `\n      :host {\n        width: 100%;\n      }\n    `,\n  ]\n})\nclass StoryWrapperComponent {\n  myForm = form(signal({\n    name: '',\n    number: 0,\n    range: 50,\n    date: '',\n    textarea: '',\n    select: '',\n    checkbox: false,\n  }), path => {\n    required(path.name);\n    required(path.textarea);\n    required(path.select);\n  });\n\n  urlBack?: string;\n  callback = (data: JSONValue) => {\n    console.log(data);\n    //alert('Callback appelé 🎉');\n  }\n}\n\nconst meta: Meta<StoryWrapperComponent> = {\n  title: 'dsv/Form/Signal',\n  component: StoryWrapperComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  parameters: {\n    controls: { exclude: ['form'] },\n  },\n  decorators: [\n    moduleMetadata({\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<StoryWrapperComponent>;\n\nexport const Default: Story = {\n  args: {\n    urlBack: '/dashboard',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <app-form-signal urlBack=\"urlBack\" (callback)=\"callback($event)\">\n            <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n            <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n          </app-form-signal>\n        `,\n      },\n    },\n  },\n};",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n      :host {\n        width: 100%;\n      }\n    \n",
@@ -957,11 +1018,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n  },\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/form/signal/form/component/form.signal.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    urlBack: '/dashboard',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <app-form-signal urlBack=\"urlBack\" (callback)=\"callback($event)\">\n            <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n            <!-- <dsv-form-select [form]=\"form\" field=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-checkbox [form]=\"form\" field=\"checkbox\" /> -->\n          </app-form-signal>\n        `,\n      },\n    },\n  },\n}"
+                "defaultValue": "{\n  args: {\n    urlBack: '/dashboard',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <app-form-signal urlBack=\"urlBack\" (callback)=\"callback($event)\">\n            <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n            <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n          </app-form-signal>\n        `,\n      },\n    },\n  },\n}"
             },
             {
                 "name": "Default",
@@ -982,6 +1053,26 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    label: 'test',\n  },\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/form/signal/searchbar/component/form.signal.searchbar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    search: '',\n  },\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/form/signal/select/component/form.signal.select.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    list: [\n      { id: 1, name: 'name' },\n      { id: 2, name: 'name 2' }\n    ]\n  },\n}"
             },
             {
                 "name": "meta",
@@ -1257,6 +1348,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<FormSignalCheckboxComponent<TestDto>>",
+                "defaultValue": "{\n  title: 'dsv/Form/Signal/checkbox',\n  component: FormSignalCheckboxComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/form/signal/form/component/form.signal.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1284,6 +1385,26 @@
                 "defaultValue": "{\n  title: 'dsv/Form/Signal/label',\n  component: FormSignalLabelComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n}"
             },
             {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/form/signal/searchbar/component/form.signal.searchbar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<FormSignalSearchbarComponent>",
+                "defaultValue": "{\n  title: 'dsv/Form/Signal/search',\n  component: FormSignalSearchbarComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/form/signal/select/component/form.signal.select.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<FormSignalSelectComponent<TestDto>>",
+                "defaultValue": "{\n  title: 'dsv/Form/Signal/select',\n  component: FormSignalSelectComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n}"
+            },
+            {
                 "name": "MY_FORM",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1308,6 +1429,26 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "projects/ng-dsv/ds/form/legacy/select/component/form.select.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "new FormGroup({\n  exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup"
+            },
+            {
+                "name": "MY_FORM",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "new FormGroup({\n  exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup"
+            },
+            {
+                "name": "MY_FORM",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/form/signal/select/component/form.signal.select.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "unknown",
@@ -1717,6 +1858,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<FormSignalCheckboxComponent<TestDto>>",
+                "file": "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<StoryWrapperComponent>",
                 "file": "projects/ng-dsv/ds/form/signal/form/component/form.signal.component.stories.ts",
                 "deprecated": false,
@@ -1741,6 +1893,28 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<FormSignalLabelComponent<Test>>",
                 "file": "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<FormSignalSearchbarComponent>",
+                "file": "projects/ng-dsv/ds/form/signal/searchbar/component/form.signal.searchbar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<FormSignalSelectComponent<TestDto>>",
+                "file": "projects/ng-dsv/ds/form/signal/select/component/form.signal.select.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2542,7 +2716,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    urlBack: '/dashboard',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <app-form-signal urlBack=\"urlBack\" (callback)=\"callback($event)\">\n            <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n            <!-- <dsv-form-select [form]=\"form\" field=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-checkbox [form]=\"form\" field=\"checkbox\" /> -->\n          </app-form-signal>\n        `,\n      },\n    },\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    urlBack: '/dashboard',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <app-form-signal urlBack=\"urlBack\" (callback)=\"callback($event)\">\n            <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n            <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n          </app-form-signal>\n        `,\n      },\n    },\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -2695,6 +2869,38 @@
                     "defaultValue": "new FormGroup({\n  exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup"
                 }
             ],
+            "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<FormSignalCheckboxComponent<TestDto>>",
+                    "defaultValue": "{\n  title: 'dsv/Form/Signal/checkbox',\n  component: FormSignalCheckboxComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n}"
+                },
+                {
+                    "name": "MY_FORM",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "new FormGroup({\n  exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup"
+                }
+            ],
             "projects/ng-dsv/ds/form/signal/input/component/form.signal.input.component.stories.ts": [
                 {
                     "name": "Default",
@@ -2737,6 +2943,60 @@
                     "deprecationMessage": "",
                     "type": "Meta<FormSignalLabelComponent<Test>>",
                     "defaultValue": "{\n  title: 'dsv/Form/Signal/label',\n  component: FormSignalLabelComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n}"
+                }
+            ],
+            "projects/ng-dsv/ds/form/signal/searchbar/component/form.signal.searchbar.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/form/signal/searchbar/component/form.signal.searchbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    search: '',\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/form/signal/searchbar/component/form.signal.searchbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<FormSignalSearchbarComponent>",
+                    "defaultValue": "{\n  title: 'dsv/Form/Signal/search',\n  component: FormSignalSearchbarComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n}"
+                }
+            ],
+            "projects/ng-dsv/ds/form/signal/select/component/form.signal.select.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/form/signal/select/component/form.signal.select.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    list: [\n      { id: 1, name: 'name' },\n      { id: 2, name: 'name 2' }\n    ]\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/form/signal/select/component/form.signal.select.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<FormSignalSelectComponent<TestDto>>",
+                    "defaultValue": "{\n  title: 'dsv/Form/Signal/select',\n  component: FormSignalSelectComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n}"
+                },
+                {
+                    "name": "MY_FORM",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/form/signal/select/component/form.signal.select.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "new FormGroup({\n  exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup"
                 }
             ],
             "projects/ng-dsv/.storybook/preview.ts": [
@@ -3126,6 +3386,19 @@
                     "kind": 184
                 }
             ],
+            "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<FormSignalCheckboxComponent<TestDto>>",
+                    "file": "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
             "projects/ng-dsv/ds/form/signal/form/component/form.signal.component.stories.ts": [
                 {
                     "name": "Story",
@@ -3159,6 +3432,32 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<FormSignalLabelComponent<Test>>",
                     "file": "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/ng-dsv/ds/form/signal/searchbar/component/form.signal.searchbar.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<FormSignalSearchbarComponent>",
+                    "file": "projects/ng-dsv/ds/form/signal/searchbar/component/form.signal.searchbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/ng-dsv/ds/form/signal/select/component/form.signal.select.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<FormSignalSelectComponent<TestDto>>",
+                    "file": "projects/ng-dsv/ds/form/signal/select/component/form.signal.select.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -3855,6 +4154,55 @@
                 "status": "low"
             },
             {
+                "filePath": "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "TestDto",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "MY_FORM",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/ng-dsv/ds/form/signal/form/component/form.signal.component.stories.ts",
                 "type": "component",
                 "linktype": "component",
@@ -3982,6 +4330,85 @@
             },
             {
                 "filePath": "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/form/signal/searchbar/component/form.signal.searchbar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/form/signal/searchbar/component/form.signal.searchbar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/form/signal/searchbar/component/form.signal.searchbar.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/form/signal/select/component/form.signal.select.component.stories.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "TestDto",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/form/signal/select/component/form.signal.select.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/form/signal/select/component/form.signal.select.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/form/signal/select/component/form.signal.select.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "MY_FORM",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/form/signal/select/component/form.signal.select.component.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",

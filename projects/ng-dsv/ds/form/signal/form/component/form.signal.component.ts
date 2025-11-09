@@ -28,6 +28,7 @@ export class FormSignalComponent {
     submit(this.form(), async (form) => {
       if (form().valid()) {
         console.log(form().value());
+        this.callback.emit(form().value());
         this.toastService.showToast({
           text: this.formValid(),
         });

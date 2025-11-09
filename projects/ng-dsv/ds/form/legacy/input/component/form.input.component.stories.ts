@@ -3,7 +3,7 @@ import { type Meta, type StoryObj } from '@storybook/angular';
 import { FormInputComponent } from '../../public-api';
 
 const meta: Meta<FormInputComponent> = {
-  title: 'dsv/Form/input',
+  title: 'dsv/Form/Legacy/input',
   component: FormInputComponent,
   excludeStories: /.*Data$/,
   tags: ['autodocs'],

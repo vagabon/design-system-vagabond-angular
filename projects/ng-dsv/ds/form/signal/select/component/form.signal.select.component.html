@@ -1,0 +1,25 @@
+<div>
+  <dsv-form-signal-label
+    [label]="fieldName()"
+    [fieldName]="getSignal()"
+    [show]="withLabel()"
+  />
+  <div>
+    @if (getSignal()) {
+      <select
+        [id]="fieldName()"
+        [field]="getSignal()"
+        class="form-control"
+        (change)="doChange()"
+        [class.error]="isError()"
+      >
+        @for (list of list(); track list.id) {
+          <option [value]="list.id">
+            {{ list.name }}
+          </option>
+        }
+      </select>
+      <dsv-signal-form-error [errors]="getSignal()().errors()" />
+    }
+  </div>
+</div>

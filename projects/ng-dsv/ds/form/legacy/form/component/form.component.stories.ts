@@ -51,7 +51,7 @@ class StoryWrapperComponent {
 }
 
 const meta: Meta<StoryWrapperComponent> = {
-  title: 'dsv/Form',
+  title: 'dsv/Legacy/Form',
   component: StoryWrapperComponent,
   excludeStories: /.*Data$/,
   tags: ['autodocs'],

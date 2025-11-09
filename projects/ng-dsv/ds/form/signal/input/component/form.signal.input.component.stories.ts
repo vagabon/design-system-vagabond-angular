@@ -1,7 +1,7 @@
 import { Component, input, signal } from '@angular/core';
 import { Field, form, required } from '@angular/forms/signals';
+import { INPUT_TYPE } from '@ng-vagabond-lab/ng-dsv/type';
 import { type Meta, type StoryObj } from '@storybook/angular';
-import { INPUT_TYPE } from '../../../legacy';
 import { FormSignalInputComponent } from '../../public-api';
 
 interface Test {

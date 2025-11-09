@@ -2,7 +2,9 @@ import { Component, signal } from '@angular/core';
 import { form, required } from '@angular/forms/signals';
 import { JSONValue } from '@ng-vagabond-lab/ng-dsv/api';
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
+import { FormSignalCheckboxComponent } from '../../checkbox/component/form.signal.checkbox.component';
 import { FormSignalInputComponent } from '../../public-api';
+import { FormSignalSelectComponent } from '../../select/component/form.signal.select.component';
 import { FormSignalComponent } from './form.signal.component';
 
 export const ActionsData = {
@@ -12,7 +14,7 @@ export const ActionsData = {
 @Component({
   selector: 'storybook-wrapper',
   standalone: true,
-  imports: [FormSignalComponent, FormSignalInputComponent],
+  imports: [FormSignalComponent, FormSignalInputComponent, FormSignalSelectComponent, FormSignalCheckboxComponent],
   template: `
     <app-form-signal [form]="myForm" urlBack="urlBack" (callback)="callback($event)">
       <dsv-form-signal-input [form]="myForm" fieldName="name" />
@@ -20,8 +22,8 @@ export const ActionsData = {
       <dsv-form-signal-input [form]="myForm" type="range" fieldName="range" />
       <dsv-form-signal-input [form]="myForm" type="datetime-local" fieldName="date" />
       <dsv-form-signal-input [form]="myForm" type="textarea" fieldName="textarea" />
-      <!-- <dsv-form-select [form]="form" field="select" [list]="[{id: '', name: ''}, {id: '1', name: 'Test'}]" />
-      <dsv-form-checkbox [form]="form" field="checkbox" /> -->
+      <dsv-form-signal-select [form]="myForm" fieldName="select" [list]="[{id: '', name: ''}, {id: '1', name: 'Test'}]" />
+      <dsv-form-signal-checkbox [form]="myForm" fieldName="checkbox" />
     </app-form-signal>
   `,
   styles: [
@@ -39,14 +41,18 @@ class StoryWrapperComponent {
     range: 50,
     date: '',
     textarea: '',
+    select: '',
+    checkbox: false,
   }), path => {
     required(path.name);
+    required(path.textarea);
+    required(path.select);
   });
 
   urlBack?: string;
   callback = (data: JSONValue) => {
     console.log(data);
-    alert('Callback appelé 🎉');
+    //alert('Callback appelé 🎉');
   }
 }
 
@@ -85,8 +91,8 @@ export const Default: Story = {
             <dsv-form-signal-input [form]="myForm" type="range" fieldName="range" />
             <dsv-form-signal-input [form]="myForm" type="datetime-local" fieldName="date" />
             <dsv-form-signal-input [form]="myForm" type="textarea" fieldName="textarea" />
-            <!-- <dsv-form-select [form]="form" field="select" [list]="[{id: '', name: ''}, {id: '1', name: 'Test'}]" />
-            <dsv-form-checkbox [form]="form" field="checkbox" /> -->
+            <dsv-form-signal-select [form]="myForm" fieldName="select" [list]="[{id: '', name: ''}, {id: '1', name: 'Test'}]" />
+            <dsv-form-signal-checkbox [form]="myForm" fieldName="checkbox" />
           </app-form-signal>
         `,
       },

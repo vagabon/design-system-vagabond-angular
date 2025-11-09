@@ -1,10 +1,8 @@
 import { Component, input, output } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { INPUT_TYPE } from '@ng-vagabond-lab/ng-dsv/type';
 import { FormErrorComponent } from '../../error/component/form.error.component';
 import { FormLabelComponent } from '../../label/component/form.label.component';
-
-export type INPUT_TYPE = "text" | "password" | "textarea" | "email" | "number" | "date" | "time" | "datetime-local" |
-  "month" | "week" | "url" | "search" | "tel" | "color" | "range" | "file" | "hidden";
 
 @Component({
   selector: 'dsv-form-input',

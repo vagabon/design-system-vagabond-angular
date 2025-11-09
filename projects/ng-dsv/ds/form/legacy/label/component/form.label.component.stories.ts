@@ -2,7 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/angular';
 import { FormLabelComponent } from './form.label.component';
 
 const meta: Meta<FormLabelComponent> = {
-  title: 'dsv/Form/label',
+  title: 'dsv/Form/Legacy/label',
   component: FormLabelComponent,
   excludeStories: /.*Data$/,
   tags: ['autodocs'],
