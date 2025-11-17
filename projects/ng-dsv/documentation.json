@@ -1165,21 +1165,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {\n    form: MY_FORM,\n    field: 'exampleField',\n    list: [\n      { id: 1, name: 'name' },\n      { id: 2, name: 'name 2' }\n    ]\n  },\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    search: '',\n  },\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    form: MY_FORM,\n    field: 'exampleField',\n    list: [\n      { id: 1, name: 'name' },\n      { id: 2, name: 'name 2' }\n    ]\n  },\n}"
             },
             {
                 "name": "Default",
@@ -1495,21 +1495,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<FormReactiveSelectComponent>",
-                "defaultValue": "{\n  title: 'dsv/Form/Reactive/select',\n  component: FormReactiveSelectComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ReactiveSearchbarComponent>",
                 "defaultValue": "{\n  title: 'dsv/Form/Reactive/search',\n  component: ReactiveSearchbarComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<FormReactiveSelectComponent>",
+                "defaultValue": "{\n  title: 'dsv/Form/Reactive/select',\n  component: FormReactiveSelectComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n}"
             },
             {
                 "name": "meta",
@@ -2003,8 +2003,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<FormReactiveSelectComponent>",
-                "file": "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts",
+                "rawtype": "StoryObj<ReactiveSearchbarComponent>",
+                "file": "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2014,8 +2014,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ReactiveSearchbarComponent>",
-                "file": "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts",
+                "rawtype": "StoryObj<FormReactiveSelectComponent>",
+                "file": "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2982,6 +2982,28 @@
                     "defaultValue": "{\n  title: 'dsv/Form/Reactive/label',\n  component: FormReactiveLabelComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n}"
                 }
             ],
+            "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    search: '',\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ReactiveSearchbarComponent>",
+                    "defaultValue": "{\n  title: 'dsv/Form/Reactive/search',\n  component: ReactiveSearchbarComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n}"
+                }
+            ],
             "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts": [
                 {
                     "name": "Default",
@@ -3012,28 +3034,6 @@
                     "deprecationMessage": "",
                     "type": "unknown",
                     "defaultValue": "new FormGroup({\n  exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup"
-                }
-            ],
-            "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    search: '',\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<ReactiveSearchbarComponent>",
-                    "defaultValue": "{\n  title: 'dsv/Form/Reactive/search',\n  component: ReactiveSearchbarComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n}"
                 }
             ],
             "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts": [
@@ -3527,19 +3527,6 @@
                     "kind": 184
                 }
             ],
-            "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<FormReactiveSelectComponent>",
-                    "file": "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
             "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts": [
                 {
                     "name": "Story",
@@ -3547,6 +3534,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<ReactiveSearchbarComponent>",
                     "file": "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<FormReactiveSelectComponent>",
+                    "file": "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",

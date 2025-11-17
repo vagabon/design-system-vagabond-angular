@@ -27,7 +27,7 @@ export class FormSignalComponent {
     event.preventDefault();
     submit(this.form(), async (form) => {
       if (form().valid()) {
-        this.callback.emit(form().value());
+        this.callback.emit(form().value() as ApiDto);
         this.toastService.showToast({
           text: this.formValid(),
         });

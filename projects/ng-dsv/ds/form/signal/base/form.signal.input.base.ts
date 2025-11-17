@@ -23,7 +23,7 @@ export abstract class FormSignalInputBase<T> {
     }
 
     getSignal() {
-        return this.form()?.[this.fieldName() as keyof FieldTree<T, string | number>] as FieldTree<any, string | number>;
+        return this.form()?.[this.fieldName() as keyof FieldTree<T, string | number>] as FieldTree<string, string | number>;
     }
 
     doOnSend() {
@@ -39,8 +39,8 @@ export abstract class FormSignalInputBase<T> {
         if (signal) {
             const value = signal().value();
             this.debug() && console.log(signal, signal().errors(), value);
-            return value;
+            return value as string;
         }
-        return undefined;
+        return "";
     }
 }

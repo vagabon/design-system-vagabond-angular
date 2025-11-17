@@ -1,5 +1,5 @@
 import { Component, effect, HostBinding, input, signal } from "@angular/core";
-import { ValidationErrorWithField } from "@angular/forms/signals";
+import { ValidationError } from "@angular/forms/signals";
 import { TranslatePipe } from "@ngx-translate/core";
 
 @Component({
@@ -9,7 +9,7 @@ import { TranslatePipe } from "@ngx-translate/core";
     styleUrls: ['../../../reactive/error/component/form.reactive.error.component.scss']
 })
 export class FormSignalErrorComponent {
-    errors = input.required<ValidationErrorWithField[]>();
+    errors = input.required<ValidationError[]>();
 
     error = signal<string>('');
 
@@ -28,10 +28,10 @@ export class FormSignalErrorComponent {
                         errorMessage = "Le champ est obligatoire.";
                         break;
                     case "minLength":
-                        errorMessage = "La taille minimum est de " + error['minLength' as keyof ValidationErrorWithField] + ".";
+                        errorMessage = "La taille minimum est de " + error['minLength' as keyof ValidationError] + ".";
                         break;
                     case "maxLength":
-                        errorMessage = "La taille maximum est de " + error['maxLength' as keyof ValidationErrorWithField] + ".";
+                        errorMessage = "La taille maximum est de " + error['maxLength' as keyof ValidationError] + ".";
                         break;
                     case "email":
                         errorMessage = "Le format n'est pas celui d'un email.";
