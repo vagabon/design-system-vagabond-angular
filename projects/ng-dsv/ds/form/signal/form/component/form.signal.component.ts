@@ -12,10 +12,10 @@ import { TranslatePipe } from '@ngx-translate/core';
   templateUrl: './form.signal.component.html',
   styleUrl: '../../../reactive/form/component/form.reactive.component.scss',
 })
-export class FormSignalComponent {
+export class FormSignalComponent<T> {
   toastService = inject(ToastService);
 
-  form = input.required<FieldTree<any, string | number>>();
+  form = input.required<FieldTree<T, string | number>>();
 
   urlBack = input<string>();
   textValid = input<string>('ENREGISTRER');
