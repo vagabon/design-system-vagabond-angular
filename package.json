@@ -24,21 +24,12 @@
     "sonar": "npm run test:coverage:headless && npx sonar-scanner -Dsonar.token=$SONAR_TOKEN -Dsonar.host.url=http://localhost:9000"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "@angular/common": "~21.0.6",
-    "@angular/compiler": "~21.0.6",
-    "@angular/core": "~21.0.6",
-    "@angular/forms": "~21.0.6",
-    "@angular/platform-browser": "~21.0.6",
-    "@angular/router": "~21.0.6",
-=======
     "@angular/common": "~21.1.0",
     "@angular/compiler": "~21.1.0",
     "@angular/core": "~21.1.0",
     "@angular/forms": "~21.1.0",
     "@angular/platform-browser": "~21.1.0",
     "@angular/router": "~21.1.0",
->>>>>>> e29f306 (ci: new angular version 21.1.0)
     "@ngx-translate/core": "^17.0.0",
     "remixicon": "~4.8.0",
     "tslib": "~2.8.1"
