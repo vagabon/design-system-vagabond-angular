@@ -45,7 +45,7 @@
     "remixicon": "~4.8.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~21.1.0",
+    "@angular-devkit/build-angular": "^21.1.0",
     "@angular/compiler-cli": "^21.1.0",
     "@chromatic-com/storybook": "~5.0.0",
     "@compodoc/compodoc": "~1.2.1",
@@ -57,7 +57,6 @@
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.1",
     "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "~21.1.0",
     "prettier": "^3.8.0",
     "rxjs": "~7.8.2",
