@@ -30,12 +30,12 @@
         },
         {
             "name": "Test",
-            "id": "interface-Test-de4c2d10cbabfead7cb4d29781c1b28bd041c28c19316b1d3c4c789e312b2db9ad5ffdab4c633587f4f5d01b3730ec5f5d40cd6c49ddf0d3cd153cc6b1943b4b",
+            "id": "interface-Test-90489668f69480d2b44bc53bc09a350ce4744d8dd6f1b87ef393be1cee72f3ccfe21e5bff1ec16989c74d1c6cc38165c4965865c40b5e5a721ad05a59df1b1c7",
             "file": "projects/ng-dsv/ds/form/signal/input/component/form.signal.input.component.stories.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component, input, signal } from '@angular/core';\nimport { Field, form, required } from '@angular/forms/signals';\nimport { INPUT_TYPE } from '@ng-vagabond-lab/ng-dsv/type';\nimport { type Meta, type StoryObj } from '@storybook/angular';\nimport { FormSignalInputComponent } from '../../public-api';\n\ninterface Test {\n  name: string;\n}\n\n@Component({\n  selector: 'story-signal-input',\n  standalone: true,\n  imports: [FormSignalInputComponent, Field],\n  template: `\n    @if (myForm) {\n      <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" [type]=\"type()\" (onSend)=\"onSend($event)\" />\n    }\n  `\n})\nclass StorySignalInput {\n  value = input<string>('name');\n  myForm = form<Test>(signal({ name: this.value() }), path => {\n    required(path.name);\n  });\n  type = input<INPUT_TYPE>('text');\n  onSend = () => { };\n}\n\nconst meta: Meta<StorySignalInput> = {\n  title: 'dsv/Form/Signal/input',\n  component: StorySignalInput,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: [\n        \"text\", \"password\", \"textarea\", \"email\", \"number\", \"date\", \"time\", \"datetime-local\",\n        \"month\", \"week\", \"url\", \"search\", \"tel\", \"color\", \"range\", \"file\", \"hidden\"\n      ],\n    },\n    onSend: { action: 'onSend' },\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<StorySignalInput>;\n\n\nexport const Default: Story = {\n  args: {\n    value: 'name',\n    type: 'text'\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" [type]=\"type()\" (onSend)=\"onSend($event)\" />\n        `,\n      },\n    },\n  },\n};",
+            "sourceCode": "import { Component, input, signal } from '@angular/core';\nimport { FormField, form, required } from '@angular/forms/signals';\nimport { INPUT_TYPE } from '@ng-vagabond-lab/ng-dsv/type';\nimport { type Meta, type StoryObj } from '@storybook/angular';\nimport { FormSignalInputComponent } from '../../public-api';\n\ninterface Test {\n  name: string;\n}\n\n@Component({\n  selector: 'story-signal-input',\n  standalone: true,\n  imports: [FormSignalInputComponent, FormField],\n  template: `\n    @if (myForm) {\n      <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" [type]=\"type()\" (onSend)=\"onSend($event)\" />\n    }\n  `\n})\nclass StorySignalInput {\n  value = input<string>('name');\n  myForm = form<Test>(signal({ name: this.value() }), path => {\n    required(path.name);\n  });\n  type = input<INPUT_TYPE>('text');\n  onSend = () => { };\n}\n\nconst meta: Meta<StorySignalInput> = {\n  title: 'dsv/Form/Signal/input',\n  component: StorySignalInput,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: [\n        \"text\", \"password\", \"textarea\", \"email\", \"number\", \"date\", \"time\", \"datetime-local\",\n        \"month\", \"week\", \"url\", \"search\", \"tel\", \"color\", \"range\", \"file\", \"hidden\"\n      ],\n    },\n    onSend: { action: 'onSend' },\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<StorySignalInput>;\n\n\nexport const Default: Story = {\n  args: {\n    value: 'name',\n    type: 'text'\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" [type]=\"type()\" (onSend)=\"onSend($event)\" />\n        `,\n      },\n    },\n  },\n};",
             "properties": [
                 {
                     "name": "name",
@@ -83,12 +83,12 @@
         },
         {
             "name": "TestDto",
-            "id": "interface-TestDto-e31595dbc7cc1a3096d79b4bb06e322a28987cd57bfe7b48a19acae268f97a6f6f3ba36e9c077b90887026d1870c6a300a3fd38782176649511896f46b320996",
+            "id": "interface-TestDto-b5597e7fd1bd03c1277c7faa3b424622ab4244508d01da56bd9d5a59fede85a1aab1b41832a6c3b4b2b88976bd5906f59591b230a364a86d7c962b983e1555f0",
             "file": "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component, input, signal } from '@angular/core';\nimport { FormControl, FormGroup } from '@angular/forms';\nimport { Field, form } from '@angular/forms/signals';\nimport { type Meta, type StoryObj } from '@storybook/angular';\nimport { CustomFormGroup } from '../../../reactive/input/component/form.reactive.input.component.stories';\nimport { FormSignalCheckboxComponent } from './form.signal.checkbox.component';\n\ninterface TestDto {\n  myCheckbox: boolean;\n}\n\n@Component({\n  selector: 'story-signal-checkbox',\n  standalone: true,\n  imports: [FormSignalCheckboxComponent, Field],\n  template: `\n    @if (myForm) {\n      <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"myCheckbox\" (onSend)=\"onSend($event)\" />\n    }\n  `\n})\nclass StorySignalChecbox {\n  value = input<boolean>(false);\n  myForm = form<TestDto>(signal({ myCheckbox: this.value() }), path => {\n  });\n  onSend = () => { };\n\n}\n\nconst meta: Meta<StorySignalChecbox> = {\n  title: 'dsv/Form/Signal/checkbox',\n  component: StorySignalChecbox,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<StorySignalChecbox>;\n\nconst MY_FORM = new FormGroup({\n  exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup;\n\nMY_FORM['toJSON'] = () => null;\n\nexport const Default: Story = {\n  args: {\n    value: true\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"myCheckbox\" (onSend)=\"onSend($event)\" />\n        `,\n      },\n    },\n  },\n};",
+            "sourceCode": "import { Component, input, signal } from '@angular/core';\nimport { FormControl, FormGroup } from '@angular/forms';\nimport { FormField, form } from '@angular/forms/signals';\nimport { type Meta, type StoryObj } from '@storybook/angular';\nimport { CustomFormGroup } from '../../../reactive/input/component/form.reactive.input.component.stories';\nimport { FormSignalCheckboxComponent } from './form.signal.checkbox.component';\n\ninterface TestDto {\n  myCheckbox: boolean;\n}\n\n@Component({\n  selector: 'story-signal-checkbox',\n  standalone: true,\n  imports: [FormSignalCheckboxComponent, FormField],\n  template: `\n    @if (myForm) {\n      <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"myCheckbox\" (onSend)=\"onSend($event)\" />\n    }\n  `\n})\nclass StorySignalChecbox {\n  value = input<boolean>(false);\n  myForm = form<TestDto>(signal({ myCheckbox: this.value() }), path => {\n  });\n  onSend = () => { };\n\n}\n\nconst meta: Meta<StorySignalChecbox> = {\n  title: 'dsv/Form/Signal/checkbox',\n  component: StorySignalChecbox,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<StorySignalChecbox>;\n\nconst MY_FORM = new FormGroup({\n  exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup;\n\nMY_FORM['toJSON'] = () => null;\n\nexport const Default: Story = {\n  args: {\n    value: true\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"myCheckbox\" (onSend)=\"onSend($event)\" />\n        `,\n      },\n    },\n  },\n};",
             "properties": [
                 {
                     "name": "myCheckbox",
@@ -257,6 +257,8 @@
                         {
                             "name": "type",
                             "type": "ToastType",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "defaultValue": "'success'"
@@ -272,6 +274,8 @@
                         {
                             "name": "type",
                             "type": "ToastType",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "defaultValue": "'success'",
@@ -309,6 +313,8 @@
                     {
                         "name": "toastService",
                         "type": "ToastService",
+                        "optional": false,
+                        "dotDotDotToken": false,
                         "deprecated": false,
                         "deprecationMessage": ""
                     }
@@ -318,6 +324,8 @@
                     {
                         "name": "toastService",
                         "type": "ToastService",
+                        "optional": false,
+                        "dotDotDotToken": false,
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
@@ -330,7 +338,7 @@
         },
         {
             "name": "StorySignalChecbox",
-            "id": "component-StorySignalChecbox-e31595dbc7cc1a3096d79b4bb06e322a28987cd57bfe7b48a19acae268f97a6f6f3ba36e9c077b90887026d1870c6a300a3fd38782176649511896f46b320996",
+            "id": "component-StorySignalChecbox-b5597e7fd1bd03c1277c7faa3b424622ab4244508d01da56bd9d5a59fede85a1aab1b41832a6c3b4b2b88976bd5906f59591b230a364a86d7c962b983e1555f0",
             "file": "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -395,13 +403,13 @@
                     "type": "component"
                 },
                 {
-                    "name": "Field"
+                    "name": "FormField"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, input, signal } from '@angular/core';\nimport { FormControl, FormGroup } from '@angular/forms';\nimport { Field, form } from '@angular/forms/signals';\nimport { type Meta, type StoryObj } from '@storybook/angular';\nimport { CustomFormGroup } from '../../../reactive/input/component/form.reactive.input.component.stories';\nimport { FormSignalCheckboxComponent } from './form.signal.checkbox.component';\n\ninterface TestDto {\n  myCheckbox: boolean;\n}\n\n@Component({\n  selector: 'story-signal-checkbox',\n  standalone: true,\n  imports: [FormSignalCheckboxComponent, Field],\n  template: `\n    @if (myForm) {\n      <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"myCheckbox\" (onSend)=\"onSend($event)\" />\n    }\n  `\n})\nclass StorySignalChecbox {\n  value = input<boolean>(false);\n  myForm = form<TestDto>(signal({ myCheckbox: this.value() }), path => {\n  });\n  onSend = () => { };\n\n}\n\nconst meta: Meta<StorySignalChecbox> = {\n  title: 'dsv/Form/Signal/checkbox',\n  component: StorySignalChecbox,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<StorySignalChecbox>;\n\nconst MY_FORM = new FormGroup({\n  exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup;\n\nMY_FORM['toJSON'] = () => null;\n\nexport const Default: Story = {\n  args: {\n    value: true\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"myCheckbox\" (onSend)=\"onSend($event)\" />\n        `,\n      },\n    },\n  },\n};",
+            "sourceCode": "import { Component, input, signal } from '@angular/core';\nimport { FormControl, FormGroup } from '@angular/forms';\nimport { FormField, form } from '@angular/forms/signals';\nimport { type Meta, type StoryObj } from '@storybook/angular';\nimport { CustomFormGroup } from '../../../reactive/input/component/form.reactive.input.component.stories';\nimport { FormSignalCheckboxComponent } from './form.signal.checkbox.component';\n\ninterface TestDto {\n  myCheckbox: boolean;\n}\n\n@Component({\n  selector: 'story-signal-checkbox',\n  standalone: true,\n  imports: [FormSignalCheckboxComponent, FormField],\n  template: `\n    @if (myForm) {\n      <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"myCheckbox\" (onSend)=\"onSend($event)\" />\n    }\n  `\n})\nclass StorySignalChecbox {\n  value = input<boolean>(false);\n  myForm = form<TestDto>(signal({ myCheckbox: this.value() }), path => {\n  });\n  onSend = () => { };\n\n}\n\nconst meta: Meta<StorySignalChecbox> = {\n  title: 'dsv/Form/Signal/checkbox',\n  component: StorySignalChecbox,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<StorySignalChecbox>;\n\nconst MY_FORM = new FormGroup({\n  exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup;\n\nMY_FORM['toJSON'] = () => null;\n\nexport const Default: Story = {\n  args: {\n    value: true\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"myCheckbox\" (onSend)=\"onSend($event)\" />\n        `,\n      },\n    },\n  },\n};",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -409,7 +417,7 @@
         },
         {
             "name": "StorySignalInput",
-            "id": "component-StorySignalInput-de4c2d10cbabfead7cb4d29781c1b28bd041c28c19316b1d3c4c789e312b2db9ad5ffdab4c633587f4f5d01b3730ec5f5d40cd6c49ddf0d3cd153cc6b1943b4b",
+            "id": "component-StorySignalInput-90489668f69480d2b44bc53bc09a350ce4744d8dd6f1b87ef393be1cee72f3ccfe21e5bff1ec16989c74d1c6cc38165c4965865c40b5e5a721ad05a59df1b1c7",
             "file": "projects/ng-dsv/ds/form/signal/input/component/form.signal.input.component.stories.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -486,13 +494,13 @@
                     "type": "component"
                 },
                 {
-                    "name": "Field"
+                    "name": "FormField"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, input, signal } from '@angular/core';\nimport { Field, form, required } from '@angular/forms/signals';\nimport { INPUT_TYPE } from '@ng-vagabond-lab/ng-dsv/type';\nimport { type Meta, type StoryObj } from '@storybook/angular';\nimport { FormSignalInputComponent } from '../../public-api';\n\ninterface Test {\n  name: string;\n}\n\n@Component({\n  selector: 'story-signal-input',\n  standalone: true,\n  imports: [FormSignalInputComponent, Field],\n  template: `\n    @if (myForm) {\n      <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" [type]=\"type()\" (onSend)=\"onSend($event)\" />\n    }\n  `\n})\nclass StorySignalInput {\n  value = input<string>('name');\n  myForm = form<Test>(signal({ name: this.value() }), path => {\n    required(path.name);\n  });\n  type = input<INPUT_TYPE>('text');\n  onSend = () => { };\n}\n\nconst meta: Meta<StorySignalInput> = {\n  title: 'dsv/Form/Signal/input',\n  component: StorySignalInput,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: [\n        \"text\", \"password\", \"textarea\", \"email\", \"number\", \"date\", \"time\", \"datetime-local\",\n        \"month\", \"week\", \"url\", \"search\", \"tel\", \"color\", \"range\", \"file\", \"hidden\"\n      ],\n    },\n    onSend: { action: 'onSend' },\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<StorySignalInput>;\n\n\nexport const Default: Story = {\n  args: {\n    value: 'name',\n    type: 'text'\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" [type]=\"type()\" (onSend)=\"onSend($event)\" />\n        `,\n      },\n    },\n  },\n};",
+            "sourceCode": "import { Component, input, signal } from '@angular/core';\nimport { FormField, form, required } from '@angular/forms/signals';\nimport { INPUT_TYPE } from '@ng-vagabond-lab/ng-dsv/type';\nimport { type Meta, type StoryObj } from '@storybook/angular';\nimport { FormSignalInputComponent } from '../../public-api';\n\ninterface Test {\n  name: string;\n}\n\n@Component({\n  selector: 'story-signal-input',\n  standalone: true,\n  imports: [FormSignalInputComponent, FormField],\n  template: `\n    @if (myForm) {\n      <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" [type]=\"type()\" (onSend)=\"onSend($event)\" />\n    }\n  `\n})\nclass StorySignalInput {\n  value = input<string>('name');\n  myForm = form<Test>(signal({ name: this.value() }), path => {\n    required(path.name);\n  });\n  type = input<INPUT_TYPE>('text');\n  onSend = () => { };\n}\n\nconst meta: Meta<StorySignalInput> = {\n  title: 'dsv/Form/Signal/input',\n  component: StorySignalInput,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {\n    type: {\n      control: 'select',\n      options: [\n        \"text\", \"password\", \"textarea\", \"email\", \"number\", \"date\", \"time\", \"datetime-local\",\n        \"month\", \"week\", \"url\", \"search\", \"tel\", \"color\", \"range\", \"file\", \"hidden\"\n      ],\n    },\n    onSend: { action: 'onSend' },\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<StorySignalInput>;\n\n\nexport const Default: Story = {\n  args: {\n    value: 'name',\n    type: 'text'\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" [type]=\"type()\" (onSend)=\"onSend($event)\" />\n        `,\n      },\n    },\n  },\n};",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",

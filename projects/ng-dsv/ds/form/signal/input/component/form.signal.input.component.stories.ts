@@ -1,5 +1,5 @@
 import { Component, input, signal } from '@angular/core';
-import { Field, form, required } from '@angular/forms/signals';
+import { FormField, form, required } from '@angular/forms/signals';
 import { INPUT_TYPE } from '@ng-vagabond-lab/ng-dsv/type';
 import { type Meta, type StoryObj } from '@storybook/angular';
 import { FormSignalInputComponent } from '../../public-api';
@@ -11,7 +11,7 @@ interface Test {
 @Component({
   selector: 'story-signal-input',
   standalone: true,
-  imports: [FormSignalInputComponent, Field],
+  imports: [FormSignalInputComponent, FormField],
   template: `
     @if (myForm) {
       <dsv-form-signal-input [form]="myForm" fieldName="name" [type]="type()" (onSend)="onSend($event)" />

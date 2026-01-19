@@ -6,17 +6,17 @@
     @if (type() === "textarea") {
       <textarea
         [id]="fieldName()"
-        [field]="getSignal()"
+        [formField]="getSignal()"
         class="form-control"
       ></textarea>
     } @else {
-      <!-- [type]="type()" -->
       <input
         #input
+        [type]="type()" 
         [id]="fieldName()"
         class="form-control"
         [class.error]="isError()"
-        [field]="getSignal()"
+        [formField]="getSignal()"
         [class.icon]="icon()"
         (blur)="doOnSend()"
         (keydown.enter)="doOnSend()"

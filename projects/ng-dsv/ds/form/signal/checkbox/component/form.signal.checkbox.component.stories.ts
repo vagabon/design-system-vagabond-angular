@@ -1,6 +1,6 @@
 import { Component, input, signal } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Field, form } from '@angular/forms/signals';
+import { FormField, form } from '@angular/forms/signals';
 import { type Meta, type StoryObj } from '@storybook/angular';
 import { CustomFormGroup } from '../../../reactive/input/component/form.reactive.input.component.stories';
 import { FormSignalCheckboxComponent } from './form.signal.checkbox.component';
@@ -12,7 +12,7 @@ interface TestDto {
 @Component({
   selector: 'story-signal-checkbox',
   standalone: true,
-  imports: [FormSignalCheckboxComponent, Field],
+  imports: [FormSignalCheckboxComponent, FormField],
   template: `
     @if (myForm) {
       <dsv-form-signal-checkbox [form]="myForm" fieldName="myCheckbox" (onSend)="onSend($event)" />

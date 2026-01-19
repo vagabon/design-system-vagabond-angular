@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, input, ViewChild } from '@angular/core';
-import { Field } from '@angular/forms/signals';
+import { FormField } from '@angular/forms/signals';
 import { INPUT_TYPE } from '@ng-vagabond-lab/ng-dsv/type';
 import { FormSignalInputBase } from '../../base/form.signal.input.base';
 import { FormSignalErrorComponent } from '../../error/component/form.signal.error.component';
@@ -8,7 +8,7 @@ import { FormSignalLabelComponent } from '../../label/component/form.signal.labe
 @Component({
   selector: 'dsv-form-signal-input',
   imports: [
-    Field,
+    FormField,
     FormSignalLabelComponent,
     FormSignalErrorComponent
   ],
