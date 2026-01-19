@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, input } from '@angular/core';
 import { FormField } from '@angular/forms/signals';
 import { INPUT_TYPE } from '@ng-vagabond-lab/ng-dsv/type';
 import { FormSignalInputBase } from '../../base/form.signal.input.base';
@@ -16,16 +16,16 @@ import { FormSignalLabelComponent } from '../../label/component/form.signal.labe
   styleUrl: '../../../reactive/input/component/form.reactive.input.component.scss',
 })
 export class FormSignalInputComponent<T> extends FormSignalInputBase<T> implements AfterViewInit {
-  @ViewChild('input')
-  input!: ElementRef<HTMLInputElement>;
+  // @ViewChild('input')
+  // input!: ElementRef<HTMLInputElement>;
 
   type = input<INPUT_TYPE>('text');
   icon = input<string>();
 
   ngAfterViewInit() {
-    if (this.input?.nativeElement) {
-      this.input.nativeElement.type = this.type();
-    }
+    // if (this.input?.nativeElement) {
+    //   this.input.nativeElement.type = this.type();
+    // }
   }
 
 }
