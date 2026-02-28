@@ -20,11 +20,8 @@ export default defineConfig({
       exclude: [
         '**/.storybook/**',
         '**/index.ts',
-        '**/index.ts',
         '**/public-api.ts',
-        '**/*.type.ts',
         "**/*.stories.ts",
-        '**/*.dto.ts',
         '**/*.html',
         '**/*.scss',
         '**/*.spec.ts',
