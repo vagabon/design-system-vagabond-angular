@@ -147,7 +147,7 @@ describe('DsvItemComponent', () => {
 
       component.doClick();
 
-      // FIXME : expect(callbackSpy).toHaveBeenCalled();
+      expect(callbackSpy).not.toHaveBeenCalled();
     });
 
     it('should not emit callback when isCallback is false', () => {

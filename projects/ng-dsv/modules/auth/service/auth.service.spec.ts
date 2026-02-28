@@ -1,48 +1,76 @@
-import { HttpClient } from '@angular/common/http';
-import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
+import { ApiService } from '@ng-vagabond-lab/ng-dsv/api';
+import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
+import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { UserConnectedDto } from '../dto/user.dto';
 import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
   let service: AuthService;
-  let httpClientSpy: { post: ReturnType<typeof vi.fn>; get: ReturnType<typeof vi.fn> };
+  let apiServiceMock: any;
+  let toastServiceMock: any;
+  let storageServiceMock: any;
 
-  beforeEach(async () => {
-    // Création du spy HttpClient avec vi.fn()
-    httpClientSpy = {
-      get: vi.fn(),
-      post: vi.fn(),
-    };
+  const mockUser: UserConnectedDto = {
+    user: { id: '1', profiles: [] },
+  };
 
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    apiServiceMock = { post: vi.fn(), info: vi.fn() };
+    toastServiceMock = { showToast: vi.fn() };
+    storageServiceMock = { setItem: vi.fn(), getItem: vi.fn(), removeItem: vi.fn() };
+
+    TestBed.configureTestingModule({
       providers: [
-        provideZonelessChangeDetection(),
         AuthService,
-        { provide: HttpClient, useValue: httpClientSpy },
+        { provide: ApiService, useValue: apiServiceMock },
+        { provide: ToastService, useValue: toastServiceMock },
+        { provide: StorageService, useValue: storageServiceMock },
       ],
-    }).compileComponents?.();
+    });
 
     service = TestBed.inject(AuthService);
   });
 
-  it('should be created', () => {
+  it('should create the service', () => {
     expect(service).toBeTruthy();
+    expect(service.userConnected()).toBe(null);
   });
 
-  it('should call HttpClient.post when googleLogin is called', (done) => {
-    const memberData = { user: { id: 1, name: 'John Doe' } };
+  it('googleLogin should call apiService.post and set userConnected', () => {
+    apiServiceMock.post.mockImplementation((url: string, payload: any, cb: Function) => cb(mockUser));
 
-    // Mock du retour
-    httpClientSpy.post.mockReturnValue(of(memberData));
+    service.googleLogin('fake-credential');
 
-    // Appel de la méthode
-    service.googleLogin('token');
+    expect(apiServiceMock.post).toHaveBeenCalledWith(
+      'auth/google-identity-connect',
+      { googleToken: 'fake-credential' },
+      expect.any(Function)
+    );
+    expect(storageServiceMock.setItem).toHaveBeenCalledWith('user-connected', JSON.stringify(mockUser));
+    expect(service.userConnected()).toEqual(mockUser);
+    expect(toastServiceMock.showToast).toHaveBeenCalledWith({ type: 'success', text: 'Connexion réussie' });
+  });
 
-    // Comme c'est un signal ou observable interne, on peut utiliser un timeout minimal pour récupérer la valeur
-    setTimeout(() => {
-      expect(service.userConnected()).toEqual(memberData);
-    }, 0);
+  it('loginFromCache should read from storage and set userConnected', () => {
+    storageServiceMock.getItem.mockReturnValue(JSON.stringify(mockUser));
+
+    const result = service.loginFromCache();
+
+    expect(storageServiceMock.getItem).toHaveBeenCalledWith('user-connected');
+    expect(service.userConnected()).toEqual(mockUser);
+    expect(apiServiceMock.info).toHaveBeenCalledWith('userConnected', mockUser);
+    expect(result).toEqual(mockUser);
+  });
+
+  it('logout should remove storage and reset userConnected', () => {
+    service.userConnected.set(mockUser);
+
+    service.logout();
+
+    expect(storageServiceMock.removeItem).toHaveBeenCalledWith('user-connected');
+    expect(service.userConnected()).toBe(null);
+    expect(toastServiceMock.showToast).toHaveBeenCalledWith({ type: 'success', text: 'Déconnexion réussie' });
   });
 });

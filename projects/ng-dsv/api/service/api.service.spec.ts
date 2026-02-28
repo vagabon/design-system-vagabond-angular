@@ -1,89 +1,128 @@
 import { HttpClient } from '@angular/common/http';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
+import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { of, throwError } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ApiService } from './api.service';
 
 describe('ApiService', () => {
   let service: ApiService;
-  let httpClientSpy: { get: ReturnType<typeof vi.fn>; post: ReturnType<typeof vi.fn> };
+  let httpClientMock: HttpClient & { get: any; post: any; put: any; delete: any };
+  let toastServiceMock: ToastService;
+  let platformServiceMock: PlatformService;
 
   beforeEach(() => {
-    httpClientSpy = {
+    httpClientMock = {
       get: vi.fn(),
       post: vi.fn(),
-    };
+      put: vi.fn(),
+      delete: vi.fn(),
+    } as unknown as HttpClient & { get: any; post: any; put: any; delete: any };
+
+    toastServiceMock = {
+      showToast: vi.fn(),
+    } as unknown as ToastService;
+
+    platformServiceMock = {
+      isPlatformBrowser: vi.fn().mockReturnValue(true),
+    } as unknown as PlatformService;
 
     TestBed.configureTestingModule({
       providers: [
         provideZonelessChangeDetection(),
         ApiService,
-        { provide: HttpClient, useValue: httpClientSpy },
+        { provide: HttpClient, useValue: httpClientMock },
+        { provide: ToastService, useValue: toastServiceMock },
+        { provide: PlatformService, useValue: platformServiceMock },
       ],
     });
 
     service = TestBed.inject(ApiService);
-    service.setBaseUrl('/api/');
+    service.setBaseUrl('/api');
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('get()', () => {
-    it('should call HttpClient.get and callback with data', () => {
-      const responseData = { message: 'success' };
-      httpClientSpy.get.mockReturnValue(of(responseData));
+  it('get() should call callback on success', () => {
+    const mockData = { id: 1, name: 'test' };
+    httpClientMock.get.mockReturnValue(of(mockData));
+    const callback = vi.fn();
 
-      const callback = vi.fn();
-      vi.spyOn(service, 'info').mockImplementation(() => { });
+    service.get('/test', callback);
 
-      service.get('test', callback);
-
-      expect(httpClientSpy.get).toHaveBeenCalledWith('/api/test');
-      expect(callback).toHaveBeenCalledWith(responseData);
-    });
-
-    it('should call error on failure', () => {
-      const error = { error: 'failure' };
-      httpClientSpy.get.mockReturnValue(throwError(() => error));
-
-      vi.spyOn(service, 'error').mockImplementation(() => { });
-      const callback = vi.fn();
-
-      service.get('fail', callback);
-
-      expect(callback).not.toHaveBeenCalled();
-    });
+    expect(callback).toHaveBeenCalledWith(mockData);
+    expect(service.load()).toBe(false);
   });
 
-  describe('post()', () => {
-    it('should call HttpClient.post and callback with response', () => {
-      const postData = { name: 'test' };
-      const response = { status: 'ok' };
+  it('post() should call callback on success', () => {
+    const mockData = { id: 1 };
+    httpClientMock.post.mockReturnValue(of(mockData));
+    const callback = vi.fn();
 
-      httpClientSpy.post.mockReturnValue(of(response));
-      const callback = vi.fn();
-      vi.spyOn(service, 'info').mockImplementation(() => { });
+    service.post('/create', mockData, callback);
 
-      service.post('create', postData, callback);
+    expect(callback).toHaveBeenCalledWith(mockData);
+    expect(service.load()).toBe(false);
+  });
 
-      expect(httpClientSpy.post).toHaveBeenCalledWith('/api/create', postData);
-      expect(callback).toHaveBeenCalledWith(response);
-    });
+  it('put() should call callback on success', () => {
+    const mockData = { id: 2 };
+    httpClientMock.put.mockReturnValue(of(mockData));
+    const callback = vi.fn();
 
-    it('should handle post errors', () => {
-      const postData = { name: 'error' };
-      const error = { error: 'bad request' };
+    service.put('/update', mockData, callback);
 
-      httpClientSpy.post.mockReturnValue(throwError(() => error));
-      vi.spyOn(service, 'error').mockImplementation(() => { });
-      const callback = vi.fn();
+    expect(callback).toHaveBeenCalledWith(mockData);
+    expect(service.load()).toBe(false);
+  });
 
-      service.post('fail', postData, callback);
+  it('delete() should call callback on success', () => {
+    const mockData = { success: true };
+    httpClientMock.delete.mockReturnValue(of(mockData));
+    const callback = vi.fn();
 
-      expect(callback).not.toHaveBeenCalled();
-    });
+    service.delete('/delete', callback);
+
+    expect(callback).toHaveBeenCalledWith(mockData);
+    expect(service.load()).toBe(false);
+  });
+
+  it('should handle error in get()', () => {
+    const error = { message: 'fail' };
+    httpClientMock.get.mockReturnValue(throwError(() => error));
+    const callback = vi.fn();
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => { });
+
+    service.get('/fail', callback);
+
+    expect(callback).not.toHaveBeenCalled();
+    expect(consoleSpy).toHaveBeenCalled();
+    consoleSpy.mockRestore();
+  });
+
+  it('createOrUpdate() should call put for existing entity', () => {
+    const data = { id: 10, name: 'update' };
+    httpClientMock.put.mockReturnValue(of(data));
+    const callback = vi.fn();
+
+    service.createOrUpdate('entity', data, callback);
+
+    expect(toastServiceMock.showToast).toHaveBeenCalledWith({ text: 'UPDATE_OK', type: 'success' });
+    expect(callback).toHaveBeenCalledWith(data);
+  });
+
+  it('createOrUpdate() should call post for new entity', () => {
+    const data = { id: null, name: 'new' };
+    httpClientMock.post.mockReturnValue(of(data));
+    const callback = vi.fn();
+
+    service.createOrUpdate('entity', data, callback);
+
+    expect(toastServiceMock.showToast).toHaveBeenCalledWith({ text: 'CREATION_OK', type: 'success' });
+    expect(callback).toHaveBeenCalledWith(data);
   });
 });

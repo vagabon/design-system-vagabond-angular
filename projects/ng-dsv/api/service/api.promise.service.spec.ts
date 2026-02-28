@@ -1,76 +1,127 @@
-// api.promise.service.spec.ts
 import { HttpClient } from '@angular/common/http';
-import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
-import { throwError } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ApiPromiseService } from './api.promise.service';
 
 describe('ApiPromiseService', () => {
     let service: ApiPromiseService;
-    let httpClientSpy: { [key: string]: ReturnType<typeof vi.fn> };
-    let toastServiceSpy: { showToast: ReturnType<typeof vi.fn> };
-    let platformServiceSpy: { isPlatformBrowser: ReturnType<typeof vi.fn> };
+    let httpClientMock: any;
+    let toastServiceMock: any;
+    let platformServiceMock: any;
 
     beforeEach(() => {
-        const httpSpy = {
+        httpClientMock = {
             get: vi.fn(),
             post: vi.fn(),
             put: vi.fn(),
-            delete: vi.fn()
+            delete: vi.fn(),
         };
 
-        const toastSpy = {
-            showToast: vi.fn()
+        toastServiceMock = {
+            showToast: vi.fn(),
         };
 
-        const platformSpy = {
-            isPlatformBrowser: vi.fn()
+        platformServiceMock = {
+            isPlatformBrowser: vi.fn().mockReturnValue(true),
         };
 
         TestBed.configureTestingModule({
             providers: [
                 ApiPromiseService,
-                provideZonelessChangeDetection(),
-                { provide: HttpClient, useValue: httpSpy },
-                { provide: ToastService, useValue: toastSpy },
-                { provide: PlatformService, useValue: platformSpy },
+                { provide: HttpClient, useValue: httpClientMock },
+                { provide: ToastService, useValue: toastServiceMock },
+                { provide: PlatformService, useValue: platformServiceMock },
             ],
         });
 
         service = TestBed.inject(ApiPromiseService);
-        httpClientSpy = TestBed.inject(HttpClient) as any;
-        toastServiceSpy = TestBed.inject(ToastService) as any;
-        platformServiceSpy = TestBed.inject(PlatformService) as any;
-
-        service.setBaseUrl('http://test.com/api/');
-        platformServiceSpy.isPlatformBrowser.mockReturnValue(true);
+        service.setBaseUrl('/api');
     });
 
-    // Exemple de test converti
-    it('should handle error', async () => {
-        const error = { message: 'Error' };
-        httpClientSpy['get'].mockReturnValue(throwError(() => error));
-        vi.spyOn(console, 'error').mockImplementation(() => { });
-
-        try {
-            await service.get<any>('users');
-        } catch (e) {
-            expect(console.error).toHaveBeenCalled();
-        }
+    it('should create service', () => {
+        expect(service).toBeTruthy();
     });
 
-    // Exemple de test supplémentaire
-    it('should call toast service on error', async () => {
-        const error = { message: 'Error' };
-        httpClientSpy['get'].mockReturnValue(throwError(() => error));
+    it('get() should call HttpClient.get and resolve data', async () => {
+        const mockData = { id: 1 };
+        httpClientMock.get.mockReturnValue(of(mockData));
 
-        try {
-            await service.get<any>('users');
-        } catch (e) {
-            expect(toastServiceSpy.showToast).not.toHaveBeenCalled();
-        }
+        const result = await service.get('/test');
+        expect(result).toEqual(mockData);
+        expect(httpClientMock.get).toHaveBeenCalledWith('/api/test');
+    });
+
+    it('post() should call HttpClient.post and resolve data', async () => {
+        const payload = { name: 'test' };
+        httpClientMock.post.mockReturnValue(of(payload));
+
+        const result = await service.post('/create', payload);
+        expect(result).toEqual(payload);
+        expect(httpClientMock.post).toHaveBeenCalledWith('/api/create', payload);
+    });
+
+    it('put() should call HttpClient.put and resolve data', async () => {
+        const payload = { id: 1, name: 'update' };
+        httpClientMock.put.mockReturnValue(of(payload));
+
+        const result = await service.put('/update', payload);
+        expect(result).toEqual(payload);
+        expect(httpClientMock.put).toHaveBeenCalledWith('/api/update', payload);
+    });
+
+    it('delete() should call HttpClient.delete and resolve data', async () => {
+        const mockData = { deleted: true };
+        httpClientMock.delete.mockReturnValue(of(mockData));
+
+        const result = await service.delete('/delete');
+        expect(result).toEqual(mockData);
+        expect(httpClientMock.delete).toHaveBeenCalledWith('/api/delete');
+    });
+
+    it('createOrUpdate() should call post when id is not set', async () => {
+        const payload = { id: null, name: 'new' };
+        httpClientMock.post.mockReturnValue(of(payload));
+
+        const result = await service.createOrUpdate('/endpoint', payload);
+        expect(result).toEqual(payload);
+        expect(toastServiceMock.showToast).toHaveBeenCalledWith({ text: 'CREATION_OK', type: 'success' });
+        expect(httpClientMock.post).toHaveBeenCalledWith('/api/endpoint/', payload);
+    });
+
+    it('createOrUpdate() should call put when id is set', async () => {
+        const payload = { id: 1, name: 'update' };
+        httpClientMock.put.mockReturnValue(of(payload));
+
+        const result = await service.createOrUpdate('/endpoint', payload);
+        expect(result).toEqual(payload);
+        expect(toastServiceMock.showToast).toHaveBeenCalledWith({ text: 'UPDATE_OK', type: 'success' });
+        expect(httpClientMock.put).toHaveBeenCalledWith('/api/endpoint/', payload);
+    });
+
+    it('should handle errors in get', async () => {
+        httpClientMock.get.mockReturnValue(throwError(() => 'fail'));
+
+        await expect(service.get('/fail')).rejects.toThrow('fail');
+    });
+
+    it('should handle errors in post', async () => {
+        httpClientMock.post.mockReturnValue(throwError(() => 'fail'));
+
+        await expect(service.post('/fail', {})).rejects.toThrow('fail');
+    });
+
+    it('should handle errors in put', async () => {
+        httpClientMock.put.mockReturnValue(throwError(() => 'fail'));
+
+        await expect(service.put('/fail', {})).rejects.toThrow('fail');
+    });
+
+    it('should handle errors in delete', async () => {
+        httpClientMock.delete.mockReturnValue(throwError(() => 'fail'));
+
+        await expect(service.delete('/fail')).rejects.toThrow('fail');
     });
 });
