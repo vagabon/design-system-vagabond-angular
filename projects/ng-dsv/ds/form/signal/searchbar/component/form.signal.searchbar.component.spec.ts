@@ -1,4 +1,3 @@
-import { provideHttpClient } from '@angular/common/http';
 import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { FormSignalSearchbarComponent } from './form.signal.searchbar.component';
@@ -8,7 +7,7 @@ describe('FormSignalSearchbarComponent', () => {
     await TestBed.configureTestingModule({
       imports: [FormSignalSearchbarComponent],
       providers: [
-        provideZonelessChangeDetection(), provideHttpClient()
+        provideZonelessChangeDetection()
       ],
     }).compileComponents();
   });
