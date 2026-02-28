@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "npm-run-all --parallel lib:watch showcase:start-waiton",
     "build": "run-s lib:build showcase:build",
-    "test": "jest",
+    "test": "jest --config=jest.config.js",
     "test:coverage": "jest --no-watch --coverage",
     "lib:build": "ng build @ng-vagabond-lab/ng-dsv && npm run lib:postbuild",
     "lib:postbuild": "mkdir -p dist/ng-dsv/assets && cp projects/ng-dsv/assets/*.scss dist/ng-dsv/assets",
