@@ -15,6 +15,4 @@ module.exports = {
       },
     ],
   },
-  moduleFileExtensions: ["ts", "js", "html", "json"],
-  transformIgnorePatterns: ["node_modules/(?!(d3.*|internmap|.*\\.mjs$))"],
 };
