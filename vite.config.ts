@@ -16,6 +16,19 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'lcov', 'json', 'html'],
+      include: ['projects/ng-dsv/**/*.ts'],
+      exclude: [
+        '**/.storybook/**',
+        '**/index.ts',
+        '**/index.ts',
+        '**/public-api.ts',
+        '**/*.type.ts',
+        "**/*.stories.ts",
+        '**/*.dto.ts',
+        '**/*.html',
+        '**/*.scss',
+        '**/*.spec.ts',
+      ],
     },
   },
   resolve: {

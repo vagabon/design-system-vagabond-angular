@@ -6,3 +6,5 @@ This repo is a demo of creating an Angular library with multiple entry points an
 
 _Note: The components in this project are only for demo purposes. Never ever build a button component this way!_
 docker build --no-cache -t mon-app .
+
+docker build --no-cache -t lib-dsv . && docker run lib-dsv
