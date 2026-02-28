@@ -19,13 +19,12 @@ describe('DsvButtonComponent', () => {
   });
 
   it('should render', () => {
-    const mockCallback = jasmine.createSpyObj('callback', ['emit']);
-    component.callback = mockCallback;
+    const mockCallback = { emit: jest.fn() };
+    component.callback = mockCallback as any;
     fixture.detectChanges();
     expect(component).toBeTruthy();
 
-    const link =
-      fixture.debugElement.nativeElement.querySelector('.dsv-button');
+    const link = fixture.debugElement.nativeElement.querySelector('.dsv-button');
     link.click();
     fixture.detectChanges();
     expect(component.callback.emit).toHaveBeenCalled();

@@ -3,11 +3,9 @@ import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ApiResourceService } from './api.resource.service';
 
-// Mock de ResourceRef
 const mockResourceRef = {};
 
-// Mock de httpResource
-const mockHttpResource = jasmine.createSpy('httpResource').and.callFake((configFn: () => any) => {
+const mockHttpResource = jest.fn().mockImplementation((configFn: () => any) => {
     return mockResourceRef;
 });
 

@@ -34,7 +34,7 @@ describe('FormReactiveInputComponent', () => {
   });
 
   it('should emit value on Enter', () => {
-    spyOn(component.onSend, 'emit');
+    jest.spyOn(component.onSend, 'emit');
     component.form().get('testField')?.setValue('test value');
 
     component.onEnter();

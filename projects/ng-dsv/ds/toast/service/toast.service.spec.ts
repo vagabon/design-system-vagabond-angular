@@ -14,11 +14,11 @@ describe('ToastService', () => {
             ],
         });
         service = TestBed.inject(ToastService);
-        jasmine.clock().install();
+        jest.useFakeTimers();
     });
 
     afterEach(() => {
-        jasmine.clock().uninstall();
+        jest.useRealTimers();
     });
 
     it('should add a toast with default values and uuid', () => {
@@ -33,7 +33,7 @@ describe('ToastService', () => {
         expect(addedToast!.type).toBe('success');
         expect(addedToast!.duration).toBe(DURATION_DEFAULT);
         expect(addedToast!.durationLeft).toBe(DURATION_DEFAULT);
-        expect(addedToast!.filled).toBeFalse();
+        expect(addedToast!.filled).toBe(false);
     });
 
     it('should remove toast from queue', () => {
@@ -66,13 +66,12 @@ describe('ToastService', () => {
         expect(service.toastShows().find(t => t.uuid === toastFromQueue.uuid)).toBeDefined();
 
         for (let elapsed = DURATION_TIMEOUT; elapsed <= 60; elapsed += DURATION_TIMEOUT) {
-            jasmine.clock().tick(DURATION_TIMEOUT);
+            jest.advanceTimersByTime(DURATION_TIMEOUT);
 
             const toastInShow = service.toastShows().find(t => t.uuid === toastFromQueue.uuid);
             if (elapsed < toast.duration!) {
                 expect(toastInShow?.durationLeft).toBeCloseTo(toast.duration! - elapsed, 1);
             }
         }
-
     });
 });

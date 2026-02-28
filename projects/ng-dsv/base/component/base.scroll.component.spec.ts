@@ -3,14 +3,14 @@ import { TestBed } from '@angular/core/testing';
 import { BaseScrollComponent, ScrollService } from '../public-api';
 
 describe('BaseScrollComponent', () => {
-    let scrollServiceMock: jasmine.SpyObj<ScrollService>;
+    let scrollServiceMock: jest.Mocked<ScrollService>;
 
     beforeEach(() => {
-        scrollServiceMock = jasmine.createSpyObj<ScrollService>('ScrollService', [
-            'getlocked',
-            'doBlocked',
-            'doBlockedWithTimeout',
-        ]);
+        scrollServiceMock = {
+            getlocked: jest.fn(),
+            doBlocked: jest.fn(),
+            doBlockedWithTimeout: jest.fn(),
+        } as unknown as jest.Mocked<ScrollService>;
 
         TestBed.configureTestingModule({
             providers: [
@@ -21,15 +21,12 @@ describe('BaseScrollComponent', () => {
     });
 
     class TestScrollComponent extends BaseScrollComponent {
-        doLoad(): void {
-        }
+        doLoad(): void { }
     }
 
     it('should call scrollService methods in loadMore()', () => {
-        scrollServiceMock.getlocked.and.returnValue(false);
-        const doLoadSpy = jasmine.createSpy('doLoad');
-
-        let component: TestScrollComponent;
+        scrollServiceMock.getlocked.mockReturnValue(false);
+        const doLoadSpy = jest.fn();
 
         runInInjectionContext(TestBed.inject(EnvironmentInjector), () => {
             const component = new TestScrollComponent();

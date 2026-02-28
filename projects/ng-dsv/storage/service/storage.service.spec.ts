@@ -9,6 +9,12 @@ describe('StorageService', () => {
     beforeEach(() => {
         platformId = 'browser';
 
+        // Mock localStorage avant de configurer TestBed
+        Storage.prototype.setItem = jest.fn();
+        Storage.prototype.getItem = jest.fn(() => null);
+        Storage.prototype.removeItem = jest.fn();
+        Storage.prototype.clear = jest.fn();
+
         TestBed.configureTestingModule({
             providers: [
                 provideZonelessChangeDetection(),
@@ -18,11 +24,10 @@ describe('StorageService', () => {
         });
 
         service = TestBed.inject(StorageService);
+    });
 
-        spyOn(localStorage, 'setItem');
-        spyOn(localStorage, 'getItem').and.returnValue(null);
-        spyOn(localStorage, 'removeItem');
-        spyOn(localStorage, 'clear');
+    afterEach(() => {
+        jest.clearAllMocks();
     });
 
     it('setItem calls localStorage.setItem when platform is browser', () => {
@@ -32,7 +37,7 @@ describe('StorageService', () => {
 
     it('getItem calls localStorage.getItem and parses result', () => {
         const storedValue = JSON.stringify({ x: 10 });
-        (localStorage.getItem as jasmine.Spy).and.returnValue(storedValue);
+        (localStorage.getItem as jest.Mock).mockReturnValueOnce(storedValue);
 
         const result = service.getItem<{ x: number }>('key');
         expect(localStorage.getItem).toHaveBeenCalledWith('key');
@@ -40,7 +45,7 @@ describe('StorageService', () => {
     });
 
     it('getItem returns null if localStorage.getItem returns null', () => {
-        (localStorage.getItem as jasmine.Spy).and.returnValue(null);
+        (localStorage.getItem as jest.Mock).mockReturnValueOnce(null);
 
         const result = service.getItem('key');
         expect(result).toBeNull();

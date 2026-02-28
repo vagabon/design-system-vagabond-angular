@@ -25,7 +25,7 @@ describe('DsvThemeSwitchComponent', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
 
-    const switchThemeSpy = spyOn(themeService, 'switchTheme');
+    const switchThemeSpy = jest.spyOn(themeService, 'switchTheme');
     fixture.debugElement.nativeElement.querySelector('.dsv-button').click();
     expect(switchThemeSpy).toHaveBeenCalled();
   });

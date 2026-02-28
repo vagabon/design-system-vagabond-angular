@@ -44,19 +44,38 @@ describe('FileUploadDirective', () => {
   });
 
   it('should add dragging class on dragover and remove on dragleave', () => {
-    const event = new DragEvent('dragover');
-    divEl.dispatchEvent(event);
-    fixture.detectChanges();
-    expect(divEl.classList.contains('dragging')).toBeTrue();
+    // On crée un objet simulé pour l'événement
+    const dragoverEvent = new MouseEvent('dragover', {
+      bubbles: true,
+      cancelable: true,
+    });
+    Object.defineProperty(dragoverEvent, 'dataTransfer', {
+      value: { types: ['Files'] },
+    });
 
-    divEl.dispatchEvent(new DragEvent('dragleave'));
+    divEl.dispatchEvent(dragoverEvent);
     fixture.detectChanges();
-    expect(divEl.classList.contains('dragging')).toBeFalse();
+    expect(divEl.classList.contains('dragging')).toBe(true);
+
+    const dragleaveEvent = new MouseEvent('dragleave', {
+      bubbles: true,
+      cancelable: true,
+    });
+    divEl.dispatchEvent(dragleaveEvent);
+    fixture.detectChanges();
+    expect(divEl.classList.contains('dragging')).toBe(false);
   });
 
   it('should emit dropped event on drop', () => {
-    const dropEvent = new Event('drop');
-    spyOn(component, 'onDrop').and.callThrough();
+    const dropEvent = new MouseEvent('drop', {
+      bubbles: true,
+      cancelable: true,
+    });
+    Object.defineProperty(dropEvent, 'dataTransfer', {
+      value: { files: [] },
+    });
+
+    jest.spyOn(component, 'onDrop');
 
     divEl.dispatchEvent(dropEvent);
     fixture.detectChanges();

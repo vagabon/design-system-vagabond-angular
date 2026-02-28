@@ -30,7 +30,6 @@ describe('FormSignalInputComponent', () => {
       component.fieldName = signal('title') as unknown as InputSignal<string>;
     });
 
-
     fixture.detectChanges();
   });
 
@@ -39,7 +38,7 @@ describe('FormSignalInputComponent', () => {
   });
 
   it('should emit value on Enter', () => {
-    spyOn(component.onSend, 'emit');
+    jest.spyOn(component.onSend, 'emit');
 
     component.doOnSend();
 

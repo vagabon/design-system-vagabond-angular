@@ -51,7 +51,7 @@ describe('ModalAlertComponent', () => {
   });
 
   it('should emit callback and toggle modal on confirm click', () => {
-    spyOn(component.callback, 'emit');
+    jest.spyOn(component.callback, 'emit');
     const buttons = fixture.nativeElement.querySelectorAll('.dsv-button');
     buttons[2].click();
     fixture.detectChanges();
@@ -60,7 +60,7 @@ describe('ModalAlertComponent', () => {
   });
 
   it('should call close on modal service on cancel click', () => {
-    spyOn(modalService, 'close');
+    jest.spyOn(modalService, 'close');
     const buttons = fixture.nativeElement.querySelectorAll('.dsv-button');
     buttons[1].click();
     fixture.detectChanges();

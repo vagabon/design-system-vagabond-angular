@@ -18,6 +18,7 @@ class TestHostComponent {
     name: ['', Validators.required],
   });
 }
+
 describe('FormReactiveComponent with submit button in projection', () => {
   let fixture: ComponentFixture<TestHostComponent>;
   let host: TestHostComponent;
@@ -36,7 +37,7 @@ describe('FormReactiveComponent with submit button in projection', () => {
   it('should submit the form when valid', () => {
     const formDebug = fixture.debugElement;
     const form = host.form;
-    spyOn(console, 'log');
+    jest.spyOn(console, 'log').mockImplementation(() => { });
 
     form.get('name')?.setValue('John Doe');
     fixture.detectChanges();
@@ -44,6 +45,6 @@ describe('FormReactiveComponent with submit button in projection', () => {
     const button = formDebug.query(By.css('button[type="submit"]'));
     button.nativeElement.click();
 
-    expect(form.valid).toBeTrue();
+    expect(form.valid).toBe(true);
   });
 });

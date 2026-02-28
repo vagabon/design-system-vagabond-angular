@@ -32,7 +32,7 @@ describe('FormReactiveCheckboxComponent', () => {
     });
 
     it('should emit value on change', () => {
-        const spy = jasmine.createSpy('changeSpy');
+        const spy = jest.fn();
         component.change.subscribe(spy);
 
         component.form().get(component.field())?.setValue(true);

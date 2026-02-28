@@ -12,7 +12,7 @@ import { AdminSearchContainer } from './admin.search.container';
 describe('AdminSearchContainer', () => {
     let component: AdminSearchContainer;
     let fixture: ComponentFixture<AdminSearchContainer>;
-    let mockAdminService: jasmine.SpyObj<AdminService>;
+    let mockAdminService: jest.Mocked<AdminService>;
 
     const mockTabs: AdminTabConfDto = {
         max: 10,
@@ -20,15 +20,18 @@ describe('AdminSearchContainer', () => {
     };
 
     beforeEach(async () => {
-        mockAdminService = jasmine.createSpyObj('AdminService', ['get', 'findById', 'datas'], {
-            tabs: () => mockTabs
-        });
         const pageable: PageableDto<ApiDto[]> = {
             totalPages: 2,
             totalElements: 5,
             content: [{ id: 123 }]
-        }
-        mockAdminService.datas.and.returnValue(pageable);
+        };
+
+        mockAdminService = {
+            get: jest.fn(),
+            findById: jest.fn(),
+            datas: jest.fn().mockReturnValue(pageable),
+            tabs: () => mockTabs,
+        } as unknown as jest.Mocked<AdminService>;
 
         await TestBed.configureTestingModule({
             imports: [AdminSearchContainer],

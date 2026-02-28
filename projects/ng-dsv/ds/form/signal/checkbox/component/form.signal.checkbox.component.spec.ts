@@ -40,11 +40,11 @@ describe('FormSignalCheckboxComponent', () => {
     });
 
     it('should emit value on change', () => {
-        const spy = jasmine.createSpy('changeSpy');
+        const spy = jest.fn();
         component.change.subscribe(spy);
 
         const checkbox = fixture.nativeElement.querySelector('input[type="checkbox"]');
-        spyOn(component, 'doChange');
+        jest.spyOn(component, 'doChange');
         checkbox.click();
         fixture.detectChanges();
 

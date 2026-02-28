@@ -39,7 +39,7 @@ describe('SelectComponent', () => {
     });
 
     it('should emit selected value on change', () => {
-        const changeSpy = jasmine.createSpy('changeSpy');
+        const changeSpy = jest.fn();
         component.change.subscribe(changeSpy);
 
         component.form().get(component.field())?.setValue('Admin');

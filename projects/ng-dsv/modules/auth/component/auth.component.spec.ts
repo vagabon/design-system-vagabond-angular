@@ -13,20 +13,19 @@ describe('AuthComponent', () => {
   let authService: AuthService;
 
   const environmentServiceMock = {
-    env: jasmine.createSpy('env').and.returnValue(true),
+    env: jest.fn().mockReturnValue(true),
   };
 
   const authServiceMock = {
-    userConnected: jasmine.createSpy('userConnected').and.returnValue(null),
-    loginFromCache: jasmine.createSpy('loginFromCache'),
-    logout: jasmine.createSpy('logout'),
+    userConnected: jest.fn().mockReturnValue(null),
+    loginFromCache: jest.fn(),
+    logout: jest.fn(),
   };
 
   beforeEach(async () => {
-
     const authGoogleServiceMock = {
-      loginWithGoogle: jasmine.createSpy('loginWithGoogle'),
-      initGoogleAuth: jasmine.createSpy('initGoogleAuth'),
+      loginWithGoogle: jest.fn(),
+      initGoogleAuth: jest.fn(),
     };
 
     await TestBed.configureTestingModule({
@@ -51,7 +50,7 @@ describe('AuthComponent', () => {
   });
 
   it('should render login', () => {
-    authServiceMock.userConnected.and.returnValue({ user: { id: '1' } });
+    authServiceMock.userConnected.mockReturnValue({ user: { id: '1' } });
     fixture.detectChanges();
     expect(fixture.debugElement.query(By.css('.profile'))).toBeTruthy();
     fixture.debugElement.nativeElement
@@ -60,7 +59,7 @@ describe('AuthComponent', () => {
   });
 
   it('should call logout when logout is triggered', () => {
-    authServiceMock.userConnected.and.returnValue({ user: { id: '1' } });
+    authServiceMock.userConnected.mockReturnValue({ user: { id: '1' } });
     fixture.detectChanges();
     const button = fixture.nativeElement.querySelector('.dsv-button');
     button.click();

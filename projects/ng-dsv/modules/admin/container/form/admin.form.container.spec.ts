@@ -12,17 +12,16 @@ import { AdminFormContainer } from './admin.form.container';
 describe('AdminFormContainer', () => {
     let component: AdminFormContainer;
     let fixture: ComponentFixture<AdminFormContainer>;
-    let adminServiceMock: jasmine.SpyObj<AdminService>;
+    let adminServiceMock: jest.Mocked<AdminService>;
 
     beforeEach(async () => {
-        adminServiceMock = jasmine.createSpyObj('AdminService', ['tabs', 'findById', 'get', 'put', 'data']);
-        adminServiceMock.tabs.and.returnValue({
-            max: 10,
-            tabs: ADMIN_USER
-        });
-        adminServiceMock.data.and.returnValue({ id: 123 });
-
-        adminServiceMock.get.and.returnValue();
+        adminServiceMock = {
+            tabs: jest.fn().mockReturnValue({ max: 10, tabs: ADMIN_USER }),
+            findById: jest.fn(),
+            get: jest.fn(),
+            put: jest.fn(),
+            data: jest.fn().mockReturnValue({ id: 123 }),
+        } as unknown as jest.Mocked<AdminService>;
 
         await TestBed.configureTestingModule({
             imports: [AdminFormContainer, DsvCardComponent, AdminFormComponent],
@@ -41,7 +40,7 @@ describe('AdminFormContainer', () => {
 
         fixture = TestBed.createComponent(AdminFormContainer);
         component = fixture.componentInstance;
-        fixture.detectChanges(); // déclenche l'initialisation (effect, etc.)
+        fixture.detectChanges();
     });
 
     it('should create the component', () => {

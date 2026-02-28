@@ -10,7 +10,7 @@ describe('DsvAvatarComponent', () => {
   let fixture: ComponentFixture<DsvAvatarComponent>;
 
   beforeEach(async () => {
-    (window as any).google = { accounts: { id: { prompt: () => {} } } };
+    (window as any).google = { accounts: { id: { prompt: () => { } } } };
     await TestBed.configureTestingModule({
       imports: [DsvAvatarComponent],
       providers: [provideZonelessChangeDetection()],
@@ -20,7 +20,7 @@ describe('DsvAvatarComponent', () => {
   });
 
   it('should not emit callback if no listener exists', () => {
-    const callback = jasmine.createSpy();
+    const callback = jest.fn();
     component.callback = {
       listeners: [{ id: 1 }],
       emit: () => callback,

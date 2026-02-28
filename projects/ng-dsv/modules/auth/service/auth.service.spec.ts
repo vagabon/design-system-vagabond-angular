@@ -6,24 +6,24 @@ import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
   let service: AuthService;
-  let httpClientSpy: jasmine.SpyObj<HttpClient>;
+  let httpClientSpy: jest.Mocked<HttpClient>;
 
   beforeEach(async () => {
-    let httpClientSpyObj = jasmine.createSpyObj('HttpClient', ['get', 'post']);
+    const httpClientSpyObj = {
+      get: jest.fn(),
+      post: jest.fn(),
+    } as unknown as jest.Mocked<HttpClient>;
 
     TestBed.configureTestingModule({
       providers: [
         provideZonelessChangeDetection(),
         AuthService,
-        {
-          provide: HttpClient,
-          useValue: httpClientSpyObj,
-        },
+        { provide: HttpClient, useValue: httpClientSpyObj },
       ],
     });
 
     service = TestBed.inject(AuthService);
-    httpClientSpy = TestBed.inject(HttpClient) as jasmine.SpyObj<HttpClient>;
+    httpClientSpy = TestBed.inject(HttpClient) as jest.Mocked<HttpClient>;
   });
 
   it('should be created', () => {
@@ -33,7 +33,7 @@ describe('AuthService', () => {
   it('should call ApiService.post when googleLogin is called', () => {
     const memberData = { user: { id: 1, name: 'John Doe' } };
 
-    httpClientSpy.post.and.returnValue(of(memberData));
+    httpClientSpy.post.mockReturnValue(of(memberData));
 
     service.googleLogin('token');
 

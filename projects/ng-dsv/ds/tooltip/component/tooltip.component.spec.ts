@@ -41,7 +41,7 @@ describe('DsvTooltipComponent', () => {
         fixture.debugElement.query(By.css('dsv-tooltip')).triggerEventHandler('mouseenter', null);
         fixture.detectChanges();
 
-        expect(tooltipComponent.visible()).toBeTrue();
+        expect(tooltipComponent.visible()).toBe(true);
         expect(fixture.debugElement.query(By.css('.dsv-tooltip'))).toBeTruthy();
     });
 
@@ -51,18 +51,18 @@ describe('DsvTooltipComponent', () => {
         fixture.debugElement.query(By.css('dsv-tooltip')).triggerEventHandler('mouseenter', null);
         fixture.detectChanges();
 
-        expect(tooltipComponent.visible()).toBeTrue();
+        expect(tooltipComponent.visible()).toBe(true);
 
         fixture.debugElement.query(By.css('dsv-tooltip')).triggerEventHandler('mouseleave', null);
         fixture.detectChanges();
 
-        expect(tooltipComponent.visible()).toBeFalse();
+        expect(tooltipComponent.visible()).toBe(false);
         expect(fixture.debugElement.query(By.css('.dsv-tooltip'))).toBeNull();
     });
 
     it('should adjust tooltip position based on window boundaries', () => {
         const tooltipComponent = fixture.debugElement.query(By.directive(DsvTooltipComponent)).componentInstance;
-        spyOn(tooltipComponent, 'adjustPosition').and.callThrough();
+        jest.spyOn(tooltipComponent, 'adjustPosition');
 
         fixture.debugElement.query(By.css('dsv-tooltip')).triggerEventHandler('mouseenter', null);
         fixture.detectChanges();

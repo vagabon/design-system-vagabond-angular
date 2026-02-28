@@ -6,10 +6,13 @@ import { AdminService } from "./admin.service";
 
 describe('AdminService', () => {
     let service: AdminService;
-    let apiServiceSpy: jasmine.SpyObj<ApiService>;
+    let apiServiceSpy: jest.Mocked<ApiService>;
 
     beforeEach(() => {
-        apiServiceSpy = jasmine.createSpyObj('ApiService', ['get', 'put']);
+        apiServiceSpy = {
+            get: jest.fn(),
+            put: jest.fn(),
+        } as unknown as jest.Mocked<ApiService>;
 
         TestBed.configureTestingModule({
             providers: [
@@ -29,13 +32,13 @@ describe('AdminService', () => {
 
     it('should call get() and set datas signal', () => {
         const responseMock = { content: [{ id: 1, name: 'test' }], total: 1 } as any;
-        apiServiceSpy.get.and.callFake((url: string, cb: Function) => cb(responseMock));
+        apiServiceSpy.get.mockImplementation((url: string, cb: Function) => cb(responseMock));
 
         service.get('admin', 'name', 'test');
 
         expect(apiServiceSpy.get).toHaveBeenCalledWith(
             '/admin/findBy?fields=name&values=test&first=0&max=10',
-            jasmine.any(Function)
+            expect.any(Function)
         );
         expect(service.datas()).toEqual(responseMock);
     });
@@ -43,29 +46,29 @@ describe('AdminService', () => {
     it('should call put() and set data signal', () => {
         const payload = { id: 1, name: 'Updated' };
         const responseMock = { ...payload };
-        apiServiceSpy.put.and.callFake((url: string, data: any, cb: Function) => cb(responseMock));
+        apiServiceSpy.put.mockImplementation((url: string, data: any, cb: Function) => cb(responseMock));
 
         service.put('admin', payload as any);
 
-        expect(apiServiceSpy.put).toHaveBeenCalledWith('/admin', payload, jasmine.any(Function));
+        expect(apiServiceSpy.put).toHaveBeenCalledWith('/admin', payload, expect.any(Function));
         expect(service.data()).toEqual(responseMock);
     });
 
     it('should call findById() and set data signal', () => {
         const responseMock = { id: 2, name: 'User' };
-        apiServiceSpy.get.and.callFake((url: string, cb: Function) => cb(responseMock));
+        apiServiceSpy.get.mockImplementation((url: string, cb: Function) => cb(responseMock));
 
         service.findById('admin', '2');
 
-        expect(apiServiceSpy.get).toHaveBeenCalledWith('/admin/2', jasmine.any(Function));
+        expect(apiServiceSpy.get).toHaveBeenCalledWith('/admin/2', expect.any(Function));
         expect(service.data()).toEqual(responseMock);
     });
 
     it('should call get() with a custom callback if provided', () => {
-        const callback = jasmine.createSpy('callback');
+        const callback = jest.fn();
         const mockData = { content: [], total: 0 };
 
-        apiServiceSpy.get.and.callFake((url: string, cb: Function) => cb(mockData));
+        apiServiceSpy.get.mockImplementation((url: string, cb: Function) => cb(mockData));
 
         service.get('admin', 'email', 'john', 1, 5, callback);
 

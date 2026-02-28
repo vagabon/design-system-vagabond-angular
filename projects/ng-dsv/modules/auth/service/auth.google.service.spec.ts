@@ -8,7 +8,7 @@ import { AuthGoogleService } from './auth.google.service';
 describe('AuthGoogleService', () => {
   let service: AuthGoogleService;
   let environmentService: EnvironmentService;
-  let httpClientSpy: jasmine.SpyObj<HttpClient>;
+  let httpClientSpy: jest.Mocked<HttpClient>;
 
   beforeEach(async () => {
     (window as any).google = {
@@ -23,37 +23,38 @@ describe('AuthGoogleService', () => {
       },
     };
 
-    let httpClientSpyObj = jasmine.createSpyObj('HttpClient', ['get', 'post']);
-    let environmentServiceSpy = jasmine.createSpyObj('EnvironmentService', [
-      'env',
-    ]);
+    const httpClientSpyObj = {
+      get: jest.fn(),
+      post: jest.fn(),
+    } as unknown as jest.Mocked<HttpClient>;
+
+    const environmentServiceSpy = {
+      env: jest.fn(),
+    } as unknown as jest.Mocked<EnvironmentService>;
 
     TestBed.configureTestingModule({
       imports: [],
       providers: [
         provideZonelessChangeDetection(),
         AuthGoogleService,
-        {
-          provide: HttpClient,
-          useValue: httpClientSpyObj,
-        },
+        { provide: HttpClient, useValue: httpClientSpyObj },
         { provide: EnvironmentService, useValue: environmentServiceSpy },
       ],
     });
 
     service = TestBed.inject(AuthGoogleService);
     environmentService = TestBed.inject(EnvironmentService);
-    httpClientSpy = TestBed.inject(HttpClient) as jasmine.SpyObj<HttpClient>;
+    httpClientSpy = TestBed.inject(HttpClient) as jest.Mocked<HttpClient>;
   });
 
   it('should be created', () => {
-    httpClientSpy.get.and.returnValue(of({}));
+    httpClientSpy.get.mockReturnValue(of({}));
     expect(service).toBeTruthy();
   });
 
   it('should call ApiService.post when loginWithGoogle is called', () => {
-    httpClientSpy.post.and.returnValue(of({}));
-    httpClientSpy.get.and.returnValue(of({}));
+    httpClientSpy.post.mockReturnValue(of({}));
+    httpClientSpy.get.mockReturnValue(of({}));
     service.handleCredentialResponse({ credential: 'credential' });
     service.decodeJwtToken(
       'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo4MDgwL2lzc3VlciIsInVwbiI6InZhZ2Fib25kIzExOTQiLCJncm91cHMiOlsiQURNSU4iLCJVU0VSIl0sImlhdCI6MTczMjk5MDE2NiwiZXhwIjoxNzMzMDkwMTY2LCJqdGkiOiIxZTkwZDU5My03MDk3LTQxZDMtYWVjMC0zMTExOTJkNzNkZjkifQ.OeJRowQsfyU3ILUReuqD93bCFJEG90phBsPTp9ofO_P7HVpUV17NytEvQNgc19D8M1RLNWjDl1DsPG0CAKt6ivsEbtgF66h4Fg3SruvHSU-6Mezrrca8Xn8BsahVZqbyBps9OBJACE0EVpHgZ4YMNzen7pkBSoHHwk_L3VoTCxfbqsZkEstbnxco_LNNw2fUJTNnGfLqToFa4bkemEUjDoRRo8VBW4ToKP7crelxmw1OgmBKcLQHp5R5B8GW9oeY7kU_RdaIi2f7Wjnqxj59yGZJ0Wv4Tw5MLdsO2rYOQ-sn_-LT7iRXBi3m1jFhDzkQUCsHJ88UOrll3D9oz1LB_w'

@@ -19,10 +19,10 @@ describe('PlatformService', () => {
 
         service = TestBed.inject(PlatformService);
 
-        spyOn(service, 'isPlatformBrowser').and.callThrough();
+        jest.spyOn(service, 'isPlatformBrowser');
     });
 
     it('should detect platform browser', () => {
-        expect(service.isPlatformBrowser()).toBeTrue();
+        expect(service.isPlatformBrowser()).toBe(true);
     });
 });

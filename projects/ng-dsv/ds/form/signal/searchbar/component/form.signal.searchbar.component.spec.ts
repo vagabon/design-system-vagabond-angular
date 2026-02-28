@@ -17,12 +17,11 @@ describe('FormSignalSearchbarComponent', () => {
     const fixture = TestBed.createComponent(FormSignalSearchbarComponent);
     const app = fixture.componentInstance;
     app.search = signal('search') as unknown as InputSignal<string>;
-    spyOn(app.onSearch, 'emit');
+    jest.spyOn(app.onSearch, 'emit');
 
     fixture.detectChanges();
 
-    const input: HTMLInputElement =
-      fixture.nativeElement.querySelector('input');
+    const input: HTMLInputElement = fixture.nativeElement.querySelector('input');
     input.value = 'search';
     const event = new KeyboardEvent('keydown', {
       key: 'Enter',

@@ -6,22 +6,27 @@ import { ThemeService } from './dsv.theme.service';
 
 describe('ThemeService', () => {
   let service: ThemeService;
-  let storageServiceMock: jasmine.SpyObj<StorageService>;
-  let platformServiceMock: jasmine.SpyObj<PlatformService>;
+  let storageServiceMock: jest.Mocked<StorageService>;
+  let platformServiceMock: jest.Mocked<PlatformService>;
 
   beforeEach(async () => {
-    storageServiceMock = jasmine.createSpyObj('StorageService', ['getItem', 'setItem']);
-    platformServiceMock = jasmine.createSpyObj('PlatformService', ['isPlatformBrowser']);
+    storageServiceMock = {
+      getItem: jest.fn(),
+      setItem: jest.fn(),
+    } as unknown as jest.Mocked<StorageService>;
 
-    platformServiceMock.isPlatformBrowser.and.returnValue(true);
+    platformServiceMock = {
+      isPlatformBrowser: jest.fn(),
+    } as unknown as jest.Mocked<PlatformService>;
 
-    storageServiceMock.getItem.and.returnValue('dark');
+    platformServiceMock.isPlatformBrowser.mockReturnValue(true);
+    storageServiceMock.getItem.mockReturnValue('dark');
 
     TestBed.configureTestingModule({
       providers: [
         provideZonelessChangeDetection(),
         ThemeService,
-        { provide: StorageService, useValue: storageServiceMock }
+        { provide: StorageService, useValue: storageServiceMock },
       ],
     });
     service = TestBed.inject(ThemeService);
@@ -38,5 +43,4 @@ describe('ThemeService', () => {
     expect(service.themeMode()).toBe('light');
     expect(storageServiceMock.setItem).toHaveBeenCalledWith('theme', 'light');
   });
-
 });

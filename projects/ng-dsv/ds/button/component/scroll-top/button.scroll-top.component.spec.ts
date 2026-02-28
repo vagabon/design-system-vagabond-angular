@@ -30,18 +30,18 @@ describe('ButtonScrollTopComponent', () => {
         component.scroll = signal(800) as unknown as InputSignal<number>;
         fixture.detectChanges();
 
-        expect(component.show()).toBeTrue();
+        expect(component.show()).toBe(true);
     });
 
     it('should set show to false when scroll <= 400', () => {
         component.scroll = signal(200) as unknown as InputSignal<number>;
-        expect(component.show()).toBeFalse();
+        expect(component.show()).toBe(false);
     });
 
     it('should scroll to top when scrollToTop is called', () => {
         const scrollElement = document.createElement('div');
         scrollElement.className = 'scroll';
-        scrollElement.scrollTo = jasmine.createSpy('scrollTo');
+        scrollElement.scrollTo = jest.fn();
 
         document.body.appendChild(scrollElement);
 

@@ -33,7 +33,7 @@ describe('DsvMenuContextualComponent', () => {
     it('should toggle menu visibility on left click', () => {
         component.buttonClick = signal(CLICK_LEFT) as unknown as InputSignal<MenuContextualClickType>;
         const event = new MouseEvent('click', { button: 0 });
-        spyOn(component, 'toogleMenu');
+        jest.spyOn(component, 'toogleMenu');
 
         const childElement = fixture.debugElement.query(By.css('.context-menu')).nativeElement;
         Object.defineProperty(event, 'target', { value: childElement });
@@ -45,7 +45,7 @@ describe('DsvMenuContextualComponent', () => {
     it('should toggle menu visibility on right click', () => {
         component.buttonClick = signal(CLICK_RIGHT) as unknown as InputSignal<MenuContextualClickType>;
         const event = new MouseEvent('contextmenu', { button: 2 });
-        spyOn(component, 'toogleMenu');
+        jest.spyOn(component, 'toogleMenu');
 
         const childElement = fixture.debugElement.query(By.css('.context-menu')).nativeElement;
         Object.defineProperty(event, 'target', { value: childElement });
@@ -55,7 +55,7 @@ describe('DsvMenuContextualComponent', () => {
     });
 
     it('should close menu when clicking outside', () => {
-        spyOn(component, 'closeMenu');
+        jest.spyOn(component, 'closeMenu');
         const event = new MouseEvent('click', { bubbles: true });
         Object.defineProperty(event, 'target', { value: document });
         component.onClick(event);
@@ -63,7 +63,7 @@ describe('DsvMenuContextualComponent', () => {
     });
 
     it('should emit callback on option click', () => {
-        spyOn(component.callback, 'emit');
+        jest.spyOn(component.callback, 'emit');
         const option = mockOptions[0];
         const event = new MouseEvent('click');
         component.onOptionClick(event, option.id);

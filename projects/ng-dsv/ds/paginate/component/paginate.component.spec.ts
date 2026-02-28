@@ -26,7 +26,7 @@ describe('PaginateComponent', () => {
     });
 
     it('should emit selected page on gotoPage()', () => {
-        const callbackSpy = jasmine.createSpy('callbackSpy');
+        const callbackSpy = jest.fn();
         component.callback.subscribe(callbackSpy);
 
         component.gotoPage(5);

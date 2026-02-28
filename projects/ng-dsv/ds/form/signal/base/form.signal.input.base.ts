@@ -39,7 +39,7 @@ export abstract class FormSignalInputBase<T> {
         if (signal) {
             const value = signal().value();
             this.debug() && console.log(signal, signal().errors(), value);
-            return value as string;
+            return value;
         }
         return "";
     }

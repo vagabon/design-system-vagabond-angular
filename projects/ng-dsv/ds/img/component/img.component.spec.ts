@@ -27,11 +27,11 @@ describe('DsvImgComponent', () => {
 
   it('should set load to true when doLoad is called', () => {
     component.doLoad();
-    expect(component.load()).toBeTrue();
+    expect(component.load()).toBe(true);
   });
 
   it('should set error to true when onImageError is called', () => {
     component.onImageError();
-    expect(component.error()).toBeTrue();
+    expect(component.error()).toBe(true);
   });
 });

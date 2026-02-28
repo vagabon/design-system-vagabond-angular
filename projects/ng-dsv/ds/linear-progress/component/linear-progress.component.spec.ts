@@ -41,7 +41,7 @@ describe('LinearProgressComponent', () => {
   it('should receive @Input load correctly', () => {
     const componentInstance = fixture.debugElement.children[0]
       .componentInstance as LinearProgressComponent;
-    expect(componentInstance.load()).toBeTrue();
+    expect(componentInstance.load()).toBe(true);
   });
 
   it('should receive @Input value correctly', () => {
@@ -53,6 +53,6 @@ describe('LinearProgressComponent', () => {
   it('should receive @Input indeterminate correctly', () => {
     const componentInstance = fixture.debugElement.children[0]
       .componentInstance as LinearProgressComponent;
-    expect(componentInstance.indeterminate()).toBeFalse();
+    expect(componentInstance.indeterminate()).toBe(false);
   });
 });

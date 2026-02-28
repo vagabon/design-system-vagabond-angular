@@ -11,7 +11,7 @@ import { ScrollInfiniteContainer } from './scroll.infinite.container';
 describe('ScrollInfiniteContainer', () => {
   let fixture: ComponentFixture<TestHostComponent>;
   let component: ScrollInfiniteContainer;
-  let scrollServiceMock: jasmine.SpyObj<ScrollService>;
+  let scrollServiceMock: jest.Mocked<ScrollService>;
 
   @Component({
     template: `
@@ -23,13 +23,14 @@ describe('ScrollInfiniteContainer', () => {
   })
   class TestHostComponent {
     @ViewChild(ScrollInfiniteContainer) scrollComp!: ScrollInfiniteContainer;
-    onScrollEnd = jasmine.createSpy('onScrollEnd');
+    onScrollEnd = jest.fn();
   }
 
   beforeEach(() => {
-    scrollServiceMock = jasmine.createSpyObj('ScrollService', ['saveScroll'], {
+    scrollServiceMock = {
+      saveScroll: jest.fn(),
       scroll: signal(0),
-    });
+    } as unknown as jest.Mocked<ScrollService>;
 
     TestBed.configureTestingModule({
       imports: [TestHostComponent],

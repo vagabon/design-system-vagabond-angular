@@ -6,10 +6,13 @@ import { ApiService } from './api.service';
 
 describe('ApiService', () => {
   let service: ApiService;
-  let httpClientSpy: jasmine.SpyObj<HttpClient>;
+  let httpClientSpy: jest.Mocked<HttpClient>;
 
   beforeEach(() => {
-    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get', 'post']);
+    httpClientSpy = {
+      get: jest.fn(),
+      post: jest.fn(),
+    } as unknown as jest.Mocked<HttpClient>;
 
     TestBed.configureTestingModule({
       providers: [
@@ -30,10 +33,10 @@ describe('ApiService', () => {
   describe('get()', () => {
     it('should call HttpClient.get and callback with data', () => {
       const responseData = { message: 'success' };
-      httpClientSpy.get.and.returnValue(of(responseData));
+      httpClientSpy.get.mockReturnValue(of(responseData));
 
-      const callback = jasmine.createSpy('callback');
-      spyOn(service, 'info');
+      const callback = jest.fn();
+      jest.spyOn(service, 'info').mockImplementation(() => { });
 
       service.get('test', callback);
 
@@ -43,10 +46,10 @@ describe('ApiService', () => {
 
     it('should call error on failure', () => {
       const error = { error: 'failure' };
-      httpClientSpy.get.and.returnValue(throwError(() => error));
+      httpClientSpy.get.mockReturnValue(throwError(() => error));
 
-      spyOn(service, 'error');
-      const callback = jasmine.createSpy('callback');
+      jest.spyOn(service, 'error').mockImplementation(() => { });
+      const callback = jest.fn();
 
       service.get('fail', callback);
 
@@ -59,9 +62,9 @@ describe('ApiService', () => {
       const postData = { name: 'test' };
       const response = { status: 'ok' };
 
-      httpClientSpy.post.and.returnValue(of(response));
-      const callback = jasmine.createSpy('callback');
-      spyOn(service, 'info');
+      httpClientSpy.post.mockReturnValue(of(response));
+      const callback = jest.fn();
+      jest.spyOn(service, 'info').mockImplementation(() => { });
 
       service.post('create', postData, callback);
 
@@ -73,9 +76,9 @@ describe('ApiService', () => {
       const postData = { name: 'error' };
       const error = { error: 'bad request' };
 
-      httpClientSpy.post.and.returnValue(throwError(() => error));
-      spyOn(service, 'error');
-      const callback = jasmine.createSpy('callback');
+      httpClientSpy.post.mockReturnValue(throwError(() => error));
+      jest.spyOn(service, 'error').mockImplementation(() => { });
+      const callback = jest.fn();
 
       service.post('fail', postData, callback);
 

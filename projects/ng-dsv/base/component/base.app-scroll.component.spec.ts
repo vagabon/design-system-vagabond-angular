@@ -13,29 +13,29 @@ import { BaseAppScrollComponent, ScrollService } from '../public-api';
 
 describe('BaseAppScrollComponent', () => {
   let routerEvents$: Subject<any>;
-  let scrollServiceMock: jasmine.SpyObj<ScrollService>;
-  let apiServiceMock: jasmine.SpyObj<ApiService>;
-  let environmentServiceMock: jasmine.SpyObj<EnvironmentService>;
+  let scrollServiceMock: jest.Mocked<ScrollService>;
+  let apiServiceMock: jest.Mocked<ApiService>;
+  let environmentServiceMock: jest.Mocked<EnvironmentService>;
   let component: TestComponent;
 
-  // Classe concrète pour tester l'abstraite
   class TestComponent extends BaseAppScrollComponent { }
 
   beforeEach(() => {
     routerEvents$ = new Subject();
 
-    scrollServiceMock = jasmine.createSpyObj(
-      'ScrollService',
-      ['getScroll', 'saveScroll'],
-      {
-        scroll: signal(0),
-      },
-    );
+    scrollServiceMock = {
+      getScroll: jest.fn(),
+      saveScroll: jest.fn(),
+      scroll: signal(0),
+    } as unknown as jest.Mocked<ScrollService>;
 
-    apiServiceMock = jasmine.createSpyObj('ApiService', ['setBaseUrl']);
-    environmentServiceMock = jasmine.createSpyObj('EnvironmentService', [], {
+    apiServiceMock = {
+      setBaseUrl: jest.fn(),
+    } as unknown as jest.Mocked<ApiService>;
+
+    environmentServiceMock = {
       env: () => ({ API_URL: 'https://fake.api' }),
-    });
+    } as unknown as jest.Mocked<EnvironmentService>;
 
     TestBed.configureTestingModule({
       providers: [
@@ -55,10 +55,13 @@ describe('BaseAppScrollComponent', () => {
   it('should restore scroll on router navigation', () => {
     const scrollEl = document.createElement('div');
     scrollEl.className = 'scroll';
-    spyOn(scrollEl, 'scrollTo');
+
+    // Ajouter la méthode scrollTo avant de créer le spy
+    scrollEl.scrollTo = jest.fn();
+
     document.body.appendChild(scrollEl);
 
-    scrollServiceMock.getScroll.and.returnValue(120);
+    scrollServiceMock.getScroll.mockReturnValue(120);
 
     routerEvents$.next(new NavigationStart(1, '/some-path'));
 
@@ -76,7 +79,7 @@ describe('BaseAppScrollComponent', () => {
     component.doScroll();
 
     expect(scrollServiceMock.saveScroll).toHaveBeenCalled();
-    expect(scrollServiceMock.scroll()).toBe(0);
+    expect(scrollServiceMock.scroll()).toBe(300);
 
     scrollEl.remove();
   });

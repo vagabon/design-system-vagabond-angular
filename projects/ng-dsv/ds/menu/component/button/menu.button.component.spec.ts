@@ -11,9 +11,7 @@ describe('DsvMenuButtonComponent', () => {
   beforeEach(async () => {
     (window as any).google = { accounts: { id: { prompt: () => { } } } };
     await TestBed.configureTestingModule({
-      imports: [
-        DsvMenuButtonComponent
-      ],
+      imports: [DsvMenuButtonComponent],
       providers: [
         provideZonelessChangeDetection(),
       ],
@@ -27,7 +25,7 @@ describe('DsvMenuButtonComponent', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
 
-    const menuSpy = spyOn(menuService, 'toogleMenu');
+    const menuSpy = jest.spyOn(menuService, 'toogleMenu');
     fixture.debugElement.nativeElement.querySelector('.dsv-button').click();
     expect(menuSpy).toHaveBeenCalled();
   });
