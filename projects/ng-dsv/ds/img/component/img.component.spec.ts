@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { DsvImgComponent } from './img.component';
+import { describe, beforeEach, it, expect } from 'vitest';
 
 describe('DsvImgComponent', () => {
   let component: DsvImgComponent;

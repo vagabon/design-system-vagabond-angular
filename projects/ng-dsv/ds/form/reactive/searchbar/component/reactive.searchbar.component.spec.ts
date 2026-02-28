@@ -1,6 +1,7 @@
 import { provideHttpClient } from '@angular/common/http';
 import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ReactiveSearchbarComponent } from './reactive.searchbar.component';
 
 describe('ReactiveSearchbarComponent', () => {
@@ -17,7 +18,7 @@ describe('ReactiveSearchbarComponent', () => {
     const fixture = TestBed.createComponent(ReactiveSearchbarComponent);
     const app = fixture.componentInstance;
     app.search = signal('search') as unknown as InputSignal<string>;
-    jest.spyOn(app.onSearch, 'emit');
+    vi.spyOn(app.onSearch, 'emit');
 
     fixture.detectChanges();
 

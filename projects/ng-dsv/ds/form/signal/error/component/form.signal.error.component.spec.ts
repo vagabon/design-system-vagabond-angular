@@ -1,14 +1,9 @@
 import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ValidationError } from '@angular/forms/signals';
-import { provideTranslateService, TranslatePipe } from '@ngx-translate/core';
+import { provideTranslateService } from '@ngx-translate/core';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { FormSignalErrorComponent } from './form.signal.error.component';
-
-class MockTranslatePipe implements Partial<TranslatePipe> {
-    transform(value: string): string {
-        return value;
-    }
-}
 
 describe('FormSignalErrorComponent', () => {
     let fixture: ComponentFixture<FormSignalErrorComponent>;

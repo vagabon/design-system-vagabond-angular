@@ -1,5 +1,6 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { ScrollService } from './scroll.service';
 
 describe('ScrollService', () => {
@@ -24,7 +25,7 @@ describe('ScrollService', () => {
     afterEach(() => {
         // Restaurer window.location
         (window as any).location = originalLocation;
-        jest.useRealTimers();
+        vi.useRealTimers();
     });
 
     it('should be created', () => {
@@ -75,14 +76,14 @@ describe('ScrollService', () => {
 
     describe('doBlockedWithTimeout', () => {
         beforeEach(() => {
-            jest.useFakeTimers();
+            vi.useFakeTimers();
         });
 
         it('should set blocked state after timeout', () => {
             service.doBlockedWithTimeout(true, 500);
             expect(service.blocked().get(mockLocation.href)).toBeUndefined();
 
-            jest.advanceTimersByTime(500);
+            vi.advanceTimersByTime(500);
             expect(service.blocked().get(mockLocation.href)).toBeUndefined();
         });
 
@@ -90,7 +91,7 @@ describe('ScrollService', () => {
             service.doBlockedWithTimeout(true);
             expect(service.blocked().get(mockLocation.href)).toBeUndefined();
 
-            jest.advanceTimersByTime(1000);
+            vi.advanceTimersByTime(1000);
             expect(service.blocked().get(mockLocation.href)).toBeUndefined();
         });
     });

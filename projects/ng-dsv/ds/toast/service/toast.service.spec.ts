@@ -1,5 +1,6 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { ToastDto } from '../dto/toast.dto';
 import { DURATION_DEFAULT, DURATION_TIMEOUT, ToastService } from './toast.service';
 
@@ -14,11 +15,11 @@ describe('ToastService', () => {
             ],
         });
         service = TestBed.inject(ToastService);
-        jest.useFakeTimers();
+        vi.useFakeTimers();
     });
 
     afterEach(() => {
-        jest.useRealTimers();
+        vi.useRealTimers();
     });
 
     it('should add a toast with default values and uuid', () => {
@@ -66,7 +67,7 @@ describe('ToastService', () => {
         expect(service.toastShows().find(t => t.uuid === toastFromQueue.uuid)).toBeDefined();
 
         for (let elapsed = DURATION_TIMEOUT; elapsed <= 60; elapsed += DURATION_TIMEOUT) {
-            jest.advanceTimersByTime(DURATION_TIMEOUT);
+            vi.advanceTimersByTime(DURATION_TIMEOUT);
 
             const toastInShow = service.toastShows().find(t => t.uuid === toastFromQueue.uuid);
             if (elapsed < toast.duration!) {

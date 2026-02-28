@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { provideTranslateService } from '@ngx-translate/core';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { FormReactiveComponent } from './form.reactive.component';
 
 @Component({
@@ -37,7 +38,7 @@ describe('FormReactiveComponent with submit button in projection', () => {
   it('should submit the form when valid', () => {
     const formDebug = fixture.debugElement;
     const form = host.form;
-    jest.spyOn(console, 'log').mockImplementation(() => { });
+    vi.spyOn(console, 'log').mockImplementation(() => { });
 
     form.get('name')?.setValue('John Doe');
     fixture.detectChanges();

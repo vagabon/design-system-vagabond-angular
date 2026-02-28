@@ -1,5 +1,6 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { DsvButtonComponent } from './button.component';
 
 describe('DsvButtonComponent', () => {
@@ -19,7 +20,7 @@ describe('DsvButtonComponent', () => {
   });
 
   it('should render', () => {
-    const mockCallback = { emit: jest.fn() };
+    const mockCallback = { emit: vi.fn() };
     component.callback = mockCallback as any;
     fixture.detectChanges();
     expect(component).toBeTruthy();

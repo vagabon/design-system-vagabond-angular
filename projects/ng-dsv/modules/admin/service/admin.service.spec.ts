@@ -2,17 +2,18 @@ import { provideZonelessChangeDetection } from "@angular/core";
 import { TestBed } from "@angular/core/testing";
 import { ApiService } from "@ng-vagabond-lab/ng-dsv/api";
 import { provideTranslateService } from "@ngx-translate/core";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { AdminService } from "./admin.service";
 
 describe('AdminService', () => {
     let service: AdminService;
-    let apiServiceSpy: jest.Mocked<ApiService>;
+    let apiServiceSpy: { get: ReturnType<typeof vi.fn>; put: ReturnType<typeof vi.fn> };
 
     beforeEach(() => {
         apiServiceSpy = {
-            get: jest.fn(),
-            put: jest.fn(),
-        } as unknown as jest.Mocked<ApiService>;
+            get: vi.fn(),
+            put: vi.fn(),
+        };
 
         TestBed.configureTestingModule({
             providers: [
@@ -65,7 +66,7 @@ describe('AdminService', () => {
     });
 
     it('should call get() with a custom callback if provided', () => {
-        const callback = jest.fn();
+        const callback = vi.fn();
         const mockData = { content: [], total: 0 };
 
         apiServiceSpy.get.mockImplementation((url: string, cb: Function) => cb(mockData));

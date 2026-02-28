@@ -1,5 +1,6 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ThemeService } from '../../public-api';
 import { DsvThemeSwitchComponent } from './dsv.theme.switch.component';
 
@@ -25,7 +26,7 @@ describe('DsvThemeSwitchComponent', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
 
-    const switchThemeSpy = jest.spyOn(themeService, 'switchTheme');
+    const switchThemeSpy = vi.spyOn(themeService, 'switchTheme');
     fixture.debugElement.nativeElement.querySelector('.dsv-button').click();
     expect(switchThemeSpy).toHaveBeenCalled();
   });

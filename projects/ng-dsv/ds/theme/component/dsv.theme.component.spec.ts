@@ -1,6 +1,7 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DsvThemeComponent } from './dsv.theme.component';
+import { describe, beforeEach, it, expect } from 'vitest';
 
 describe('DsvThemeComponent', () => {
   let component: DsvThemeComponent;

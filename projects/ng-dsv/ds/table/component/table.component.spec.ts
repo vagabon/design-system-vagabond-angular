@@ -4,6 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { provideTranslateService, TranslatePipe } from '@ngx-translate/core';
 import { TableDto } from '../dto/table.dto';
 import { TableComponent } from './table.component';
+import { describe, beforeEach, it, expect } from 'vitest';
 
 describe('TableComponent', () => {
     let fixture: ComponentFixture<TableComponent>;

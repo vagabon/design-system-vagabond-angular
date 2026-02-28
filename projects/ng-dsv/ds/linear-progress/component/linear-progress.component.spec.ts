@@ -1,6 +1,7 @@
 import { Component, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LinearProgressComponent } from './linear-progress.component';
+import { describe, beforeEach, it, expect } from 'vitest';
 
 @Component({
   template: `<app-linear-progress

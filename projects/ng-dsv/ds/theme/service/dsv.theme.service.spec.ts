@@ -2,22 +2,23 @@ import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ThemeService } from './dsv.theme.service';
 
 describe('ThemeService', () => {
   let service: ThemeService;
-  let storageServiceMock: jest.Mocked<StorageService>;
-  let platformServiceMock: jest.Mocked<PlatformService>;
+  let storageServiceMock: { getItem: ReturnType<typeof vi.fn>; setItem: ReturnType<typeof vi.fn> };
+  let platformServiceMock: { isPlatformBrowser: ReturnType<typeof vi.fn> };
 
   beforeEach(async () => {
     storageServiceMock = {
-      getItem: jest.fn(),
-      setItem: jest.fn(),
-    } as unknown as jest.Mocked<StorageService>;
+      getItem: vi.fn(),
+      setItem: vi.fn(),
+    };
 
     platformServiceMock = {
-      isPlatformBrowser: jest.fn(),
-    } as unknown as jest.Mocked<PlatformService>;
+      isPlatformBrowser: vi.fn(),
+    };
 
     platformServiceMock.isPlatformBrowser.mockReturnValue(true);
     storageServiceMock.getItem.mockReturnValue('dark');
@@ -27,8 +28,10 @@ describe('ThemeService', () => {
         provideZonelessChangeDetection(),
         ThemeService,
         { provide: StorageService, useValue: storageServiceMock },
+        { provide: PlatformService, useValue: platformServiceMock },
       ],
     });
+
     service = TestBed.inject(ThemeService);
   });
 

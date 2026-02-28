@@ -2,6 +2,7 @@ import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/co
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
 import { provideTranslateService } from '@ngx-translate/core';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ModalService } from '../../service/modal.service';
 import { ModalComponent } from '../modal.component';
 import { ModalAlertComponent } from './modal-alert.component';
@@ -51,7 +52,7 @@ describe('ModalAlertComponent', () => {
   });
 
   it('should emit callback and toggle modal on confirm click', () => {
-    jest.spyOn(component.callback, 'emit');
+    vi.spyOn(component.callback, 'emit');
     const buttons = fixture.nativeElement.querySelectorAll('.dsv-button');
     buttons[2].click();
     fixture.detectChanges();
@@ -60,7 +61,7 @@ describe('ModalAlertComponent', () => {
   });
 
   it('should call close on modal service on cancel click', () => {
-    jest.spyOn(modalService, 'close');
+    vi.spyOn(modalService, 'close');
     const buttons = fixture.nativeElement.querySelectorAll('.dsv-button');
     buttons[1].click();
     fixture.detectChanges();

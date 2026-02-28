@@ -1,5 +1,6 @@
 import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { DsvButtonComponent } from '../button.component';
 import { ButtonScrollTopComponent } from './button.scroll-top.component';
 
@@ -41,7 +42,7 @@ describe('ButtonScrollTopComponent', () => {
     it('should scroll to top when scrollToTop is called', () => {
         const scrollElement = document.createElement('div');
         scrollElement.className = 'scroll';
-        scrollElement.scrollTo = jest.fn();
+        scrollElement.scrollTo = vi.fn();
 
         document.body.appendChild(scrollElement);
 

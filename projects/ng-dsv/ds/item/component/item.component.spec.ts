@@ -1,11 +1,12 @@
 import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { DsvItemComponent } from './item.component';
 
 // Mock de la fonction isCallback
-jest.mock('@ng-vagabond-lab/ng-dsv/base', () => ({
-  isCallback: jest.fn((callback: any) => {
+vi.mock('@ng-vagabond-lab/ng-dsv/base', () => ({
+  isCallback: vi.fn((callback: any) => {
     return callback && callback.observed !== undefined ? callback.observed : false;
   }),
 }));
@@ -23,7 +24,7 @@ describe('DsvItemComponent', () => {
         {
           provide: Router,
           useValue: {
-            navigate: jest.fn(),
+            navigate: vi.fn(),
           },
         },
       ],
@@ -35,7 +36,7 @@ describe('DsvItemComponent', () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   describe('Component initialization', () => {
@@ -104,7 +105,7 @@ describe('DsvItemComponent', () => {
 
   describe('doClick method', () => {
     it('should navigate when url is provided', () => {
-      const navigateSpy = jest.spyOn(router, 'navigate');
+      const navigateSpy = vi.spyOn(router, 'navigate');
 
       // Définir l'URL directement sur le signal
       (component as any)['url'] = signal('/dashboard');
@@ -116,7 +117,7 @@ describe('DsvItemComponent', () => {
     });
 
     it('should not navigate when url is not provided', () => {
-      const navigateSpy = jest.spyOn(router, 'navigate');
+      const navigateSpy = vi.spyOn(router, 'navigate');
 
       (component as any)['url'] = signal(undefined);
       fixture.detectChanges();
@@ -127,7 +128,7 @@ describe('DsvItemComponent', () => {
     });
 
     it('should not navigate when url is empty string', () => {
-      const navigateSpy = jest.spyOn(router, 'navigate');
+      const navigateSpy = vi.spyOn(router, 'navigate');
 
       (component as any)['url'] = signal('');
       fixture.detectChanges();
@@ -138,7 +139,7 @@ describe('DsvItemComponent', () => {
     });
 
     it('should emit callback when isCallback is true', () => {
-      const callbackSpy = jest.fn();
+      const callbackSpy = vi.fn();
       component.callback.subscribe(callbackSpy);
 
       component.isCallback.set(true);
@@ -150,7 +151,7 @@ describe('DsvItemComponent', () => {
     });
 
     it('should not emit callback when isCallback is false', () => {
-      const callbackSpy = jest.fn();
+      const callbackSpy = vi.fn();
       component.callback.subscribe(callbackSpy);
 
       component.isCallback.set(false);
@@ -162,7 +163,7 @@ describe('DsvItemComponent', () => {
     });
 
     it('should navigate and emit callback when both url and callback are present', () => {
-      const navigateSpy = jest.spyOn(router, 'navigate');
+      const navigateSpy = vi.spyOn(router, 'navigate');
 
       (component as any)['url'] = signal('/settings');
       component.isCallback.set(true);
@@ -176,7 +177,7 @@ describe('DsvItemComponent', () => {
 
   describe('Edge cases', () => {
     it('should handle multiple clicks', () => {
-      const navigateSpy = jest.spyOn(router, 'navigate');
+      const navigateSpy = vi.spyOn(router, 'navigate');
 
       (component as any)['url'] = signal('/home');
       fixture.detectChanges();
@@ -189,7 +190,7 @@ describe('DsvItemComponent', () => {
     });
 
     it('should handle url changes between clicks', () => {
-      const navigateSpy = jest.spyOn(router, 'navigate');
+      const navigateSpy = vi.spyOn(router, 'navigate');
 
       (component as any)['url'] = signal('/first');
       fixture.detectChanges();
@@ -204,7 +205,7 @@ describe('DsvItemComponent', () => {
     });
 
     it('should handle special characters in url', () => {
-      const navigateSpy = jest.spyOn(router, 'navigate');
+      const navigateSpy = vi.spyOn(router, 'navigate');
 
       (component as any)['url'] = signal('/items/123?query=test&filter=active');
       fixture.detectChanges();

@@ -1,21 +1,34 @@
+// api.promise.service.spec.ts
 import { HttpClient } from '@angular/common/http';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { throwError } from 'rxjs';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ApiPromiseService } from './api.promise.service';
 
 describe('ApiPromiseService', () => {
     let service: ApiPromiseService;
-    let httpClientSpy: jest.Mocked<HttpClient>;
-    let toastServiceSpy: jest.Mocked<ToastService>;
-    let platformServiceSpy: jest.Mocked<PlatformService>;
+    let httpClientSpy: { [key: string]: ReturnType<typeof vi.fn> };
+    let toastServiceSpy: { showToast: ReturnType<typeof vi.fn> };
+    let platformServiceSpy: { isPlatformBrowser: ReturnType<typeof vi.fn> };
 
     beforeEach(() => {
-        const httpSpy = { get: jest.fn(), post: jest.fn(), put: jest.fn(), delete: jest.fn() } as unknown as jest.Mocked<HttpClient>;
-        const toastSpy = { showToast: jest.fn() } as unknown as jest.Mocked<ToastService>;
-        const platformSpy = { isPlatformBrowser: jest.fn() } as unknown as jest.Mocked<PlatformService>;
+        const httpSpy = {
+            get: vi.fn(),
+            post: vi.fn(),
+            put: vi.fn(),
+            delete: vi.fn()
+        };
+
+        const toastSpy = {
+            showToast: vi.fn()
+        };
+
+        const platformSpy = {
+            isPlatformBrowser: vi.fn()
+        };
 
         TestBed.configureTestingModule({
             providers: [
@@ -28,25 +41,36 @@ describe('ApiPromiseService', () => {
         });
 
         service = TestBed.inject(ApiPromiseService);
-        httpClientSpy = TestBed.inject(HttpClient) as jest.Mocked<HttpClient>;
-        toastServiceSpy = TestBed.inject(ToastService) as jest.Mocked<ToastService>;
-        platformServiceSpy = TestBed.inject(PlatformService) as jest.Mocked<PlatformService>;
+        httpClientSpy = TestBed.inject(HttpClient) as any;
+        toastServiceSpy = TestBed.inject(ToastService) as any;
+        platformServiceSpy = TestBed.inject(PlatformService) as any;
 
         service.setBaseUrl('http://test.com/api/');
         platformServiceSpy.isPlatformBrowser.mockReturnValue(true);
     });
 
-    // ... tous les tests restent identiques sauf le dernier :
-
+    // Exemple de test converti
     it('should handle error', async () => {
         const error = { message: 'Error' };
-        httpClientSpy.get.mockReturnValue(throwError(() => error));
-        jest.spyOn(console, 'error').mockImplementation(() => { });
+        httpClientSpy['get'].mockReturnValue(throwError(() => error));
+        vi.spyOn(console, 'error').mockImplementation(() => { });
 
         try {
             await service.get<any>('users');
         } catch (e) {
             expect(console.error).toHaveBeenCalled();
+        }
+    });
+
+    // Exemple de test supplémentaire
+    it('should call toast service on error', async () => {
+        const error = { message: 'Error' };
+        httpClientSpy['get'].mockReturnValue(throwError(() => error));
+
+        try {
+            await service.get<any>('users');
+        } catch (e) {
+            expect(toastServiceSpy.showToast).not.toHaveBeenCalled();
         }
     });
 });

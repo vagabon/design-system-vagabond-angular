@@ -2,6 +2,7 @@ import { EnvironmentInjector, InputSignal, provideZonelessChangeDetection, runIn
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FieldTree, form } from '@angular/forms/signals';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { FormSignalCheckboxComponent } from './form.signal.checkbox.component';
 
 interface TestDto {
@@ -40,11 +41,11 @@ describe('FormSignalCheckboxComponent', () => {
     });
 
     it('should emit value on change', () => {
-        const spy = jest.fn();
+        const spy = vi.fn();
         component.change.subscribe(spy);
 
         const checkbox = fixture.nativeElement.querySelector('input[type="checkbox"]');
-        jest.spyOn(component, 'doChange');
+        vi.spyOn(component, 'doChange');
         checkbox.click();
         fixture.detectChanges();
 

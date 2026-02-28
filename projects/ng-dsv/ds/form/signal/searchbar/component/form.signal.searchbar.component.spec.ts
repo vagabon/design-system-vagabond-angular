@@ -1,5 +1,6 @@
 import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { FormSignalSearchbarComponent } from './form.signal.searchbar.component';
 
 describe('FormSignalSearchbarComponent', () => {
@@ -16,7 +17,7 @@ describe('FormSignalSearchbarComponent', () => {
     const fixture = TestBed.createComponent(FormSignalSearchbarComponent);
     const app = fixture.componentInstance;
     app.search = signal('search') as unknown as InputSignal<string>;
-    jest.spyOn(app.onSearch, 'emit');
+    vi.spyOn(app.onSearch, 'emit');
 
     fixture.detectChanges();
 

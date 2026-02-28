@@ -2,6 +2,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { FormReactiveInputComponent } from './form.reactive.input.component';
 
 describe('FormReactiveInputComponent', () => {
@@ -34,7 +35,7 @@ describe('FormReactiveInputComponent', () => {
   });
 
   it('should emit value on Enter', () => {
-    jest.spyOn(component.onSend, 'emit');
+    vi.spyOn(component.onSend, 'emit');
     component.form().get('testField')?.setValue('test value');
 
     component.onEnter();

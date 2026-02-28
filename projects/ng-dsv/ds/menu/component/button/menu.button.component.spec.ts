@@ -1,5 +1,6 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { MenuService } from '../../public-api';
 import { DsvMenuButtonComponent } from './menu.button.component';
 
@@ -25,7 +26,7 @@ describe('DsvMenuButtonComponent', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
 
-    const menuSpy = jest.spyOn(menuService, 'toogleMenu');
+    const menuSpy = vi.spyOn(menuService, 'toogleMenu');
     fixture.debugElement.nativeElement.querySelector('.dsv-button').click();
     expect(menuSpy).toHaveBeenCalled();
   });

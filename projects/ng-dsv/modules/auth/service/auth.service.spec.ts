@@ -2,41 +2,47 @@ import { HttpClient } from '@angular/common/http';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
   let service: AuthService;
-  let httpClientSpy: jest.Mocked<HttpClient>;
+  let httpClientSpy: { post: ReturnType<typeof vi.fn>; get: ReturnType<typeof vi.fn> };
 
   beforeEach(async () => {
-    const httpClientSpyObj = {
-      get: jest.fn(),
-      post: jest.fn(),
-    } as unknown as jest.Mocked<HttpClient>;
+    // Création du spy HttpClient avec vi.fn()
+    httpClientSpy = {
+      get: vi.fn(),
+      post: vi.fn(),
+    };
 
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       providers: [
         provideZonelessChangeDetection(),
         AuthService,
-        { provide: HttpClient, useValue: httpClientSpyObj },
+        { provide: HttpClient, useValue: httpClientSpy },
       ],
-    });
+    }).compileComponents?.();
 
     service = TestBed.inject(AuthService);
-    httpClientSpy = TestBed.inject(HttpClient) as jest.Mocked<HttpClient>;
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should call ApiService.post when googleLogin is called', () => {
+  it('should call HttpClient.post when googleLogin is called', (done) => {
     const memberData = { user: { id: 1, name: 'John Doe' } };
 
+    // Mock du retour
     httpClientSpy.post.mockReturnValue(of(memberData));
 
+    // Appel de la méthode
     service.googleLogin('token');
 
-    expect(service.userConnected()).toBe(memberData);
+    // Comme c'est un signal ou observable interne, on peut utiliser un timeout minimal pour récupérer la valeur
+    setTimeout(() => {
+      expect(service.userConnected()).toEqual(memberData);
+    }, 0);
   });
 });

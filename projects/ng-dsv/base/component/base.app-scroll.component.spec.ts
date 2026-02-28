@@ -1,3 +1,4 @@
+// base.app.scroll.component.spec.ts
 import {
   EnvironmentInjector,
   provideZonelessChangeDetection,
@@ -9,13 +10,18 @@ import { NavigationStart, Router } from '@angular/router';
 import { ApiService } from '@ng-vagabond-lab/ng-dsv/api';
 import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
 import { Subject } from 'rxjs';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { BaseAppScrollComponent, ScrollService } from '../public-api';
 
 describe('BaseAppScrollComponent', () => {
   let routerEvents$: Subject<any>;
-  let scrollServiceMock: jest.Mocked<ScrollService>;
-  let apiServiceMock: jest.Mocked<ApiService>;
-  let environmentServiceMock: jest.Mocked<EnvironmentService>;
+  let scrollServiceMock: {
+    getScroll: ReturnType<typeof vi.fn>;
+    saveScroll: ReturnType<typeof vi.fn>;
+    scroll: ReturnType<typeof signal>;
+  };
+  let apiServiceMock: { setBaseUrl: ReturnType<typeof vi.fn> };
+  let environmentServiceMock: { env: () => { API_URL: string } };
   let component: TestComponent;
 
   class TestComponent extends BaseAppScrollComponent { }
@@ -24,18 +30,18 @@ describe('BaseAppScrollComponent', () => {
     routerEvents$ = new Subject();
 
     scrollServiceMock = {
-      getScroll: jest.fn(),
-      saveScroll: jest.fn(),
+      getScroll: vi.fn(),
+      saveScroll: vi.fn(),
       scroll: signal(0),
-    } as unknown as jest.Mocked<ScrollService>;
+    };
 
     apiServiceMock = {
-      setBaseUrl: jest.fn(),
-    } as unknown as jest.Mocked<ApiService>;
+      setBaseUrl: vi.fn(),
+    };
 
     environmentServiceMock = {
       env: () => ({ API_URL: 'https://fake.api' }),
-    } as unknown as jest.Mocked<EnvironmentService>;
+    };
 
     TestBed.configureTestingModule({
       providers: [
@@ -55,10 +61,7 @@ describe('BaseAppScrollComponent', () => {
   it('should restore scroll on router navigation', () => {
     const scrollEl = document.createElement('div');
     scrollEl.className = 'scroll';
-
-    // Ajouter la méthode scrollTo avant de créer le spy
-    scrollEl.scrollTo = jest.fn();
-
+    scrollEl.scrollTo = vi.fn(); // mock de scrollTo
     document.body.appendChild(scrollEl);
 
     scrollServiceMock.getScroll.mockReturnValue(120);

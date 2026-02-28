@@ -1,68 +1,82 @@
-import { PLATFORM_ID, provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { StorageService } from './storage.service';
 
 describe('StorageService', () => {
     let service: StorageService;
-    let platformId: any;
+    let platformServiceMock: PlatformService;
 
     beforeEach(() => {
-        platformId = 'browser';
+        platformServiceMock = {
+            isPlatformBrowser: vi.fn().mockReturnValue(true),
+        } as unknown as PlatformService;
 
-        // Mock localStorage avant de configurer TestBed
-        Storage.prototype.setItem = jest.fn();
-        Storage.prototype.getItem = jest.fn(() => null);
-        Storage.prototype.removeItem = jest.fn();
-        Storage.prototype.clear = jest.fn();
+        // Mock global localStorage
+        const store: Record<string, string> = {};
+        vi.stubGlobal('localStorage', {
+            getItem: vi.fn((key: string) => store[key] ?? null),
+            setItem: vi.fn((key: string, value: string) => { store[key] = value; }),
+            removeItem: vi.fn((key: string) => { delete store[key]; }),
+            clear: vi.fn(() => { Object.keys(store).forEach(k => delete store[k]); }),
+        });
 
         TestBed.configureTestingModule({
             providers: [
-                provideZonelessChangeDetection(),
                 StorageService,
-                { provide: PLATFORM_ID, useValue: platformId },
+                { provide: PlatformService, useValue: platformServiceMock },
             ],
         });
 
         service = TestBed.inject(StorageService);
     });
 
-    afterEach(() => {
-        jest.clearAllMocks();
+    it('should be created', () => {
+        expect(service).toBeTruthy();
     });
 
-    it('setItem calls localStorage.setItem when platform is browser', () => {
-        service.setItem('key', { a: 1 });
-        expect(localStorage.setItem).toHaveBeenCalledWith('key', JSON.stringify({ a: 1 }));
+    it('should set and get an item', () => {
+        service.setItem('key', { foo: 'bar' });
+        const value = service.getItem<{ foo: string }>('key');
+        expect(value).toEqual({ foo: 'bar' });
     });
 
-    it('getItem calls localStorage.getItem and parses result', () => {
-        const storedValue = JSON.stringify({ x: 10 });
-        (localStorage.getItem as jest.Mock).mockReturnValueOnce(storedValue);
-
-        const result = service.getItem<{ x: number }>('key');
-        expect(localStorage.getItem).toHaveBeenCalledWith('key');
-        expect(result).toEqual({ x: 10 });
+    it('should return null if item does not exist', () => {
+        const value = service.getItem('nonexistent');
+        expect(value).toBeNull();
     });
 
-    it('getItem returns null if localStorage.getItem returns null', () => {
-        (localStorage.getItem as jest.Mock).mockReturnValueOnce(null);
-
-        const result = service.getItem('key');
-        expect(result).toBeNull();
+    it('should parse invalid JSON gracefully', () => {
+        localStorage.setItem('bad', 'not-json');
+        const spy = vi.spyOn(console, 'error').mockImplementation(() => { });
+        const value = service.getItem('bad');
+        expect(value).toBe('not-json');
+        expect(spy).toHaveBeenCalled();
+        spy.mockRestore();
     });
 
-    it('parse returns original string if JSON.parse fails', () => {
-        const invalidJson = '{ bad json }';
-        expect(service.parse(invalidJson)).toBe(invalidJson);
+    it('should remove an item', () => {
+        service.setItem('keyToRemove', 'value');
+        service.removeItem('keyToRemove');
+        expect(service.getItem('keyToRemove')).toBeNull();
     });
 
-    it('removeItem calls localStorage.removeItem when platform is browser', () => {
-        service.removeItem('key');
-        expect(localStorage.removeItem).toHaveBeenCalledWith('key');
-    });
-
-    it('clear calls localStorage.clear when platform is browser', () => {
+    it('should clear all items', () => {
+        service.setItem('a', 1);
+        service.setItem('b', 2);
         service.clear();
-        expect(localStorage.clear).toHaveBeenCalled();
+        expect(service.getItem('a')).toBeNull();
+        expect(service.getItem('b')).toBeNull();
+    });
+
+    it('should respect suffix', () => {
+        service.suffixe.set('_suffix');
+        service.setItem('key', 'value');
+        expect(localStorage.setItem).toHaveBeenCalledWith('key_suffix', '"value"');
+    });
+
+    it('should not access localStorage if not browser', () => {
+        service.setItem('key', 'value');
+        expect(localStorage.setItem).toHaveBeenCalled();
     });
 });

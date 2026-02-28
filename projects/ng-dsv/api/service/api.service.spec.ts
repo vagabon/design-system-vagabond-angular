@@ -2,17 +2,18 @@ import { HttpClient } from '@angular/common/http';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ApiService } from './api.service';
 
 describe('ApiService', () => {
   let service: ApiService;
-  let httpClientSpy: jest.Mocked<HttpClient>;
+  let httpClientSpy: { get: ReturnType<typeof vi.fn>; post: ReturnType<typeof vi.fn> };
 
   beforeEach(() => {
     httpClientSpy = {
-      get: jest.fn(),
-      post: jest.fn(),
-    } as unknown as jest.Mocked<HttpClient>;
+      get: vi.fn(),
+      post: vi.fn(),
+    };
 
     TestBed.configureTestingModule({
       providers: [
@@ -35,8 +36,8 @@ describe('ApiService', () => {
       const responseData = { message: 'success' };
       httpClientSpy.get.mockReturnValue(of(responseData));
 
-      const callback = jest.fn();
-      jest.spyOn(service, 'info').mockImplementation(() => { });
+      const callback = vi.fn();
+      vi.spyOn(service, 'info').mockImplementation(() => { });
 
       service.get('test', callback);
 
@@ -48,8 +49,8 @@ describe('ApiService', () => {
       const error = { error: 'failure' };
       httpClientSpy.get.mockReturnValue(throwError(() => error));
 
-      jest.spyOn(service, 'error').mockImplementation(() => { });
-      const callback = jest.fn();
+      vi.spyOn(service, 'error').mockImplementation(() => { });
+      const callback = vi.fn();
 
       service.get('fail', callback);
 
@@ -63,8 +64,8 @@ describe('ApiService', () => {
       const response = { status: 'ok' };
 
       httpClientSpy.post.mockReturnValue(of(response));
-      const callback = jest.fn();
-      jest.spyOn(service, 'info').mockImplementation(() => { });
+      const callback = vi.fn();
+      vi.spyOn(service, 'info').mockImplementation(() => { });
 
       service.post('create', postData, callback);
 
@@ -77,8 +78,8 @@ describe('ApiService', () => {
       const error = { error: 'bad request' };
 
       httpClientSpy.post.mockReturnValue(throwError(() => error));
-      jest.spyOn(service, 'error').mockImplementation(() => { });
-      const callback = jest.fn();
+      vi.spyOn(service, 'error').mockImplementation(() => { });
+      const callback = vi.fn();
 
       service.post('fail', postData, callback);
 

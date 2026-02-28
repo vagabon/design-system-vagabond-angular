@@ -1,6 +1,7 @@
 import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { CLICK_LEFT, CLICK_RIGHT, MenuContextualClickType, MenuContextualDto } from '../../dto/menu.contextual';
 import { DsvMenuContextualComponent } from './menu.contextual.component';
 
@@ -33,7 +34,7 @@ describe('DsvMenuContextualComponent', () => {
     it('should toggle menu visibility on left click', () => {
         component.buttonClick = signal(CLICK_LEFT) as unknown as InputSignal<MenuContextualClickType>;
         const event = new MouseEvent('click', { button: 0 });
-        jest.spyOn(component, 'toogleMenu');
+        vi.spyOn(component, 'toogleMenu');
 
         const childElement = fixture.debugElement.query(By.css('.context-menu')).nativeElement;
         Object.defineProperty(event, 'target', { value: childElement });
@@ -45,7 +46,7 @@ describe('DsvMenuContextualComponent', () => {
     it('should toggle menu visibility on right click', () => {
         component.buttonClick = signal(CLICK_RIGHT) as unknown as InputSignal<MenuContextualClickType>;
         const event = new MouseEvent('contextmenu', { button: 2 });
-        jest.spyOn(component, 'toogleMenu');
+        vi.spyOn(component, 'toogleMenu');
 
         const childElement = fixture.debugElement.query(By.css('.context-menu')).nativeElement;
         Object.defineProperty(event, 'target', { value: childElement });
@@ -55,7 +56,7 @@ describe('DsvMenuContextualComponent', () => {
     });
 
     it('should close menu when clicking outside', () => {
-        jest.spyOn(component, 'closeMenu');
+        vi.spyOn(component, 'closeMenu');
         const event = new MouseEvent('click', { bubbles: true });
         Object.defineProperty(event, 'target', { value: document });
         component.onClick(event);
@@ -63,7 +64,7 @@ describe('DsvMenuContextualComponent', () => {
     });
 
     it('should emit callback on option click', () => {
-        jest.spyOn(component.callback, 'emit');
+        vi.spyOn(component.callback, 'emit');
         const option = mockOptions[0];
         const event = new MouseEvent('click');
         component.onOptionClick(event, option.id);

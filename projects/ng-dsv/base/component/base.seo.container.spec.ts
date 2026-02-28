@@ -1,6 +1,7 @@
 import { EnvironmentInjector, provideZonelessChangeDetection, runInInjectionContext } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Subject } from 'rxjs';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { BaseSeoContainer } from './base.seo.container';
 
 describe('BaseSeoComponent', () => {

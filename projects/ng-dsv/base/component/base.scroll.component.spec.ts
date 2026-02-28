@@ -1,16 +1,22 @@
+// base.scroll.component.spec.ts
 import { EnvironmentInjector, provideZonelessChangeDetection, runInInjectionContext } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { BaseScrollComponent, ScrollService } from '../public-api';
 
 describe('BaseScrollComponent', () => {
-    let scrollServiceMock: jest.Mocked<ScrollService>;
+    let scrollServiceMock: {
+        getlocked: ReturnType<typeof vi.fn>;
+        doBlocked: ReturnType<typeof vi.fn>;
+        doBlockedWithTimeout: ReturnType<typeof vi.fn>;
+    };
 
     beforeEach(() => {
         scrollServiceMock = {
-            getlocked: jest.fn(),
-            doBlocked: jest.fn(),
-            doBlockedWithTimeout: jest.fn(),
-        } as unknown as jest.Mocked<ScrollService>;
+            getlocked: vi.fn(),
+            doBlocked: vi.fn(),
+            doBlockedWithTimeout: vi.fn(),
+        };
 
         TestBed.configureTestingModule({
             providers: [
@@ -26,7 +32,7 @@ describe('BaseScrollComponent', () => {
 
     it('should call scrollService methods in loadMore()', () => {
         scrollServiceMock.getlocked.mockReturnValue(false);
-        const doLoadSpy = jest.fn();
+        const doLoadSpy = vi.fn();
 
         runInInjectionContext(TestBed.inject(EnvironmentInjector), () => {
             const component = new TestScrollComponent();

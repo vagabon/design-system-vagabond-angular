@@ -1,6 +1,7 @@
 import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup } from '@angular/forms';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { FormReactiveCheckboxComponent } from './form.reactive.checkbox.component';
 
 describe('FormReactiveCheckboxComponent', () => {
@@ -32,7 +33,7 @@ describe('FormReactiveCheckboxComponent', () => {
     });
 
     it('should emit value on change', () => {
-        const spy = jest.fn();
+        const spy = vi.fn();
         component.change.subscribe(spy);
 
         component.form().get(component.field())?.setValue(true);

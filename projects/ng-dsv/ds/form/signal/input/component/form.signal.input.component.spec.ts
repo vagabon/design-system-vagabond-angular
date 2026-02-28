@@ -3,6 +3,7 @@ import { EnvironmentInjector, InputSignal, provideZonelessChangeDetection, runIn
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FieldTree, form } from '@angular/forms/signals';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { FormSignalInputComponent } from './form.signal.input.component';
 
 interface TestDto {
@@ -38,7 +39,7 @@ describe('FormSignalInputComponent', () => {
   });
 
   it('should emit value on Enter', () => {
-    jest.spyOn(component.onSend, 'emit');
+    vi.spyOn(component.onSend, 'emit');
 
     component.doOnSend();
 

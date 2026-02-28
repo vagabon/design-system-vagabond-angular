@@ -2,6 +2,7 @@ import { Component, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { provideTranslateService } from '@ngx-translate/core';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { TooltipPosition, TooltipPositionEnum } from '../dto/tooltip.dto';
 import { DsvTooltipComponent } from './tooltip.component';
 
@@ -62,7 +63,7 @@ describe('DsvTooltipComponent', () => {
 
     it('should adjust tooltip position based on window boundaries', () => {
         const tooltipComponent = fixture.debugElement.query(By.directive(DsvTooltipComponent)).componentInstance;
-        jest.spyOn(tooltipComponent, 'adjustPosition');
+        vi.spyOn(tooltipComponent, 'adjustPosition');
 
         fixture.debugElement.query(By.css('dsv-tooltip')).triggerEventHandler('mouseenter', null);
         fixture.detectChanges();

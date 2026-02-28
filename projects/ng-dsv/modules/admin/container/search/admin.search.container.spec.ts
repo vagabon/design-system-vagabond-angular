@@ -1,9 +1,11 @@
+// admin.search.container.spec.ts
 import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { ApiDto, PageableDto } from '@ng-vagabond-lab/ng-dsv/api';
 import { provideTranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { AdminTabConfDto } from '../../dto/admin.dto';
 import { ADMIN_USER } from '../../public-api';
 import { AdminService } from '../../service/admin.service';
@@ -12,26 +14,31 @@ import { AdminSearchContainer } from './admin.search.container';
 describe('AdminSearchContainer', () => {
     let component: AdminSearchContainer;
     let fixture: ComponentFixture<AdminSearchContainer>;
-    let mockAdminService: jest.Mocked<AdminService>;
+    let mockAdminService: {
+        get: ReturnType<typeof vi.fn>;
+        findById: ReturnType<typeof vi.fn>;
+        datas: ReturnType<typeof vi.fn>;
+        tabs: () => AdminTabConfDto;
+    };
 
     const mockTabs: AdminTabConfDto = {
         max: 10,
-        tabs: ADMIN_USER
+        tabs: ADMIN_USER,
     };
 
     beforeEach(async () => {
         const pageable: PageableDto<ApiDto[]> = {
             totalPages: 2,
             totalElements: 5,
-            content: [{ id: 123 }]
+            content: [{ id: 123 }],
         };
 
         mockAdminService = {
-            get: jest.fn(),
-            findById: jest.fn(),
-            datas: jest.fn().mockReturnValue(pageable),
+            get: vi.fn(),
+            findById: vi.fn(),
+            datas: vi.fn().mockReturnValue(pageable),
             tabs: () => mockTabs,
-        } as unknown as jest.Mocked<AdminService>;
+        };
 
         await TestBed.configureTestingModule({
             imports: [AdminSearchContainer],
@@ -41,16 +48,15 @@ describe('AdminSearchContainer', () => {
                 { provide: AdminService, useValue: mockAdminService },
                 {
                     provide: ActivatedRoute,
-                    useValue: {
-                        params: of({ type: 'user', id: '42' })
-                    }
-                }
-            ]
+                    useValue: { params: of({ type: 'user', id: '42' }) },
+                },
+            ],
         }).compileComponents();
 
         fixture = TestBed.createComponent(AdminSearchContainer);
         component = fixture.componentInstance;
 
+        // Simule les params de route
         (component as any).routeParams = () => ({ type: 'user' });
 
         fixture.detectChanges();

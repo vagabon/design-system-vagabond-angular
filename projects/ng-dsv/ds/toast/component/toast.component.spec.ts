@@ -2,6 +2,7 @@ import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ToastService } from '../service/toast.service';
 import { DsvToastComponent } from './toast.component';
+import { describe, beforeEach, it, expect } from 'vitest';
 
 describe('DsvToastComponent', () => {
   let component: DsvToastComponent;

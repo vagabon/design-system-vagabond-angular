@@ -1,4 +1,6 @@
-import { ButtonVariantType, ButtonWidthType, ColorType, colorControls, colors } from "./color.type";
+// button.types.spec.ts
+import { describe, expect, it } from 'vitest';
+import { ButtonVariantType, ButtonWidthType, ColorType, colorControls, colors } from './color.type';
 
 describe('Button Types and Constants', () => {
   describe('ButtonWidthType', () => {

@@ -1,17 +1,14 @@
-import {
-  Component,
-  provideZonelessChangeDetection,
-  signal,
-  ViewChild,
-} from '@angular/core';
+// scroll.infinite.container.spec.ts
+import { Component, provideZonelessChangeDetection, signal, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ScrollService } from '@ng-vagabond-lab/ng-dsv/base';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ScrollInfiniteContainer } from './scroll.infinite.container';
 
 describe('ScrollInfiniteContainer', () => {
   let fixture: ComponentFixture<TestHostComponent>;
   let component: ScrollInfiniteContainer;
-  let scrollServiceMock: jest.Mocked<ScrollService>;
+  let scrollServiceMock: { saveScroll: ReturnType<typeof vi.fn>; scroll: ReturnType<typeof signal> };
 
   @Component({
     template: `
@@ -23,16 +20,16 @@ describe('ScrollInfiniteContainer', () => {
   })
   class TestHostComponent {
     @ViewChild(ScrollInfiniteContainer) scrollComp!: ScrollInfiniteContainer;
-    onScrollEnd = jest.fn();
+    onScrollEnd = vi.fn();
   }
 
-  beforeEach(() => {
+  beforeEach(async () => {
     scrollServiceMock = {
-      saveScroll: jest.fn(),
+      saveScroll: vi.fn(),
       scroll: signal(0),
-    } as unknown as jest.Mocked<ScrollService>;
+    };
 
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       imports: [TestHostComponent],
       providers: [
         provideZonelessChangeDetection(),
@@ -47,9 +44,7 @@ describe('ScrollInfiniteContainer', () => {
   });
 
   it('should emit callback when near bottom', () => {
-    const divEl: HTMLElement = document.getElementsByClassName(
-      'my-scroll',
-    )[0] as HTMLElement;
+    const divEl: HTMLElement = document.getElementsByClassName('my-scroll')[0] as HTMLElement;
 
     divEl.scrollTop = 500;
 

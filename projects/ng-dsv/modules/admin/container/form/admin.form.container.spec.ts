@@ -1,9 +1,11 @@
+// admin.form.container.spec.ts
 import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { DsvCardComponent } from '@ng-vagabond-lab/ng-dsv/ds/card';
 import { provideTranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { AdminFormComponent } from '../../component/form/admin.form.component';
 import { ADMIN_USER } from '../../public-api';
 import { AdminService } from '../../service/admin.service';
@@ -12,16 +14,22 @@ import { AdminFormContainer } from './admin.form.container';
 describe('AdminFormContainer', () => {
     let component: AdminFormContainer;
     let fixture: ComponentFixture<AdminFormContainer>;
-    let adminServiceMock: jest.Mocked<AdminService>;
+    let adminServiceMock: {
+        tabs: ReturnType<typeof vi.fn>;
+        findById: ReturnType<typeof vi.fn>;
+        get: ReturnType<typeof vi.fn>;
+        put: ReturnType<typeof vi.fn>;
+        data: ReturnType<typeof vi.fn>;
+    };
 
     beforeEach(async () => {
         adminServiceMock = {
-            tabs: jest.fn().mockReturnValue({ max: 10, tabs: ADMIN_USER }),
-            findById: jest.fn(),
-            get: jest.fn(),
-            put: jest.fn(),
-            data: jest.fn().mockReturnValue({ id: 123 }),
-        } as unknown as jest.Mocked<AdminService>;
+            tabs: vi.fn().mockReturnValue({ max: 10, tabs: ADMIN_USER }),
+            findById: vi.fn(),
+            get: vi.fn(),
+            put: vi.fn(),
+            data: vi.fn().mockReturnValue({ id: 123 }),
+        };
 
         await TestBed.configureTestingModule({
             imports: [AdminFormContainer, DsvCardComponent, AdminFormComponent],
@@ -31,11 +39,9 @@ describe('AdminFormContainer', () => {
                 { provide: AdminService, useValue: adminServiceMock },
                 {
                     provide: ActivatedRoute,
-                    useValue: {
-                        params: of({ type: 'user', id: '42' })
-                    }
-                }
-            ]
+                    useValue: { params: of({ type: 'user', id: '42' }) },
+                },
+            ],
         }).compileComponents();
 
         fixture = TestBed.createComponent(AdminFormContainer);

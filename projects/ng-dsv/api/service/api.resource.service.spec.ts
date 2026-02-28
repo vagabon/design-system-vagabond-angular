@@ -1,11 +1,12 @@
 import { httpResource, provideHttpClient } from '@angular/common/http';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ApiResourceService } from './api.resource.service';
 
 const mockResourceRef = {};
 
-const mockHttpResource = jest.fn().mockImplementation((configFn: () => any) => {
+const mockHttpResource = vi.fn().mockImplementation((configFn: () => any) => {
     return mockResourceRef;
 });
 

@@ -1,36 +1,41 @@
+// auth.guard.spec.ts
 import { createEnvironmentInjector, EnvironmentInjector, runInInjectionContext } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { AuthService } from '@ng-vagabond-lab/ng-dsv/modules/auth';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { authGuard } from './auth.guard';
 
 describe('authGuard', () => {
-    let mockplatformService: jest.Mocked<PlatformService>;
-    let mockAuthService: jest.Mocked<AuthService>;
-    let mockRouter: jest.Mocked<Router>;
+    let mockPlatformService: { isPlatformBrowser: ReturnType<typeof vi.fn> };
+    let mockAuthService: { userConnected: ReturnType<typeof vi.fn>; loginFromCache: ReturnType<typeof vi.fn> };
+    let mockRouter: { navigate: ReturnType<typeof vi.fn> };
     let injector: EnvironmentInjector;
 
     beforeEach(() => {
-        mockplatformService = {
-            isPlatformBrowser: jest.fn(),
-        } as unknown as jest.Mocked<PlatformService>;
+        mockPlatformService = {
+            isPlatformBrowser: vi.fn(),
+        };
 
         mockAuthService = {
-            userConnected: jest.fn(),
-            loginFromCache: jest.fn(),
-        } as unknown as jest.Mocked<AuthService>;
+            userConnected: vi.fn(),
+            loginFromCache: vi.fn(),
+        };
 
         mockRouter = {
-            navigate: jest.fn(),
-        } as unknown as jest.Mocked<Router>;
+            navigate: vi.fn(),
+        };
 
-        injector = createEnvironmentInjector([
-            { provide: PlatformService, useValue: mockplatformService },
-            { provide: AuthService, useValue: mockAuthService },
-            { provide: Router, useValue: mockRouter }
-        ], null as any);
+        injector = createEnvironmentInjector(
+            [
+                { provide: PlatformService, useValue: mockPlatformService },
+                { provide: AuthService, useValue: mockAuthService },
+                { provide: Router, useValue: mockRouter },
+            ],
+            null as any
+        );
 
-        mockplatformService.isPlatformBrowser.mockReturnValue(true);
+        mockPlatformService.isPlatformBrowser.mockReturnValue(true);
     });
 
     function createRoute(role?: string): ActivatedRouteSnapshot {
@@ -43,23 +48,17 @@ describe('authGuard', () => {
 
     it('should return true if user has required role', () => {
         mockAuthService.userConnected.mockReturnValue({
-            user: { profiles: [{ name: 'ADMIN' }] as any }
+            user: { profiles: [{ name: 'ADMIN' }] as any },
         });
 
-        const result = runInInjectionContext(injector, () =>
-            authGuard(createRoute('ADMIN'), mockState)
-        );
-
+        const result = runInInjectionContext(injector, () => authGuard(createRoute('ADMIN'), mockState));
         expect(result).toBe(true);
     });
 
     it('should return false and warn if no role is provided in route', () => {
-        const consoleSpy = jest.spyOn(console, 'warn').mockImplementation(() => { });
+        const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => { });
 
-        const result = runInInjectionContext(injector, () =>
-            authGuard(createRoute(), mockState)
-        );
-
+        const result = runInInjectionContext(injector, () => authGuard(createRoute(), mockState));
         expect(result).toBe(false);
         expect(consoleSpy).toHaveBeenCalledWith('No role specified in route data.');
     });
@@ -67,10 +66,7 @@ describe('authGuard', () => {
     it('should return false and redirect if user lacks the role', () => {
         mockAuthService.userConnected.mockReturnValue({});
 
-        const result = runInInjectionContext(injector, () =>
-            authGuard(createRoute('ADMIN'), mockState)
-        );
-
+        const result = runInInjectionContext(injector, () => authGuard(createRoute('ADMIN'), mockState));
         expect(result).toBe(false);
         expect(mockRouter.navigate).toHaveBeenCalledWith(['/']);
     });

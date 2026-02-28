@@ -5,6 +5,7 @@ import { provideTranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { TabDto } from '../../public-api';
 import { TabsComponent } from './tabs.component';
+import { describe, beforeEach, it, expect } from 'vitest';
 
 describe('TabsComponent', () => {
     let component: TabsComponent;

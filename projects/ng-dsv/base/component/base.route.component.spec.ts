@@ -2,6 +2,7 @@ import { EnvironmentInjector, provideZonelessChangeDetection, runInInjectionCont
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { of, Subject } from 'rxjs';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { BaseRouteComponent } from './base.route.component';
 
 describe('BaseRouteComponent', () => {
