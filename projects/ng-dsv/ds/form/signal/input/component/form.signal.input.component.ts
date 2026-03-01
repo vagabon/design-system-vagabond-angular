@@ -19,5 +19,4 @@ export class FormSignalInputComponent<T> extends FormSignalInputBase<T> {
 
   type = input<INPUT_TYPE>('text');
   icon = input<string>();
-
 }

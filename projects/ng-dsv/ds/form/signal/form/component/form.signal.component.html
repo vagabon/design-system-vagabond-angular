@@ -1,8 +1,11 @@
-<form (submit)="onSubmit($event)" class="form-container">
+<form (submit)="onSubmit($event)" class="form-container" novalidate>
   <div>
     <ng-content></ng-content>
   </div>
-  <div class="form-buttons" [class.hidden]="!(urlBack() && textValid() !== '')">
+  <div
+    class="form-buttons"
+    [class.hidden]="!(urlBack() && isCallbackBack() && textValid() !== '')"
+  >
     @if (urlBack()) {
       <dsv-button
         color="default"
@@ -11,6 +14,11 @@
         [prevent]="false"
         >{{ "RETOUR" | translate }}</dsv-button
       >
+    }
+    @if (isCallbackBack()) {
+      <dsv-button color="default" variant="outlined" (callback)="goBack()">{{
+        "RETOUR" | translate
+      }}</dsv-button>
     }
     @if (textValid() && textValid() !== "") {
       <dsv-button type="submit" color="primary">{{

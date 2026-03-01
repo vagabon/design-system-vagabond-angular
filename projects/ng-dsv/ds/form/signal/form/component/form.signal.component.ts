@@ -1,7 +1,8 @@
-import { Component, inject, input, output } from '@angular/core';
+import { Component, computed, inject, input, output } from '@angular/core';
 import { FieldTree, submit } from '@angular/forms/signals';
 import { RouterLink } from '@angular/router';
 import { ApiDto } from '@ng-vagabond-lab/ng-dsv/api';
+import { isCallback } from '@ng-vagabond-lab/ng-dsv/base';
 import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
 import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -21,7 +22,14 @@ export class FormSignalComponent<T> {
   textValid = input<string>('ENREGISTRER');
   formValid = input<string>('Formulaire envoyé !');
 
+  callbackBack = output<void>();
   callback = output<ApiDto>();
+
+  isCallbackBack = computed(() => isCallback(this.callbackBack));
+
+  goBack() {
+    this.callbackBack.emit();
+  }
 
   onSubmit(event: Event) {
     event.preventDefault();

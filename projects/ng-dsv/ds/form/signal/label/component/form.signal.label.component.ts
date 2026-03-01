@@ -8,6 +8,7 @@ import { FieldState } from "@angular/forms/signals";
 })
 export class FormSignalLabelComponent<T> {
   label = input.required<string>();
+  name = input.required<string>();
   signal = input.required<FieldState<T>>();
   show = input<boolean>(true);
 

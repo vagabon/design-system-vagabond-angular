@@ -1,7 +1,8 @@
 <div>
   @if (getSignal()) {
     <dsv-form-signal-label
-      [label]="fieldName()"
+      [name]="fieldName()"
+      [label]="label() ?? fieldName()"
       [signal]="getSignal()()"
       [show]="withLabel()"
     />
@@ -24,7 +25,9 @@
           </option>
         }
       </select>
-      <dsv-signal-form-error [errors]="getSignal()().errors()" />
+      @if (isTouched()) {
+        <dsv-signal-form-error [errors]="getSignal()().errors()" />
+      }
     </div>
   }
 </div>

@@ -1,7 +1,8 @@
 <div>
   @if (getSignal()) {
     <dsv-form-signal-label
-      [label]="fieldName()"
+      [name]="fieldName()"
+      [label]="label() ?? fieldName()"
       [signal]="getSignal()()"
       [show]="withLabel()"
     />
