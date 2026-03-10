@@ -1,11 +1,9 @@
 import { CommonModule } from '@angular/common';
 import {
-  afterNextRender,
   Component,
   effect,
   inject,
-  output,
-  signal,
+  output
 } from '@angular/core';
 import { ID } from '@ng-vagabond-lab/ng-dsv/api';
 import {
@@ -28,21 +26,16 @@ export class AuthComponent {
 
   readonly initMember = output<ID>();
 
-  readonly ssrRendered = signal(false);
-
   constructor() {
-    afterNextRender(() => {
-      this.ssrRendered.set(true);
-    });
     effect(() => {
       if (this.authService.userConnected() === null) {
-        this.ssrRendered() && this.authGoogleService.loginWithGoogle();
+        this.authGoogleService.loginWithGoogle();
       } else {
         this.initMember.emit(this.authService.userConnected()?.user?.id);
       }
     });
     effect(() => {
-      if (this.environmentService.env() && this.ssrRendered()) {
+      if (this.environmentService.env()) {
         this.authService.loginFromCache();
         this.authGoogleService.initGoogleAuth();
       }

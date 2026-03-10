@@ -104,7 +104,6 @@ describe('AuthComponent', () => {
 
   it('should call loginFromCache and initGoogleAuth if env true and ssrRendered', () => {
     authServiceMock.userConnected.mockReturnValue(null);
-    component.ssrRendered.set(true);
 
     fixture.detectChanges();
 
