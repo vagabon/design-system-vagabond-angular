@@ -853,21 +853,21 @@
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n}"
-            },
-            {
-                "name": "ActionsData",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n  url: 'https://api-blog.vagabond.synology.me',\n  src: '/news/1/quarkus_react.png',\n}"
+            },
+            {
+                "name": "ActionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n}"
             },
             {
                 "name": "ActionsData",
@@ -1083,21 +1083,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-file-upload> \n                <img src=\"/assets/images/ic-upload-file.svg\" alt=\"\" />\n                <div>Drop your image here</div>\n              </dsv-file-upload>`,\n  }),\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-file-upload> \n                <img src=\"/assets/images/ic-upload-file.svg\" alt=\"\" />\n                <div>Drop your image here</div>\n              </dsv-file-upload>`,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -1413,21 +1413,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<FileUploadComponent>",
-                "defaultValue": "{\n  title: 'dsv/File/upload',\n  component: FileUploadComponent,\n  decorators: [\n    moduleMetadata({\n      providers: [],\n    }),\n  ],\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<FileShowComponent>",
                 "defaultValue": "{\n  title: 'dsv/File/download',\n  component: FileShowComponent,\n  decorators: [\n    moduleMetadata({\n      providers: [],\n    }),\n  ],\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<FileUploadComponent>",
+                "defaultValue": "{\n  title: 'dsv/File/upload',\n  component: FileUploadComponent,\n  decorators: [\n    moduleMetadata({\n      providers: [],\n    }),\n  ],\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
             },
             {
                 "name": "meta",
@@ -1912,8 +1912,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<FileUploadComponent>",
-                "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
+                "rawtype": "StoryObj<FileShowComponent>",
+                "file": "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1923,8 +1923,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<FileShowComponent>",
-                "file": "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts",
+                "rawtype": "StoryObj<FileUploadComponent>",
+                "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2670,38 +2670,6 @@
                     "defaultValue": "{\n  title: 'dsv/Button/scrollTop',\n  component: ButtonScrollTopComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
                 }
             ],
-            "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts": [
-                {
-                    "name": "ActionsData",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n}"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-file-upload> \n                <img src=\"/assets/images/ic-upload-file.svg\" alt=\"\" />\n                <div>Drop your image here</div>\n              </dsv-file-upload>`,\n  }),\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<FileUploadComponent>",
-                    "defaultValue": "{\n  title: 'dsv/File/upload',\n  component: FileUploadComponent,\n  decorators: [\n    moduleMetadata({\n      providers: [],\n    }),\n  ],\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
-                }
-            ],
             "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts": [
                 {
                     "name": "ActionsData",
@@ -2732,6 +2700,38 @@
                     "deprecationMessage": "",
                     "type": "Meta<FileShowComponent>",
                     "defaultValue": "{\n  title: 'dsv/File/download',\n  component: FileShowComponent,\n  decorators: [\n    moduleMetadata({\n      providers: [],\n    }),\n  ],\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+                }
+            ],
+            "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts": [
+                {
+                    "name": "ActionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-file-upload> \n                <img src=\"/assets/images/ic-upload-file.svg\" alt=\"\" />\n                <div>Drop your image here</div>\n              </dsv-file-upload>`,\n  }),\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<FileUploadComponent>",
+                    "defaultValue": "{\n  title: 'dsv/File/upload',\n  component: FileUploadComponent,\n  decorators: [\n    moduleMetadata({\n      providers: [],\n    }),\n  ],\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
                 }
             ],
             "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts": [
@@ -3418,19 +3418,6 @@
                     "kind": 184
                 }
             ],
-            "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<FileUploadComponent>",
-                    "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
             "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts": [
                 {
                     "name": "Story",
@@ -3438,6 +3425,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<FileShowComponent>",
                     "file": "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<FileUploadComponent>",
+                    "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
