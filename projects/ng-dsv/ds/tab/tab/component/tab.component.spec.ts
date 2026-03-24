@@ -1,8 +1,9 @@
 import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { provideTranslateService, TranslatePipe } from '@ngx-translate/core';
+import { of } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { TabDto } from '../dto/tab.dto';
 import { TabComponent } from './tab.component';
@@ -19,7 +20,8 @@ describe('TabComponent', () => {
       providers: [
         provideZonelessChangeDetection(),
         provideTranslateService(),
-        { provide: ActivatedRoute, useValue: { snapshot: {}, params: {} } }
+        { provide: ActivatedRoute, useValue: { snapshot: {}, params: {} } },
+        { provide: Router, useValue: { navigate: vi.fn(), navigateByUrl: vi.fn(), events: of() } }
       ]
     }).compileComponents();
 

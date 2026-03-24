@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { provideZonelessChangeDetection } from '@angular/core';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { UiSdkService } from './ui-sdk.service';
 
 describe('UiSdkService', () => {
