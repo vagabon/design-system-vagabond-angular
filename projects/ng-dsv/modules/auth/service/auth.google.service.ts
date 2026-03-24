@@ -1,5 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
+import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { AuthService } from './auth.service';
 
 declare const google: any;
@@ -10,20 +11,23 @@ declare const google: any;
 export class AuthGoogleService {
   private readonly authService = inject(AuthService);
   private readonly environmentService = inject(EnvironmentService);
+  private readonly platformService = inject(PlatformService);
 
   initGoogleAuth() {
-    google.accounts.id.initialize({
-      client_id: this.environmentService.env()?.GOOGLE_CLIENT_ID,
-      callback: this.handleCredentialResponse.bind(this),
-    });
-    google.accounts.id.renderButton(
-      document.getElementById('google-signin-button')!,
-      {
-        theme: 'outline',
-        size: 'medium',
-        type: 'icon',
-      }
-    );
+    if (this.platformService.isPlatformBrowser() && google) {
+      google.accounts.id.initialize({
+        client_id: this.environmentService.env()?.GOOGLE_CLIENT_ID,
+        callback: this.handleCredentialResponse.bind(this),
+      });
+      google.accounts.id.renderButton(
+        document.getElementById('google-signin-button')!,
+        {
+          theme: 'outline',
+          size: 'medium',
+          type: 'icon',
+        }
+      );
+    }
   }
 
   handleCredentialResponse(response: { credential: string }) {
@@ -45,6 +49,8 @@ export class AuthGoogleService {
   }
 
   loginWithGoogle() {
-    google?.accounts.id.prompt();
+    if (this.platformService.isPlatformBrowser() && google) {
+      google.accounts.id.prompt();
+    }
   }
 }
