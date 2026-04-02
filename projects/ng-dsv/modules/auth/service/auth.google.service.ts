@@ -1,6 +1,5 @@
 import { inject, Injectable } from '@angular/core';
 import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
-import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { AuthService } from './auth.service';
 
 declare const google: any;
@@ -11,10 +10,12 @@ declare const google: any;
 export class AuthGoogleService {
   private readonly authService = inject(AuthService);
   private readonly environmentService = inject(EnvironmentService);
-  private readonly platformService = inject(PlatformService);
+
+  initGoogle: boolean = false;
 
   initGoogleAuth() {
-    if (this.platformService.isPlatformBrowser() && google) {
+    if (!this.initGoogle) {
+      this.initGoogle = true;
       google.accounts.id.initialize({
         client_id: this.environmentService.env()?.GOOGLE_CLIENT_ID,
         callback: this.handleCredentialResponse.bind(this),
@@ -49,8 +50,6 @@ export class AuthGoogleService {
   }
 
   loginWithGoogle() {
-    if (this.platformService.isPlatformBrowser() && google) {
-      google.accounts.id.prompt();
-    }
+    google.accounts.id.prompt();
   }
 }

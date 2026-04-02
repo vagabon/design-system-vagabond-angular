@@ -11,6 +11,7 @@ import {
   ModalButtonComponent,
 } from '@ng-vagabond-lab/ng-dsv/ds/modal';
 import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
+import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { AuthGoogleService, AuthService } from '../public-api';
 
 @Component({
@@ -23,21 +24,20 @@ export class AuthComponent {
   readonly authGoogleService = inject(AuthGoogleService);
   readonly authService = inject(AuthService);
   readonly environmentService = inject(EnvironmentService);
+  readonly platformService = inject(PlatformService);
 
   readonly initMember = output<ID>();
 
   constructor() {
     effect(() => {
-      if (this.authService.userConnected() === null) {
-        this.authGoogleService.loginWithGoogle();
-      } else {
-        this.initMember.emit(this.authService.userConnected()?.user?.id);
-      }
-    });
-    effect(() => {
-      if (this.environmentService.env()) {
+      if (this.environmentService.env() && this.platformService.isPlatformBrowser()) {
         this.authService.loginFromCache();
         this.authGoogleService.initGoogleAuth();
+        if (this.authService.userConnected() === null) {
+          this.authGoogleService.loginWithGoogle();
+        } else {
+          this.initMember.emit(this.authService.userConnected()?.user?.id);
+        }
       }
     });
   }
