@@ -2,10 +2,7 @@
   <div>
     <ng-content></ng-content>
   </div>
-  <div
-    class="form-buttons"
-    [class.hidden]="!(urlBack() && isCallbackBack() && textValid() !== '')"
-  >
+  <div class="form-buttons">
     @if (urlBack()) {
       <dsv-button
         color="default"

@@ -1,7 +1,7 @@
 <dsv-button
-  [color]="icon() ? 'inherit' : color()"
+  [color]="color()"
   [icon]="icon()"
-  [variant]="icon() ? 'text' : 'contained'"
+  [variant]="variant()"
   (callback)="doToogle()"
 >
   {{ text() }}

@@ -1,6 +1,6 @@
 import { Component, inject, input } from '@angular/core';
 import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
-import { ColorType } from '@ng-vagabond-lab/ng-dsv/type';
+import { ButtonVariantType, ColorType } from '@ng-vagabond-lab/ng-dsv/type';
 import { ModalService } from '../../service/modal.service';
 
 @Component({
@@ -13,6 +13,7 @@ export class ModalButtonComponent {
 
   id = input.required<string>();
   icon = input<string>('');
+  variant = input<ButtonVariantType>('contained');
   text = input<string>('');
   color = input<ColorType>('primary');
 

@@ -1,19 +1,8 @@
 import { TranslatePipe } from '@ngx-translate/core';
-import { moduleMetadata, StoryContext, StoryFn, type Meta, type StoryObj } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { ModalButtonComponent } from '../public-api';
 import { ModalComponent } from './modal.component';
 
-export const storyBig = (story: StoryFn) => {
-  const storyOutput = story({}, {} as StoryContext);
-  return {
-    ...storyOutput,
-    template: `
-          <div style="height: calc(300px - 10px); overflow: hidden;">
-            ${storyOutput.template}
-          </div>
-        `,
-  };
-}
 
 export const ActionsData = {
   id: 'modale',
@@ -30,7 +19,6 @@ const meta: Meta<ModalComponent> = {
     moduleMetadata({
       imports: [ModalButtonComponent, TranslatePipe],
     }),
-    storyBig
   ],
   argTypes: {},
   args: {
@@ -45,7 +33,7 @@ export const Default: Story = {
   args: {},
   render: (args: any) => ({
     template: `
-      <app-modal-button id="${args.id}" text="Clic">
+      <app-modal-button id="${args.id}" icon="ri-add-line" text="add" variant="contained">
         <app-modal id="${args.id}" titleText="${args.title}" class="${args.class}">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
           Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
