@@ -64,6 +64,7 @@ describe('FormSignalComponent', () => {
     componentRef = fixture.componentRef;
 
     componentRef.setInput('form', makeFieldTree(true));
+    componentRef.setInput('formValid', 'Formulaire envoyé !');
     fixture.detectChanges();
   });
 

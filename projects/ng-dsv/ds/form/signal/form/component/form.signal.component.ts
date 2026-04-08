@@ -20,7 +20,7 @@ export class FormSignalComponent<T> {
 
   urlBack = input<string>();
   textValid = input<string>('ENREGISTRER');
-  formValid = input<string>('Formulaire envoyé !');
+  formValid = input<string>('');
 
   callbackBack = output<void>();
   callback = output<ApiDto>();
@@ -36,9 +36,11 @@ export class FormSignalComponent<T> {
     submit(this.form(), async (form) => {
       if (form().valid()) {
         this.callback.emit(form().value() as ApiDto);
-        this.toastService.showToast({
-          text: this.formValid(),
-        });
+        if (this.formValid() !== '') {
+          this.toastService.showToast({
+            text: this.formValid(),
+          });
+        }
       } else {
         this.toastService.showToast({
           text: 'Erreur dans le formulaire !',

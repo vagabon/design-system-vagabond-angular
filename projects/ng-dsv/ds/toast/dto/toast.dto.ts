@@ -3,9 +3,9 @@ export type ToastType = 'success' | 'error' | 'warning' | 'info';
 export interface ToastDto {
   uuid?: string;
   text: string;
-  isClose?: boolean;
+  open?: boolean;
   type?: ToastType;
   filled?: boolean;
   duration?: number;
-  durationLeft?: number;
+  remainingDuration?: number;
 }

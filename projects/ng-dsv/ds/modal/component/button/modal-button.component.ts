@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
 import { ButtonVariantType, ColorType } from '@ng-vagabond-lab/ng-dsv/type';
 import { ModalService } from '../../service/modal.service';
@@ -17,7 +17,10 @@ export class ModalButtonComponent {
   text = input<string>('');
   color = input<ColorType>('primary');
 
+  callback = output<void>();
+
   doToogle = () => {
+    this.callback.emit();
     this.modalService.toggle(this.id());
   };
 }

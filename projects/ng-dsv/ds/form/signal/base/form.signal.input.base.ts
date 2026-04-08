@@ -16,7 +16,7 @@ export abstract class FormSignalInputBase<T> {
     isError = signal<boolean>(false);
 
     onSend = output<string>();
-    change = output<string>();
+    callbackChange = output<string>();
 
     constructor() {
         effect(() => {
@@ -37,7 +37,7 @@ export abstract class FormSignalInputBase<T> {
     }
 
     doChange() {
-        this.getValue() && this.change.emit(this.getValue());
+        this.getValue() && this.callbackChange.emit(this.getValue());
     }
 
     protected getValue() {

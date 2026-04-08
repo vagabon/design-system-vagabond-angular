@@ -42,7 +42,7 @@ describe('FormSignalCheckboxComponent', () => {
 
     it('should emit value on change', () => {
         const spy = vi.fn();
-        component.change.subscribe(spy);
+        component.callbackChange.subscribe(spy);
 
         const checkbox = fixture.nativeElement.querySelector('input[type="checkbox"]');
         vi.spyOn(component, 'doChange');

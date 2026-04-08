@@ -1,4 +1,4 @@
-import { Component, effect, inject, input, signal } from '@angular/core';
+import { Component, effect, HostListener, inject, input, signal } from '@angular/core';
 import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
 import { MenuService } from '@ng-vagabond-lab/ng-dsv/ds/menu';
 import { ModalService } from '../service/modal.service';
@@ -13,6 +13,7 @@ export class ModalComponent {
   id = input.required<string>();
   titleText = input.required<string>();
   class = input<string>('');
+  canEchap = input<boolean>(true);
 
   isOpen = signal<boolean>(false);
 
@@ -26,6 +27,13 @@ export class ModalComponent {
         this.menuService.isMenuOpen.set(false);
       }
     });
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscapeKey() {
+    if (this.isOpen() && this.canEchap()) {
+      this.close();
+    }
   }
 
   close = () => {

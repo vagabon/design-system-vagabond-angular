@@ -33,7 +33,7 @@ describe('ToastService', () => {
         expect(addedToast!.uuid).toBeDefined();
         expect(addedToast!.type).toBe('success');
         expect(addedToast!.duration).toBe(DURATION_DEFAULT);
-        expect(addedToast!.durationLeft).toBe(DURATION_DEFAULT);
+        expect(addedToast!.remainingDuration).toBe(DURATION_DEFAULT);
         expect(addedToast!.filled).toBe(false);
     });
 
@@ -54,7 +54,9 @@ describe('ToastService', () => {
 
         service.closeToast('1234');
 
-        expect(service.toastShows().find(t => t.uuid === '1234')).toBeUndefined();
+        setInterval(() => {
+            expect(service.toastShows().find(t => t.uuid === '1234')?.open).toBe(false);
+        }, 500);
     });
 
     it('should consume toast, update durationLeft and close after duration', () => {
@@ -71,7 +73,7 @@ describe('ToastService', () => {
 
             const toastInShow = service.toastShows().find(t => t.uuid === toastFromQueue.uuid);
             if (elapsed < toast.duration!) {
-                expect(toastInShow?.durationLeft).toBeCloseTo(toast.duration! - elapsed, 1);
+                expect(toastInShow?.remainingDuration).toBeCloseTo(toast.duration! - elapsed, 1);
             }
         }
     });

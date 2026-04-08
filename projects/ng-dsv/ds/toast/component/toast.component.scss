@@ -25,12 +25,32 @@
 
         opacity: 0;
         transform: translateX(100%);
-        animation: slideInRight 0.5s ease-out forwards;
+        transition: transform 0.5s ease-out, opacity 0.5s ease-out;
 
-        @keyframes slideInRight {
-            to {
-                opacity: 1;
-                transform: translateX(0);
+        &.open {
+            animation: slideInRight 0.5s ease-out forwards;
+
+            @keyframes slideInRight {
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+        }
+
+        &.close {
+            animation: slideOutRight 0.5s ease-out forwards;
+
+            @keyframes slideOutRight {
+                from {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+
+                to {
+                    opacity: 0;
+                    transform: translateX(100%);
+                }
             }
         }
 

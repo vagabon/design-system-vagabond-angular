@@ -2,6 +2,8 @@
   @for (toast of toastService.toastShows(); track toast.uuid) {
     <div
       class="dsv-toast"
+      [class.open]="toast.open"
+      [class.close]="!toast.open"
       [ngClass]="toast.type + ' ' + (toast.filled ? 'filled' : '')"
     >
       <button
@@ -25,7 +27,9 @@
       <div class="loader-container">
         <div
           class="loader"
-          [style.width]="(toast.durationLeft! / toast.duration!) * 100 + '%'"
+          [style.width]="
+            (toast.remainingDuration! / toast.duration!) * 100 + '%'
+          "
         ></div>
       </div>
     </div>
