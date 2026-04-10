@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
+import { Directive } from "@angular/core";
 
-@Component({
-  template: '',
-})
+@Directive()
 export abstract class BaseFormSignalComponent {
 }

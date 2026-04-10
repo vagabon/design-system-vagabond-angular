@@ -1,9 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Directive, inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-@Component({
-  template: '',
-})
+@Directive()
 export abstract class BaseFormReactiveComponent {
   protected readonly formBuilder = inject(FormBuilder);
   protected form!: FormGroup;
