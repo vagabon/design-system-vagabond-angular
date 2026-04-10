@@ -1,4 +1,3 @@
-// admin.search.container.spec.ts
 import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
@@ -56,7 +55,6 @@ describe('AdminSearchContainer', () => {
         fixture = TestBed.createComponent(AdminSearchContainer);
         component = fixture.componentInstance;
 
-        // Simule les params de route
         (component as any).routeParams = () => ({ type: 'user' });
 
         fixture.detectChanges();

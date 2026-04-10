@@ -1,4 +1,3 @@
-// auth.google.service.spec.ts
 import { HttpClient } from '@angular/common/http';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
@@ -14,7 +13,6 @@ describe('AuthGoogleService', () => {
   let environmentServiceSpy: { env: ReturnType<typeof vi.fn> };
 
   beforeEach(async () => {
-    // Mock global google object
     (window as any).google = {
       accounts: {
         id: {
@@ -27,7 +25,6 @@ describe('AuthGoogleService', () => {
       },
     };
 
-    // Spies avec vi.fn()
     httpClientSpy = {
       get: vi.fn(),
       post: vi.fn(),
@@ -59,21 +56,16 @@ describe('AuthGoogleService', () => {
     httpClientSpy.post.mockReturnValue(of({}));
     httpClientSpy.get.mockReturnValue(of({}));
 
-    // Simule la réponse Google
     service.handleCredentialResponse({ credential: 'credential' });
 
-    // Simule un token JWT (pas besoin de le décoder réellement ici)
     service.decodeJwtToken(
       'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo4MDgwL2lzc3VlciIsInVwbiI6InZhZ2Fib25kIzExOTQiLCJncm91cHMiOlsiQURNSU4iLCJVU0VSIl0sImlhdCI6MTczMjk5MDE2NiwiZXhwIjoxNzMzMDkwMTY2LCJqdGkiOiIxZTkwZDU5My03MDk3LTQxZDMtYWVjMC0zMTExOTJkNzNkZjkifQ.OeJRowQsfyU3ILUReuqD93bCFJEG90phBsPTp9ofO_P7HVpUV17NytEvQNgc19D8M1RLNWjDl1DsPG0CAKt6ivsEbtgF66h4Fg3SruvHSU-6Mezrrca8Xn8BsahVZqbyBps9OBJACE0EVpHgZ4YMNzen7pkBSoHHwk_L3VoTCxfbqsZkEstbnxco_LNNw2fUJTNnGfLqToFa4bkemEUjDoRRo8VBW4ToKP7crelxmw1OgmBKcLQHp5R5B8GW9oeY7kU_RdaIi2f7Wjnqxj59yGZJ0Wv4Tw5MLdsO2rYOQ-sn_-LT7iRXBi3m1jFhDzkQUCsHJ88UOrll3D9oz1LB_w'
     );
 
-    // Appel réel
     service.loginWithGoogle();
 
-    // Vérifie que le service existe toujours
     expect(service).toBeTruthy();
 
-    // Vérifie que HttpClient.post a été appelé
     expect(httpClientSpy.post).toHaveBeenCalled();
   });
 });

@@ -11,7 +11,6 @@ describe('BaseSeoContainer', () => {
     let transferStateMock: TransferState;
 
     beforeEach(() => {
-        // Créer des mocks simples pour les services Angular
         titleMock = {
             setTitle: vi.fn(),
         } as unknown as Title;

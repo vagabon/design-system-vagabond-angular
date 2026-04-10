@@ -12,7 +12,6 @@ describe('StorageService', () => {
             isPlatformBrowser: vi.fn().mockReturnValue(true),
         } as unknown as PlatformService;
 
-        // Mock global localStorage
         const store: Record<string, string> = {};
         vi.stubGlobal('localStorage', {
             getItem: vi.fn((key: string) => store[key] ?? null),

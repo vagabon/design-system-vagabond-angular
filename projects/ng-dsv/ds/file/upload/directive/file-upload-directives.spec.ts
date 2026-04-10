@@ -45,7 +45,6 @@ describe('FileUploadDirective', () => {
   });
 
   it('should add dragging class on dragover and remove on dragleave', () => {
-    // On crée un objet simulé pour l'événement
     const dragoverEvent = new MouseEvent('dragover', {
       bubbles: true,
       cancelable: true,

@@ -241,7 +241,6 @@ describe('authInterceptor', () => {
 
             interceptor(req, makeNextWithError(error)).subscribe({ error: () => { } });
 
-            // handle401Error would call httpClient.post – it must NOT have been called
             expect(mockHttpClient.post).not.toHaveBeenCalled();
         });
 
@@ -273,7 +272,7 @@ describe('authInterceptor', () => {
             const next: HttpHandlerFn = () => {
                 callCount++;
                 if (callCount === 1) return throwError(() => error) as ReturnType<HttpHandlerFn>;
-                return of({}) as ReturnType<HttpHandlerFn>; // ← retry réussit
+                return of({}) as ReturnType<HttpHandlerFn>;
             };
 
             interceptor(req, next).subscribe({ error: () => { } });
@@ -298,7 +297,7 @@ describe('authInterceptor', () => {
             const next: HttpHandlerFn = () => {
                 callCount++;
                 if (callCount === 1) return throwError(() => error) as ReturnType<HttpHandlerFn>;
-                return of({}) as ReturnType<HttpHandlerFn>; // ← succès au retry
+                return of({}) as ReturnType<HttpHandlerFn>;
             };
 
             interceptor(req, next).subscribe({ error: () => { } });
@@ -312,8 +311,8 @@ describe('authInterceptor', () => {
         it('should retry the original request with the new jwt after refresh', () => {
             const refreshResponse = { jwt: 'new-jwt', jwtRefresh: 'new-refresh' };
             mockStorageService.getItem
-                .mockReturnValueOnce(userConnected('old-jwt', 'old-refresh')) // first getToken call
-                .mockReturnValue(JSON.stringify(refreshResponse));            // after setItem
+                .mockReturnValueOnce(userConnected('old-jwt', 'old-refresh'))
+                .mockReturnValue(JSON.stringify(refreshResponse));
 
             mockHttpClient.post.mockReturnValue(of(refreshResponse));
 
@@ -331,7 +330,6 @@ describe('authInterceptor', () => {
 
             interceptor(req, next).subscribe();
 
-            // The retried request should carry the new JWT
             expect(lastReq?.headers.get('Authorization')).toBe('Bearer new-jwt');
         });
     });

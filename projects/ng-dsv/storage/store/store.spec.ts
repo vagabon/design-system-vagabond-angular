@@ -1,7 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { Store } from './store';
 
-// Mock simple pour removeDuplicate si nécessaire
 vi.mock('app/module/person/utils/person.utils', () => ({
     removeDuplicate: (arr: any[]) =>
         arr.filter(
@@ -81,7 +80,7 @@ describe('Store', () => {
         ]);
 
         store.updateForPage(2, [
-            { id: 1, name: 'A' }, // duplicate
+            { id: 1, name: 'A' },
             { id: 2, name: 'B' },
         ]);
 

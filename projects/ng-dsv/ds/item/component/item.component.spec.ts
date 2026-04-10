@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { DsvItemComponent } from './item.component';
 
-// Mock de la fonction isCallback
 vi.mock('@ng-vagabond-lab/ng-dsv/base', () => ({
   isCallback: vi.fn((callback: any) => {
     return callback && callback.observed !== undefined ? callback.observed : false;
@@ -61,11 +60,9 @@ describe('DsvItemComponent', () => {
 
   describe('Input properties', () => {
     it('should accept icon input', () => {
-      // Méthode 1: Utiliser setInput si disponible
       try {
         fixture.componentRef.setInput('icon', 'home');
       } catch {
-        // Méthode 2: Assigner directement au signal (fallback)
         (component as any)['icon'] = signal('home');
       }
       fixture.detectChanges();
@@ -107,7 +104,6 @@ describe('DsvItemComponent', () => {
     it('should navigate when url is provided', () => {
       const navigateSpy = vi.spyOn(router, 'navigate');
 
-      // Définir l'URL directement sur le signal
       (component as any)['url'] = signal('/dashboard');
       fixture.detectChanges();
 

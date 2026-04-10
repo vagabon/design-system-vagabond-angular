@@ -16,7 +16,6 @@ describe('FileUploadComponent', () => {
         fixture = TestBed.createComponent(FileUploadComponent);
         component = fixture.componentInstance;
 
-        // Simuler le ViewChild
         component.inputRef = {
             nativeElement: document.createElement('input'),
         } as unknown as ElementRef<HTMLInputElement>;
@@ -41,7 +40,6 @@ describe('FileUploadComponent', () => {
 
         component.addFiles(fileList);
 
-        // FileReader est async ; on attend le résultat
         setTimeout(() => {
             expect(component.file()).toContain('data:image/png;base64');
         }, 500);
@@ -55,7 +53,6 @@ describe('FileUploadComponent', () => {
 
         vi.spyOn(component, 'addFiles');
 
-        // Mock la propriété files
         Object.defineProperty(component.inputRef.nativeElement, 'files', {
             value: fileList,
             writable: true,
@@ -74,8 +71,6 @@ describe('FileUploadComponent', () => {
         expect(component.dragDropEnabled()).toBe(true);
     });
 });
-
-// --- Helpers ---
 
 function createMockFileList(files: File[]): FileList {
     const fileList = {

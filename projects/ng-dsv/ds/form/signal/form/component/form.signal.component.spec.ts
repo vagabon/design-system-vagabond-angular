@@ -10,8 +10,6 @@ import { provideTranslateService, TranslatePipe } from '@ngx-translate/core';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { FormSignalComponent } from './form.signal.component';
 
-// ─── Mocks ────────────────────────────────────────────────────────────────────
-
 vi.mock('@ng-vagabond-lab/ng-dsv/base', () => ({
   isCallback: vi.fn(),
 }));
@@ -33,8 +31,6 @@ const makeFieldTree = (valid: boolean, value: unknown = {}) => {
   const form = makeForm(valid, value);
   return vi.fn().mockReturnValue(form);
 };
-
-// ─── Tests ────────────────────────────────────────────────────────────────────
 
 describe('FormSignalComponent', () => {
   let fixture: ComponentFixture<FormSignalComponent<unknown>>;
@@ -68,8 +64,6 @@ describe('FormSignalComponent', () => {
     fixture.detectChanges();
   });
 
-  // ── Inputs / defaults ───────────────────────────────────────────────────────
-
   describe('inputs', () => {
     it('should have default textValid = "ENREGISTRER"', () => {
       expect(component.textValid()).toBe('ENREGISTRER');
@@ -98,8 +92,6 @@ describe('FormSignalComponent', () => {
     });
   });
 
-  // ── goBack ──────────────────────────────────────────────────────────────────
-
   describe('goBack()', () => {
     it('should emit callbackBack', () => {
       const spy = vi.spyOn(component.callbackBack, 'emit');
@@ -107,8 +99,6 @@ describe('FormSignalComponent', () => {
       expect(spy).toHaveBeenCalledTimes(1);
     });
   });
-
-  // ── onSubmit ────────────────────────────────────────────────────────────────
 
   describe('onSubmit()', () => {
     it('should call event.preventDefault()', () => {

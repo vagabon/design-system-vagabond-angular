@@ -1,4 +1,3 @@
-// auth.component.spec.ts
 import { CommonModule } from '@angular/common';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -88,7 +87,6 @@ describe('AuthComponent', () => {
     authServiceMock.userConnected.mockReturnValue({ user: { id: '1' } });
     fixture.detectChanges();
 
-    // Simule l’appel du callback du modal alert
     component.logout();
     expect(authServiceMock.logout).toHaveBeenCalled();
   });
@@ -96,7 +94,6 @@ describe('AuthComponent', () => {
   it('should trigger loginWithGoogle effect if user not connected', () => {
     authServiceMock.userConnected.mockReturnValue(null);
 
-    // Force re-run effects
     fixture.detectChanges();
 
     expect(authGoogleServiceMock.loginWithGoogle).toHaveBeenCalled();

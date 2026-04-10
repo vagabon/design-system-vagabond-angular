@@ -9,7 +9,6 @@ describe('ScrollService', () => {
     let mockLocation: { href: string };
 
     beforeEach(() => {
-        // Mock de window.location
         originalLocation = window.location;
         mockLocation = { href: 'http://test.com' };
         (window as any).location = mockLocation;
@@ -23,7 +22,6 @@ describe('ScrollService', () => {
     });
 
     afterEach(() => {
-        // Restaurer window.location
         (window as any).location = originalLocation;
         vi.useRealTimers();
     });

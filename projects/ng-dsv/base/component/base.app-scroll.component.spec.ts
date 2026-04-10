@@ -46,7 +46,6 @@ describe('BaseAppScrollComponent', () => {
 
     component = TestBed.inject(TestComponent);
 
-    // Mock le div.scroll dans le DOM
     const div = document.createElement('div');
     div.className = 'scroll';
     div.scrollTop = 200;
@@ -70,7 +69,7 @@ describe('BaseAppScrollComponent', () => {
     routerEvents$.next(scrollEvent);
 
     const div = document.getElementsByClassName('scroll')[0] as any;
-    // attendre le setTimeout
+
     await new Promise((resolve) => setTimeout(resolve, 120));
 
     expect(div.scrollTo).toHaveBeenCalledWith(0, 150);

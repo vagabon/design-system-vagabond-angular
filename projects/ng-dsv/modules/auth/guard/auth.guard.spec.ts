@@ -1,4 +1,3 @@
-// auth.guard.spec.ts
 import { createEnvironmentInjector, EnvironmentInjector, runInInjectionContext } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { AuthService } from '@ng-vagabond-lab/ng-dsv/modules/auth';
