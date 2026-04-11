@@ -16,7 +16,7 @@
     [max]="adminService.tabs().max!"
     [url]="'/admin/' + tab()"
   ></dsv-table>
-  <app-paginate-component
+  <dsv-paginate-component
     [page]="page()"
     [max]="adminService.datas().totalPages!"
     (callback)="gotoPage($event)"

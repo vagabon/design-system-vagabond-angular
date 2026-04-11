@@ -7,8 +7,8 @@ export const SCROLL_BOTTOM_MIN = 100;
 @Component({
   selector: 'dsv-scroll-infinite',
   imports: [],
-  templateUrl: './scroll.infinite.container.html',
-  styleUrls: ['./scroll.infinite.container.scss'],
+  templateUrl: './scroll.infinite.component.html',
+  styleUrls: ['./scroll.infinite.component.scss'],
 })
 export class ScrollInfiniteContainer {
   platformService = inject(PlatformService);

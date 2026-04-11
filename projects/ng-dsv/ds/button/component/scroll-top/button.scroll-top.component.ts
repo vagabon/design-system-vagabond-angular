@@ -3,7 +3,7 @@ import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { DsvButtonComponent } from '../button.component';
 
 @Component({
-  selector: 'app-scroll-top-button',
+  selector: 'dsv-scroll-top-button',
   imports: [DsvButtonComponent],
   templateUrl: './button.scroll-top.component.html',
   styleUrls: ['./button.scroll-top.component.scss'],

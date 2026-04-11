@@ -7,7 +7,7 @@ import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-form-reactive',
+  selector: 'dsv-form-reactive',
   imports: [ReactiveFormsModule, DsvButtonComponent, RouterLink, TranslatePipe],
   templateUrl: './form.reactive.component.html',
   styleUrl: './form.reactive.component.scss',

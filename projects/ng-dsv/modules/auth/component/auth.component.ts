@@ -15,7 +15,7 @@ import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { AuthGoogleService, AuthService } from '../public-api';
 
 @Component({
-  selector: 'app-auth',
+  selector: 'dsv-auth',
   imports: [CommonModule, ModalButtonComponent, ModalAlertComponent],
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],

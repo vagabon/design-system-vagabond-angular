@@ -9,7 +9,7 @@ import { AdminTabDto } from '../../dto/admin.dto';
 import { AdminService } from '../../service/admin.service';
 
 @Component({
-  selector: 'dsv-admin-form',
+  selector: 'app-admin-form',
   imports: [DsvCardComponent, AdminFormComponent],
   templateUrl: './admin.form.container.html',
   styleUrls: ['./admin.form.container.scss'],

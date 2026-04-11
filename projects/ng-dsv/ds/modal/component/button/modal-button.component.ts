@@ -4,7 +4,7 @@ import { ButtonVariantType, ColorType } from '@ng-vagabond-lab/ng-dsv/type';
 import { ModalService } from '../../service/modal.service';
 
 @Component({
-  selector: 'app-modal-button',
+  selector: 'dsv-modal-button',
   imports: [DsvButtonComponent],
   templateUrl: './modal-button.component.html',
 })

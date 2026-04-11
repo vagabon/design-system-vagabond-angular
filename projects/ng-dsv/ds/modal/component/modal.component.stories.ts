@@ -33,8 +33,8 @@ export const Default: Story = {
   args: {},
   render: (args: any) => ({
     template: `
-      <app-modal-button id="${args.id}" icon="ri-add-line" text="add" variant="contained">
-        <app-modal id="${args.id}" titleText="${args.title}" class="${args.class}">
+      <dsv-modal-button id="${args.id}" icon="ri-add-line" text="add" variant="contained">
+        <dsv-modal id="${args.id}" titleText="${args.title}" class="${args.class}">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
           Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
           when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
@@ -42,8 +42,8 @@ export const Default: Story = {
           remaining essentially unchanged. It was popularised in the 1960s with the release of 
           Letraset sheets containing Lorem Ipsum passages, and more recently with desktop 
           publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </app-modal>
-      </app-modal-button>
+        </dsv-modal>
+      </dsv-modal-button>
     `,
   }),
 };

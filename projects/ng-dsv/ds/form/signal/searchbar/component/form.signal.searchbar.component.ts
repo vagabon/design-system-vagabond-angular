@@ -7,7 +7,7 @@ import {
 } from '../../public-api';
 
 @Component({
-  selector: 'form-signal-searchbar',
+  selector: 'dsv-form-signal-searchbar',
   imports: [FormSignalComponent, FormSignalInputComponent],
   templateUrl: './form.signal.searchbar.component.html',
   styleUrls: ['../../../reactive/searchbar/component/reactive.searchbar.component.scss'],

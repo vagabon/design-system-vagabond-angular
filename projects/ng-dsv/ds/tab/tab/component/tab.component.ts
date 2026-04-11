@@ -4,7 +4,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { TabDto } from '../dto/tab.dto';
 
 @Component({
-  selector: 'app-tab-component',
+  selector: 'dsv-tab-component',
   imports: [TranslatePipe, RouterLink],
   templateUrl: './tab.component.html',
   styleUrls: ['./tab.component.scss'],

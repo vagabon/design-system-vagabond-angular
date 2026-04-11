@@ -8,7 +8,7 @@ import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-form-signal',
+  selector: 'dsv-form-signal',
   imports: [DsvButtonComponent, RouterLink, TranslatePipe],
   templateUrl: './form.signal.component.html',
   styleUrl: '../../../reactive/form/component/form.reactive.component.scss',

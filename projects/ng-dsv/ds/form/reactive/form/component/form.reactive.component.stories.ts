@@ -14,7 +14,7 @@ export const ActionsData = {
   standalone: true,
   imports: [FormReactiveComponent, FormReactiveInputComponent, FormReactiveCheckboxComponent, FormReactiveSelectComponent, ReactiveFormsModule],
   template: `
-    <app-form-reactive [form]="form" urlBack="urlBack" (callback)="callback($event)">
+    <dsv-form-reactive [form]="form" urlBack="urlBack" (callback)="callback($event)">
       <dsv-form-reactive-input [form]="form" field="name" />
       <dsv-form-reactive-input [form]="form" type="number" field="number" />
       <dsv-form-reactive-input [form]="form" type="range" field="range" />
@@ -22,7 +22,7 @@ export const ActionsData = {
       <dsv-form-reactive-input [form]="form" type="textarea" field="textarea" />
       <dsv-form-reactive-select [form]="form" field="select" [list]="[{id: '', name: ''}, {id: '1', name: 'Test'}]" />
       <dsv-form-reactive-checkbox [form]="form" field="checkbox" />
-    </app-form-reactive>
+    </dsv-form-reactive>
   `,
   styles: [
     `
@@ -79,7 +79,7 @@ export const Default: Story = {
     docs: {
       source: {
         code: `
-          <app-form-reactive [form]="form" urlBack="urlBack" (callback)="callback($event)">
+          <dsv-form-reactive [form]="form" urlBack="urlBack" (callback)="callback($event)">
             <dsv-form-reactive-input [form]="form" field="name" />
             <dsv-form-reactive-input [form]="form" type="number" field="number" />
             <dsv-form-reactive-input [form]="form" type="range" field="range" />
@@ -87,7 +87,7 @@ export const Default: Story = {
             <dsv-form-reactive-input [form]="form" type="textarea" field="textarea" />
             <dsv-form-reactive-select [form]="form" field="select" [list]="[{id: '', name: ''}, {id: '1', name: 'Test'}]" />
             <dsv-form-reactive-checkbox [form]="form" field="checkbox" />
-          </app-form-reactive>
+          </dsv-form-reactive>
         `,
       },
     },

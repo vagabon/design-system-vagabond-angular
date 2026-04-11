@@ -8,9 +8,9 @@ import { FormReactiveComponent } from './form.reactive.component';
 
 @Component({
   template: `
-    <app-form-reactive [form]="form">
+    <dsv-form-reactive [form]="form">
       <button type="submit">Submit</button>
-    </app-form-reactive>
+    </dsv-form-reactive>
   `,
   imports: [FormReactiveComponent, ReactiveFormsModule],
 })

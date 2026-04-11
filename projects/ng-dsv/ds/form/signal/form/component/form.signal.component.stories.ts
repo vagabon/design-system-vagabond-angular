@@ -92,7 +92,7 @@ export const Default: Story = {
     docs: {
       source: {
         code: `
-          <app-form-signal [form]="myForm" [urlBack]="urlBack()" (callback)="callback($event)">
+          <dsv-form-signal [form]="myForm" [urlBack]="urlBack()" (callback)="callback($event)">
             <dsv-form-signal-input [form]="myForm" fieldName="name" />
             <dsv-form-signal-input [form]="myForm" type="email" fieldName="email" />
             <dsv-form-signal-input [form]="myForm" type="number" fieldName="number" />
@@ -101,7 +101,7 @@ export const Default: Story = {
             <dsv-form-signal-input [form]="myForm" type="textarea" fieldName="textarea" />
             <dsv-form-signal-select [form]="myForm" fieldName="select" [list]="[{id: '', name: ''}, {id: '1', name: 'Test'}]" />
             <dsv-form-signal-checkbox [form]="myForm" fieldName="checkbox" />
-          </app-form-signal>
+          </dsv-form-signal>
 
           
           class FormComponent {

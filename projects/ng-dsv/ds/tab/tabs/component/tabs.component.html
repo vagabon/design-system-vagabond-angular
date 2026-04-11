@@ -1,7 +1,7 @@
 <div>
   <div>
     @for (tab of tabs(); track tab.id) {
-      <app-tab-component
+      <dsv-tab-component
         [tab]="tab"
         [isSelected]="active().trim() === tab.id.trim()"
         (callback)="doClick($event)"

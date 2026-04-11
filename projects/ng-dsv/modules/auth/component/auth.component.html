@@ -8,14 +8,14 @@
 @if (authService.userConnected()) {
   <div class="profile">
     <img [src]="authService.userConnected()?.user?.avatar" alt="profile" />
-    <app-modal-button id="logout" icon="ri-logout-box-line" />
+    <dsv-modal-button id="logout" icon="ri-logout-box-line" />
   </div>
-  <app-modal-alert
+  <dsv-modal-alert
     id="logout"
     title="Déconnexion"
     text="Voulez-vous vraiment vous déconnecter ?"
     button="Oui"
     buttonClose="Non"
     (callback)="logout()"
-  ></app-modal-alert>
+  ></dsv-modal-alert>
 }

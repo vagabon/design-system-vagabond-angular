@@ -853,7 +853,7 @@
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts",
+                "file": "projects/ng-dsv/ds/file/show/component/file.show.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
@@ -1083,7 +1083,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts",
+                "file": "projects/ng-dsv/ds/file/show/component/file.show.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -1117,7 +1117,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `\n      <app-modal-button id=\"${args.id}\" text=\"Clic\">\n        <app-modal-alert \n          id=\"${args.id}\" \n          titleText=\"${args.title}\" \n          text=\"${args.text}\" \n          button=\"${args.button}\" \n          buttonClose=\"${args.buttonClose}\" \n          (callback)=\"${args.callback}\">\n        </app-modal-alert>\n      </app-modal-button>\n    `,\n  }),\n}"
+                "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `\n      <dsv-modal-button id=\"${args.id}\" text=\"Clic\">\n        <dsv-modal-alert \n          id=\"${args.id}\" \n          titleText=\"${args.title}\" \n          text=\"${args.text}\" \n          button=\"${args.button}\" \n          buttonClose=\"${args.buttonClose}\" \n          (callback)=\"${args.callback}\">\n        </dsv-modal-alert>\n      </dsv-modal-button>\n    `,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -1413,7 +1413,7 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts",
+                "file": "projects/ng-dsv/ds/file/show/component/file.show.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<FileShowComponent>",
@@ -1903,7 +1903,7 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "StoryObj<FileShowComponent>",
-                "file": "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts",
+                "file": "projects/ng-dsv/ds/file/show/component/file.show.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2650,12 +2650,12 @@
                     "defaultValue": "{\n  title: 'dsv/Button/scrollTop',\n  component: ButtonScrollTopComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
                 }
             ],
-            "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts": [
+            "projects/ng-dsv/ds/file/show/component/file.show.component.stories.ts": [
                 {
                     "name": "ActionsData",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/file/show/component/file.show.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
@@ -2665,7 +2665,7 @@
                     "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/file/show/component/file.show.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -2675,7 +2675,7 @@
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/file/show/component/file.show.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<FileShowComponent>",
@@ -2775,7 +2775,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `\n      <app-modal-button id=\"${args.id}\" text=\"Clic\">\n        <app-modal-alert \n          id=\"${args.id}\" \n          titleText=\"${args.title}\" \n          text=\"${args.text}\" \n          button=\"${args.button}\" \n          buttonClose=\"${args.buttonClose}\" \n          (callback)=\"${args.callback}\">\n        </app-modal-alert>\n      </app-modal-button>\n    `,\n  }),\n}"
+                    "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `\n      <dsv-modal-button id=\"${args.id}\" text=\"Clic\">\n        <dsv-modal-alert \n          id=\"${args.id}\" \n          titleText=\"${args.title}\" \n          text=\"${args.text}\" \n          button=\"${args.button}\" \n          buttonClose=\"${args.buttonClose}\" \n          (callback)=\"${args.callback}\">\n        </dsv-modal-alert>\n      </dsv-modal-button>\n    `,\n  }),\n}"
                 },
                 {
                     "name": "meta",
@@ -3398,13 +3398,13 @@
                     "kind": 184
                 }
             ],
-            "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts": [
+            "projects/ng-dsv/ds/file/show/component/file.show.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "rawtype": "StoryObj<FileShowComponent>",
-                    "file": "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/file/show/component/file.show.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -3991,7 +3991,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts",
+                "filePath": "projects/ng-dsv/ds/file/show/component/file.show.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -4001,7 +4001,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts",
+                "filePath": "projects/ng-dsv/ds/file/show/component/file.show.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -4011,7 +4011,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts",
+                "filePath": "projects/ng-dsv/ds/file/show/component/file.show.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -4021,7 +4021,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/ds/file/show/container/file.show.component.stories.ts",
+                "filePath": "projects/ng-dsv/ds/file/show/component/file.show.component.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",

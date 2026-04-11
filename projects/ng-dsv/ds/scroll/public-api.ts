@@ -1,1 +1,1 @@
-export * from './container/scroll.infinite.container';
+export * from './component/scroll.infinite.component';

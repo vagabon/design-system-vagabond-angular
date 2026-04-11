@@ -4,7 +4,7 @@ import { MenuService } from '@ng-vagabond-lab/ng-dsv/ds/menu';
 import { ModalService } from '../service/modal.service';
 
 @Component({
-  selector: 'app-modal',
+  selector: 'dsv-modal',
   imports: [DsvButtonComponent],
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],

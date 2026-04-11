@@ -2,7 +2,7 @@ import { Component, input, signal } from "@angular/core";
 import { ButtonVariantType, ButtonWidthType, ColorType } from "@ng-vagabond-lab/ng-dsv/type";
 
 @Component({
-    selector: 'base-color',
+    selector: 'dsv-base-color',
     imports: [],
     template: ''
 })

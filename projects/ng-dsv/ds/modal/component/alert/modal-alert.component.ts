@@ -12,7 +12,7 @@ import { ModalService } from '../../service/modal.service';
 import { ModalComponent } from '../modal.component';
 
 @Component({
-  selector: 'app-modal-alert',
+  selector: 'dsv-modal-alert',
   imports: [ModalComponent, DsvButtonComponent, TranslatePipe],
   templateUrl: './modal-alert.component.html',
 })

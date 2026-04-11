@@ -18,15 +18,15 @@ import { ManyToManyDto } from '../../dto/admin.dto';
 import { AdminService } from '../../service/admin.service';
 
 @Component({
-  selector: 'admin-search-modal',
+  selector: 'app-admin-search-modal',
   imports: [
     DsvItemComponent,
     ModalButtonComponent,
     ModalComponent,
     ReactiveSearchbarComponent,
   ],
-  templateUrl: './admin.search.modal.container.html',
-  styleUrls: ['./admin.search.modal.container.scss'],
+  templateUrl: './admin.search.modal.component.html',
+  styleUrls: ['./admin.search.modal.component.scss'],
 })
 export class AdminSearchModalContainer {
   modalService = inject(ModalService);

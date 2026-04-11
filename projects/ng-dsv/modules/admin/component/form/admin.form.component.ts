@@ -8,8 +8,8 @@ import {
   FormReactiveComponent,
   FormReactiveInputComponent,
 } from '@ng-vagabond-lab/ng-dsv/ds/form/reactive';
-import { AdminSearchModalContainer } from '../../container/modal/admin.search.modal.container';
 import { FormDto } from '../../dto/admin.dto';
+import { AdminSearchModalContainer } from '../modal/admin.search.modal.component';
 
 @Component({
   selector: 'dsv-admin-form-component',

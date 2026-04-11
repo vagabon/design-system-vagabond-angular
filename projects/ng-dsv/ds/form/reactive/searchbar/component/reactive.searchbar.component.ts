@@ -6,7 +6,7 @@ import {
 } from '../../public-api';
 
 @Component({
-  selector: 'form-reactive-searchbar',
+  selector: 'dsv-form-reactive-searchbar',
   imports: [FormReactiveComponent, FormReactiveInputComponent],
   templateUrl: './reactive.searchbar.component.html',
   styleUrls: ['./reactive.searchbar.component.scss'],

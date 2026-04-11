@@ -1,14 +1,14 @@
 import { Component, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { LinearProgressComponent } from './linear-progress.component';
-import { describe, beforeEach, it, expect } from 'vitest';
 
 @Component({
-  template: `<app-linear-progress
+  template: `<dsv-linear-progress
     [load]="load"
     [value]="value"
     [indeterminate]="indeterminate"
-  ></app-linear-progress>`,
+  ></dsv-linear-progress>`,
   imports: [LinearProgressComponent],
 })
 class TestHostComponent {
@@ -34,7 +34,7 @@ describe('LinearProgressComponent', () => {
 
   it('should create the component', () => {
     const linearProgressEl = fixture.nativeElement.querySelector(
-      'app-linear-progress',
+      'dsv-linear-progress',
     );
     expect(linearProgressEl).toBeTruthy();
   });
