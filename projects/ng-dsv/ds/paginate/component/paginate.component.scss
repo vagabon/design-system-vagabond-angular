@@ -8,16 +8,16 @@
 
 }
 
-::ng-deep app-paginate-component button {
+::ng-deep dsv-paginate button {
     border-radius: 50% !important;
 }
 
-::ng-deep app-paginate-component button:disabled {
+::ng-deep dsv-paginate button:disabled {
     background: transparent !important;
     color: rgba(0, 0, 0, 0.26) !important;
     background: inherit !important;
 }
 
-::ng-deep .dark app-paginate-component button:disabled {
+::ng-deep .dark dsv-paginate button:disabled {
     color: rgba(255, 255, 255, 0.3) !important;
 }

@@ -18,7 +18,7 @@ import { ManyToManyDto } from '../../dto/admin.dto';
 import { AdminService } from '../../service/admin.service';
 
 @Component({
-  selector: 'app-admin-search-modal',
+  selector: 'dsv-admin-search-modal',
   imports: [
     DsvItemComponent,
     ModalButtonComponent,

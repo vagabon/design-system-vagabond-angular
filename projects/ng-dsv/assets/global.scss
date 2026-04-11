@@ -37,16 +37,33 @@ p {
     display: flex;
 }
 
+.flex1 {
+    flex: 1;
+}
+
 .flex-column {
     flex-direction: column;
 }
 
-.gap10 {
+.justify-end {
+    justify-content: flex-end;
+}
+
+.gap-5 {
+    gap: 5px;
+}
+
+.gap10,
+.gap-10 {
     gap: 10px;
 }
 
-.flex1 {
-    flex: 1;
+.margin-top-5 {
+    margin-top: 5px;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
 }
 
 .hidden {
@@ -70,6 +87,10 @@ h2 {
 
 form {
     width: 100%;
+}
+
+hr {
+    margin: 20px 0px;
 }
 
 

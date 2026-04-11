@@ -12,7 +12,7 @@ import { FormDto } from '../../dto/admin.dto';
 import { AdminSearchModalContainer } from '../modal/admin.search.modal.component';
 
 @Component({
-  selector: 'dsv-admin-form-component',
+  selector: 'dsv-admin-form',
   imports: [
     ReactiveFormsModule,
     DsvChipComponent,

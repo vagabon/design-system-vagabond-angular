@@ -32,7 +32,7 @@
                   (delete)="removeValue(field.name, value.id)()"
                 />
               }
-              <app-admin-search-modal
+              <dsv-admin-search-modal
                 [m2em]="field.m2m!"
                 (callback)="addValue(field.name)($event)"
               />

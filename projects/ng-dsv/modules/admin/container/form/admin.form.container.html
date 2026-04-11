@@ -1,5 +1,5 @@
 <dsv-card [titleText]="adminService.data().id ? 'Modification' : 'Ajout'">
-  <dsv-admin-form-component
+  <dsv-admin-form
     [data]="adminService.data()"
     [formConf]="tabConfig()?.form!"
     [urlBack]="'/admin/' + tab()"

@@ -2,7 +2,7 @@ import { Component, input, output } from '@angular/core';
 import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
 
 @Component({
-  selector: 'dsv-paginate-component',
+  selector: 'dsv-paginate',
   imports: [DsvButtonComponent],
   templateUrl: './paginate.component.html',
   styleUrls: ['./paginate.component.scss'],

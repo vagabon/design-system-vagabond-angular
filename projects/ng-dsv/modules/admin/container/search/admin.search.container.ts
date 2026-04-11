@@ -11,7 +11,7 @@ import { AdminTabDto } from '../../dto/admin.dto';
 import { AdminService } from '../../service/admin.service';
 
 @Component({
-  selector: 'app-admin-search',
+  selector: 'dsv-admin-search',
   imports: [
     DsvCardComponent,
     DsvButtonComponent,
