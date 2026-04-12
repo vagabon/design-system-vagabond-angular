@@ -7,7 +7,18 @@
       @if (img()) {
         <img src="{{ img() }}" alt="logo" />
       }
-      <span>{{ titleText() }}</span>
+      <div>
+        @for (
+          titleText of titleTextParts();
+          track titleText;
+          let index = $index
+        ) {
+          <span class="title-{{ index }}">{{ titleText }}</span>
+          @if (index < titleTextParts().length - 1) {
+            <span>&nbsp;</span>
+          }
+        }
+      </div>
     </a>
   </div>
   <ng-content></ng-content>

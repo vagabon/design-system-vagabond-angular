@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, input } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   DsvMenuButtonComponent,
@@ -19,6 +19,8 @@ export class DsvHeaderComponent {
   img = input<string>();
   titleText = input<string>('');
   withMenu = input<boolean>(true);
+
+  titleTextParts = computed(() => this.titleText().split(' '));
 
   doToogleMenu() {
     this.menuService.toogleMenu();
