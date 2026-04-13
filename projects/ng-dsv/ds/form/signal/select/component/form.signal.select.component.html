@@ -25,9 +25,10 @@
           </option>
         }
       </select>
-      @if (isTouched()) {
-        <dsv-signal-form-error [errors]="getSignal()().errors()" />
-      }
+      <dsv-signal-form-error
+        [errors]="getSignal()().errors()"
+        [isTouched]="isTouched()"
+      />
     </div>
   }
 </div>

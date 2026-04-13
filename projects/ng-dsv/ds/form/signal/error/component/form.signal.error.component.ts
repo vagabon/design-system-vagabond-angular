@@ -10,6 +10,7 @@ import { TranslatePipe } from "@ngx-translate/core";
 })
 export class FormSignalErrorComponent {
     errors = input.required<ValidationError[]>();
+    isTouched = input<boolean>(false);
 
     error = signal<string>('');
 

@@ -19,6 +19,7 @@ describe('FormSignalErrorComponent', () => {
 
         fixture = TestBed.createComponent(FormSignalErrorComponent);
         component = fixture.componentInstance;
+        component.isTouched = signal(true) as unknown as InputSignal<boolean>;
     });
 
     it('should create', () => {

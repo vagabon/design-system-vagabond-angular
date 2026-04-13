@@ -1,4 +1,4 @@
-@if (errors().length > 0) {
+@if (errors().length > 0 && isTouched()) {
   @if (error() !== "") {
     <div>{{ error() | translate }}</div>
   }

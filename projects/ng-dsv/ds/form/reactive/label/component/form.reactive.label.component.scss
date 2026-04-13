@@ -1,11 +1,15 @@
 :host {
-    margin-bottom: .5rem;
+    margin-left: 4px;
+    margin-bottom: 5px;
+    height: 100%;
     display: flex;
     align-content: center;
     opacity: 0.65;
     user-select: none;
 
     label {
+        display: flex;
+        align-items: center;
         width: 100%;
     }
 }
