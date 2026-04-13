@@ -1,5 +1,5 @@
 import { Component, input, signal } from '@angular/core';
-import { email, form, maxLength, minLength, pattern, required } from '@angular/forms/signals';
+import { email, form, max, maxLength, min, minLength, pattern, required } from '@angular/forms/signals';
 import { JSONValue } from '@ng-vagabond-lab/ng-dsv/api';
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { FormSignalCheckboxComponent } from '../../checkbox/component/form.signal.checkbox.component';
@@ -54,6 +54,9 @@ class FormSignalWrapperComponent {
     email(path.email);
     required(path.textarea);
     required(path.select);
+
+    min(path.number, 1);
+    max(path.number, 5);
   });
 
   urlBack = input<string>('/');

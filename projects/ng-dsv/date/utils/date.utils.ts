@@ -10,3 +10,13 @@ export const formatDate = (dateString: string): string => {
 
     return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
+
+export function toDateInputValue(value: string | null | undefined): string {
+    if (!value) return '';
+    return value.includes('T') ? value.split('T')[0] : value;
+}
+
+export function toBackendDate(value: string | null | undefined): string {
+    if (!value) return '';
+    return value.includes('T') ? value : `${value}T00:00:00`;
+}

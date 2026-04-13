@@ -15,6 +15,7 @@ import { FormSignalInputBase } from '../../public-api';
   ],
 })
 export class FormSignalSelectComponent<T> extends FormSignalInputBase<T> {
+  multiple = input<boolean>(false);
 
   list = input<(ApiDto & { name: string })[]>([]);
 

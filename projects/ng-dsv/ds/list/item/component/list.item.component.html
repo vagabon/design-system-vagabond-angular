@@ -1,0 +1,16 @@
+<li
+  #liRef
+  [attr.data-index]="index()"
+  [draggable]="false"
+  [class.dragging]="listDragService.dragSrcIndex() === index()"
+  [class.drag-over]="listDragService.dragSrcIndex() === index()"
+  (dragover)="onDragOver($event)"
+  (drop)="onDrop(index(), $event)"
+  (dragstart)="onDragStart(index(), $event)"
+  (dragend)="onDragEnd()"
+  (touchstart)="onTouchStart($event)"
+  (touchmove)="onTouchMove($event)"
+  (touchend)="onTouchEnd($event)"
+>
+  <ng-content></ng-content>
+</li>

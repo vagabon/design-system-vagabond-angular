@@ -1,0 +1,10 @@
+:host {
+    .drag-handle {
+        cursor: grab;
+        transition: opacity 0.15s;
+
+        &:active {
+            cursor: grabbing;
+        }
+    }
+}

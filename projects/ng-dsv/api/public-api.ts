@@ -4,4 +4,5 @@ export * from './interceptor/api.interceptor';
 export * from './service/api.promise.service';
 export * from './service/api.resource.service';
 export * from './service/api.service';
+export * from './service/search/base.search.service';
 

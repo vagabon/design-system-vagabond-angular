@@ -143,7 +143,7 @@
     "components": [
         {
             "name": "FormSignalWrapperComponent",
-            "id": "component-FormSignalWrapperComponent-44490e03be004e50e43433b7f157ce91be888cfdad6ad6ad2b579f02412ba90a59bb9c6b4953d00d35d7997badcbf8d150199fef09712045eefbb25a99b20ae4",
+            "id": "component-FormSignalWrapperComponent-16e5ee4337717f234b50568d9594f7355a88a7ef2ac38229aed9949093afa22306e933e8a7507a4b88621fd305e2ae44edc1a579044bf7a50b08833681e1b621",
             "file": "projects/ng-dsv/ds/form/signal/form/component/form.signal.component.stories.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -155,7 +155,7 @@
             "styles": [
                 "\n      :host {\n        width: 100%;\n      }\n    "
             ],
-            "template": "<app-form-signal [form]=\"myForm\" [urlBack]=\"urlBack()\" (callback)=\"callback($event)\">\n  <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"email\" fieldName=\"email\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n  <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n  <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n</app-form-signal>\n",
+            "template": "<dsv-form-signal [form]=\"myForm\" [urlBack]=\"urlBack()\" (callback)=\"callback($event)\">\n  <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"email\" fieldName=\"email\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n  <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n  <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n  <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n</dsv-form-signal>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -169,7 +169,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 59,
+                    "line": 62,
                     "required": false
                 }
             ],
@@ -184,11 +184,11 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 61
+                    "line": 64
                 },
                 {
                     "name": "myForm",
-                    "defaultValue": "form(signal({\n    name: '',\n    email: '',\n    number: 0,\n    range: 50,\n    date: '',\n    textarea: '',\n    select: '',\n    checkbox: false,\n  }), path => {\n    required(path.name);\n    minLength(path.name, 2);\n    maxLength(path.name, 10);\n    required(path.email);\n    pattern(path.email, /^\\w+@gmail.com$/, { message: \"L'email doit se terminer par gmail.com\" });\n    email(path.email);\n    required(path.textarea);\n    required(path.select);\n  })",
+                    "defaultValue": "form(signal({\n    name: '',\n    email: '',\n    number: 0,\n    range: 50,\n    date: '',\n    textarea: '',\n    select: '',\n    checkbox: false,\n  }), path => {\n    required(path.name);\n    minLength(path.name, 2);\n    maxLength(path.name, 10);\n    required(path.email);\n    pattern(path.email, /^\\w+@gmail.com$/, { message: \"L'email doit se terminer par gmail.com\" });\n    email(path.email);\n    required(path.textarea);\n    required(path.select);\n\n    min(path.number, 1);\n    max(path.number, 5);\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -225,7 +225,69 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, input, signal } from '@angular/core';\nimport { email, form, maxLength, minLength, pattern, required } from '@angular/forms/signals';\nimport { JSONValue } from '@ng-vagabond-lab/ng-dsv/api';\nimport { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';\nimport { FormSignalCheckboxComponent } from '../../checkbox/component/form.signal.checkbox.component';\nimport { FormSignalInputComponent } from '../../public-api';\nimport { FormSignalSelectComponent } from '../../select/component/form.signal.select.component';\nimport { FormSignalComponent } from './form.signal.component';\n\nexport const ActionsData = {\n  urlBack: '/',\n};\n\n@Component({\n  selector: 'storybook-wrapper',\n  standalone: true,\n  imports: [FormSignalComponent, FormSignalInputComponent, FormSignalSelectComponent, FormSignalCheckboxComponent],\n  template: `\n    <app-form-signal [form]=\"myForm\" [urlBack]=\"urlBack()\" (callback)=\"callback($event)\">\n      <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"email\" fieldName=\"email\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n      <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n      <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n    </app-form-signal>\n  `,\n  styles: [\n    `\n      :host {\n        width: 100%;\n      }\n    `,\n  ]\n})\nclass FormSignalWrapperComponent {\n  myForm = form(signal({\n    name: '',\n    email: '',\n    number: 0,\n    range: 50,\n    date: '',\n    textarea: '',\n    select: '',\n    checkbox: false,\n  }), path => {\n    required(path.name);\n    minLength(path.name, 2);\n    maxLength(path.name, 10);\n    required(path.email);\n    pattern(path.email, /^\\w+@gmail.com$/, { message: \"L'email doit se terminer par gmail.com\" });\n    email(path.email);\n    required(path.textarea);\n    required(path.select);\n  });\n\n  urlBack = input<string>('/');\n\n  callback = (data: JSONValue) => {\n    console.log(data);\n  }\n}\n\nconst meta: Meta<FormSignalWrapperComponent> = {\n  title: 'dsv/Form/Signal',\n  component: FormSignalWrapperComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  parameters: {\n    controls: { exclude: ['form'] },\n  },\n  decorators: [\n    moduleMetadata({\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<FormSignalWrapperComponent>;\n\nexport const Default: Story = {\n  args: {\n    urlBack: '/',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <dsv-form-signal [form]=\"myForm\" [urlBack]=\"urlBack()\" (callback)=\"callback($event)\">\n            <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"email\" fieldName=\"email\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n            <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n          </dsv-form-signal>\n\n          \n          class FormComponent {\n            myForm = form(signal({\n              name: '',\n              email: '',\n              number: 0,\n              range: 50,\n              date: '',\n              textarea: '',\n              select: '',\n              checkbox: false,\n            }), path => {\n              required(path.name);\n              minLength(path.name, 2);\n              maxLength(path.name, 10);\n              required(path.email);\n              pattern(path.email, /^\\w+@gmail.com$/, { message: \"L'email doit se terminer par gmail.com\" });\n              email(path.email);\n              required(path.textarea);\n              required(path.select);\n            });\n\n            urlBack = input<string>('/');\n\n            callback = (data: JSONValue) => {\n              console.log(data);\n            }\n          }\n        `,\n      },\n    },\n  },\n};",
+            "sourceCode": "import { Component, input, signal } from '@angular/core';\nimport { email, form, max, maxLength, min, minLength, pattern, required } from '@angular/forms/signals';\nimport { JSONValue } from '@ng-vagabond-lab/ng-dsv/api';\nimport { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';\nimport { FormSignalCheckboxComponent } from '../../checkbox/component/form.signal.checkbox.component';\nimport { FormSignalInputComponent } from '../../public-api';\nimport { FormSignalSelectComponent } from '../../select/component/form.signal.select.component';\nimport { FormSignalComponent } from './form.signal.component';\n\nexport const ActionsData = {\n  urlBack: '/',\n};\n\n@Component({\n  selector: 'storybook-wrapper',\n  standalone: true,\n  imports: [FormSignalComponent, FormSignalInputComponent, FormSignalSelectComponent, FormSignalCheckboxComponent],\n  template: `\n    <dsv-form-signal [form]=\"myForm\" [urlBack]=\"urlBack()\" (callback)=\"callback($event)\">\n      <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"email\" fieldName=\"email\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n      <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n      <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n      <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n    </dsv-form-signal>\n  `,\n  styles: [\n    `\n      :host {\n        width: 100%;\n      }\n    `,\n  ]\n})\nclass FormSignalWrapperComponent {\n  myForm = form(signal({\n    name: '',\n    email: '',\n    number: 0,\n    range: 50,\n    date: '',\n    textarea: '',\n    select: '',\n    checkbox: false,\n  }), path => {\n    required(path.name);\n    minLength(path.name, 2);\n    maxLength(path.name, 10);\n    required(path.email);\n    pattern(path.email, /^\\w+@gmail.com$/, { message: \"L'email doit se terminer par gmail.com\" });\n    email(path.email);\n    required(path.textarea);\n    required(path.select);\n\n    min(path.number, 1);\n    max(path.number, 5);\n  });\n\n  urlBack = input<string>('/');\n\n  callback = (data: JSONValue) => {\n    console.log(data);\n  }\n}\n\nconst meta: Meta<FormSignalWrapperComponent> = {\n  title: 'dsv/Form/Signal',\n  component: FormSignalWrapperComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  parameters: {\n    controls: { exclude: ['form'] },\n  },\n  decorators: [\n    moduleMetadata({\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<FormSignalWrapperComponent>;\n\nexport const Default: Story = {\n  args: {\n    urlBack: '/',\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n          <dsv-form-signal [form]=\"myForm\" [urlBack]=\"urlBack()\" (callback)=\"callback($event)\">\n            <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"email\" fieldName=\"email\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"number\" fieldName=\"number\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"range\" fieldName=\"range\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"datetime-local\" fieldName=\"date\" />\n            <dsv-form-signal-input [form]=\"myForm\" type=\"textarea\" fieldName=\"textarea\" />\n            <dsv-form-signal-select [form]=\"myForm\" fieldName=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"checkbox\" />\n          </dsv-form-signal>\n\n          \n          class FormComponent {\n            myForm = form(signal({\n              name: '',\n              email: '',\n              number: 0,\n              range: 50,\n              date: '',\n              textarea: '',\n              select: '',\n              checkbox: false,\n            }), path => {\n              required(path.name);\n              minLength(path.name, 2);\n              maxLength(path.name, 10);\n              required(path.email);\n              pattern(path.email, /^\\w+@gmail.com$/, { message: \"L'email doit se terminer par gmail.com\" });\n              email(path.email);\n              required(path.textarea);\n              required(path.select);\n            });\n\n            urlBack = input<string>('/');\n\n            callback = (data: JSONValue) => {\n              console.log(data);\n            }\n          }\n        `,\n      },\n    },\n  },\n};",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "\n      :host {\n        width: 100%;\n      }\n    \n",
+            "extends": []
+        },
+        {
+            "name": "ListWrapperComponent",
+            "id": "component-ListWrapperComponent-b79ece8957121dcd8452e506bd0ad05bc913df6045518192d175e459a70f1cdf1be1ef985065e368c9d93c02ddb1fc85df2257c5a06c44fa590ce374d5f98947",
+            "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-list-wrapper",
+            "styleUrls": [],
+            "styles": [
+                "\n      :host {\n        width: 100%;\n      }\n    "
+            ],
+            "template": "<dsv-list>\n  @for(element of elements; track by element; const index = $index) {\n    <dsv-list-item  [index]=\"index\" >\n      <dsv-list-item-drag />\n      {{ element }}\n    </dsv-list-item>\n  }\n</dsv-list>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "elements",
+                    "defaultValue": "[\n    'Element 1',\n    'Element 2',\n    'Element 3',\n    'Element 4',\n    'Element 5',\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 32
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "ListComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "ListItemComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "ListItemDragComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';\nimport { ListItemComponent, ListItemDragComponent } from '../../public-api';\nimport { ListComponent } from './list.component';\n\nexport const ActionsData = {\n};\n\n@Component({\n  selector: 'app-list-wrapper',\n  standalone: true,\n  imports: [ListComponent, ListItemComponent, ListItemDragComponent],\n  template: `\n    <dsv-list>\n      @for(element of elements; track by element; const index = $index) {\n        <dsv-list-item  [index]=\"index\" >\n          <dsv-list-item-drag />\n          {{ element }}\n        </dsv-list-item>\n      }\n    </dsv-list>\n  `,\n  styles: [\n    `\n      :host {\n        width: 100%;\n      }\n    `,\n  ]\n})\nclass ListWrapperComponent {\n  elements: string[] = [\n    'Element 1',\n    'Element 2',\n    'Element 3',\n    'Element 4',\n    'Element 5',\n  ];\n}\n\nconst meta: Meta<ListWrapperComponent> = {\n  title: 'dsv/List',\n  component: ListWrapperComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<ListWrapperComponent>;\n\nexport const Default: Story = {\n  args: {\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n        `,\n      },\n    },\n  },\n};",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n      :host {\n        width: 100%;\n      }\n    \n",
@@ -873,6 +935,16 @@
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n}"
+            },
+            {
+                "name": "ActionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1098,6 +1170,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  render: (args: any) => ({\n    template: `<dsv-file-upload> \n                <img src=\"/assets/images/ic-upload-file.svg\" alt=\"\" />\n                <div>Drop your image here</div>\n              </dsv-file-upload>`,\n  }),\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n        `,\n      },\n    },\n  },\n}"
             },
             {
                 "name": "Default",
@@ -1428,6 +1510,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<FileUploadComponent>",
                 "defaultValue": "{\n  title: 'dsv/File/upload',\n  component: FileUploadComponent,\n  decorators: [\n    moduleMetadata({\n      providers: [],\n    }),\n  ],\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ListWrapperComponent>",
+                "defaultValue": "{\n  title: 'dsv/List',\n  component: ListWrapperComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
             },
             {
                 "name": "meta",
@@ -1915,6 +2007,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<FileUploadComponent>",
                 "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ListWrapperComponent>",
+                "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2714,6 +2817,38 @@
                     "defaultValue": "{\n  title: 'dsv/File/upload',\n  component: FileUploadComponent,\n  decorators: [\n    moduleMetadata({\n      providers: [],\n    }),\n  ],\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
                 }
             ],
+            "projects/ng-dsv/ds/list/list/component/list.component.stories.ts": [
+                {
+                    "name": "ActionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n  },\n  parameters: {\n    docs: {\n      source: {\n        code: `\n        `,\n      },\n    },\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ListWrapperComponent>",
+                    "defaultValue": "{\n  title: 'dsv/List',\n  component: ListWrapperComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n    }),\n  ],\n  argTypes: {},\n  args: {\n    ...ActionsData,\n  },\n}"
+                }
+            ],
             "projects/ng-dsv/ds/menu/component/contextual/menu.contextual.component.stories.ts": [
                 {
                     "name": "ActionsData",
@@ -3418,6 +3553,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<FileUploadComponent>",
                     "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/ng-dsv/ds/list/list/component/list.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ListWrapperComponent>",
+                    "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -4702,6 +4850,55 @@
             },
             {
                 "filePath": "projects/ng-dsv/ds/linear-progress/component/linear-progress.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ListWrapperComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ActionsData",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",

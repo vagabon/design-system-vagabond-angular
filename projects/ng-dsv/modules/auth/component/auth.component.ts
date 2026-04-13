@@ -21,8 +21,8 @@ import { AuthGoogleService, AuthService } from '../public-api';
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent {
-  readonly authGoogleService = inject(AuthGoogleService);
   readonly authService = inject(AuthService);
+  readonly authGoogleService = inject(AuthGoogleService);
   readonly environmentService = inject(EnvironmentService);
   readonly platformService = inject(PlatformService);
 

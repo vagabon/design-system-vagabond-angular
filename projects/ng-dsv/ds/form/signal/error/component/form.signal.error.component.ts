@@ -28,6 +28,12 @@ export class FormSignalErrorComponent {
                     case "required":
                         errorMessage = "Le champ est obligatoire.";
                         break;
+                    case "min":
+                        errorMessage = "La valeur minimum est de " + error['min' as keyof ValidationError] + ".";
+                        break;
+                    case "max":
+                        errorMessage = "La valeur maximum est de " + error['max' as keyof ValidationError] + ".";
+                        break;
                     case "minLength":
                         errorMessage = "La taille minimum est de " + error['minLength' as keyof ValidationError] + ".";
                         break;
