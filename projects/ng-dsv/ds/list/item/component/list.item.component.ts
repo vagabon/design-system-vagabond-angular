@@ -4,7 +4,6 @@ import { ListDragService } from "../../list/service/list.drag.service";
 
 @Component({
     selector: 'dsv-list-item',
-    standalone: true,
     imports: [],
     templateUrl: './list.item.component.html',
     styleUrl: './list.item.component.scss',
