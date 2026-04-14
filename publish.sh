@@ -9,7 +9,7 @@ npm run lib:build
 
 # Pause the script and wait for user input
 echo "Appuyez sur une touche pour publier sur npm..."
-read -n 1 -s -r -p ""
+read a
 
 cd dist/ng-dsv
 npm publish --access public

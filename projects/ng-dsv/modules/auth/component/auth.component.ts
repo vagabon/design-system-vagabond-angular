@@ -31,8 +31,12 @@ export class AuthComponent {
   constructor() {
     effect(() => {
       if (this.environmentService.env() && this.platformService.isPlatformBrowser()) {
-        this.authService.loginFromCache();
         this.authGoogleService.initGoogleAuth();
+        this.authService.loginFromCache();
+      }
+    });
+    effect(() => {
+      if (this.environmentService.env() && this.platformService.isPlatformBrowser()) {
         if (this.authService.userConnected() === null) {
           this.authGoogleService.loginWithGoogle();
         } else {

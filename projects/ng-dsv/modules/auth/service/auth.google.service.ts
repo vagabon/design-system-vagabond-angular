@@ -11,24 +11,20 @@ export class AuthGoogleService {
   private readonly authService = inject(AuthService);
   private readonly environmentService = inject(EnvironmentService);
 
-  initGoogle: boolean = false;
 
-  initGoogleAuth() {
-    if (!this.initGoogle) {
-      this.initGoogle = true;
-      google.accounts.id.initialize({
-        client_id: this.environmentService.env()?.GOOGLE_CLIENT_ID,
-        callback: this.handleCredentialResponse.bind(this),
-      });
-      google.accounts.id.renderButton(
-        document.getElementById('google-signin-button')!,
-        {
-          theme: 'outline',
-          size: 'medium',
-          type: 'icon',
-        }
-      );
-    }
+  initGoogleAuth(googleButtonid: string = 'google-signin-button') {
+    google.accounts.id.initialize({
+      client_id: this.environmentService.env()?.GOOGLE_CLIENT_ID,
+      callback: this.handleCredentialResponse.bind(this),
+    });
+    google.accounts.id.renderButton(
+      document.getElementById(googleButtonid)!,
+      {
+        theme: 'outline',
+        size: 'medium',
+        type: 'icon',
+      }
+    );
   }
 
   handleCredentialResponse(response: { credential: string }) {
