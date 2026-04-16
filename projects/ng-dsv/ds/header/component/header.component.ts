@@ -26,7 +26,9 @@ export class DsvHeaderComponent {
     this.menuService.toogleMenu();
   }
 
-  goToHome() {
+  goToHome(event: Event) {
+    event.stopPropagation();
+    event.preventDefault();
     this.router.navigate(['/']);
   }
 }

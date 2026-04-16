@@ -3,7 +3,7 @@
     @if (withMenu()) {
       <dsv-menu-button />
     }
-    <a class="dsv-header-logo" (click)="goToHome()">
+    <a href="/" class="dsv-header-logo" (click)="goToHome($event)">
       @if (img()) {
         <img src="{{ img() }}" alt="logo" />
       }

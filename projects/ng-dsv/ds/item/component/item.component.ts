@@ -4,7 +4,7 @@ import {
   inject,
   input,
   output,
-  signal
+  signal,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { isCallback } from '@ng-vagabond-lab/ng-dsv/base';
@@ -32,7 +32,9 @@ export class DsvItemComponent {
     });
   }
 
-  doClick() {
+  doClick(event: Event) {
+    event.stopPropagation();
+    event.preventDefault();
     if (this.url()) {
       this.router.navigate([this.url()]);
     }

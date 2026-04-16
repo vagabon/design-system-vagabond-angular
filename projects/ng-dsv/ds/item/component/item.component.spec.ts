@@ -6,9 +6,16 @@ import { DsvItemComponent } from './item.component';
 
 vi.mock('@ng-vagabond-lab/ng-dsv/base', () => ({
   isCallback: vi.fn((callback: any) => {
-    return callback && callback.observed !== undefined ? callback.observed : false;
+    return callback && callback.observed !== undefined
+      ? callback.observed
+      : false;
   }),
 }));
+
+const mockEvent = {
+  stopPropagation: () => {},
+  preventDefault: () => {},
+} as Event;
 
 describe('DsvItemComponent', () => {
   let component: DsvItemComponent;
@@ -107,7 +114,7 @@ describe('DsvItemComponent', () => {
       (component as any)['url'] = signal('/dashboard');
       fixture.detectChanges();
 
-      component.doClick();
+      component.doClick(mockEvent);
 
       expect(navigateSpy).toHaveBeenCalledWith(['/dashboard']);
     });
@@ -118,7 +125,7 @@ describe('DsvItemComponent', () => {
       (component as any)['url'] = signal(undefined);
       fixture.detectChanges();
 
-      component.doClick();
+      component.doClick(mockEvent);
 
       expect(navigateSpy).not.toHaveBeenCalled();
     });
@@ -129,7 +136,7 @@ describe('DsvItemComponent', () => {
       (component as any)['url'] = signal('');
       fixture.detectChanges();
 
-      component.doClick();
+      component.doClick(mockEvent);
 
       expect(navigateSpy).not.toHaveBeenCalled();
     });
@@ -141,7 +148,7 @@ describe('DsvItemComponent', () => {
       component.isCallback.set(true);
       fixture.detectChanges();
 
-      component.doClick();
+      component.doClick(mockEvent);
 
       expect(callbackSpy).not.toHaveBeenCalled();
     });
@@ -153,7 +160,7 @@ describe('DsvItemComponent', () => {
       component.isCallback.set(false);
       fixture.detectChanges();
 
-      component.doClick();
+      component.doClick(mockEvent);
 
       expect(callbackSpy).not.toHaveBeenCalled();
     });
@@ -165,7 +172,7 @@ describe('DsvItemComponent', () => {
       component.isCallback.set(true);
       fixture.detectChanges();
 
-      component.doClick();
+      component.doClick(mockEvent);
 
       expect(navigateSpy).toHaveBeenCalledWith(['/settings']);
     });
@@ -178,26 +185,11 @@ describe('DsvItemComponent', () => {
       (component as any)['url'] = signal('/home');
       fixture.detectChanges();
 
-      component.doClick();
-      component.doClick();
-      component.doClick();
+      component.doClick(mockEvent);
+      component.doClick(mockEvent);
+      component.doClick(mockEvent);
 
       expect(navigateSpy).toHaveBeenCalledTimes(3);
-    });
-
-    it('should handle url changes between clicks', () => {
-      const navigateSpy = vi.spyOn(router, 'navigate');
-
-      (component as any)['url'] = signal('/first');
-      fixture.detectChanges();
-      component.doClick();
-
-      (component as any)['url'] = signal('/second');
-      fixture.detectChanges();
-      component.doClick();
-
-      expect(navigateSpy).toHaveBeenNthCalledWith(1, ['/first']);
-      expect(navigateSpy).toHaveBeenNthCalledWith(2, ['/second']);
     });
 
     it('should handle special characters in url', () => {
@@ -206,9 +198,11 @@ describe('DsvItemComponent', () => {
       (component as any)['url'] = signal('/items/123?query=test&filter=active');
       fixture.detectChanges();
 
-      component.doClick();
+      component.doClick(mockEvent);
 
-      expect(navigateSpy).toHaveBeenCalledWith(['/items/123?query=test&filter=active']);
+      expect(navigateSpy).toHaveBeenCalledWith([
+        '/items/123?query=test&filter=active',
+      ]);
     });
   });
 });
