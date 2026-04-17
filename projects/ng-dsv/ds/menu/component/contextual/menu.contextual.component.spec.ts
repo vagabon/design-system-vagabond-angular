@@ -2,7 +2,12 @@ import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/co
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { CLICK_LEFT, CLICK_RIGHT, MenuContextualClickType, MenuContextualDto } from '../../dto/menu.contextual';
+import {
+    CLICK_LEFT,
+    CLICK_RIGHT,
+    MenuContextualClickType,
+    MenuContextualDto,
+} from '../../dto/menu.contextual';
 import { DsvMenuContextualComponent } from './menu.contextual.component';
 
 describe('DsvMenuContextualComponent', () => {
@@ -12,7 +17,7 @@ describe('DsvMenuContextualComponent', () => {
     const mockOptions: MenuContextualDto[] = [
         { id: 'home', icon: 'home-icon', text: 'Option 1' },
         { id: 'settings', icon: 'settings-icon', text: 'Option 2' },
-        { id: 'logout', icon: 'logout-icon', text: 'Option 3', divider: true }
+        { id: 'logout', icon: 'logout-icon', text: 'Option 3', divider: true },
     ];
 
     beforeEach(async () => {

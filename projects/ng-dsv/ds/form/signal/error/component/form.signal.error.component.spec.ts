@@ -12,9 +12,7 @@ describe('FormSignalErrorComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [FormSignalErrorComponent],
-            providers: [
-                provideZonelessChangeDetection(), provideTranslateService()
-            ]
+            providers: [provideZonelessChangeDetection(), provideTranslateService()],
         }).compileComponents();
 
         fixture = TestBed.createComponent(FormSignalErrorComponent);
@@ -45,14 +43,18 @@ describe('FormSignalErrorComponent', () => {
     });
 
     it('should display minLength error message with correct value', () => {
-        component.errors = signal([{ kind: 'minLength', minLength: 5 }]) as unknown as InputSignal<ValidationError[]>;
+        component.errors = signal([{ kind: 'minLength', minLength: 5 }]) as unknown as InputSignal<
+            ValidationError[]
+        >;
         fixture.detectChanges();
         const errorDiv = fixture.nativeElement.querySelector('div');
         expect(errorDiv?.textContent).toContain('La taille minimum est de 5.');
     });
 
     it('should display maxLength error message with correct value', () => {
-        component.errors = signal([{ kind: 'maxLength', maxLength: 10 }]) as unknown as InputSignal<ValidationError[]>;
+        component.errors = signal([{ kind: 'maxLength', maxLength: 10 }]) as unknown as InputSignal<
+            ValidationError[]
+        >;
         fixture.detectChanges();
         const errorDiv = fixture.nativeElement.querySelector('div');
         expect(errorDiv?.textContent).toContain('La taille maximum est de 10.');
@@ -62,11 +64,13 @@ describe('FormSignalErrorComponent', () => {
         component.errors = signal([{ kind: 'email' }]) as unknown as InputSignal<ValidationError[]>;
         fixture.detectChanges();
         const errorDiv = fixture.nativeElement.querySelector('div');
-        expect(errorDiv?.textContent).toContain('Le format n\'est pas celui d\'un email.');
+        expect(errorDiv?.textContent).toContain("Le format n'est pas celui d'un email.");
     });
 
     it('should display custom error message if provided', () => {
-        component.errors = signal([{ kind: 'custom', message: 'Erreur personnalisée' }]) as unknown as InputSignal<ValidationError[]>;
+        component.errors = signal([
+            { kind: 'custom', message: 'Erreur personnalisée' },
+        ]) as unknown as InputSignal<ValidationError[]>;
         fixture.detectChanges();
         const errorDiv = fixture.nativeElement.querySelector('div');
         expect(errorDiv?.textContent).toContain('Erreur personnalisée');
@@ -80,8 +84,10 @@ describe('FormSignalErrorComponent', () => {
     });
 
     it('should display first error message if multiple errors', () => {
-        component.errors = signal([{ kind: 'required' },
-        { kind: 'minLength', minLength: 3 }]) as unknown as InputSignal<ValidationError[]>;
+        component.errors = signal([
+            { kind: 'required' },
+            { kind: 'minLength', minLength: 3 },
+        ]) as unknown as InputSignal<ValidationError[]>;
 
         fixture.detectChanges();
         const errorDiv = fixture.nativeElement.querySelector('div');
@@ -99,11 +105,13 @@ describe('FormSignalErrorComponent', () => {
         component.errors = signal([{ kind: 'email' }]) as unknown as InputSignal<ValidationError[]>;
         fixture.detectChanges();
         const errorDiv = fixture.nativeElement.querySelector('div');
-        expect(errorDiv?.textContent).toContain('Le format n\'est pas celui d\'un email.');
+        expect(errorDiv?.textContent).toContain("Le format n'est pas celui d'un email.");
     });
 
     it('should not display error if error signal is empty', () => {
-        component.errors = signal([{ kind: 'required', message: '' }]) as unknown as InputSignal<ValidationError[]>;
+        component.errors = signal([{ kind: 'required', message: '' }]) as unknown as InputSignal<
+            ValidationError[]
+        >;
         component.error.set('');
         fixture.detectChanges();
         const errorDiv = fixture.nativeElement.querySelector('div');

@@ -5,47 +5,29 @@ import { AuthService } from './auth.service';
 declare const google: any;
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class AuthGoogleService {
-  private readonly authService = inject(AuthService);
-  private readonly environmentService = inject(EnvironmentService);
+    private readonly authService = inject(AuthService);
+    private readonly environmentService = inject(EnvironmentService);
 
+    initGoogleAuth(googleButtonid: string = 'google-signin-button') {
+        google.accounts.id.initialize({
+            client_id: this.environmentService.env()?.GOOGLE_CLIENT_ID,
+            callback: this.handleCredentialResponse.bind(this),
+        });
+        google.accounts.id.renderButton(document.getElementById(googleButtonid)!, {
+            theme: 'outline',
+            size: 'medium',
+            type: 'icon',
+        });
+    }
 
-  initGoogleAuth(googleButtonid: string = 'google-signin-button') {
-    google.accounts.id.initialize({
-      client_id: this.environmentService.env()?.GOOGLE_CLIENT_ID,
-      callback: this.handleCredentialResponse.bind(this),
-    });
-    google.accounts.id.renderButton(
-      document.getElementById(googleButtonid)!,
-      {
-        theme: 'outline',
-        size: 'medium',
-        type: 'icon',
-      }
-    );
-  }
+    handleCredentialResponse(response: { credential: string }) {
+        this.authService.googleLogin(response.credential);
+    }
 
-  handleCredentialResponse(response: { credential: string }) {
-    this.authService.googleLogin(response.credential);
-  }
-
-  decodeJwtToken(token: string) {
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(
-      atob(base64)
-        .split('')
-        .map(function (c) {
-          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-        })
-        .join('')
-    );
-    return JSON.parse(jsonPayload);
-  }
-
-  loginWithGoogle() {
-    google.accounts.id.prompt();
-  }
+    loginWithGoogle() {
+        google.accounts.id.prompt();
+    }
 }

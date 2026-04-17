@@ -3,36 +3,35 @@ import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { ModalButtonComponent } from '../public-api';
 import { ModalComponent } from './modal.component';
 
-
 export const ActionsData = {
-  id: 'modale',
-  title: 'title',
-  class: 'class',
+    id: 'modale',
+    title: 'title',
+    class: 'class',
 };
 
 const meta: Meta<ModalComponent> = {
-  title: 'dsv/Modal',
-  component: ModalComponent,
-  excludeStories: /.*Data$/,
-  tags: ['autodocs'],
-  decorators: [
-    moduleMetadata({
-      imports: [ModalButtonComponent, TranslatePipe],
-    }),
-  ],
-  argTypes: {},
-  args: {
-    ...ActionsData,
-  },
+    title: 'dsv/Modal',
+    component: ModalComponent,
+    excludeStories: /.*Data$/,
+    tags: ['autodocs'],
+    decorators: [
+        moduleMetadata({
+            imports: [ModalButtonComponent, TranslatePipe],
+        }),
+    ],
+    argTypes: {},
+    args: {
+        ...ActionsData,
+    },
 };
 
 export default meta;
 type Story = StoryObj<ModalComponent>;
 
 export const Default: Story = {
-  args: {},
-  render: (args: any) => ({
-    template: `
+    args: {},
+    render: (args: any) => ({
+        template: `
       <dsv-modal-button id="${args.id}" icon="ri-add-line" text="add" variant="contained">
         <dsv-modal id="${args.id}" titleText="${args.title}" class="${args.class}">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
@@ -45,5 +44,5 @@ export const Default: Story = {
         </dsv-modal>
       </dsv-modal-button>
     `,
-  }),
+    }),
 };

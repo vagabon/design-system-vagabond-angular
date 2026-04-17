@@ -5,29 +5,27 @@ import { MenuService } from '../../public-api';
 import { DsvMenuButtonComponent } from './menu.button.component';
 
 describe('DsvMenuButtonComponent', () => {
-  let component: DsvMenuButtonComponent;
-  let fixture: ComponentFixture<DsvMenuButtonComponent>;
-  let menuService: MenuService;
+    let component: DsvMenuButtonComponent;
+    let fixture: ComponentFixture<DsvMenuButtonComponent>;
+    let menuService: MenuService;
 
-  beforeEach(async () => {
-    (window as any).google = { accounts: { id: { prompt: () => { } } } };
-    await TestBed.configureTestingModule({
-      imports: [DsvMenuButtonComponent],
-      providers: [
-        provideZonelessChangeDetection(),
-      ],
-    }).compileComponents();
-    menuService = TestBed.inject(MenuService);
-    fixture = TestBed.createComponent(DsvMenuButtonComponent);
-    component = fixture.componentInstance;
-  });
+    beforeEach(async () => {
+        (window as any).google = { accounts: { id: { prompt: () => {} } } };
+        await TestBed.configureTestingModule({
+            imports: [DsvMenuButtonComponent],
+            providers: [provideZonelessChangeDetection()],
+        }).compileComponents();
+        menuService = TestBed.inject(MenuService);
+        fixture = TestBed.createComponent(DsvMenuButtonComponent);
+        component = fixture.componentInstance;
+    });
 
-  it('should render', () => {
-    fixture.detectChanges();
-    expect(component).toBeTruthy();
+    it('should render', () => {
+        fixture.detectChanges();
+        expect(component).toBeTruthy();
 
-    const menuSpy = vi.spyOn(menuService, 'toogleMenu');
-    fixture.debugElement.nativeElement.querySelector('.dsv-button').click();
-    expect(menuSpy).toHaveBeenCalled();
-  });
+        const menuSpy = vi.spyOn(menuService, 'toogleMenu');
+        fixture.debugElement.nativeElement.querySelector('.dsv-button').click();
+        expect(menuSpy).toHaveBeenCalled();
+    });
 });

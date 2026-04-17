@@ -4,33 +4,33 @@ import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
-  plugins: [angular()],
-  test: {
-    environment: 'jsdom',
-    include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    globals: true,
-    setupFiles: ['./test-setup.ts'],
-    exclude: ['dist/*', 'node_modules/*'],
-    mockReset: true,
-    restoreMocks: true,
-    coverage: {
-      provider: 'v8',
-      reporter: ['text', 'lcov', 'json', 'html'],
-      include: ['projects/ng-dsv/**/*.ts'],
-      exclude: [
-        '**/.storybook/**',
-        '**/index.ts',
-        '**/public-api.ts',
-        "**/*.stories.ts",
-        '**/*.html',
-        '**/*.scss',
-        '**/*.spec.ts',
-      ],
+    plugins: [angular()],
+    test: {
+        environment: 'jsdom',
+        include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+        globals: true,
+        setupFiles: ['./test-setup.ts'],
+        exclude: ['dist/*', 'node_modules/*'],
+        mockReset: true,
+        restoreMocks: true,
+        coverage: {
+            provider: 'v8',
+            reporter: ['text', 'lcov', 'json', 'html'],
+            include: ['projects/ng-dsv/**/*.ts'],
+            exclude: [
+                '**/.storybook/**',
+                '**/index.ts',
+                '**/public-api.ts',
+                '**/*.stories.ts',
+                '**/*.html',
+                '**/*.scss',
+                '**/*.spec.ts',
+            ],
+        },
     },
-  },
-  resolve: {
-    alias: {
-      '@ng-vagabond-lab/ng-dsv': fileURLToPath(new URL('./projects/ng-dsv', import.meta.url)),
+    resolve: {
+        alias: {
+            '@ng-vagabond-lab/ng-dsv': fileURLToPath(new URL('./projects/ng-dsv', import.meta.url)),
+        },
     },
-  },
 });

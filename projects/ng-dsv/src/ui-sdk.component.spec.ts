@@ -4,23 +4,21 @@ import { provideZonelessChangeDetection } from '@angular/core';
 import { UiSdkComponent } from './ui-sdk.component';
 
 describe('UiSdkComponent', () => {
-  let component: UiSdkComponent;
-  let fixture: ComponentFixture<UiSdkComponent>;
+    let component: UiSdkComponent;
+    let fixture: ComponentFixture<UiSdkComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [UiSdkComponent],
-      providers: [
-        provideZonelessChangeDetection(),
-      ],
-    }).compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [UiSdkComponent],
+            providers: [provideZonelessChangeDetection()],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(UiSdkComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(UiSdkComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

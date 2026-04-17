@@ -4,23 +4,21 @@ import { DsvThemeComponent } from './dsv.theme.component';
 import { describe, beforeEach, it, expect } from 'vitest';
 
 describe('DsvThemeComponent', () => {
-  let component: DsvThemeComponent;
-  let fixture: ComponentFixture<DsvThemeComponent>;
+    let component: DsvThemeComponent;
+    let fixture: ComponentFixture<DsvThemeComponent>;
 
-  beforeEach(async () => {
-    (window as any).google = { accounts: { id: { prompt: () => { } } } };
-    await TestBed.configureTestingModule({
-      imports: [DsvThemeComponent],
-      providers: [
-        provideZonelessChangeDetection(),
-      ],
-    }).compileComponents();
-    fixture = TestBed.createComponent(DsvThemeComponent);
-    component = fixture.componentInstance;
-  });
+    beforeEach(async () => {
+        (window as any).google = { accounts: { id: { prompt: () => {} } } };
+        await TestBed.configureTestingModule({
+            imports: [DsvThemeComponent],
+            providers: [provideZonelessChangeDetection()],
+        }).compileComponents();
+        fixture = TestBed.createComponent(DsvThemeComponent);
+        component = fixture.componentInstance;
+    });
 
-  it('should render', () => {
-    fixture.detectChanges();
-    expect(component).toBeTruthy();
-  });
+    it('should render', () => {
+        fixture.detectChanges();
+        expect(component).toBeTruthy();
+    });
 });

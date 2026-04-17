@@ -26,7 +26,7 @@ describe('BaseScrollComponent', () => {
     });
 
     class TestScrollComponent extends BaseScrollComponent {
-        doLoad(): void { }
+        doLoad(): void {}
     }
 
     it('should call scrollService methods in loadMore()', () => {

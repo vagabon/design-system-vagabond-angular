@@ -10,7 +10,7 @@ describe('PaginateComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [PaginateComponent],
-            providers: [provideZonelessChangeDetection()]
+            providers: [provideZonelessChangeDetection()],
         }).compileComponents();
 
         fixture = TestBed.createComponent(PaginateComponent);

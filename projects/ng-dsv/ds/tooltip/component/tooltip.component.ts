@@ -6,7 +6,7 @@ import { getTooltipPosition } from '../utils/tooltip.utils';
     selector: 'dsv-tooltip',
     imports: [CommonModule],
     templateUrl: './tooltip.component.html',
-    styleUrls: ['./tooltip.component.scss']
+    styleUrls: ['./tooltip.component.scss'],
 })
 export class DsvTooltipComponent {
     text = input<string>('');

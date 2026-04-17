@@ -41,10 +41,13 @@ describe('BaseSeoContainer', () => {
         expect(titleMock.setTitle).toHaveBeenCalledWith('MyApp - PageTitle');
         expect(transferStateMock.set).toHaveBeenCalledWith(
             makeStateKey<string>('title'),
-            'MyApp - PageTitle'
+            'MyApp - PageTitle',
         );
         expect(metaMock.updateTag).toHaveBeenCalledWith({ name: 'description', content: 'Page description' });
-        expect(metaMock.updateTag).toHaveBeenCalledWith({ property: 'og:image', content: 'https://example.com/image.png' });
+        expect(metaMock.updateTag).toHaveBeenCalledWith({
+            property: 'og:image',
+            content: 'https://example.com/image.png',
+        });
     });
 
     it('should set title and description only when image is not provided', () => {
@@ -53,9 +56,11 @@ describe('BaseSeoContainer', () => {
         expect(titleMock.setTitle).toHaveBeenCalledWith('MyApp - PageTitle');
         expect(transferStateMock.set).toHaveBeenCalledWith(
             makeStateKey<string>('title'),
-            'MyApp - PageTitle'
+            'MyApp - PageTitle',
         );
         expect(metaMock.updateTag).toHaveBeenCalledWith({ name: 'description', content: 'Page description' });
-        expect(metaMock.updateTag).not.toHaveBeenCalledWith(expect.objectContaining({ property: 'og:image' }));
+        expect(metaMock.updateTag).not.toHaveBeenCalledWith(
+            expect.objectContaining({ property: 'og:image' }),
+        );
     });
 });

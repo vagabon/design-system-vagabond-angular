@@ -1,71 +1,83 @@
-import { HttpClient } from '@angular/common/http';
-import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
-import { of } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { AuthGoogleService } from './auth.google.service';
+import { AuthService } from './auth.service';
+
+const googleMock = {
+    accounts: {
+        id: {
+            initialize: vi.fn(),
+            renderButton: vi.fn(),
+            prompt: vi.fn(),
+        },
+    },
+};
+
+(globalThis as any).google = googleMock;
 
 describe('AuthGoogleService', () => {
-  let service: AuthGoogleService;
-  let environmentService: EnvironmentService;
-  let httpClientSpy: { post: ReturnType<typeof vi.fn>; get: ReturnType<typeof vi.fn> };
-  let environmentServiceSpy: { env: ReturnType<typeof vi.fn> };
+    let service: AuthGoogleService;
+    let authServiceMock: { googleLogin: ReturnType<typeof vi.fn> };
+    let environmentServiceMock: { env: ReturnType<typeof vi.fn> };
 
-  beforeEach(async () => {
-    (window as any).google = {
-      accounts: {
-        id: {
-          initialize: (data: any) => {
-            data.callback({ credential: 'credential' });
-          },
-          renderButton: () => { },
-          prompt: () => { },
-        },
-      },
-    };
+    beforeEach(() => {
+        authServiceMock = { googleLogin: vi.fn() };
+        environmentServiceMock = { env: vi.fn().mockReturnValue({ GOOGLE_CLIENT_ID: 'test-client-id' }) };
 
-    httpClientSpy = {
-      get: vi.fn(),
-      post: vi.fn(),
-    };
+        vi.clearAllMocks();
 
-    environmentServiceSpy = {
-      env: vi.fn(),
-    };
+        TestBed.configureTestingModule({
+            providers: [
+                AuthGoogleService,
+                { provide: AuthService, useValue: authServiceMock },
+                { provide: EnvironmentService, useValue: environmentServiceMock },
+            ],
+        });
 
-    await TestBed.configureTestingModule({
-      providers: [
-        provideZonelessChangeDetection(),
-        AuthGoogleService,
-        { provide: HttpClient, useValue: httpClientSpy },
-        { provide: EnvironmentService, useValue: environmentServiceSpy },
-      ],
-    }).compileComponents?.();
+        service = TestBed.inject(AuthGoogleService);
+    });
 
-    service = TestBed.inject(AuthGoogleService);
-    environmentService = TestBed.inject(EnvironmentService);
-  });
+    it('should initialize Google Auth with client id and render button', () => {
+        // When
+        service.initGoogleAuth('my-button');
 
-  it('should be created', () => {
-    httpClientSpy.get.mockReturnValue(of({}));
-    expect(service).toBeTruthy();
-  });
+        // Then
+        expect(googleMock.accounts.id.initialize).toHaveBeenCalledWith({
+            client_id: 'test-client-id',
+            callback: expect.any(Function),
+        });
+        expect(googleMock.accounts.id.renderButton).toHaveBeenCalledWith(null, {
+            theme: 'outline',
+            size: 'medium',
+            type: 'icon',
+        });
+    });
 
-  it('should call HttpClient.post when loginWithGoogle is called', () => {
-    httpClientSpy.post.mockReturnValue(of({}));
-    httpClientSpy.get.mockReturnValue(of({}));
+    it('should use default button id when none provided', () => {
+        // When
+        service.initGoogleAuth();
 
-    service.handleCredentialResponse({ credential: 'credential' });
+        // Then
+        expect(googleMock.accounts.id.renderButton).toHaveBeenCalledWith(
+            document.getElementById('google-signin-button'),
+            expect.any(Object),
+        );
+    });
 
-    service.decodeJwtToken(
-      'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo4MDgwL2lzc3VlciIsInVwbiI6InZhZ2Fib25kIzExOTQiLCJncm91cHMiOlsiQURNSU4iLCJVU0VSIl0sImlhdCI6MTczMjk5MDE2NiwiZXhwIjoxNzMzMDkwMTY2LCJqdGkiOiIxZTkwZDU5My03MDk3LTQxZDMtYWVjMC0zMTExOTJkNzNkZjkifQ.OeJRowQsfyU3ILUReuqD93bCFJEG90phBsPTp9ofO_P7HVpUV17NytEvQNgc19D8M1RLNWjDl1DsPG0CAKt6ivsEbtgF66h4Fg3SruvHSU-6Mezrrca8Xn8BsahVZqbyBps9OBJACE0EVpHgZ4YMNzen7pkBSoHHwk_L3VoTCxfbqsZkEstbnxco_LNNw2fUJTNnGfLqToFa4bkemEUjDoRRo8VBW4ToKP7crelxmw1OgmBKcLQHp5R5B8GW9oeY7kU_RdaIi2f7Wjnqxj59yGZJ0Wv4Tw5MLdsO2rYOQ-sn_-LT7iRXBi3m1jFhDzkQUCsHJ88UOrll3D9oz1LB_w'
-    );
+    it('should call googleLogin with credential when handling credential response', () => {
+        // When
+        service.handleCredentialResponse({ credential: 'fake-jwt-token' });
 
-    service.loginWithGoogle();
+        // Then
+        expect(authServiceMock.googleLogin).toHaveBeenCalledWith('fake-jwt-token');
+    });
 
-    expect(service).toBeTruthy();
+    it('should prompt Google account selector on loginWithGoogle', () => {
+        // When
+        service.loginWithGoogle();
 
-    expect(httpClientSpy.post).toHaveBeenCalled();
-  });
+        // Then
+        expect(googleMock.accounts.id.prompt).toHaveBeenCalled();
+    });
 });

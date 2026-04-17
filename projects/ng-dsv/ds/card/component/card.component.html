@@ -1,20 +1,23 @@
 @if (image()) {
-  <img src="{{ image() }}" [alt]="alt()" />
+    <img
+        src="{{ image() }}"
+        [alt]="alt()"
+    />
 }
-@if (avatar() || titleText() !== "") {
-  <div class="dsv-card-header">
-    @if (avatar()) {
-      <dsv-avatar [avatar]="avatar()!"></dsv-avatar>
-    }
-    <div>
-      <h2>{{ titleText() }}</h2>
-      <div class="dsv-card-subtitle">{{ subtitle() }}</div>
+@if (avatar() || titleText() !== '') {
+    <div class="dsv-card-header">
+        @if (avatar()) {
+            <dsv-avatar [avatar]="avatar()!"></dsv-avatar>
+        }
+        <div>
+            <h2>{{ titleText() }}</h2>
+            <div class="dsv-card-subtitle">{{ subtitle() }}</div>
+        </div>
+        <div class="dsv-actions">
+            <ng-content select="dsv-actions"></ng-content>
+        </div>
     </div>
-    <div class="dsv-actions">
-      <ng-content select="dsv-actions"></ng-content>
-    </div>
-  </div>
 }
 <div class="dsv-card-content">
-  <ng-content></ng-content>
+    <ng-content></ng-content>
 </div>

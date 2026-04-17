@@ -1,17 +1,15 @@
 import { Directive, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
 
 @Directive({
-    selector: '[appDragDrop]'
+    selector: '[appDragDrop]',
 })
 export class FileUploadDirective {
-
     private _enabled: boolean = false;
     private _dragInProgress: boolean = false;
 
     @Input() set appDragDrop(value: any) {
         this._enabled = value === '' ? true : !!value;
     }
-
 
     @HostBinding('class.dragging') get dragInProgress() {
         return this._dragInProgress;
@@ -54,5 +52,4 @@ export class FileUploadDirective {
         e.stopPropagation();
         e.preventDefault();
     }
-
 }

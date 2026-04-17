@@ -8,7 +8,11 @@ import { DsvTooltipComponent } from './tooltip.component';
 
 @Component({
     imports: [DsvTooltipComponent],
-    template: `<dsv-tooltip [text]="'Test Tooltip'" [position]="position">Hover me</dsv-tooltip>`
+    template: `<dsv-tooltip
+        [text]="'Test Tooltip'"
+        [position]="position"
+        >Hover me</dsv-tooltip
+    >`,
 })
 class TestHostComponent {
     position: TooltipPosition = TooltipPositionEnum.TOP;
@@ -34,7 +38,9 @@ describe('DsvTooltipComponent', () => {
     });
 
     it('should show tooltip on mouse enter', () => {
-        const tooltipComponent = fixture.debugElement.query(By.directive(DsvTooltipComponent)).componentInstance;
+        const tooltipComponent = fixture.debugElement.query(
+            By.directive(DsvTooltipComponent),
+        ).componentInstance;
         const tooltipElement = fixture.debugElement.query(By.css('.dsv-tooltip'));
 
         expect(tooltipElement).toBeNull();
@@ -47,7 +53,9 @@ describe('DsvTooltipComponent', () => {
     });
 
     it('should hide tooltip on mouse leave', () => {
-        const tooltipComponent = fixture.debugElement.query(By.directive(DsvTooltipComponent)).componentInstance;
+        const tooltipComponent = fixture.debugElement.query(
+            By.directive(DsvTooltipComponent),
+        ).componentInstance;
 
         fixture.debugElement.query(By.css('dsv-tooltip')).triggerEventHandler('mouseenter', null);
         fixture.detectChanges();
@@ -62,7 +70,9 @@ describe('DsvTooltipComponent', () => {
     });
 
     it('should adjust tooltip position based on window boundaries', () => {
-        const tooltipComponent = fixture.debugElement.query(By.directive(DsvTooltipComponent)).componentInstance;
+        const tooltipComponent = fixture.debugElement.query(
+            By.directive(DsvTooltipComponent),
+        ).componentInstance;
         vi.spyOn(tooltipComponent, 'adjustPosition');
 
         fixture.debugElement.query(By.css('dsv-tooltip')).triggerEventHandler('mouseenter', null);

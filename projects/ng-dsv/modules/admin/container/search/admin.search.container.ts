@@ -11,66 +11,64 @@ import { AdminTabDto } from '../../dto/admin.dto';
 import { AdminService } from '../../service/admin.service';
 
 @Component({
-  selector: 'dsv-admin-search',
-  imports: [
-    DsvCardComponent,
-    DsvButtonComponent,
-    TabsComponent,
-    TableComponent,
-    PaginateComponent,
-    RouterLink,
-  ],
-  templateUrl: './admin.search.container.html',
-  styleUrls: ['./admin.search.container.scss'],
+    selector: 'dsv-admin-search',
+    imports: [
+        DsvCardComponent,
+        DsvButtonComponent,
+        TabsComponent,
+        TableComponent,
+        PaginateComponent,
+        RouterLink,
+    ],
+    templateUrl: './admin.search.container.html',
+    styleUrls: ['./admin.search.container.scss'],
 })
 export class AdminSearchContainer extends BaseRouteComponent {
-  adminService = inject(AdminService);
-  platformService = inject(PlatformService);
+    adminService = inject(AdminService);
+    platformService = inject(PlatformService);
 
-  tabs = signal<TabDto[]>([]);
-  tab = signal<string>('user');
-  tabConfig = signal<AdminTabDto | undefined>(undefined);
+    tabs = signal<TabDto[]>([]);
+    tab = signal<string>('user');
+    tabConfig = signal<AdminTabDto | undefined>(undefined);
 
-  page = signal<number>(0);
+    page = signal<number>(0);
 
-  constructor() {
-    super();
-    effect(() => {
-      if (this.platformService.isPlatformBrowser()) {
-        this.tab.set(this.routeParams()?.['type']);
-        const tab = this.adminService
-          .tabs()
-          ?.tabs.find((tab) => tab.name === this.tab());
-        this.tabConfig.set(tab);
-        this.gotoPage(0);
-      }
-    });
-    effect(() => {
-      if (this.platformService.isPlatformBrowser()) {
-        const tabs = this.adminService.tabs()?.tabs;
-        const tabsDtos: TabDto[] = [];
-        if (tabs) {
-          tabs.forEach((tab) => {
-            const tabsDto = {} as TabDto;
-            tabsDto.id = tab.name;
-            tabsDto.title = tab.name;
-            tabsDto.url = '/admin/' + tab.name;
-            tabsDtos.push(tabsDto);
-          });
-        }
-        this.tabs.set(tabsDtos);
-      }
-    });
-  }
+    constructor() {
+        super();
+        effect(() => {
+            if (this.platformService.isPlatformBrowser()) {
+                this.tab.set(this.routeParams()?.['type']);
+                const tab = this.adminService.tabs()?.tabs.find((tab) => tab.name === this.tab());
+                this.tabConfig.set(tab);
+                this.gotoPage(0);
+            }
+        });
+        effect(() => {
+            if (this.platformService.isPlatformBrowser()) {
+                const tabs = this.adminService.tabs()?.tabs;
+                const tabsDtos: TabDto[] = [];
+                if (tabs) {
+                    tabs.forEach((tab) => {
+                        const tabsDto = {} as TabDto;
+                        tabsDto.id = tab.name;
+                        tabsDto.title = tab.name;
+                        tabsDto.url = '/admin/' + tab.name;
+                        tabsDtos.push(tabsDto);
+                    });
+                }
+                this.tabs.set(tabsDtos);
+            }
+        });
+    }
 
-  gotoPage(page: number) {
-    this.page.set(page);
-    this.adminService.get(
-      this.tabConfig()?.name!,
-      this.tabConfig()?.findByChamps!,
-      '',
-      page,
-      this.adminService.tabs()?.max,
-    );
-  }
+    gotoPage(page: number) {
+        this.page.set(page);
+        this.adminService.get(
+            this.tabConfig()?.name!,
+            this.tabConfig()?.findByChamps!,
+            '',
+            page,
+            this.adminService.tabs()?.max,
+        );
+    }
 }

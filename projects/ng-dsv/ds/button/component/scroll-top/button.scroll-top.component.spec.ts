@@ -11,9 +11,7 @@ describe('ButtonScrollTopComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [ButtonScrollTopComponent, DsvButtonComponent],
-            providers: [
-                provideZonelessChangeDetection(),
-            ],
+            providers: [provideZonelessChangeDetection()],
         }).compileComponents();
 
         fixture = TestBed.createComponent(ButtonScrollTopComponent);

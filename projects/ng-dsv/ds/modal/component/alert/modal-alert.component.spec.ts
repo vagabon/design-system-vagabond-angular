@@ -8,64 +8,64 @@ import { ModalComponent } from '../modal.component';
 import { ModalAlertComponent } from './modal-alert.component';
 
 class MockModalService {
-  private state = new Map<string, boolean>();
+    private state = new Map<string, boolean>();
 
-  getSignal(id: string) {
-    return this.state.get(id) ?? true;
-  }
+    getSignal(id: string) {
+        return this.state.get(id) ?? true;
+    }
 
-  toggle(id: string) {
-    this.state.set(id, !this.getSignal(id));
-  }
+    toggle(id: string) {
+        this.state.set(id, !this.getSignal(id));
+    }
 
-  close(id: string) {
-    this.state.set(id, false);
-  }
+    close(id: string) {
+        this.state.set(id, false);
+    }
 }
 
 describe('ModalAlertComponent', () => {
-  let component: ModalAlertComponent;
-  let fixture: ComponentFixture<ModalAlertComponent>;
-  let modalService: ModalService;
+    let component: ModalAlertComponent;
+    let fixture: ComponentFixture<ModalAlertComponent>;
+    let modalService: ModalService;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ModalAlertComponent, ModalComponent, DsvButtonComponent],
-      providers: [
-        provideZonelessChangeDetection(),
-        provideTranslateService(),
-        { provide: ModalService, useClass: MockModalService },
-      ],
-    }).compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [ModalAlertComponent, ModalComponent, DsvButtonComponent],
+            providers: [
+                provideZonelessChangeDetection(),
+                provideTranslateService(),
+                { provide: ModalService, useClass: MockModalService },
+            ],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(ModalAlertComponent);
-    modalService = TestBed.inject(ModalService);
+        fixture = TestBed.createComponent(ModalAlertComponent);
+        modalService = TestBed.inject(ModalService);
 
-    component = fixture.componentInstance;
-    component.id = signal('testModal') as unknown as InputSignal<string>;
-    component.titleText = signal('title') as unknown as InputSignal<string>;
-    component.text = signal('text') as unknown as InputSignal<string>;
-    component.button = signal('oui') as unknown as InputSignal<string>;
-    component.buttonClose = signal('non') as unknown as InputSignal<string | undefined>;
+        component = fixture.componentInstance;
+        component.id = signal('testModal') as unknown as InputSignal<string>;
+        component.titleText = signal('title') as unknown as InputSignal<string>;
+        component.text = signal('text') as unknown as InputSignal<string>;
+        component.button = signal('oui') as unknown as InputSignal<string>;
+        component.buttonClose = signal('non') as unknown as InputSignal<string | undefined>;
 
-    fixture.detectChanges();
-  });
+        fixture.detectChanges();
+    });
 
-  it('should emit callback and toggle modal on confirm click', () => {
-    vi.spyOn(component.callback, 'emit');
-    const buttons = fixture.nativeElement.querySelectorAll('.dsv-button');
-    buttons[2].click();
-    fixture.detectChanges();
+    it('should emit callback and toggle modal on confirm click', () => {
+        vi.spyOn(component.callback, 'emit');
+        const buttons = fixture.nativeElement.querySelectorAll('.dsv-button');
+        buttons[2].click();
+        fixture.detectChanges();
 
-    expect(component.callback.emit).toHaveBeenCalled();
-  });
+        expect(component.callback.emit).toHaveBeenCalled();
+    });
 
-  it('should call close on modal service on cancel click', () => {
-    vi.spyOn(modalService, 'close');
-    const buttons = fixture.nativeElement.querySelectorAll('.dsv-button');
-    buttons[1].click();
-    fixture.detectChanges();
+    it('should call close on modal service on cancel click', () => {
+        vi.spyOn(modalService, 'close');
+        const buttons = fixture.nativeElement.querySelectorAll('.dsv-button');
+        buttons[1].click();
+        fixture.detectChanges();
 
-    expect(modalService.close).toHaveBeenCalled();
-  });
+        expect(modalService.close).toHaveBeenCalled();
+    });
 });

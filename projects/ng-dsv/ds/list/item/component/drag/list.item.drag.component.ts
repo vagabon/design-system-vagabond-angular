@@ -1,7 +1,7 @@
-import { Component, inject, input } from "@angular/core";
-import { DsvButtonComponent } from "@ng-vagabond-lab/ng-dsv/ds/button";
-import { ButtonVariantType } from "@ng-vagabond-lab/ng-dsv/type";
-import { ListDragService } from "../../../public-api";
+import { Component, inject, input } from '@angular/core';
+import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
+import { ButtonVariantType } from '@ng-vagabond-lab/ng-dsv/type';
+import { ListDragService } from '../../../public-api';
 
 @Component({
     selector: 'dsv-list-item-drag',

@@ -5,7 +5,7 @@
     width: calc(100% - 40px);
     margin: 10px;
     padding: 10px;
-    background-color: #FFF;
+    background-color: #fff;
     position: relative;
     border-radius: 0px;
 
@@ -29,7 +29,10 @@
         padding: 0px 10px;
         opacity: 0;
         height: 0;
-        transition: transform 0.3s ease-out, opacity 0.2s ease-out, height 0.2s ease-out;
+        transition:
+            transform 0.3s ease-out,
+            opacity 0.2s ease-out,
+            height 0.2s ease-out;
 
         &.open {
             padding: 10px 10px;
@@ -37,7 +40,6 @@
             height: auto;
         }
     }
-
 }
 
 ::ng-deep .dark dsv-accordion {

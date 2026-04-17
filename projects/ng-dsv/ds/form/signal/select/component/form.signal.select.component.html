@@ -1,35 +1,33 @@
 <div>
-  @if (getSignal()) {
-    <dsv-form-signal-label
-      [name]="fieldName()"
-      [label]="label() ?? fieldName()"
-      [signal]="getSignal()()"
-      [show]="withLabel()"
-    />
-    <div>
-      <select
-        [id]="fieldName()"
-        [formField]="getSignal()"
-        class="form-control"
-        (change)="doChange()"
-        [class.error]="isError()"
-        [multiple]="multiple()"
-      >
-        @for (list of list(); track list.id) {
-          <option
-            [value]="list.id"
-            [selected]="
-              list.id?.toString() === getSignal()().value().toString()
-            "
-          >
-            {{ list.name }}
-          </option>
-        }
-      </select>
-      <dsv-signal-form-error
-        [errors]="getSignal()().errors()"
-        [isTouched]="isTouched()"
-      />
-    </div>
-  }
+    @if (getSignal()) {
+        <dsv-form-signal-label
+            [name]="fieldName()"
+            [label]="label() ?? fieldName()"
+            [signal]="getSignal()()"
+            [show]="withLabel()"
+        />
+        <div>
+            <select
+                [id]="fieldName()"
+                [formField]="getSignal()"
+                class="form-control"
+                (change)="doChange()"
+                [class.error]="isError()"
+                [multiple]="multiple()"
+            >
+                @for (list of list(); track list.id) {
+                    <option
+                        [value]="list.id"
+                        [selected]="list.id?.toString() === getSignal()().value().toString()"
+                    >
+                        {{ list.name }}
+                    </option>
+                }
+            </select>
+            <dsv-signal-form-error
+                [errors]="getSignal()().errors()"
+                [isTouched]="isTouched()"
+            />
+        </div>
+    }
 </div>

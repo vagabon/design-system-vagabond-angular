@@ -5,24 +5,24 @@ import { FormReactiveErrorComponent } from '../../error/component/form.reactive.
 import { FormReactiveLabelComponent } from '../../label/component/form.reactive.label.component';
 
 @Component({
-  selector: 'dsv-form-reactive-select',
-  imports: [ReactiveFormsModule, FormReactiveLabelComponent, FormReactiveErrorComponent],
-  templateUrl: './form.reactive.select.component.html',
-  styleUrls: [
-    '../../input/component/form.reactive.input.component.scss',
-    './form.reactive.select.component.scss',
-  ],
+    selector: 'dsv-form-reactive-select',
+    imports: [ReactiveFormsModule, FormReactiveLabelComponent, FormReactiveErrorComponent],
+    templateUrl: './form.reactive.select.component.html',
+    styleUrls: [
+        '../../input/component/form.reactive.input.component.scss',
+        './form.reactive.select.component.scss',
+    ],
 })
 export class FormReactiveSelectComponent {
-  form = input.required<FormGroup>();
-  field = input.required<string>();
-  withLabel = input<boolean>(true);
+    form = input.required<FormGroup>();
+    field = input.required<string>();
+    withLabel = input<boolean>(true);
 
-  list = input<(ApiDto & { name: string })[]>([]);
+    list = input<(ApiDto & { name: string })[]>([]);
 
-  change = output<string>();
+    callbackChange = output<string>();
 
-  doChange() {
-    this.change.emit(this.form().value[this.field()]);
-  }
+    doChange() {
+        this.callbackChange.emit(this.form().value[this.field()]);
+    }
 }

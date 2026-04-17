@@ -5,9 +5,9 @@ import { Subscription } from 'rxjs';
 import { BaseSeoContainer } from './base.seo.container';
 
 export abstract class BaseRouteComponent extends BaseSeoContainer {
-  activatedRoute = inject<ActivatedRoute>(ActivatedRoute);
+    activatedRoute = inject<ActivatedRoute>(ActivatedRoute);
 
-  routeParams = toSignal(this.activatedRoute.params);
+    routeParams = toSignal(this.activatedRoute.params);
 
-  routeObservable: Subscription | null = null;
+    routeObservable: Subscription | null = null;
 }

@@ -1,5 +1,4 @@
-import { Directive } from "@angular/core";
+import { Directive } from '@angular/core';
 
 @Directive()
-export abstract class BaseFormSignalComponent {
-}
+export abstract class BaseFormSignalComponent {}

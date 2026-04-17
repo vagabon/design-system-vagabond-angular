@@ -35,7 +35,7 @@ describe('ModalService', () => {
             expect(service.getSignal('modal-1')).toBe(true);
         });
 
-        it('ne plante pas si l\'id n\'existe pas', () => {
+        it("ne plante pas si l'id n'existe pas", () => {
             expect(() => service.open('inexistant')).not.toThrow();
         });
     });
@@ -48,7 +48,7 @@ describe('ModalService', () => {
             expect(service.getSignal('modal-1')).toBe(false);
         });
 
-        it('ne plante pas si l\'id n\'existe pas', () => {
+        it("ne plante pas si l'id n'existe pas", () => {
             expect(() => service.close('inexistant')).not.toThrow();
         });
     });
@@ -75,7 +75,7 @@ describe('ModalService', () => {
             expect(service.getSignal('modal-1')).toBe(true);
         });
 
-        it('ne plante pas si l\'id n\'existe pas', () => {
+        it("ne plante pas si l'id n'existe pas", () => {
             expect(() => service.toggle('inexistant')).not.toThrow();
         });
     });

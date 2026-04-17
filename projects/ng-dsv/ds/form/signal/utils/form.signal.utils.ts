@@ -1,3 +1,4 @@
-import { ChildFieldContext } from "@angular/forms/signals";
+import { ChildFieldContext } from '@angular/forms/signals';
 
-export const requiredTrim = (value: ChildFieldContext<string>) => value.value().trim() != "" ? null : { kind: 'required' };
+export const requiredTrim = (value: ChildFieldContext<string>) =>
+    value.value().trim() === '' ? { kind: 'required' } : null;

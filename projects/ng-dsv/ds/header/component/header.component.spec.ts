@@ -4,23 +4,21 @@ import { DsvHeaderComponent } from './header.component';
 import { describe, beforeEach, it, expect } from 'vitest';
 
 describe('DsvHeaderComponent', () => {
-  let component: DsvHeaderComponent;
-  let fixture: ComponentFixture<DsvHeaderComponent>;
+    let component: DsvHeaderComponent;
+    let fixture: ComponentFixture<DsvHeaderComponent>;
 
-  beforeEach(async () => {
-    (window as any).google = { accounts: { id: { prompt: () => { } } } };
-    await TestBed.configureTestingModule({
-      imports: [DsvHeaderComponent],
-      providers: [
-        provideZonelessChangeDetection()
-      ],
-    }).compileComponents();
-    fixture = TestBed.createComponent(DsvHeaderComponent);
-    component = fixture.componentInstance;
-  });
+    beforeEach(async () => {
+        (window as any).google = { accounts: { id: { prompt: () => {} } } };
+        await TestBed.configureTestingModule({
+            imports: [DsvHeaderComponent],
+            providers: [provideZonelessChangeDetection()],
+        }).compileComponents();
+        fixture = TestBed.createComponent(DsvHeaderComponent);
+        component = fixture.componentInstance;
+    });
 
-  it('should render', () => {
-    fixture.detectChanges();
-    expect(component).toBeTruthy();
-  });
+    it('should render', () => {
+        fixture.detectChanges();
+        expect(component).toBeTruthy();
+    });
 });

@@ -1,8 +1,7 @@
 :host {
     width: 100%;
 
-    &>div {
-
+    & > div {
         .form-control {
             width: calc(100% - 2px);
         }

@@ -1,34 +1,31 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  DsvMenuButtonComponent,
-  MenuService,
-} from '@ng-vagabond-lab/ng-dsv/ds/menu';
+import { DsvMenuButtonComponent, MenuService } from '@ng-vagabond-lab/ng-dsv/ds/menu';
 
 @Component({
-  selector: 'dsv-header',
-  imports: [CommonModule, DsvMenuButtonComponent],
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+    selector: 'dsv-header',
+    imports: [CommonModule, DsvMenuButtonComponent],
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
 })
 export class DsvHeaderComponent {
-  private readonly router = inject(Router);
-  private readonly menuService = inject(MenuService);
+    private readonly router = inject(Router);
+    private readonly menuService = inject(MenuService);
 
-  img = input<string>();
-  titleText = input<string>('');
-  withMenu = input<boolean>(true);
+    img = input<string>();
+    titleText = input<string>('');
+    withMenu = input<boolean>(true);
 
-  titleTextParts = computed(() => this.titleText().split(' '));
+    titleTextParts = computed(() => this.titleText().split(' '));
 
-  doToogleMenu() {
-    this.menuService.toogleMenu();
-  }
+    doToogleMenu() {
+        this.menuService.toogleMenu();
+    }
 
-  goToHome(event: Event) {
-    event.stopPropagation();
-    event.preventDefault();
-    this.router.navigate(['/']);
-  }
+    goToHome(event: Event) {
+        event.stopPropagation();
+        event.preventDefault();
+        this.router.navigate(['/']);
+    }
 }

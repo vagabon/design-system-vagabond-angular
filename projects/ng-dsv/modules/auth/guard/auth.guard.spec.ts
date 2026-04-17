@@ -7,7 +7,10 @@ import { authGuard } from './auth.guard';
 
 describe('authGuard', () => {
     let mockPlatformService: { isPlatformBrowser: ReturnType<typeof vi.fn> };
-    let mockAuthService: { userConnected: ReturnType<typeof vi.fn>; loginFromCache: ReturnType<typeof vi.fn> };
+    let mockAuthService: {
+        userConnected: ReturnType<typeof vi.fn>;
+        loginFromCache: ReturnType<typeof vi.fn>;
+    };
     let mockRouter: { navigate: ReturnType<typeof vi.fn> };
     let injector: EnvironmentInjector;
 
@@ -31,7 +34,7 @@ describe('authGuard', () => {
                 { provide: AuthService, useValue: mockAuthService },
                 { provide: Router, useValue: mockRouter },
             ],
-            null as any
+            null as any,
         );
 
         mockPlatformService.isPlatformBrowser.mockReturnValue(true);
@@ -55,7 +58,7 @@ describe('authGuard', () => {
     });
 
     it('should return false and warn if no role is provided in route', () => {
-        const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => { });
+        const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
         const result = runInInjectionContext(injector, () => authGuard(createRoute(), mockState));
         expect(result).toBe(false);

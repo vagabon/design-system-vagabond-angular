@@ -1,4 +1,3 @@
-
 export interface TableDto {
     name: string;
     label: string;

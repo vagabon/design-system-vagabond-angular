@@ -6,40 +6,38 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { FormReactiveInputComponent } from './form.reactive.input.component';
 
 describe('FormReactiveInputComponent', () => {
-  let component: FormReactiveInputComponent;
-  let fixture: ComponentFixture<FormReactiveInputComponent>;
+    let component: FormReactiveInputComponent;
+    let fixture: ComponentFixture<FormReactiveInputComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [FormReactiveInputComponent, ReactiveFormsModule],
-      providers: [
-        provideZonelessChangeDetection(), provideHttpClient()
-      ],
-    }).compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [FormReactiveInputComponent, ReactiveFormsModule],
+            providers: [provideZonelessChangeDetection(), provideHttpClient()],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(FormReactiveInputComponent);
-    component = fixture.componentInstance;
+        fixture = TestBed.createComponent(FormReactiveInputComponent);
+        component = fixture.componentInstance;
 
-    const formGroup = new FormGroup({
-      testField: new FormControl('', Validators.required)
+        const formGroup = new FormGroup({
+            testField: new FormControl('', Validators.required),
+        });
+
+        component.form = signal(formGroup) as unknown as InputSignal<FormGroup>;
+        component.field = signal('testField') as unknown as InputSignal<string>;
+
+        fixture.detectChanges();
     });
 
-    component.form = signal(formGroup) as unknown as InputSignal<FormGroup>;
-    component.field = signal('testField') as unknown as InputSignal<string>;
+    it('should create the component', () => {
+        expect(component).toBeTruthy();
+    });
 
-    fixture.detectChanges();
-  });
+    it('should emit value on Enter', () => {
+        vi.spyOn(component.callbackSend, 'emit');
+        component.form().get('testField')?.setValue('test value');
 
-  it('should create the component', () => {
-    expect(component).toBeTruthy();
-  });
+        component.onEnter();
 
-  it('should emit value on Enter', () => {
-    vi.spyOn(component.onSend, 'emit');
-    component.form().get('testField')?.setValue('test value');
-
-    component.onEnter();
-
-    expect(component.onSend.emit).toHaveBeenCalledWith('test value');
-  });
+        expect(component.callbackSend.emit).toHaveBeenCalledWith('test value');
+    });
 });

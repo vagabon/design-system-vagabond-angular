@@ -1,11 +1,11 @@
 <div>
-  <div>
-    @for (tab of tabs(); track tab.id) {
-      <dsv-tab-component
-        [tab]="tab"
-        [isSelected]="active().trim() === tab.id.trim()"
-        (callback)="doClick($event)"
-      />
-    }
-  </div>
+    <div>
+        @for (tab of tabs(); track tab.id) {
+            <dsv-tab-component
+                [tab]="tab"
+                [isSelected]="active().trim() === tab.id.trim()"
+                (callback)="doClick($event)"
+            />
+        }
+    </div>
 </div>

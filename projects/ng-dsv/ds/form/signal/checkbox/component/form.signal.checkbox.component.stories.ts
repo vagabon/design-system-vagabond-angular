@@ -6,56 +6,57 @@ import { CustomFormGroup } from '../../../reactive/input/component/form.reactive
 import { FormSignalCheckboxComponent } from './form.signal.checkbox.component';
 
 interface TestDto {
-  myCheckbox: boolean;
+    myCheckbox: boolean;
 }
 
 @Component({
-  selector: 'story-signal-checkbox',
-  standalone: true,
-  imports: [FormSignalCheckboxComponent, FormField],
-  template: `
-    @if (myForm) {
-      <dsv-form-signal-checkbox [form]="myForm" fieldName="myCheckbox" (onSend)="onSend($event)" />
-    }
-  `
+    selector: 'story-signal-checkbox',
+    standalone: true,
+    imports: [FormSignalCheckboxComponent, FormField],
+    template: `
+        @if (myForm) {
+            <dsv-form-signal-checkbox
+                [form]="myForm"
+                fieldName="myCheckbox"
+                (callbackSend)="onSend($event)"
+            />
+        }
+    `,
 })
 class StorySignalChecbox {
-  value = input<boolean>(false);
-  myForm = form<TestDto>(signal({ myCheckbox: this.value() }), path => {
-  });
-  onSend = () => { };
-
+    value = input<boolean>(false);
+    myForm = form<TestDto>(signal({ myCheckbox: this.value() }), (path) => {});
+    onSend = () => {};
 }
 
 const meta: Meta<StorySignalChecbox> = {
-  title: 'dsv/Form/Signal/checkbox',
-  component: StorySignalChecbox,
-  excludeStories: /.*Data$/,
-  tags: ['autodocs'],
-  argTypes: {
-  },
+    title: 'dsv/Form/Signal/checkbox',
+    component: StorySignalChecbox,
+    excludeStories: /.*Data$/,
+    tags: ['autodocs'],
+    argTypes: {},
 };
 
 export default meta;
 type Story = StoryObj<StorySignalChecbox>;
 
 const MY_FORM = new FormGroup({
-  exampleField: new FormControl(''),
+    exampleField: new FormControl(''),
 }) as unknown as CustomFormGroup;
 
 MY_FORM['toJSON'] = () => null;
 
 export const Default: Story = {
-  args: {
-    value: true
-  },
-  parameters: {
-    docs: {
-      source: {
-        code: `
+    args: {
+        value: true,
+    },
+    parameters: {
+        docs: {
+            source: {
+                code: `
           <dsv-form-signal-checkbox [form]="myForm" fieldName="myCheckbox" (onSend)="onSend($event)" />
         `,
-      },
+            },
+        },
     },
-  },
 };

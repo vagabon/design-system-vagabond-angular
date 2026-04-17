@@ -1,4 +1,4 @@
-import { AdminTabDto } from "./admin.dto";
+import { AdminTabDto } from './admin.dto';
 
 export const ADMIN_COL = [
     { label: 'AUTH.FIELDS.CREATE_DATE', width: '145px', name: 'creationDate', date: true, order: true },
@@ -14,9 +14,27 @@ export const ADMIN_PROFILE_M2M = {
 };
 
 export const ADMIN_INPUT = [
-    { name: 'creationDate', label: 'AUTH.FIELDS.CREATE_DATE', type: 'datetime-local', className: 'width50', disabled: true, },
-    { name: 'updatedDate', label: 'AUTH.FIELDS.UPDATE_DATE', type: 'datetime-local', className: 'width50', disabled: true, },
-    { name: 'deletedDate', label: 'AUTH.FIELDS.DELETE_DATE', type: 'datetime-local', className: 'width50', disabled: true, },
+    {
+        name: 'creationDate',
+        label: 'AUTH.FIELDS.CREATE_DATE',
+        type: 'datetime-local',
+        className: 'width50',
+        disabled: true,
+    },
+    {
+        name: 'updatedDate',
+        label: 'AUTH.FIELDS.UPDATE_DATE',
+        type: 'datetime-local',
+        className: 'width50',
+        disabled: true,
+    },
+    {
+        name: 'deletedDate',
+        label: 'AUTH.FIELDS.DELETE_DATE',
+        type: 'datetime-local',
+        className: 'width50',
+        disabled: true,
+    },
     { name: 'active', label: 'AUTH.FIELDS.ACTIVE', type: 'switch', required: false, className: 'width50' },
 ];
 
@@ -31,7 +49,13 @@ export const ADMIN_USER: AdminTabDto[] = [
             { label: 'AUTH.FIELDS.LOGIN', name: 'username', order: true },
             { label: 'AUTH.FIELDS.EMAIL', width: '240px', name: 'email', order: true },
             { label: 'AUTH.FIELDS.PROFILES', name: 'profiles.name' },
-            { label: 'AUTH.FIELDS.LAST_CONNEXION_DATE', width: '150px', name: 'lastConnexionDate', date: true, order: true },
+            {
+                label: 'AUTH.FIELDS.LAST_CONNEXION_DATE',
+                width: '150px',
+                name: 'lastConnexionDate',
+                date: true,
+                order: true,
+            },
             ...ADMIN_COL,
         ],
         form: [
@@ -46,18 +70,42 @@ export const ADMIN_USER: AdminTabDto[] = [
                 m2m: ADMIN_PROFILE_M2M,
                 array: true,
             },
-            { name: 'lastConnexionDate', label: 'AUTH.FIELDS.LAST_CONNEXION_DATE', type: 'datetime-local', required: false },
-            { name: 'activationToken', label: 'AUTH.FIELDS.ACTIVATION_TOKEN', type: 'text', className: 'width50' },
-            { name: 'emailActivation', label: 'AUTH.FIELDS.EMAIL_ACTIVIATION', type: 'switch', className: 'width50' },
-            { name: 'identityToken', label: 'AUTH.FIELDS.IDENTITY_TOKEN', type: 'text', className: 'width50' },
-            { name: 'identityTokenDateEnd', label: 'AUTH.FIELDS.IDENTITY_TOKEN_DATE', type: 'datetime-local', className: 'width50' },
+            {
+                name: 'lastConnexionDate',
+                label: 'AUTH.FIELDS.LAST_CONNEXION_DATE',
+                type: 'datetime-local',
+                required: false,
+            },
+            {
+                name: 'activationToken',
+                label: 'AUTH.FIELDS.ACTIVATION_TOKEN',
+                type: 'text',
+                className: 'width50',
+            },
+            {
+                name: 'emailActivation',
+                label: 'AUTH.FIELDS.EMAIL_ACTIVIATION',
+                type: 'switch',
+                className: 'width50',
+            },
+            {
+                name: 'identityToken',
+                label: 'AUTH.FIELDS.IDENTITY_TOKEN',
+                type: 'text',
+                className: 'width50',
+            },
+            {
+                name: 'identityTokenDateEnd',
+                label: 'AUTH.FIELDS.IDENTITY_TOKEN_DATE',
+                type: 'datetime-local',
+                className: 'width50',
+            },
             { name: 'googleId', label: 'AUTH.FIELDS.GOOGLE_ID', type: 'text', className: 'width50' },
             { name: 'facebookId', label: 'AUTH.FIELDS.FACEBOOK_ID', type: 'text', className: 'width50' },
             ...ADMIN_INPUT,
         ],
     },
 ];
-
 
 export const ADMIN_PROFILE: AdminTabDto[] = [
     {

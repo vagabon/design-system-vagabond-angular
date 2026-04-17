@@ -14,9 +14,7 @@ describe('ScrollService', () => {
         (window as any).location = mockLocation;
 
         TestBed.configureTestingModule({
-            providers: [
-                provideZonelessChangeDetection(),
-                ScrollService]
+            providers: [provideZonelessChangeDetection(), ScrollService],
         });
         service = TestBed.inject(ScrollService);
     });

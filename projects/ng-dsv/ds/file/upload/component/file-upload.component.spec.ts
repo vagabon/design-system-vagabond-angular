@@ -81,7 +81,7 @@ function createMockFileList(files: File[]): FileList {
         },
     } as FileList;
 
-    files.forEach((f, i) => (fileList as any)[i] = f);
+    files.forEach((f, i) => ((fileList as any)[i] = f));
     return fileList;
 }
 

@@ -6,4 +6,3 @@ export * from './component/base.scroll.component';
 export * from './service/base.service';
 export * from './service/scroll.service';
 export * from './utils/base.utils';
-

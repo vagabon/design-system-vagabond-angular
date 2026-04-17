@@ -1,5 +1,11 @@
 import { provideHttpClient } from '@angular/common/http';
-import { EnvironmentInjector, InputSignal, provideZonelessChangeDetection, runInInjectionContext, signal } from '@angular/core';
+import {
+    EnvironmentInjector,
+    InputSignal,
+    provideZonelessChangeDetection,
+    runInInjectionContext,
+    signal,
+} from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FieldTree, form } from '@angular/forms/signals';
@@ -7,42 +13,45 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { FormSignalInputComponent } from './form.signal.input.component';
 
 interface TestDto {
-  title: string;
+    title: string;
 }
 
 describe('FormSignalInputComponent', () => {
-  let component: FormSignalInputComponent<TestDto>;
-  let fixture: ComponentFixture<FormSignalInputComponent<TestDto>>;
+    let component: FormSignalInputComponent<TestDto>;
+    let fixture: ComponentFixture<FormSignalInputComponent<TestDto>>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [FormSignalInputComponent, ReactiveFormsModule],
-      providers: [
-        provideZonelessChangeDetection(), provideHttpClient()
-      ],
-    }).compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [FormSignalInputComponent, ReactiveFormsModule],
+            providers: [provideZonelessChangeDetection(), provideHttpClient()],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(FormSignalInputComponent<TestDto>);
-    component = fixture.componentInstance;
+        fixture = TestBed.createComponent(FormSignalInputComponent<TestDto>);
+        component = fixture.componentInstance;
 
-    runInInjectionContext(TestBed.inject(EnvironmentInjector), () => {
-      const formSignal = form(signal({ title: 'test value' } as TestDto)) as unknown as FieldTree<TestDto, string | number>;
-      component.form = signal(formSignal) as unknown as InputSignal<FieldTree<TestDto, string | number>>;
-      component.fieldName = signal('title') as unknown as InputSignal<string>;
+        runInInjectionContext(TestBed.inject(EnvironmentInjector), () => {
+            const formSignal = form(signal({ title: 'test value' } as TestDto)) as unknown as FieldTree<
+                TestDto,
+                string | number
+            >;
+            component.form = signal(formSignal) as unknown as InputSignal<
+                FieldTree<TestDto, string | number>
+            >;
+            component.fieldName = signal('title') as unknown as InputSignal<string>;
+        });
+
+        fixture.detectChanges();
     });
 
-    fixture.detectChanges();
-  });
+    it('should create the component', () => {
+        expect(component).toBeTruthy();
+    });
 
-  it('should create the component', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should emit value on Enter', () => {
+        vi.spyOn(component.callbackSend, 'emit');
 
-  it('should emit value on Enter', () => {
-    vi.spyOn(component.onSend, 'emit');
+        component.doOnSend();
 
-    component.doOnSend();
-
-    expect(component.onSend.emit).toHaveBeenCalledWith('test value');
-  });
+        expect(component.callbackSend.emit).toHaveBeenCalledWith('test value');
+    });
 });

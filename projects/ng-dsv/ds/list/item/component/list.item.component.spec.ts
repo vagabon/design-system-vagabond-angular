@@ -10,11 +10,12 @@ const mockListDragService = {
     touchDragging: signal<boolean>(false),
 };
 
-const makeTouchEvent = (type: string, clientX = 0, clientY = 0) => ({
-    preventDefault: vi.fn(),
-    touches: [{ clientX, clientY }],
-    changedTouches: [{ clientX, clientY }],
-}) as unknown as TouchEvent;
+const makeTouchEvent = (type: string, clientX = 0, clientY = 0) =>
+    ({
+        preventDefault: vi.fn(),
+        touches: [{ clientX, clientY }],
+        changedTouches: [{ clientX, clientY }],
+    }) as unknown as TouchEvent;
 
 describe('ListItemComponent', () => {
     let fixture: ComponentFixture<ListItemComponent>;
@@ -166,10 +167,18 @@ describe('ListItemComponent', () => {
             mockListDragService.touchDragging.set(true);
 
             const li = fixture.nativeElement.querySelector('li');
-            li.getBoundingClientRect = () => ({
-                top: 100, left: 50, width: 300, height: 50,
-                bottom: 150, right: 350, x: 50, y: 100, toJSON: () => { },
-            } as DOMRect);
+            li.getBoundingClientRect = () =>
+                ({
+                    top: 100,
+                    left: 50,
+                    width: 300,
+                    height: 50,
+                    bottom: 150,
+                    right: 350,
+                    x: 50,
+                    y: 100,
+                    toJSON: () => {},
+                }) as DOMRect;
 
             const ul = document.createElement('ul');
             ul.appendChild(li);
@@ -216,7 +225,12 @@ describe('ListItemComponent', () => {
             document.body.appendChild(ghost);
             component.ghostEl = ghost;
 
-            const touch = new Touch({ identifier: 1, target: document.createElement('li'), clientX: 0, clientY: 0 });
+            const touch = new Touch({
+                identifier: 1,
+                target: document.createElement('li'),
+                clientX: 0,
+                clientY: 0,
+            });
             const event = new TouchEvent('touchend', { changedTouches: [touch] });
             component.onTouchEnd(event);
 
@@ -227,7 +241,12 @@ describe('ListItemComponent', () => {
             mockListDragService.dragSrcIndex.set(2);
             mockListDragService.touchDragging.set(true);
 
-            const touch = new Touch({ identifier: 1, target: document.createElement('li'), clientX: 0, clientY: 0 });
+            const touch = new Touch({
+                identifier: 1,
+                target: document.createElement('li'),
+                clientX: 0,
+                clientY: 0,
+            });
             const event = new TouchEvent('touchend', { changedTouches: [touch] });
             component.onTouchEnd(event);
 

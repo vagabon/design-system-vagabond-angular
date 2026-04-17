@@ -1,12 +1,11 @@
 :host {
-
     .form-container {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         gap: 10px;
 
-        &>div {
+        & > div {
             display: flex;
             width: 100%;
         }
@@ -42,7 +41,6 @@
         .width50 {
             width: 100% !important;
         }
-
 
         .m2m {
             justify-content: baseline !important;

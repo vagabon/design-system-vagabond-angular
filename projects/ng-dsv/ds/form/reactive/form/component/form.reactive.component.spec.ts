@@ -7,45 +7,45 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { FormReactiveComponent } from './form.reactive.component';
 
 @Component({
-  template: `
-    <dsv-form-reactive [form]="form">
-      <button type="submit">Submit</button>
-    </dsv-form-reactive>
-  `,
-  imports: [FormReactiveComponent, ReactiveFormsModule],
+    template: `
+        <dsv-form-reactive [form]="form">
+            <button type="submit">Submit</button>
+        </dsv-form-reactive>
+    `,
+    imports: [FormReactiveComponent, ReactiveFormsModule],
 })
 class TestHostComponent {
-  form = new FormBuilder().group({
-    name: ['', Validators.required],
-  });
+    form = new FormBuilder().group({
+        name: ['', Validators.required],
+    });
 }
 
 describe('FormReactiveComponent with submit button in projection', () => {
-  let fixture: ComponentFixture<TestHostComponent>;
-  let host: TestHostComponent;
+    let fixture: ComponentFixture<TestHostComponent>;
+    let host: TestHostComponent;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [TestHostComponent],
-      providers: [provideZonelessChangeDetection(), provideTranslateService()],
-    }).compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [TestHostComponent],
+            providers: [provideZonelessChangeDetection(), provideTranslateService()],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(TestHostComponent);
-    host = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(TestHostComponent);
+        host = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should submit the form when valid', () => {
-    const formDebug = fixture.debugElement;
-    const form = host.form;
-    vi.spyOn(console, 'log').mockImplementation(() => { });
+    it('should submit the form when valid', () => {
+        const formDebug = fixture.debugElement;
+        const form = host.form;
+        vi.spyOn(console, 'log').mockImplementation(() => {});
 
-    form.get('name')?.setValue('John Doe');
-    fixture.detectChanges();
+        form.get('name')?.setValue('John Doe');
+        fixture.detectChanges();
 
-    const button = formDebug.query(By.css('button[type="submit"]'));
-    button.nativeElement.click();
+        const button = formDebug.query(By.css('button[type="submit"]'));
+        button.nativeElement.click();
 
-    expect(form.valid).toBe(true);
-  });
+        expect(form.valid).toBe(true);
+    });
 });

@@ -1,24 +1,24 @@
 <table>
-  <thead>
-    <tr>
-      @for (cell of cells(); track cell.name) {
-        <th [style.maxWidth]="cell.width">{{ cell.label | translate }}</th>
-      }
-    </tr>
-  </thead>
-  <tbody>
-    @for (data of showDatas(); track $index; let index = $index) {
-      <tr>
-        @for (cell of cells(); track cell.name; let indexData = $index) {
-          <td
-            [class.cursor]="links()[index]"
-            [routerLink]="links()[index]"
-            [style.maxWidth]="cell.width"
-          >
-            {{ data[indexData + 1] }}
-          </td>
+    <thead>
+        <tr>
+            @for (cell of cells(); track cell.name) {
+                <th [style.maxWidth]="cell.width">{{ cell.label | translate }}</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @for (data of showDatas(); track $index; let index = $index) {
+            <tr>
+                @for (cell of cells(); track cell.name; let indexData = $index) {
+                    <td
+                        [class.cursor]="links()[index]"
+                        [routerLink]="links()[index]"
+                        [style.maxWidth]="cell.width"
+                    >
+                        {{ data[indexData + 1] }}
+                    </td>
+                }
+            </tr>
         }
-      </tr>
-    }
-  </tbody>
+    </tbody>
 </table>

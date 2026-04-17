@@ -1,4 +1,4 @@
-import { Injectable, signal } from "@angular/core";
+import { Injectable, signal } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class ModalService {
@@ -22,6 +22,6 @@ export class ModalService {
 
     toggle(id: string) {
         const s = this.states.get(id);
-        if (s) s.update(v => !v);
+        if (s) s.update((v) => !v);
     }
 }

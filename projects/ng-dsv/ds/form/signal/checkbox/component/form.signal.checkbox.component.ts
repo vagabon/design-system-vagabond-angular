@@ -4,18 +4,19 @@ import { FormSignalLabelComponent } from '../../label/component/form.signal.labe
 import { FormSignalInputBase } from '../../public-api';
 
 @Component({
-  selector: 'dsv-form-signal-checkbox',
-  imports: [FormField, FormSignalLabelComponent],
-  templateUrl: './form.signal.checkbox.component.html',
-  styleUrls: [
-    '../../../reactive/input/component/form.reactive.input.component.scss',
-    '../../../reactive/checkbox/component/form.reactive.checkbox.component.scss',
-  ],
+    selector: 'dsv-form-signal-checkbox',
+    imports: [FormField, FormSignalLabelComponent],
+    templateUrl: './form.signal.checkbox.component.html',
+    styleUrls: [
+        '../../../reactive/input/component/form.reactive.input.component.scss',
+        '../../../reactive/checkbox/component/form.reactive.checkbox.component.scss',
+    ],
 })
 export class FormSignalCheckboxComponent<T> extends FormSignalInputBase<T> {
-
-
-  getBooleanSignal() {
-    return this.form()?.[this.fieldName() as keyof FieldTree<T, string | number>] as FieldTree<boolean, string | number>;
-  }
+    getBooleanSignal() {
+        return this.form()?.[this.fieldName() as keyof FieldTree<T, string | number>] as FieldTree<
+            boolean,
+            string | number
+        >;
+    }
 }

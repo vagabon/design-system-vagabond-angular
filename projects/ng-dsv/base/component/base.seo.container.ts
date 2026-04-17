@@ -1,5 +1,5 @@
-import { inject, makeStateKey, TransferState } from "@angular/core";
-import { Meta, Title } from "@angular/platform-browser";
+import { inject, makeStateKey, TransferState } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 export abstract class BaseSeoContainer {
     public readonly title = inject(Title);
@@ -13,5 +13,4 @@ export abstract class BaseSeoContainer {
         this.meta.updateTag({ name: 'description', content: description });
         image && this.meta.updateTag({ property: 'og:image', content: image });
     }
-
 }

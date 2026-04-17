@@ -2,9 +2,10 @@
 import { describe, expect, it } from 'vitest';
 import { requiredTrim } from './form.signal.utils';
 
-const makeContext = (value: string) => ({
-    value: () => value,
-}) as any;
+const makeContext = (value: string) =>
+    ({
+        value: () => value,
+    }) as any;
 
 describe('requiredTrim', () => {
     it('retourne null si la valeur est non vide', () => {

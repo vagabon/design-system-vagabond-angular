@@ -11,14 +11,14 @@ describe('FormReactiveCheckboxComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [FormReactiveCheckboxComponent],
-            providers: [provideZonelessChangeDetection()]
+            providers: [provideZonelessChangeDetection()],
         }).compileComponents();
 
         fixture = TestBed.createComponent(FormReactiveCheckboxComponent);
         component = fixture.componentInstance;
 
         const formGroup = new FormGroup({
-            myCheckbox: new FormControl(false)
+            myCheckbox: new FormControl(false),
         });
 
         component.form = signal(formGroup) as unknown as InputSignal<FormGroup>;
@@ -34,7 +34,7 @@ describe('FormReactiveCheckboxComponent', () => {
 
     it('should emit value on change', () => {
         const spy = vi.fn();
-        component.change.subscribe(spy);
+        component.callbackChange.subscribe(spy);
 
         component.form().get(component.field())?.setValue(true);
 

@@ -8,45 +8,45 @@ import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
-  selector: 'dsv-form-signal',
-  imports: [DsvButtonComponent, RouterLink, TranslatePipe],
-  templateUrl: './form.signal.component.html',
-  styleUrl: '../../../reactive/form/component/form.reactive.component.scss',
+    selector: 'dsv-form-signal',
+    imports: [DsvButtonComponent, RouterLink, TranslatePipe],
+    templateUrl: './form.signal.component.html',
+    styleUrl: '../../../reactive/form/component/form.reactive.component.scss',
 })
 export class FormSignalComponent<T> {
-  toastService = inject(ToastService);
+    toastService = inject(ToastService);
 
-  form = input.required<FieldTree<T, string | number>>();
+    form = input.required<FieldTree<T, string | number>>();
 
-  urlBack = input<string>();
-  textValid = input<string>('ENREGISTRER');
-  formValid = input<string>('');
+    urlBack = input<string>();
+    textValid = input<string>('ENREGISTRER');
+    formValid = input<string>('');
 
-  callbackBack = output<void>();
-  callback = output<ApiDto>();
+    callbackBack = output<void>();
+    callback = output<ApiDto>();
 
-  isCallbackBack = computed(() => isCallback(this.callbackBack));
+    isCallbackBack = computed(() => isCallback(this.callbackBack));
 
-  goBack() {
-    this.callbackBack.emit();
-  }
+    goBack() {
+        this.callbackBack.emit();
+    }
 
-  onSubmit(event: Event) {
-    event.preventDefault();
-    submit(this.form(), async (form) => {
-      if (form().valid()) {
-        this.callback.emit(form().value() as ApiDto);
-        if (this.formValid() !== '') {
-          this.toastService.showToast({
-            text: this.formValid(),
-          });
-        }
-      } else {
-        this.toastService.showToast({
-          text: 'Erreur dans le formulaire !',
-          type: 'error',
+    onSubmit(event: Event) {
+        event.preventDefault();
+        submit(this.form(), async (form) => {
+            if (form().valid()) {
+                this.callback.emit(form().value() as ApiDto);
+                if (this.formValid() !== '') {
+                    this.toastService.showToast({
+                        text: this.formValid(),
+                    });
+                }
+            } else {
+                this.toastService.showToast({
+                    text: 'Erreur dans le formulaire !',
+                    type: 'error',
+                });
+            }
         });
-      }
-    });
-  }
+    }
 }

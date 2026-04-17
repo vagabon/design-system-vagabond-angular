@@ -1,8 +1,8 @@
-import { Component, effect, input, output, signal } from "@angular/core";
-import { FieldTree } from "@angular/forms/signals";
+import { Component, effect, input, output, signal } from '@angular/core';
+import { FieldTree } from '@angular/forms/signals';
 
 @Component({
-    template: ``
+    template: ``,
 })
 export abstract class FormSignalInputBase<T> {
     form = input.required<FieldTree<T, string | number>>();
@@ -15,7 +15,7 @@ export abstract class FormSignalInputBase<T> {
 
     isError = signal<boolean>(false);
 
-    onSend = output<string>();
+    callbackSend = output<string>();
     callbackChange = output<string>();
 
     constructor() {
@@ -29,11 +29,14 @@ export abstract class FormSignalInputBase<T> {
     }
 
     getSignal() {
-        return this.form()?.[this.fieldName() as keyof FieldTree<T, string | number>] as FieldTree<string, string | number>;
+        return this.form()?.[this.fieldName() as keyof FieldTree<T, string | number>] as FieldTree<
+            string,
+            string | number
+        >;
     }
 
     doOnSend() {
-        this.getValue() && this.onSend.emit(this.getValue());
+        this.getValue() && this.callbackSend.emit(this.getValue());
     }
 
     doChange() {
@@ -47,6 +50,6 @@ export abstract class FormSignalInputBase<T> {
             this.debug() && console.log(signal, signal().errors(), value);
             return value;
         }
-        return "";
+        return '';
     }
 }

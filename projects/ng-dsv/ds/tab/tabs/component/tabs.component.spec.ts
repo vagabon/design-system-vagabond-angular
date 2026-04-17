@@ -23,7 +23,7 @@ describe('TabsComponent', () => {
                         params: of({ movieId: '42' }),
                     },
                 },
-            ]
+            ],
         }).compileComponents();
 
         fixture = TestBed.createComponent(TabsComponent);
@@ -31,7 +31,7 @@ describe('TabsComponent', () => {
 
         const mockTabs: TabDto[] = [
             { id: 'home', title: 'Accueil', url: '/tab1' },
-            { id: 'settings', title: 'Paramètres', url: '/tab2' }
+            { id: 'settings', title: 'Paramètres', url: '/tab2' },
         ];
 
         component.tabs = signal(mockTabs) as unknown as InputSignal<TabDto[]>;
@@ -47,7 +47,7 @@ describe('TabsComponent', () => {
     it('should receive tabs and active input', () => {
         expect(component.tabs()).toEqual([
             { id: 'home', title: 'Accueil', url: '/tab1' },
-            { id: 'settings', title: 'Paramètres', url: '/tab2' }
+            { id: 'settings', title: 'Paramètres', url: '/tab2' },
         ]);
         expect(component.active()).toBe('home');
     });

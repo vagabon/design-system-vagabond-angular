@@ -4,23 +4,23 @@ import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
 import { ThemeService } from '../../public-api';
 
 export type Theme = {
-  primary: string;
-  text: string;
+    primary: string;
+    text: string;
 };
 
 @Component({
-  selector: 'dsv-theme-switch',
-  imports: [CommonModule, DsvButtonComponent],
-  templateUrl: `./dsv.theme.switch.component.html`,
+    selector: 'dsv-theme-switch',
+    imports: [CommonModule, DsvButtonComponent],
+    templateUrl: `./dsv.theme.switch.component.html`,
 })
 export class DsvThemeSwitchComponent {
-  private readonly themeService = inject(ThemeService);
+    private readonly themeService = inject(ThemeService);
 
-  switchTheme() {
-    this.themeService.switchTheme();
-  }
+    switchTheme() {
+        this.themeService.switchTheme();
+    }
 
-  isLightMode() {
-    return this.themeService.themeMode() === 'light';
-  }
+    isLightMode() {
+        return this.themeService.themeMode() === 'light';
+    }
 }

@@ -5,22 +5,21 @@ import { DsvSekeletonComponent } from './skeleton.component';
 import { describe, beforeEach, it, expect } from 'vitest';
 
 describe('DsvSekeletonComponent', () => {
-  let component: DsvSekeletonComponent;
-  let fixture: ComponentFixture<DsvSekeletonComponent>;
+    let component: DsvSekeletonComponent;
+    let fixture: ComponentFixture<DsvSekeletonComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [DsvSekeletonComponent],
-      providers: [provideZonelessChangeDetection()],
-    })
-      .compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [DsvSekeletonComponent],
+            providers: [provideZonelessChangeDetection()],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(DsvSekeletonComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(DsvSekeletonComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

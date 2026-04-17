@@ -12,19 +12,19 @@ describe('SelectComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [FormReactiveSelectComponent],
-            providers: [provideZonelessChangeDetection()]
+            providers: [provideZonelessChangeDetection()],
         }).compileComponents();
 
         fixture = TestBed.createComponent(FormReactiveSelectComponent);
         component = fixture.componentInstance;
 
         const form = new FormGroup({
-            role: new FormControl('USER')
+            role: new FormControl('USER'),
         });
 
         const mockList: (ApiDto & { name: string })[] = [
             { id: 1, name: 'User' },
-            { id: 2, name: 'Admin' }
+            { id: 2, name: 'Admin' },
         ];
 
         component.form = signal(form) as unknown as InputSignal<FormGroup>;
@@ -41,7 +41,7 @@ describe('SelectComponent', () => {
 
     it('should emit selected value on change', () => {
         const changeSpy = vi.fn();
-        component.change.subscribe(changeSpy);
+        component.callbackChange.subscribe(changeSpy);
 
         component.form().get(component.field())?.setValue('Admin');
         component.doChange();

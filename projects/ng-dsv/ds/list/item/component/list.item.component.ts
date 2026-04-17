@@ -1,6 +1,6 @@
-import { Component, ElementRef, inject, input, output, viewChild } from "@angular/core";
-import { ListItemDragDto } from "../../list/dto/list.dto";
-import { ListDragService } from "../../list/service/list.drag.service";
+import { Component, ElementRef, inject, input, output, viewChild } from '@angular/core';
+import { ListItemDragDto } from '../../list/dto/list.dto';
+import { ListDragService } from '../../list/service/list.drag.service';
 
 @Component({
     selector: 'dsv-list-item',
@@ -18,8 +18,7 @@ export class ListItemComponent {
     readonly liRef = viewChild<ElementRef>('liRef');
     ghostEl: HTMLElement | null = null;
 
-    constructor() {
-    }
+    constructor() {}
 
     onHandleMouseDown(event: MouseEvent) {
         const div = (event.currentTarget as HTMLElement).closest('div') as HTMLElement;
@@ -42,7 +41,10 @@ export class ListItemComponent {
         if (dragSrcIndex === null || dragSrcIndex === targetIndex) {
             return;
         }
-        this.callbackOrder.emit({ dragSrcIndex: dragSrcIndex, targetIndex: targetIndex });
+        this.callbackOrder.emit({
+            dragSrcIndex: dragSrcIndex,
+            targetIndex: targetIndex,
+        });
         this.listDragService.dragSrcIndex.set(null);
     }
 
@@ -91,8 +93,9 @@ export class ListItemComponent {
         const target = document.elementFromPoint(touch.clientX, touch.clientY);
         const targetLi = target?.closest('li');
 
-        document.querySelectorAll('li.drag-over-touch')
-            .forEach(el => el.classList.remove('drag-over-touch'));
+        document
+            .querySelectorAll('li.drag-over-touch')
+            .forEach((el) => el.classList.remove('drag-over-touch'));
 
         if (targetLi && targetLi !== this.liRef()?.nativeElement) {
             targetLi.classList.add('drag-over-touch');
@@ -113,15 +116,16 @@ export class ListItemComponent {
         const targetLi = target?.closest('[data-index]') as HTMLElement | null;
 
         if (targetLi) {
-            const targetIndex = parseInt(targetLi.dataset['index'] ?? '-1');
+            const targetIndex = Number.parseInt(targetLi.dataset['index'] ?? '-1');
             const dragSrcIndex = this.listDragService.dragSrcIndex();
             if (dragSrcIndex !== null && dragSrcIndex !== targetIndex && targetIndex >= 0) {
                 this.callbackOrder.emit({ dragSrcIndex, targetIndex });
             }
         }
 
-        document.querySelectorAll('li.drag-over-touch')
-            .forEach(el => el.classList.remove('drag-over-touch'));
+        document
+            .querySelectorAll('li.drag-over-touch')
+            .forEach((el) => el.classList.remove('drag-over-touch'));
         this.listDragService.dragSrcIndex.set(null);
         this.listDragService.touchDragging.set(false);
     }

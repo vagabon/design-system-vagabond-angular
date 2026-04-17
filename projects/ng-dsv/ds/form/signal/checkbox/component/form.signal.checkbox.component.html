@@ -1,20 +1,20 @@
 <div>
-  @if (getSignal()) {
-    <dsv-form-signal-label
-      [name]="fieldName()"
-      [label]="label() ?? fieldName()"
-      [signal]="getSignal()()"
-      [show]="withLabel()"
-    />
-    <div>
-      <input
-        type="checkbox"
-        [id]="fieldName()"
-        class="form-control"
-        [class.error]="isError()"
-        [formField]="getBooleanSignal()"
-        (change)="doChange()"
-      />
-    </div>
-  }
+    @if (getSignal()) {
+        <dsv-form-signal-label
+            [name]="fieldName()"
+            [label]="label() ?? fieldName()"
+            [signal]="getSignal()()"
+            [show]="withLabel()"
+        />
+        <div>
+            <input
+                type="checkbox"
+                [id]="fieldName()"
+                class="form-control"
+                [class.error]="isError()"
+                [formField]="getBooleanSignal()"
+                (change)="doChange()"
+            />
+        </div>
+    }
 </div>

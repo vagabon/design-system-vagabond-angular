@@ -6,17 +6,16 @@ import { FormSignalLabelComponent } from '../../label/component/form.signal.labe
 import { FormSignalInputBase } from '../../public-api';
 
 @Component({
-  selector: 'dsv-form-signal-select',
-  imports: [FormField, FormSignalLabelComponent, FormSignalErrorComponent],
-  templateUrl: './form.signal.select.component.html',
-  styleUrls: [
-    '../../../reactive/input/component/form.reactive.input.component.scss',
-    '../../../reactive/select/component/form.reactive.select.component.scss',
-  ],
+    selector: 'dsv-form-signal-select',
+    imports: [FormField, FormSignalLabelComponent, FormSignalErrorComponent],
+    templateUrl: './form.signal.select.component.html',
+    styleUrls: [
+        '../../../reactive/input/component/form.reactive.input.component.scss',
+        '../../../reactive/select/component/form.reactive.select.component.scss',
+    ],
 })
 export class FormSignalSelectComponent<T> extends FormSignalInputBase<T> {
-  multiple = input<boolean>(false);
+    multiple = input<boolean>(false);
 
-  list = input<(ApiDto & { name: string })[]>([]);
-
+    list = input<(ApiDto & { name: string })[]>([]);
 }

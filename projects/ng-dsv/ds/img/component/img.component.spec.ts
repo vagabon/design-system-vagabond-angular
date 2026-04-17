@@ -5,34 +5,34 @@ import { DsvImgComponent } from './img.component';
 import { describe, beforeEach, it, expect } from 'vitest';
 
 describe('DsvImgComponent', () => {
-  let component: DsvImgComponent;
-  let fixture: ComponentFixture<DsvImgComponent>;
+    let component: DsvImgComponent;
+    let fixture: ComponentFixture<DsvImgComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [DsvImgComponent],
-      providers: [provideZonelessChangeDetection()],
-    }).compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [DsvImgComponent],
+            providers: [provideZonelessChangeDetection()],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(DsvImgComponent);
-    component = fixture.componentInstance;
+        fixture = TestBed.createComponent(DsvImgComponent);
+        component = fixture.componentInstance;
 
-    component.src = signal('url') as unknown as InputSignal<string>;
+        component.src = signal('url') as unknown as InputSignal<string>;
 
-    fixture.detectChanges();
-  });
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 
-  it('should set load to true when doLoad is called', () => {
-    component.doLoad();
-    expect(component.load()).toBe(true);
-  });
+    it('should set load to true when doLoad is called', () => {
+        component.doLoad();
+        expect(component.load()).toBe(true);
+    });
 
-  it('should set error to true when onImageError is called', () => {
-    component.onImageError();
-    expect(component.error()).toBe(true);
-  });
+    it('should set error to true when onImageError is called', () => {
+        component.onImageError();
+        expect(component.error()).toBe(true);
+    });
 });

@@ -7,36 +7,36 @@ import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
-  selector: 'dsv-form-reactive',
-  imports: [ReactiveFormsModule, DsvButtonComponent, RouterLink, TranslatePipe],
-  templateUrl: './form.reactive.component.html',
-  styleUrl: './form.reactive.component.scss',
+    selector: 'dsv-form-reactive',
+    imports: [ReactiveFormsModule, DsvButtonComponent, RouterLink, TranslatePipe],
+    templateUrl: './form.reactive.component.html',
+    styleUrl: './form.reactive.component.scss',
 })
 export class FormReactiveComponent {
-  toastService = inject(ToastService);
+    toastService = inject(ToastService);
 
-  form = input.required<FormGroup>();
+    form = input.required<FormGroup>();
 
-  urlBack = input<string>();
-  textValid = input<string>('ENREGISTRER');
-  formValid = input<string>('Formulaire envoyé !');
+    urlBack = input<string>();
+    textValid = input<string>('ENREGISTRER');
+    formValid = input<string>('Formulaire envoyé !');
 
-  callback = output<ApiDto>();
+    callback = output<ApiDto>();
 
-  onSubmit() {
-    this.form().markAllAsTouched();
-    if (this.form().valid) {
-      this.callback.emit(this.form().value);
-      if (this.textValid() !== '') {
-        this.toastService.showToast({
-          text: this.formValid(),
-        });
-      }
-    } else {
-      this.toastService.showToast({
-        text: 'Erreur dans le formulaire !',
-        type: 'error',
-      });
+    onSubmit() {
+        this.form().markAllAsTouched();
+        if (this.form().valid) {
+            this.callback.emit(this.form().value);
+            if (this.textValid() !== '') {
+                this.toastService.showToast({
+                    text: this.formValid(),
+                });
+            }
+        } else {
+            this.toastService.showToast({
+                text: 'Erreur dans le formulaire !',
+                type: 'error',
+            });
+        }
     }
-  }
 }

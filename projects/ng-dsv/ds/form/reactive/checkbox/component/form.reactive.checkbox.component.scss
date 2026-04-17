@@ -4,7 +4,7 @@
     width: 100%;
     margin-bottom: 10px !important;
 
-    &>div {
+    & > div {
         align-items: center;
         flex-direction: row;
         flex: 1;
@@ -16,7 +16,6 @@
             flex: 1 !important;
             cursor: pointer !important;
         }
-
 
         input {
             accent-color: var(--primary);

@@ -1,5 +1,8 @@
 @if (isImage()) {
-  <img [src]="avatar()" alt="avatar" />
+    <img
+        [src]="avatar()"
+        alt="avatar"
+    />
 } @else {
-  <span>{{ avatarLetter() }}</span>
+    <span>{{ avatarLetter() }}</span>
 }

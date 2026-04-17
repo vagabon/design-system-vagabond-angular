@@ -9,10 +9,7 @@ describe('ToastService', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [
-                provideZonelessChangeDetection(),
-                ToastService
-            ],
+            providers: [provideZonelessChangeDetection(), ToastService],
         });
         service = TestBed.inject(ToastService);
         vi.useFakeTimers();
@@ -27,7 +24,7 @@ describe('ToastService', () => {
 
         service.showToast(toast);
 
-        const addedToast = service.toasts().find(t => t.text === 'Test toast');
+        const addedToast = service.toasts().find((t) => t.text === 'Test toast');
 
         expect(addedToast).toBeDefined();
         expect(addedToast!.uuid).toBeDefined();
@@ -44,18 +41,18 @@ describe('ToastService', () => {
         const uuid = service.toasts()[0].uuid!;
         service.removeToastFromQueue(uuid);
 
-        expect(service.toasts().find(t => t.uuid === uuid)).toBeUndefined();
+        expect(service.toasts().find((t) => t.uuid === uuid)).toBeUndefined();
     });
 
     it('should close toast from toastShows', () => {
         const toast: ToastDto = { text: 'Test toast' };
         toast.uuid = '1234';
-        service.toastShows.update(ts => [...ts, toast]);
+        service.toastShows.update((ts) => [...ts, toast]);
 
         service.closeToast('1234');
 
         setInterval(() => {
-            expect(service.toastShows().find(t => t.uuid === '1234')?.open).toBe(false);
+            expect(service.toastShows().find((t) => t.uuid === '1234')?.open).toBe(false);
         }, 500);
     });
 
@@ -66,12 +63,12 @@ describe('ToastService', () => {
         const toastFromQueue = service.toasts()[0];
         service.consumeToast(toastFromQueue);
 
-        expect(service.toastShows().find(t => t.uuid === toastFromQueue.uuid)).toBeDefined();
+        expect(service.toastShows().find((t) => t.uuid === toastFromQueue.uuid)).toBeDefined();
 
         for (let elapsed = DURATION_TIMEOUT; elapsed <= 60; elapsed += DURATION_TIMEOUT) {
             vi.advanceTimersByTime(DURATION_TIMEOUT);
 
-            const toastInShow = service.toastShows().find(t => t.uuid === toastFromQueue.uuid);
+            const toastInShow = service.toastShows().find((t) => t.uuid === toastFromQueue.uuid);
             if (elapsed < toast.duration!) {
                 expect(toastInShow?.remainingDuration).toBeCloseTo(toast.duration! - elapsed, 1);
             }

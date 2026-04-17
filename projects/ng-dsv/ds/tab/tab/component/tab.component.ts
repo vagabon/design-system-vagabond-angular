@@ -4,21 +4,21 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { TabDto } from '../dto/tab.dto';
 
 @Component({
-  selector: 'dsv-tab-component',
-  imports: [TranslatePipe, RouterLink],
-  templateUrl: './tab.component.html',
-  styleUrls: ['./tab.component.scss'],
+    selector: 'dsv-tab-component',
+    imports: [TranslatePipe, RouterLink],
+    templateUrl: './tab.component.html',
+    styleUrls: ['./tab.component.scss'],
 })
 export class TabComponent {
-  tab = input.required<TabDto>();
-  isSelected = input<boolean>(false);
+    tab = input.required<TabDto>();
+    isSelected = input<boolean>(false);
 
-  callback = output<TabDto>();
+    callback = output<TabDto>();
 
-  doClick(event: Event, tab: TabDto) {
-    if (!tab.url) {
-      event.stopPropagation();
-      this.callback.emit(tab);
+    doClick(event: Event, tab: TabDto) {
+        if (!tab.url) {
+            event.stopPropagation();
+            this.callback.emit(tab);
+        }
     }
-  }
 }

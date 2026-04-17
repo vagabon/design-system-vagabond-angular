@@ -1,13 +1,12 @@
-import { Component, input, signal } from "@angular/core";
-import { ButtonVariantType, ButtonWidthType, ColorType } from "@ng-vagabond-lab/ng-dsv/type";
+import { Component, input, signal } from '@angular/core';
+import { ButtonVariantType, ButtonWidthType, ColorType } from '@ng-vagabond-lab/ng-dsv/type';
 
 @Component({
     selector: 'dsv-base-color',
     imports: [],
-    template: ''
+    template: '',
 })
 export abstract class BaseColorComponent {
-
     color = input<ColorType>('primary');
     variant = input<ButtonVariantType>('contained');
     width = input<ButtonWidthType>('small');
@@ -21,13 +20,7 @@ export abstract class BaseColorComponent {
     }
 
     getClasses(name: string, add: string[] = []) {
-        const classes = [
-            name,
-            this.variant(),
-            this.color(),
-            this.width(),
-            ...add
-        ];
+        const classes = [name, this.variant(), this.color(), this.width(), ...add];
         this.fullwidth() && classes.push('fullwidth');
         return classes.join(' ');
     }

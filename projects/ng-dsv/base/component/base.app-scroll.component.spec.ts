@@ -10,68 +10,68 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { BaseAppScrollComponent, ScrollService } from '../public-api';
 
 describe('BaseAppScrollComponent', () => {
-  let component: TestComponent;
-  let routerEvents$: Subject<any>;
-  let scrollServiceMock: any;
-  let platformServiceMock: any;
-  let envServiceMock: any;
-  let apiServiceMock: any;
+    let component: TestComponent;
+    let routerEvents$: Subject<any>;
+    let scrollServiceMock: any;
+    let platformServiceMock: any;
+    let envServiceMock: any;
+    let apiServiceMock: any;
 
-  @Component({ template: '' })
-  class TestComponent extends BaseAppScrollComponent { }
+    @Component({ template: '' })
+    class TestComponent extends BaseAppScrollComponent {}
 
-  beforeEach(() => {
-    routerEvents$ = new Subject();
+    beforeEach(() => {
+        routerEvents$ = new Subject();
 
-    scrollServiceMock = {
-      getScroll: vi.fn().mockReturnValue(0),
-      saveScroll: vi.fn(),
-      scroll: { set: vi.fn() },
-    };
-    platformServiceMock = { isPlatformBrowser: vi.fn().mockReturnValue(true) };
-    envServiceMock = { env: vi.fn().mockReturnValue({ API_URL: 'https://fake.api' }) };
-    apiServiceMock = { setBaseUrl: vi.fn() };
+        scrollServiceMock = {
+            getScroll: vi.fn().mockReturnValue(0),
+            saveScroll: vi.fn(),
+            scroll: { set: vi.fn() },
+        };
+        platformServiceMock = { isPlatformBrowser: vi.fn().mockReturnValue(true) };
+        envServiceMock = { env: vi.fn().mockReturnValue({ API_URL: 'https://fake.api' }) };
+        apiServiceMock = { setBaseUrl: vi.fn() };
 
-    TestBed.configureTestingModule({
-      providers: [
-        TestComponent,
-        { provide: ScrollService, useValue: scrollServiceMock },
-        { provide: PlatformService, useValue: platformServiceMock },
-        { provide: EnvironmentService, useValue: envServiceMock },
-        { provide: ApiService, useValue: apiServiceMock },
-        { provide: StorageService, useValue: {} },
-        { provide: Router, useValue: { events: routerEvents$.asObservable() } },
-      ],
+        TestBed.configureTestingModule({
+            providers: [
+                TestComponent,
+                { provide: ScrollService, useValue: scrollServiceMock },
+                { provide: PlatformService, useValue: platformServiceMock },
+                { provide: EnvironmentService, useValue: envServiceMock },
+                { provide: ApiService, useValue: apiServiceMock },
+                { provide: StorageService, useValue: {} },
+                { provide: Router, useValue: { events: routerEvents$.asObservable() } },
+            ],
+        });
+
+        component = TestBed.inject(TestComponent);
+
+        const div = document.createElement('div');
+        div.className = 'scroll';
+        div.scrollTop = 200;
+        div.scrollTo = vi.fn();
+        document.body.appendChild(div);
     });
 
-    component = TestBed.inject(TestComponent);
+    it('should initialize component and set API URL', () => {
+        expect(component).toBeTruthy();
+    });
 
-    const div = document.createElement('div');
-    div.className = 'scroll';
-    div.scrollTop = 200;
-    div.scrollTo = vi.fn();
-    document.body.appendChild(div);
-  });
+    it('doScroll should save scroll and set signal', () => {
+        component.doScroll();
+        expect(component).toBeTruthy();
+    });
 
-  it('should initialize component and set API URL', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should restore scroll on Scroll event', async () => {
+        scrollServiceMock.getScroll.mockReturnValue(150);
 
-  it('doScroll should save scroll and set signal', () => {
-    component.doScroll();
-    expect(component).toBeTruthy();
-  });
+        const scrollEvent = new Scroll(null as any, [0, 150], null);
+        routerEvents$.next(scrollEvent);
 
-  it('should restore scroll on Scroll event', async () => {
-    scrollServiceMock.getScroll.mockReturnValue(150);
+        const div = document.getElementsByClassName('scroll')[0] as any;
 
-    const scrollEvent = new Scroll(null as any, [0, 150], null);
-    routerEvents$.next(scrollEvent);
+        await new Promise((resolve) => setTimeout(resolve, 120));
 
-    const div = document.getElementsByClassName('scroll')[0] as any;
-
-    await new Promise((resolve) => setTimeout(resolve, 120));
-
-    expect(div.scrollTo).toHaveBeenCalledWith(0, 150);
-  });
+        expect(div.scrollTo).toHaveBeenCalledWith(0, 150);
+    });
 });

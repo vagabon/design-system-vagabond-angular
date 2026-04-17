@@ -1,9 +1,8 @@
-import { inject, Injectable, signal } from "@angular/core";
-import { PlatformService } from "@ng-vagabond-lab/ng-dsv/platform";
-import { Store } from "@ng-vagabond-lab/ng-dsv/storage";
-import { PageableDto } from "../../public-api";
-import { ApiService } from "../api.service";
-
+import { inject, Injectable, signal } from '@angular/core';
+import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
+import { Store } from '@ng-vagabond-lab/ng-dsv/storage';
+import { PageableDto } from '../../public-api';
+import { ApiService } from '../api.service';
 
 @Injectable({ providedIn: 'root' })
 export abstract class BaseSearchService<T> {
@@ -17,7 +16,13 @@ export abstract class BaseSearchService<T> {
     stopLoad = signal<boolean>(false);
     search = signal<string>('');
 
-    doLoad(url: string, search: string = '', page: number = 1, nbPage: number = 20, field: string = 'content') {
+    doLoad(
+        url: string,
+        search: string = '',
+        page: number = 1,
+        nbPage: number = 20,
+        field: string = 'content',
+    ) {
         const params = '?page=' + page + '&nbPage=' + nbPage + '&query=' + search;
 
         this.search.set(search);

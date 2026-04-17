@@ -1,21 +1,27 @@
 <div class="auth-button">
-  <button
-    id="google-signin-button"
-    [class.hidden]="authService.userConnected() !== null"
-  ></button>
+    <button
+        id="google-signin-button"
+        [class.hidden]="authService.userConnected() !== null"
+    ></button>
 </div>
 
 @if (authService.userConnected()) {
-  <div class="profile">
-    <img [src]="authService.userConnected()?.user?.avatar" alt="profile" />
-    <dsv-modal-button id="logout" icon="ri-logout-box-line" />
-  </div>
-  <dsv-modal-alert
-    id="logout"
-    title="Déconnexion"
-    text="Voulez-vous vraiment vous déconnecter ?"
-    button="Oui"
-    buttonClose="Non"
-    (callback)="logout()"
-  ></dsv-modal-alert>
+    <div class="profile">
+        <img
+            [src]="authService.userConnected()?.user?.avatar"
+            alt="profile"
+        />
+        <dsv-modal-button
+            id="logout"
+            icon="ri-logout-box-line"
+        />
+    </div>
+    <dsv-modal-alert
+        id="logout"
+        title="Déconnexion"
+        text="Voulez-vous vraiment vous déconnecter ?"
+        button="Oui"
+        buttonClose="Non"
+        (callback)="logout()"
+    ></dsv-modal-alert>
 }

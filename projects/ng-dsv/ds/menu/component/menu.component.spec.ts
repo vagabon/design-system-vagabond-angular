@@ -4,21 +4,21 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { DsvMenuComponent } from './menu.component';
 
 describe('DsvMenuComponent', () => {
-  let component: DsvMenuComponent;
-  let fixture: ComponentFixture<DsvMenuComponent>;
+    let component: DsvMenuComponent;
+    let fixture: ComponentFixture<DsvMenuComponent>;
 
-  beforeEach(async () => {
-    (window as any).google = { accounts: { id: { prompt: () => { } } } };
-    await TestBed.configureTestingModule({
-      imports: [DsvMenuComponent],
-      providers: [provideZonelessChangeDetection()],
-    }).compileComponents();
-    fixture = TestBed.createComponent(DsvMenuComponent);
-    component = fixture.componentInstance;
-  });
+    beforeEach(async () => {
+        (window as any).google = { accounts: { id: { prompt: () => {} } } };
+        await TestBed.configureTestingModule({
+            imports: [DsvMenuComponent],
+            providers: [provideZonelessChangeDetection()],
+        }).compileComponents();
+        fixture = TestBed.createComponent(DsvMenuComponent);
+        component = fixture.componentInstance;
+    });
 
-  it('should render', () => {
-    fixture.detectChanges();
-    expect(component).toBeTruthy();
-  });
+    it('should render', () => {
+        fixture.detectChanges();
+        expect(component).toBeTruthy();
+    });
 });

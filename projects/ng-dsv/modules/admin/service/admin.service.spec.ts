@@ -1,9 +1,9 @@
-import { provideZonelessChangeDetection } from "@angular/core";
-import { TestBed } from "@angular/core/testing";
-import { ApiService } from "@ng-vagabond-lab/ng-dsv/api";
-import { provideTranslateService } from "@ngx-translate/core";
-import { beforeEach, describe, expect, it, vi } from "vitest";
-import { AdminService } from "./admin.service";
+import { provideZonelessChangeDetection } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { ApiService } from '@ng-vagabond-lab/ng-dsv/api';
+import { provideTranslateService } from '@ngx-translate/core';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { AdminService } from './admin.service';
 
 describe('AdminService', () => {
     let service: AdminService;
@@ -20,8 +20,8 @@ describe('AdminService', () => {
                 provideZonelessChangeDetection(),
                 provideTranslateService(),
                 AdminService,
-                { provide: ApiService, useValue: apiServiceSpy }
-            ]
+                { provide: ApiService, useValue: apiServiceSpy },
+            ],
         });
 
         service = TestBed.inject(AdminService);
@@ -39,7 +39,7 @@ describe('AdminService', () => {
 
         expect(apiServiceSpy.get).toHaveBeenCalledWith(
             '/admin/findBy?fields=name&values=test&first=0&max=10',
-            expect.any(Function)
+            expect.any(Function),
         );
         expect(service.datas()).toEqual(responseMock);
     });

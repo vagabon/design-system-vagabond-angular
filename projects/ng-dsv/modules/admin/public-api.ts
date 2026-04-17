@@ -5,4 +5,3 @@ export * from './container/search/admin.search.container';
 export * from './dto/admin.default.dto';
 export * from './dto/admin.dto';
 export * from './service/admin.service';
-

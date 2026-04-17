@@ -1,21 +1,21 @@
 @if (show()) {
-  <button
-    [class]="classes()"
-    [type]="type()"
-    [disabled]="disabled()"
-    (click)="doClick($event)"
-  >
-    @if (icon()) {
-      <i [class]="icon()"></i>
-    }
-    @if (libelle()) {
-      <span>
-        {{ libelle() | translate }}
-      </span>
-    }
-    <ng-content></ng-content>
-    @if (iconEnd()) {
-      <i [class]="iconEnd()"></i>
-    }
-  </button>
+    <button
+        [class]="classes()"
+        [type]="type()"
+        [disabled]="disabled()"
+        (click)="doClick($event)"
+    >
+        @if (icon()) {
+            <i [class]="icon()"></i>
+        }
+        @if (libelle()) {
+            <span>
+                {{ libelle() | translate }}
+            </span>
+        }
+        <ng-content></ng-content>
+        @if (iconEnd()) {
+            <i [class]="iconEnd()"></i>
+        }
+    </button>
 }

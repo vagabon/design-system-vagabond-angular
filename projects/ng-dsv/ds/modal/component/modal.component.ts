@@ -4,39 +4,39 @@ import { MenuService } from '@ng-vagabond-lab/ng-dsv/ds/menu';
 import { ModalService } from '../service/modal.service';
 
 @Component({
-  selector: 'dsv-modal',
-  imports: [DsvButtonComponent],
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss'],
+    selector: 'dsv-modal',
+    imports: [DsvButtonComponent],
+    templateUrl: './modal.component.html',
+    styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent {
-  id = input.required<string>();
-  titleText = input.required<string>();
-  class = input<string>('');
-  canEchap = input<boolean>(true);
+    id = input.required<string>();
+    titleText = input.required<string>();
+    class = input<string>('');
+    canEchap = input<boolean>(true);
 
-  isOpen = signal<boolean>(false);
+    isOpen = signal<boolean>(false);
 
-  modalService = inject(ModalService);
-  menuService = inject(MenuService);
+    modalService = inject(ModalService);
+    menuService = inject(MenuService);
 
-  constructor() {
-    effect(() => {
-      this.isOpen.set(this.modalService.getSignal(this.id()) ?? false);
-      if (this.isOpen()) {
-        this.menuService.isMenuOpen.set(false);
-      }
-    });
-  }
-
-  @HostListener('document:keydown.escape')
-  onEscapeKey() {
-    if (this.isOpen() && this.canEchap()) {
-      this.close();
+    constructor() {
+        effect(() => {
+            this.isOpen.set(this.modalService.getSignal(this.id()) ?? false);
+            if (this.isOpen()) {
+                this.menuService.isMenuOpen.set(false);
+            }
+        });
     }
-  }
 
-  close = () => {
-    this.modalService.close(this.id());
-  };
+    @HostListener('document:keydown.escape')
+    onEscapeKey() {
+        if (this.isOpen() && this.canEchap()) {
+            this.close();
+        }
+    }
+
+    close = () => {
+        this.modalService.close(this.id());
+    };
 }

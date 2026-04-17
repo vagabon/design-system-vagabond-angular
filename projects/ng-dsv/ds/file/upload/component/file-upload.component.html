@@ -1,19 +1,23 @@
 <label
-  class="drag-zone"
-  [appDragDrop]="dragDropEnabled()"
-  (dropped)="handleFileDrop($event)"
+    class="drag-zone"
+    [appDragDrop]="dragDropEnabled()"
+    (dropped)="handleFileDrop($event)"
 >
-  <input
-    type="file"
-    [accept]="fileType()"
-    [multiple]="multiple()"
-    (change)="addFiles(fileInput.files!)"
-    #fileInput
-    class="visually-hidden"
-  />
-  @if (!file()) {
-    <ng-content></ng-content>
-  } @else {
-    <img [src]="file()" alt="Aperçu du Meme" width="100%" />
-  }
+    <input
+        type="file"
+        [accept]="fileType()"
+        [multiple]="multiple()"
+        (change)="addFiles(fileInput.files!)"
+        #fileInput
+        class="visually-hidden"
+    />
+    @if (!file()) {
+        <ng-content></ng-content>
+    } @else {
+        <img
+            [src]="file()"
+            alt="Aperçu du Meme"
+            width="100%"
+        />
+    }
 </label>

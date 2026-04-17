@@ -1,4 +1,10 @@
-import { EnvironmentInjector, InputSignal, provideZonelessChangeDetection, runInInjectionContext, signal } from '@angular/core';
+import {
+    EnvironmentInjector,
+    InputSignal,
+    provideZonelessChangeDetection,
+    runInInjectionContext,
+    signal,
+} from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FieldTree, form } from '@angular/forms/signals';
@@ -16,19 +22,24 @@ describe('FormSignalCheckboxComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [FormSignalCheckboxComponent],
-            providers: [provideZonelessChangeDetection()]
+            providers: [provideZonelessChangeDetection()],
         }).compileComponents();
 
         fixture = TestBed.createComponent(FormSignalCheckboxComponent<TestDto>);
         component = fixture.componentInstance;
 
         const formGroup = new FormGroup({
-            myCheckbox: new FormControl(false)
+            myCheckbox: new FormControl(false),
         });
 
         runInInjectionContext(TestBed.inject(EnvironmentInjector), () => {
-            const formSignal = form(signal({ myCheckbox: true } as TestDto)) as unknown as FieldTree<TestDto, string | number>;
-            component.form = signal(formSignal) as unknown as InputSignal<FieldTree<TestDto, string | number>>;
+            const formSignal = form(signal({ myCheckbox: true } as TestDto)) as unknown as FieldTree<
+                TestDto,
+                string | number
+            >;
+            component.form = signal(formSignal) as unknown as InputSignal<
+                FieldTree<TestDto, string | number>
+            >;
             component.fieldName = signal('myCheckbox') as unknown as InputSignal<string>;
             component.withLabel = signal(true) as unknown as InputSignal<boolean>;
         });

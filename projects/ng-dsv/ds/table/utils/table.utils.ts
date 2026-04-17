@@ -1,10 +1,10 @@
-import { JSONObject } from "@ng-vagabond-lab/ng-dsv/api";
-import { formatDate } from "@ng-vagabond-lab/ng-dsv/date";
+import { JSONObject } from '@ng-vagabond-lab/ng-dsv/api';
+import { formatDate } from '@ng-vagabond-lab/ng-dsv/date';
 
 export const initTable = (datas: JSONObject[], max: number) => {
     const links = [];
     const newDatas = [];
-    for (let i = 0, length = (max > 0 ? max : datas.length); i < length; i++) {
+    for (let i = 0, length = max > 0 ? max : datas.length; i < length; i++) {
         let data = datas?.[i];
         if (data) {
             links.push(data['id' as keyof JSONObject]);
@@ -17,9 +17,9 @@ export const initTable = (datas: JSONObject[], max: number) => {
 
     return {
         links: links,
-        datas: newDatas
-    }
-}
+        datas: newDatas,
+    };
+};
 
 export const getValue = (obj: JSONObject, key: string, isDate: boolean): any => {
     let value: string = obj[key as keyof JSONObject];
@@ -43,4 +43,4 @@ export const getValue = (obj: JSONObject, key: string, isDate: boolean): any => 
         value = formatDate(value);
     }
     return value;
-}
+};

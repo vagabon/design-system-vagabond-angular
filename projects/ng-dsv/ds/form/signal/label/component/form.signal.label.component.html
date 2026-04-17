@@ -1,9 +1,9 @@
 @if (show()) {
-  <label
-    [for]="name()"
-    class="text"
-    [class.error]="signal().touched() && signal().errors().length! > 0"
-  >
-    {{ label() }} {{ isRequired() ? "*" : "" }}
-  </label>
+    <label
+        [for]="name()"
+        class="text"
+        [class.error]="signal().touched() && signal().errors().length! > 0"
+    >
+        {{ label() }} {{ isRequired() ? '*' : '' }}
+    </label>
 }

@@ -1,5 +1,4 @@
-
-import { TableDto } from "@ng-vagabond-lab/ng-dsv/ds/table";
+import { TableDto } from '@ng-vagabond-lab/ng-dsv/ds/table';
 
 export interface ManyToManyDto {
     name: string;

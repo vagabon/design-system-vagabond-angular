@@ -1,9 +1,7 @@
-import { signal } from "@angular/core";
-import { removeDuplicate } from "../utils/storage.utils";
-
+import { signal } from '@angular/core';
+import { removeDuplicate } from '../utils/storage.utils';
 
 export class Store<T> {
-
     data = signal<T[]>([]);
 
     update(id: number, data: T, add?: T) {
@@ -15,7 +13,7 @@ export class Store<T> {
 
     updateTable(id: number, data: T) {
         this.data.update((values) => {
-            values[id] = [...data as T[]] as T;
+            values[id] = [...(data as T[])] as T;
             return [...values];
         });
     }

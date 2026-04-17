@@ -6,18 +6,12 @@ import { FormSignalErrorComponent } from '../../error/component/form.signal.erro
 import { FormSignalLabelComponent } from '../../label/component/form.signal.label.component';
 
 @Component({
-  selector: 'dsv-form-signal-input',
-  imports: [
-    FormField,
-    FormSignalLabelComponent,
-    FormSignalErrorComponent
-  ],
-  templateUrl: './form.signal.input.component.html',
-  styleUrl: '../../../reactive/input/component/form.reactive.input.component.scss',
+    selector: 'dsv-form-signal-input',
+    imports: [FormField, FormSignalLabelComponent, FormSignalErrorComponent],
+    templateUrl: './form.signal.input.component.html',
+    styleUrl: '../../../reactive/input/component/form.reactive.input.component.scss',
 })
 export class FormSignalInputComponent<T> extends FormSignalInputBase<T> {
-
-  type = input<INPUT_TYPE>('text');
-  icon = input<string>();
-
+    type = input<INPUT_TYPE>('text');
+    icon = input<string>();
 }

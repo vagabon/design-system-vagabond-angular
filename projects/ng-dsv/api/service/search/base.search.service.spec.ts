@@ -6,7 +6,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { BaseSearchService } from './base.search.service';
 
 @Injectable()
-class TestSearchService extends BaseSearchService<any> { }
+class TestSearchService extends BaseSearchService<any> {}
 
 describe('BaseSearchService', () => {
     let service: TestSearchService;

@@ -4,30 +4,28 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { DsvButtonComponent } from './button.component';
 
 describe('DsvButtonComponent', () => {
-  let component: DsvButtonComponent;
-  let fixture: ComponentFixture<DsvButtonComponent>;
+    let component: DsvButtonComponent;
+    let fixture: ComponentFixture<DsvButtonComponent>;
 
-  beforeEach(async () => {
-    (window as any).google = { accounts: { id: { prompt: () => { } } } };
-    await TestBed.configureTestingModule({
-      imports: [DsvButtonComponent],
-      providers: [
-        provideZonelessChangeDetection(),
-      ],
-    }).compileComponents();
-    fixture = TestBed.createComponent(DsvButtonComponent);
-    component = fixture.componentInstance;
-  });
+    beforeEach(async () => {
+        (window as any).google = { accounts: { id: { prompt: () => {} } } };
+        await TestBed.configureTestingModule({
+            imports: [DsvButtonComponent],
+            providers: [provideZonelessChangeDetection()],
+        }).compileComponents();
+        fixture = TestBed.createComponent(DsvButtonComponent);
+        component = fixture.componentInstance;
+    });
 
-  it('should render', () => {
-    const mockCallback = { emit: vi.fn() };
-    component.callback = mockCallback as any;
-    fixture.detectChanges();
-    expect(component).toBeTruthy();
+    it('should render', () => {
+        const mockCallback = { emit: vi.fn() };
+        component.callback = mockCallback as any;
+        fixture.detectChanges();
+        expect(component).toBeTruthy();
 
-    const link = fixture.debugElement.nativeElement.querySelector('.dsv-button');
-    link.click();
-    fixture.detectChanges();
-    expect(component.callback.emit).toHaveBeenCalled();
-  });
+        const link = fixture.debugElement.nativeElement.querySelector('.dsv-button');
+        link.click();
+        fixture.detectChanges();
+        expect(component.callback.emit).toHaveBeenCalled();
+    });
 });

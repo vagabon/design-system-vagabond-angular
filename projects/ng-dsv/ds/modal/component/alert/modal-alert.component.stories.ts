@@ -4,36 +4,36 @@ import { ModalButtonComponent } from '../button/modal-button.component';
 import { ModalAlertComponent } from './modal-alert.component';
 
 export const ActionsData = {
-  id: 'modale',
-  title: 'title',
-  text: 'text',
-  button: 'oui',
-  buttonClose: 'non',
+    id: 'modale',
+    title: 'title',
+    text: 'text',
+    button: 'oui',
+    buttonClose: 'non',
 };
 
 const meta: Meta<ModalAlertComponent> = {
-  title: 'dsv/Modal/alert',
-  component: ModalAlertComponent,
-  excludeStories: /.*Data$/,
-  tags: ['autodocs'],
-  decorators: [
-    moduleMetadata({
-      imports: [ModalButtonComponent, TranslatePipe],
-    }),
-  ],
-  argTypes: {},
-  args: {
-    ...ActionsData,
-  },
+    title: 'dsv/Modal/alert',
+    component: ModalAlertComponent,
+    excludeStories: /.*Data$/,
+    tags: ['autodocs'],
+    decorators: [
+        moduleMetadata({
+            imports: [ModalButtonComponent, TranslatePipe],
+        }),
+    ],
+    argTypes: {},
+    args: {
+        ...ActionsData,
+    },
 };
 
 export default meta;
 type Story = StoryObj<ModalAlertComponent>;
 
 export const Default: Story = {
-  args: {},
-  render: (args: any) => ({
-    template: `
+    args: {},
+    render: (args: any) => ({
+        template: `
       <dsv-modal-button id="${args.id}" text="Clic">
         <dsv-modal-alert 
           id="${args.id}" 
@@ -45,5 +45,5 @@ export const Default: Story = {
         </dsv-modal-alert>
       </dsv-modal-button>
     `,
-  }),
+    }),
 };

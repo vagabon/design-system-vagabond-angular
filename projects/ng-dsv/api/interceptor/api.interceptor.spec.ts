@@ -37,15 +37,15 @@ vi.mock('@angular/core', async (importOriginal) => {
     };
 });
 
-const makeRequest = (url: string) =>
-    new HttpRequest<unknown>('GET', url);
+const makeRequest = (url: string) => new HttpRequest<unknown>('GET', url);
 
 const makeNext =
     (response: unknown = {}): HttpHandlerFn =>
-        (req) =>
-            of(response) as ReturnType<HttpHandlerFn>;
+    (req) =>
+        of(response) as ReturnType<HttpHandlerFn>;
 
-const makeNextWithError = (error: unknown): HttpHandlerFn =>
+const makeNextWithError =
+    (error: unknown): HttpHandlerFn =>
     () =>
         throwError(() => error) as ReturnType<HttpHandlerFn>;
 
@@ -161,7 +161,7 @@ describe('authInterceptor', () => {
             const req = makeRequest(`${BASE_URL}/users`);
             const next = makeNextWithError(error);
 
-            interceptor(req, next).subscribe({ error: () => { } });
+            interceptor(req, next).subscribe({ error: () => {} });
 
             expect(mockToastService.showToast).toHaveBeenCalledWith({
                 type: 'error',
@@ -178,7 +178,7 @@ describe('authInterceptor', () => {
             });
             const req = makeRequest(`${BASE_URL}/users`);
 
-            interceptor(req, makeNextWithError(error)).subscribe({ error: () => { } });
+            interceptor(req, makeNextWithError(error)).subscribe({ error: () => {} });
 
             expect(mockToastService.showToast).toHaveBeenCalledWith({
                 type: 'error',
@@ -196,7 +196,7 @@ describe('authInterceptor', () => {
             });
             const req = makeRequest(`${BASE_URL}/users`);
 
-            interceptor(req, makeNextWithError(error)).subscribe({ error: () => { } });
+            interceptor(req, makeNextWithError(error)).subscribe({ error: () => {} });
 
             expect(mockToastService.showToast).toHaveBeenCalledWith({
                 type: 'error',
@@ -215,7 +215,9 @@ describe('authInterceptor', () => {
 
             let caughtError: unknown;
             interceptor(req, makeNextWithError(error)).subscribe({
-                error: (e: Error) => { caughtError = e; },
+                error: (e: Error) => {
+                    caughtError = e;
+                },
             });
 
             expect(caughtError).toBe(error);
@@ -229,7 +231,7 @@ describe('authInterceptor', () => {
             });
             const req = makeRequest(`${BASE_URL}/users`);
 
-            interceptor(req, makeNextWithError(error)).subscribe({ error: () => { } });
+            interceptor(req, makeNextWithError(error)).subscribe({ error: () => {} });
 
             expect(console.error).toHaveBeenCalledWith(error);
         });
@@ -239,7 +241,7 @@ describe('authInterceptor', () => {
             const error = new HttpErrorResponse({ status: 401, error: { message: 'unauthorized' } });
             const req = makeRequest(`${BASE_URL}/auth/login`);
 
-            interceptor(req, makeNextWithError(error)).subscribe({ error: () => { } });
+            interceptor(req, makeNextWithError(error)).subscribe({ error: () => {} });
 
             expect(mockHttpClient.post).not.toHaveBeenCalled();
         });
@@ -249,7 +251,7 @@ describe('authInterceptor', () => {
             const error = new HttpErrorResponse({ status: 401, error: { message: 'unauthorized' } });
             const req = makeRequest('https://other.com/data');
 
-            interceptor(req, makeNextWithError(error)).subscribe({ error: () => { } });
+            interceptor(req, makeNextWithError(error)).subscribe({ error: () => {} });
 
             expect(mockHttpClient.post).not.toHaveBeenCalled();
         });
@@ -259,9 +261,7 @@ describe('authInterceptor', () => {
         const protectedUrl = `${BASE_URL}/protected-resource`;
 
         it('should call refresh-token endpoint with the stored jwtRefresh', () => {
-            mockStorageService.getItem.mockReturnValue(
-                userConnected('old-jwt', 'my-refresh-token')
-            );
+            mockStorageService.getItem.mockReturnValue(userConnected('old-jwt', 'my-refresh-token'));
             const refreshResponse = { jwt: 'new-jwt', jwtRefresh: 'new-refresh' };
             mockHttpClient.post.mockReturnValue(of(refreshResponse));
 
@@ -275,19 +275,16 @@ describe('authInterceptor', () => {
                 return of({}) as ReturnType<HttpHandlerFn>;
             };
 
-            interceptor(req, next).subscribe({ error: () => { } });
+            interceptor(req, next).subscribe({ error: () => {} });
 
-            expect(mockHttpClient.post).toHaveBeenCalledWith(
-                `${BASE_URL}/auth/refresh-token`,
-                { refreshToken: 'my-refresh-token' }
-            );
+            expect(mockHttpClient.post).toHaveBeenCalledWith(`${BASE_URL}/auth/refresh-token`, {
+                refreshToken: 'my-refresh-token',
+            });
         });
 
         it('should persist new tokens in storage after successful refresh', () => {
             const refreshResponse = { jwt: 'new-jwt', jwtRefresh: 'new-refresh' };
-            mockStorageService.getItem.mockReturnValue(
-                userConnected('old-jwt', 'old-refresh')
-            );
+            mockStorageService.getItem.mockReturnValue(userConnected('old-jwt', 'old-refresh'));
             mockHttpClient.post.mockReturnValue(of(refreshResponse));
 
             const req = makeRequest(protectedUrl);
@@ -300,11 +297,11 @@ describe('authInterceptor', () => {
                 return of({}) as ReturnType<HttpHandlerFn>;
             };
 
-            interceptor(req, next).subscribe({ error: () => { } });
+            interceptor(req, next).subscribe({ error: () => {} });
 
             expect(mockStorageService.setItem).toHaveBeenCalledWith(
                 'user-connected',
-                JSON.stringify(refreshResponse)
+                JSON.stringify(refreshResponse),
             );
         });
 

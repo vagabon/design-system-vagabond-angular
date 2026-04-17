@@ -4,21 +4,17 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { ListDragService } from './list.drag.service';
 
 describe('ListDragService', () => {
-  let service: ListDragService;
+    let service: ListDragService;
 
-  beforeEach(() => {
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            providers: [provideZonelessChangeDetection(), ListDragService],
+        });
 
-    TestBed.configureTestingModule({
-      providers: [
-        provideZonelessChangeDetection(),
-        ListDragService,
-      ],
+        service = TestBed.inject(ListDragService);
     });
 
-    service = TestBed.inject(ListDragService);
-  });
-
-  it('should dragSrcIndex to be init to null', () => {
-    expect(service.dragSrcIndex()).toEqual(null);
-  });
+    it('should dragSrcIndex to be init to null', () => {
+        expect(service.dragSrcIndex()).toEqual(null);
+    });
 });

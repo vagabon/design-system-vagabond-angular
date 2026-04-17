@@ -1,10 +1,16 @@
-import { Component, ElementRef, HostListener, inject, input, output, signal } from "@angular/core";
-import { CLICK_BOTH, CLICK_LEFT, CLICK_RIGHT, MenuContextualClickType, MenuContextualDto } from "../../dto/menu.contextual";
+import { Component, ElementRef, HostListener, inject, input, output, signal } from '@angular/core';
+import {
+    CLICK_BOTH,
+    CLICK_LEFT,
+    CLICK_RIGHT,
+    MenuContextualClickType,
+    MenuContextualDto,
+} from '../../dto/menu.contextual';
 
 @Component({
     selector: 'dsv-menu-contextual',
     templateUrl: './menu.contextual.component.html',
-    styleUrls: ['./menu.contextual.component.scss']
+    styleUrls: ['./menu.contextual.component.scss'],
 })
 export class DsvMenuContextualComponent {
     readonly elementRef = inject(ElementRef);

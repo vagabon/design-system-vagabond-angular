@@ -9,7 +9,7 @@ export const formatDate = (dateString: string): string => {
     const minutes = String(date.getMinutes()).padStart(2, '0');
 
     return `${day}/${month}/${year} ${hours}:${minutes}`;
-}
+};
 
 export function toDateInputValue(value: string | null | undefined): string {
     if (!value) return '';

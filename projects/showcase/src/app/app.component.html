@@ -1,24 +1,28 @@
 <dsv-theme>
-  <dsv-header
-    titleText="Showcase"
-    img="https://ownyourchatbots.com/images/logo.png"
-  ></dsv-header>
+    <dsv-header
+        titleText="Showcase"
+        img="https://ownyourchatbots.com/images/logo.png"
+    ></dsv-header>
 
-  <dsv-container [column]="true">
-    <dsv-menu>
-      <dsv-item text="text" icon="contacts" url="/text"></dsv-item
-    ></dsv-menu>
-    <dsv-container>
-      <div>En tête !</div>
-      <dsv-container>
-        <h1>Showcase</h1>
+    <dsv-container [column]="true">
+        <dsv-menu>
+            <dsv-item
+                text="text"
+                icon="contacts"
+                url="/text"
+            ></dsv-item
+        ></dsv-menu>
+        <dsv-container>
+            <div>En tête !</div>
+            <dsv-container>
+                <h1>Showcase</h1>
 
-        <h2>Secondary Entry Point</h2>
-        <dsv-button></dsv-button>
+                <h2>Secondary Entry Point</h2>
+                <dsv-button></dsv-button>
 
-        <router-outlet></router-outlet>
-      </dsv-container>
-      <div>Footer</div>
+                <router-outlet></router-outlet>
+            </dsv-container>
+            <div>Footer</div>
+        </dsv-container>
     </dsv-container>
-  </dsv-container>
 </dsv-theme>

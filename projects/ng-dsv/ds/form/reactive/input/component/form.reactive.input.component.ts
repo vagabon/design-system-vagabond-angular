@@ -5,22 +5,22 @@ import { FormReactiveErrorComponent } from '../../error/component/form.reactive.
 import { FormReactiveLabelComponent } from '../../label/component/form.reactive.label.component';
 
 @Component({
-  selector: 'dsv-form-reactive-input',
-  imports: [ReactiveFormsModule, FormReactiveLabelComponent, FormReactiveErrorComponent],
-  templateUrl: './form.reactive.input.component.html',
-  styleUrl: './form.reactive.input.component.scss',
+    selector: 'dsv-form-reactive-input',
+    imports: [ReactiveFormsModule, FormReactiveLabelComponent, FormReactiveErrorComponent],
+    templateUrl: './form.reactive.input.component.html',
+    styleUrl: './form.reactive.input.component.scss',
 })
 export class FormReactiveInputComponent {
-  form = input.required<FormGroup>();
-  field = input.required<string>();
-  type = input<INPUT_TYPE>('text');
-  withLabel = input<boolean>(true);
-  required = input<boolean>(false);
-  icon = input<string>();
+    form = input.required<FormGroup>();
+    field = input.required<string>();
+    type = input<INPUT_TYPE>('text');
+    withLabel = input<boolean>(true);
+    required = input<boolean>(false);
+    icon = input<string>();
 
-  onSend = output<string>();
+    callbackSend = output<string>();
 
-  onEnter() {
-    this.onSend.emit(this.form().value[this.field()]);
-  }
+    onEnter() {
+        this.callbackSend.emit(this.form().value[this.field()]);
+    }
 }

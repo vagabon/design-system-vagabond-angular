@@ -1,13 +1,22 @@
-<dsv-modal [id]="id()" [titleText]="titleText()">
-  {{ text() }}
-  <div ngProjectAs="modal-footer">
-    @if (buttonClose()) {
-      <dsv-button (callback)="doClickClose()" color="error">
-        {{ buttonClose()! | translate }}
-      </dsv-button>
-    }
-    <dsv-button (callback)="doClick()" color="success">
-      {{ button() | translate }}
-    </dsv-button>
-  </div>
+<dsv-modal
+    [id]="id()"
+    [titleText]="titleText()"
+>
+    {{ text() }}
+    <div ngProjectAs="modal-footer">
+        @if (buttonClose()) {
+            <dsv-button
+                (callback)="doClickClose()"
+                color="error"
+            >
+                {{ buttonClose()! | translate }}
+            </dsv-button>
+        }
+        <dsv-button
+            (callback)="doClick()"
+            color="success"
+        >
+            {{ button() | translate }}
+        </dsv-button>
+    </div>
 </dsv-modal>

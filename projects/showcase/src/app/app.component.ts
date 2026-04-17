@@ -8,18 +8,17 @@ import { DsvMenuComponent } from '../../../ng-dsv/ds/menu';
 import { DsvThemeComponent } from '../../../ng-dsv/ds/theme';
 
 @Component({
-  selector: 'app-root',
-  imports: [
-    RouterOutlet,
-    DsvButtonComponent,
-    DsvThemeComponent,
-    DsvHeaderComponent,
-    DsvContainerComponent,
-    DsvMenuComponent,
-    DsvItemComponent,
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+    selector: 'app-root',
+    imports: [
+        RouterOutlet,
+        DsvButtonComponent,
+        DsvThemeComponent,
+        DsvHeaderComponent,
+        DsvContainerComponent,
+        DsvMenuComponent,
+        DsvItemComponent,
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
 })
-export class AppComponent {
-}
+export class AppComponent {}

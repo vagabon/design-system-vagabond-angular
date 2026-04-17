@@ -4,15 +4,15 @@ import { EnvironmentDto } from '../public-api';
 
 @Injectable({ providedIn: 'root' })
 export class EnvironmentService {
-  private readonly httpClient = inject(HttpClient);
+    private readonly httpClient = inject(HttpClient);
 
-  public env = signal<EnvironmentDto | undefined>(undefined);
+    public env = signal<EnvironmentDto | undefined>(undefined);
 
-  loadEnv() {
-    this.httpClient.get<EnvironmentDto>('./env.json').subscribe({
-      next: (res) => {
-        this.env.set(res);
-      },
-    });
-  }
+    loadEnv() {
+        this.httpClient.get<EnvironmentDto>('./env.json').subscribe({
+            next: (res) => {
+                this.env.set(res);
+            },
+        });
+    }
 }

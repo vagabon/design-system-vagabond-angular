@@ -1,13 +1,13 @@
 <div [class]="classes()">
-  <span>
-    {{ text() | translate }}
-  </span>
-  @if (isDelete()) {
-    <dsv-button
-      icon="ri-delete-bin-line"
-      variant="text"
-      color="inherit"
-      (callback)="doDelete()"
-    ></dsv-button>
-  }
+    <span>
+        {{ text() | translate }}
+    </span>
+    @if (isDelete()) {
+        <dsv-button
+            icon="ri-delete-bin-line"
+            variant="text"
+            color="inherit"
+            (callback)="doDelete()"
+        ></dsv-button>
+    }
 </div>

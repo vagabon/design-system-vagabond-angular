@@ -9,8 +9,7 @@ describe('BaseRouteComponent', () => {
     let routerEvents$: Subject<any>;
     let component: TestComponent;
 
-    class TestComponent extends BaseRouteComponent {
-    }
+    class TestComponent extends BaseRouteComponent {}
 
     beforeEach(() => {
         routerEvents$ = new Subject();
@@ -24,8 +23,8 @@ describe('BaseRouteComponent', () => {
                         params: of({ peopleId: '123' }),
                     },
                 },
-                { provide: Router, useValue: { events: routerEvents$.asObservable() } }
-            ]
+                { provide: Router, useValue: { events: routerEvents$.asObservable() } },
+            ],
         });
 
         runInInjectionContext(TestBed.inject(EnvironmentInjector), () => {

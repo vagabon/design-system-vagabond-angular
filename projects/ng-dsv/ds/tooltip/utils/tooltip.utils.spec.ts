@@ -1,5 +1,11 @@
 import { TooltipPositionEnum } from '../dto/tooltip.dto';
-import { getTooltipPosition, POSITION_MAX_BOTTOM, POSITION_MAX_LEFT, POSITION_MAX_RIGHT, POSITION_MAX_TOP } from './tooltip.utils';
+import {
+    getTooltipPosition,
+    POSITION_MAX_BOTTOM,
+    POSITION_MAX_LEFT,
+    POSITION_MAX_RIGHT,
+    POSITION_MAX_TOP,
+} from './tooltip.utils';
 
 describe('getTooltipPosition', () => {
     let mockRect: DOMRect;
@@ -14,15 +20,15 @@ describe('getTooltipPosition', () => {
             height: 0,
             x: 0,
             y: 0,
-            toJSON: () => { }
+            toJSON: () => {},
         };
     });
 
     it('should return BOTTOM if TOP position and rect.top is less than POSITION_MAX_TOP', () => {
         mockRect = {
             ...mockRect,
-            top: POSITION_MAX_TOP - 10
-        }
+            top: POSITION_MAX_TOP - 10,
+        };
         const position = getTooltipPosition(TooltipPositionEnum.TOP, mockRect);
         expect(position).toBe(TooltipPositionEnum.BOTTOM);
     });
@@ -30,8 +36,8 @@ describe('getTooltipPosition', () => {
     it('should return TOP if BOTTOM position and rect.bottom is greater than window.innerHeight - POSITION_MAX_BOTTOM', () => {
         mockRect = {
             ...mockRect,
-            bottom: window.innerHeight - POSITION_MAX_BOTTOM + 10
-        }
+            bottom: window.innerHeight - POSITION_MAX_BOTTOM + 10,
+        };
         const position = getTooltipPosition(TooltipPositionEnum.BOTTOM, mockRect);
         expect(position).toBe(TooltipPositionEnum.TOP);
     });
@@ -39,8 +45,8 @@ describe('getTooltipPosition', () => {
     it('should return RIGHT if LEFT position and rect.left is less than POSITION_MAX_LEFT', () => {
         mockRect = {
             ...mockRect,
-            left: POSITION_MAX_LEFT - 10
-        }
+            left: POSITION_MAX_LEFT - 10,
+        };
         const position = getTooltipPosition(TooltipPositionEnum.LEFT, mockRect);
         expect(position).toBe(TooltipPositionEnum.RIGHT);
     });
@@ -48,8 +54,8 @@ describe('getTooltipPosition', () => {
     it('should return LEFT if RIGHT position and rect.right is greater than window.innerWidth - POSITION_MAX_RIGHT', () => {
         mockRect = {
             ...mockRect,
-            right: window.innerWidth - POSITION_MAX_RIGHT + 10
-        }
+            right: window.innerWidth - POSITION_MAX_RIGHT + 10,
+        };
         const position = getTooltipPosition(TooltipPositionEnum.RIGHT, mockRect);
         expect(position).toBe(TooltipPositionEnum.LEFT);
     });
@@ -60,8 +66,8 @@ describe('getTooltipPosition', () => {
             top: POSITION_MAX_TOP + 10,
             left: POSITION_MAX_LEFT + 10,
             right: window.innerWidth - POSITION_MAX_RIGHT - 10,
-            bottom: window.innerHeight - POSITION_MAX_BOTTOM - 10
-        }
+            bottom: window.innerHeight - POSITION_MAX_BOTTOM - 10,
+        };
 
         const topPosition = getTooltipPosition(TooltipPositionEnum.TOP, mockRect);
         const bottomPosition = getTooltipPosition(TooltipPositionEnum.BOTTOM, mockRect);

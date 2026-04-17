@@ -1,25 +1,28 @@
 <div class="dsv-header-content">
-  <div class="flex gap10 align-center">
-    @if (withMenu()) {
-      <dsv-menu-button />
-    }
-    <a href="/" class="dsv-header-logo" (click)="goToHome($event)">
-      @if (img()) {
-        <img src="{{ img() }}" alt="logo" />
-      }
-      <div>
-        @for (
-          titleText of titleTextParts();
-          track titleText;
-          let index = $index
-        ) {
-          <span class="title-{{ index }}">{{ titleText }}</span>
-          @if (index < titleTextParts().length - 1) {
-            <span>&nbsp;</span>
-          }
+    <div class="flex gap10 align-center">
+        @if (withMenu()) {
+            <dsv-menu-button />
         }
-      </div>
-    </a>
-  </div>
-  <ng-content></ng-content>
+        <a
+            href="/"
+            class="dsv-header-logo"
+            (click)="goToHome($event)"
+        >
+            @if (img()) {
+                <img
+                    src="{{ img() }}"
+                    alt="logo"
+                />
+            }
+            <div>
+                @for (titleText of titleTextParts(); track titleText; let index = $index) {
+                    <span class="title-{{ index }}">{{ titleText }}</span>
+                    @if (index < titleTextParts().length - 1) {
+                        <span>&nbsp;</span>
+                    }
+                }
+            </div>
+        </a>
+    </div>
+    <ng-content></ng-content>
 </div>

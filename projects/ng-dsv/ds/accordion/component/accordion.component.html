@@ -1,11 +1,17 @@
-<a class="dsv-accordion-header" (click)="doToogle()">
-  {{ titleText() | translate }}
-  @if (isOpen() === true) {
-    <i class="ri-arrow-up-s-line"></i>
-  } @else {
-    <i class="ri-arrow-down-s-line"></i>
-  }
+<a
+    class="dsv-accordion-header"
+    (click)="doToogle()"
+>
+    {{ titleText() | translate }}
+    @if (isOpen() === true) {
+        <i class="ri-arrow-up-s-line"></i>
+    } @else {
+        <i class="ri-arrow-down-s-line"></i>
+    }
 </a>
-<div class="dsv-accordion-text" [class.open]="isOpen() === true">
-  <ng-content></ng-content>
+<div
+    class="dsv-accordion-text"
+    [class.open]="isOpen() === true"
+>
+    <ng-content></ng-content>
 </div>

@@ -15,16 +15,19 @@ describe('StorageService', () => {
         const store: Record<string, string> = {};
         vi.stubGlobal('localStorage', {
             getItem: vi.fn((key: string) => store[key] ?? null),
-            setItem: vi.fn((key: string, value: string) => { store[key] = value; }),
-            removeItem: vi.fn((key: string) => { delete store[key]; }),
-            clear: vi.fn(() => { Object.keys(store).forEach(k => delete store[k]); }),
+            setItem: vi.fn((key: string, value: string) => {
+                store[key] = value;
+            }),
+            removeItem: vi.fn((key: string) => {
+                delete store[key];
+            }),
+            clear: vi.fn(() => {
+                Object.keys(store).forEach((k) => delete store[k]);
+            }),
         });
 
         TestBed.configureTestingModule({
-            providers: [
-                StorageService,
-                { provide: PlatformService, useValue: platformServiceMock },
-            ],
+            providers: [StorageService, { provide: PlatformService, useValue: platformServiceMock }],
         });
 
         service = TestBed.inject(StorageService);
@@ -47,7 +50,7 @@ describe('StorageService', () => {
 
     it('should parse invalid JSON gracefully', () => {
         localStorage.setItem('bad', 'not-json');
-        const spy = vi.spyOn(console, 'error').mockImplementation(() => { });
+        const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
         const value = service.getItem('bad');
         expect(value).toBe('not-json');
         expect(spy).toHaveBeenCalled();

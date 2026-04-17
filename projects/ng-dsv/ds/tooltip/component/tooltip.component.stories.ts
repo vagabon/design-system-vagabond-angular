@@ -3,29 +3,29 @@ import { DsvButtonComponent } from '../../button';
 import { DsvTooltipComponent } from './tooltip.component';
 
 export const ActionsData = {
-  text: 'Voici un texte long pour tester le comportement du tooltip avec plus de contenu.',
+    text: 'Voici un texte long pour tester le comportement du tooltip avec plus de contenu.',
 };
 
 const meta: Meta<DsvTooltipComponent> = {
-  title: 'dsv/Tooltip',
-  component: DsvTooltipComponent,
-  excludeStories: /.*Data$/,
-  tags: ['autodocs'],
-  argTypes: {},
+    title: 'dsv/Tooltip',
+    component: DsvTooltipComponent,
+    excludeStories: /.*Data$/,
+    tags: ['autodocs'],
+    argTypes: {},
 };
 
 export default meta;
 type Story = StoryObj<DsvTooltipComponent>;
 
 export const Default: Story = {
-  args: {
-    ...ActionsData,
-  },
-  render: (args: any) => ({
-    moduleMetadata: {
-      imports: [DsvButtonComponent],
+    args: {
+        ...ActionsData,
     },
-    template: `
+    render: (args: any) => ({
+        moduleMetadata: {
+            imports: [DsvButtonComponent],
+        },
+        template: `
       <div style="display: flex; gap: 10px; margin: 30px 0px; flex-wrap: wrap;">
         <dsv-tooltip text="${args.text}" position="right">
           <dsv-button>Survoler moi (right)</dsv-button>
@@ -44,5 +44,5 @@ export const Default: Story = {
         </dsv-tooltip>
       </div>
     `,
-  }),
+    }),
 };

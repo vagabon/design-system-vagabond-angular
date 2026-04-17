@@ -9,51 +9,49 @@ import { AdminTabDto } from '../../dto/admin.dto';
 import { AdminService } from '../../service/admin.service';
 
 @Component({
-  selector: 'dsv-admin-form-container',
-  imports: [DsvCardComponent, AdminFormComponent],
-  templateUrl: './admin.form.container.html',
-  styleUrls: ['./admin.form.container.scss'],
+    selector: 'dsv-admin-form-container',
+    imports: [DsvCardComponent, AdminFormComponent],
+    templateUrl: './admin.form.container.html',
+    styleUrls: ['./admin.form.container.scss'],
 })
 export class AdminFormContainer extends BaseRouteComponent {
-  adminService = inject(AdminService);
-  platformService = inject(PlatformService);
+    adminService = inject(AdminService);
+    platformService = inject(PlatformService);
 
-  tabs = signal<TabDto[]>([]);
-  tab = signal<string>('user');
-  tabConfig = signal<AdminTabDto | undefined>(undefined);
+    tabs = signal<TabDto[]>([]);
+    tab = signal<string>('user');
+    tabConfig = signal<AdminTabDto | undefined>(undefined);
 
-  constructor() {
-    super();
-    effect(() => {
-      if (this.platformService.isPlatformBrowser()) {
-        const id = this.routeParams()?.['id'];
-        this.tab.set(this.routeParams()?.['type']);
-        const tab = this.adminService
-          .tabs()
-          ?.tabs.find((tab) => tab.name === this.tab());
-        this.tabConfig.set(tab);
-        if (isNaN(id)) {
-          this.adminService.data.set({} as ApiDto);
-        } else {
-          this.findById(this.routeParams()?.['id']);
-        }
-      }
-    });
-  }
-
-  findById(id: string) {
-    this.adminService.findById(this.tabConfig()?.name!, id);
-  }
-
-  sendForm(data: ApiDto) {
-    const dataFusion = {
-      ...this.adminService.data(),
-      ...data,
-    };
-    if (!dataFusion.id) {
-      this.adminService.post(this.tabConfig()?.name!, dataFusion);
-    } else {
-      this.adminService.put(this.tabConfig()?.name!, dataFusion);
+    constructor() {
+        super();
+        effect(() => {
+            if (this.platformService.isPlatformBrowser()) {
+                const id = this.routeParams()?.['id'];
+                this.tab.set(this.routeParams()?.['type']);
+                const tab = this.adminService.tabs()?.tabs.find((tab) => tab.name === this.tab());
+                this.tabConfig.set(tab);
+                if (Number.isNaN(id)) {
+                    this.adminService.data.set({} as ApiDto);
+                } else {
+                    this.findById(this.routeParams()?.['id']);
+                }
+            }
+        });
     }
-  }
+
+    findById(id: string) {
+        this.adminService.findById(this.tabConfig()?.name!, id);
+    }
+
+    sendForm(data: ApiDto) {
+        const dataFusion = {
+            ...this.adminService.data(),
+            ...data,
+        };
+        if (dataFusion.id) {
+            this.adminService.put(this.tabConfig()?.name!, dataFusion);
+        } else {
+            this.adminService.post(this.tabConfig()?.name!, dataFusion);
+        }
+    }
 }

@@ -93,7 +93,6 @@
 }
 
 .dark {
-
     .default {
         background-color: var(--text-dark);
         color: var(--text);
@@ -115,20 +114,18 @@
     }
 }
 
-
-
 .small,
-.small>i {
+.small > i {
     font-size: 1rem;
 }
 
 .medium,
-.medium>i {
+.medium > i {
     font-size: 1.25rem;
 }
 
 .large,
-.large>i {
+.large > i {
     font-size: 1.5rem;
 }
 
@@ -136,7 +133,7 @@
     width: 100%;
 }
 
-dsv-tooltip>*:not(.dsv-tooltip) {
+dsv-tooltip > *:not(.dsv-tooltip) {
     cursor: context-menu;
     white-space: nowrap;
     overflow: hidden;

@@ -5,34 +5,32 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ReactiveSearchbarComponent } from './reactive.searchbar.component';
 
 describe('ReactiveSearchbarComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ReactiveSearchbarComponent],
-      providers: [
-        provideZonelessChangeDetection(), provideHttpClient()
-      ],
-    }).compileComponents();
-  });
-
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(ReactiveSearchbarComponent);
-    const app = fixture.componentInstance;
-    app.search = signal('search') as unknown as InputSignal<string>;
-    vi.spyOn(app.onSearch, 'emit');
-
-    fixture.detectChanges();
-
-    const input: HTMLInputElement = fixture.nativeElement.querySelector('input');
-    input.value = 'search';
-    const event = new KeyboardEvent('keydown', {
-      key: 'Enter',
-      bubbles: true,
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [ReactiveSearchbarComponent],
+            providers: [provideZonelessChangeDetection(), provideHttpClient()],
+        }).compileComponents();
     });
-    input.dispatchEvent(event);
 
-    fixture.detectChanges();
+    it('should create the app', () => {
+        const fixture = TestBed.createComponent(ReactiveSearchbarComponent);
+        const app = fixture.componentInstance;
+        app.search = signal('search') as unknown as InputSignal<string>;
+        vi.spyOn(app.callbackSearch, 'emit');
 
-    expect(app).toBeTruthy();
-    expect(app.onSearch.emit).toHaveBeenCalledWith('search');
-  });
+        fixture.detectChanges();
+
+        const input: HTMLInputElement = fixture.nativeElement.querySelector('input');
+        input.value = 'search';
+        const event = new KeyboardEvent('keydown', {
+            key: 'Enter',
+            bubbles: true,
+        });
+        input.dispatchEvent(event);
+
+        fixture.detectChanges();
+
+        expect(app).toBeTruthy();
+        expect(app.callbackSearch.emit).toHaveBeenCalledWith('search');
+    });
 });

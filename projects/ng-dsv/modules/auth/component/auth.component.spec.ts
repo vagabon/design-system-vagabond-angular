@@ -10,101 +10,108 @@ import { AuthGoogleService, AuthService } from '../public-api';
 import { AuthComponent } from './auth.component';
 
 describe('AuthComponent', () => {
-  let component: AuthComponent;
-  let fixture: ComponentFixture<AuthComponent>;
-  let authServiceMock: { userConnected: ReturnType<typeof vi.fn>; loginFromCache: ReturnType<typeof vi.fn>; logout: ReturnType<typeof vi.fn> };
-  let authGoogleServiceMock: { loginWithGoogle: ReturnType<typeof vi.fn>; initGoogleAuth: ReturnType<typeof vi.fn> };
-  let environmentServiceMock: { env: ReturnType<typeof vi.fn> };
-
-  beforeEach(async () => {
-    authServiceMock = {
-      userConnected: vi.fn().mockReturnValue(null),
-      loginFromCache: vi.fn(),
-      logout: vi.fn(),
+    let component: AuthComponent;
+    let fixture: ComponentFixture<AuthComponent>;
+    let authServiceMock: {
+        userConnected: ReturnType<typeof vi.fn>;
+        loginFromCache: ReturnType<typeof vi.fn>;
+        logout: ReturnType<typeof vi.fn>;
     };
-
-    authGoogleServiceMock = {
-      loginWithGoogle: vi.fn(),
-      initGoogleAuth: vi.fn(),
+    let authGoogleServiceMock: {
+        loginWithGoogle: ReturnType<typeof vi.fn>;
+        initGoogleAuth: ReturnType<typeof vi.fn>;
     };
+    let environmentServiceMock: { env: ReturnType<typeof vi.fn> };
 
-    environmentServiceMock = {
-      env: vi.fn().mockReturnValue(true),
-    };
+    beforeEach(async () => {
+        authServiceMock = {
+            userConnected: vi.fn().mockReturnValue(null),
+            loginFromCache: vi.fn(),
+            logout: vi.fn(),
+        };
 
-    await TestBed.configureTestingModule({
-      imports: [CommonModule, AuthComponent, ModalButtonComponent, ModalAlertComponent],
-      providers: [
-        provideZonelessChangeDetection(),
-        provideTranslateService(),
-        { provide: AuthService, useValue: authServiceMock },
-        { provide: AuthGoogleService, useValue: authGoogleServiceMock },
-        { provide: EnvironmentService, useValue: environmentServiceMock },
-      ],
-    }).compileComponents();
+        authGoogleServiceMock = {
+            loginWithGoogle: vi.fn(),
+            initGoogleAuth: vi.fn(),
+        };
 
-    fixture = TestBed.createComponent(AuthComponent);
-    component = fixture.componentInstance;
-  });
+        environmentServiceMock = {
+            env: vi.fn().mockReturnValue(true),
+        };
 
-  it('should create the component', () => {
-    fixture.detectChanges();
-    expect(component).toBeTruthy();
-  });
+        await TestBed.configureTestingModule({
+            imports: [CommonModule, AuthComponent, ModalButtonComponent, ModalAlertComponent],
+            providers: [
+                provideZonelessChangeDetection(),
+                provideTranslateService(),
+                { provide: AuthService, useValue: authServiceMock },
+                { provide: AuthGoogleService, useValue: authGoogleServiceMock },
+                { provide: EnvironmentService, useValue: environmentServiceMock },
+            ],
+        }).compileComponents();
 
-  it('should render Google Sign-In button when user not connected', () => {
-    authServiceMock.userConnected.mockReturnValue(null);
-    fixture.detectChanges();
+        fixture = TestBed.createComponent(AuthComponent);
+        component = fixture.componentInstance;
+    });
 
-    const googleButton = fixture.debugElement.query(By.css('#google-signin-button'));
-    expect(googleButton).toBeTruthy();
-    expect(googleButton.nativeElement.classList.contains('hidden')).toBe(false);
-  });
+    it('should create the component', () => {
+        fixture.detectChanges();
+        expect(component).toBeTruthy();
+    });
 
-  it('should hide Google Sign-In button when user is connected', () => {
-    authServiceMock.userConnected.mockReturnValue({ user: { id: '1' } });
-    fixture.detectChanges();
+    it('should render Google Sign-In button when user not connected', () => {
+        authServiceMock.userConnected.mockReturnValue(null);
+        fixture.detectChanges();
 
-    const googleButton = fixture.debugElement.query(By.css('#google-signin-button'));
-    expect(googleButton.nativeElement.classList.contains('hidden')).toBe(true);
-  });
+        const googleButton = fixture.debugElement.query(By.css('#google-signin-button'));
+        expect(googleButton).toBeTruthy();
+        expect(googleButton.nativeElement.classList.contains('hidden')).toBe(false);
+    });
 
-  it('should display profile and logout modal when user is connected', () => {
-    authServiceMock.userConnected.mockReturnValue({ user: { id: '1', avatar: 'avatar.png' } });
-    fixture.detectChanges();
+    it('should hide Google Sign-In button when user is connected', () => {
+        authServiceMock.userConnected.mockReturnValue({ user: { id: '1' } });
+        fixture.detectChanges();
 
-    const profile = fixture.debugElement.query(By.css('.profile'));
-    expect(profile).toBeTruthy();
+        const googleButton = fixture.debugElement.query(By.css('#google-signin-button'));
+        expect(googleButton.nativeElement.classList.contains('hidden')).toBe(true);
+    });
 
-    const img = profile.query(By.css('img'));
-    expect(img.nativeElement.src).toContain('avatar.png');
+    it('should display profile and logout modal when user is connected', () => {
+        authServiceMock.userConnected.mockReturnValue({ user: { id: '1', avatar: 'avatar.png' } });
+        fixture.detectChanges();
 
-    const logoutButton = fixture.debugElement.query(By.css('#logout'));
-    expect(logoutButton).toBeTruthy();
-  });
+        const profile = fixture.debugElement.query(By.css('.profile'));
+        expect(profile).toBeTruthy();
 
-  it('should call logout on logout callback', () => {
-    authServiceMock.userConnected.mockReturnValue({ user: { id: '1' } });
-    fixture.detectChanges();
+        const img = profile.query(By.css('img'));
+        expect(img.nativeElement.src).toContain('avatar.png');
 
-    component.logout();
-    expect(authServiceMock.logout).toHaveBeenCalled();
-  });
+        const logoutButton = fixture.debugElement.query(By.css('#logout'));
+        expect(logoutButton).toBeTruthy();
+    });
 
-  it('should trigger loginWithGoogle effect if user not connected', () => {
-    authServiceMock.userConnected.mockReturnValue(null);
+    it('should call logout on logout callback', () => {
+        authServiceMock.userConnected.mockReturnValue({ user: { id: '1' } });
+        fixture.detectChanges();
 
-    fixture.detectChanges();
+        component.logout();
+        expect(authServiceMock.logout).toHaveBeenCalled();
+    });
 
-    expect(authGoogleServiceMock.loginWithGoogle).toHaveBeenCalled();
-  });
+    it('should trigger loginWithGoogle effect if user not connected', () => {
+        authServiceMock.userConnected.mockReturnValue(null);
 
-  it('should call loginFromCache and initGoogleAuth if env true and ssrRendered', () => {
-    authServiceMock.userConnected.mockReturnValue(null);
+        fixture.detectChanges();
 
-    fixture.detectChanges();
+        expect(authGoogleServiceMock.loginWithGoogle).toHaveBeenCalled();
+    });
 
-    expect(authServiceMock.loginFromCache).toHaveBeenCalled();
-    expect(authGoogleServiceMock.initGoogleAuth).toHaveBeenCalled();
-  });
+    it('should call loginFromCache and initGoogleAuth if env true and ssrRendered', () => {
+        authServiceMock.userConnected.mockReturnValue(null);
+
+        fixture.detectChanges();
+
+        expect(authServiceMock.loginFromCache).toHaveBeenCalled();
+        expect(authGoogleServiceMock.initGoogleAuth).toHaveBeenCalled();
+    });
 });

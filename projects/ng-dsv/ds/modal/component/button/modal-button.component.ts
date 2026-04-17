@@ -4,23 +4,23 @@ import { ButtonVariantType, ColorType } from '@ng-vagabond-lab/ng-dsv/type';
 import { ModalService } from '../../service/modal.service';
 
 @Component({
-  selector: 'dsv-modal-button',
-  imports: [DsvButtonComponent],
-  templateUrl: './modal-button.component.html',
+    selector: 'dsv-modal-button',
+    imports: [DsvButtonComponent],
+    templateUrl: './modal-button.component.html',
 })
 export class ModalButtonComponent {
-  modalService = inject(ModalService);
+    modalService = inject(ModalService);
 
-  id = input.required<string>();
-  icon = input<string>('');
-  variant = input<ButtonVariantType>('contained');
-  text = input<string>('');
-  color = input<ColorType>('primary');
+    id = input.required<string>();
+    icon = input<string>('');
+    variant = input<ButtonVariantType>('contained');
+    text = input<string>('');
+    color = input<ColorType>('primary');
 
-  callback = output<void>();
+    callback = output<void>();
 
-  doToogle = () => {
-    this.callback.emit();
-    this.modalService.toggle(this.id());
-  };
+    doToogle = () => {
+        this.callback.emit();
+        this.modalService.toggle(this.id());
+    };
 }

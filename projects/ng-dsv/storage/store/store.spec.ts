@@ -3,10 +3,7 @@ import { Store } from './store';
 
 vi.mock('app/module/person/utils/person.utils', () => ({
     removeDuplicate: (arr: any[]) =>
-        arr.filter(
-            (item, index, self) =>
-                index === self.findIndex((t) => t.id === item.id)
-        ),
+        arr.filter((item, index, self) => index === self.findIndex((t) => t.id === item.id)),
 }));
 
 interface FakeEntity {
@@ -16,7 +13,6 @@ interface FakeEntity {
 }
 
 describe('Store', () => {
-
     it('should update value by id', () => {
         const store = new Store<FakeEntity>();
 
@@ -58,26 +54,20 @@ describe('Store', () => {
     it('should append data when page > 1', () => {
         const store = new Store<FakeEntity>();
 
-        store.updateForPage(1, [
-            { id: 1, name: 'A' },
-        ]);
+        store.updateForPage(1, [{ id: 1, name: 'A' }]);
 
-        store.updateForPage(2, [
-            { id: 2, name: 'B' },
-        ]);
+        store.updateForPage(2, [{ id: 2, name: 'B' }]);
 
         const result = store.data();
 
         expect(result.length).toBe(2);
-        expect(result.find(e => e.id === 2)).toBeTruthy();
+        expect(result.find((e) => e.id === 2)).toBeTruthy();
     });
 
     it('should remove duplicates when updating page', () => {
         const store = new Store<FakeEntity>();
 
-        store.updateForPage(1, [
-            { id: 1, name: 'A' },
-        ]);
+        store.updateForPage(1, [{ id: 1, name: 'A' }]);
 
         store.updateForPage(2, [
             { id: 1, name: 'A' },
@@ -88,5 +78,4 @@ describe('Store', () => {
 
         expect(result.length).toBe(2);
     });
-
 });

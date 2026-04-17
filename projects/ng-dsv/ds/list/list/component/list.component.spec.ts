@@ -8,12 +8,9 @@ describe('ListComponent', () => {
     let component: ListComponent;
 
     beforeEach(async () => {
-
         await TestBed.configureTestingModule({
             imports: [ListComponent],
-            providers: [
-                provideZonelessChangeDetection(),
-            ],
+            providers: [provideZonelessChangeDetection()],
         }).compileComponents();
 
         fixture = TestBed.createComponent(ListComponent);

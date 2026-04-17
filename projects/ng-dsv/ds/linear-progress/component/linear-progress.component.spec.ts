@@ -4,56 +4,54 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { LinearProgressComponent } from './linear-progress.component';
 
 @Component({
-  template: `<dsv-linear-progress
-    [load]="load"
-    [value]="value"
-    [indeterminate]="indeterminate"
-  ></dsv-linear-progress>`,
-  imports: [LinearProgressComponent],
+    template: `<dsv-linear-progress
+        [load]="load"
+        [value]="value"
+        [indeterminate]="indeterminate"
+    ></dsv-linear-progress>`,
+    imports: [LinearProgressComponent],
 })
 class TestHostComponent {
-  load = true;
-  value = 50;
-  indeterminate = false;
+    load = true;
+    value = 50;
+    indeterminate = false;
 }
 
 describe('LinearProgressComponent', () => {
-  let fixture: ComponentFixture<TestHostComponent>;
-  let hostComponent: TestHostComponent;
+    let fixture: ComponentFixture<TestHostComponent>;
+    let hostComponent: TestHostComponent;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [],
-      providers: [provideZonelessChangeDetection()],
-    }).compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [],
+            providers: [provideZonelessChangeDetection()],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(TestHostComponent);
-    hostComponent = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(TestHostComponent);
+        hostComponent = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create the component', () => {
-    const linearProgressEl = fixture.nativeElement.querySelector(
-      'dsv-linear-progress',
-    );
-    expect(linearProgressEl).toBeTruthy();
-  });
+    it('should create the component', () => {
+        const linearProgressEl = fixture.nativeElement.querySelector('dsv-linear-progress');
+        expect(linearProgressEl).toBeTruthy();
+    });
 
-  it('should receive @Input load correctly', () => {
-    const componentInstance = fixture.debugElement.children[0]
-      .componentInstance as LinearProgressComponent;
-    expect(componentInstance.load()).toBe(true);
-  });
+    it('should receive @Input load correctly', () => {
+        const componentInstance = fixture.debugElement.children[0]
+            .componentInstance as LinearProgressComponent;
+        expect(componentInstance.load()).toBe(true);
+    });
 
-  it('should receive @Input value correctly', () => {
-    const componentInstance = fixture.debugElement.children[0]
-      .componentInstance as LinearProgressComponent;
-    expect(componentInstance.value()).toBe(50);
-  });
+    it('should receive @Input value correctly', () => {
+        const componentInstance = fixture.debugElement.children[0]
+            .componentInstance as LinearProgressComponent;
+        expect(componentInstance.value()).toBe(50);
+    });
 
-  it('should receive @Input indeterminate correctly', () => {
-    const componentInstance = fixture.debugElement.children[0]
-      .componentInstance as LinearProgressComponent;
-    expect(componentInstance.indeterminate()).toBe(false);
-  });
+    it('should receive @Input indeterminate correctly', () => {
+        const componentInstance = fixture.debugElement.children[0]
+            .componentInstance as LinearProgressComponent;
+        expect(componentInstance.indeterminate()).toBe(false);
+    });
 });
