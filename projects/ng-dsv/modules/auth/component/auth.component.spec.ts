@@ -74,7 +74,7 @@ describe('AuthComponent', () => {
     });
 
     it('should display profile and logout modal when user is connected', () => {
-        authServiceMock.userConnected.mockReturnValue({ user: { id: '1', avatar: 'avatar.png' } });
+        authServiceMock.userConnected.mockReturnValue({ id: '1', avatar: 'avatar.png' });
         fixture.detectChanges();
 
         const profile = fixture.debugElement.query(By.css('.profile'));

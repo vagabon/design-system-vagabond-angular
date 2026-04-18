@@ -1802,27 +1802,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Preview",
-                "defaultValue": "{\n    parameters: {\n        layout: 'fullscreen',\n        controls: {\n            matchers: {\n                color: /(background|color)$/i,\n                date: /Date$/i,\n            },\n        },\n    },\n    decorators: [\n        applicationConfig({\n            providers: [\n                provideZonelessChangeDetection(),\n                provideTranslateService(),\n                {\n                    provide: ActivatedRoute,\n                    useValue: {\n                        params: of({ id: '' }),\n                        queryParams: of({}),\n                        fragment: of(null),\n                        data: of({}),\n                        url: of([]),\n                        snapshot: {\n                            paramMap: new Map(),\n                            queryParamMap: new Map(),\n                            data: {},\n                        },\n                    },\n                },\n            ],\n        }),\n        moduleMetadata({\n            imports: [DsvThemeComponent, DsvThemeSwitchComponent],\n        }),\n        componentWrapperDecorator((story) => {\n            return `\n                <dsv-theme [theme]='${themeString}' class=\"flex flex1\" >\n                <div style='padding: 5px; margin-bottom: 40px; min-height: 100px; position: relative; display: flex; flex-direction: column; '>\n                    <div style='margin-bottom: 20px'>\n                    <dsv-theme-switch></dsv-theme-switch>\n                    </div>\n                    ${story}\n                </div>\n                </dsv-theme>\n            `;\n        }),\n    ],\n}"
-            },
-            {
-                "name": "theme",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ng-dsv/.storybook/preview.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n    background: 'rgb(245, 245, 245)',\n    primary: 'rgb(48, 100, 197)',\n}"
-            },
-            {
-                "name": "themeString",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ng-dsv/.storybook/preview.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "unknown",
-                "defaultValue": "JSON.stringify(theme)"
+                "defaultValue": "{\n    parameters: {\n        layout: 'fullscreen',\n        controls: {\n            matchers: {\n                color: /(background|color)$/i,\n                date: /Date$/i,\n            },\n        },\n    },\n    decorators: [\n        applicationConfig({\n            providers: [\n                provideZonelessChangeDetection(),\n                provideTranslateService(),\n                {\n                    provide: ActivatedRoute,\n                    useValue: {\n                        params: of({ id: '' }),\n                        queryParams: of({}),\n                        fragment: of(null),\n                        data: of({}),\n                        url: of([]),\n                        snapshot: {\n                            paramMap: new Map(),\n                            queryParamMap: new Map(),\n                            data: {},\n                        },\n                    },\n                },\n            ],\n        }),\n        moduleMetadata({\n            imports: [DsvThemeComponent, DsvThemeSwitchComponent],\n        }),\n        componentWrapperDecorator((story) => {\n            return `\n                <dsv-theme class=\"flex flex1\" >\n                <div style='padding: 5px; margin-bottom: 40px; min-height: 100px; position: relative; display: flex; flex-direction: column; '>\n                    <div style='margin-bottom: 20px'>\n                    <dsv-theme-switch></dsv-theme-switch>\n                    </div>\n                    ${story}\n                </div>\n                </dsv-theme>\n            `;\n        }),\n    ],\n}"
             },
             {
                 "name": "WithCallback",
@@ -3331,27 +3311,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Preview",
-                    "defaultValue": "{\n    parameters: {\n        layout: 'fullscreen',\n        controls: {\n            matchers: {\n                color: /(background|color)$/i,\n                date: /Date$/i,\n            },\n        },\n    },\n    decorators: [\n        applicationConfig({\n            providers: [\n                provideZonelessChangeDetection(),\n                provideTranslateService(),\n                {\n                    provide: ActivatedRoute,\n                    useValue: {\n                        params: of({ id: '' }),\n                        queryParams: of({}),\n                        fragment: of(null),\n                        data: of({}),\n                        url: of([]),\n                        snapshot: {\n                            paramMap: new Map(),\n                            queryParamMap: new Map(),\n                            data: {},\n                        },\n                    },\n                },\n            ],\n        }),\n        moduleMetadata({\n            imports: [DsvThemeComponent, DsvThemeSwitchComponent],\n        }),\n        componentWrapperDecorator((story) => {\n            return `\n                <dsv-theme [theme]='${themeString}' class=\"flex flex1\" >\n                <div style='padding: 5px; margin-bottom: 40px; min-height: 100px; position: relative; display: flex; flex-direction: column; '>\n                    <div style='margin-bottom: 20px'>\n                    <dsv-theme-switch></dsv-theme-switch>\n                    </div>\n                    ${story}\n                </div>\n                </dsv-theme>\n            `;\n        }),\n    ],\n}"
-                },
-                {
-                    "name": "theme",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/.storybook/preview.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n    background: 'rgb(245, 245, 245)',\n    primary: 'rgb(48, 100, 197)',\n}"
-                },
-                {
-                    "name": "themeString",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/.storybook/preview.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "defaultValue": "JSON.stringify(theme)"
+                    "defaultValue": "{\n    parameters: {\n        layout: 'fullscreen',\n        controls: {\n            matchers: {\n                color: /(background|color)$/i,\n                date: /Date$/i,\n            },\n        },\n    },\n    decorators: [\n        applicationConfig({\n            providers: [\n                provideZonelessChangeDetection(),\n                provideTranslateService(),\n                {\n                    provide: ActivatedRoute,\n                    useValue: {\n                        params: of({ id: '' }),\n                        queryParams: of({}),\n                        fragment: of(null),\n                        data: of({}),\n                        url: of([]),\n                        snapshot: {\n                            paramMap: new Map(),\n                            queryParamMap: new Map(),\n                            data: {},\n                        },\n                    },\n                },\n            ],\n        }),\n        moduleMetadata({\n            imports: [DsvThemeComponent, DsvThemeSwitchComponent],\n        }),\n        componentWrapperDecorator((story) => {\n            return `\n                <dsv-theme class=\"flex flex1\" >\n                <div style='padding: 5px; margin-bottom: 40px; min-height: 100px; position: relative; display: flex; flex-direction: column; '>\n                    <div style='margin-bottom: 20px'>\n                    <dsv-theme-switch></dsv-theme-switch>\n                    </div>\n                    ${story}\n                </div>\n                </dsv-theme>\n            `;\n        }),\n    ],\n}"
                 }
             ]
         },
@@ -3817,26 +3777,6 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "preview",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ng-dsv/.storybook/preview.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "theme",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ng-dsv/.storybook/preview.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "themeString",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

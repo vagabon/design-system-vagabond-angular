@@ -49,9 +49,7 @@ describe('authGuard', () => {
     const mockState = {} as RouterStateSnapshot;
 
     it('should return true if user has required role', () => {
-        mockAuthService.userConnected.mockReturnValue({
-            user: { profiles: [{ name: 'ADMIN' }] as any },
-        });
+        mockAuthService.userConnected.mockReturnValue({ profiles: [{ name: 'ADMIN' }] as any });
 
         const result = runInInjectionContext(injector, () => authGuard(createRoute('ADMIN'), mockState));
         expect(result).toBe(true);
