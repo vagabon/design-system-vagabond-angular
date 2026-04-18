@@ -11,12 +11,6 @@ import { of } from 'rxjs';
 import { DsvThemeSwitchComponent } from '../ds/theme';
 import { DsvThemeComponent } from './../ds/theme/component/dsv.theme.component';
 
-const theme = {
-    background: 'rgb(245, 245, 245)',
-    primary: 'rgb(48, 100, 197)',
-};
-const themeString = JSON.stringify(theme);
-
 const preview: Preview = {
     parameters: {
         layout: 'fullscreen',
@@ -54,15 +48,15 @@ const preview: Preview = {
         }),
         componentWrapperDecorator((story) => {
             return `
-        <dsv-theme [theme]='${themeString}' class="flex flex1" >
-          <div style='padding: 5px; margin-bottom: 40px; min-height: 100px; position: relative; display: flex; flex-direction: column; '>
-            <div style='margin-bottom: 20px'>
-              <dsv-theme-switch></dsv-theme-switch>
-            </div>
-            ${story}
-          </div>
-        </dsv-theme>
-      `;
+                <dsv-theme class="flex flex1" >
+                <div style='padding: 5px; margin-bottom: 40px; min-height: 100px; position: relative; display: flex; flex-direction: column; '>
+                    <div style='margin-bottom: 20px'>
+                    <dsv-theme-switch></dsv-theme-switch>
+                    </div>
+                    ${story}
+                </div>
+                </dsv-theme>
+            `;
         }),
     ],
 };

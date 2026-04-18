@@ -3,7 +3,6 @@ import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ModalAlertComponent, ModalButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/modal';
-import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
 import { provideTranslateService } from '@ngx-translate/core';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { AuthGoogleService, AuthService } from '../public-api';
@@ -16,27 +15,26 @@ describe('AuthComponent', () => {
         userConnected: ReturnType<typeof vi.fn>;
         loginFromCache: ReturnType<typeof vi.fn>;
         logout: ReturnType<typeof vi.fn>;
+        apiService: { isPlatformBrowser: ReturnType<typeof vi.fn> };
+        refreshToken: ReturnType<typeof vi.fn>;
     };
     let authGoogleServiceMock: {
         loginWithGoogle: ReturnType<typeof vi.fn>;
         initGoogleAuth: ReturnType<typeof vi.fn>;
     };
-    let environmentServiceMock: { env: ReturnType<typeof vi.fn> };
 
     beforeEach(async () => {
         authServiceMock = {
             userConnected: vi.fn().mockReturnValue(null),
             loginFromCache: vi.fn(),
             logout: vi.fn(),
+            apiService: { isPlatformBrowser: vi.fn().mockReturnValue(true) },
+            refreshToken: vi.fn(),
         };
 
         authGoogleServiceMock = {
             loginWithGoogle: vi.fn(),
             initGoogleAuth: vi.fn(),
-        };
-
-        environmentServiceMock = {
-            env: vi.fn().mockReturnValue(true),
         };
 
         await TestBed.configureTestingModule({
@@ -46,7 +44,6 @@ describe('AuthComponent', () => {
                 provideTranslateService(),
                 { provide: AuthService, useValue: authServiceMock },
                 { provide: AuthGoogleService, useValue: authGoogleServiceMock },
-                { provide: EnvironmentService, useValue: environmentServiceMock },
             ],
         }).compileComponents();
 
@@ -104,14 +101,6 @@ describe('AuthComponent', () => {
         fixture.detectChanges();
 
         expect(authGoogleServiceMock.loginWithGoogle).toHaveBeenCalled();
-    });
-
-    it('should call loginFromCache and initGoogleAuth if env true and ssrRendered', () => {
-        authServiceMock.userConnected.mockReturnValue(null);
-
-        fixture.detectChanges();
-
-        expect(authServiceMock.loginFromCache).toHaveBeenCalled();
         expect(authGoogleServiceMock.initGoogleAuth).toHaveBeenCalled();
     });
 });

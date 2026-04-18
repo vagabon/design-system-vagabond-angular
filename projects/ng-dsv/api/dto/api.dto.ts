@@ -34,6 +34,10 @@ export interface ApiDto {
     active?: boolean;
 }
 
+export interface BaseUserTokenDto {
+    jwt?: string;
+}
+
 export interface OrderState {
     order: string;
     orderAsc?: boolean;

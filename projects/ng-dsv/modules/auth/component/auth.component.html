@@ -8,7 +8,7 @@
 @if (authService.userConnected()) {
     <div class="profile">
         <img
-            [src]="authService.userConnected()?.user?.avatar"
+            [src]="authService.userConnected()?.avatar"
             alt="profile"
         />
         <dsv-modal-button

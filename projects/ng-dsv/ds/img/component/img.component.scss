@@ -3,24 +3,14 @@
     flex-direction: column;
 
     img {
-        background-color: #f7f7f7;
+        background-color: var(--background);
     }
 
     svg {
-        background-color: var(--background-dark);
+        background-color: var(--background-card);
         opacity: 0.5;
         margin: 0;
         padding: 0;
         border-radius: 10px;
-    }
-}
-
-::ng-deep .dark dsv-img {
-    img {
-        background-color: #525252 !important;
-    }
-
-    svg {
-        background-color: var(--background);
     }
 }

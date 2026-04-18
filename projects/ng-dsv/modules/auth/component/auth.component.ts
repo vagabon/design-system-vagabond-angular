@@ -1,9 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, inject, output } from '@angular/core';
+import { Component, effect, inject, output, signal } from '@angular/core';
 import { ID } from '@ng-vagabond-lab/ng-dsv/api';
 import { ModalAlertComponent, ModalButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/modal';
-import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
-import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { AuthGoogleService, AuthService } from '../public-api';
 
 @Component({
@@ -15,24 +13,26 @@ import { AuthGoogleService, AuthService } from '../public-api';
 export class AuthComponent {
     readonly authService = inject(AuthService);
     readonly authGoogleService = inject(AuthGoogleService);
-    readonly environmentService = inject(EnvironmentService);
-    readonly platformService = inject(PlatformService);
 
-    readonly initMember = output<ID>();
+    callbackInitMember = output<ID>();
+    callbackLogout = output<void>();
+
+    initAuth = signal<boolean>(false);
 
     constructor() {
         effect(() => {
-            if (this.environmentService.env() && this.platformService.isPlatformBrowser()) {
+            if (this.authService.apiService.isPlatformBrowser() && !this.initAuth()) {
                 this.authGoogleService.initGoogleAuth();
-                this.authService.loginFromCache();
+                this.authService.refreshToken();
+                this.initAuth.set(true);
             }
         });
         effect(() => {
-            if (this.environmentService.env() && this.platformService.isPlatformBrowser()) {
+            if (this.authService.apiService.isPlatformBrowser()) {
                 if (this.authService.userConnected() === null) {
                     this.authGoogleService.loginWithGoogle();
                 } else {
-                    this.initMember.emit(this.authService.userConnected()?.user?.id);
+                    this.callbackInitMember.emit(this.authService.userConnected()?.id);
                 }
             }
         });
@@ -40,5 +40,6 @@ export class AuthComponent {
 
     logout() {
         this.authService.logout();
+        this.callbackLogout.emit();
     }
 }

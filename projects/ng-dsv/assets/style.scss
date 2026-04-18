@@ -5,37 +5,37 @@
 
 .default {
     background-color: var(--text);
-    color: var(--text-dark);
+    color: var(--button-text);
 }
 
 .primary {
     background-color: var(--primary);
-    color: var(--text-dark);
+    color: var(--button-text);
 }
 
 .secondary {
     background-color: var(--secondary);
-    color: var(--text-dark);
+    color: var(--button-text);
 }
 
 .success {
     background-color: var(--success);
-    color: var(--text-dark);
+    color: var(--button-text);
 }
 
 .info {
     background-color: var(--info);
-    color: var(--text-dark);
+    color: var(--button-text);
 }
 
 .warning {
     background-color: var(--warning);
-    color: var(--text-dark);
+    color: var(--button-text);
 }
 
 .error {
     background-color: var(--error);
-    color: var(--text-dark);
+    color: var(--button-text);
 }
 
 .text,
@@ -92,40 +92,18 @@
     }
 }
 
-.dark {
-    .default {
-        background-color: var(--text-dark);
-        color: var(--text);
-    }
-
-    .inherit {
-        filter: hue-rotate(5deg);
-    }
-
-    .text,
-    .outlined {
-        .default {
-            color: var(--text-dark);
-        }
-    }
-
-    .outlined.default {
-        border: 1px solid var(--text-dark);
-    }
-}
-
 .small,
-.small > i {
+.small>i {
     font-size: 1rem;
 }
 
 .medium,
-.medium > i {
+.medium>i {
     font-size: 1.25rem;
 }
 
 .large,
-.large > i {
+.large>i {
     font-size: 1.5rem;
 }
 
@@ -133,7 +111,7 @@
     width: 100%;
 }
 
-dsv-tooltip > *:not(.dsv-tooltip) {
+dsv-tooltip>*:not(.dsv-tooltip) {
     cursor: context-menu;
     white-space: nowrap;
     overflow: hidden;

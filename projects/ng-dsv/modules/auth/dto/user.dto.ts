@@ -1,4 +1,4 @@
-import { ApiDto } from '@ng-vagabond-lab/ng-dsv/api';
+import { ApiDto, BaseUserTokenDto } from '@ng-vagabond-lab/ng-dsv/api';
 
 export interface UserDto extends ApiDto {
     avatar?: string;
@@ -9,10 +9,7 @@ export interface UserDto extends ApiDto {
     profiles?: [];
 }
 
-export interface UserConnectedDto {
-    googleToken?: string;
-    jwt?: string;
-    jwtRefresh?: string;
+export interface UserSigninDto extends BaseUserTokenDto {
     user?: UserDto;
 }
 

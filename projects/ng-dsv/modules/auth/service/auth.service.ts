@@ -1,51 +1,56 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { ApiService } from '@ng-vagabond-lab/ng-dsv/api';
-import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
-import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
-import { UserConnectedDto } from '../dto/user.dto';
+import { ApiService, JSONValue } from '@ng-vagabond-lab/ng-dsv/api';
+import { UserDto, UserSigninDto } from '../dto/user.dto';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthService {
-    apiService = inject(ApiService);
-    toastService = inject(ToastService);
-    storageService = inject(StorageService);
+    readonly apiService = inject(ApiService);
 
-    userConnected = signal<UserConnectedDto | null>(null);
+    userConnected = signal<UserDto | null>(null);
+    userToken = signal<string>('');
+
+    initUser(user: UserSigninDto | null = null) {
+        this.userConnected.set(user?.user ?? null);
+        this.userToken.set(user?.jwt ?? '');
+    }
 
     googleLogin(credential: string) {
-        this.apiService.post<UserConnectedDto>(
+        this.apiService.post<JSONValue, UserSigninDto>(
             'auth/google-identity-connect',
             {
                 googleToken: credential,
             },
             (data) => {
-                this.storageService.setItem('user-connected', JSON.stringify(data));
-                this.userConnected.set(data);
-                this.toastService.showToast({
+                this.initUser(data);
+                this.apiService.toastService.showToast({
                     type: 'success',
                     text: 'Connexion réussie',
                 });
             },
+            true,
         );
     }
 
-    loginFromCache() {
-        const userConnected =
-            typeof globalThis.window !== 'undefined' && // NOSONAR S3003
-            JSON.parse(this.storageService?.getItem('user-connected')!);
-        this.userConnected.set(userConnected);
-        this.apiService.info('userConnected', userConnected);
-        return userConnected;
+    refreshToken() {
+        this.apiService.post<UserSigninDto>('auth/refresh-token', {}, (data) => this.initUser(data), true);
     }
 
-    logout() {
-        this.storageService?.removeItem('user-connected');
-        this.userConnected.set(null);
-        this.toastService.showToast({
-            type: 'success',
-            text: 'Déconnexion réussie',
-        });
+    logout(showToast: boolean = true) {
+        this.apiService.post<UserSigninDto>(
+            'auth/logout',
+            {},
+            () => {
+                this.initUser();
+                if (showToast) {
+                    this.apiService.toastService.showToast({
+                        type: 'success',
+                        text: 'Déconnexion réussie',
+                    });
+                }
+            },
+            true,
+        );
     }
 }

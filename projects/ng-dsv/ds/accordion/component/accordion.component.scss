@@ -5,7 +5,7 @@
     width: calc(100% - 40px);
     margin: 10px;
     padding: 10px;
-    background-color: #fff;
+    background-color: var(--background-card);
     position: relative;
     border-radius: 0px;
 
@@ -40,8 +40,4 @@
             height: auto;
         }
     }
-}
-
-::ng-deep .dark dsv-accordion {
-    background-color: rgb(44, 44, 44);
 }

@@ -1,4 +1,4 @@
-export * from './component/base.app-scroll.component';
+export * from './component/base.app.component';
 export * from './component/base.route.component';
 export * from './component/base.seo.container';
 

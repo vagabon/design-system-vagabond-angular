@@ -2,23 +2,19 @@ import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Router, Scroll } from '@angular/router';
 import { ApiService } from '@ng-vagabond-lab/ng-dsv/api';
-import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
-import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
 import { Subject } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { BaseAppScrollComponent, ScrollService } from '../public-api';
+import { BaseAppComponent, ScrollService } from '../public-api';
 
-describe('BaseAppScrollComponent', () => {
+describe('BaseAppComponent', () => {
     let component: TestComponent;
     let routerEvents$: Subject<any>;
-    let scrollServiceMock: any;
-    let platformServiceMock: any;
-    let envServiceMock: any;
     let apiServiceMock: any;
+    let scrollServiceMock: any;
 
     @Component({ template: '' })
-    class TestComponent extends BaseAppScrollComponent {}
+    class TestComponent extends BaseAppComponent {}
 
     beforeEach(() => {
         routerEvents$ = new Subject();
@@ -28,16 +24,12 @@ describe('BaseAppScrollComponent', () => {
             saveScroll: vi.fn(),
             scroll: { set: vi.fn() },
         };
-        platformServiceMock = { isPlatformBrowser: vi.fn().mockReturnValue(true) };
-        envServiceMock = { env: vi.fn().mockReturnValue({ API_URL: 'https://fake.api' }) };
-        apiServiceMock = { setBaseUrl: vi.fn() };
+        apiServiceMock = { setBaseUrl: vi.fn(), isPlatformBrowser: vi.fn().mockReturnValue(true) };
 
         TestBed.configureTestingModule({
             providers: [
                 TestComponent,
                 { provide: ScrollService, useValue: scrollServiceMock },
-                { provide: PlatformService, useValue: platformServiceMock },
-                { provide: EnvironmentService, useValue: envServiceMock },
                 { provide: ApiService, useValue: apiServiceMock },
                 { provide: StorageService, useValue: {} },
                 { provide: Router, useValue: { events: routerEvents$.asObservable() } },

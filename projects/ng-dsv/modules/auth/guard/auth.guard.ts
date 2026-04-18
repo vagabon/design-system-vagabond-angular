@@ -20,8 +20,7 @@ export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot) => {
         return false;
     }
 
-    authService.loginFromCache();
-    const profiles = authService.userConnected()?.user?.profiles;
+    const profiles = authService.userConnected()?.profiles;
     if (hasRole(requiredRole, profiles)) {
         return true;
     }

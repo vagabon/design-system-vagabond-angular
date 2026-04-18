@@ -37,7 +37,8 @@
         align-items: center;
         justify-content: space-between;
         padding: 10px;
-        border-bottom: 1px outset black;
+        background: var(--background-header);
+        border-bottom: 1px outset var(--border);
     }
 
     .modal-content {
@@ -46,35 +47,19 @@
         scrollbar-width: thin;
         padding: 10px;
         align-content: center;
+        background: var(--background-card);
     }
 
     .modal-footer {
         padding: 10px;
+        background: var(--background-card);
     }
 }
 
-::ng-deep .modal-footer > div {
+::ng-deep .modal-footer>div {
     display: flex;
     gap: 0.5rem;
     justify-content: flex-end;
-}
-
-::ng-deep .light .modal {
-    .modal-content {
-        background-color: var(--text-dark) !important;
-    }
-
-    .modal-footer {
-        background-color: var(--text-dark) !important;
-    }
-}
-
-::ng-deep .dark .modal {
-    background: var(--background-dark) !important;
-}
-
-::ng-deep .dark .modal-header {
-    border-color: var(--text-dark) !important;
 }
 
 @media screen and (max-width: 600px) {

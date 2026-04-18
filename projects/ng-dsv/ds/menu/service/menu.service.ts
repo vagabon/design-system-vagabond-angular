@@ -10,4 +10,8 @@ export class MenuService extends BaseService {
     toogleMenu() {
         this.isMenuOpen.update((toogle) => !toogle);
     }
+
+    closeMenu() {
+        this.isMenuOpen.set(false);
+    }
 }

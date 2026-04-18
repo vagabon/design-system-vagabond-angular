@@ -1,10 +1,18 @@
 {
-  "extends": "../tsconfig.lib.json",
-  "compilerOptions": {
-    "types": ["node"],
-    "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true
-  },
-  "exclude": ["../test.ts", "../**/*.spec.ts"],
-  "include": ["../**/*.stories.*", "./preview.ts"]
+    "extends": "../tsconfig.lib.json",
+    "compilerOptions": {
+        "types": [
+            "node"
+        ],
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true
+    },
+    "exclude": [
+        "../test.ts",
+        "../**/*.spec.ts"
+    ],
+    "include": [
+        "../**/*.stories.*",
+        "./preview.ts"
+    ]
 }

@@ -1,5 +1,6 @@
 import { effect, inject, signal } from '@angular/core';
-import { Router, Scroll } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, Scroll } from '@angular/router';
 import { ApiService } from '@ng-vagabond-lab/ng-dsv/api';
 import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
@@ -7,13 +8,21 @@ import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
 import { filter, map } from 'rxjs';
 import { ScrollService } from '../public-api';
 
-export abstract class BaseAppScrollComponent {
+export abstract class BaseAppComponent {
     readonly platformService = inject(PlatformService);
     readonly storageService: StorageService = inject(StorageService);
     readonly environmentService = inject(EnvironmentService);
     readonly apiService = inject(ApiService);
     readonly scrollService = inject(ScrollService);
+    readonly router = inject(Router);
 
+    currentUrl = toSignal(
+        this.router.events.pipe(
+            filter((event) => event instanceof NavigationEnd),
+            map((event) => event.urlAfterRedirects),
+        ),
+        { initialValue: this.router.url },
+    );
     scroll = signal<number>(0);
 
     load = signal<boolean>(false);

@@ -24,12 +24,21 @@ export class ApiService {
         this.doSubscribe(url, this.httpClient.get<T>(this.baseUrl + url), callback);
     }
 
-    post<T>(url: string, data: T, callback: (data: T) => void) {
-        this.doSubscribe(url, this.httpClient.post<T>(this.baseUrl + url, data), callback);
+    post<TBody, TResponse = TBody>(
+        url: string,
+        data: TBody,
+        callback: (data: TResponse) => void,
+        withCredentials: boolean = false,
+    ) {
+        this.doSubscribe(
+            url,
+            this.httpClient.post<TResponse>(this.baseUrl + url, data, { withCredentials }),
+            callback,
+        );
     }
 
-    put<T>(url: string, data: T, callback: (data: T) => void) {
-        this.doSubscribe(url, this.httpClient.put<T>(this.baseUrl + url, data), callback);
+    put<TBody, TResponse = TBody>(url: string, data: TBody, callback: (data: TResponse) => void) {
+        this.doSubscribe(url, this.httpClient.put<TResponse>(this.baseUrl + url, data), callback);
     }
 
     delete<T>(url: string, callback: (data: T) => void) {
@@ -107,14 +116,18 @@ export class ApiService {
     }
 
     info(url: string, data: JSONObject) {
-        if (this.platformService.isPlatformBrowser()) {
+        if (this.isPlatformBrowser()) {
             console.log(url, data);
         }
     }
 
     error(url: string, error: JSONObject) {
-        if (this.platformService.isPlatformBrowser()) {
+        if (this.isPlatformBrowser()) {
             console.error(url, error);
         }
+    }
+
+    isPlatformBrowser() {
+        return this.platformService.isPlatformBrowser();
     }
 }
