@@ -2,8 +2,8 @@
     position: absolute;
     bottom: 10px;
     right: 10px;
-}
 
-::ng-deep dsv-scroll-top-button .dsv-button {
-    border-radius: 50px !important;
+    dsv-button {
+        --button-border-radius: 50px !important;
+    }
 }

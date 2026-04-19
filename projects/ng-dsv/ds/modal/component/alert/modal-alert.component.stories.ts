@@ -37,12 +37,12 @@ export const Default: Story = {
         <div style="height: 300px">
             <dsv-modal-button id="${args.id}" text="Clic">
                 <dsv-modal-alert 
-                id="${args.id}" 
-                titleText="${args.title}" 
-                text="${args.text}" 
-                button="${args.button}" 
-                buttonClose="${args.buttonClose}" 
-                (callback)="${args.callback}">
+                    id="${args.id}" 
+                    titleText="${args.title}" 
+                    text="${args.text}" 
+                    button="${args.button}" 
+                    buttonClose="${args.buttonClose}" 
+                    (callback)="${args.callback}">
                 </dsv-modal-alert>
             </dsv-modal-button>
         </div>

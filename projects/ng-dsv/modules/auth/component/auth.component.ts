@@ -22,9 +22,9 @@ export class AuthComponent {
     constructor() {
         effect(() => {
             if (this.authService.apiService.isPlatformBrowser() && !this.initAuth()) {
+                this.initAuth.set(true);
                 this.authGoogleService.initGoogleAuth();
                 this.authService.refreshToken();
-                this.initAuth.set(true);
             }
         });
         effect(() => {

@@ -1,9 +1,8 @@
 :host {
     display: flex;
     margin: 5px;
-}
 
-::ng-deep dsv-form-reactive-searchbar input {
-    width: 100% !important;
-    overflow: hidden !important;
+    dsv-form-reactive-input {
+        --input-width: 100% !important;
+    }
 }

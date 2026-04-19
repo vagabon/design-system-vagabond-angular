@@ -1,4 +1,5 @@
 import { Component, effect, inject, input, signal } from '@angular/core';
+import { scrollOnClassTo } from '@ng-vagabond-lab/ng-dsv/ds/scroll';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { DsvButtonComponent } from '../button.component';
 
@@ -23,10 +24,7 @@ export class ButtonScrollTopComponent {
 
     scrollToTop() {
         if (this.platformService.isPlatformBrowser()) {
-            const scrolls = document.getElementsByClassName('scroll');
-            Array.from(scrolls).forEach((scroll) => {
-                scroll?.scrollTo(0, 0);
-            });
+            scrollOnClassTo('scroll', 0, 0);
         }
     }
 }

@@ -5,7 +5,7 @@
     --background-header: #dcdcdc;
     --background-table-tr: #000000;
     --background-table-tr-text: var(--background-card);
-    --scrollbar: rgb(117, 117, 117) rgb(245, 245, 245);
+    --scrollbar: #757575 #f5f5f5;
     --subtitle: #5a5959;
     --border: #cbcbcb;
     --text: #000000;
@@ -23,6 +23,21 @@
 
     background-color: var(--background);
     color: var(--text);
+
+    #collapse {
+        display: none;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        background-color: rgba(0, 0, 0, 0.6);
+
+        &.show {
+            display: inline;
+        }
+    }
 }
 
 :host-context(.dark) {
@@ -31,7 +46,7 @@
     --background-header: #1f1f1f;
     --background-table-tr: #DCDCDC;
     --background-table-tr-text: var(--background-card);
-    --scrollbar: rgb(169, 169, 169) rgb(56, 56, 56);
+    --scrollbar: #a9a9a9 #383838;
     --subtitle: #ffffffb3;
     --border: #606060;
     --text: #ffffff;

@@ -1,12 +1,16 @@
 :host {
+    --chip-padding: 10px 20px;
+    --chip-width: auto;
+    --chip-border-radius: 15px;
     display: flex;
 
     .dsv-chip {
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 15px;
-        padding: 10px 20px;
+        padding: var(--chip-padding);
+        width: var(--chip-width);
+        border-radius: var(--chip-border-radius);
 
         &.with-delete {
             padding: 5px 5px 5px 20px;

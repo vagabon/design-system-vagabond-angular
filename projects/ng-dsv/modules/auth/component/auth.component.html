@@ -1,7 +1,7 @@
 <div class="auth-button">
     <button
         id="google-signin-button"
-        [class.hidden]="authService.userConnected() !== null"
+        [class.hidden]="!authService.loadRefreshToken() || authService.userConnected() !== null"
     ></button>
 </div>
 
@@ -18,7 +18,7 @@
     </div>
     <dsv-modal-alert
         id="logout"
-        title="Déconnexion"
+        titleText="Déconnexion"
         text="Voulez-vous vraiment vous déconnecter ?"
         button="Oui"
         buttonClose="Non"

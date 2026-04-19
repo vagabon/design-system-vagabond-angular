@@ -1,0 +1,12 @@
+:host {
+    .modal-footer {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: flex-end;
+    }
+
+    dsv-modal {
+        --modal-overlay-z-index: 110 !important;
+        --modal-z-index: 111 !important;
+    }
+}

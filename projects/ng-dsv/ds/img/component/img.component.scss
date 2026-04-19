@@ -1,9 +1,16 @@
 :host {
+    --img-width: 100%;
+    --img-height: 100%;
+    --img-border-radius: 0px;
+
     display: flex;
     flex-direction: column;
 
     img {
         background-color: var(--background);
+        border-radius: var(--img-border-radius);
+        width: var(--img-width);
+        height: var(--img-height);
     }
 
     svg {

@@ -22,12 +22,18 @@ export class DsvMenuComponent {
         effect(() => {
             if (this.platformService.isPlatformBrowser()) {
                 const menu = document.getElementsByTagName('dsv-menu')[0];
+                const collapse = document.getElementById('collapse');
                 if (this.menuService.isMenuOpen()) {
                     menu?.classList?.add('open');
+                    collapse?.classList.add('show');
                 } else {
                     menu?.classList?.remove('open');
+                    collapse?.classList.remove('show');
                 }
             }
+
+            this.menuService.isMenuOpen() &&
+                document.getElementsByTagName('dsv-container')[0].classList.add('show');
         });
     }
 

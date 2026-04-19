@@ -1,9 +1,13 @@
 :host {
+    width: 100%;
+    --ul-margin: 0;
+    --ul-width: 100%;
+
     ul {
         list-style: none;
         padding: 0;
-        margin: 0;
-        margin-top: 20px;
+        margin: var(--ul-margin);
+        width: var(--ul-width);
         display: flex;
         flex-direction: column;
         gap: 8px;

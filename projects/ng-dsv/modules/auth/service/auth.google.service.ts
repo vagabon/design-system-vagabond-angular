@@ -8,8 +8,8 @@ declare const google: any;
     providedIn: 'root',
 })
 export class AuthGoogleService {
-    private readonly authService = inject(AuthService);
-    private readonly environmentService = inject(EnvironmentService);
+    readonly authService = inject(AuthService);
+    readonly environmentService = inject(EnvironmentService);
 
     initGoogleAuth(googleButtonid: string = 'google-signin-button') {
         google.accounts.id.initialize({
@@ -28,6 +28,8 @@ export class AuthGoogleService {
     }
 
     loginWithGoogle() {
-        google.accounts.id.prompt();
+        if (this.authService.loadRefreshToken() && this.authService.userConnected() === null) {
+            google.accounts.id.prompt();
+        }
     }
 }

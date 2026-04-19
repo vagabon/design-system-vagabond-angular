@@ -1,18 +1,19 @@
-import { createEnvironmentInjector, EnvironmentInjector, runInInjectionContext } from '@angular/core';
+import { signal, WritableSignal } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
-import { AuthService } from '@ng-vagabond-lab/ng-dsv/modules/auth';
+import { AuthService, UserDto } from '@ng-vagabond-lab/ng-dsv/modules/auth';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
+import { lastValueFrom, Observable } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { authGuard } from './auth.guard';
 
 describe('authGuard', () => {
     let mockPlatformService: { isPlatformBrowser: ReturnType<typeof vi.fn> };
     let mockAuthService: {
-        userConnected: ReturnType<typeof vi.fn>;
+        userConnected: WritableSignal<UserDto | null>;
         loginFromCache: ReturnType<typeof vi.fn>;
     };
     let mockRouter: { navigate: ReturnType<typeof vi.fn> };
-    let injector: EnvironmentInjector;
 
     beforeEach(() => {
         mockPlatformService = {
@@ -20,7 +21,7 @@ describe('authGuard', () => {
         };
 
         mockAuthService = {
-            userConnected: vi.fn(),
+            userConnected: signal(null),
             loginFromCache: vi.fn(),
         };
 
@@ -28,16 +29,15 @@ describe('authGuard', () => {
             navigate: vi.fn(),
         };
 
-        injector = createEnvironmentInjector(
-            [
+        mockPlatformService.isPlatformBrowser.mockReturnValue(true);
+
+        TestBed.configureTestingModule({
+            providers: [
                 { provide: PlatformService, useValue: mockPlatformService },
                 { provide: AuthService, useValue: mockAuthService },
                 { provide: Router, useValue: mockRouter },
             ],
-            null as any,
-        );
-
-        mockPlatformService.isPlatformBrowser.mockReturnValue(true);
+        });
     });
 
     function createRoute(role?: string): ActivatedRouteSnapshot {
@@ -48,25 +48,56 @@ describe('authGuard', () => {
 
     const mockState = {} as RouterStateSnapshot;
 
-    it('should return true if user has required role', () => {
-        mockAuthService.userConnected.mockReturnValue({ profiles: [{ name: 'ADMIN' }] as any });
+    it('should return true if user has required role', async () => {
+        const resultPromise = TestBed.runInInjectionContext(() => {
+            const obs = authGuard(createRoute('ADMIN'), mockState) as Observable<boolean>;
+            return lastValueFrom(obs);
+        });
 
-        const result = runInInjectionContext(injector, () => authGuard(createRoute('ADMIN'), mockState));
+        mockAuthService.userConnected.set({ profiles: [{ name: 'ADMIN' }] as any });
+        TestBed.tick();
+
+        const result = await resultPromise;
         expect(result).toBe(true);
     });
 
     it('should return false and warn if no role is provided in route', () => {
         const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
-        const result = runInInjectionContext(injector, () => authGuard(createRoute(), mockState));
+        const result = TestBed.runInInjectionContext(() => authGuard(createRoute(), mockState));
+
         expect(result).toBe(false);
         expect(consoleSpy).toHaveBeenCalledWith('No role specified in route data.');
     });
 
-    it('should return false and redirect if user lacks the role', () => {
-        mockAuthService.userConnected.mockReturnValue({});
+    it('should return false and redirect if user lacks the role', async () => {
+        mockAuthService.userConnected.set(null);
 
-        const result = runInInjectionContext(injector, () => authGuard(createRoute('ADMIN'), mockState));
+        const resultPromise = TestBed.runInInjectionContext(() => {
+            const obs = authGuard(createRoute('ADMIN'), mockState) as Observable<boolean>;
+            return lastValueFrom(obs);
+        });
+
+        TestBed.tick();
+        mockAuthService.userConnected.set(null);
+
+        const result = await resultPromise;
+        expect(result).toBe(false);
+        expect(mockRouter.navigate).toHaveBeenCalledWith(['/']);
+    });
+
+    it('should return false and redirect if user is null', async () => {
+        mockAuthService.userConnected.set(null);
+
+        const resultPromise = TestBed.runInInjectionContext(() => {
+            const obs = authGuard(createRoute('ADMIN'), mockState) as Observable<boolean>;
+            return lastValueFrom(obs);
+        });
+
+        TestBed.tick();
+        mockAuthService.userConnected.set(null);
+
+        const result = await resultPromise;
         expect(result).toBe(false);
         expect(mockRouter.navigate).toHaveBeenCalledWith(['/']);
     });

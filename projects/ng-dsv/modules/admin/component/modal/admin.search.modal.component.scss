@@ -1,10 +1,8 @@
-::ng-deep dsv-admin-search-modal .modal {
-    width: 70% !important;
-    left: 15% !important;
-    height: 65% !important;
-    top: 20% !important;
-
-    .modal-content {
-        align-content: flex-start !important;
+:host {
+    dsv-modal {
+        --modal-width: 70% !important;
+        --modal-left: 15% !important;
+        --modal-height: 65% !important;
+        --modal-top: 20% !important;
     }
 }

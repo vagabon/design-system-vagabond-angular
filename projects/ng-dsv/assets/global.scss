@@ -10,6 +10,9 @@ body {
 
 body {
     overflow-x: hidden;
+}
+
+dsv-theme {
     scrollbar-color: var(--scrollbar);
 }
 
@@ -91,4 +94,10 @@ hr {
 
 .subtitle {
     color: var(--subtitle) !important;
+}
+
+@media screen and (max-width: 800px) {
+    i[class^="ri-"] {
+        font-size: 1.3rem !important;
+    }
 }

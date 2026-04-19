@@ -10,15 +10,17 @@ export class AuthService {
 
     userConnected = signal<UserDto | null>(null);
     userToken = signal<string>('');
+    loadRefreshToken = signal<boolean>(false);
 
     initUser(user: UserSigninDto | null = null) {
         this.userConnected.set(user?.user ?? null);
         this.userToken.set(user?.jwt ?? '');
+        this.loadRefreshToken.set(true);
     }
 
     googleLogin(credential: string) {
         this.apiService.post<JSONValue, UserSigninDto>(
-            'auth/google-identity-connect',
+            '/auth/google-identity-connect',
             {
                 googleToken: credential,
             },
@@ -34,12 +36,18 @@ export class AuthService {
     }
 
     refreshToken() {
-        this.apiService.post<UserSigninDto>('auth/refresh-token', {}, (data) => this.initUser(data), true);
+        this.apiService.post<UserSigninDto>(
+            '/auth/refresh-token',
+            {},
+            (data) => this.initUser(data),
+            true,
+            () => this.initUser(),
+        );
     }
 
     logout(showToast: boolean = true) {
         this.apiService.post<UserSigninDto>(
-            'auth/logout',
+            '/auth/logout',
             {},
             () => {
                 this.initUser();

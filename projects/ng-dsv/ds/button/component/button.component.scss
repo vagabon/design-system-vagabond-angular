@@ -1,56 +1,60 @@
-button.dsv-button {
-    display: inline-flex;
-    flex-direction: row;
-    gap: 5px;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    box-sizing: border-box;
-    cursor: pointer;
-    user-select: none;
-    vertical-align: middle;
-    font-weight: 500;
-    letter-spacing: 0.02857em;
-    text-transform: uppercase;
+:host {
+    --button-border-radius: 4px;
+    --button-disabled-background: rgb(200, 200, 200);
+    --button-disabled-color: rgba(0, 0, 0);
 
-    outline: 0px;
-    margin: 0px;
-    padding: 6px;
-    text-decoration: none;
-    border-width: 0px;
-    border-radius: 4px;
-    transition:
-        background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-        box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
-        border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    button.dsv-button {
+        position: relative;
+        cursor: pointer;
+        user-select: none;
+        display: inline-flex;
+        box-sizing: border-box;
+        vertical-align: middle;
+        flex-direction: row;
+        gap: 5px;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+        letter-spacing: 0.02857em;
+        text-transform: uppercase;
+        outline: 0px;
+        margin: 0px;
+        padding: 6px;
+        min-width: 10px;
+        line-height: 1;
+        text-decoration: none;
+        border-width: 0px;
+        border-radius: var(--button-border-radius);
+        transition:
+            background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+            box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+            border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    min-width: 10px;
-    line-height: 1;
-
-    &.padding {
-        padding: 8px 10px;
-    }
-
-    &:not(:disabled):not(.no-hover):hover {
-        transform: scale(1);
-        opacity: 1.2;
-
-        &:not(.text) {
-            box-shadow:
-                rgba(0, 0, 0, 0.2) 0px 2px 4px -1px,
-                rgba(0, 0, 0, 0.14) 0px 4px 5px 0px,
-                rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
+        &.padding {
+            padding: 8px 10px;
         }
-    }
 
-    &:not(:disabled):active {
-        transform: scale(1);
-        opacity: 0.8;
-    }
+        &:not(:disabled):not(.no-hover):hover {
+            transform: scale(1);
+            opacity: 1.2;
 
-    &:disabled {
-        cursor: auto;
-        background: rgb(200, 200, 200);
-        color: rgba(0, 0, 0);
+            &:not(.text) {
+                box-shadow:
+                    rgba(0, 0, 0, 0.2) 0px 2px 4px -1px,
+                    rgba(0, 0, 0, 0.14) 0px 4px 5px 0px,
+                    rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
+            }
+        }
+
+        &:not(:disabled):active {
+            transform: scale(1);
+            opacity: 0.8;
+        }
+
+        &:disabled {
+            cursor: auto;
+            background: var(--button-disabled-background);
+            color: var(--button-disabled-color);
+        }
     }
 }

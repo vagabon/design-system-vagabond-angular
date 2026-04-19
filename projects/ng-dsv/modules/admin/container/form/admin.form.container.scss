@@ -2,12 +2,12 @@
     display: flex;
     overflow: hidden;
     width: 100%;
-}
 
-::ng-deep dsv-admin-form-container dsv-card .dsv-card-content {
-    overflow: hidden;
+    dsv-card {
+        --card-content-overflow: hidden !important;
 
-    dsv-admin-form {
-        overflow: hidden;
+        dsv-admin-form {
+            overflow: hidden;
+        }
     }
 }

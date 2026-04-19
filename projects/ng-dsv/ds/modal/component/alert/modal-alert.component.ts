@@ -8,6 +8,7 @@ import { ModalComponent } from '../modal.component';
     selector: 'dsv-modal-alert',
     imports: [ModalComponent, DsvButtonComponent, TranslatePipe],
     templateUrl: './modal-alert.component.html',
+    styleUrls: ['./modal-alert.component.scss'],
 })
 export class ModalAlertComponent {
     id = input.required<string>();

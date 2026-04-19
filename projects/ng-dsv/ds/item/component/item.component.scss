@@ -1,12 +1,18 @@
 :host {
+    --a-margin: 5px 10px;
+    --a-padding: 10px;
+    --a-color: inherit;
+
     display: flex;
     flex-direction: column;
     user-select: none;
 
     a {
-        margin: 5px 10px;
-        padding: 10px;
+        margin: var(--a-margin);
+        padding: var(--a-padding);
+        color: var(--a-color);
         display: block;
+        cursor: pointer;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -14,7 +20,6 @@
 
     & a:hover {
         background-color: rgb(217, 217, 217);
-        cursor: pointer;
     }
 
     i {
@@ -31,7 +36,7 @@
     }
 }
 
-::ng-deep .dark dsv-item {
+:host-context(body.dark) {
     & a:hover {
         background-color: rgb(49, 49, 49) !important;
     }

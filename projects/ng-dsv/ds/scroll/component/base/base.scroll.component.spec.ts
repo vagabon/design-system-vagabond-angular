@@ -1,7 +1,8 @@
 import { EnvironmentInjector, provideZonelessChangeDetection, runInInjectionContext } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { BaseScrollComponent, ScrollService } from '../public-api';
+import { ScrollService } from '../../public-api';
+import { BaseScrollComponent } from './base.scroll.component';
 
 describe('BaseScrollComponent', () => {
     let scrollServiceMock: {

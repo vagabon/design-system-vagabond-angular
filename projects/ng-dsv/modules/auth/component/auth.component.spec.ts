@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { provideZonelessChangeDetection } from '@angular/core';
+import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ModalAlertComponent, ModalButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/modal';
@@ -14,6 +14,7 @@ describe('AuthComponent', () => {
     let authServiceMock: {
         userConnected: ReturnType<typeof vi.fn>;
         loginFromCache: ReturnType<typeof vi.fn>;
+        loadRefreshToken: ReturnType<typeof signal>;
         logout: ReturnType<typeof vi.fn>;
         apiService: { isPlatformBrowser: ReturnType<typeof vi.fn> };
         refreshToken: ReturnType<typeof vi.fn>;
@@ -27,6 +28,7 @@ describe('AuthComponent', () => {
         authServiceMock = {
             userConnected: vi.fn().mockReturnValue(null),
             loginFromCache: vi.fn(),
+            loadRefreshToken: signal(true),
             logout: vi.fn(),
             apiService: { isPlatformBrowser: vi.fn().mockReturnValue(true) },
             refreshToken: vi.fn(),

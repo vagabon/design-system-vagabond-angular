@@ -20,29 +20,41 @@ export class ApiService {
         this.baseUrl = url;
     }
 
-    get<T>(url: string, callback: (data: T) => void) {
-        this.doSubscribe(url, this.httpClient.get<T>(this.baseUrl + url), callback);
+    get<T>(url: string, callback: (data: T) => void, callbackError: () => void = () => {}) {
+        this.doSubscribe(url, this.httpClient.get<T>(this.baseUrl + url), callback, callbackError);
     }
 
     post<TBody, TResponse = TBody>(
         url: string,
         data: TBody,
-        callback: (data: TResponse) => void,
+        callback: (data: TResponse) => void = () => {},
         withCredentials: boolean = false,
+        callbackError: () => void = () => {},
     ) {
         this.doSubscribe(
             url,
             this.httpClient.post<TResponse>(this.baseUrl + url, data, { withCredentials }),
             callback,
+            callbackError,
         );
     }
 
-    put<TBody, TResponse = TBody>(url: string, data: TBody, callback: (data: TResponse) => void) {
-        this.doSubscribe(url, this.httpClient.put<TResponse>(this.baseUrl + url, data), callback);
+    put<TBody, TResponse = TBody>(
+        url: string,
+        data: TBody,
+        callback: (data: TResponse) => void = () => {},
+        callbackError: () => void = () => {},
+    ) {
+        this.doSubscribe(
+            url,
+            this.httpClient.put<TResponse>(this.baseUrl + url, data),
+            callback,
+            callbackError,
+        );
     }
 
-    delete<T>(url: string, callback: (data: T) => void) {
-        this.doSubscribe(url, this.httpClient.delete<T>(this.baseUrl + url), callback);
+    delete<T>(url: string, callback: (data: T) => void, callbackError: () => void = () => {}) {
+        this.doSubscribe(url, this.httpClient.delete<T>(this.baseUrl + url), callback, callbackError);
     }
 
     findById<T>(endPoint: string, id: ID, callback: (data: T) => void) {
@@ -100,7 +112,12 @@ export class ApiService {
         }
     }
 
-    doSubscribe<T>(url: string, observable: Observable<T>, callback: (data: T) => void) {
+    doSubscribe<T>(
+        url: string,
+        observable: Observable<T>,
+        callback: (data: T) => void,
+        callbackError: () => void = () => {},
+    ) {
         this.load.set(true);
         observable.subscribe({
             next: (res) => {
@@ -110,6 +127,7 @@ export class ApiService {
             },
             error: (error: JSONObject) => {
                 this.load.set(false);
+                callbackError();
                 this.error(url, error);
             },
         });

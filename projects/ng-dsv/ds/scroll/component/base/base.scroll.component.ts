@@ -1,5 +1,6 @@
 import { inject } from '@angular/core';
-import { BaseSeoContainer, ScrollService } from '../public-api';
+import { BaseSeoContainer } from '@ng-vagabond-lab/ng-dsv/base';
+import { ScrollService } from '../../public-api';
 
 export abstract class BaseScrollComponent extends BaseSeoContainer {
     readonly scrollService = inject(ScrollService);

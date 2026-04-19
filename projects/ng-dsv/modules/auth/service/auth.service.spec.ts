@@ -40,7 +40,7 @@ describe('AuthService', () => {
         service.googleLogin('fake-credential');
 
         expect(apiServiceMock.post).toHaveBeenCalledWith(
-            'auth/google-identity-connect',
+            '/auth/google-identity-connect',
             { googleToken: 'fake-credential' },
             expect.any(Function),
             true,

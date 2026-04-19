@@ -5,16 +5,17 @@ import { ApiService } from '@ng-vagabond-lab/ng-dsv/api';
 import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
 import { Subject } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { BaseAppComponent, ScrollService } from '../public-api';
+import { ScrollService } from '../../public-api';
+import { BaseAppScrollComponent } from './base.app.scroll.component';
 
-describe('BaseAppComponent', () => {
+describe('BaseAppScrollComponent', () => {
     let component: TestComponent;
     let routerEvents$: Subject<any>;
     let apiServiceMock: any;
     let scrollServiceMock: any;
 
     @Component({ template: '' })
-    class TestComponent extends BaseAppComponent {}
+    class TestComponent extends BaseAppScrollComponent {}
 
     beforeEach(() => {
         routerEvents$ = new Subject();

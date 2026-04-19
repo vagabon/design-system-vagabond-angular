@@ -1,4 +1,5 @@
 :host {
+    --input-width: calc(100% - 12px);
     width: 100%;
 
     &>div {
@@ -9,10 +10,9 @@
         .form-control {
             font-family: inherit;
             display: block;
-            width: calc(100% - 20px);
             margin: 0px;
-            padding: 6px;
-            padding-left: 10px;
+            padding: 5px 5px 5px 5px;
+            width: var(--input-width);
             font-size: 1rem;
             line-height: 1.5;
             color: var(--text);
@@ -40,7 +40,7 @@
 
         i {
             position: absolute;
-            z-index: 1000;
+            z-index: 1;
             top: 10px;
             left: 7px;
         }
@@ -58,6 +58,8 @@
     }
 }
 
-::ng-deep .dark .form-control {
-    color-scheme: dark;
+:host-context(body.dark) {
+    .form-control {
+        color-scheme: dark;
+    }
 }

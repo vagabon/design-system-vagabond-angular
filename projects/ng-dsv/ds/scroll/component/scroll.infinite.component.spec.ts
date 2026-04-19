@@ -1,7 +1,7 @@
 import { Component, provideZonelessChangeDetection, signal, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ScrollService } from '@ng-vagabond-lab/ng-dsv/base';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { ScrollService } from '../public-api';
 import { ScrollInfiniteContainer } from './scroll.infinite.component';
 
 describe('ScrollInfiniteContainer', () => {

@@ -3,7 +3,7 @@
     [titleText]="titleText()"
 >
     {{ text() }}
-    <div ngProjectAs="modal-footer">
+    <div class="modal-footer">
         @if (buttonClose()) {
             <dsv-button
                 (callback)="doClickClose()"

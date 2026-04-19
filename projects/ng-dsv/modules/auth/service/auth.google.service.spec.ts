@@ -1,6 +1,8 @@
+import { signal, WritableSignal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { UserDto } from '../public-api';
 import { AuthGoogleService } from './auth.google.service';
 import { AuthService } from './auth.service';
 
@@ -18,11 +20,19 @@ const googleMock = {
 
 describe('AuthGoogleService', () => {
     let service: AuthGoogleService;
-    let authServiceMock: { googleLogin: ReturnType<typeof vi.fn> };
+    let authServiceMock: {
+        userConnected: WritableSignal<UserDto | null>;
+        googleLogin: ReturnType<typeof vi.fn>;
+        loadRefreshToken: WritableSignal<boolean>;
+    };
     let environmentServiceMock: { env: ReturnType<typeof vi.fn> };
 
     beforeEach(() => {
-        authServiceMock = { googleLogin: vi.fn() };
+        authServiceMock = {
+            userConnected: signal(null),
+            googleLogin: vi.fn(),
+            loadRefreshToken: signal(true),
+        };
         environmentServiceMock = { env: vi.fn().mockReturnValue({ GOOGLE_CLIENT_ID: 'test-client-id' }) };
 
         vi.clearAllMocks();

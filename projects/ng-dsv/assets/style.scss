@@ -8,6 +8,11 @@
     color: var(--button-text);
 }
 
+.default {
+    background-color: var(--text);
+    color: var(--background-card);
+}
+
 .primary {
     background-color: var(--primary);
     color: var(--button-text);
@@ -68,27 +73,27 @@
     }
 
     &.outlined.default {
-        border: 1px solid var(--text);
+        border: 1px solid var(--text) !important;
     }
 
     &.outlined.primary {
-        border: 1px solid var(--primary);
+        border: 1px solid var(--primary) !important;
     }
 
     &.outlined.success {
-        border: 1px solid var(--success);
+        border: 1px solid var(--success) !important;
     }
 
     &.outlined.info {
-        border: 1px solid var(--info);
+        border: 1px solid var(--info) !important;
     }
 
     &.outlined.warning {
-        border: 1px solid var(--warning);
+        border: 1px solid var(--warning) !important;
     }
 
     &.outlined.error {
-        border: 1px solid var(--error);
+        border: 1px solid var(--error) !important;
     }
 }
 

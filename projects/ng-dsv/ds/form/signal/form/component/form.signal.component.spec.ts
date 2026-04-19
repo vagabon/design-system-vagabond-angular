@@ -10,10 +10,6 @@ import { provideTranslateService, TranslatePipe } from '@ngx-translate/core';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { FormSignalComponent } from './form.signal.component';
 
-vi.mock('@ng-vagabond-lab/ng-dsv/base', () => ({
-    isCallback: vi.fn(),
-}));
-
 vi.mock('@angular/forms/signals', () => ({
     submit: vi.fn(),
 }));

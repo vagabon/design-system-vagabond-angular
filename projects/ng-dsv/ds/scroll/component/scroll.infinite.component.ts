@@ -1,6 +1,6 @@
 import { Component, inject, input, output } from '@angular/core';
-import { ScrollService } from '@ng-vagabond-lab/ng-dsv/base';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
+import { ScrollService } from '../public-api';
 
 export const SCROLL_BOTTOM_MIN = 100;
 
