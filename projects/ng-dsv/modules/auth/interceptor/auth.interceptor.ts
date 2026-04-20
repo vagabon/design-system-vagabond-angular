@@ -20,8 +20,11 @@ export const authInterceptor = (req: HttpRequest<unknown>, next: HttpHandlerFn) 
                 return handle401Error(httpClient, authService, req, next);
             }
 
-            const errorMessage = error.error.debugMessage ?? error.error.message ?? error.message;
+            let errorMessage = error.error.debugMessage ?? error.error.message ?? error.message;
 
+            if (errorMessage === 'fetch failed' || errorMessage === 'Failed to fetch') {
+                errorMessage = 'Api indisponible';
+            }
             if (errorMessage === 'NO_REFRESH_TOKEN') {
                 authService.logout(false);
             } else {

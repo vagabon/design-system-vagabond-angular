@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@angular/cli": "^21.2.7",
-    "@angular/common": "^21.2.9",
+    "@angular/common": "^21.2.5",
     "@angular/compiler": "^21.2.9",
     "@angular/compiler-cli": "^21.2.9",
     "@angular/core": "^21.2.9",
@@ -45,7 +45,7 @@
     "@storybook/angular": "^10.3.5",
     "@vitest/coverage-v8": "^4.1.4",
     "@vitest/ui": "^4.1.4",
-    "jsdom": "^29.0.2",
+    "happy-dom": "^20.9.0",
     "ng-packagr": "^21.2.3",
     "prettier": "^3.8.3",
     "rxjs": "^7.8.2",

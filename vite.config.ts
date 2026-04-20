@@ -6,7 +6,7 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
     plugins: [angular()],
     test: {
-        environment: 'jsdom',
+        environment: 'happy-dom',
         include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
         globals: true,
         setupFiles: ['./test-setup.ts'],
@@ -24,6 +24,9 @@ export default defineConfig({
                 '**/*.stories.ts',
                 '**/*.html',
                 '**/*.scss',
+                '**/*.dto.ts',
+                '**/*.type.ts',
+                '**/*.route*.ts',
                 '**/*.spec.ts',
             ],
         },

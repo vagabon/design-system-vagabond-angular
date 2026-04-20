@@ -1,4 +1,4 @@
-import { provideZonelessChangeDetection, signal } from '@angular/core';
+import { NO_ERRORS_SCHEMA, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ListItemDragDto } from '../../list/dto/list.dto';
@@ -31,6 +31,7 @@ describe('ListItemComponent', () => {
                 provideZonelessChangeDetection(),
                 { provide: ListDragService, useValue: mockListDragService },
             ],
+            schemas: [NO_ERRORS_SCHEMA],
         }).compileComponents();
 
         fixture = TestBed.createComponent(ListItemComponent);

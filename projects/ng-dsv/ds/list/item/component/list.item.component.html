@@ -1,7 +1,7 @@
 <li
     #liRef
     [attr.data-index]="index()"
-    [draggable]="false"
+    [attr.draggable]="false"
     [class.dragging]="listDragService.dragSrcIndex() === index()"
     [class.drag-over]="listDragService.dragSrcIndex() === index()"
     (dragover)="onDragOver($event)"

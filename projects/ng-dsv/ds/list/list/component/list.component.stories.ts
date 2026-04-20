@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DsvCardComponent } from '@ng-vagabond-lab/ng-dsv/ds/card';
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { ListItemComponent, ListItemDragComponent } from '../../public-api';
 import { ListItemDragDto } from '../dto/list.dto';
@@ -9,19 +10,21 @@ export const ActionsData = {};
 @Component({
     selector: 'app-list-wrapper',
     standalone: true,
-    imports: [ListComponent, ListItemComponent, ListItemDragComponent],
+    imports: [DsvCardComponent, ListComponent, ListItemComponent, ListItemDragComponent],
     template: `
-        <dsv-list>
-            @for (element of elements; track element; let index = $index) {
-                <dsv-list-item
-                    [index]="index"
-                    (callbackOrder)="onDrop($event)"
-                >
-                    <dsv-list-item-drag />
-                    {{ element }}
-                </dsv-list-item>
-            }
-        </dsv-list>
+        <dsv-card>
+            <dsv-list>
+                @for (element of elements; track element; let index = $index) {
+                    <dsv-list-item
+                        [index]="index"
+                        (callbackOrder)="onDrop($event)"
+                    >
+                        <dsv-list-item-drag />
+                        {{ element }}
+                    </dsv-list-item>
+                }
+            </dsv-list>
+        </dsv-card>
     `,
     styles: [
         `
@@ -64,7 +67,18 @@ export const Default: Story = {
         docs: {
             source: {
                 code: `
-        `,
+                    <dsv-list>
+                        @for (element of elements; track element; let index = $index) {
+                            <dsv-list-item
+                                [index]="index"
+                                (callbackOrder)="onDrop($event)"
+                            >
+                                <dsv-list-item-drag />
+                                {{ element }}
+                            </dsv-list-item>
+                        }
+                    </dsv-list>
+                `,
             },
         },
     },

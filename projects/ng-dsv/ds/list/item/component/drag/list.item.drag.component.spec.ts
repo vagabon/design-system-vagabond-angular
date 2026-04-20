@@ -57,7 +57,20 @@ describe('ListItemDragComponent', () => {
             expect(() => component.onHandleMouseDown(event)).not.toThrow();
         });
 
-        it('should not set draggable if currentTarget has no parent li', () => {
+        it('should set draggable on closest li', () => {
+            const li = document.createElement('li');
+            const button = document.createElement('button');
+            li.appendChild(button);
+
+            const event = new MouseEvent('mousedown');
+            Object.defineProperty(event, 'currentTarget', { value: button });
+
+            component.onHandleMouseDown(event);
+
+            expect(li.draggable).toBe(true);
+        });
+
+        it('should do nothing if no closest li found', () => {
             const div = document.createElement('div');
             const button = document.createElement('button');
             div.appendChild(button);
@@ -65,9 +78,8 @@ describe('ListItemDragComponent', () => {
             const event = new MouseEvent('mousedown');
             Object.defineProperty(event, 'currentTarget', { value: button });
 
-            component.onHandleMouseDown(event);
-
-            expect(div.draggable).toBe(false);
+            expect(() => component.onHandleMouseDown(event)).not.toThrow();
+            expect(div.draggable).toBe(undefined);
         });
     });
 
