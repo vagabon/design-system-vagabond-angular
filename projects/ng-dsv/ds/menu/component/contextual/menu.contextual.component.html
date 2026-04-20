@@ -3,20 +3,24 @@
     class="context-menu"
     [class.visible]="visible()"
 >
-    <ul>
-        @for (option of options(); track option.id) {
-            @if (option.divider) {
-                <hr />
-            }
-            <li
-                [class]="'text ' + option.color"
-                (click)="onOptionClick($event, option.id)"
-            >
-                @if (option.icon) {
-                    <i [class]="option.icon"></i>
+    @if (options().length > 0) {
+        <ul>
+            @for (option of options(); track option.id) {
+                @if (option.divider) {
+                    <hr />
                 }
-                {{ option.text }}
-            </li>
-        }
-    </ul>
+                <li
+                    [class]="'text ' + option.color"
+                    (click)="onOptionClick($event, option.id)"
+                >
+                    @if (option.icon) {
+                        <i [class]="option.icon"></i>
+                    }
+                    {{ option.text }}
+                </li>
+            }
+        </ul>
+    } @else {
+        <ng-content select=".contextual" />
+    }
 </div>

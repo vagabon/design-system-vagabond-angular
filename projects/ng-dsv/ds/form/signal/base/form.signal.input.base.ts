@@ -40,7 +40,7 @@ export abstract class FormSignalInputBase<T> {
     }
 
     doChange() {
-        this.getValue() && this.callbackChange.emit(this.getValue());
+        this.callbackChange.emit(this.getValue());
     }
 
     protected getValue() {
