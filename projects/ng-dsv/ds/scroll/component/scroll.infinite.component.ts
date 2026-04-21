@@ -1,33 +1,35 @@
-import { Component, inject, input, output } from '@angular/core';
-import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
+import { Component, ElementRef, inject, input, output } from '@angular/core';
 import { ScrollService } from '../public-api';
-
-export const SCROLL_BOTTOM_MIN = 100;
 
 @Component({
     selector: 'dsv-scroll-infinite',
     imports: [],
     templateUrl: './scroll.infinite.component.html',
     styleUrls: ['./scroll.infinite.component.scss'],
+    host: {
+        class: 'scroll',
+        '(scroll)': 'doScroll()',
+    },
 })
 export class ScrollInfiniteContainer {
-    platformService = inject(PlatformService);
     scrollService = inject(ScrollService);
+    elementRef = inject(ElementRef);
 
-    class = input<string>('infinite-scroll');
+    class = input<string>('');
+    interval = input<number>(20);
 
     callback = output<void>();
 
+    loading = input<boolean>(false);
+
     doScroll() {
-        if (this.platformService.isPlatformBrowser()) {
-            const divScroll = document.getElementsByClassName(this.class())?.[0];
-            const scrollClientHeight = divScroll?.scrollTop + divScroll?.clientHeight;
-            const distanceToBottom = divScroll?.scrollHeight - scrollClientHeight;
-            this.scrollService.saveScroll(divScroll?.scrollTop);
-            this.scrollService.scroll.set(divScroll?.scrollTop);
-            if (distanceToBottom < SCROLL_BOTTOM_MIN) {
-                this.callback.emit();
-            }
+        const divScroll = document.getElementsByClassName(this.class())?.[0];
+        const scrollClientHeight = divScroll?.scrollTop + divScroll?.clientHeight;
+        const distanceToBottom = divScroll?.scrollHeight - scrollClientHeight;
+        this.scrollService.saveScroll(divScroll?.scrollTop);
+        this.scrollService.scroll.set(divScroll?.scrollTop);
+        if (distanceToBottom < this.interval()) {
+            this.callback.emit();
         }
     }
 }

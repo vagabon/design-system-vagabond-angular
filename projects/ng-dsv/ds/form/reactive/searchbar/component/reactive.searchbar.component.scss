@@ -2,7 +2,8 @@
     display: flex;
     margin: 5px;
 
-    dsv-form-reactive-input {
+    dsv-form-reactive-input,
+    dsv-form-signal-input {
         --input-width: 100% !important;
     }
 }

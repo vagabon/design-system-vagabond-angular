@@ -4,9 +4,11 @@
     --modal-width: 50%;
     --modal-height: auto;
     --modal-min-height: 150px;
+    --modal-max-height: 50vh;
     --modal-overlay-z-index: 100;
     --modal-z-index: 101;
     --modal-content-padding: 25px 10px 20px;
+    --modal-overflow: auto;
 
     .modal-overlay {
         position: fixed;
@@ -53,10 +55,11 @@
 
         .modal-content {
             flex: 1;
-            overflow: auto;
+            overflow: var(--modal-overflow);
             scrollbar-width: thin;
             padding: var(--modal-content-padding);
             background: var(--background-card);
+            max-height: var(--modal-max-height);
         }
 
         .modal-footer-wrapper:not(:empty) {

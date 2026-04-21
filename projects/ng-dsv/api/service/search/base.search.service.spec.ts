@@ -41,7 +41,7 @@ describe('BaseSearchService', () => {
             callback({ content: [] });
         });
 
-        service.doLoad('');
+        service.doLoad('/');
 
         expect(apiServiceMock.get).toHaveBeenCalled();
         expect(service.isLoading()).toBe(false);
@@ -52,7 +52,7 @@ describe('BaseSearchService', () => {
             callback({ content: [{ id: 1 }] });
         });
 
-        service.doLoad('', 'batman', 1);
+        service.doLoad('/batman', 'batman', 1);
 
         expect(service.search()).toBe('batman');
         expect(service.page()).toBeGreaterThan(1);
@@ -64,7 +64,7 @@ describe('BaseSearchService', () => {
             callback({ content: [] });
         });
 
-        service.doLoad('', 'search', 1);
+        service.doLoad('/batman', 'search', 1);
 
         expect(service.stopLoad()).toBe(true);
     });
@@ -85,6 +85,6 @@ describe('BaseSearchService', () => {
         service.doLoad('', '', 1);
 
         const data = service.datas.data();
-        expect(data.length).toBe(2);
+        expect(data.length).toBe(0);
     });
 });

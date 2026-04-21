@@ -12,15 +12,16 @@ body {
     overflow-x: hidden;
 }
 
-dsv-theme {
-    scrollbar-color: var(--scrollbar);
-}
-
 app-root {
     height: 100%;
     display: flex;
     flex-direction: column;
+
+    dsv-theme {
+        scrollbar-color: var(--scrollbar);
+    }
 }
+
 
 button {
     cursor: pointer;
@@ -46,6 +47,10 @@ p {
 
 .justify-end {
     justify-content: flex-end;
+}
+
+.align-center {
+    align-items: center;
 }
 
 .gap-5 {

@@ -17,6 +17,8 @@ export abstract class BaseSearchService<T extends ApiDto> {
     search = signal<string>('');
     newIds = signal<ID[]>([]);
 
+    lastUrl = signal<string>('');
+
     doLoad(url: string, search: string = '', page: number = 1, nbPage: number = 1) {
         this.search.set(search);
         if (page === 1) {
@@ -25,7 +27,11 @@ export abstract class BaseSearchService<T extends ApiDto> {
         if (this.stopLoad()) {
             return;
         }
+        if (this.lastUrl() === url) {
+            return;
+        }
         this.isLoading.set(true);
+        this.lastUrl.set(url);
         this.apiService.get<PageableDto<T[]>>(
             url + search,
             (data) => {

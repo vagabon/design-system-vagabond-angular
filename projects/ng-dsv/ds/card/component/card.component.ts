@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostBinding, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { DsvAvatarComponent } from '@ng-vagabond-lab/ng-dsv/ds/avatar';
 
 @Component({
@@ -7,6 +7,9 @@ import { DsvAvatarComponent } from '@ng-vagabond-lab/ng-dsv/ds/avatar';
     imports: [CommonModule, DsvAvatarComponent],
     templateUrl: './card.component.html',
     styleUrls: ['./card.component.scss'],
+    host: {
+        class: 'dsv-card',
+    },
 })
 export class DsvCardComponent {
     avatar = input<string>();
@@ -14,10 +17,4 @@ export class DsvCardComponent {
     subtitle = input<string>('');
     image = input<string>();
     alt = input<string>();
-
-    @HostBinding('class')
-    get hostClasses(): string {
-        const classes: string[] = ['dsv-card'];
-        return classes.join(' ');
-    }
 }

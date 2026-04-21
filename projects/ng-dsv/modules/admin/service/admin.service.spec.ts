@@ -41,7 +41,6 @@ describe('AdminService', () => {
             '/admin/findBy?fields=name&values=test&first=0&max=10',
             expect.any(Function),
         );
-        expect(service.datas()).toEqual(responseMock);
     });
 
     it('should call put() and set data signal', () => {

@@ -3,6 +3,8 @@ import { RouterLink } from '@angular/router';
 import { BaseRouteComponent } from '@ng-vagabond-lab/ng-dsv/base';
 import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
 import { DsvCardComponent } from '@ng-vagabond-lab/ng-dsv/ds/card';
+import { ReactiveSearchbarComponent } from '@ng-vagabond-lab/ng-dsv/ds/form/reactive';
+import { FormSignalSearchbarComponent } from '@ng-vagabond-lab/ng-dsv/ds/form/signal';
 import { PaginateComponent } from '@ng-vagabond-lab/ng-dsv/ds/paginate';
 import { TabDto, TabsComponent } from '@ng-vagabond-lab/ng-dsv/ds/tab';
 import { TableComponent } from '@ng-vagabond-lab/ng-dsv/ds/table';
@@ -19,6 +21,8 @@ import { AdminService } from '../../service/admin.service';
         TableComponent,
         PaginateComponent,
         RouterLink,
+        ReactiveSearchbarComponent,
+        FormSignalSearchbarComponent,
     ],
     templateUrl: './admin.search.container.html',
     styleUrls: ['./admin.search.container.scss'],
@@ -31,7 +35,7 @@ export class AdminSearchContainer extends BaseRouteComponent {
     tab = signal<string>('user');
     tabConfig = signal<AdminTabDto | undefined>(undefined);
 
-    page = signal<number>(0);
+    load = signal<Record<string, boolean>>({});
 
     constructor() {
         super();
@@ -40,7 +44,10 @@ export class AdminSearchContainer extends BaseRouteComponent {
                 this.tab.set(this.routeParams()?.['type']);
                 const tab = this.adminService.tabs()?.tabs.find((tab) => tab.name === this.tab());
                 this.tabConfig.set(tab);
-                this.gotoPage(0);
+                if (!this.load()[this.routeParams()?.['type']]) {
+                    this.load.update((s) => ({ ...s, [this.tabConfig()?.name!]: true }));
+                    this.gotoPage(0);
+                }
             }
         });
         effect(() => {
@@ -61,12 +68,13 @@ export class AdminSearchContainer extends BaseRouteComponent {
         });
     }
 
-    gotoPage(page: number) {
-        this.page.set(page);
+    gotoPage(page: number, search: string = '') {
+        this.adminService.page.update((s) => ({ ...s, [this.tabConfig()?.name!]: page }));
+        this.adminService.search.update((s) => ({ ...s, [this.tabConfig()?.name!]: search }));
         this.adminService.get(
             this.tabConfig()?.name!,
             this.tabConfig()?.findByChamps!,
-            '',
+            search,
             page,
             this.adminService.tabs()?.max,
         );

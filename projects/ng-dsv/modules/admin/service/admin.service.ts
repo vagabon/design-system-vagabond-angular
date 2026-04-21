@@ -10,8 +10,11 @@ export class AdminService {
 
     tabs = signal<AdminTabConfDto>({} as AdminTabConfDto);
 
-    datas = signal<PageableDto<ApiDto[]>>({} as PageableDto<ApiDto[]>);
+    datas = signal<Record<string, PageableDto<ApiDto[]>>>({});
     data = signal<ApiDto>({} as ApiDto);
+
+    page = signal<Record<string, number>>({});
+    search = signal<Record<string, string>>({});
 
     get(
         endpoint: string,
@@ -36,7 +39,7 @@ export class AdminService {
         const callbackResponse =
             callback ??
             ((data: PageableDto<ApiDto[]>) => {
-                this.datas.set(data);
+                this.datas.update((s) => ({ ...s, [endpoint]: data }));
             });
         this.apiService.get<PageableDto<ApiDto[]>>(encodeURI(url), callbackResponse);
     }

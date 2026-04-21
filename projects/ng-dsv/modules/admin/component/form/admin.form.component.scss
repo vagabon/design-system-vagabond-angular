@@ -1,11 +1,13 @@
 :host {
-    .form-container {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 10px;
+    display: flex;
+    overflow: hidden;
 
-        & > div {
+    dsv-form-reactive {
+        --form-flex-direction: row;
+        --form-flex-wrap: wrap;
+        --form-flex-padding: 0 0 0 5px;
+
+        .item {
             display: flex;
             width: 100%;
         }
@@ -34,16 +36,16 @@
             }
         }
     }
-}
 
-@media (max-width: 800px) {
-    .form-container {
-        .width50 {
-            width: 100% !important;
-        }
+    @media (max-width: 800px) {
+        dsv-form-reactive {
+            .width50 {
+                width: 100% !important;
+            }
 
-        .m2m {
-            justify-content: baseline !important;
+            .m2m {
+                justify-content: baseline !important;
+            }
         }
     }
 }

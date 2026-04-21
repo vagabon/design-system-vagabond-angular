@@ -3,46 +3,44 @@
     [urlBack]="urlBack()!"
     (callback)="sendForm($event)"
 >
-    <div class="form-container">
-        @for (field of formConf(); track field.name) {
-            <div [class]="field.className ?? ''">
-                @if (
-                    field.type === 'text' ||
-                    field.type === 'number' ||
-                    field.type === 'textarea' ||
-                    field.type === 'datetime-local'
-                ) {
-                    <dsv-form-reactive-input
-                        [form]="form"
-                        [field]="field.name"
-                        [type]="field.type"
-                        [required]="field.required ?? false"
-                    />
-                }
-                @if (field.type === 'switch') {
-                    <dsv-form-reactive-checkbox
-                        [form]="form"
-                        [field]="field.name"
-                    />
-                }
-                @if (field.type === 'm2m') {
-                    <div class="m2m">
-                        <div class="m2m-content">
-                            @for (value of form.value[field.name]; track value.id) {
-                                <dsv-chip
-                                    color="default"
-                                    [text]="value.name"
-                                    (delete)="removeValue(field.name, value.id)()"
-                                />
-                            }
-                            <dsv-admin-search-modal
-                                [m2em]="field.m2m!"
-                                (callback)="addValue(field.name)($event)"
+    @for (field of formConf(); track field.name) {
+        <div [class]="'item ' + (field.className ?? '')">
+            @if (
+                field.type === 'text' ||
+                field.type === 'number' ||
+                field.type === 'textarea' ||
+                field.type === 'datetime-local'
+            ) {
+                <dsv-form-reactive-input
+                    [form]="form"
+                    [field]="field.name"
+                    [type]="field.type"
+                    [required]="field.required ?? false"
+                />
+            }
+            @if (field.type === 'switch') {
+                <dsv-form-reactive-checkbox
+                    [form]="form"
+                    [field]="field.name"
+                />
+            }
+            @if (field.type === 'm2m') {
+                <div class="m2m">
+                    <div class="m2m-content">
+                        @for (value of form.value[field.name]; track value.id) {
+                            <dsv-chip
+                                color="default"
+                                [text]="value.name"
+                                (delete)="removeValue(field.name, value.id)()"
                             />
-                        </div>
+                        }
+                        <dsv-admin-search-modal
+                            [m2em]="field.m2m!"
+                            (callback)="addValue(field.name)($event)"
+                        />
                     </div>
-                }
-            </div>
-        }
-    </div>
+                </div>
+            }
+        </div>
+    }
 </dsv-form-reactive>

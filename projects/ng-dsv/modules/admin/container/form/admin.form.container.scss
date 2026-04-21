@@ -1,13 +1,5 @@
 :host {
     display: flex;
-    overflow: hidden;
     width: 100%;
-
-    dsv-card {
-        --card-content-overflow: hidden !important;
-
-        dsv-admin-form {
-            overflow: hidden;
-        }
-    }
+    overflow: hidden;
 }

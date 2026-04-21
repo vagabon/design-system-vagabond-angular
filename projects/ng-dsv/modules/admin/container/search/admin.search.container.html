@@ -4,7 +4,7 @@
 />
 <dsv-card>
     <div class="admin-header">
-        <span>Résulat : {{ adminService.datas().totalElements }}</span>
+        <span>Résulat : {{ adminService.datas()[tab()]?.totalElements }}</span>
         <dsv-button
             variant="contained"
             color="primary"
@@ -13,15 +13,19 @@
             [prevent]="false"
         ></dsv-button>
     </div>
+    <dsv-form-signal-searchbar
+        [search]="adminService.search()[tab()]"
+        (callbackSearch)="gotoPage(0, $event)"
+    />
     <dsv-table
         [cells]="tabConfig()?.cells!"
-        [datas]="adminService.datas().content!"
+        [datas]="adminService.datas()[tab()]?.content!"
         [max]="adminService.tabs().max!"
         [url]="'/admin/' + tab()"
     ></dsv-table>
     <dsv-paginate
-        [page]="page()"
-        [max]="adminService.datas().totalPages!"
+        [page]="adminService.page()[this.tabConfig()?.name!]"
+        [max]="adminService.datas()[tab()]?.totalPages!"
         (callback)="gotoPage($event)"
     />
 </dsv-card>

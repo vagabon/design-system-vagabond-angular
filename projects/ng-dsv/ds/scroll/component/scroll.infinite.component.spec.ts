@@ -12,7 +12,7 @@ describe('ScrollInfiniteContainer', () => {
     @Component({
         template: `
             <dsv-scroll-infinite
-                [class]="'my-scroll'"
+                [class]="'scroll'"
                 (callback)="onScrollEnd()"
             >
                 <div style="height: 2000px;"></div>
@@ -46,7 +46,7 @@ describe('ScrollInfiniteContainer', () => {
     });
 
     it('should emit callback when near bottom', () => {
-        const divEl: HTMLElement = document.getElementsByClassName('my-scroll')[0] as HTMLElement;
+        const divEl: HTMLElement = document.getElementsByClassName('scroll')[0] as HTMLElement;
 
         divEl.scrollTop = 500;
 

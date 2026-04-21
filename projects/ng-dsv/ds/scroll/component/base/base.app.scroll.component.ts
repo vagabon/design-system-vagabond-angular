@@ -36,9 +36,7 @@ export abstract class BaseAppScrollComponent {
 
     doScroll() {
         const divScroll = document.getElementsByClassName('scroll')?.[0];
-        if (document.getElementsByClassName('scroll').length === 1) {
-            this.scrollService.saveScroll(divScroll.scrollTop);
-            this.scrollService.scroll.set(divScroll.scrollTop);
-        }
+        this.scrollService.saveScroll(divScroll.scrollTop);
+        this.scrollService.scroll.set(divScroll.scrollTop);
     }
 }

@@ -1,4 +1,4 @@
-import { provideZonelessChangeDetection } from '@angular/core';
+import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { ApiDto, PageableDto } from '@ng-vagabond-lab/ng-dsv/api';
@@ -13,12 +13,7 @@ import { AdminSearchContainer } from './admin.search.container';
 describe('AdminSearchContainer', () => {
     let component: AdminSearchContainer;
     let fixture: ComponentFixture<AdminSearchContainer>;
-    let mockAdminService: {
-        get: ReturnType<typeof vi.fn>;
-        findById: ReturnType<typeof vi.fn>;
-        datas: ReturnType<typeof vi.fn>;
-        tabs: () => AdminTabConfDto;
-    };
+    let mockAdminService: Partial<AdminService>;
 
     const mockTabs: AdminTabConfDto = {
         max: 10,
@@ -35,8 +30,10 @@ describe('AdminSearchContainer', () => {
         mockAdminService = {
             get: vi.fn(),
             findById: vi.fn(),
-            datas: vi.fn().mockReturnValue(pageable),
-            tabs: () => mockTabs,
+            datas: signal({}),
+            tabs: signal(mockTabs),
+            page: signal({}),
+            search: signal({}),
         };
 
         await TestBed.configureTestingModule({

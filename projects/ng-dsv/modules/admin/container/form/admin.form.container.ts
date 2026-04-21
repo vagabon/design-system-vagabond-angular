@@ -30,7 +30,7 @@ export class AdminFormContainer extends BaseRouteComponent {
                 this.tab.set(this.routeParams()?.['type']);
                 const tab = this.adminService.tabs()?.tabs.find((tab) => tab.name === this.tab());
                 this.tabConfig.set(tab);
-                if (Number.isNaN(id)) {
+                if (Number.isNaN(Number(id))) {
                     this.adminService.data.set({} as ApiDto);
                 } else {
                     this.findById(this.routeParams()?.['id']);

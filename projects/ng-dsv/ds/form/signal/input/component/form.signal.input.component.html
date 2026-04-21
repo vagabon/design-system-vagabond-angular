@@ -25,6 +25,7 @@
                 [placeholder]="placeholder()"
                 [class.icon]="icon()"
                 (blur)="doOnSend()"
+                (change)="doChange()"
                 (keydown.enter)="doOnSend()"
             />
         }

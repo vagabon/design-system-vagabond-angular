@@ -3,6 +3,7 @@
     --chip-width: auto;
     --chip-border-radius: 15px;
     display: flex;
+    user-select: none;
 
     .dsv-chip {
         display: flex;
