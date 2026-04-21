@@ -2,7 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import { ToastDto } from '../dto/toast.dto';
 
 export const MAX_TOASTS = 10;
-export const DURATION_DEFAULT = 5000;
+export const DURATION_DEFAULT = 5000000;
 export const DURATION_TIMEOUT = 10;
 
 @Injectable({
@@ -12,11 +12,13 @@ export class ToastService {
     toastShows = signal<ToastDto[]>([]);
     toasts = signal<ToastDto[]>([]);
 
+    duration = signal<number>(DURATION_DEFAULT);
+
     showToast(toast: ToastDto) {
         toast.uuid = crypto.randomUUID();
         toast.open = true;
         toast.type = toast.type ?? 'success';
-        toast.duration = toast.duration ?? DURATION_DEFAULT;
+        toast.duration = toast.duration ?? this.duration();
         toast.remainingDuration = toast.duration;
         toast.filled = toast.filled ?? false;
         const find = this.toastShows().find((t) => t.text === toast.text);

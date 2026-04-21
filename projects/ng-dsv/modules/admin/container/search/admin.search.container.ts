@@ -3,7 +3,6 @@ import { RouterLink } from '@angular/router';
 import { BaseRouteComponent } from '@ng-vagabond-lab/ng-dsv/base';
 import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
 import { DsvCardComponent } from '@ng-vagabond-lab/ng-dsv/ds/card';
-import { ReactiveSearchbarComponent } from '@ng-vagabond-lab/ng-dsv/ds/form/reactive';
 import { FormSignalSearchbarComponent } from '@ng-vagabond-lab/ng-dsv/ds/form/signal';
 import { PaginateComponent } from '@ng-vagabond-lab/ng-dsv/ds/paginate';
 import { TabDto, TabsComponent } from '@ng-vagabond-lab/ng-dsv/ds/tab';
@@ -21,7 +20,6 @@ import { AdminService } from '../../service/admin.service';
         TableComponent,
         PaginateComponent,
         RouterLink,
-        ReactiveSearchbarComponent,
         FormSignalSearchbarComponent,
     ],
     templateUrl: './admin.search.container.html',

@@ -2,26 +2,21 @@ import { Injectable, signal } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class ModalService {
-    private readonly states = new Map<string, ReturnType<typeof signal<boolean>>>();
+    private readonly states = signal<Map<string, boolean>>(new Map());
 
-    getSignal(id: string) {
-        if (!this.states.has(id)) {
-            const newSignal = signal<boolean>(false);
-            this.states.set(id, newSignal);
-        }
-        return this.states.get(id)?.() ?? false;
+    getSignal(id: string): boolean {
+        return this.states().get(id) ?? false;
     }
 
     open(id: string) {
-        this.states.get(id)?.set(true);
+        this.states.update((map) => new Map(map).set(id, true));
     }
 
     close(id: string) {
-        this.states.get(id)?.set(false);
+        this.states.update((map) => new Map(map).set(id, false));
     }
 
     toggle(id: string) {
-        const s = this.states.get(id);
-        if (s) s.update((v) => !v);
+        this.states.update((map) => new Map(map).set(id, !map.get(id)));
     }
 }

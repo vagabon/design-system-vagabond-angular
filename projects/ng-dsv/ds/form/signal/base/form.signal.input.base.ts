@@ -1,9 +1,7 @@
-import { Component, effect, input, output, signal } from '@angular/core';
+import { Directive, effect, input, output, signal } from '@angular/core';
 import { FieldTree } from '@angular/forms/signals';
 
-@Component({
-    template: ``,
-})
+@Directive()
 export abstract class FormSignalInputBase<T> {
     form = input.required<FieldTree<T, string | number>>();
     fieldName = input.required<string>();

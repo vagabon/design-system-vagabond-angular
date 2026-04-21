@@ -59,7 +59,13 @@ class PrimaryButtonDemo {
     constructor(private readonly toastService: ToastService) {}
 
     click(type: ToastType = 'success') {
-        this.toastService.showToast({ text: type + ' ' + Math.floor(Math.random() * 101), type: type });
+        this.toastService.showToast({
+            text:
+                type +
+                'je pense que tout doit être visible car sinon cest bad de ouf ' +
+                Math.floor(Math.random() * 101),
+            type: type,
+        });
     }
 }
 

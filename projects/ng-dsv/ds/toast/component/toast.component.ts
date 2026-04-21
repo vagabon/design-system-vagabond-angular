@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, effect, inject, input } from '@angular/core';
-import { MAX_TOASTS, ToastService } from '../service/toast.service';
+import { DURATION_DEFAULT, MAX_TOASTS, ToastService } from '../service/toast.service';
 
 @Component({
     selector: 'dsv-toast',
@@ -11,6 +11,7 @@ import { MAX_TOASTS, ToastService } from '../service/toast.service';
 export class DsvToastComponent {
     protected readonly toastService = inject(ToastService);
 
+    duration = input<number>(DURATION_DEFAULT);
     max = input<number>(MAX_TOASTS);
 
     constructor() {
