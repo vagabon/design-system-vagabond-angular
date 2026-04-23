@@ -1,6 +1,17 @@
 export type ID = string | number | undefined | null;
 export type Primitif = string | number | boolean | undefined | null;
 
+export interface BaseDto {
+    id?: ID;
+}
+
+export interface ApiDto extends BaseDto {
+    creationDate?: string;
+    updatedDate?: string;
+    deletedDate?: string;
+    active?: boolean;
+}
+
 export type JSONValue =
     | Primitif
     | {
@@ -25,14 +36,6 @@ export type Target = {
         value: JSONObject;
     };
 };
-
-export interface ApiDto {
-    id?: ID;
-    creationDate?: string;
-    updatedDate?: string;
-    deletedDate?: string;
-    active?: boolean;
-}
 
 export interface BaseUserTokenDto {
     jwt?: string;
