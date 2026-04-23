@@ -1,6 +1,6 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { ApiDto } from '@ng-vagabond-lab/ng-dsv/api';
-import { BaseRouteComponent } from '@ng-vagabond-lab/ng-dsv/base';
+import { BaseRouteContainer } from '@ng-vagabond-lab/ng-dsv/base';
 import { DsvCardComponent } from '@ng-vagabond-lab/ng-dsv/ds/card';
 import { TabDto } from '@ng-vagabond-lab/ng-dsv/ds/tab';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
@@ -14,7 +14,7 @@ import { AdminService } from '../../service/admin.service';
     templateUrl: './admin.form.container.html',
     styleUrls: ['./admin.form.container.scss'],
 })
-export class AdminFormContainer extends BaseRouteComponent {
+export class AdminFormContainer extends BaseRouteContainer {
     adminService = inject(AdminService);
     platformService = inject(PlatformService);
 

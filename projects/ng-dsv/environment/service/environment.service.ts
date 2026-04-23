@@ -5,9 +5,10 @@ import { EnvironmentDto } from '../public-api';
 
 @Injectable({ providedIn: 'root' })
 export class EnvironmentService {
-    private readonly httpClient = inject(HttpClient);
+    readonly httpClient = inject(HttpClient);
 
-    public env = signal<EnvironmentDto | undefined>(undefined);
+    readonly env = signal<EnvironmentDto | undefined>(undefined);
+    baseUrl = signal<string>('');
 
     loadEnv(): Promise<EnvironmentDto> {
         return lastValueFrom(

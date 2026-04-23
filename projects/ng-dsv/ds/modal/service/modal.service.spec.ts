@@ -1,4 +1,3 @@
-// modal.service.spec.ts
 import { beforeEach, describe, expect, it } from 'vitest';
 import { ModalService } from './modal.service';
 

@@ -1,38 +1,45 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
+import { BaseService } from '@ng-vagabond-lab/ng-dsv/base/service';
+import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
+
+interface ScrollPosition {
+    top: number;
+    left: number;
+}
 
 @Injectable({ providedIn: 'root' })
-export class ScrollService {
-    scrolls = signal<Map<string, number>>(new Map());
-    blocked = signal<Map<string, boolean>>(new Map());
-    scroll = signal<number>(0);
+export class ScrollService extends BaseService {
+    readonly router = inject(RouterService).router;
+    readonly routeIds = new Map<string, string>();
+    readonly scrolls = signal<Map<string, Map<string, ScrollPosition>>>(new Map());
 
-    saveScroll(scrollTop: number) {
-        this.scrolls.update((value) => {
-            if (scrollTop !== 0) {
-                value.set(location.href, scrollTop);
-            }
-            return value;
+    getRouteUuid(index: number = 0): string {
+        const key = `${this.router.url}__${index}`;
+        if (!this.routeIds.has(key)) {
+            this.routeIds.set(key, crypto.randomUUID());
+        }
+        return this.routeIds.get(key)!;
+    }
+
+    saveScroll(id: string, url: string, top: number, left: number) {
+        this.scrolls.update((map) => {
+            const newMap = new Map(map);
+            const urlMap = new Map(newMap.get(id) ?? []);
+            urlMap.set(url, { top, left });
+            newMap.set(id, urlMap);
+            return newMap;
         });
     }
 
-    getScroll() {
-        return this.scrolls().get(location.href);
+    getScroll(id: string, url: string): ScrollPosition {
+        return this.scrolls().get(id)?.get(url) ?? { top: 0, left: 0 };
     }
 
-    doBlocked(blocked: boolean = true) {
-        this.blocked.update((value) => {
-            value.set(location.href, blocked);
-            return value;
+    clear(id: string) {
+        this.scrolls.update((map) => {
+            const newMap = new Map(map);
+            newMap.delete(id);
+            return newMap;
         });
-    }
-
-    doBlockedWithTimeout(blocked: boolean, timeout: number = 1000) {
-        setTimeout(() => {
-            this.doBlocked(blocked);
-        }, timeout);
-    }
-
-    getlocked() {
-        return this.blocked().get(location.href);
     }
 }

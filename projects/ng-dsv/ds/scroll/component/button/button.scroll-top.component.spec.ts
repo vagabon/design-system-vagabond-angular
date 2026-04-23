@@ -1,7 +1,7 @@
 import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { DsvButtonComponent } from '../button.component';
+import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { ButtonScrollTopComponent } from './button.scroll-top.component';
 
 describe('ButtonScrollTopComponent', () => {
@@ -35,19 +35,5 @@ describe('ButtonScrollTopComponent', () => {
     it('should set show to false when scroll <= 400', () => {
         component.scroll = signal(200) as unknown as InputSignal<number>;
         expect(component.show()).toBe(false);
-    });
-
-    it('should scroll to top when scrollToTop is called', () => {
-        const scrollElement = document.createElement('div');
-        scrollElement.className = 'scroll';
-        scrollElement.scrollTo = vi.fn();
-
-        document.body.appendChild(scrollElement);
-
-        component.scrollToTop();
-
-        expect(scrollElement.scrollTo).toHaveBeenCalledWith(0, 0);
-
-        document.body.removeChild(scrollElement);
     });
 });

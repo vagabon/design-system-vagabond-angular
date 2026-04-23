@@ -40,7 +40,7 @@ describe('ApiService', () => {
         });
 
         service = TestBed.inject(ApiService);
-        service.setBaseUrl('/api');
+        service.baseUrl.set('/api');
     });
 
     it('should be created', () => {
@@ -55,7 +55,7 @@ describe('ApiService', () => {
         service.get('/test', callback);
 
         expect(callback).toHaveBeenCalledWith(mockData);
-        expect(service.load()).toBe(false);
+        expect(service.loaded()).toBe(false);
     });
 
     it('post() should call callback on success', () => {
@@ -66,7 +66,7 @@ describe('ApiService', () => {
         service.post('/create', mockData, callback);
 
         expect(callback).toHaveBeenCalledWith(mockData);
-        expect(service.load()).toBe(false);
+        expect(service.loaded()).toBe(false);
     });
 
     it('put() should call callback on success', () => {
@@ -77,7 +77,7 @@ describe('ApiService', () => {
         service.put('/update', mockData, callback);
 
         expect(callback).toHaveBeenCalledWith(mockData);
-        expect(service.load()).toBe(false);
+        expect(service.loaded()).toBe(false);
     });
 
     it('delete() should call callback on success', () => {
@@ -88,7 +88,7 @@ describe('ApiService', () => {
         service.delete('/delete', callback);
 
         expect(callback).toHaveBeenCalledWith(mockData);
-        expect(service.load()).toBe(false);
+        expect(service.loaded()).toBe(false);
     });
 
     it('should handle error in get()', () => {

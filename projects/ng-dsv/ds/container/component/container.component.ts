@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostBinding, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 
 const COLUMN_CLASS = 'column';
 
@@ -8,14 +8,16 @@ const COLUMN_CLASS = 'column';
     imports: [CommonModule],
     templateUrl: './container.component.html',
     styleUrls: ['./container.component.scss'],
+    host: {
+        '[class]': 'class()',
+    },
 })
 export class DsvContainerComponent {
     column = input<boolean>(false);
 
-    @HostBinding('class')
-    get hostClasses(): string {
+    class = computed(() => {
         const classes: string[] = ['dsv-container'];
         this.column() && classes.push(COLUMN_CLASS);
         return classes.join(' ');
-    }
+    });
 }

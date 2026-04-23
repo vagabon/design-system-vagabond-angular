@@ -1,4 +1,3 @@
-// date-utils.spec.ts
 import { describe, expect, it } from 'vitest';
 import { toBackendDate, toDateInputValue } from './date.utils';
 

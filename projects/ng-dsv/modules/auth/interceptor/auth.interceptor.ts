@@ -14,7 +14,7 @@ export const authInterceptor = (req: HttpRequest<unknown>, next: HttpHandlerFn) 
             if (
                 error instanceof HttpErrorResponse &&
                 !req.url.includes('auth/') &&
-                req.url.includes(authService.apiService.baseUrl) &&
+                req.url.includes(authService.apiService.baseUrl()) &&
                 error.status === 401
             ) {
                 return handle401Error(httpClient, authService, req, next);
@@ -41,7 +41,7 @@ export const authInterceptor = (req: HttpRequest<unknown>, next: HttpHandlerFn) 
 
 const getToken = <T>(req: HttpRequest<T>, authService: AuthService) => {
     const jwt = authService.userToken();
-    if (!req.url.includes('/auth/') && req.url.includes(authService.apiService.baseUrl) && jwt) {
+    if (!req.url.includes('/auth/') && req.url.includes(authService.apiService.baseUrl()) && jwt) {
         const headers = req.headers.set('Authorization', `Bearer ${jwt}`);
 
         return req.clone({
@@ -58,7 +58,7 @@ const handle401Error = <T>(
     next: HttpHandlerFn,
 ) => {
     return httpClient
-        .post(authService.apiService.baseUrl + '/auth/refresh-token', {}, { withCredentials: true })
+        .post(authService.apiService.baseUrl() + '/auth/refresh-token', {}, { withCredentials: true })
         .pipe(
             switchMap((response) => {
                 authService.initUser(response);

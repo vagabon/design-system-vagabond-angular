@@ -1,5 +1,7 @@
-export * from './component/base.route.component';
-export * from './component/base.seo.container';
+export * from './component/base.component';
+export * from './container/base.container';
+export * from './container/main/base.main.container';
+export * from './container/route/base.route.container';
+export * from './container/search/base.search.container';
 
-export * from './service/base.service';
 export * from './utils/base.utils';

@@ -1,4 +1,3 @@
-// required-trim.spec.ts
 import { describe, expect, it } from 'vitest';
 import { requiredTrim } from './form.signal.utils';
 

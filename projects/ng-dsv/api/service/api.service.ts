@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { effect, inject, Injectable, signal } from '@angular/core';
 import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
+import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { Observable } from 'rxjs';
 import { ApiDto, ID, JSONObject, OrderState } from '../dto/api.dto';
@@ -12,16 +13,21 @@ export class ApiService {
     readonly httpClient = inject(HttpClient);
     readonly toastService = inject(ToastService);
     readonly platformService = inject(PlatformService);
+    readonly environmentService = inject(EnvironmentService);
 
-    load = signal<boolean>(false);
-    baseUrl: string = '';
+    baseUrl = signal<string>('');
+    loaded = signal<boolean>(false);
 
-    setBaseUrl(url: string) {
-        this.baseUrl = url;
+    constructor() {
+        effect(() => {
+            if (this.environmentService.env()) {
+                this.baseUrl.set(this.environmentService.env()!.API_URL);
+            }
+        });
     }
 
     get<T>(url: string, callback: (data: T) => void, callbackError: () => void = () => {}) {
-        this.doSubscribe(url, this.httpClient.get<T>(this.baseUrl + url), callback, callbackError);
+        this.doSubscribe(url, this.httpClient.get<T>(this.baseUrl() + url), callback, callbackError);
     }
 
     post<TBody, TResponse = TBody>(
@@ -33,7 +39,7 @@ export class ApiService {
     ) {
         this.doSubscribe(
             url,
-            this.httpClient.post<TResponse>(this.baseUrl + url, data, { withCredentials }),
+            this.httpClient.post<TResponse>(this.baseUrl() + url, data, { withCredentials }),
             callback,
             callbackError,
         );
@@ -47,14 +53,14 @@ export class ApiService {
     ) {
         this.doSubscribe(
             url,
-            this.httpClient.put<TResponse>(this.baseUrl + url, data),
+            this.httpClient.put<TResponse>(this.baseUrl() + url, data),
             callback,
             callbackError,
         );
     }
 
     delete<T>(url: string, callback: (data: T) => void, callbackError: () => void = () => {}) {
-        this.doSubscribe(url, this.httpClient.delete<T>(this.baseUrl + url), callback, callbackError);
+        this.doSubscribe(url, this.httpClient.delete<T>(this.baseUrl() + url), callback, callbackError);
     }
 
     findById<T>(endPoint: string, id: ID, callback: (data: T) => void) {
@@ -118,15 +124,15 @@ export class ApiService {
         callback: (data: T) => void,
         callbackError: () => void = () => {},
     ) {
-        this.load.set(true);
+        this.loaded.set(true);
         observable.subscribe({
             next: (res) => {
-                this.load.set(false);
+                this.loaded.set(false);
                 this.info(url, res as JSONObject);
                 callback(res);
             },
             error: (error: JSONObject) => {
-                this.load.set(false);
+                this.loaded.set(false);
                 callbackError();
                 this.error(url, error);
             },
@@ -134,18 +140,14 @@ export class ApiService {
     }
 
     info(url: string, data: JSONObject) {
-        if (this.isPlatformBrowser()) {
+        if (this.platformService.isPlatformBrowser()) {
             console.log(url, data);
         }
     }
 
     error(url: string, error: JSONObject) {
-        if (this.isPlatformBrowser()) {
+        if (this.platformService.isPlatformBrowser()) {
             console.error(url, error);
         }
-    }
-
-    isPlatformBrowser() {
-        return this.platformService.isPlatformBrowser();
     }
 }

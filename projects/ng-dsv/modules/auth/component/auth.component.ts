@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, inject, output, signal } from '@angular/core';
+import { Component, effect, inject, output } from '@angular/core';
 import { ID } from '@ng-vagabond-lab/ng-dsv/api';
 import { ModalAlertComponent, ModalButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/modal';
 import { AuthGoogleService, AuthService } from '../public-api';
@@ -17,23 +17,17 @@ export class AuthComponent {
     callbackInitMember = output<ID>();
     callbackLogout = output<void>();
 
-    initAuth = signal<boolean>(false);
-
     constructor() {
         effect(() => {
-            if (this.authService.apiService.isPlatformBrowser() && !this.initAuth()) {
-                this.initAuth.set(true);
-                this.authGoogleService.initGoogleAuth();
-                this.authService.refreshToken();
+            if (this.authService.loadRefreshToken()) {
+                this.authGoogleService.initGoogleAuth('google-signin-button');
             }
         });
         effect(() => {
-            if (this.authService.apiService.isPlatformBrowser()) {
-                if (this.authService.userConnected() === null) {
-                    this.authGoogleService.loginWithGoogle();
-                } else {
-                    this.callbackInitMember.emit(this.authService.userConnected()?.id);
-                }
+            if (this.authService.userConnected() === null) {
+                this.authGoogleService.loginWithGoogle();
+            } else {
+                this.callbackInitMember.emit(this.authService.userConnected()?.id);
             }
         });
     }

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, input } from '@angular/core';
-import { Router } from '@angular/router';
 import { DsvMenuButtonComponent, MenuService } from '@ng-vagabond-lab/ng-dsv/ds/menu';
+import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
 
 @Component({
     selector: 'dsv-header',
@@ -10,7 +10,7 @@ import { DsvMenuButtonComponent, MenuService } from '@ng-vagabond-lab/ng-dsv/ds/
     styleUrls: ['./header.component.scss'],
 })
 export class DsvHeaderComponent {
-    private readonly router = inject(Router);
+    private readonly router = inject(RouterService).router;
     private readonly menuService = inject(MenuService);
 
     img = input<string>();

@@ -1,9 +1,10 @@
-import { inject, makeStateKey, TransferState } from '@angular/core';
+import { inject, Injectable, makeStateKey } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { BaseService } from '../base/base.service';
 
-export abstract class BaseSeoContainer {
+@Injectable({ providedIn: 'root' })
+export class SeoService extends BaseService {
     public readonly title = inject(Title);
-    public readonly transferState = inject(TransferState);
     public readonly meta = inject(Meta);
 
     setMeta(titleApp: string, title: string, description: string, image?: string) {

@@ -1,45 +1,40 @@
 :host {
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
     flex-shrink: 0;
-    top: 0px;
-    left: auto;
-    right: 0px;
+    width: 100%;
+    min-height: 48px;
+    padding: 0 16px 0 16px;
+    box-sizing: border-box;
     background-color: var(--background-card);
     color: var(--text);
-    z-index: 1;
     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
 
-    .dsv-header-content {
-        position: relative;
+    .header-title {
         display: flex;
-        -webkit-box-align: center;
+        gap: 10px;
         align-items: center;
-        justify-content: space-between;
-        padding-left: 16px;
-        padding-right: 16px;
-        min-height: 48px;
-        user-select: none;
+        flex: 1;
+    }
 
-        .dsv-header-logo {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            font-size: 1.3rem;
-            gap: 10px;
+    .dsv-header-logo {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 1.3rem;
+        gap: 10px;
 
-            img {
-                width: 30px;
-                height: 30px;
-                cursor: pointer;
-            }
+        img {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
 
-            span {
-                font-weight: bold;
-                cursor: pointer;
-            }
+        span {
+            font-weight: bold;
+            cursor: pointer;
         }
     }
 }

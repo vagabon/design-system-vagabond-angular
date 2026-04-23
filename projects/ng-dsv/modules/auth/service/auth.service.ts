@@ -1,13 +1,12 @@
-import { inject, Injectable, signal } from '@angular/core';
-import { ApiService, JSONValue } from '@ng-vagabond-lab/ng-dsv/api';
+import { Injectable, signal } from '@angular/core';
+import { JSONValue } from '@ng-vagabond-lab/ng-dsv/api';
+import { BaseService } from '@ng-vagabond-lab/ng-dsv/base/service';
 import { UserDto, UserSigninDto } from '../dto/user.dto';
 
 @Injectable({
     providedIn: 'root',
 })
-export class AuthService {
-    readonly apiService = inject(ApiService);
-
+export class AuthService extends BaseService {
     userConnected = signal<UserDto | null>(null);
     userToken = signal<string>('');
     loadRefreshToken = signal<boolean>(false);

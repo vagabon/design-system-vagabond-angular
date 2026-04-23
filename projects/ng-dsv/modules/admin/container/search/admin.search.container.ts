@@ -1,6 +1,6 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { BaseRouteComponent } from '@ng-vagabond-lab/ng-dsv/base';
+import { BaseRouteContainer } from '@ng-vagabond-lab/ng-dsv/base';
 import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
 import { DsvCardComponent } from '@ng-vagabond-lab/ng-dsv/ds/card';
 import { FormSignalSearchbarComponent } from '@ng-vagabond-lab/ng-dsv/ds/form/signal';
@@ -25,7 +25,7 @@ import { AdminService } from '../../service/admin.service';
     templateUrl: './admin.search.container.html',
     styleUrls: ['./admin.search.container.scss'],
 })
-export class AdminSearchContainer extends BaseRouteComponent {
+export class AdminSearchContainer extends BaseRouteContainer {
     adminService = inject(AdminService);
     platformService = inject(PlatformService);
 

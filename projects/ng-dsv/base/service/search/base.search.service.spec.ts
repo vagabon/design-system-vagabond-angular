@@ -6,7 +6,11 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { BaseSearchService } from './base.search.service';
 
 @Injectable()
-class TestSearchService extends BaseSearchService<any> {}
+class TestSearchService extends BaseSearchService<any> {
+    override getEndPoint(): string {
+        return '';
+    }
+}
 
 describe('BaseSearchService', () => {
     let service: TestSearchService;
@@ -15,6 +19,9 @@ describe('BaseSearchService', () => {
     beforeEach(() => {
         apiServiceMock = {
             get: vi.fn(),
+            platformService: {
+                isPlatformBrowser: () => true,
+            },
         };
 
         TestBed.configureTestingModule({
@@ -33,7 +40,7 @@ describe('BaseSearchService', () => {
         expect(service.page()).toBe(1);
         expect(service.search()).toBe('');
         expect(service.isLoading()).toBe(false);
-        expect(service.stopLoad()).toBe(false);
+        expect(service.stopFetch()).toBe(false);
     });
 
     it('should call apiService.get with correct URL for default load', () => {
@@ -41,7 +48,7 @@ describe('BaseSearchService', () => {
             callback({ content: [] });
         });
 
-        service.doLoad('/');
+        service.fetchByPage('/');
 
         expect(apiServiceMock.get).toHaveBeenCalled();
         expect(service.isLoading()).toBe(false);
@@ -52,7 +59,7 @@ describe('BaseSearchService', () => {
             callback({ content: [{ id: 1 }] });
         });
 
-        service.doLoad('/batman', 'batman', 1);
+        service.fetchByPage('batman', 1);
 
         expect(service.search()).toBe('batman');
         expect(service.page()).toBeGreaterThan(1);
@@ -64,15 +71,15 @@ describe('BaseSearchService', () => {
             callback({ content: [] });
         });
 
-        service.doLoad('/batman', 'search', 1);
+        service.fetchByPage('search', 1);
 
-        expect(service.stopLoad()).toBe(true);
+        expect(service.stopFetch()).toBe(true);
     });
 
-    it('should not call api if stopLoad is true', () => {
-        service.stopLoad.set(true);
+    it('should not call api if stopFetch is true', () => {
+        service.stopFetch.set(true);
 
-        service.doLoad('', 'test', 2);
+        service.fetchByPage('test', 2);
 
         expect(apiServiceMock.get).not.toHaveBeenCalled();
     });
@@ -82,9 +89,9 @@ describe('BaseSearchService', () => {
             callback({ content: [{ id: 1 }, { id: 2 }] });
         });
 
-        service.doLoad('', '', 1);
+        service.fetchByPage('', 1);
 
-        const data = service.datas.data();
-        expect(data.length).toBe(0);
+        const data = service.datas();
+        expect(data.length).toBe(2);
     });
 });
