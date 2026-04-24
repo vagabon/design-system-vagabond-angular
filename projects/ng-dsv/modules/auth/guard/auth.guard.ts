@@ -1,42 +1,30 @@
 import { inject } from '@angular/core';
 import { toObservable } from '@angular/core/rxjs-interop';
-import { ActivatedRouteSnapshot, CanActivateFn, Router } from '@angular/router';
-import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
-import { filter, map, of, take, tap, timeout } from 'rxjs';
-import { AuthService, hasRole } from '../public-api';
+import { CanActivateFn } from '@angular/router';
+import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
+import { filter, map, take } from 'rxjs';
+import { AuthService } from '../public-api';
 
-export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot) => {
-    const platformService = inject(PlatformService);
+export const authGuard = (role: string): CanActivateFn => {
+    return () => {
+        const authService = inject(AuthService);
+        const router = inject(RouterService).router;
 
-    if (!platformService.isPlatformBrowser()) {
-        return true;
-    }
+        if (!authService.isPlatformBrowser()) {
+            return true;
+        }
 
-    const authService = inject(AuthService);
-    const router = inject(Router);
+        const requiredRole = role.toUpperCase();
 
-    const requiredRole = route.data['role'];
-
-    if (!requiredRole) {
-        console.warn('No role specified in route data.');
-        return false;
-    }
-
-    return toObservable(authService.userConnected).pipe(
-        filter((user) => user !== null),
-        take(1),
-        map((user) => hasRole(requiredRole, user?.profiles)),
-        tap((hasRole) => {
-            if (!hasRole) {
-                router.navigate(['/']);
-            }
-        }),
-        timeout({
-            each: 500,
-            with: () => {
-                router.navigate(['/']);
-                return of(false);
-            },
-        }),
-    );
+        return toObservable(authService.loadRefreshToken).pipe(
+            filter((loaded) => loaded),
+            take(1),
+            map(() => {
+                if (authService.hasRole(requiredRole)) {
+                    return true;
+                }
+                return router.createUrlTree(['/access-denied']);
+            }),
+        );
+    };
 };

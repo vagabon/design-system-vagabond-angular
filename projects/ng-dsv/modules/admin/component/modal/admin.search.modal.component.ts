@@ -1,5 +1,6 @@
 import { Component, effect, inject, input, output, signal } from '@angular/core';
 import { ApiDto } from '@ng-vagabond-lab/ng-dsv/api';
+import { BaseContainer } from '@ng-vagabond-lab/ng-dsv/base';
 import { ReactiveSearchbarComponent } from '@ng-vagabond-lab/ng-dsv/ds/form/reactive';
 import { DsvItemComponent } from '@ng-vagabond-lab/ng-dsv/ds/item';
 import { ModalButtonComponent, ModalComponent, ModalService } from '@ng-vagabond-lab/ng-dsv/ds/modal';
@@ -12,7 +13,7 @@ import { AdminService } from '../../service/admin.service';
     templateUrl: './admin.search.modal.component.html',
     styleUrls: ['./admin.search.modal.component.scss'],
 })
-export class AdminSearchModalContainer {
+export class AdminSearchModalContainer extends BaseContainer {
     modalService = inject(ModalService);
     adminService = inject(AdminService);
 
@@ -24,6 +25,8 @@ export class AdminSearchModalContainer {
     callback = output<ApiDto>();
 
     constructor() {
+        super();
+        this.requiredRole.set('ADMIN');
         effect(() => {
             this.adminService.get(this.m2em().endPoint, this.m2em().fields, this.search(), 0, 500, (data) => {
                 this.datas.set(data.content);
