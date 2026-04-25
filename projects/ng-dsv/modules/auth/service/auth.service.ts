@@ -1,13 +1,13 @@
 import { Injectable, signal } from '@angular/core';
 import { JSONValue } from '@ng-vagabond-lab/ng-dsv/api';
-import { BaseService } from '@ng-vagabond-lab/ng-dsv/base/service';
+import { BaseApiService } from '@ng-vagabond-lab/ng-dsv/base/service';
 import { UserDto, UserSigninDto } from '../dto/user.dto';
 import { hasRole } from '../public-api';
 
 @Injectable({
     providedIn: 'root',
 })
-export class AuthService extends BaseService {
+export class AuthService extends BaseApiService {
     userConnected = signal<UserDto | null>(null);
     userToken = signal<string>('');
     loadRefreshToken = signal<boolean>(false);
@@ -63,7 +63,7 @@ export class AuthService extends BaseService {
     }
 
     hasRole(role: string): boolean {
-        const user = this.userConnected();
+        const user = this.userConnected() ?? null;
         return !!user && hasRole(role, user.profiles);
     }
 }

@@ -1,17 +1,13 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { BaseService } from '@ng-vagabond-lab/ng-dsv/base/service';
+import { BaseApiService } from '@ng-vagabond-lab/ng-dsv/base/service';
 import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
-
-interface ScrollPosition {
-    top: number;
-    left: number;
-}
+import { ScrollPositionDto } from '../dto/scroll.position.dto';
 
 @Injectable({ providedIn: 'root' })
-export class ScrollService extends BaseService {
+export class ScrollService extends BaseApiService {
     readonly router = inject(RouterService).router;
     readonly routeIds = new Map<string, string>();
-    readonly scrolls = signal<Map<string, Map<string, ScrollPosition>>>(new Map());
+    readonly scrolls = signal<Map<string, Map<string, ScrollPositionDto>>>(new Map());
 
     getRouteUuid(index: number = 0): string {
         const key = `${this.router.url}__${index}`;
@@ -31,7 +27,7 @@ export class ScrollService extends BaseService {
         });
     }
 
-    getScroll(id: string, url: string): ScrollPosition {
+    getScroll(id: string, url: string): ScrollPositionDto {
         return this.scrolls().get(id)?.get(url) ?? { top: 0, left: 0 };
     }
 

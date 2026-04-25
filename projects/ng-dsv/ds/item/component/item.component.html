@@ -1,9 +1,4 @@
-<a
-    [href]="this.url() ?? '#'"
-    class="text"
-    (click)="doClick($event)"
-    [class.small]="small()"
->
+<a [href]="this.url() ?? '#'" class="text" (click)="doClick($event)" [class.small]="small()">
     @if (icon()) {
         <i class="ri-{{ icon() }}-line"></i>
     }

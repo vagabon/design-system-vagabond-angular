@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, input } from '@angular/core';
 import { DsvMenuButtonComponent, MenuService } from '@ng-vagabond-lab/ng-dsv/ds/menu';
-import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
+import { RouterInternalPipe, RouterService } from '@ng-vagabond-lab/ng-dsv/router';
 
 @Component({
     selector: 'dsv-header',
-    imports: [CommonModule, DsvMenuButtonComponent],
+    imports: [CommonModule, DsvMenuButtonComponent, RouterInternalPipe],
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
 })
@@ -21,11 +21,5 @@ export class DsvHeaderComponent {
 
     doToogleMenu() {
         this.menuService.toogleMenu();
-    }
-
-    goToHome(event: Event) {
-        event.stopPropagation();
-        event.preventDefault();
-        this.router.navigate(['/']);
     }
 }

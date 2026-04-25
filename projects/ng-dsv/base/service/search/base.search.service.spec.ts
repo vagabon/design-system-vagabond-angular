@@ -19,9 +19,6 @@ describe('BaseSearchService', () => {
     beforeEach(() => {
         apiServiceMock = {
             get: vi.fn(),
-            platformService: {
-                isPlatformBrowser: () => true,
-            },
         };
 
         TestBed.configureTestingModule({
@@ -29,7 +26,7 @@ describe('BaseSearchService', () => {
                 provideZonelessChangeDetection(),
                 TestSearchService,
                 { provide: ApiService, useValue: apiServiceMock },
-                { provide: PlatformService, useValue: {} },
+                { provide: PlatformService, useValue: { isPlatformBrowser: () => true } },
             ],
         });
 

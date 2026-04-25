@@ -133,8 +133,8 @@ export class ApiService {
             },
             error: (error: JSONObject) => {
                 this.loaded.set(false);
-                callbackError();
                 this.error(url, error);
+                callbackError();
             },
         });
     }

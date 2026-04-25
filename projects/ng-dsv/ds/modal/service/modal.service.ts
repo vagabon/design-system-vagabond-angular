@@ -19,4 +19,8 @@ export class ModalService {
     toggle(id: string) {
         this.states.update((map) => new Map(map).set(id, !map.get(id)));
     }
+
+    closeAll() {
+        this.states.set(new Map());
+    }
 }

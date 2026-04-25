@@ -1,9 +1,9 @@
 import { inject, Injectable, makeStateKey } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { BaseService } from '../base/base.service';
+import { BaseApiService } from '../base/base.api.service';
 
 @Injectable({ providedIn: 'root' })
-export class SeoService extends BaseService {
+export class SeoService extends BaseApiService {
     public readonly title = inject(Title);
     public readonly meta = inject(Meta);
 

@@ -1,0 +1,45 @@
+<footer>
+    <hr />
+    <ng-content />
+    <div class="footer-content">
+        <div>
+            <div>
+                <strong>Mail :</strong>
+                <a href="mailto:vagabond.git@gmail.com" class="primary text"> vagabond.git@gmail.com </a>
+            </div>
+            @if (withMentions()) {
+                <div>
+                    <a href="/mentions-legales" (click)="doClick()" dsvLink> Mentions-legales </a>
+                </div>
+            }
+        </div>
+        <div>
+            <div class="created-by">
+                <img class="vagabond" title="vagabond" alt="vagabond" src="images/vagabond.png" />
+                <div>
+                    <span>Créé par Vagabond</span>
+                    <div class="flex-row gap5">
+                        <a href="https://github.com/vagabon" title="Github de Vagabond" dsvLinkExternal>
+                            <img title="logo Github" alt="logo Github" src="/images/icons/github.png" />
+                        </a>
+                        @if (withX()) {
+                            <a href="https://twitter.com/VagabondDev" title="X de Vagabond" dsvLinkExternal>
+                                <img title="logo X" alt="logo X" src="/images/icons/x.png" />
+                            </a>
+                        }
+                        <a href="https://discord.gg/TUy5MtVRt7" title="Discord de Vagabond" dsvLinkExternal>
+                            <img title="logo discord" alt="logo discord" src="/images/icons/discord.png"
+                        /></a>
+                        <a href="https://blog.vagabond.synology.me" title="Blog de Vagabond" dsvLinkExternal>
+                            <img
+                                title="logo blog vagabond"
+                                alt="Me suivre sur mon blog"
+                                src="/images/icons/blog.png"
+                        /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="copyright">Copyright &copy; 2026 {{ copyright() }}</p>
+</footer>

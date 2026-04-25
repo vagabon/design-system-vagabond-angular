@@ -1,0 +1,110 @@
+footer {
+    padding: 15px;
+
+    hr {
+        border: none;
+        height: 1px;
+        background: linear-gradient(to right, transparent 0%, var(--border) 10%, var(--border) 90%, transparent 100%);
+    }
+
+    a {
+        font-weight: bold;
+    }
+
+    &>p {
+        font-size: 1rem;
+        margin-top: 10px;
+        text-align: justify;
+    }
+
+    .footer-content {
+        margin-top: 20px;
+        align-items: flex-start;
+        display: flex;
+
+        &>div {
+            width: 50%;
+            align-items: flex-start;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        &>div:nth-child(2) {
+            align-items: end;
+        }
+
+        .created-by {
+            display: flex;
+            align-items: center;
+            background: #c4c4c4;
+            color: var(--text);
+            border-radius: 30px;
+            padding: 5px 10px;
+
+            img.vagabond {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+            }
+
+            &>div {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                margin: 0px 10px;
+
+                &>span {
+                    font-weight: bold;
+                }
+
+                &>div {
+                    display: flex;
+                    gap: 5px;
+                    align-items: center;
+                    justify-content: center;
+
+                    a {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+
+                        img {
+                            border-radius: 10px;
+                            width: 25px;
+                            height: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 510px) {
+        .footer-content {
+            flex-direction: column;
+
+            &>div {
+                width: 100%;
+            }
+
+            &>div:nth-child(2) {
+                align-items: flex-end;
+                margin: 10px 10px 0px;
+            }
+        }
+    }
+
+    .copyright {
+        margin-top: 20px;
+    }
+}
+
+:host-context(body.dark) {
+    .created-by {
+        background-color: #404040 !important;
+    }
+}

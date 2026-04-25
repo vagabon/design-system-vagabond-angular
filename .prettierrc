@@ -11,7 +11,7 @@
     "bracketSameLine": false,
     "arrowParens": "always",
     "htmlWhitespaceSensitivity": "css",
-    "singleAttributePerLine": true,
+    "singleAttributePerLine": false,
     "endOfLine": "lf",
     "overrides": [
         {
@@ -19,8 +19,7 @@
             "options": {
                 "parser": "angular",
                 "printWidth": 110,
-                "tabWidth": 4,
-                "htmlWhitespaceSensitivity": "css"
+                "tabWidth": 4
             }
         },
         {

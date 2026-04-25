@@ -1,0 +1,15 @@
+<dsv-menu>
+    @for (item of menu()?.content; track item.url) {
+        @if (!item.role || authService.hasRole(item.role)) {
+            <dsv-item
+                [small]="true"
+                [icon]="item.icon"
+                [text]="item.text"
+                [url]="item.url"
+                [class.active]="isActive(item.url)"
+                (callback)="menuService.closeMenu()"
+            />
+            <ng-container *ngTemplateOutlet="getSlot(item.id)"></ng-container>
+        }
+    }
+</dsv-menu>

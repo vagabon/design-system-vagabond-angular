@@ -2,16 +2,9 @@
     @if (withMenu()) {
         <dsv-menu-button />
     }
-    <a
-        href="/"
-        class="dsv-header-logo"
-        (click)="goToHome($event)"
-    >
+    <a href="/" class="dsv-header-logo" dsvLink>
         @if (img()) {
-            <img
-                src="{{ img() }}"
-                alt="logo"
-            />
+            <img src="{{ img() }}" alt="logo" />
         }
         <div>
             @for (titleText of titleTextParts(); track titleText; let index = $index) {
