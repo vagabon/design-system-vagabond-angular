@@ -54,7 +54,6 @@ describe('DsvItemComponent', () => {
             expect(component.icon()).toBe('');
             expect(component.text()).toBe('');
             expect(component.url()).toBeUndefined();
-            expect(component.small()).toBe(true);
         });
 
         it('should initialize isCallback signal to false', () => {

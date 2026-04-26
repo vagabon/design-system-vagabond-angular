@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, ElementRef, HostListener, inject, input } from '@angular/core';
+import { Component, effect, ElementRef, inject, input } from '@angular/core';
 import { DsvContainerComponent } from '@ng-vagabond-lab/ng-dsv/ds/container';
 import { DsvThemeSwitchComponent } from '@ng-vagabond-lab/ng-dsv/ds/theme';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
@@ -10,6 +10,9 @@ import { MenuService } from '../public-api';
     imports: [CommonModule, DsvThemeSwitchComponent, DsvContainerComponent],
     templateUrl: './menu.component.html',
     styleUrls: ['./menu.component.scss'],
+    host: {
+        '(document:click)': 'onClickOutside($event)',
+    },
 })
 export class DsvMenuComponent {
     readonly platformService = inject(PlatformService);
@@ -37,7 +40,6 @@ export class DsvMenuComponent {
         });
     }
 
-    @HostListener('document:click', ['$event'])
     onClickOutside(event: Event) {
         if (
             this.platformService.isPlatformBrowser() &&

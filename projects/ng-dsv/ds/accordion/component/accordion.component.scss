@@ -1,7 +1,4 @@
 :host {
-    --accordion-margin: 10px;
-    --accordion-padding: 10px;
-    --accordion-width: calc(100% - 40px);
     --accordion-header-padding: 5px 10px;
 
     --accordion-text-display: flex;
@@ -12,9 +9,9 @@
     display: flex;
     flex-direction: column;
     gap: 7px;
-    margin: var(--accordion-margin);
-    padding: var(--accordion-padding);
-    width: var(--accordion-width);
+    margin: 10px;
+    padding: 10px;
+    width: calc(100% - 40px);
     background-color: var(--background-card);
     position: relative;
     border-radius: 0px;
@@ -34,8 +31,8 @@
 
     .dsv-accordion-text {
         display: var(--accordion-text-display);
-        width: var(--accordion-text-width);
         padding: var(--accordion-text-padding);
+        width: var(--accordion-text-width);
         overflow: hidden;
         opacity: 0;
         height: 0;

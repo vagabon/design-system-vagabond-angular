@@ -18,6 +18,7 @@ export abstract class BaseFetchService<D extends ApiDto | ApiDto[]> extends Base
         if (this.transferState.hasKey(key)) {
             data = this.transferState.get(key, null);
             this.transferState.remove(key);
+            this.apiService.info('load state', data);
         }
         return data;
     }

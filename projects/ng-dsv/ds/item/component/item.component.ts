@@ -13,7 +13,7 @@ export class DsvItemComponent {
     icon = input<string>('');
     text = input<string>('');
     url = input<string>();
-    small = input<boolean>(true);
+    small = input<boolean>(false);
 
     callback = output<void>();
 

@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { provideZonelessChangeDetection } from '@angular/core';
+import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
+import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { of, throwError } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -22,6 +23,9 @@ describe('ApiService', () => {
         } as unknown as HttpClient & { get: any; post: any; put: any; delete: any };
 
         toastServiceMock = {
+            env: signal({
+                API_URL: '',
+            }),
             showToast: vi.fn(),
         } as unknown as ToastService;
 
@@ -36,6 +40,14 @@ describe('ApiService', () => {
                 { provide: HttpClient, useValue: httpClientMock },
                 { provide: ToastService, useValue: toastServiceMock },
                 { provide: PlatformService, useValue: platformServiceMock },
+                {
+                    provide: EnvironmentService,
+                    useValue: {
+                        env: signal({
+                            API_URL: '',
+                        }),
+                    },
+                },
             ],
         });
 
@@ -102,6 +114,39 @@ describe('ApiService', () => {
         expect(callback).not.toHaveBeenCalled();
         expect(consoleSpy).toHaveBeenCalled();
         consoleSpy.mockRestore();
+    });
+
+    it('findById() should call callback on success', () => {
+        const mockData = { success: true };
+        httpClientMock.get.mockReturnValue(of(mockData));
+        const callback = vi.fn();
+
+        service.findById('/', 1, callback);
+
+        expect(callback).toHaveBeenCalledWith(mockData);
+        expect(service.loaded()).toBe(false);
+    });
+
+    it('findBy() should call callback on success', () => {
+        const mockData = { success: true };
+        httpClientMock.get.mockReturnValue(of(mockData));
+        const callback = vi.fn();
+
+        service.findBy('/', '', '', 1, 10, { order: '' }, callback);
+
+        expect(callback).toHaveBeenCalledWith(mockData);
+        expect(service.loaded()).toBe(false);
+    });
+
+    it('countBy() should call callback on success', () => {
+        const mockData = { success: true };
+        httpClientMock.get.mockReturnValue(of(mockData));
+        const callback = vi.fn();
+
+        service.countBy('/', '', '', callback);
+
+        expect(callback).toHaveBeenCalledWith(mockData);
+        expect(service.loaded()).toBe(false);
     });
 
     it('createOrUpdate() should call put for existing entity', () => {

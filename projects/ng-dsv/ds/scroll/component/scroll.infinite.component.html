@@ -1,6 +1,11 @@
 <ng-content></ng-content>
 
-<dsv-scroll-top-button
-    [scroll]="top()"
-    (callback)="scrollToTop()"
-/>
+@if (loading()) {
+    <ng-container>
+        @for (_ of skeletonArray(); track _) {
+            <ng-container *ngTemplateOutlet="skeletonTemplate()"></ng-container>
+        }
+    </ng-container>
+}
+
+<dsv-scroll-top-button [scroll]="top()" (callback)="scrollToTop()" />

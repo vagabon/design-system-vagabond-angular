@@ -1,9 +1,17 @@
 :host {
+    --select-width: calc(100% - 2px);
+    --select-height: 32px;
+
     width: 100%;
 
-    & > div {
+    &>div {
         .form-control {
-            width: calc(100% - 2px);
+            width: var(--select-width);
+            height: var(--select-height);
+
+            &[multiple] {
+                height: auto;
+            }
         }
     }
 }

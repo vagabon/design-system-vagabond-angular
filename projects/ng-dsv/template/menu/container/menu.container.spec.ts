@@ -1,65 +1,58 @@
-import { provideZonelessChangeDetection, TemplateRef } from '@angular/core';
+import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { MenuService } from '@ng-vagabond-lab/ng-dsv/ds/menu';
 import { AuthService } from '@ng-vagabond-lab/ng-dsv/modules/auth';
 import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { MenuSlotDirective } from '../slot/menu.slot';
 import { MenuContainer } from './menu.container';
 
-const mockAuthService = { hasRole: vi.fn() };
-const mockRouterService = { currentUrl: vi.fn().mockReturnValue('/home') };
-const mockMenuService = { closeMenu: vi.fn() };
+const mockAuthService = { user: signal(null) };
+const mockRouterService = { currentUrl: signal('') };
+const mockMenuService = {};
 
 describe('MenuContainer', () => {
-    const setup = () => {
-        TestBed.configureTestingModule({
+    let component: MenuContainer;
+
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
             imports: [MenuContainer],
             providers: [
-                provideZonelessChangeDetection(),
                 { provide: AuthService, useValue: mockAuthService },
                 { provide: RouterService, useValue: mockRouterService },
                 { provide: MenuService, useValue: mockMenuService },
             ],
-        });
-        return TestBed.createComponent(MenuContainer).componentInstance;
-    };
+        }).compileComponents();
 
-    it('should create', () => {
-        const component = setup();
-        expect(component).toBeTruthy();
+        const fixture = TestBed.createComponent(MenuContainer);
+        component = fixture.componentInstance;
     });
 
     describe('getSlot', () => {
-        it('When slots is empty, Then should return null', () => {
-            const component = setup();
-            expect(component.getSlot('list')).toBeNull();
+        it('returns the template when slot id matches', () => {
+            const mockTpl = {} as any;
+            const slot = { menuSlot: 'header', tpl: mockTpl } as MenuSlotDirective;
+            vi.spyOn(component as any, 'slots', 'get').mockReturnValue(signal([slot]));
+
+            expect(component.getSlot('header')).toBe(mockTpl);
+            expect(component.getSlot('footer')).toBeNull();
+            expect(component.getSlot('')).toBeNull();
         });
 
-        it('When slot id matches, Then should return the template', () => {
-            const component = setup();
-            const mockTpl = {} as TemplateRef<any>;
-            component.slots = { find: vi.fn().mockReturnValue({ tpl: mockTpl }) } as any;
-            expect(component.getSlot('list')).toBe(mockTpl);
-        });
+        it('returns null when slots is empty', () => {
+            vi.spyOn(component as any, 'slots', 'get').mockReturnValue(signal([]));
 
-        it('When slot id does not match, Then should return null', () => {
-            const component = setup();
-            component.slots = { find: vi.fn().mockReturnValue(undefined) } as any;
-            expect(component.getSlot('unknown')).toBeNull();
+            expect(component.getSlot('header')).toBeNull();
         });
     });
 
     describe('isActive', () => {
-        it('When currentUrl includes the url, Then should return true', () => {
-            mockRouterService.currentUrl.mockReturnValue('/home/dashboard');
-            const component = setup();
-            expect(component.isActive('/home')).toBe(true);
-        });
+        it('returns true when url matches and false otherwise', () => {
+            mockRouterService.currentUrl = signal('/dashboard/home');
 
-        it('When currentUrl does not include the url, Then should return false', () => {
-            mockRouterService.currentUrl.mockReturnValue('/settings');
-            const component = setup();
-            expect(component.isActive('/home')).toBe(false);
+            expect(component.isActive('/dashboard')).toBe(true);
+            expect(component.isActive('/settings')).toBe(false);
+            expect(component.isActive('')).toBe(true);
         });
     });
 });

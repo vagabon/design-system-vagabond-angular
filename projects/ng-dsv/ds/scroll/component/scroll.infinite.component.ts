@@ -1,4 +1,15 @@
-import { Component, effect, ElementRef, inject, input, output, signal } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
+import {
+    Component,
+    contentChild,
+    effect,
+    ElementRef,
+    inject,
+    input,
+    output,
+    signal,
+    TemplateRef,
+} from '@angular/core';
 import { Scroll } from '@angular/router';
 import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
 import { filter, map } from 'rxjs';
@@ -6,7 +17,7 @@ import { ButtonScrollTopComponent, ScrollService } from '../public-api';
 
 @Component({
     selector: 'dsv-scroll-infinite',
-    imports: [ButtonScrollTopComponent],
+    imports: [ButtonScrollTopComponent, NgTemplateOutlet],
     templateUrl: './scroll.infinite.component.html',
     styleUrls: ['./scroll.infinite.component.scss'],
     host: {
@@ -22,12 +33,18 @@ export class ScrollInfiniteContainer {
 
     readonly bottomOffset = input<number>(100);
     readonly loading = input<boolean | null>(null);
-    private readonly $loading = signal(false);
+    readonly skeletonCount = input<number>(10);
 
     readonly callback = output<void>();
 
     readonly uuid = signal<string>('');
     readonly top = signal<number>(0);
+
+    private readonly $loading = signal(false);
+
+    skeletonTemplate = contentChild<TemplateRef<void>>('skeleton');
+
+    readonly skeletonArray = signal<number[]>([]);
 
     constructor() {
         this.routerService.router.events
@@ -60,6 +77,10 @@ export class ScrollInfiniteContainer {
             if (!this.loading()) {
                 this.$loading.set(false);
             }
+        });
+
+        effect(() => {
+            this.skeletonArray.set(Array.from({ length: this.skeletonCount() }, (_, i) => i));
         });
     }
 

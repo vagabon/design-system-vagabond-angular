@@ -139,7 +139,7 @@ export class ApiService {
         });
     }
 
-    info(url: string, data: JSONObject) {
+    info(url: string, data: JSONObject | null) {
         if (this.platformService.isPlatformBrowser()) {
             console.log(url, data);
         }

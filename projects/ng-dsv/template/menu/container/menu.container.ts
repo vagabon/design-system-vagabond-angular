@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, ContentChildren, inject, input, QueryList, TemplateRef } from '@angular/core';
+import { Component, contentChildren, inject, input, TemplateRef } from '@angular/core';
 import { DsvItemComponent } from '@ng-vagabond-lab/ng-dsv/ds/item';
 import { DsvMenuComponent, MenuService } from '@ng-vagabond-lab/ng-dsv/ds/menu';
 import { AuthService } from '@ng-vagabond-lab/ng-dsv/modules/auth';
@@ -18,13 +18,12 @@ export class MenuContainer {
     readonly routerService = inject(RouterService);
     readonly menuService = inject(MenuService);
 
-    menu = input<MenuDto>();
+    readonly slots = contentChildren(MenuSlotDirective);
 
-    @ContentChildren(MenuSlotDirective)
-    slots!: QueryList<MenuSlotDirective>;
+    readonly menu = input<MenuDto>();
 
     getSlot(id: string): TemplateRef<any> | null {
-        return this.slots?.find((s) => s.menuSlot === id)?.tpl ?? null;
+        return this.slots()?.find((s) => s.menuSlot === id)?.tpl ?? null;
     }
 
     isActive(url: string) {

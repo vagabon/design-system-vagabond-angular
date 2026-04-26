@@ -16,10 +16,10 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-    }
 
-    & a:hover {
-        background-color: rgb(217, 217, 217);
+        &:hover {
+            background-color: rgb(217, 217, 217);
+        }
     }
 
     i {
@@ -27,17 +27,33 @@
     }
 
     .text {
-        font-size: 1.2rem;
+        font-size: 1rem;
         font-weight: bold;
 
         &.small {
-            font-size: 1rem;
+            margin-left: 20px;
         }
+    }
+
+    &.active .small {
+        --a-color: #6e6e6e;
+    }
+
+    &:not(.active) .small {
+        --a-color: #aeaeae;
     }
 }
 
 :host-context(body.dark) {
     & a:hover {
         background-color: rgb(49, 49, 49) !important;
+    }
+
+    &.active .small {
+        --a-color: #aeaeae;
+    }
+
+    &:not(.active) .small {
+        --a-color: #6e6e6e;
     }
 }

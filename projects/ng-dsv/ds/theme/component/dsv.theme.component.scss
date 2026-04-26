@@ -1,21 +1,4 @@
 :host {
-    --button-text: #ffffff;
-    --background: #dcdcdc;
-    --background-card: #ffffff;
-    --background-header: #dcdcdc;
-    --background-table-tr: #000000;
-    --background-table-tr-text: var(--background-card);
-    --scrollbar: #757575 #f5f5f5;
-    --subtitle: #5a5959;
-    --border: #cbcbcb;
-    --text: #000000;
-    --primary: #007bff;
-    --secondary: #6c757d;
-    --success: #189f37;
-    --info: #1c7fc1;
-    --warning: #a2821f;
-    --error: #ca2535;
-
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -40,7 +23,26 @@
     }
 }
 
-:host-context(.dark) {
+:host-context(body.light) {
+    --button-text: #ffffff;
+    --background: #dcdcdc;
+    --background-card: #ffffff;
+    --background-header: #dcdcdc;
+    --background-table-tr: #000000;
+    --background-table-tr-text: var(--background-card);
+    --scrollbar: #757575 #f5f5f5;
+    --subtitle: #5a5959;
+    --border: #cbcbcb;
+    --text: #000000;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #189f37;
+    --info: #1c7fc1;
+    --warning: #a2821f;
+    --error: #ca2535;
+}
+
+:host-context(body.dark) {
     --background: #000000;
     --background-card: #1f1f1f;
     --background-header: #1f1f1f;
