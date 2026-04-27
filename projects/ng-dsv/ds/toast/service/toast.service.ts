@@ -21,18 +21,23 @@ export class ToastService {
         toast.duration = toast.duration ?? this.duration();
         toast.remainingDuration = toast.duration;
         toast.filled = toast.filled ?? false;
+        if (toast.closeAll) {
+            this.toastShows().forEach((toastShow) => this.closeToast(toastShow));
+        }
         const find = this.toastShows().find((t) => t.text === toast.text);
-        !find && this.toasts.update((toasts) => [...toasts, toast]);
+        if (find) {
+            this.closeToast(find);
+        }
+        this.toasts.update((toasts) => [...toasts, toast]);
     }
 
     consumeToast(toast: ToastDto) {
         this.toastShows.update((toasts) => [...toasts, toast]);
         let duration = 0;
-        const interval = setInterval(() => {
+        toast.interval = setInterval(() => {
             duration += DURATION_TIMEOUT;
             if (duration > toast.duration!) {
-                clearInterval(interval);
-                this.closeToast(toast.uuid!);
+                this.closeToast(toast);
             } else {
                 this.toastShows.update((toasts) =>
                     toasts.map((oneToast) => {
@@ -47,17 +52,18 @@ export class ToastService {
         this.removeToastFromQueue(toast.uuid!);
     }
 
-    closeToast(uuid: string) {
+    closeToast(toast: ToastDto) {
         this.toastShows.update((toasts) =>
             toasts.map((oneToast) => {
-                if (oneToast.uuid === uuid) {
+                if (oneToast.uuid === toast.uuid) {
                     oneToast.open = false;
                 }
                 return oneToast;
             }),
         );
-        setInterval(() => {
-            this.toastShows.update((toasts) => toasts.filter((t) => t.uuid !== uuid));
+        clearInterval(toast.interval);
+        setTimeout(() => {
+            this.toastShows.update((toasts) => toasts.filter((t) => t.uuid !== toast.uuid));
         }, 500);
     }
 

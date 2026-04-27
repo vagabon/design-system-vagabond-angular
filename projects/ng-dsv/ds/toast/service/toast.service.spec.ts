@@ -49,7 +49,7 @@ describe('ToastService', () => {
         toast.uuid = '1234';
         service.toastShows.update((ts) => [...ts, toast]);
 
-        service.closeToast('1234');
+        service.closeToast(toast);
 
         setInterval(() => {
             expect(service.toastShows().find((t) => t.uuid === '1234')?.open).toBe(false);

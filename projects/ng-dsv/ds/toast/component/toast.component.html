@@ -6,13 +6,7 @@
             [class.close]="!toast.open"
             [ngClass]="toast.type + ' ' + (toast.filled ? 'filled' : '')"
         >
-            <button
-                class="close-button"
-                type="button"
-                (click)="toastService.closeToast(toast.uuid!)"
-            >
-                X
-            </button>
+            <button class="close-button" type="button" (click)="toastService.closeToast(toast)">X</button>
             @if (toast.type === 'success') {
                 <i class="ri-check-fill"></i>
             } @else if (toast.type === 'info') {
