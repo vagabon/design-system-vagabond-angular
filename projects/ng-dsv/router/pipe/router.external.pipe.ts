@@ -3,7 +3,7 @@ import { Directive, output } from '@angular/core';
 @Directive({
     selector: 'a[dsvLinkExternal]',
     host: {
-        class: 'primary text',
+        class: 'primary text bold',
         target: '_blank',
         rel: 'noopener noreferrer',
         '(click)': 'onClick($event)',

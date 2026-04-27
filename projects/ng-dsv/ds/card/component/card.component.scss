@@ -1,5 +1,6 @@
 :host {
     --card-content-overflow: hidden;
+    --card-justify-content: space-between;
 
     display: flex;
     flex-direction: column;
@@ -38,6 +39,8 @@
     .dsv-card-content {
         display: flex;
         flex-direction: column;
+        flex: 1;
+        justify-content: var(--card-justify-content);
         padding: 10px;
         overflow: var(--card-content-overflow);
     }

@@ -1,21 +1,12 @@
-<div class="auth-button">
-    <button
-        id="google-signin-button"
-        [class.hidden]="!authService.loadRefreshToken() || authService.userConnected() !== null"
-    ></button>
-</div>
+<button
+    id="google-signin-button"
+    [class.hidden]="!authService.loadRefreshToken() || authService.userConnected() !== null"
+></button>
 
 @if (authService.userConnected()) {
-    <div class="profile">
-        <img
-            [src]="authService.userConnected()?.avatar"
-            alt="profile"
-        />
-        <dsv-modal-button
-            id="logout"
-            icon="ri-logout-box-line"
-        />
-    </div>
+    <ng-content />
+    <img [src]="authService.userConnected()?.avatar" alt="profile" />
+    <dsv-modal-button id="logout" icon="ri-logout-box-line" />
     <dsv-modal-alert
         id="logout"
         titleText="Déconnexion"

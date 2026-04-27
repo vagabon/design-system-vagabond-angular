@@ -4,20 +4,25 @@
     <div class="footer-content">
         <div>
             <div>
+                <a href="/contact" dsvLink>Contact</a>
+            </div>
+            <div>
                 <strong>Mail :</strong>
-                <a href="mailto:vagabond.git@gmail.com" class="primary text"> vagabond.git@gmail.com </a>
+                <a href="mailto:vagabond.git@gmail.com" dsvLinkExternal>vagabond.git@gmail.com</a>
             </div>
             @if (withMentions()) {
                 <div>
-                    <a href="/mentions-legales" (click)="doClick()" dsvLink> Mentions-legales </a>
+                    <a href="/mentions-legales" dsvLink>Mentions-legales</a>
                 </div>
             }
         </div>
         <div>
             <div class="created-by">
-                <img class="vagabond" title="vagabond" alt="vagabond" src="images/vagabond.png" />
+                <a href="/contact" dsvLink
+                    ><img class="vagabond" title="vagabond" alt="vagabond" src="images/vagabond.png"
+                /></a>
                 <div>
-                    <span>Créé par Vagabond</span>
+                    <a href="/contact" dsvLink>Créé par Vagabond</a>
                     <div class="flex-row gap5">
                         <a href="https://github.com/vagabon" title="Github de Vagabond" dsvLinkExternal>
                             <img title="logo Github" alt="logo Github" src="/images/icons/github.png" />

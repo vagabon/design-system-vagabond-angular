@@ -1,17 +1,17 @@
-import { effect, inject } from '@angular/core';
+import { effect } from '@angular/core';
 import { ApiDto } from '@ng-vagabond-lab/ng-dsv/api';
 import { scrollOnClassTo } from '@ng-vagabond-lab/ng-dsv/ds/scroll';
-import { AuthService } from '@ng-vagabond-lab/ng-dsv/modules/auth';
 import { BaseSearchService } from '../../service';
-import { SeoService } from '../../service/seo/seo.service';
+import { BaseContainer } from '../base.container';
 
-export abstract class BaseSearchContainer<T extends BaseSearchService<U>, U extends ApiDto> {
-    readonly authService = inject(AuthService);
-    readonly seoService = inject(SeoService);
-
+export abstract class BaseSearchContainer<
+    T extends BaseSearchService<U>,
+    U extends ApiDto,
+> extends BaseContainer {
     readonly service: T | undefined = undefined;
 
     constructor(searchService: T) {
+        super();
         this.service = searchService;
         this.service.isLoading.set(true);
         effect(() => {

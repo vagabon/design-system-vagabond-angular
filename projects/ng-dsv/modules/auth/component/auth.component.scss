@@ -1,15 +1,15 @@
-.auth-button button {
-    margin: 0px;
-    padding: 0px;
-    background: transparent;
-    border: 0px;
-}
-
-.profile {
+:host {
     display: flex;
-    gap: 0.5rem;
+    gap: 10px;
     flex-flow: nowrap;
     align-items: center;
+
+    button {
+        margin: 0px;
+        padding: 0px;
+        background: transparent;
+        border: 0px;
+    }
 
     img {
         width: 30px;

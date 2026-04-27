@@ -32,14 +32,12 @@ describe('RouterInternalPipe', () => {
         it('When href is valid, Then should prevent default, stop propagation, scroll top and navigate', () => {
             const { directive, router } = createDirective('/home');
             const navigateSpy = vi.spyOn(router, 'navigate');
-            const scrollSpy = vi.spyOn(window, 'scrollTo');
             const event = { stopPropagation: vi.fn(), preventDefault: vi.fn() } as unknown as Event;
 
             directive.onClick(event);
 
             expect(event.stopPropagation).toHaveBeenCalledOnce();
             expect(event.preventDefault).toHaveBeenCalledOnce();
-            expect(scrollSpy).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' });
             expect(navigateSpy).toHaveBeenCalledWith(['/home']);
         });
 

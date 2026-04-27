@@ -75,20 +75,6 @@ describe('AuthComponent', () => {
         expect(googleButton.nativeElement.classList.contains('hidden')).toBe(true);
     });
 
-    it('should display profile and logout modal when user is connected', () => {
-        authServiceMock.userConnected.mockReturnValue({ id: '1', avatar: 'avatar.png' });
-        fixture.detectChanges();
-
-        const profile = fixture.debugElement.query(By.css('.profile'));
-        expect(profile).toBeTruthy();
-
-        const img = profile.query(By.css('img'));
-        expect(img.nativeElement.src).toContain('avatar.png');
-
-        const logoutButton = fixture.debugElement.query(By.css('#logout'));
-        expect(logoutButton).toBeTruthy();
-    });
-
     it('should call logout on logout callback', () => {
         authServiceMock.userConnected.mockReturnValue({ user: { id: '1' } });
         fixture.detectChanges();

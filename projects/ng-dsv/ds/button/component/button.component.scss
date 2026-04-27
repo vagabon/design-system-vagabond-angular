@@ -2,6 +2,12 @@
     --button-border-radius: 4px;
     --button-disabled-background: rgb(200, 200, 200);
     --button-disabled-color: rgba(0, 0, 0);
+    --button-width: auto;
+    --button-min-width: 10px;
+    --button-margin: 0px;
+    --button-padding: 6px;
+    --button-font-size: 1rem;
+    --button-font-weight: 550;
 
     button.dsv-button {
         position: relative;
@@ -14,13 +20,15 @@
         gap: 5px;
         align-items: center;
         justify-content: center;
-        font-weight: 500;
+        font-weight: var(--button-font-weight);
+        font-size: var(--button-font-size);
         letter-spacing: 0.02857em;
         text-transform: uppercase;
         outline: 0px;
-        margin: 0px;
-        padding: 6px;
-        min-width: 10px;
+        margin: var(--button-margin);
+        padding: var(--button-padding);
+        min-width: var(--button-min-width);
+        width: var(--button-width);
         line-height: 1;
         text-decoration: none;
         border-width: 0px;
@@ -55,6 +63,34 @@
             cursor: auto;
             background: var(--button-disabled-background);
             color: var(--button-disabled-color);
+        }
+
+        &.icon-only {
+            padding: 0px;
+            margin: 0px;
+            width: 26px;
+            height: 26px;
+            align-items: flex-end;
+            display: flex;
+            justify-content: center;
+
+            i {
+                font-size: 1.5rem !important;
+            }
+        }
+    }
+
+    &.icon-only button {
+        padding: 0px;
+        margin: 0px;
+        width: 26px;
+        height: 26px;
+        align-items: flex-end;
+        display: flex;
+        justify-content: center;
+
+        i {
+            font-size: 1.5rem !important;
         }
     }
 }

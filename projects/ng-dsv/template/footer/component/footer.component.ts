@@ -1,5 +1,4 @@
 import { Component, input } from '@angular/core';
-import { scrollOnClassTo } from '@ng-vagabond-lab/ng-dsv/ds/scroll';
 import { RouterExternalPipe, RouterInternalPipe } from '@ng-vagabond-lab/ng-dsv/router';
 
 @Component({
@@ -9,11 +8,7 @@ import { RouterExternalPipe, RouterInternalPipe } from '@ng-vagabond-lab/ng-dsv/
     styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
-    copyright = input.required<string>();
+    copyright = input<string>();
     withMentions = input<boolean>(true);
     withX = input<boolean>(true);
-
-    doClick() {
-        scrollOnClassTo('scroll', 0, 0);
-    }
 }

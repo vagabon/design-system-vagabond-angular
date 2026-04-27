@@ -6,6 +6,7 @@ import { BaseFetchService } from '../fetch/base.fetch.service';
 @Injectable({ providedIn: 'root' })
 export abstract class BaseSearchService<T extends ApiDto> extends BaseFetchService<T[]> {
     datas = signal<T[]>([]);
+    total = signal<number | undefined>(undefined);
 
     page = signal<number>(1);
     search = signal<string>('');
@@ -37,7 +38,7 @@ export abstract class BaseSearchService<T extends ApiDto> extends BaseFetchServi
 
         const data = this.getDataFromState(url);
         if (data) {
-            this.updateDate(page, data);
+            this.updateData(page, data);
             this.isLoading.set(false);
             return;
         }
@@ -47,9 +48,10 @@ export abstract class BaseSearchService<T extends ApiDto> extends BaseFetchServi
             url + search,
             (data) => {
                 this.page.set(page + 1);
+                this.total.set(data.totalElements);
                 this.setDataToState(url, data.content);
                 this.isLoading.set(false);
-                this.updateDate(page, data.content);
+                this.updateData(page, data.content);
             },
             () => {
                 this.stopFetch.set(true);
@@ -57,7 +59,7 @@ export abstract class BaseSearchService<T extends ApiDto> extends BaseFetchServi
         );
     }
 
-    updateDate(page: number, datas: T[]): void {
+    updateData(page: number, datas: T[]): void {
         if (page === 1) {
             this.datas.set([]);
         }
