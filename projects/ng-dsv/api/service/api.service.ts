@@ -16,12 +16,14 @@ export class ApiService {
     readonly environmentService = inject(EnvironmentService);
 
     baseUrl = signal<string>('');
-    loaded = signal<boolean>(false);
+    refreshUrl = signal<string>('');
+    nbLoaded = signal<number>(0);
 
     constructor() {
         effect(() => {
             if (this.environmentService.env()) {
-                this.baseUrl.set(this.environmentService.env()!.API_URL);
+                this.baseUrl.set(this.environmentService.env()!.API_URL?.replace(/\/$/, ''));
+                this.refreshUrl.set(`${this.baseUrl().replace(/\/$/, '')}/auth/refresh-token`);
             }
         });
     }
@@ -124,15 +126,15 @@ export class ApiService {
         callback: (data: T) => void,
         callbackError: () => void = () => {},
     ) {
-        this.loaded.set(true);
+        this.nbLoaded.update((loaded) => loaded + 1);
         observable.subscribe({
             next: (res) => {
-                this.loaded.set(false);
+                this.nbLoaded.update((loaded) => loaded - 1);
                 this.info(url, res as JSONObject);
                 callback(res);
             },
             error: (error: JSONObject) => {
-                this.loaded.set(false);
+                this.nbLoaded.update((loaded) => loaded - 1);
                 this.error(url, error);
                 callbackError();
             },

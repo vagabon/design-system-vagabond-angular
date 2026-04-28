@@ -1,6 +1,6 @@
 <button
     id="google-signin-button"
-    [class.hidden]="!authService.loadRefreshToken() || authService.userConnected() !== null"
+    [class.hidden]="!authService.isRefreshTokenLoaded() || authService.userConnected() !== null"
 ></button>
 
 @if (authService.userConnected()) {

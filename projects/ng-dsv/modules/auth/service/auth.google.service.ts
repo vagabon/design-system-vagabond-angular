@@ -50,7 +50,7 @@ export class AuthGoogleService {
     }
 
     loginWithGoogle() {
-        if (this.authService.loadRefreshToken() && this.authService.userConnected() === null) {
+        if (this.authService.isRefreshTokenLoaded() && this.authService.userConnected() === null) {
             google.accounts.id.prompt();
         }
     }

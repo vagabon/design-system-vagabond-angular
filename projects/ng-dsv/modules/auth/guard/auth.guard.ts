@@ -16,7 +16,7 @@ export const authGuard = (role: string): CanActivateFn => {
 
         const requiredRole = role.toUpperCase();
 
-        return toObservable(authService.loadRefreshToken).pipe(
+        return toObservable(authService.isRefreshTokenLoaded).pipe(
             filter((loaded) => loaded),
             take(1),
             map(() => {

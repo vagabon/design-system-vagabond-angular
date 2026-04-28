@@ -11,6 +11,7 @@ const BASE_URL = 'https://api.example.com';
 const mockAuthService: Partial<AuthService> = {
     apiService: {
         baseUrl: signal(BASE_URL),
+        refreshUrl: signal(`${BASE_URL}/auth/refresh-token`),
     } as unknown as AuthService['apiService'],
     userConnected: signal(null),
     userToken: signal(''),

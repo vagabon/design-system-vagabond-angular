@@ -19,7 +19,7 @@ export class AuthComponent {
 
     constructor() {
         effect(() => {
-            if (this.authService.loadRefreshToken()) {
+            if (this.authService.isRefreshTokenLoaded()) {
                 this.authGoogleService.initGoogleAuth('google-signin-button');
             }
         });

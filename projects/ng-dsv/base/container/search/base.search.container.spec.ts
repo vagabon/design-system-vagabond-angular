@@ -23,7 +23,9 @@ function makeMockService(overrides = {}) {
     };
 }
 
-const mockAuthService = {};
+const mockAuthService = {
+    canFetch: signal(true),
+};
 const mockSeoService = {};
 
 class TestSearchContainer extends BaseSearchContainer<any, any> {

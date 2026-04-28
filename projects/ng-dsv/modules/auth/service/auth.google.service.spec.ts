@@ -19,7 +19,7 @@ const mockGoogle = {
 const mockAuthService = {
     isPlatformBrowser: vi.fn().mockReturnValue(true),
     googleLogin: vi.fn(),
-    loadRefreshToken: vi.fn().mockReturnValue(null),
+    isRefreshTokenLoaded: vi.fn().mockReturnValue(null),
     userConnected: vi.fn().mockReturnValue(null),
 };
 
@@ -34,7 +34,7 @@ describe('AuthGoogleService', () => {
     beforeEach(() => {
         vi.clearAllMocks();
         mockAuthService.isPlatformBrowser.mockReturnValue(true);
-        mockAuthService.loadRefreshToken.mockReturnValue(null);
+        mockAuthService.isRefreshTokenLoaded.mockReturnValue(null);
         mockAuthService.userConnected.mockReturnValue(null);
 
         TestBed.configureTestingModule({
@@ -132,20 +132,20 @@ describe('AuthGoogleService', () => {
 
     describe('loginWithGoogle()', () => {
         it('when refresh token exists and user is not connected, then google.accounts.id.prompt should be called', () => {
-            mockAuthService.loadRefreshToken.mockReturnValue('refresh-token');
+            mockAuthService.isRefreshTokenLoaded.mockReturnValue('refresh-token');
             mockAuthService.userConnected.mockReturnValue(null);
             service.loginWithGoogle();
             expect(mockGoogle.accounts.id.prompt).toHaveBeenCalledOnce();
         });
 
         it('when refresh token is null, then google.accounts.id.prompt should not be called', () => {
-            mockAuthService.loadRefreshToken.mockReturnValue(null);
+            mockAuthService.isRefreshTokenLoaded.mockReturnValue(null);
             service.loginWithGoogle();
             expect(mockGoogle.accounts.id.prompt).not.toHaveBeenCalled();
         });
 
         it('when user is already connected, then google.accounts.id.prompt should not be called', () => {
-            mockAuthService.loadRefreshToken.mockReturnValue('refresh-token');
+            mockAuthService.isRefreshTokenLoaded.mockReturnValue('refresh-token');
             mockAuthService.userConnected.mockReturnValue({ id: 'user-1' });
             service.loginWithGoogle();
             expect(mockGoogle.accounts.id.prompt).not.toHaveBeenCalled();

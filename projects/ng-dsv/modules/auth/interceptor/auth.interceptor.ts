@@ -64,20 +64,18 @@ const handle401Error = <T>(
     isRefreshing = true;
     refreshSubject$.next(null);
 
-    return httpClient
-        .post(authService.apiService.baseUrl() + '/auth/refresh-token', {}, { withCredentials: true })
-        .pipe(
-            switchMap((response) => {
-                authService.initUser(response);
-                isRefreshing = false;
-                refreshSubject$.next(authService.userToken());
-                return next(getToken(request, authService));
-            }),
-            catchError((error) => {
-                isRefreshing = false;
-                refreshSubject$.next(null);
-                authService.logout(false);
-                return throwError(() => error);
-            }),
-        );
+    return httpClient.post(authService.apiService.refreshUrl(), {}, { withCredentials: true }).pipe(
+        switchMap((response) => {
+            authService.initUser(response);
+            isRefreshing = false;
+            refreshSubject$.next(authService.userToken());
+            return next(getToken(request, authService));
+        }),
+        catchError((error) => {
+            isRefreshing = false;
+            refreshSubject$.next(null);
+            authService.logout(false);
+            return throwError(() => error);
+        }),
+    );
 };

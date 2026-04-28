@@ -19,7 +19,7 @@ export abstract class BaseSearchContainer<
                 this.service?.datas().length === 0 &&
                 this.service.search() === '' &&
                 !this.service.stopFetch() &&
-                (this.service.ssr() || this.authService.isPlatformBrowser())
+                this.authService.canFetch(this.service.ssr())
             ) {
                 this.doFetch();
             }

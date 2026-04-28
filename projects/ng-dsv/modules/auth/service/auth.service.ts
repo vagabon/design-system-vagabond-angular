@@ -10,12 +10,12 @@ import { hasRole } from '../public-api';
 export class AuthService extends BaseApiService {
     userConnected = signal<UserDto | null>(null);
     userToken = signal<string>('');
-    loadRefreshToken = signal<boolean>(false);
+    isRefreshTokenLoaded = signal<boolean>(false);
 
     initUser(user: UserSigninDto | null = null) {
         this.userConnected.set(user?.user ?? null);
         this.userToken.set(user?.jwt ?? '');
-        this.loadRefreshToken.set(true);
+        this.isRefreshTokenLoaded.set(true);
     }
 
     googleLogin(credential: string) {
@@ -65,5 +65,11 @@ export class AuthService extends BaseApiService {
     hasRole(role: string): boolean {
         const user = this.userConnected() ?? null;
         return !!user && hasRole(role, user.profiles);
+    }
+
+    canFetch(ssr: boolean = true) {
+        return (
+            (ssr && !this.isPlatformBrowser()) || (this.isPlatformBrowser() && this.isRefreshTokenLoaded())
+        );
     }
 }

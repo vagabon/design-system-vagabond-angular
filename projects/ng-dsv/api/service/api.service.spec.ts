@@ -67,7 +67,7 @@ describe('ApiService', () => {
         service.get('/test', callback);
 
         expect(callback).toHaveBeenCalledWith(mockData);
-        expect(service.loaded()).toBe(false);
+        expect(service.nbLoaded()).toBe(0);
     });
 
     it('post() should call callback on success', () => {
@@ -78,7 +78,7 @@ describe('ApiService', () => {
         service.post('/create', mockData, callback);
 
         expect(callback).toHaveBeenCalledWith(mockData);
-        expect(service.loaded()).toBe(false);
+        expect(service.nbLoaded()).toBe(0);
     });
 
     it('put() should call callback on success', () => {
@@ -89,7 +89,7 @@ describe('ApiService', () => {
         service.put('/update', mockData, callback);
 
         expect(callback).toHaveBeenCalledWith(mockData);
-        expect(service.loaded()).toBe(false);
+        expect(service.nbLoaded()).toBe(0);
     });
 
     it('delete() should call callback on success', () => {
@@ -100,7 +100,7 @@ describe('ApiService', () => {
         service.delete('/delete', callback);
 
         expect(callback).toHaveBeenCalledWith(mockData);
-        expect(service.loaded()).toBe(false);
+        expect(service.nbLoaded()).toBe(0);
     });
 
     it('should handle error in get()', () => {
@@ -124,7 +124,7 @@ describe('ApiService', () => {
         service.findById('/', 1, callback);
 
         expect(callback).toHaveBeenCalledWith(mockData);
-        expect(service.loaded()).toBe(false);
+        expect(service.nbLoaded()).toBe(0);
     });
 
     it('findBy() should call callback on success', () => {
@@ -135,7 +135,7 @@ describe('ApiService', () => {
         service.findBy('/', '', '', 1, 10, { order: '' }, callback);
 
         expect(callback).toHaveBeenCalledWith(mockData);
-        expect(service.loaded()).toBe(false);
+        expect(service.nbLoaded()).toBe(0);
     });
 
     it('countBy() should call callback on success', () => {
@@ -146,7 +146,7 @@ describe('ApiService', () => {
         service.countBy('/', '', '', callback);
 
         expect(callback).toHaveBeenCalledWith(mockData);
-        expect(service.loaded()).toBe(false);
+        expect(service.nbLoaded()).toBe(0);
     });
 
     it('createOrUpdate() should call put for existing entity', () => {

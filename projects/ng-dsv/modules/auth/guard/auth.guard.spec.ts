@@ -8,7 +8,7 @@ import { AuthService } from '../public-api';
 import { authGuard } from './auth.guard';
 
 describe('authGuard', () => {
-    let loadRefreshToken: WritableSignal<boolean>;
+    let isRefreshTokenLoaded: WritableSignal<boolean>;
     let hasRole: ReturnType<typeof vi.fn>;
     let createUrlTree: ReturnType<typeof vi.fn>;
 
@@ -24,14 +24,14 @@ describe('authGuard', () => {
     beforeEach(() => {
         hasRole = vi.fn();
         createUrlTree = vi.fn((path) => path);
-        loadRefreshToken = signal(false);
+        isRefreshTokenLoaded = signal(false);
 
         TestBed.configureTestingModule({
             providers: [
                 {
                     provide: AuthService,
                     useValue: {
-                        loadRefreshToken,
+                        isRefreshTokenLoaded,
                         isPlatformBrowser: vi.fn().mockReturnValue(true),
                         hasRole,
                     },
@@ -48,7 +48,7 @@ describe('authGuard', () => {
 
     it('when refresh is loaded and user has role, then allows access', async () => {
         hasRole.mockReturnValue(true);
-        loadRefreshToken.set(true);
+        isRefreshTokenLoaded.set(true);
 
         const result = await runGuard('ADMIN');
         expect(result).toBe(true);
@@ -58,7 +58,7 @@ describe('authGuard', () => {
 
     it('when refresh is loaded and user lacks role, then redirects to access-denied', async () => {
         hasRole.mockReturnValue(false);
-        loadRefreshToken.set(true);
+        isRefreshTokenLoaded.set(true);
 
         const result = await runGuard('ADMIN');
         expect(result).toEqual(['/access-denied']);
@@ -72,7 +72,7 @@ describe('authGuard', () => {
         const resultPromise = runGuard('ADMIN');
         expect(hasRole).not.toHaveBeenCalled();
 
-        loadRefreshToken.set(true);
+        isRefreshTokenLoaded.set(true);
         TestBed.tick();
 
         const result = await resultPromise;
