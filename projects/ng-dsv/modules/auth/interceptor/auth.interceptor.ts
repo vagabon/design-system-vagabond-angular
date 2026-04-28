@@ -31,7 +31,7 @@ export const authInterceptor = (req: HttpRequest<unknown>, next: HttpHandlerFn) 
             if (errorMessage === 'NO_REFRESH_TOKEN') {
                 authService.logout(false);
             } else {
-                toastService.showToast({ type: 'error', text: errorMessage });
+                toastService.showToast({ type: 'error', text: errorMessage, closeAll: true });
             }
 
             return throwError(() => error);

@@ -33,7 +33,7 @@ export const Default: Story = {
     render: (args: any) => ({
         template: `
             <div style="height: 300px">
-                <dsv-modal-button id="${args.id}" icon="ri-add-line" text="add" variant="contained">
+                <dsv-modal-button modalName="${args.id}" icon="ri-add-line" text="add" variant="contained">
                     <dsv-modal id="${args.id}" titleText="${args.title}" class="${args.class}">
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 

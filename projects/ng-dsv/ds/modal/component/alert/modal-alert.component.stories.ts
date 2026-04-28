@@ -35,7 +35,7 @@ export const Default: Story = {
     render: (args: any) => ({
         template: `
         <div style="height: 300px">
-            <dsv-modal-button id="${args.id}" text="Clic">
+            <dsv-modal-button modalName="${args.id}" text="Clic">
                 <dsv-modal-alert 
                     id="${args.id}" 
                     titleText="${args.title}" 

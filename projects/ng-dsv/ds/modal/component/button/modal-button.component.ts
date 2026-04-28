@@ -11,7 +11,7 @@ import { ModalService } from '../../service/modal.service';
 export class ModalButtonComponent {
     modalService = inject(ModalService);
 
-    id = input.required<string>();
+    modalName = input.required<string>();
     icon = input<string>('');
     variant = input<ButtonVariantType>('contained');
     text = input<string>('');
@@ -21,6 +21,6 @@ export class ModalButtonComponent {
 
     doToogle = () => {
         this.callback.emit();
-        this.modalService.toggle(this.id());
+        this.modalService.toggle(this.modalName());
     };
 }

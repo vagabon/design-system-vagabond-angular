@@ -142,6 +142,7 @@ describe('authInterceptor', () => {
             interceptor(req, next).subscribe({ error: () => {} });
 
             expect(mockToastService.showToast).toHaveBeenCalledWith({
+                closeAll: true,
                 type: 'error',
                 text: 'debug msg',
             });
@@ -158,6 +159,7 @@ describe('authInterceptor', () => {
             interceptor(req, makeNextWithError(error)).subscribe({ error: () => {} });
 
             expect(mockToastService.showToast).toHaveBeenCalledWith({
+                closeAll: true,
                 type: 'error',
                 text: 'fallback msg',
             });
@@ -175,6 +177,7 @@ describe('authInterceptor', () => {
             interceptor(req, makeNextWithError(error)).subscribe({ error: () => {} });
 
             expect(mockToastService.showToast).toHaveBeenCalledWith({
+                closeAll: true,
                 type: 'error',
                 text: error.message,
             });

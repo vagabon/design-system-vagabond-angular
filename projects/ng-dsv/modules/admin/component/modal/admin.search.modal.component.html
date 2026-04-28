@@ -1,21 +1,9 @@
-<dsv-modal-button
-    id="m2m"
-    icon="ri-add-line"
-/>
-<dsv-modal
-    id="m2m"
-    titleText="Ajouter un élément"
->
-    <dsv-form-reactive-searchbar
-        [search]="search()"
-        (callbackSearch)="doSearch($event)"
-    />
+<dsv-modal-button modalName="m2m" icon="ri-add-line" />
+<dsv-modal id="m2m" titleText="Ajouter un élément">
+    <dsv-form-reactive-searchbar [search]="search()" (callbackSearch)="doSearch($event)" />
     <div>
         @for (data of datas(); track data.id) {
-            <dsv-item
-                [text]="getValue(data, m2em().name)"
-                (callback)="clickItem(data)"
-            />
+            <dsv-item [text]="getValue(data, m2em().name)" (callback)="clickItem(data)" />
         }
     </div>
 </dsv-modal>

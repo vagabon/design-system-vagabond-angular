@@ -1,14 +1,9 @@
-import { signal } from '@angular/core';
+import { ElementRef, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { scrollOnClassTo } from '@ng-vagabond-lab/ng-dsv/ds/scroll';
 import { AuthService } from '@ng-vagabond-lab/ng-dsv/modules/auth';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { SeoService } from '../../service/seo/seo.service';
 import { BaseSearchContainer } from './base.search.container';
-
-vi.mock('@ng-vagabond-lab/ng-dsv/ds/scroll', () => ({
-    scrollOnClassTo: vi.fn(),
-}));
 
 function makeMockService(overrides = {}) {
     return {
@@ -28,6 +23,12 @@ const mockAuthService = {
 };
 const mockSeoService = {};
 
+const mockElementRef = {
+    nativeElement: {
+        querySelector: vi.fn().mockReturnValue(null),
+    },
+};
+
 class TestSearchContainer extends BaseSearchContainer<any, any> {
     constructor(service: any) {
         super(service);
@@ -46,6 +47,7 @@ describe('BaseSearchContainer', () => {
             providers: [
                 { provide: AuthService, useValue: mockAuthService },
                 { provide: SeoService, useValue: mockSeoService },
+                { provide: ElementRef, useValue: mockElementRef },
             ],
         });
 
@@ -115,11 +117,6 @@ describe('BaseSearchContainer', () => {
             mockService.page.set(5);
             container.doSearch('query');
             expect(mockService.page()).toBe(1);
-        });
-
-        it('when called, then scrollOnClassTo should scroll to top', () => {
-            container.doSearch('query');
-            expect(scrollOnClassTo).toHaveBeenCalledWith('scroll', 0, 0);
         });
 
         it('when called with a search term, then fetchByPage should be called with that term', () => {

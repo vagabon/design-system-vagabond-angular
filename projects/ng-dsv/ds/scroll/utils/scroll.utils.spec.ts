@@ -1,31 +1,88 @@
+import { ElementRef } from '@angular/core';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { scrollOnClassTo } from './scroll.utils';
+import { SCROLL_CLASS, SCROLL_ID, scrollToClosestTop, scrollToTop } from './scroll.utils';
 
-describe('scrollOnClassTo', () => {
-    let mockScrollTo: ReturnType<typeof vi.fn>;
+const mockScrollTo = vi.fn();
+export const createElementRef = (querySelector: ReturnType<typeof vi.fn>): ElementRef => ({
+    nativeElement: { querySelector },
+});
 
+describe('scroll utils', () => {
     beforeEach(() => {
-        mockScrollTo = vi.fn();
-        document.body.innerHTML = `
-            <div class="scroll-class"></div>
-            <div class="scroll-class"></div>
-        `;
-        document.querySelectorAll('.scroll-class').forEach((el) => {
-            el.scrollTo = mockScrollTo as any;
+        mockScrollTo.mockClear();
+    });
+
+    describe('scrollToTop', () => {
+        it('should scroll to top with default selector', () => {
+            const mockElement = { scrollTo: mockScrollTo };
+            const querySelector = vi.fn().mockReturnValue(mockElement);
+            const elementRef = createElementRef(querySelector);
+
+            scrollToTop(elementRef);
+
+            expect(querySelector).toHaveBeenCalledWith(SCROLL_ID);
+            expect(mockScrollTo).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' });
+        });
+
+        it('should scroll to top with custom selector', () => {
+            const mockElement = { scrollTo: mockScrollTo };
+            const querySelector = vi.fn().mockReturnValue(mockElement);
+            const elementRef = createElementRef(querySelector);
+
+            scrollToTop(elementRef, '.custom');
+
+            expect(querySelector).toHaveBeenCalledWith('.custom');
+            expect(mockScrollTo).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' });
+        });
+
+        it('should not throw if element is not found', () => {
+            const querySelector = vi.fn().mockReturnValue(null);
+            const elementRef = createElementRef(querySelector);
+
+            expect(() => scrollToTop(elementRef)).not.toThrow();
         });
     });
 
-    it('should scroll all elements when no index is provided', () => {
-        scrollOnClassTo('scroll-class', 100, 200);
+    describe('scrollToClosestTop', () => {
+        it('should scroll closest to top with default selector', () => {
+            const mockClosest = { scrollTo: mockScrollTo };
+            const mockElement = { closest: vi.fn().mockReturnValue(mockClosest) };
+            const querySelector = vi.fn().mockReturnValue(mockElement);
+            const elementRef = createElementRef(querySelector);
 
-        expect(mockScrollTo).toHaveBeenCalledTimes(2);
-        expect(mockScrollTo).toHaveBeenCalledWith(100, 200);
-    });
+            scrollToClosestTop(elementRef);
 
-    it('should scroll only the element at the given index', () => {
-        scrollOnClassTo('scroll-class', 100, 200, 1);
+            expect(querySelector).toHaveBeenCalledWith(SCROLL_CLASS);
+            expect(mockElement.closest).toHaveBeenCalledWith(SCROLL_CLASS);
+            expect(mockScrollTo).toHaveBeenCalledWith(0, 0);
+        });
 
-        expect(mockScrollTo).toHaveBeenCalledTimes(1);
-        expect(mockScrollTo).toHaveBeenCalledWith(100, 200);
+        it('should scroll closest to top with custom selector', () => {
+            const mockClosest = { scrollTo: mockScrollTo };
+            const mockElement = { closest: vi.fn().mockReturnValue(mockClosest) };
+            const querySelector = vi.fn().mockReturnValue(mockElement);
+            const elementRef = createElementRef(querySelector);
+
+            scrollToClosestTop(elementRef, '.custom');
+
+            expect(querySelector).toHaveBeenCalledWith('.custom');
+            expect(mockElement.closest).toHaveBeenCalledWith('.custom');
+            expect(mockScrollTo).toHaveBeenCalledWith(0, 0);
+        });
+
+        it('should not throw if querySelector returns null', () => {
+            const querySelector = vi.fn().mockReturnValue(null);
+            const elementRef = createElementRef(querySelector);
+
+            expect(() => scrollToClosestTop(elementRef)).not.toThrow();
+        });
+
+        it('should not throw if closest returns null', () => {
+            const mockElement = { closest: vi.fn().mockReturnValue(null) };
+            const querySelector = vi.fn().mockReturnValue(mockElement);
+            const elementRef = createElementRef(querySelector);
+
+            expect(() => scrollToClosestTop(elementRef)).not.toThrow();
+        });
     });
 });

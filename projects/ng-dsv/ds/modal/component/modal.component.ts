@@ -10,15 +10,16 @@ import { ModalService } from '../service/modal.service';
     styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent {
-    id = input.required<string>();
-    titleText = input.required<string>();
-    class = input<string>('');
-    canEchap = input<boolean>(true);
-
-    isOpen = signal<boolean>(false);
-
     modalService = inject(ModalService);
     menuService = inject(MenuService);
+
+    id = input.required<string>();
+    class = input<string>('');
+
+    titleText = input.required<string>();
+
+    canEchap = input<boolean>(true);
+    isOpen = signal<boolean>(false);
 
     constructor() {
         effect(() => {

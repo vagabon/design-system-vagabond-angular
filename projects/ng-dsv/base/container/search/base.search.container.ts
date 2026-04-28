@@ -1,13 +1,16 @@
-import { effect } from '@angular/core';
+import { Directive, effect, ElementRef, inject } from '@angular/core';
 import { ApiDto } from '@ng-vagabond-lab/ng-dsv/api';
-import { scrollOnClassTo } from '@ng-vagabond-lab/ng-dsv/ds/scroll';
+import { SCROLL_CLASS, scrollToTop } from '@ng-vagabond-lab/ng-dsv/ds/scroll';
 import { BaseSearchService } from '../../service';
 import { BaseContainer } from '../base.container';
 
+@Directive()
 export abstract class BaseSearchContainer<
     T extends BaseSearchService<U>,
     U extends ApiDto,
 > extends BaseContainer {
+    private element = inject(ElementRef);
+
     readonly service: T | undefined = undefined;
 
     constructor(searchService: T) {
@@ -32,7 +35,7 @@ export abstract class BaseSearchContainer<
 
     doSearch(search: string) {
         this.service?.page.set(1);
-        scrollOnClassTo('scroll', 0, 0);
+        scrollToTop(this.element, SCROLL_CLASS);
         this.doFetch(search);
     }
 }

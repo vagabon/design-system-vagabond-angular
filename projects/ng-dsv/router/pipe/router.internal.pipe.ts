@@ -19,10 +19,7 @@ export class RouterInternalPipe {
         event.preventDefault();
         const url = this.element.nativeElement.getAttribute('href');
         if (url && url !== '#') {
-            const scrolls = document.getElementsByClassName('scroll');
-            Array.from(scrolls).forEach((scroll) => {
-                scroll?.scrollTo(0, 0);
-            });
+            this.element.nativeElement.closest('.scroll')?.scrollTo(0, 0);
             this.router.navigate([url]);
         } else {
             this.dsvLink.emit();

@@ -6,7 +6,7 @@
 @if (authService.userConnected()) {
     <ng-content />
     <img [src]="authService.userConnected()?.avatar" alt="profile" />
-    <dsv-modal-button id="logout" icon="ri-logout-box-line" />
+    <dsv-modal-button modalName="logout" icon="ri-logout-box-line" />
     <dsv-modal-alert
         id="logout"
         titleText="Déconnexion"
