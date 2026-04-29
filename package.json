@@ -7,8 +7,7 @@
     "build": "run-s lib:build showcase:build",
     "test": "vitest --config vite.config.ts",
     "test:coverage": "npm run test -- --no-watch --coverage",
-    "lib:build": "ng build @ng-vagabond-lab/ng-dsv && npm run lib:postbuild",
-    "lib:postbuild": "mkdir -p dist/ng-dsv/assets && cp projects/ng-dsv/assets/*.scss dist/ng-dsv/assets",
+    "lib:build": "ng build @ng-vagabond-lab/ng-dsv",
     "lib:watch": "ng build @ng-vagabond-lab/ng-dsv --watch --configuration development",
     "showcase:start-waiton": "wait-on dist/ng-vagabon-lib/ng-dsv/package.json && npm run showcase:start",
     "showcase:start": "ng serve showcase",
@@ -18,7 +17,7 @@
     "sonar": "npm run test:coverage && npx sonar-scanner -Dsonar.token=$SONAR_TOKEN -Dsonar.host.url=http://localhost:9000"
   },
   "dependencies": {
-    "@angular/cli": "^21.2.8",
+    "@angular/cli": "^21.2.9",
     "@angular/common": "^21.2.10",
     "@angular/compiler": "^21.2.10",
     "@angular/compiler-cli": "^21.2.10",
@@ -37,19 +36,19 @@
   },
   "devDependencies": {
     "@analogjs/vite-plugin-angular": "^2.5.0",
-    "@angular-devkit/build-angular": "^21.2.8",
-    "@angular/build": "^21.2.8",
+    "@angular-devkit/build-angular": "^21.2.9",
+    "@angular/build": "^21.2.9",
     "@chromatic-com/storybook": "^5.1.2",
     "@compodoc/compodoc": "^1.2.1",
-    "@storybook/addon-docs": "^10.3.5",
-    "@storybook/angular": "^10.3.5",
+    "@storybook/addon-docs": "^10.3.6",
+    "@storybook/angular": "^10.3.6",
     "@vitest/coverage-v8": "^4.1.5",
     "@vitest/ui": "^4.1.5",
     "happy-dom": "^20.9.0",
     "ng-packagr": "^21.2.3",
     "prettier": "^3.8.3",
     "rxjs": "^7.8.2",
-    "storybook": "^10.3.5",
+    "storybook": "^10.3.6",
     "typescript": "^6.0.3",
     "vitest": "^4.1.5"
   }

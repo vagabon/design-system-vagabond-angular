@@ -25,16 +25,7 @@ export class AdminService {
         callback?: (data: PageableDto<ApiDto[]>) => void,
     ) {
         const url =
-            '/' +
-            endpoint +
-            '/findBy?fields=' +
-            fields +
-            '&values=' +
-            search +
-            '&first=' +
-            page +
-            '&max=' +
-            max;
+            endpoint + '/findBy?fields=' + fields + '&values=' + search + '&first=' + page + '&max=' + max;
 
         const callbackResponse =
             callback ??

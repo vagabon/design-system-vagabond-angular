@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { effect, inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
 import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
@@ -15,18 +15,8 @@ export class ApiService {
     readonly platformService = inject(PlatformService);
     readonly environmentService = inject(EnvironmentService);
 
-    baseUrl = signal<string>('');
-    refreshUrl = signal<string>('');
+    baseUrl = signal<string>('/api');
     nbLoaded = signal<number>(0);
-
-    constructor() {
-        effect(() => {
-            if (this.environmentService.env()) {
-                this.baseUrl.set(this.environmentService.env()!.API_URL?.replace(/\/$/, ''));
-                this.refreshUrl.set(`${this.baseUrl().replace(/\/$/, '')}/auth/refresh-token`);
-            }
-        });
-    }
 
     get<T>(url: string, callback: (data: T) => void, callbackError: () => void = () => {}) {
         this.doSubscribe(url, this.httpClient.get<T>(this.baseUrl() + url), callback, callbackError);

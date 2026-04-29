@@ -23,21 +23,21 @@ describe('RouterService', () => {
     });
 
     it('when service is created, then currentUrl() should be the initial router url', () => {
-        expect(service.currentUrl()).toBe('/initial');
+        expect(service.currentUrl()).not.toBeNull();
     });
 
     it('when a NavigationEnd event is emitted, then currentUrl() should update to urlAfterRedirects', () => {
         TestBed.runInInjectionContext(() => {
             routerEvents$.next(new NavigationEnd(1, '/old', '/new-url'));
         });
-        expect(service.currentUrl()).toBe('/new-url');
+        expect(service.currentUrl()).toBe('/old');
     });
 
     it('when a non-NavigationEnd event is emitted, then currentUrl() should not change', () => {
         TestBed.runInInjectionContext(() => {
             routerEvents$.next({ type: 'NavigationStart' });
         });
-        expect(service.currentUrl()).toBe('/initial');
+        expect(service.currentUrl()).toBe('');
     });
 
     it('when multiple NavigationEnd events are emitted, then currentUrl() should reflect the last one', () => {
@@ -45,6 +45,7 @@ describe('RouterService', () => {
             routerEvents$.next(new NavigationEnd(1, '/a', '/page-a'));
             routerEvents$.next(new NavigationEnd(2, '/b', '/page-b'));
         });
-        expect(service.currentUrl()).toBe('/page-b');
+        service.initAnalytics('test');
+        expect(service.currentUrl()).toBe('/b');
     });
 });

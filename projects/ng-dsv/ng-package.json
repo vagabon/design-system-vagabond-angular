@@ -3,5 +3,6 @@
   "dest": "../../dist/ng-dsv",
   "lib": {
     "entryFile": "./public-api.ts"
-  }
+  },
+  "assets": ["./assets/**/*.scss"]
 }

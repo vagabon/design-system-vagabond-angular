@@ -24,35 +24,12 @@ export const ActionsData = {
         ReactiveFormsModule,
     ],
     template: `
-        <dsv-form-reactive
-            [form]="form"
-            urlBack="urlBack"
-            (callback)="callback($event)"
-        >
-            <dsv-form-reactive-input
-                [form]="form"
-                field="name"
-            />
-            <dsv-form-reactive-input
-                [form]="form"
-                type="number"
-                field="number"
-            />
-            <dsv-form-reactive-input
-                [form]="form"
-                type="range"
-                field="range"
-            />
-            <dsv-form-reactive-input
-                [form]="form"
-                type="datetime-local"
-                field="date"
-            />
-            <dsv-form-reactive-input
-                [form]="form"
-                type="textarea"
-                field="textarea"
-            />
+        <dsv-form-reactive [form]="form" urlBack="urlBack" (callback)="callback($event)">
+            <dsv-form-reactive-input [form]="form" field="name" />
+            <dsv-form-reactive-input [form]="form" type="number" field="number" />
+            <dsv-form-reactive-input [form]="form" type="range" field="range" />
+            <dsv-form-reactive-input [form]="form" type="datetime-local" field="date" />
+            <dsv-form-reactive-input [form]="form" type="textarea" field="textarea" />
             <dsv-form-reactive-select
                 [form]="form"
                 field="select"
@@ -61,10 +38,7 @@ export const ActionsData = {
                     { id: '1', name: 'Test' },
                 ]"
             />
-            <dsv-form-reactive-checkbox
-                [form]="form"
-                field="checkbox"
-            />
+            <dsv-form-reactive-checkbox [form]="form" field="checkbox" />
         </dsv-form-reactive>
     `,
     styles: [

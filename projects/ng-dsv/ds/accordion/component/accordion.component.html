@@ -1,17 +1,14 @@
-<a
-    class="dsv-accordion-header"
-    (click)="doToogle()"
->
-    {{ titleText() | translate }}
+<a class="dsv-accordion-header" (click)="doToogle()">
+    <div>
+        {{ titleText() | translate }}
+        <ng-content select=".dsv-accordion-header"></ng-content>
+    </div>
     @if (isOpen() === true) {
         <i class="ri-arrow-up-s-line"></i>
     } @else {
         <i class="ri-arrow-down-s-line"></i>
     }
 </a>
-<div
-    class="dsv-accordion-text"
-    [class.open]="isOpen() === true"
->
+<div class="dsv-accordion-text" [class.open]="isOpen() === true">
     <ng-content></ng-content>
 </div>

@@ -35,7 +35,7 @@ describe('AdminService', () => {
         const responseMock = { content: [{ id: 1, name: 'test' }], total: 1 } as any;
         apiServiceSpy.get.mockImplementation((url: string, cb: Function) => cb(responseMock));
 
-        service.get('admin', 'name', 'test');
+        service.get('/admin', 'name', 'test');
 
         expect(apiServiceSpy.get).toHaveBeenCalledWith(
             '/admin/findBy?fields=name&values=test&first=0&max=10',

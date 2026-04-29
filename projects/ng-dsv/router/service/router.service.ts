@@ -1,8 +1,10 @@
-import { effect, inject, Injectable, signal } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { inject, Injectable, signal } from '@angular/core';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { ModalService } from '@ng-vagabond-lab/ng-dsv/ds/modal';
-import { filter, map } from 'rxjs';
+import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
+import { filter } from 'rxjs';
+
+declare const gtag: Function;
 
 @Injectable({
     providedIn: 'root',
@@ -10,18 +12,13 @@ import { filter, map } from 'rxjs';
 export class RouterService {
     readonly router = inject(Router);
     readonly modalService = inject(ModalService);
+    readonly plateformService = inject(PlatformService);
 
     readonly isLoading = signal<boolean>(true);
 
-    interval: ReturnType<typeof setTimeout> | undefined = undefined;
+    readonly currentUrl = signal<string>('');
 
-    currentUrl = toSignal(
-        this.router.events.pipe(
-            filter((event) => event instanceof NavigationEnd),
-            map((event) => event.urlAfterRedirects),
-        ),
-        { initialValue: this.router.url },
-    );
+    interval: ReturnType<typeof setTimeout> | undefined = undefined;
 
     constructor() {
         this.router.events.subscribe((event) => {
@@ -32,14 +29,22 @@ export class RouterService {
                 event instanceof NavigationCancel ||
                 event instanceof NavigationError
             ) {
+                this.currentUrl.set(event.url);
                 this.isLoading.set(false);
                 clearInterval(this.interval);
             }
         });
+    }
 
-        effect(() => {
-            this.currentUrl();
-            this.modalService.closeAll();
-        });
+    initAnalytics(key: string): void {
+        if (this.plateformService.isPlatformBrowser()) {
+            this.router.events
+                .pipe(filter((event) => event instanceof NavigationEnd))
+                .subscribe((event: NavigationEnd) => {
+                    gtag('config', key, {
+                        page_path: event.urlAfterRedirects,
+                    });
+                });
+        }
     }
 }
