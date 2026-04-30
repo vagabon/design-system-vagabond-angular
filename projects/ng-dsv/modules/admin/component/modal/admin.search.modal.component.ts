@@ -14,23 +14,32 @@ import { AdminService } from '../../service/admin.service';
     styleUrls: ['./admin.search.modal.component.scss'],
 })
 export class AdminSearchModalContainer extends BaseContainer {
-    modalService = inject(ModalService);
-    adminService = inject(AdminService);
+    readonly modalService = inject(ModalService);
+    readonly adminService = inject(AdminService);
 
-    m2em = input.required<ManyToManyDto>();
+    readonly m2em = input.required<ManyToManyDto>();
 
-    search = signal<string>('');
-    datas = signal<ApiDto[]>([]);
+    readonly search = signal<string>('');
+    readonly datas = signal<ApiDto[]>([]);
 
-    callback = output<ApiDto>();
+    readonly callback = output<ApiDto>();
 
     constructor() {
         super();
         this.requiredRole.set('ADMIN');
         effect(() => {
-            this.adminService.get(this.m2em().endPoint, this.m2em().fields, this.search(), 0, 500, (data) => {
-                this.datas.set(data.content);
-            });
+            if (this.modalService.getSignal('m2m')) {
+                this.adminService.get(
+                    this.m2em().endPoint,
+                    this.m2em().fields,
+                    this.search(),
+                    0,
+                    500,
+                    (data) => {
+                        this.datas.set(data.content);
+                    },
+                );
+            }
         });
     }
 

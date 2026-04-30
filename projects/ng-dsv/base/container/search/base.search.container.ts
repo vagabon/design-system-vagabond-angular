@@ -9,7 +9,7 @@ export abstract class BaseSearchContainer<
     T extends BaseSearchService<U>,
     U extends ApiDto,
 > extends BaseContainer {
-    private element = inject(ElementRef);
+    readonly element = inject(ElementRef);
 
     readonly service: T | undefined = undefined;
 

@@ -26,6 +26,15 @@
         i {
             position: absolute;
             right: 10px;
+
+            &.disabled {
+                color: var(--subtitle);
+            }
+        }
+
+        &.disabled {
+            cursor: default;
+            pointer-events: none;
         }
     }
 
@@ -45,6 +54,10 @@
             padding: 10px 10px;
             opacity: 1;
             height: auto;
+        }
+
+        &:empty {
+            display: none;
         }
     }
 }
