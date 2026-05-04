@@ -3,7 +3,6 @@ import { TestBed } from '@angular/core/testing';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
 import { lastValueFrom, Observable } from 'rxjs';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { AuthService } from '../public-api';
 import { authGuard } from './auth.guard';
 

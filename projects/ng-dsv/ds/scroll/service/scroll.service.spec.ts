@@ -2,7 +2,6 @@ import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
-import { describe, expect, it } from 'vitest';
 import { ScrollService } from './scroll.service';
 
 const mockRouterService = { router: { url: '/home' } };

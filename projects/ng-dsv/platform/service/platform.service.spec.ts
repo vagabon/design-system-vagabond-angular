@@ -1,6 +1,5 @@
 import { PLATFORM_ID, provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { PlatformService } from './platform.service';
 
 describe('PlatformService', () => {

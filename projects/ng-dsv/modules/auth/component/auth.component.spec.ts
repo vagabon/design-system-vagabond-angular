@@ -4,7 +4,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ModalAlertComponent, ModalButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/modal';
 import { provideTranslateService } from '@ngx-translate/core';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { AuthGoogleService, AuthService } from '../public-api';
 import { AuthComponent } from './auth.component';
 

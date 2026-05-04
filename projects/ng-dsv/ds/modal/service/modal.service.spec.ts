@@ -1,4 +1,3 @@
-import { beforeEach, describe, expect, it } from 'vitest';
 import { ModalService } from './modal.service';
 
 describe('ModalService', () => {

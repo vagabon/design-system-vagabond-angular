@@ -1,5 +1,4 @@
 import { ElementRef } from '@angular/core';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { SCROLL_CLASS, SCROLL_ID, scrollToClosestTop, scrollToTop } from './scroll.utils';
 
 const mockScrollTo = vi.fn();

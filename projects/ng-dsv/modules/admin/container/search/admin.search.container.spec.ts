@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiDto, PageableDto } from '@ng-vagabond-lab/ng-dsv/api';
 import { provideTranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { AdminTabConfDto } from '../../dto/admin.dto';
 import { ADMIN_USER } from '../../public-api';
 import { AdminService } from '../../service/admin.service';

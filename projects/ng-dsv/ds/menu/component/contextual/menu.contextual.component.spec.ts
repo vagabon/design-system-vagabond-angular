@@ -1,7 +1,6 @@
 import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import {
     CLICK_LEFT,
     CLICK_RIGHT,

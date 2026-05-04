@@ -3,7 +3,6 @@ import { TestBed } from '@angular/core/testing';
 import { MenuService } from '@ng-vagabond-lab/ng-dsv/ds/menu';
 import { AuthService } from '@ng-vagabond-lab/ng-dsv/modules/auth';
 import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { MenuSlotDirective } from '../slot/menu.slot';
 import { MenuContainer } from './menu.container';
 

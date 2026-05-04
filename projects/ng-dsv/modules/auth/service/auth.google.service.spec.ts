@@ -1,7 +1,6 @@
 import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { AuthGoogleService } from './auth.google.service';
 import { AuthService } from './auth.service';
 

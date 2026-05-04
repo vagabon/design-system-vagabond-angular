@@ -2,7 +2,6 @@ import { HttpClient, HttpErrorResponse, HttpHandlerFn, HttpRequest } from '@angu
 import { signal } from '@angular/core';
 import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
 import { of, throwError } from 'rxjs';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { AuthService } from '../public-api';
 import { authInterceptor } from './auth.interceptor';
 

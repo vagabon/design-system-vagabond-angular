@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest';
 import { ButtonVariantType, ButtonWidthType, ColorType, colorControls, colors } from './color.type';
 
 describe('Button Types and Constants', () => {

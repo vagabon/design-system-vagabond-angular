@@ -1,7 +1,6 @@
 import { ElementRef, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { AuthService } from '@ng-vagabond-lab/ng-dsv/modules/auth';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { SeoService } from '../../service/seo/seo.service';
 import { BaseSearchContainer } from './base.search.container';
 

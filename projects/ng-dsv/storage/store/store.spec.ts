@@ -1,4 +1,3 @@
-import { describe, expect, it, vi } from 'vitest';
 import { Store } from './store';
 
 vi.mock('app/module/person/utils/person.utils', () => ({

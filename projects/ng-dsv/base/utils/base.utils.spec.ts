@@ -1,7 +1,6 @@
 import { Component, output, provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { describe, expect, it } from 'vitest';
-import { isCallback, generateArray } from './base.utils';
+import { generateArray, isCallback } from './base.utils';
 
 @Component({ selector: 'test-host', template: '' })
 class TestHostComponent {

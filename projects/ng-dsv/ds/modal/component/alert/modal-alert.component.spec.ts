@@ -2,7 +2,6 @@ import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/co
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
 import { provideTranslateService } from '@ngx-translate/core';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ModalService } from '../../service/modal.service';
 import { ModalComponent } from '../modal.component';
 import { ModalAlertComponent } from './modal-alert.component';

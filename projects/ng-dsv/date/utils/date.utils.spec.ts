@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest';
 import { formatDate, toBackendDate, toDateInputValue } from './date.utils';
 
 describe('formatDate', () => {

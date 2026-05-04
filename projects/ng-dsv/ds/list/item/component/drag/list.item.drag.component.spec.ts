@@ -1,6 +1,5 @@
 import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { beforeEach, describe, expect, it } from 'vitest';
 import { ListDragService } from '../../../list/service/list.drag.service';
 import { ListItemDragComponent } from './list.item.drag.component';
 

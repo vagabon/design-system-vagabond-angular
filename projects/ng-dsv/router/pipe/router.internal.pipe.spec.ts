@@ -1,7 +1,6 @@
 import { ElementRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { RouterInternalPipe } from './router.internal.pipe';
 
 const mockNavigate = vi.fn();

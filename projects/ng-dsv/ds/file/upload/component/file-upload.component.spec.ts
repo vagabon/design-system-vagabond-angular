@@ -1,6 +1,5 @@
 import { ElementRef, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { FileUploadComponent } from './file-upload.component';
 
 describe('FileUploadComponent', () => {

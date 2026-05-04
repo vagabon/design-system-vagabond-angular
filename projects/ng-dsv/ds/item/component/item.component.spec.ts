@@ -1,7 +1,6 @@
 import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { DsvItemComponent } from './item.component';
 
 vi.mock('@ng-vagabond-lab/ng-dsv/base', () => ({

@@ -1,6 +1,5 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ThemeService } from '../../public-api';
 import { DsvThemeSwitchComponent } from './dsv.theme.switch.component';
 

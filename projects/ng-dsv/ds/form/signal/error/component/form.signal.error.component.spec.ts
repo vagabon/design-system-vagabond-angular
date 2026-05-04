@@ -2,7 +2,6 @@ import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/co
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ValidationError } from '@angular/forms/signals';
 import { provideTranslateService } from '@ngx-translate/core';
-import { beforeEach, describe, expect, it } from 'vitest';
 import { FormSignalErrorComponent } from './form.signal.error.component';
 
 describe('FormSignalErrorComponent', () => {

@@ -1,6 +1,5 @@
 import { OutputEmitterRef, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { DsvAvatarComponent } from './avatar.component';
 
 describe('DsvAvatarComponent', () => {

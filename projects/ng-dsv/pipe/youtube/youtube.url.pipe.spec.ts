@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { DomSanitizer } from '@angular/platform-browser';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { YoutubeUrlPipe } from './youtube.url.pipe';
 
 describe('YoutubeUrlPipe', () => {

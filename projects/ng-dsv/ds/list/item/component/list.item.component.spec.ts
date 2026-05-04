@@ -1,6 +1,5 @@
 import { NO_ERRORS_SCHEMA, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ListItemDragDto } from '../../list/dto/list.dto';
 import { ListDragService } from '../../list/service/list.drag.service';
 import { ListItemComponent } from './list.item.component';

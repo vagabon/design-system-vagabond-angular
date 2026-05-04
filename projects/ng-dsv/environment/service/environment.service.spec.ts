@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { EnvironmentDto } from '../public-api';
 import { EnvironmentService } from './environment.service';
 

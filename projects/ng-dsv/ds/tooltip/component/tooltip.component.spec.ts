@@ -2,17 +2,12 @@ import { Component, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { provideTranslateService } from '@ngx-translate/core';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { TooltipPosition, TooltipPositionEnum } from '../dto/tooltip.dto';
 import { DsvTooltipComponent } from './tooltip.component';
 
 @Component({
     imports: [DsvTooltipComponent],
-    template: `<dsv-tooltip
-        [text]="'Test Tooltip'"
-        [position]="position"
-        >Hover me</dsv-tooltip
-    >`,
+    template: `<dsv-tooltip [text]="'Test Tooltip'" [position]="position">Hover me</dsv-tooltip>`,
 })
 class TestHostComponent {
     position: TooltipPosition = TooltipPositionEnum.TOP;

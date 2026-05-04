@@ -1,7 +1,6 @@
 import { provideHttpClient } from '@angular/common/http';
 import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ReactiveSearchbarComponent } from './reactive.searchbar.component';
 
 describe('ReactiveSearchbarComponent', () => {

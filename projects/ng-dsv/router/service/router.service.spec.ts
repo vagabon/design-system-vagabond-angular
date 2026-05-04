@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { beforeEach, describe, expect, it } from 'vitest';
 import { RouterService } from './router.service';
 
 const routerEvents$ = new Subject<any>();

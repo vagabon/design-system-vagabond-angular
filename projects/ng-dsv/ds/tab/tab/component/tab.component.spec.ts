@@ -4,7 +4,6 @@ import { By } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { provideTranslateService, TranslatePipe } from '@ngx-translate/core';
 import { of } from 'rxjs';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { TabDto } from '../dto/tab.dto';
 import { TabComponent } from './tab.component';
 

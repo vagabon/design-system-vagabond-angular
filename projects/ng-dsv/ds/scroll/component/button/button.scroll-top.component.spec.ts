@@ -1,7 +1,6 @@
 import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
-import { beforeEach, describe, expect, it } from 'vitest';
 import { ButtonScrollTopComponent } from './button.scroll-top.component';
 
 describe('ButtonScrollTopComponent', () => {

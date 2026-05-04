@@ -3,7 +3,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Scroll } from '@angular/router';
 import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
 import { Subject } from 'rxjs';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { ButtonScrollTopComponent, ScrollService } from '../public-api';
 import { ScrollInfiniteContainer } from './scroll.infinite.component';
 
