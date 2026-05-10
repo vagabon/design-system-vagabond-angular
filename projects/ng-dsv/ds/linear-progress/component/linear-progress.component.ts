@@ -6,7 +6,7 @@ import { Component, input } from '@angular/core';
     styleUrls: ['./linear-progress.component.scss'],
 })
 export class LinearProgressComponent {
-    load = input<boolean>(false);
-    value = input<number>(0);
-    indeterminate = input<boolean>(true);
+    readonly load = input<boolean>(false);
+    readonly value = input<number>(0);
+    readonly indeterminate = input<boolean>(true);
 }

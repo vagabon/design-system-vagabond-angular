@@ -4,13 +4,13 @@ import { Injectable, signal } from '@angular/core';
     providedIn: 'root',
 })
 export class MenuService {
-    isMenuOpen = signal<boolean>(false);
+    readonly isMenuOpen = signal<boolean>(false);
 
-    toogleMenu() {
+    toogleMenu(): void {
         this.isMenuOpen.update((toogle) => !toogle);
     }
 
-    closeMenu() {
+    closeMenu(): void {
         this.isMenuOpen.set(false);
     }
 }

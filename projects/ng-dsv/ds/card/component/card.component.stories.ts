@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { DsvButtonComponent } from '../../button';
-import { CardActionComponent } from './action/card.action.component';
+import { DsvCardActionComponent } from './action/card-action.component';
 import { DsvCardComponent } from './card.component';
-import { CardHeaderComponent } from './header/card.header.component';
-import { CardImgComponent } from './img/card.img.component';
+import { DsvCardHeaderComponent } from './header/card-header.component';
+import { DsvCardImgComponent } from './img/card-img.component';
 
 export const ActionsData = {
     avatar: 'dfds',
@@ -17,9 +17,9 @@ export const ActionsData = {
     selector: 'storybook-wrapper',
     standalone: true,
     imports: [
-        CardImgComponent,
-        CardHeaderComponent,
-        CardActionComponent,
+        DsvCardImgComponent,
+        DsvCardHeaderComponent,
+        DsvCardActionComponent,
         DsvCardComponent,
         DsvButtonComponent,
     ],

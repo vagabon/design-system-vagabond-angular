@@ -8,19 +8,19 @@ import { ModalService } from '../../service/modal.service';
     imports: [DsvButtonComponent],
     templateUrl: './modal-button.component.html',
 })
-export class ModalButtonComponent {
-    modalService = inject(ModalService);
+export class DsvModalButtonComponent {
+    readonly modalService = inject(ModalService);
 
-    modalName = input.required<string>();
-    icon = input<string>('');
-    variant = input<ButtonVariantType>('contained');
-    text = input<string>('');
-    color = input<ColorType>('primary');
+    readonly modalName = input.required<string>();
+    readonly icon = input<string>('');
+    readonly variant = input<ButtonVariantType>('contained');
+    readonly text = input<string>('');
+    readonly color = input<ColorType>('primary');
 
-    callback = output<void>();
+    readonly callback = output<void>();
 
-    doToogle = () => {
+    doToogle(): void {
         this.callback.emit();
         this.modalService.toggle(this.modalName());
-    };
+    }
 }

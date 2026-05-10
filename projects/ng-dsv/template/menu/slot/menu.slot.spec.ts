@@ -1,10 +1,4 @@
-import {
-    Component,
-    provideZonelessChangeDetection,
-    QueryList,
-    TemplateRef,
-    ViewChildren,
-} from '@angular/core';
+import { Component, QueryList, TemplateRef, ViewChildren } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { MenuSlotDirective } from './menu.slot';
 
@@ -19,7 +13,7 @@ class TestHostComponent {
 const setup = () => {
     TestBed.configureTestingModule({
         imports: [TestHostComponent],
-        providers: [provideZonelessChangeDetection()],
+        providers: [],
     });
     const fixture = TestBed.createComponent(TestHostComponent);
     fixture.detectChanges();

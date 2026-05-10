@@ -1,6 +1,7 @@
-import { signal } from '@angular/core';
+import { Directive, signal } from '@angular/core';
 
 // TODO : checker les inject dans les composants ???
+@Directive()
 export abstract class BaseComponent {
-    loaded = signal(false);
+    readonly loaded = signal(false);
 }

@@ -9,10 +9,10 @@ import { DURATION_DEFAULT, MAX_TOASTS, ToastService } from '../service/toast.ser
     styleUrls: ['./toast.component.scss'],
 })
 export class DsvToastComponent {
-    protected readonly toastService = inject(ToastService);
+    readonly toastService = inject(ToastService);
 
-    duration = input<number>(DURATION_DEFAULT);
-    max = input<number>(MAX_TOASTS);
+    readonly duration = input<number>(DURATION_DEFAULT);
+    readonly max = input<number>(MAX_TOASTS);
 
     constructor() {
         effect(() => {

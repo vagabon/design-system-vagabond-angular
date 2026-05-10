@@ -8,19 +8,19 @@ export class ModalService {
         return this.states().get(id) ?? false;
     }
 
-    open(id: string) {
+    open(id: string): void {
         this.states.update((map) => new Map(map).set(id, true));
     }
 
-    close(id: string) {
+    close(id: string): void {
         this.states.update((map) => new Map(map).set(id, false));
     }
 
-    toggle(id: string) {
+    toggle(id: string): void {
         this.states.update((map) => new Map(map).set(id, !map.get(id)));
     }
 
-    closeAll() {
+    closeAll(): void {
         this.states.set(new Map());
     }
 }

@@ -1,7 +1,7 @@
 import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { MenuService } from '@ng-vagabond-lab/ng-dsv/ds/menu';
-import { AuthService } from '@ng-vagabond-lab/ng-dsv/modules/auth';
+import { AuthService } from '@ng-vagabond-lab/ng-dsv/module/auth';
 import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
 import { MenuSlotDirective } from '../slot/menu.slot';
 import { MenuContainer } from './menu.container';

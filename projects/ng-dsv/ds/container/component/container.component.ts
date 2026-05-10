@@ -13,9 +13,9 @@ const COLUMN_CLASS = 'column';
     },
 })
 export class DsvContainerComponent {
-    column = input<boolean>(false);
+    readonly column = input<boolean>(false);
 
-    class = computed(() => {
+    readonly class = computed(() => {
         const classes: string[] = ['dsv-container'];
         this.column() && classes.push(COLUMN_CLASS);
         return classes.join(' ');

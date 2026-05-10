@@ -8,14 +8,14 @@ import { TranslatePipe } from '@ngx-translate/core';
     styleUrls: ['./accordion.component.scss'],
 })
 export class DsvAccordionComponent {
-    open = input<boolean>(false);
-    titleText = input<string>('');
-    color = input<string>('');
+    readonly open = input<boolean>(false);
+    readonly titleText = input<string>('');
+    readonly color = input<string>('');
 
     readonly checkboxRef = viewChild<ElementRef>('accordionContent');
 
-    isOpen = signal<boolean>(this.open());
-    hasContent = signal<boolean>(false);
+    readonly isOpen = signal<boolean>(this.open());
+    readonly hasContent = signal<boolean>(false);
 
     constructor() {
         afterNextRender(() => {
@@ -31,7 +31,7 @@ export class DsvAccordionComponent {
         });
     }
 
-    doToogle() {
+    doToogle(): void {
         if (!this.hasContent()) {
             return;
         }

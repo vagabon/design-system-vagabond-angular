@@ -1,4 +1,4 @@
-import { Component, output, provideZonelessChangeDetection } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { generateArray, isCallback } from './base.utils';
 
@@ -10,7 +10,7 @@ class TestHostComponent {
 const setupEmitter = () => {
     TestBed.configureTestingModule({
         imports: [TestHostComponent],
-        providers: [provideZonelessChangeDetection()],
+        providers: [],
     });
     return TestBed.createComponent(TestHostComponent).componentInstance.emitter;
 };

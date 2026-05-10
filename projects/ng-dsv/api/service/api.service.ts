@@ -15,8 +15,8 @@ export class ApiService {
     readonly platformService = inject(PlatformService);
     readonly environmentService = inject(EnvironmentService);
 
-    baseUrl = signal<string>('/api');
-    nbLoaded = signal<number>(0);
+    readonly baseUrl = signal<string>('/api');
+    readonly nbLoaded = signal<number>(0);
 
     get<T>(url: string, callback: (data: T) => void, callbackError: () => void = () => {}) {
         this.doSubscribe(url, this.httpClient.get<T>(this.baseUrl() + url), callback, callbackError);

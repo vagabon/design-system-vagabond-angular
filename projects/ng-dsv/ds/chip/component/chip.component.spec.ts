@@ -1,4 +1,3 @@
-import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideTranslateService } from '@ngx-translate/core';
 import { DsvChipComponent } from './chip.component';
@@ -10,7 +9,7 @@ describe('DsvChipComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [DsvChipComponent],
-            providers: [provideZonelessChangeDetection(), provideTranslateService()],
+            providers: [provideTranslateService()],
         }).compileComponents();
         fixture = TestBed.createComponent(DsvChipComponent);
         component = fixture.componentInstance;

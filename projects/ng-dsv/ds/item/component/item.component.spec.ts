@@ -1,4 +1,4 @@
-import { provideZonelessChangeDetection, signal } from '@angular/core';
+import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { DsvItemComponent } from './item.component';
@@ -23,7 +23,6 @@ describe('DsvItemComponent', () => {
         await TestBed.configureTestingModule({
             imports: [DsvItemComponent],
             providers: [
-                provideZonelessChangeDetection(),
                 {
                     provide: Router,
                     useValue: {

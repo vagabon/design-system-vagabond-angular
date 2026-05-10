@@ -1,7 +1,7 @@
 import { Component, effect, input, output, signal } from '@angular/core';
 import { isCallback } from '@ng-vagabond-lab/ng-dsv/base';
 import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
-import { BaseColorComponent } from '@ng-vagabond-lab/ng-dsv/ds/color';
+import { DsvBaseColorComponent } from '@ng-vagabond-lab/ng-dsv/ds/color';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
@@ -10,12 +10,12 @@ import { TranslatePipe } from '@ngx-translate/core';
     templateUrl: './chip.component.html',
     styleUrls: ['./chip.component.scss'],
 })
-export class DsvChipComponent extends BaseColorComponent {
-    text = input<string>('');
+export class DsvChipComponent extends DsvBaseColorComponent {
+    readonly text = input<string>('');
 
-    delete = output<void>();
+    readonly delete = output<void>();
 
-    isDelete = signal<boolean>(false);
+    readonly isDelete = signal<boolean>(false);
 
     constructor() {
         super();
@@ -28,7 +28,7 @@ export class DsvChipComponent extends BaseColorComponent {
         });
     }
 
-    doDelete() {
+    doDelete(): void {
         this.delete.emit();
     }
 }

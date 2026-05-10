@@ -1,0 +1,55 @@
+import { Component, effect, input, signal } from '@angular/core';
+import { ValidationError } from '@angular/forms/signals';
+import { TranslatePipe } from '@ngx-translate/core';
+
+@Component({
+    selector: 'dsv-form-signal-error',
+    imports: [TranslatePipe],
+    templateUrl: './form-signal-error.component.html',
+    styleUrls: ['../../../reactive/error/component/form-reactive-error.component.scss'],
+    host: {
+        class: 'text error',
+    },
+})
+export class FormSignalErrorComponent {
+    errors = input.required<ValidationError[]>();
+    isTouched = input<boolean>(false);
+
+    error = signal<string>('');
+
+    constructor() {
+        effect(() => {
+            let errorMessage = '';
+            this.errors().forEach((error) => {
+                switch (error.kind) {
+                    case 'required':
+                        errorMessage = 'Le champ est obligatoire.';
+                        break;
+                    case 'min':
+                        errorMessage =
+                            'La valeur minimum est de ' + error['min' as keyof ValidationError] + '.';
+                        break;
+                    case 'max':
+                        errorMessage =
+                            'La valeur maximum est de ' + error['max' as keyof ValidationError] + '.';
+                        break;
+                    case 'minLength':
+                        errorMessage =
+                            'La taille minimum est de ' + error['minLength' as keyof ValidationError] + '.';
+                        break;
+                    case 'maxLength':
+                        errorMessage =
+                            'La taille maximum est de ' + error['maxLength' as keyof ValidationError] + '.';
+                        break;
+                    case 'email':
+                        errorMessage = "Le format n'est pas celui d'un email.";
+                        break;
+                    default:
+                        errorMessage = error.message ?? 'Erreur inconnue.';
+                        break;
+                }
+            });
+            this.error.set(errorMessage);
+        });
+    }
+}

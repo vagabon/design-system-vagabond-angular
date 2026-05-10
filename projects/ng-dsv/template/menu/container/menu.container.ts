@@ -2,7 +2,7 @@ import { NgTemplateOutlet } from '@angular/common';
 import { Component, contentChildren, inject, input, TemplateRef } from '@angular/core';
 import { DsvItemComponent } from '@ng-vagabond-lab/ng-dsv/ds/item';
 import { DsvMenuComponent, MenuService } from '@ng-vagabond-lab/ng-dsv/ds/menu';
-import { AuthService } from '@ng-vagabond-lab/ng-dsv/modules/auth';
+import { AuthService } from '@ng-vagabond-lab/ng-dsv/module/auth';
 import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
 import { MenuDto } from '../dto/menu.dto';
 import { MenuSlotDirective } from '../slot/menu.slot';
@@ -26,7 +26,7 @@ export class MenuContainer {
         return this.slots()?.find((s) => s.menuSlot === id)?.tpl ?? null;
     }
 
-    isActive(url: string) {
+    isActive(url: string): boolean {
         return this.routerService.currentUrl().includes(url);
     }
 }

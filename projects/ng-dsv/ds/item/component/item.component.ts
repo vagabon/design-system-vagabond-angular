@@ -8,16 +8,16 @@ import { isCallback } from '@ng-vagabond-lab/ng-dsv/base';
     styleUrls: ['./item.component.scss'],
 })
 export class DsvItemComponent {
-    private readonly router = inject(Router);
+    readonly router = inject(Router);
 
-    icon = input<string>('');
-    text = input<string>('');
-    url = input<string>();
-    small = input<boolean>(false);
+    readonly icon = input<string>('');
+    readonly text = input<string>('');
+    readonly url = input<string>();
+    readonly small = input<boolean>(false);
 
-    callback = output<void>();
+    readonly callback = output<void>();
 
-    isCallback = signal<boolean>(false);
+    readonly isCallback = signal<boolean>(false);
 
     constructor() {
         effect(() => {
@@ -25,7 +25,7 @@ export class DsvItemComponent {
         });
     }
 
-    doClick(event: Event) {
+    doClick(event: Event): void {
         event.stopPropagation();
         event.preventDefault();
         if (this.url()) {

@@ -1,2 +1,2 @@
-export * from './component/base.color.component';
-export * from './directive/dsv.color.directive';
+export * from './component/base-color.component';
+export * from './directive/color.directive';

@@ -1,4 +1,4 @@
-import { Component, provideZonelessChangeDetection } from '@angular/core';
+import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FileUploadDirective } from './file-upload-directives';
@@ -24,7 +24,7 @@ describe('FileUploadDirective', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [TestComponent],
-            providers: [provideZonelessChangeDetection()],
+            providers: [],
         });
 
         fixture = TestBed.createComponent(TestComponent);

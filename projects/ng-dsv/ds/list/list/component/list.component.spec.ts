@@ -1,18 +1,17 @@
-import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ListComponent } from './list.component';
+import { DsvListComponent } from './list.component';
 
 describe('ListComponent', () => {
-    let fixture: ComponentFixture<ListComponent>;
-    let component: ListComponent;
+    let fixture: ComponentFixture<DsvListComponent>;
+    let component: DsvListComponent;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [ListComponent],
-            providers: [provideZonelessChangeDetection()],
+            imports: [DsvListComponent],
+            providers: [],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(ListComponent);
+        fixture = TestBed.createComponent(DsvListComponent);
         component = fixture.componentInstance;
         await fixture.whenStable();
     });

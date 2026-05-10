@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { provideZonelessChangeDetection, signal } from '@angular/core';
+import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
 import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
@@ -34,7 +34,6 @@ describe('ApiService', () => {
 
         TestBed.configureTestingModule({
             providers: [
-                provideZonelessChangeDetection(),
                 ApiService,
                 { provide: HttpClient, useValue: httpClientMock },
                 { provide: ToastService, useValue: toastServiceMock },

@@ -9,12 +9,12 @@ export const DURATION_TIMEOUT = 10;
     providedIn: 'root',
 })
 export class ToastService {
-    toastShows = signal<ToastDto[]>([]);
-    toasts = signal<ToastDto[]>([]);
+    readonly toastShows = signal<ToastDto[]>([]);
+    readonly toasts = signal<ToastDto[]>([]);
 
-    duration = signal<number>(DURATION_DEFAULT);
+    readonly duration = signal<number>(DURATION_DEFAULT);
 
-    showToast(toast: ToastDto) {
+    showToast(toast: ToastDto): void {
         toast.uuid = crypto.randomUUID();
         toast.open = true;
         toast.type = toast.type ?? 'success';
@@ -31,7 +31,7 @@ export class ToastService {
         this.toasts.update((toasts) => [...toasts, toast]);
     }
 
-    consumeToast(toast: ToastDto) {
+    consumeToast(toast: ToastDto): void {
         this.toastShows.update((toasts) => [...toasts, toast]);
         let duration = 0;
         toast.interval = setInterval(() => {
@@ -52,7 +52,7 @@ export class ToastService {
         this.removeToastFromQueue(toast.uuid!);
     }
 
-    closeToast(toast: ToastDto) {
+    closeToast(toast: ToastDto): void {
         this.toastShows.update((toasts) =>
             toasts.map((oneToast) => {
                 if (oneToast.uuid === toast.uuid) {
@@ -67,7 +67,7 @@ export class ToastService {
         }, 500);
     }
 
-    removeToastFromQueue(uuid: string) {
+    removeToastFromQueue(uuid: string): void {
         this.toasts.update((toasts) => toasts.filter((t) => t.uuid !== uuid));
     }
 }

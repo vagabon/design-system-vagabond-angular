@@ -1,0 +1,37 @@
+<div>
+    @if (getSignal()) {
+        @if (withLabel()) {
+            <dsv-form-signal-label
+                [name]="fieldName()"
+                [label]="label() ?? fieldName()"
+                [signal]="getSignal()()"
+            />
+        }
+        @if (type() === 'textarea') {
+            <textarea
+                [id]="fieldName()"
+                [formField]="getSignal()"
+                [placeholder]="placeholder()"
+                class="form-control"
+            ></textarea>
+        } @else {
+            <input
+                #input
+                [type]="type()"
+                [id]="fieldName()"
+                class="form-control"
+                [class.error]="isError()"
+                [formField]="getSignal()"
+                [placeholder]="placeholder()"
+                [class.icon]="icon()"
+                (blur)="doOnSend()"
+                (change)="doChange()"
+                (keydown.enter)="doOnSend()"
+            />
+        }
+        @if (icon()) {
+            <i [class]="icon()"></i>
+        }
+        <dsv-form-signal-error [errors]="getSignal()().errors()" [isTouched]="isTouched()" />
+    }
+</div>

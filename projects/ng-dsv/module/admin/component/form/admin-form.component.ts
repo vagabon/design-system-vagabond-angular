@@ -1,0 +1,80 @@
+import { Component, effect, input, output } from '@angular/core';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ApiDto, ID } from '@ng-vagabond-lab/ng-dsv/api';
+import { DsvChipComponent } from '@ng-vagabond-lab/ng-dsv/ds/chip';
+import {
+    DsvBaseFormReactiveComponent,
+    DsvFormReactiveCheckboxComponent,
+    DsvFormReactiveComponent,
+    DsvFormReactiveInputComponent,
+} from '@ng-vagabond-lab/ng-dsv/ds/form/reactive';
+import { FormDto } from '../../dto/admin.dto';
+import { AdminSearchModalContainer } from '../modal/admin-search-modal.component';
+
+@Component({
+    selector: 'dsv-admin-form',
+    imports: [
+        ReactiveFormsModule,
+        DsvChipComponent,
+        DsvFormReactiveComponent,
+        DsvFormReactiveInputComponent,
+        DsvFormReactiveCheckboxComponent,
+        AdminSearchModalContainer,
+    ],
+    templateUrl: './admin-form.component.html',
+    styleUrls: ['./admin-form.component.scss'],
+})
+export class AdminFormComponent extends DsvBaseFormReactiveComponent {
+    readonly urlBack = input<string>();
+    readonly data = input.required<ApiDto>();
+    readonly formConf = input.required<FormDto[]>();
+
+    readonly callback = output<ApiDto>();
+
+    constructor() {
+        super();
+        effect(() => {
+            this.formBuilder.control('a');
+
+            let formControl = {} as { [key: string]: FormControl };
+            this.formConf()?.forEach((conf) => {
+                let value = this.data()[conf.name as keyof ApiDto];
+                if (conf.type === 'datetime-local' && value) {
+                    value = (value as string).substring(0, 19);
+                }
+                const required = conf.required || false;
+                formControl[conf.name] = new FormControl(
+                    { value, disabled: conf.disabled ?? false },
+                    required ? Validators.required : null,
+                );
+            });
+            this.form = this.formBuilder.group(formControl);
+        });
+    }
+
+    sendForm(data: ApiDto): void {
+        this.formConf()?.forEach((conf) => {
+            let value = data[conf.name as keyof ApiDto];
+            console.log(conf.name, value);
+            if (conf.type === 'datetime-local' && value && !value?.toString().endsWith('Z')) {
+                value = value + 'Z';
+                data = { ...data, [conf.name]: value };
+            }
+        });
+        console.log(data);
+        this.callback.emit(data);
+    }
+
+    removeValue = (name: string, id: ID) => (): void => {
+        this.form.value[name] = this.form.value[name].filter((value: ApiDto) => value.id !== id);
+    };
+
+    addValue =
+        (name: string) =>
+        (data: ApiDto): void => {
+            const find = this.form.value[name].find((value: ApiDto) => value.id === data.id);
+            if (!find) {
+                this.form.value[name].push(data);
+            }
+        };
+}

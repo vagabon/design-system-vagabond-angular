@@ -1,4 +1,3 @@
-import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DsvButtonComponent } from './button.component';
 
@@ -10,21 +9,20 @@ describe('DsvButtonComponent', () => {
         (window as any).google = { accounts: { id: { prompt: () => {} } } };
         await TestBed.configureTestingModule({
             imports: [DsvButtonComponent],
-            providers: [provideZonelessChangeDetection()],
+            providers: [],
         }).compileComponents();
         fixture = TestBed.createComponent(DsvButtonComponent);
         component = fixture.componentInstance;
     });
 
     it('should render', () => {
-        const mockCallback = { emit: vi.fn() };
-        component.callback = mockCallback as any;
+        const emitSpy = vi.spyOn(component.callback, 'emit');
         fixture.detectChanges();
         expect(component).toBeTruthy();
 
         const link = fixture.debugElement.nativeElement.querySelector('.dsv-button');
         link.click();
         fixture.detectChanges();
-        expect(component.callback.emit).toHaveBeenCalled();
+        expect(emitSpy).toHaveBeenCalled();
     });
 });

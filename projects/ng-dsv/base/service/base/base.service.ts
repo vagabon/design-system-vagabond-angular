@@ -10,7 +10,7 @@ export abstract class BaseService {
 
     readonly loaded = signal<boolean>(true);
 
-    isPlatformBrowser() {
+    isPlatformBrowser(): boolean {
         return this.platformService.isPlatformBrowser();
     }
 }

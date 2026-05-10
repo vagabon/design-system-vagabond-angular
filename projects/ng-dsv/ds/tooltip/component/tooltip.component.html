@@ -1,11 +1,6 @@
 <ng-content></ng-content>
 @if (visible()) {
-    <div
-        #tooltipBox
-        class="dsv-tooltip"
-        [ngClass]="positionClass()"
-        [style.opacity]="opacity()"
-    >
+    <div #tooltipBox [class]="'dsv-tooltip ' + positionClass()" [style.opacity]="opacity()">
         {{ text() }}
     </div>
 }

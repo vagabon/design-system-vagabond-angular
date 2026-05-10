@@ -1,39 +1,32 @@
-import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 import { provideTranslateService, TranslatePipe } from '@ngx-translate/core';
-import { TableDto } from '../dto/table.dto';
-import { TableComponent } from './table.component';
+import { DsvTableComponent } from './table.component';
 
 describe('TableComponent', () => {
-    let fixture: ComponentFixture<TableComponent>;
-    let component: TableComponent;
+    let fixture: ComponentFixture<DsvTableComponent>;
+    let component: DsvTableComponent;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [TableComponent, RouterTestingModule, TranslatePipe],
+            imports: [DsvTableComponent, TranslatePipe],
             providers: [
-                provideZonelessChangeDetection(),
+                provideRouter([]),
                 provideTranslateService(),
                 { provide: TranslatePipe, useValue: { transform: (val: string) => val } },
             ],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(TableComponent);
+        fixture = TestBed.createComponent(DsvTableComponent);
         component = fixture.componentInstance;
 
-        component.url = signal('/mock-url') as any;
-        component.cells = signal([
-            { name: 'username' },
-            { name: 'createdAt', date: true },
-        ] as TableDto[]) as any;
-
-        component.datas = signal([
+        fixture.componentRef.setInput('url', '/mock-url');
+        fixture.componentRef.setInput('cells', [{ name: 'username' }, { name: 'createdAt', date: true }]);
+        fixture.componentRef.setInput('datas', [
             { id: 1, username: 'Alice', createdAt: '2025-06-07T22:13:05.920427' },
             { id: 2, username: 'Bob', createdAt: '2025-06-08T08:45:00.123456' },
-        ]) as any;
-
-        component.max = signal(2) as any;
+        ]);
+        fixture.componentRef.setInput('max', 2);
 
         fixture.detectChanges();
     });
@@ -50,12 +43,12 @@ describe('TableComponent', () => {
     });
 
     it('should respect max rows to display', async () => {
-        component.max = signal(1) as any;
-        component.datas = signal([
+        fixture.componentRef.setInput('max', 1);
+        fixture.componentRef.setInput('datas', [
             { id: 1, username: 'One' },
             { id: 2, username: 'Two' },
-        ]) as any;
+        ]);
         fixture.detectChanges();
-        expect(component.showDatas().length).toBe(2);
+        expect(component.showDatas().length).toBe(1);
     });
 });

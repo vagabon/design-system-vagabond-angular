@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/angular';
-import { TableComponent } from './table.component';
+import { DsvTableComponent } from './table.component';
 
 export const ActionsData = {
     url: '/',
@@ -14,9 +14,9 @@ export const ActionsData = {
     max: 10,
 };
 
-const meta: Meta<TableComponent> = {
+const meta: Meta<DsvTableComponent> = {
     title: 'dsv/Table',
-    component: TableComponent,
+    component: DsvTableComponent,
     excludeStories: /.*Data$/,
     tags: ['autodocs'],
     argTypes: {},
@@ -26,7 +26,7 @@ const meta: Meta<TableComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<TableComponent>;
+type Story = StoryObj<DsvTableComponent>;
 
 export const Default: Story = {
     args: {},

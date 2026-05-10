@@ -5,9 +5,9 @@ import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
     providedIn: 'root',
 })
 export class StorageService {
-    public readonly platformService = inject(PlatformService);
+    readonly platformService = inject(PlatformService);
 
-    suffixe = signal<string>('');
+    readonly suffixe = signal<string>('');
 
     setItem(key: string, value: unknown): void {
         if (this.platformService.isPlatformBrowser()) {
@@ -15,19 +15,19 @@ export class StorageService {
         }
     }
 
-    parse(value: string) {
+    parse<T>(value: string): T | null {
         try {
             return JSON.parse(value);
         } catch (exception) {
             console.error(value, (exception as string).toString().split('\n').slice(0, 3).join('\n'));
-            return value;
+            return value as T;
         }
     }
 
     getItem<T>(key: string): T | null {
         if (this.platformService.isPlatformBrowser()) {
             const item = localStorage.getItem(key + this.suffixe());
-            return item ? this.parse(item) : null;
+            return item ? this.parse<T>(item) : null;
         }
         return null;
     }

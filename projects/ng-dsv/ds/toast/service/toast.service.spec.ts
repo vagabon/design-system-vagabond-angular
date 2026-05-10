@@ -1,4 +1,3 @@
-import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ToastDto } from '../dto/toast.dto';
 import { DURATION_DEFAULT, DURATION_TIMEOUT, ToastService } from './toast.service';
@@ -8,7 +7,7 @@ describe('ToastService', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [provideZonelessChangeDetection(), ToastService],
+            providers: [ToastService],
         });
         service = TestBed.inject(ToastService);
         vi.useFakeTimers();

@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { DsvImgComponent } from './img.component';
 
 describe('DsvImgComponent', () => {
@@ -10,13 +9,13 @@ describe('DsvImgComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [DsvImgComponent],
-            providers: [provideZonelessChangeDetection()],
+            providers: [],
         }).compileComponents();
 
         fixture = TestBed.createComponent(DsvImgComponent);
         component = fixture.componentInstance;
 
-        component.src = signal('url') as unknown as InputSignal<string>;
+        fixture.componentRef.setInput('src', 'url');
 
         fixture.detectChanges();
     });

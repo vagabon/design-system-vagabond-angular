@@ -1,7 +1,7 @@
 import { TranslatePipe } from '@ngx-translate/core';
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
-import { ModalButtonComponent } from '../public-api';
-import { ModalComponent } from './modal.component';
+import { DsvModalButtonComponent } from '../public-api';
+import { DsvModalComponent } from './modal.component';
 
 export const ActionsData = {
     id: 'modale',
@@ -9,14 +9,14 @@ export const ActionsData = {
     class: 'class',
 };
 
-const meta: Meta<ModalComponent> = {
+const meta: Meta<DsvModalComponent> = {
     title: 'dsv/Modal',
-    component: ModalComponent,
+    component: DsvModalComponent,
     excludeStories: /.*Data$/,
     tags: ['autodocs'],
     decorators: [
         moduleMetadata({
-            imports: [ModalButtonComponent, TranslatePipe],
+            imports: [DsvModalButtonComponent, TranslatePipe],
         }),
     ],
     argTypes: {},
@@ -26,7 +26,7 @@ const meta: Meta<ModalComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<ModalComponent>;
+type Story = StoryObj<DsvModalComponent>;
 
 export const Default: Story = {
     args: {},

@@ -12,17 +12,16 @@ import { ModalService } from '../service/modal.service';
         '(document:keydown.escape)': 'onEscapeKey()',
     },
 })
-export class ModalComponent {
-    modalService = inject(ModalService);
-    menuService = inject(MenuService);
+export class DsvModalComponent {
+    readonly modalService = inject(ModalService);
+    readonly menuService = inject(MenuService);
 
-    id = input.required<string>();
-    class = input<string>('');
+    readonly id = input.required<string>();
+    readonly class = input<string>('');
+    readonly titleText = input.required<string>();
+    readonly canEchap = input<boolean>(true);
 
-    titleText = input.required<string>();
-
-    canEchap = input<boolean>(true);
-    isOpen = signal<boolean>(false);
+    readonly isOpen = signal<boolean>(false);
 
     constructor() {
         effect(() => {
@@ -33,13 +32,13 @@ export class ModalComponent {
         });
     }
 
-    onEscapeKey() {
+    onEscapeKey(): void {
         if (this.isOpen() && this.canEchap()) {
             this.close();
         }
     }
 
-    close = () => {
+    close(): void {
         this.modalService.close(this.id());
-    };
+    }
 }

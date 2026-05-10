@@ -1,10 +1,9 @@
-import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
 import { provideTranslateService } from '@ngx-translate/core';
 import { ModalService } from '../../service/modal.service';
-import { ModalComponent } from '../modal.component';
-import { ModalAlertComponent } from './modal-alert.component';
+import { DsvModalComponent } from '../modal.component';
+import { DsvModalAlertComponent } from './modal-alert.component';
 
 class MockModalService {
     private state = new Map<string, boolean>();
@@ -23,29 +22,25 @@ class MockModalService {
 }
 
 describe('ModalAlertComponent', () => {
-    let component: ModalAlertComponent;
-    let fixture: ComponentFixture<ModalAlertComponent>;
+    let component: DsvModalAlertComponent;
+    let fixture: ComponentFixture<DsvModalAlertComponent>;
     let modalService: ModalService;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [ModalAlertComponent, ModalComponent, DsvButtonComponent],
-            providers: [
-                provideZonelessChangeDetection(),
-                provideTranslateService(),
-                { provide: ModalService, useClass: MockModalService },
-            ],
+            imports: [DsvModalAlertComponent, DsvModalComponent, DsvButtonComponent],
+            providers: [provideTranslateService(), { provide: ModalService, useClass: MockModalService }],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(ModalAlertComponent);
+        fixture = TestBed.createComponent(DsvModalAlertComponent);
         modalService = TestBed.inject(ModalService);
 
         component = fixture.componentInstance;
-        component.id = signal('testModal') as unknown as InputSignal<string>;
-        component.titleText = signal('title') as unknown as InputSignal<string>;
-        component.text = signal('text') as unknown as InputSignal<string>;
-        component.button = signal('oui') as unknown as InputSignal<string>;
-        component.buttonClose = signal('non') as unknown as InputSignal<string | undefined>;
+        fixture.componentRef.setInput('id', 'testModal');
+        fixture.componentRef.setInput('titleText', 'title');
+        fixture.componentRef.setInput('text', 'text');
+        fixture.componentRef.setInput('button', 'oui');
+        fixture.componentRef.setInput('buttonClose', 'non');
 
         fixture.detectChanges();
     });

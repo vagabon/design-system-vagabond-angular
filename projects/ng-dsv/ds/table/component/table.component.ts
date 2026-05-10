@@ -12,16 +12,14 @@ import { getValue, initTable } from '../public-api';
     templateUrl: './table.component.html',
     styleUrls: ['./table.component.scss'],
 })
-export class TableComponent {
-    url = input.required<string>();
+export class DsvTableComponent {
+    readonly url = input.required<string>();
+    readonly cells = input.required<TableDto[]>();
+    readonly datas = input.required<JSONObject[]>();
+    readonly max = input<number>(10);
 
-    cells = input.required<TableDto[]>();
-    datas = input.required<JSONObject[]>();
-
-    max = input<number>(10);
-
-    showDatas = signal<string[][]>([]);
-    links = signal<(string | null)[]>([]);
+    readonly showDatas = signal<string[][]>([]);
+    readonly links = signal<(string | null)[]>([]);
 
     constructor() {
         effect(() => {

@@ -1,5 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { EnvironmentDto } from '../public-api';
@@ -21,11 +20,7 @@ describe('EnvironmentService', () => {
         };
 
         TestBed.configureTestingModule({
-            providers: [
-                provideZonelessChangeDetection(),
-                EnvironmentService,
-                { provide: HttpClient, useValue: httpClientSpy },
-            ],
+            providers: [EnvironmentService, { provide: HttpClient, useValue: httpClientSpy }],
         });
 
         service = TestBed.inject(EnvironmentService);

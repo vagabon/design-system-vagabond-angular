@@ -31,6 +31,7 @@ export class RouterService {
             ) {
                 this.currentUrl.set(event.url);
                 this.isLoading.set(false);
+                this.modalService.closeAll();
                 clearInterval(this.interval);
             }
         });

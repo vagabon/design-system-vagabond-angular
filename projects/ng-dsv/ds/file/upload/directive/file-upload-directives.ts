@@ -18,7 +18,7 @@ export class FileUploadDirective {
 
     readonly dragInProgress = signal(false);
 
-    private readonly enabled = computed(() => {
+    private readonly enabled = computed<boolean>(() => {
         const value = this.appDragDrop();
         return value === '' ? true : !!value;
     });

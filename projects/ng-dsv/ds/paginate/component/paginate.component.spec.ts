@@ -1,22 +1,21 @@
-import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PaginateComponent } from './paginate.component';
+import { DsvPaginateComponent } from './paginate.component';
 
 describe('PaginateComponent', () => {
-    let component: PaginateComponent;
-    let fixture: ComponentFixture<PaginateComponent>;
+    let component: DsvPaginateComponent;
+    let fixture: ComponentFixture<DsvPaginateComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [PaginateComponent],
-            providers: [provideZonelessChangeDetection()],
+            imports: [DsvPaginateComponent],
+            providers: [],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(PaginateComponent);
+        fixture = TestBed.createComponent(DsvPaginateComponent);
         component = fixture.componentInstance;
 
-        component.page = signal(1) as unknown as InputSignal<number>;
-        component.max = signal(10) as unknown as InputSignal<number>;
+        fixture.componentRef.setInput('page', 1);
+        fixture.componentRef.setInput('max', 10);
 
         fixture.detectChanges();
     });

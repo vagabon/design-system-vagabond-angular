@@ -8,23 +8,23 @@ import { DsvSekeletonComponent } from '@ng-vagabond-lab/ng-dsv/ds/skeleton';
     styleUrl: './img.component.scss',
 })
 export class DsvImgComponent {
-    src = input.required<string>();
-    alt = input<string>('description');
-    empty = input<string>('images/empty.svg');
+    readonly src = input.required<string>();
+    readonly alt = input<string>('description');
+    readonly empty = input<string>('images/empty.svg');
 
-    width = input<number>(500);
-    height = input<number>(750);
+    readonly width = input<number>(500);
+    readonly height = input<number>(750);
 
-    load = signal<boolean>(false);
-    error = signal<boolean>(false);
+    readonly load = signal<boolean>(false);
+    readonly error = signal<boolean>(false);
 
-    aspectRatio = computed<string>(() => this.width() + '/' + this.height());
+    readonly aspectRatio = computed<string>(() => this.width() + '/' + this.height());
 
-    doLoad() {
+    doLoad(): void {
         this.load.set(true);
     }
 
-    onImageError() {
+    onImageError(): void {
         this.error.set(true);
     }
 }

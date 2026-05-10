@@ -8,7 +8,7 @@ export class EnvironmentService {
     readonly httpClient = inject(HttpClient);
 
     readonly env = signal<EnvironmentDto | undefined>(undefined);
-    baseUrl = signal<string>('');
+    readonly baseUrl = signal<string>('');
 
     loadEnv(): Promise<EnvironmentDto> {
         return lastValueFrom(

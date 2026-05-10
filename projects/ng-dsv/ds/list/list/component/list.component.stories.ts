@@ -3,22 +3,19 @@ import { DsvCardComponent } from '@ng-vagabond-lab/ng-dsv/ds/card';
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { ListItemComponent, ListItemDragComponent } from '../../public-api';
 import { ListItemDragDto } from '../dto/list.dto';
-import { ListComponent } from './list.component';
+import { DsvListComponent } from './list.component';
 
 export const ActionsData = {};
 
 @Component({
     selector: 'app-list-wrapper',
     standalone: true,
-    imports: [DsvCardComponent, ListComponent, ListItemComponent, ListItemDragComponent],
+    imports: [DsvCardComponent, DsvListComponent, ListItemComponent, ListItemDragComponent],
     template: `
         <dsv-card>
             <dsv-list>
                 @for (element of elements; track element; let index = $index) {
-                    <dsv-list-item
-                        [index]="index"
-                        (callbackOrder)="onDrop($event)"
-                    >
+                    <dsv-list-item [index]="index" (callbackOrder)="onDrop($event)">
                         <dsv-list-item-drag />
                         {{ element }}
                     </dsv-list-item>

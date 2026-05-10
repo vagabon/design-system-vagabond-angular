@@ -1,6 +1,6 @@
 import { Component, effect, input, output, signal } from '@angular/core';
 import { isCallback } from '@ng-vagabond-lab/ng-dsv/base';
-import { BaseColorComponent } from '@ng-vagabond-lab/ng-dsv/ds/color';
+import { DsvBaseColorComponent } from '@ng-vagabond-lab/ng-dsv/ds/color';
 
 @Component({
     selector: 'dsv-avatar',
@@ -12,13 +12,13 @@ import { BaseColorComponent } from '@ng-vagabond-lab/ng-dsv/ds/color';
         '(click)': 'onClick()',
     },
 })
-export class DsvAvatarComponent extends BaseColorComponent {
-    avatar = input<string>('');
-    callback = output<void>();
+export class DsvAvatarComponent extends DsvBaseColorComponent {
+    readonly avatar = input<string>('');
+    readonly callback = output<void>();
 
-    avatarLetter = signal<string>('');
-    isImage = signal<boolean>(false);
-    isCallback = signal<boolean>(false);
+    readonly avatarLetter = signal<string>('');
+    readonly isImage = signal<boolean>(false);
+    readonly isCallback = signal<boolean>(false);
 
     constructor() {
         super();
@@ -35,7 +35,7 @@ export class DsvAvatarComponent extends BaseColorComponent {
         return this.getClasses('dsv-avatar', classes);
     }
 
-    onClick() {
+    onClick(): void {
         this.isCallback() && this.callback?.emit();
     }
 }

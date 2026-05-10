@@ -9,13 +9,13 @@ import { TabDto } from '../dto/tab.dto';
     templateUrl: './tab.component.html',
     styleUrls: ['./tab.component.scss'],
 })
-export class TabComponent {
-    tab = input.required<TabDto>();
-    isSelected = input<boolean>(false);
+export class DsvTabComponent {
+    readonly tab = input.required<TabDto>();
+    readonly isSelected = input<boolean>(false);
 
-    callback = output<TabDto>();
+    readonly callback = output<TabDto>();
 
-    doClick(event: Event, tab: TabDto) {
+    doClick(event: Event, tab: TabDto): void {
         if (!tab.url) {
             event.stopPropagation();
             this.callback.emit(tab);

@@ -1,4 +1,3 @@
-import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { provideTranslateService } from '@ngx-translate/core';
@@ -12,7 +11,7 @@ describe('DsvAccordionComponent', () => {
         (window as any).google = { accounts: { id: { prompt: () => {} } } };
         await TestBed.configureTestingModule({
             imports: [DsvAccordionComponent],
-            providers: [provideZonelessChangeDetection(), provideTranslateService()],
+            providers: [provideTranslateService()],
         }).compileComponents();
         fixture = TestBed.createComponent(DsvAccordionComponent);
         component = fixture.componentInstance;

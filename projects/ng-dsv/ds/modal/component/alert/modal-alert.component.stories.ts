@@ -1,7 +1,7 @@
 import { TranslatePipe } from '@ngx-translate/core';
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
-import { ModalButtonComponent } from '../button/modal-button.component';
-import { ModalAlertComponent } from './modal-alert.component';
+import { DsvModalButtonComponent } from '../button/modal-button.component';
+import { DsvModalAlertComponent } from './modal-alert.component';
 
 export const ActionsData = {
     id: 'modale',
@@ -11,14 +11,14 @@ export const ActionsData = {
     buttonClose: 'non',
 };
 
-const meta: Meta<ModalAlertComponent> = {
+const meta: Meta<DsvModalAlertComponent> = {
     title: 'dsv/Modal/alert',
-    component: ModalAlertComponent,
+    component: DsvModalAlertComponent,
     excludeStories: /.*Data$/,
     tags: ['autodocs'],
     decorators: [
         moduleMetadata({
-            imports: [ModalButtonComponent, TranslatePipe],
+            imports: [DsvModalButtonComponent, TranslatePipe],
         }),
     ],
     argTypes: {},
@@ -28,7 +28,7 @@ const meta: Meta<ModalAlertComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<ModalAlertComponent>;
+type Story = StoryObj<DsvModalAlertComponent>;
 
 export const Default: Story = {
     args: {},

@@ -1,20 +1,20 @@
 import { Component, input, output } from '@angular/core';
 import { TabDto } from '../../public-api';
-import { TabComponent } from '../../tab/component/tab.component';
+import { DsvTabComponent } from '../../tab/component/tab.component';
 
 @Component({
     selector: 'dsv-tabs-component',
-    imports: [TabComponent],
+    imports: [DsvTabComponent],
     templateUrl: './tabs.component.html',
     styleUrls: ['./tabs.component.scss'],
 })
-export class TabsComponent {
-    tabs = input.required<TabDto[]>();
-    active = input.required<string>();
+export class DsvTabsComponent {
+    readonly tabs = input.required<TabDto[]>();
+    readonly active = input.required<string>();
 
-    callback = output<TabDto>();
+    readonly callback = output<TabDto>();
 
-    doClick(tab: TabDto) {
+    doClick(tab: TabDto): void {
         this.callback.emit(tab);
     }
 }

@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/angular';
-import { PaginateComponent } from './paginate.component';
+import { DsvPaginateComponent } from './paginate.component';
 
 export const ActionsData = {
     page: 0,
@@ -7,9 +7,9 @@ export const ActionsData = {
     callback: () => {},
 };
 
-const meta: Meta<PaginateComponent> = {
+const meta: Meta<DsvPaginateComponent> = {
     title: 'dsv/Paginate',
-    component: PaginateComponent,
+    component: DsvPaginateComponent,
     excludeStories: /.*Data$/,
     tags: ['autodocs'],
     argTypes: {},
@@ -19,7 +19,7 @@ const meta: Meta<PaginateComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<PaginateComponent>;
+type Story = StoryObj<DsvPaginateComponent>;
 
 export const Default: Story = {
     args: {},

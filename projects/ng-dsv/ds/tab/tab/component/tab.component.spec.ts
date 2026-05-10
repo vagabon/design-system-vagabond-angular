@@ -1,32 +1,30 @@
-import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { provideTranslateService, TranslatePipe } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { TabDto } from '../dto/tab.dto';
-import { TabComponent } from './tab.component';
+import { DsvTabComponent } from './tab.component';
 
 describe('TabComponent', () => {
-    let component: TabComponent;
-    let fixture: ComponentFixture<TabComponent>;
+    let component: DsvTabComponent;
+    let fixture: ComponentFixture<DsvTabComponent>;
 
     const tabMock: TabDto = { id: 'tab1', title: 'Tab 1' };
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [TabComponent, TranslatePipe],
+            imports: [DsvTabComponent, TranslatePipe],
             providers: [
-                provideZonelessChangeDetection(),
                 provideTranslateService(),
                 { provide: ActivatedRoute, useValue: { snapshot: {}, params: {} } },
                 { provide: Router, useValue: { navigate: vi.fn(), navigateByUrl: vi.fn(), events: of() } },
             ],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(TabComponent);
+        fixture = TestBed.createComponent(DsvTabComponent);
         component = fixture.componentInstance;
-        component.tab = signal(tabMock) as unknown as InputSignal<TabDto>;
+        fixture.componentRef.setInput('tab', tabMock);
     });
 
     it('should create the component', () => {
@@ -41,7 +39,7 @@ describe('TabComponent', () => {
     });
 
     it('should apply selected class when isSelected is true', () => {
-        component.isSelected = signal(true) as unknown as InputSignal<boolean>;
+        fixture.componentRef.setInput('isSelected', true);
         fixture.detectChanges();
         const button = fixture.debugElement.query(By.css('button'));
         expect(button.nativeElement.classList.contains('selected')).toBe(true);
@@ -64,7 +62,7 @@ describe('TabComponent', () => {
 
     it('should not emit callback if tab has URL', () => {
         const tabWithUrl: TabDto = { id: 'tab2', title: 'Tab 2', url: '/test' };
-        component.tab = signal(tabWithUrl) as unknown as InputSignal<TabDto>;
+        fixture.componentRef.setInput('tab', tabWithUrl);
         fixture.detectChanges();
 
         const button = fixture.debugElement.query(By.css('button'));

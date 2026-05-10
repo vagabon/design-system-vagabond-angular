@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, input } from '@angular/core';
 import { DsvMenuButtonComponent, MenuService } from '@ng-vagabond-lab/ng-dsv/ds/menu';
-import { RouterInternalPipe, RouterService } from '@ng-vagabond-lab/ng-dsv/router';
+import { RouterInternalPipe } from '@ng-vagabond-lab/ng-dsv/router';
 
 @Component({
     selector: 'dsv-header',
@@ -10,16 +10,15 @@ import { RouterInternalPipe, RouterService } from '@ng-vagabond-lab/ng-dsv/route
     styleUrls: ['./header.component.scss'],
 })
 export class DsvHeaderComponent {
-    private readonly router = inject(RouterService).router;
-    private readonly menuService = inject(MenuService);
+    readonly menuService = inject(MenuService);
 
-    img = input<string>();
-    titleText = input<string>('');
-    withMenu = input<boolean>(true);
+    readonly img = input<string>();
+    readonly titleText = input<string>('');
+    readonly withMenu = input<boolean>(true);
 
-    titleTextParts = computed(() => this.titleText().split(' '));
+    readonly titleTextParts = computed(() => this.titleText().split(' '));
 
-    doToogleMenu() {
+    doToogleMenu(): void {
         this.menuService.toogleMenu();
     }
 }

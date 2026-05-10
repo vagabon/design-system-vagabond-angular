@@ -1,4 +1,4 @@
-import { PLATFORM_ID, provideZonelessChangeDetection } from '@angular/core';
+import { PLATFORM_ID } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { PlatformService } from './platform.service';
 
@@ -10,11 +10,7 @@ describe('PlatformService', () => {
         platformId = 'browser';
 
         TestBed.configureTestingModule({
-            providers: [
-                provideZonelessChangeDetection(),
-                PlatformService,
-                { provide: PLATFORM_ID, useValue: platformId },
-            ],
+            providers: [PlatformService, { provide: PLATFORM_ID, useValue: platformId }],
         });
 
         service = TestBed.inject(PlatformService);

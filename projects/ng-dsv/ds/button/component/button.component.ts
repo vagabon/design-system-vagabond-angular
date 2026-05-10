@@ -1,7 +1,7 @@
 import { Component, effect, input, output } from '@angular/core';
-import { BaseColorComponent } from '@ng-vagabond-lab/ng-dsv/ds/color';
+import { DsvBaseColorComponent } from '@ng-vagabond-lab/ng-dsv/ds/color';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ButtonRippleDirective } from '../directive/button.riddle.directive';
+import { ButtonRippleDirective } from '../directive/button-riddle.directive';
 
 @Component({
     selector: 'dsv-button',
@@ -9,17 +9,16 @@ import { ButtonRippleDirective } from '../directive/button.riddle.directive';
     templateUrl: './button.component.html',
     styleUrls: ['./button.component.scss'],
 })
-export class DsvButtonComponent extends BaseColorComponent {
-    libelle = input<string>('');
-    icon = input<string>('');
-    iconEnd = input<string>('');
-    disabled = input<boolean>(false);
-    noHover = input<boolean>(false);
-    type = input<string>('button');
+export class DsvButtonComponent extends DsvBaseColorComponent {
+    readonly libelle = input<string>('');
+    readonly icon = input<string>('');
+    readonly iconEnd = input<string>('');
+    readonly disabled = input<boolean>(false);
+    readonly noHover = input<boolean>(false);
+    readonly type = input<string>('button');
+    readonly prevent = input<boolean>(true);
 
-    prevent = input<boolean>(true);
-
-    callback = output<void>();
+    readonly callback = output<void>();
 
     constructor() {
         super();
@@ -33,7 +32,7 @@ export class DsvButtonComponent extends BaseColorComponent {
         });
     }
 
-    doClick(event: Event) {
+    doClick(event: Event): void {
         if (this.prevent() && this.type() !== 'submit') {
             event.stopPropagation();
             event.preventDefault();

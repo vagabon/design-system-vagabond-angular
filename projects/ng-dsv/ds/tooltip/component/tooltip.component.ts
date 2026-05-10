@@ -1,10 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { Component, ElementRef, input, signal, ViewChild } from '@angular/core';
 import { TooltipPosition, TooltipPositionEnum } from '../dto/tooltip.dto';
 import { getTooltipPosition } from '../utils/tooltip.utils';
 @Component({
     selector: 'dsv-tooltip',
-    imports: [CommonModule],
+    imports: [],
     templateUrl: './tooltip.component.html',
     styleUrls: ['./tooltip.component.scss'],
     host: {
@@ -14,16 +13,16 @@ import { getTooltipPosition } from '../utils/tooltip.utils';
     },
 })
 export class DsvTooltipComponent {
-    text = input<string>('');
-    position = input<TooltipPosition>(TooltipPositionEnum.TOP);
+    readonly text = input<string>('');
+    readonly position = input<TooltipPosition>(TooltipPositionEnum.TOP);
 
-    visible = signal<boolean>(false);
-    opacity = signal<number>(0);
+    readonly visible = signal<boolean>(false);
+    readonly opacity = signal<number>(0);
 
-    positionClass = signal<TooltipPosition>(TooltipPositionEnum.TOP);
+    readonly positionClass = signal<TooltipPosition>(TooltipPositionEnum.TOP);
 
     @ViewChild('tooltipBox')
-    tooltipBox!: ElementRef<HTMLElement>;
+    readonly tooltipBox!: ElementRef<HTMLElement>;
 
     onResize(): void {
         this.adjustPosition();

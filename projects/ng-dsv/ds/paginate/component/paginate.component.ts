@@ -7,13 +7,13 @@ import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
     templateUrl: './paginate.component.html',
     styleUrls: ['./paginate.component.scss'],
 })
-export class PaginateComponent {
-    page = input.required<number>();
-    max = input.required<number>();
+export class DsvPaginateComponent {
+    readonly page = input.required<number>();
+    readonly max = input.required<number>();
 
-    callback = output<number>();
+    readonly callback = output<number>();
 
-    gotoPage(page: number) {
+    gotoPage(page: number): void {
         this.callback.emit(page);
     }
 }

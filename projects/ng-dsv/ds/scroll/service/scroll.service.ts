@@ -1,7 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { BaseApiService } from '@ng-vagabond-lab/ng-dsv/base/service';
 import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
-import { ScrollPositionDto } from '../dto/scroll.position.dto';
+import { ScrollPositionDto } from '../dto/scroll-position.dto';
 
 @Injectable({ providedIn: 'root' })
 export class ScrollService extends BaseApiService {
@@ -17,7 +17,7 @@ export class ScrollService extends BaseApiService {
         return this.routeIds.get(key)!;
     }
 
-    saveScroll(id: string, url: string, top: number, left: number) {
+    saveScroll(id: string, url: string, top: number, left: number): void {
         this.scrolls.update((map) => {
             const newMap = new Map(map);
             const urlMap = new Map(newMap.get(id) ?? []);
@@ -31,7 +31,7 @@ export class ScrollService extends BaseApiService {
         return this.scrolls().get(id)?.get(url) ?? { top: 0, left: 0 };
     }
 
-    clear(id: string) {
+    clear(id: string): void {
         this.scrolls.update((map) => {
             const newMap = new Map(map);
             newMap.delete(id);

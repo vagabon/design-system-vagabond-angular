@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/angular';
-import { TabsComponent } from './tabs.component';
+import { DsvTabsComponent } from './tabs.component';
 
 export const ActionsData = {
     tabs: [
@@ -9,16 +9,16 @@ export const ActionsData = {
     active: 'home',
 };
 
-const meta: Meta<TabsComponent> = {
+const meta: Meta<DsvTabsComponent> = {
     title: 'dsv/Tabs',
-    component: TabsComponent,
+    component: DsvTabsComponent,
     excludeStories: /.*Data$/,
     tags: ['autodocs'],
     argTypes: {},
 };
 
 export default meta;
-type Story = StoryObj<TabsComponent>;
+type Story = StoryObj<DsvTabsComponent>;
 
 export const Default: Story = {
     args: {

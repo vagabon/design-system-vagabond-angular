@@ -1,4 +1,3 @@
-import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
@@ -9,7 +8,6 @@ const mockRouterService = { router: { url: '/home' } };
 const setup = () => {
     TestBed.configureTestingModule({
         providers: [
-            provideZonelessChangeDetection(),
             provideRouter([]),
             { provide: RouterService, useValue: mockRouterService },
             ScrollService,

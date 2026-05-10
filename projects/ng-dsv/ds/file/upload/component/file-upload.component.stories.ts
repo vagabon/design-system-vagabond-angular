@@ -1,11 +1,11 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
-import { FileUploadComponent } from './file-upload.component';
+import { DsvFileUploadComponent } from './file-upload.component';
 
 export const ActionsData = {};
 
-const meta: Meta<FileUploadComponent> = {
+const meta: Meta<DsvFileUploadComponent> = {
     title: 'dsv/File/upload',
-    component: FileUploadComponent,
+    component: DsvFileUploadComponent,
     decorators: [
         moduleMetadata({
             providers: [],
@@ -20,7 +20,7 @@ const meta: Meta<FileUploadComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<FileUploadComponent>;
+type Story = StoryObj<DsvFileUploadComponent>;
 
 export const Default: Story = {
     args: {},

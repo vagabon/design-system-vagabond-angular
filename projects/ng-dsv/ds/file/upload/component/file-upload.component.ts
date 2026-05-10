@@ -7,15 +7,15 @@ import { FileUploadDirective } from '../directive/file-upload-directives';
     templateUrl: './file-upload.component.html',
     styleUrls: ['./file-upload.component.scss'],
 })
-export class FileUploadComponent {
-    multiple = input<boolean>(false);
-    fileType = input<string>('image/*');
-    imgAlt = input<string>("Apperçu de l'image");
-    dragDropEnabled = input<boolean>(true);
+export class DsvFileUploadComponent {
+    readonly multiple = input<boolean>(false);
+    readonly fileType = input<string>('image/*');
+    readonly imgAlt = input<string>("Apperçu de l'image");
+    readonly dragDropEnabled = input<boolean>(true);
 
-    filesChanged = output<FileList>();
+    readonly filesChanged = output<FileList>();
 
-    file = signal<string | undefined>(undefined);
+    readonly file = signal<string | undefined>(undefined);
 
     @ViewChild('fileInput')
     inputRef!: ElementRef<HTMLInputElement>;
@@ -29,7 +29,7 @@ export class FileUploadComponent {
         this.filesChanged.emit(files);
     }
 
-    handleFileDrop(event: DragEvent) {
+    handleFileDrop(event: DragEvent): void {
         if (event?.dataTransfer?.files?.length) {
             const files = event.dataTransfer.files;
             this.inputRef.nativeElement.files = files;

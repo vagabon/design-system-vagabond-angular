@@ -1,20 +1,18 @@
-import { InputSignal, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { provideTranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { TabDto } from '../../public-api';
-import { TabsComponent } from './tabs.component';
+import { DsvTabsComponent } from './tabs.component';
 
 describe('TabsComponent', () => {
-    let component: TabsComponent;
-    let fixture: ComponentFixture<TabsComponent>;
+    let component: DsvTabsComponent;
+    let fixture: ComponentFixture<DsvTabsComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [TabsComponent],
+            imports: [DsvTabsComponent],
             providers: [
-                provideZonelessChangeDetection(),
                 provideTranslateService(),
                 {
                     provide: ActivatedRoute,
@@ -25,7 +23,7 @@ describe('TabsComponent', () => {
             ],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(TabsComponent);
+        fixture = TestBed.createComponent(DsvTabsComponent);
         component = fixture.componentInstance;
 
         const mockTabs: TabDto[] = [
@@ -33,8 +31,8 @@ describe('TabsComponent', () => {
             { id: 'settings', title: 'Paramètres', url: '/tab2' },
         ];
 
-        component.tabs = signal(mockTabs) as unknown as InputSignal<TabDto[]>;
-        component.active = signal('home') as unknown as InputSignal<string>;
+        fixture.componentRef.setInput('tabs', mockTabs);
+        fixture.componentRef.setInput('active', 'home');
 
         fixture.detectChanges();
     });

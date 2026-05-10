@@ -1,4 +1,3 @@
-import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DsvContainerComponent } from './container.component';
 
@@ -10,7 +9,7 @@ describe('DsvContainerComponent', () => {
         (window as any).google = { accounts: { id: { prompt: () => {} } } };
         await TestBed.configureTestingModule({
             imports: [DsvContainerComponent],
-            providers: [provideZonelessChangeDetection()],
+            providers: [],
         }).compileComponents();
         fixture = TestBed.createComponent(DsvContainerComponent);
         component = fixture.componentInstance;

@@ -19,7 +19,7 @@ export class DsvMenuComponent {
     readonly menuService = inject(MenuService);
     readonly elementRef = inject(ElementRef);
 
-    showFooter = input<boolean>(true);
+    readonly showFooter = input<boolean>(true);
 
     constructor() {
         effect(() => {
@@ -40,7 +40,7 @@ export class DsvMenuComponent {
         });
     }
 
-    onClickOutside(event: Event) {
+    onClickOutside(event: Event): void {
         if (
             this.platformService.isPlatformBrowser() &&
             this.menuService.isMenuOpen() &&

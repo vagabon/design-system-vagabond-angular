@@ -8,7 +8,7 @@ import { RouterExternalPipe, RouterInternalPipe } from '@ng-vagabond-lab/ng-dsv/
     styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
-    copyright = input<string>();
-    withMentions = input<boolean>(true);
-    withX = input<boolean>(true);
+    readonly copyright = input<string>();
+    readonly withMentions = input<boolean>(true);
+    readonly withX = input<boolean>(true);
 }

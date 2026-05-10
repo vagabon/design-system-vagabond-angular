@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { provideZonelessChangeDetection } from '@angular/core';
 import { DsvSekeletonComponent } from './skeleton.component';
 
 describe('DsvSekeletonComponent', () => {
@@ -10,7 +9,7 @@ describe('DsvSekeletonComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [DsvSekeletonComponent],
-            providers: [provideZonelessChangeDetection()],
+            providers: [],
         }).compileComponents();
 
         fixture = TestBed.createComponent(DsvSekeletonComponent);

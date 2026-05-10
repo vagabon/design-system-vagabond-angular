@@ -8,8 +8,7 @@ import {
     type Preview,
 } from '@storybook/angular';
 import { of } from 'rxjs';
-import { DsvThemeSwitchComponent } from '../ds/theme';
-import { DsvThemeComponent } from './../ds/theme/component/dsv.theme.component';
+import { DsvThemeComponent, DsvThemeSwitchComponent } from '../ds/theme';
 
 const preview: Preview = {
     parameters: {

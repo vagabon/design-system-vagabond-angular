@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 
-import { provideZonelessChangeDetection } from '@angular/core';
 import { UiSdkService } from './ui-sdk.service';
 
 describe('UiSdkService', () => {
@@ -8,7 +7,7 @@ describe('UiSdkService', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [provideZonelessChangeDetection()],
+            providers: [],
         });
         service = TestBed.inject(UiSdkService);
     });

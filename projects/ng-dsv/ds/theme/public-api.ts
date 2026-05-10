@@ -1,3 +1,3 @@
-export * from './component/dsv.theme.component';
-export * from './component/switch/dsv.theme.switch.component';
-export * from './service/dsv.theme.service';
+export * from './component/switch/theme-switch.component';
+export * from './component/theme.component';
+export * from './service/theme.service';
