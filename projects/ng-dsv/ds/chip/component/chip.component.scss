@@ -1,35 +1,20 @@
 :host {
-    --chip-padding: 10px 20px;
-    --chip-width: auto;
-    --chip-min-width: auto;
-    --chip-border-radius: 15px;
-    --chip-font-size: 1rem;
-    --chip-font-weight: 300;
-
     display: flex;
     user-select: none;
 
-    &:empty {
-        display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 15px;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-weight: 300;
+
+    &.with-delete {
+        padding: 0px 5px 0px 20px;
     }
 
-    .dsv-chip {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: var(--chip-padding);
-        width: var(--chip-width);
-        min-width: var(--chip-min-width);
-        border-radius: var(--chip-border-radius);
-        font-size: var(--chip-font-size);
-        font-weight: var(--chip-font-weight);
-
-        &.with-delete {
-            padding: 5px 5px 5px 20px;
-        }
-
-        &:empty {
-            display: none;
-        }
+    &:empty {
+        display: none;
     }
 }

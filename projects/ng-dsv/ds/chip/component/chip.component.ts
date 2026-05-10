@@ -9,6 +9,9 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [DsvButtonComponent, TranslatePipe],
     templateUrl: './chip.component.html',
     styleUrls: ['./chip.component.scss'],
+    host: {
+        '[class]': 'classes()',
+    },
 })
 export class DsvChipComponent extends DsvBaseColorComponent {
     readonly text = input<string>('');

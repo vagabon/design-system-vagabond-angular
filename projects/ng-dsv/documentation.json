@@ -848,21 +848,21 @@
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n    avatar: 'vagabond',\n    color: 'primary',\n}"
-            },
-            {
-                "name": "ActionsData",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n    open: false,\n    title: 'vagabond',\n    content: 'primary<br/>text text text text text text text text text text text text <br/>fdfdsfsd',\n}"
+            },
+            {
+                "name": "ActionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n    avatar: 'vagabond',\n    color: 'primary',\n}"
             },
             {
                 "name": "ActionsData",
@@ -1018,21 +1018,21 @@
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{}"
-            },
-            {
-                "name": "ActionsData",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/menu/component/contextual/menu-contextual.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n    options,\n}"
+            },
+            {
+                "name": "ActionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{}"
             },
             {
                 "name": "ActionsData",
@@ -1088,21 +1088,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n    args: {\n        callback: () => {},\n    },\n    render: (args: any) => ({\n        props: {\n            callback: args.callback,\n        },\n        template: `\n      <div class=\"flex flex-row gap10\">\n        <dsv-avatar avatar=\"${args.avatar}\" color=\"${args.color}\" variant=\"${args.variant}\" width=\"${args.width}\" show=\"${args.show}\" show=\"${args.show}\"></dsv-avatar>\n        <dsv-avatar avatar=\"${args.avatar}\" color=\"${args.color}\" variant=\"${args.variant}\" width=\"${args.width}\" show=\"${args.show}\" show=\"${args.show}\" (callback)=\"callback\"></dsv-avatar>\n      </div>\n    `,\n    }),\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n    args: {},\n    render: (args: any) => ({\n        template: `<dsv-accordion [open]=\"${args.open}\" titleText=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n    }),\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n    args: {\n        callback: () => {},\n    },\n    render: (args: any) => ({\n        props: {\n            callback: args.callback,\n        },\n        template: `\n      <div class=\"flex flex-row gap10\">\n        <dsv-avatar avatar=\"${args.avatar}\" color=\"${args.color}\" variant=\"${args.variant}\" width=\"${args.width}\" show=\"${args.show}\" show=\"${args.show}\"></dsv-avatar>\n        <dsv-avatar avatar=\"${args.avatar}\" color=\"${args.color}\" variant=\"${args.variant}\" width=\"${args.width}\" show=\"${args.show}\" show=\"${args.show}\" (callback)=\"callback\"></dsv-avatar>\n      </div>\n    `,\n    }),\n}"
             },
             {
                 "name": "Default",
@@ -1258,21 +1258,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n    args: {},\n    parameters: {\n        docs: {\n            source: {\n                code: `\n                    <dsv-list>\n                        @for (element of elements; track element; let index = $index) {\n                            <dsv-list-item\n                                [index]=\"index\"\n                                (callbackOrder)=\"onDrop($event)\"\n                            >\n                                <dsv-list-item-drag />\n                                {{ element }}\n                            </dsv-list-item>\n                        }\n                    </dsv-list>\n                `,\n            },\n        },\n    },\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/menu/component/contextual/menu-contextual.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n    render: (args: any) => ({\n        moduleMetadata: {\n            imports: [DsvButtonComponent],\n        },\n        props: args,\n        template: `\n            <div style=\"display: flex; gap: 10px; margin: 0px 0px; height: 200px; justify-content: center; align-items: baseline;\">\n                <dsv-menu-contextual buttonClick='left' [options]=\"options\">\n                <dsv-button [prevent]=\"false\">Clic Gauche</dsv-button>\n                </dsv-menu-contextual>\n                <dsv-menu-contextual buttonClick='right' [options]=\"options\">\n                <dsv-button [prevent]=\"false\">Clic Droit</dsv-button>\n                </dsv-menu-contextual>\n                <dsv-menu-contextual buttonClick='both' [options]=\"[\n                    { id: 'home', icon: 'ri-home-2-line', text: '' },\n                    { id: 'settings', icon: 'ri-tools-line', text: '' },\n                    { id: 'Déconnexion', icon: 'ri-logout-box-line', color: 'error', text: '' }\n                    ]\">\n                <dsv-button [prevent]=\"false\">Icon</dsv-button>\n                </dsv-menu-contextual>\n            </div>\n            `,\n    }),\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n    args: {},\n    parameters: {\n        docs: {\n            source: {\n                code: `\n                    <dsv-list>\n                        @for (element of elements; track element; let index = $index) {\n                            <dsv-list-item\n                                [index]=\"index\"\n                                (callbackOrder)=\"onDrop($event)\"\n                            >\n                                <dsv-list-item-drag />\n                                {{ element }}\n                            </dsv-list-item>\n                        }\n                    </dsv-list>\n                `,\n            },\n        },\n    },\n}"
             },
             {
                 "name": "Default",
@@ -1428,21 +1428,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<DsvAvatarComponent>",
-                "defaultValue": "{\n    title: 'dsv/Avatar',\n    component: DsvAvatarComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {\n        ...(colorControls as Meta<DsvAvatarComponent>['argTypes']),\n        callback: { action: 'callback' },\n    },\n    args: {\n        ...(ActionsData as any),\n    },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<DsvAccordionComponent>",
                 "defaultValue": "{\n    title: 'dsv/Accordion',\n    component: DsvAccordionComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<DsvAvatarComponent>",
+                "defaultValue": "{\n    title: 'dsv/Avatar',\n    component: DsvAvatarComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {\n        ...(colorControls as Meta<DsvAvatarComponent>['argTypes']),\n        callback: { action: 'callback' },\n    },\n    args: {\n        ...(ActionsData as any),\n    },\n}"
             },
             {
                 "name": "meta",
@@ -1598,21 +1598,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<ListWrapperComponent>",
-                "defaultValue": "{\n    title: 'dsv/List',\n    component: ListWrapperComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    decorators: [moduleMetadata({})],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/menu/component/contextual/menu-contextual.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<DsvMenuContextualComponent>",
                 "defaultValue": "{\n    title: 'dsv/Menu/contextual',\n    component: DsvMenuContextualComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {\n        options: {\n            control: {\n                type: 'object',\n            },\n        },\n    },\n    args: {\n        ...ActionsData,\n    },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ListWrapperComponent>",
+                "defaultValue": "{\n    title: 'dsv/List',\n    component: ListWrapperComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    decorators: [moduleMetadata({})],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n}"
             },
             {
                 "name": "meta",
@@ -1891,8 +1891,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<DsvAvatarComponent>",
-                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
+                "rawtype": "StoryObj<DsvAccordionComponent>",
+                "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1902,8 +1902,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<DsvAccordionComponent>",
-                "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
+                "rawtype": "StoryObj<DsvAvatarComponent>",
+                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2078,8 +2078,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ListWrapperComponent>",
-                "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
+                "rawtype": "StoryObj<DsvMenuContextualComponent>",
+                "file": "projects/ng-dsv/ds/menu/component/contextual/menu-contextual.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2089,8 +2089,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<DsvMenuContextualComponent>",
-                "file": "projects/ng-dsv/ds/menu/component/contextual/menu-contextual.component.stories.ts",
+                "rawtype": "StoryObj<ListWrapperComponent>",
+                "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2264,6 +2264,48 @@
         ],
         "enumerations": [],
         "groupedVariables": {
+            "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts": [
+                {
+                    "name": "ActionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n    open: false,\n    title: 'vagabond',\n    content: 'primary<br/>text text text text text text text text text text text text <br/>fdfdsfsd',\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n    args: {},\n    render: (args: any) => ({\n        template: `<dsv-accordion [open]=\"${args.open}\" titleText=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n    }),\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<DsvAccordionComponent>",
+                    "defaultValue": "{\n    title: 'dsv/Accordion',\n    component: DsvAccordionComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n}"
+                },
+                {
+                    "name": "Open",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n    args: {\n        open: true,\n    },\n    render: (args: any) => ({\n        template: `<dsv-accordion [open]=\"${args.open}\" titleText=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n    }),\n}"
+                }
+            ],
             "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts": [
                 {
                     "name": "ActionsData",
@@ -2314,48 +2356,6 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n    args: {\n        callback: () => {},\n    },\n}"
-                }
-            ],
-            "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts": [
-                {
-                    "name": "ActionsData",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n    open: false,\n    title: 'vagabond',\n    content: 'primary<br/>text text text text text text text text text text text text <br/>fdfdsfsd',\n}"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n    args: {},\n    render: (args: any) => ({\n        template: `<dsv-accordion [open]=\"${args.open}\" titleText=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n    }),\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<DsvAccordionComponent>",
-                    "defaultValue": "{\n    title: 'dsv/Accordion',\n    component: DsvAccordionComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n}"
-                },
-                {
-                    "name": "Open",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n    args: {\n        open: true,\n    },\n    render: (args: any) => ({\n        template: `<dsv-accordion [open]=\"${args.open}\" titleText=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n    }),\n}"
                 }
             ],
             "projects/ng-dsv/ds/button/component/button.component.stories.ts": [
@@ -2858,38 +2858,6 @@
                     "defaultValue": "{\n    title: 'dsv/File/upload',\n    component: DsvFileUploadComponent,\n    decorators: [\n        moduleMetadata({\n            providers: [],\n        }),\n    ],\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n}"
                 }
             ],
-            "projects/ng-dsv/ds/list/list/component/list.component.stories.ts": [
-                {
-                    "name": "ActionsData",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{}"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n    args: {},\n    parameters: {\n        docs: {\n            source: {\n                code: `\n                    <dsv-list>\n                        @for (element of elements; track element; let index = $index) {\n                            <dsv-list-item\n                                [index]=\"index\"\n                                (callbackOrder)=\"onDrop($event)\"\n                            >\n                                <dsv-list-item-drag />\n                                {{ element }}\n                            </dsv-list-item>\n                        }\n                    </dsv-list>\n                `,\n            },\n        },\n    },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<ListWrapperComponent>",
-                    "defaultValue": "{\n    title: 'dsv/List',\n    component: ListWrapperComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    decorators: [moduleMetadata({})],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n}"
-                }
-            ],
             "projects/ng-dsv/ds/menu/component/contextual/menu-contextual.component.stories.ts": [
                 {
                     "name": "ActionsData",
@@ -2930,6 +2898,38 @@
                     "deprecationMessage": "",
                     "type": "MenuContextualDto[]",
                     "defaultValue": "[\n    { id: 'home', icon: 'ri-home-2-line', text: 'Option 1' },\n    { id: 'settings', icon: 'ri-tools-line', text: 'Option 2' },\n    { id: 'Déconnexion', icon: 'ri-logout-box-line', color: 'error', text: 'Déconnexion' },\n    { id: 'tululu', text: 'Option 4', divider: true },\n]"
+                }
+            ],
+            "projects/ng-dsv/ds/list/list/component/list.component.stories.ts": [
+                {
+                    "name": "ActionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n    args: {},\n    parameters: {\n        docs: {\n            source: {\n                code: `\n                    <dsv-list>\n                        @for (element of elements; track element; let index = $index) {\n                            <dsv-list-item\n                                [index]=\"index\"\n                                (callbackOrder)=\"onDrop($event)\"\n                            >\n                                <dsv-list-item-drag />\n                                {{ element }}\n                            </dsv-list-item>\n                        }\n                    </dsv-list>\n                `,\n            },\n        },\n    },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ListWrapperComponent>",
+                    "defaultValue": "{\n    title: 'dsv/List',\n    component: ListWrapperComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    decorators: [moduleMetadata({})],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n}"
                 }
             ],
             "projects/ng-dsv/ds/modal/component/alert/modal-alert.component.stories.ts": [
@@ -3378,19 +3378,6 @@
         "groupedFunctions": {},
         "groupedEnumerations": {},
         "groupedTypeAliases": {
-            "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<DsvAvatarComponent>",
-                    "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
             "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts": [
                 {
                     "name": "Story",
@@ -3398,6 +3385,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<DsvAccordionComponent>",
                     "file": "projects/ng-dsv/ds/accordion/component/accordion.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<DsvAvatarComponent>",
+                    "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -3599,19 +3599,6 @@
                     "kind": 184
                 }
             ],
-            "projects/ng-dsv/ds/list/list/component/list.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<ListWrapperComponent>",
-                    "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
             "projects/ng-dsv/ds/menu/component/contextual/menu-contextual.component.stories.ts": [
                 {
                     "name": "Story",
@@ -3619,6 +3606,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<DsvMenuContextualComponent>",
                     "file": "projects/ng-dsv/ds/menu/component/contextual/menu-contextual.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/ng-dsv/ds/list/list/component/list.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ListWrapperComponent>",
+                    "file": "projects/ng-dsv/ds/list/list/component/list.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
