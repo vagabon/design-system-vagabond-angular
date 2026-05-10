@@ -40,7 +40,7 @@ export class AdminFormComponent extends BaseFormReactiveComponent {
             this.formConf()?.forEach((conf) => {
                 let value = this.data()[conf.name as keyof ApiDto];
                 if (conf.type === 'datetime-local' && value) {
-                    value = (value as string).substring(0, 16);
+                    value = (value as string).substring(0, 19);
                 }
                 const required = conf.required || false;
                 formControl[conf.name] = new FormControl(
@@ -53,6 +53,15 @@ export class AdminFormComponent extends BaseFormReactiveComponent {
     }
 
     sendForm(data: ApiDto) {
+        this.formConf()?.forEach((conf) => {
+            let value = data[conf.name as keyof ApiDto];
+            console.log(conf.name, value);
+            if (conf.type === 'datetime-local' && value && !value?.toString().endsWith('Z')) {
+                value = value + 'Z';
+                data = { ...data, [conf.name]: value };
+            }
+        });
+        console.log(data);
         this.callback.emit(data);
     }
 

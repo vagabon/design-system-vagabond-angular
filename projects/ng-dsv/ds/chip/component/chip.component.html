@@ -1,13 +1,9 @@
 <div [class]="classes()">
     <span>
         {{ text() | translate }}
+        <ng-content />
     </span>
     @if (isDelete()) {
-        <dsv-button
-            icon="ri-delete-bin-line"
-            variant="text"
-            color="inherit"
-            (callback)="doDelete()"
-        ></dsv-button>
+        <dsv-button icon="ri-delete-bin-line" variant="text" color="inherit" (callback)="doDelete()" />
     }
 </div>

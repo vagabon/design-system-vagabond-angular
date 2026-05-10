@@ -3,6 +3,7 @@
     --form-flex-wrap: nowrap;
     --form-flex-padding: 0;
     --form-max-height: auto;
+    --form-overflow: auto;
 
     display: flex;
     width: 100%;
@@ -16,7 +17,7 @@
         max-height: var(--form-max-height);
 
         .form-scroll {
-            overflow: auto;
+            overflow: var(--form-overflow);
             scrollbar-width: thin;
             display: flex;
             flex-direction: var(--form-flex-direction);

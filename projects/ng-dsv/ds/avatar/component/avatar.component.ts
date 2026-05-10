@@ -1,4 +1,4 @@
-import { Component, effect, HostBinding, HostListener, input, output, signal } from '@angular/core';
+import { Component, effect, input, output, signal } from '@angular/core';
 import { isCallback } from '@ng-vagabond-lab/ng-dsv/base';
 import { BaseColorComponent } from '@ng-vagabond-lab/ng-dsv/ds/color';
 
@@ -7,6 +7,10 @@ import { BaseColorComponent } from '@ng-vagabond-lab/ng-dsv/ds/color';
     imports: [],
     templateUrl: './avatar.component.html',
     styleUrls: ['./avatar.component.scss'],
+    host: {
+        '[class]': 'hostClasses()',
+        '(click)': 'onClick()',
+    },
 })
 export class DsvAvatarComponent extends BaseColorComponent {
     avatar = input<string>('');
@@ -25,14 +29,12 @@ export class DsvAvatarComponent extends BaseColorComponent {
         });
     }
 
-    @HostBinding('class')
-    get hostClasses(): string {
+    hostClasses(): string {
         const classes: string[] = [this.color()];
         this.isCallback() && classes.push('callback');
         return this.getClasses('dsv-avatar', classes);
     }
 
-    @HostListener('click')
     onClick() {
         this.isCallback() && this.callback?.emit();
     }

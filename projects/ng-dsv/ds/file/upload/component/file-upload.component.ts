@@ -10,6 +10,7 @@ import { FileUploadDirective } from '../directive/file-upload-directives';
 export class FileUploadComponent {
     multiple = input<boolean>(false);
     fileType = input<string>('image/*');
+    imgAlt = input<string>("Apperçu de l'image");
     dragDropEnabled = input<boolean>(true);
 
     filesChanged = output<FileList>();

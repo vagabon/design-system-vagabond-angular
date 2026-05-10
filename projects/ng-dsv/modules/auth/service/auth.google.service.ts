@@ -17,7 +17,7 @@ export class AuthGoogleService {
 
     constructor() {
         effect(() => {
-            if (!this.init() && this.authService.isPlatformBrowser()) {
+            if (!this.init() && this.authService.isPlatformBrowser() && this.environmentService.env()) {
                 this.init.set(true);
                 google.accounts.id.initialize({
                     client_id: this.environmentService.env()?.GOOGLE_CLIENT_ID,

@@ -93,16 +93,17 @@ export const Default: Story = {
         docs: {
             source: {
                 code: `
-          <dsv-form-reactive [form]="form" urlBack="urlBack" (callback)="callback($event)">
-            <dsv-form-reactive-input [form]="form" field="name" />
-            <dsv-form-reactive-input [form]="form" type="number" field="number" />
-            <dsv-form-reactive-input [form]="form" type="range" field="range" />
-            <dsv-form-reactive-input [form]="form" type="datetime-local" field="date" />
-            <dsv-form-reactive-input [form]="form" type="textarea" field="textarea" />
-            <dsv-form-reactive-select [form]="form" field="select" [list]="[{id: '', name: ''}, {id: '1', name: 'Test'}]" />
-            <dsv-form-reactive-checkbox [form]="form" field="checkbox" />
-          </dsv-form-reactive>
-        `,
+                    <dsv-form-reactive [form]="form" urlBack="urlBack" (callback)="callback($event)">
+                        <dsv-form-reactive-input [form]="form" field="name" />
+                        <dsv-form-reactive-input [form]="form" type="number" field="number" />
+                        <dsv-form-reactive-input [form]="form" type="range" field="range" />
+                        <dsv-form-reactive-input [form]="form" type="datetime-local" field="date" />
+                        <dsv-form-reactive-input [form]="form" type="textarea" field="textarea" />
+                        <dsv-form-reactive-select [form]="form" field="select" 
+                            [list]="[{id: '', name: ''}, {id: '1', name: 'Test'}]" />
+                        <dsv-form-reactive-checkbox [form]="form" field="checkbox" />
+                    </dsv-form-reactive>
+                `,
             },
         },
     },

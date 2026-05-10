@@ -1,5 +1,11 @@
 @if (show()) {
-    <button [class]="classes()" [type]="type()" [disabled]="disabled()" (click)="doClick($event)">
+    <button
+        [class]="classes()"
+        [type]="type()"
+        [disabled]="disabled()"
+        (click)="doClick($event)"
+        buttonRipple
+    >
         @if (icon()) {
             <i [class]="icon()"></i>
         }

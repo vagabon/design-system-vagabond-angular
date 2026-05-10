@@ -28,6 +28,7 @@ button {
 }
 
 p {
+    text-align: justify;
     line-height: 1.5rem;
     margin: 0;
 }
@@ -60,6 +61,10 @@ p {
 .gap10,
 .gap-10 {
     gap: 10px;
+}
+
+.no-margin {
+    margin: 0px !important;
 }
 
 .margin-top-5 {
@@ -109,8 +114,15 @@ hr {
     color: var(--subtitle) !important;
 }
 
-@media screen and (max-width: 800px) {
-    i[class^="ri-"] {
-        font-size: 1.3rem !important;
+// @media screen and (max-width: 800px) {
+//     i[class^="ri-"] {
+//         font-size: 1.3rem !important;
+//     }
+// }
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
     }
 }

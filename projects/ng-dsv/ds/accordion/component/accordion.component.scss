@@ -5,10 +5,6 @@
     --accordion-text-padding: 0px 10px;
     --accordion-text-width: calc(100% - 20px);
 
-
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
     margin: 10px;
     padding: 10px;
     width: calc(100% - 40px);
@@ -39,25 +35,28 @@
     }
 
     .dsv-accordion-text {
-        display: var(--accordion-text-display);
+        display: grid;
         padding: var(--accordion-text-padding);
         width: var(--accordion-text-width);
         overflow: hidden;
+        grid-template-rows: 0fr;
         opacity: 0;
-        height: 0;
         transition:
-            transform 0.3s ease-out,
-            opacity 0.2s ease-out,
-            height 0.2s ease-out;
+            grid-template-rows 0.25s ease-out,
+            opacity 0.25s ease-out;
 
         &.open {
-            padding: 10px 10px;
+            grid-template-rows: 1fr;
             opacity: 1;
-            height: auto;
         }
 
         &:empty {
             display: none;
+        }
+
+        .dsv-accordion-inner {
+            overflow: hidden;
+            display: var(--accordion-text-display);
         }
     }
 }

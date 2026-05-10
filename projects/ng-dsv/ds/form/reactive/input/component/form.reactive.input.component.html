@@ -1,9 +1,6 @@
 <div [formGroup]="form()">
     @if (withLabel()) {
-        <dsv-form-reactive-label
-            [label]="field()"
-            [field]="form().get(field())!"
-        />
+        <dsv-form-reactive-label [label]="field()" [field]="form().get(field())!" />
     }
     @if (type() === 'textarea') {
         <textarea
@@ -22,6 +19,7 @@
             [class.error]="form().get(field())?.touched && form().get(field())?.invalid"
             (change)="onEnter()"
             (keydown.enter)="onEnter()"
+            step="1"
         />
     }
     @if (icon()) {

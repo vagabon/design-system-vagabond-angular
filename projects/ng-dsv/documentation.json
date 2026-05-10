@@ -30,32 +30,7 @@
         },
         {
             "name": "Test",
-            "id": "interface-Test-10b1014b6716734ceb0aae4398c30893bbd2d2189bd375c56cf2cbcf82216fb9edb991946a33ab9db450da14ed2049008cd8d2b773a02a7a2df4b3fe5180e37a",
-            "file": "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "import { type Meta, type StoryObj } from '@storybook/angular';\nimport { FormSignalLabelComponent } from './form.signal.label.component';\n\ninterface Test {\n    title: string;\n}\n\nconst meta: Meta<FormSignalLabelComponent<Test>> = {\n    title: 'dsv/Form/Signal/label',\n    component: FormSignalLabelComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n};\n\nexport default meta;\ntype Story = StoryObj<FormSignalLabelComponent<Test>>;\n\nexport const Default: Story = {\n    args: {\n        label: 'test',\n    },\n};\n",
-            "properties": [
-                {
-                    "name": "title",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 5
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 172,
-            "methods": [],
-            "extends": []
-        },
-        {
-            "name": "Test",
-            "id": "interface-Test-f81c6565e53d1c8f33105f4a3f2351ca4c4cb7c34e39836b44eacf8f6dc45dc3a0aefd7b95796aa432483a690464887451634f8dfb3afb9512072a7b5652eb33-1",
+            "id": "interface-Test-f81c6565e53d1c8f33105f4a3f2351ca4c4cb7c34e39836b44eacf8f6dc45dc3a0aefd7b95796aa432483a690464887451634f8dfb3afb9512072a7b5652eb33",
             "file": "projects/ng-dsv/ds/form/signal/input/component/form.signal.input.component.stories.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -71,6 +46,31 @@
                     "optional": false,
                     "description": "",
                     "line": 8
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "Test",
+            "id": "interface-Test-10b1014b6716734ceb0aae4398c30893bbd2d2189bd375c56cf2cbcf82216fb9edb991946a33ab9db450da14ed2049008cd8d2b773a02a7a2df4b3fe5180e37a-1",
+            "file": "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { type Meta, type StoryObj } from '@storybook/angular';\nimport { FormSignalLabelComponent } from './form.signal.label.component';\n\ninterface Test {\n    title: string;\n}\n\nconst meta: Meta<FormSignalLabelComponent<Test>> = {\n    title: 'dsv/Form/Signal/label',\n    component: FormSignalLabelComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n};\n\nexport default meta;\ntype Story = StoryObj<FormSignalLabelComponent<Test>>;\n\nexport const Default: Story = {\n    args: {\n        label: 'test',\n    },\n};\n",
+            "properties": [
+                {
+                    "name": "title",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
                 }
             ],
             "indexSignatures": [],
@@ -141,6 +141,62 @@
     "classes": [],
     "directives": [],
     "components": [
+        {
+            "name": "CardWrapperComponent",
+            "id": "component-CardWrapperComponent-aab486ca671a5038208c0be9525381cd483002be3f2841d49e799396c8b3b7ebd1e1c8b57ef783de5f5b17d546dd4d7b73449e91b07b12023b3d86680c06aeaf",
+            "file": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-wrapper",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<dsv-card>\n    <dsv-card-img\n        src=\"https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630\"\n        alt=\"\"\n    />\n    <dsv-card-header>\n        <h2 class=\"no-margin\">\n            <i class=\"fas fa-user\"></i>\n            {{ title }}\n        </h2>\n        <div class=\"card-subtitle\">{{ subtitle }}</div>\n    </dsv-card-header>\n    <h3>Du contenu</h3>\n    <p>\n        un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long\n        un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long\n        un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long\n        un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long\n        un paragraphe long\n    </p>\n    <dsv-card-action>\n        <dsv-button variant=\"primary\">Action 1</dsv-button>\n        <dsv-button variant=\"primary\">Action 2</dsv-button>\n    </dsv-card-action>\n</dsv-card>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CardImgComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "CardHeaderComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "CardActionComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "DsvCardComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "DsvButtonComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';\nimport { DsvButtonComponent } from '../../button';\nimport { CardActionComponent } from './action/card.action.component';\nimport { DsvCardComponent } from './card.component';\nimport { CardHeaderComponent } from './header/card.header.component';\nimport { CardImgComponent } from './img/card.img.component';\n\nexport const ActionsData = {\n    avatar: 'dfds',\n    title: 'un Titre',\n    subtitle: 'un subtitle',\n    image: 'https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630',\n};\n\n@Component({\n    selector: 'storybook-wrapper',\n    standalone: true,\n    imports: [\n        CardImgComponent,\n        CardHeaderComponent,\n        CardActionComponent,\n        DsvCardComponent,\n        DsvButtonComponent,\n    ],\n    template: `\n        <dsv-card>\n            <dsv-card-img\n                src=\"https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630\"\n                alt=\"\"\n            />\n            <dsv-card-header>\n                <h2 class=\"no-margin\">\n                    <i class=\"fas fa-user\"></i>\n                    {{ title }}\n                </h2>\n                <div class=\"card-subtitle\">{{ subtitle }}</div>\n            </dsv-card-header>\n            <h3>Du contenu</h3>\n            <p>\n                un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long\n                un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long\n                un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long\n                un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long\n                un paragraphe long\n            </p>\n            <dsv-card-action>\n                <dsv-button variant=\"primary\">Action 1</dsv-button>\n                <dsv-button variant=\"primary\">Action 2</dsv-button>\n            </dsv-card-action>\n        </dsv-card>\n    `,\n})\nclass CardWrapperComponent {}\n\nconst meta: Meta<CardWrapperComponent> = {\n    title: 'dsv/Card',\n    component: CardWrapperComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    decorators: [moduleMetadata({})],\n    args: {\n        ...ActionsData,\n    },\n};\n\nexport default meta;\ntype Story = StoryObj<CardWrapperComponent>;\n\nexport const Default: Story = {\n    args: {},\n    parameters: {\n        docs: {\n            source: {\n                code: `\n                    <dsv-card>\n                        <dsv-card-img src=\"https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630\" alt=\"\" />\n                        <h3>Du contenu</h3>\n                        <p>\n                            un paragraphe long un paragraphe long un paragraphe long un paragraphe \n                            long un paragraphe long un paragraphe long un paragraphe long un paragraphe \n                            long un paragraphe long un paragraphe long un paragraphe long un paragraphe \n                            long un paragraphe long un paragraphe long un paragraphe long un paragraphe \n                            long un paragraphe long un paragraphe long un paragraphe long un paragraphe \n                            long un paragraphe long\n                        </p>\n                    </dsv-card>\n                `,\n            },\n        },\n    },\n};\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": []
+        },
         {
             "name": "FormSignalWrapperComponent",
             "id": "component-FormSignalWrapperComponent-12a7fbeec5073ed237fa50d88cfe2bcf08dcae70ba8d0e154bcf8d87f06a2b83c48c97a558e0b6fc5cbb3107b041ef698abcafe4c54ee9cc968748ac6f1b524d",
@@ -332,7 +388,7 @@
         },
         {
             "name": "PrimaryButtonDemo",
-            "id": "component-PrimaryButtonDemo-8e75f3b1714196a9ee7ac67e254f0474a39e408a830f3b31b4b433f48561ce999833631eb7da77a42202840be901fc6b5e1c5e18a85581b59a7561b50acbe7af",
+            "id": "component-PrimaryButtonDemo-274c89b52f53c4a165ec5c866f13bacf354e4c47251c71a7bcda601351d91144974f87522a095f85245bf0daec797f7180d7d4b01c6c248ad1f4f6e53a4ffdaf",
             "file": "projects/ng-dsv/ds/toast/component/toast.component.stories.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -399,7 +455,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { componentWrapperDecorator, moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';\nimport { DsvButtonComponent } from '../../button';\nimport { ToastType } from '../dto/toast.dto';\nimport { ToastService } from '../service/toast.service';\nimport { DsvToastComponent } from './toast.component';\n\nexport const ActionsData = {};\n\nconst meta: Meta<DsvToastComponent> = {\n    title: 'dsv/Toast',\n    component: DsvToastComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    args: {\n        ...ActionsData,\n    },\n};\n\nexport default meta;\ntype Story = StoryObj<DsvToastComponent>;\n\n@Component({\n    selector: 'toast-button-demo',\n    imports: [DsvButtonComponent],\n    template: `\n        <div\n            class=\"flex\"\n            style=\"gap: 5px;\"\n        >\n            <dsv-button\n                color=\"success\"\n                (callback)=\"click()\"\n                icon=\"ri-check-fill\"\n                libelle=\"Success\"\n            ></dsv-button>\n            <dsv-button\n                color=\"info\"\n                (callback)=\"click('info')\"\n                icon=\"ri-information-2-line\"\n                libelle=\"Info\"\n            ></dsv-button>\n            <dsv-button\n                color=\"warning\"\n                (callback)=\"click('warning')\"\n                icon=\"ri-alert-line\"\n                libelle=\"Warning\"\n            ></dsv-button>\n            <dsv-button\n                color=\"error\"\n                (callback)=\"click('error')\"\n                icon=\"ri-close-line\"\n                libelle=\"Error\"\n            ></dsv-button>\n        </div>\n    `,\n})\nclass PrimaryButtonDemo {\n    constructor(private readonly toastService: ToastService) {}\n\n    click(type: ToastType = 'success') {\n        this.toastService.showToast({ text: type + ' ' + Math.floor(Math.random() * 101), type: type });\n    }\n}\n\nexport const Default: Story = {\n    args: {},\n    decorators: [\n        moduleMetadata({\n            imports: [PrimaryButtonDemo],\n        }),\n        componentWrapperDecorator((story) => {\n            return `\n        <div style=\"height: 300px\"><toast-button-demo />${story}</div>\n      `;\n        }),\n    ],\n};\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { componentWrapperDecorator, moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';\nimport { DsvButtonComponent } from '../../button';\nimport { ToastType } from '../dto/toast.dto';\nimport { ToastService } from '../service/toast.service';\nimport { DsvToastComponent } from './toast.component';\n\nexport const ActionsData = {};\n\nconst meta: Meta<DsvToastComponent> = {\n    title: 'dsv/Toast',\n    component: DsvToastComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    args: {\n        ...ActionsData,\n    },\n};\n\nexport default meta;\ntype Story = StoryObj<DsvToastComponent>;\n\n@Component({\n    selector: 'toast-button-demo',\n    imports: [DsvButtonComponent],\n    template: `\n        <div\n            class=\"flex\"\n            style=\"gap: 5px;\"\n        >\n            <dsv-button\n                color=\"success\"\n                (callback)=\"click()\"\n                icon=\"ri-check-fill\"\n                libelle=\"Success\"\n            ></dsv-button>\n            <dsv-button\n                color=\"info\"\n                (callback)=\"click('info')\"\n                icon=\"ri-information-2-line\"\n                libelle=\"Info\"\n            ></dsv-button>\n            <dsv-button\n                color=\"warning\"\n                (callback)=\"click('warning')\"\n                icon=\"ri-alert-line\"\n                libelle=\"Warning\"\n            ></dsv-button>\n            <dsv-button\n                color=\"error\"\n                (callback)=\"click('error')\"\n                icon=\"ri-close-line\"\n                libelle=\"Error\"\n            ></dsv-button>\n        </div>\n    `,\n})\nclass PrimaryButtonDemo {\n    constructor(private readonly toastService: ToastService) {}\n\n    click(type: ToastType = 'success') {\n        this.toastService.showToast({\n            text:\n                type +\n                'je pense que tout doit être visible car sinon cest bad de ouf ' +\n                Math.floor(Math.random() * 101),\n            type: type,\n        });\n    }\n}\n\nexport const Default: Story = {\n    args: {},\n    decorators: [\n        moduleMetadata({\n            imports: [PrimaryButtonDemo],\n        }),\n        componentWrapperDecorator((story) => {\n            return `\n        <div style=\"height: 300px\"><toast-button-demo />${story}</div>\n      `;\n        }),\n    ],\n};\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -695,7 +751,7 @@
         },
         {
             "name": "StoryWrapperComponent",
-            "id": "component-StoryWrapperComponent-f3aa15be731a6e2a7772086797f421fd392d6baed1ad23f688b9220a396a78b3aacf5a339db108b83b854016c3ce3de4ec481567c71ee6d1849b6f4088d3284e",
+            "id": "component-StoryWrapperComponent-099ddcc39151277ffa7446efe3a4dece6bba7cf930f3a6920123ef8486855a61e6906449ee79c6c5ad0adb7c872a3de2fc689d989ec9736d79487cea8ac8afff",
             "file": "projects/ng-dsv/ds/form/reactive/form/component/form.reactive.component.stories.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -707,7 +763,7 @@
             "styles": [
                 "\n            :host {\n                width: 100%;\n            }\n        "
             ],
-            "template": "<dsv-form-reactive\n    [form]=\"form\"\n    urlBack=\"urlBack\"\n    (callback)=\"callback($event)\"\n>\n    <dsv-form-reactive-input\n        [form]=\"form\"\n        field=\"name\"\n    />\n    <dsv-form-reactive-input\n        [form]=\"form\"\n        type=\"number\"\n        field=\"number\"\n    />\n    <dsv-form-reactive-input\n        [form]=\"form\"\n        type=\"range\"\n        field=\"range\"\n    />\n    <dsv-form-reactive-input\n        [form]=\"form\"\n        type=\"datetime-local\"\n        field=\"date\"\n    />\n    <dsv-form-reactive-input\n        [form]=\"form\"\n        type=\"textarea\"\n        field=\"textarea\"\n    />\n    <dsv-form-reactive-select\n        [form]=\"form\"\n        field=\"select\"\n        [list]=\"[\n            { id: '', name: '' },\n            { id: '1', name: 'Test' },\n        ]\"\n    />\n    <dsv-form-reactive-checkbox\n        [form]=\"form\"\n        field=\"checkbox\"\n    />\n</dsv-form-reactive>\n",
+            "template": "<dsv-form-reactive [form]=\"form\" urlBack=\"urlBack\" (callback)=\"callback($event)\">\n    <dsv-form-reactive-input [form]=\"form\" field=\"name\" />\n    <dsv-form-reactive-input [form]=\"form\" type=\"number\" field=\"number\" />\n    <dsv-form-reactive-input [form]=\"form\" type=\"range\" field=\"range\" />\n    <dsv-form-reactive-input [form]=\"form\" type=\"datetime-local\" field=\"date\" />\n    <dsv-form-reactive-input [form]=\"form\" type=\"textarea\" field=\"textarea\" />\n    <dsv-form-reactive-select\n        [form]=\"form\"\n        field=\"select\"\n        [list]=\"[\n            { id: '', name: '' },\n            { id: '1', name: 'Test' },\n        ]\"\n    />\n    <dsv-form-reactive-checkbox [form]=\"form\" field=\"checkbox\" />\n</dsv-form-reactive>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -723,7 +779,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 90
+                    "line": 64
                 },
                 {
                     "name": "form",
@@ -734,7 +790,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 79
+                    "line": 53
                 },
                 {
                     "name": "urlBack",
@@ -744,7 +800,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 89
+                    "line": 63
                 }
             ],
             "methodsClass": [],
@@ -778,7 +834,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';\nimport { JSONValue } from '@ng-vagabond-lab/ng-dsv/api';\nimport { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';\nimport {\n    FormReactiveCheckboxComponent,\n    FormReactiveInputComponent,\n    FormReactiveSelectComponent,\n} from '../../public-api';\nimport { FormReactiveComponent } from './form.reactive.component';\n\nexport const ActionsData = {\n    urlBack: '/',\n};\n\n@Component({\n    selector: 'storybook-wrapper',\n    standalone: true,\n    imports: [\n        FormReactiveComponent,\n        FormReactiveInputComponent,\n        FormReactiveCheckboxComponent,\n        FormReactiveSelectComponent,\n        ReactiveFormsModule,\n    ],\n    template: `\n        <dsv-form-reactive\n            [form]=\"form\"\n            urlBack=\"urlBack\"\n            (callback)=\"callback($event)\"\n        >\n            <dsv-form-reactive-input\n                [form]=\"form\"\n                field=\"name\"\n            />\n            <dsv-form-reactive-input\n                [form]=\"form\"\n                type=\"number\"\n                field=\"number\"\n            />\n            <dsv-form-reactive-input\n                [form]=\"form\"\n                type=\"range\"\n                field=\"range\"\n            />\n            <dsv-form-reactive-input\n                [form]=\"form\"\n                type=\"datetime-local\"\n                field=\"date\"\n            />\n            <dsv-form-reactive-input\n                [form]=\"form\"\n                type=\"textarea\"\n                field=\"textarea\"\n            />\n            <dsv-form-reactive-select\n                [form]=\"form\"\n                field=\"select\"\n                [list]=\"[\n                    { id: '', name: '' },\n                    { id: '1', name: 'Test' },\n                ]\"\n            />\n            <dsv-form-reactive-checkbox\n                [form]=\"form\"\n                field=\"checkbox\"\n            />\n        </dsv-form-reactive>\n    `,\n    styles: [\n        `\n            :host {\n                width: 100%;\n            }\n        `,\n    ],\n})\nclass StoryWrapperComponent {\n    form = new FormGroup({\n        name: new FormControl('', [Validators.required]),\n        number: new FormControl(''),\n        range: new FormControl(50),\n        date: new FormControl(''),\n        textarea: new FormControl('', [Validators.required]),\n        select: new FormControl('', [Validators.required]),\n        checkbox: new FormControl(false),\n    });\n\n    urlBack?: string;\n    callback = (data: JSONValue) => {\n        console.log(data);\n        alert('Callback appelé 🎉');\n    };\n}\n\nconst meta: Meta<StoryWrapperComponent> = {\n    title: 'dsv/Form/Reactive',\n    component: StoryWrapperComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    parameters: {\n        controls: { exclude: ['form'] },\n    },\n    decorators: [moduleMetadata({})],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n};\n\nexport default meta;\ntype Story = StoryObj<StoryWrapperComponent>;\n\nexport const Default: Story = {\n    args: {\n        urlBack: '/dashboard',\n    },\n    parameters: {\n        docs: {\n            source: {\n                code: `\n          <dsv-form-reactive [form]=\"form\" urlBack=\"urlBack\" (callback)=\"callback($event)\">\n            <dsv-form-reactive-input [form]=\"form\" field=\"name\" />\n            <dsv-form-reactive-input [form]=\"form\" type=\"number\" field=\"number\" />\n            <dsv-form-reactive-input [form]=\"form\" type=\"range\" field=\"range\" />\n            <dsv-form-reactive-input [form]=\"form\" type=\"datetime-local\" field=\"date\" />\n            <dsv-form-reactive-input [form]=\"form\" type=\"textarea\" field=\"textarea\" />\n            <dsv-form-reactive-select [form]=\"form\" field=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-reactive-checkbox [form]=\"form\" field=\"checkbox\" />\n          </dsv-form-reactive>\n        `,\n            },\n        },\n    },\n};\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';\nimport { JSONValue } from '@ng-vagabond-lab/ng-dsv/api';\nimport { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';\nimport {\n    FormReactiveCheckboxComponent,\n    FormReactiveInputComponent,\n    FormReactiveSelectComponent,\n} from '../../public-api';\nimport { FormReactiveComponent } from './form.reactive.component';\n\nexport const ActionsData = {\n    urlBack: '/',\n};\n\n@Component({\n    selector: 'storybook-wrapper',\n    standalone: true,\n    imports: [\n        FormReactiveComponent,\n        FormReactiveInputComponent,\n        FormReactiveCheckboxComponent,\n        FormReactiveSelectComponent,\n        ReactiveFormsModule,\n    ],\n    template: `\n        <dsv-form-reactive [form]=\"form\" urlBack=\"urlBack\" (callback)=\"callback($event)\">\n            <dsv-form-reactive-input [form]=\"form\" field=\"name\" />\n            <dsv-form-reactive-input [form]=\"form\" type=\"number\" field=\"number\" />\n            <dsv-form-reactive-input [form]=\"form\" type=\"range\" field=\"range\" />\n            <dsv-form-reactive-input [form]=\"form\" type=\"datetime-local\" field=\"date\" />\n            <dsv-form-reactive-input [form]=\"form\" type=\"textarea\" field=\"textarea\" />\n            <dsv-form-reactive-select\n                [form]=\"form\"\n                field=\"select\"\n                [list]=\"[\n                    { id: '', name: '' },\n                    { id: '1', name: 'Test' },\n                ]\"\n            />\n            <dsv-form-reactive-checkbox [form]=\"form\" field=\"checkbox\" />\n        </dsv-form-reactive>\n    `,\n    styles: [\n        `\n            :host {\n                width: 100%;\n            }\n        `,\n    ],\n})\nclass StoryWrapperComponent {\n    form = new FormGroup({\n        name: new FormControl('', [Validators.required]),\n        number: new FormControl(''),\n        range: new FormControl(50),\n        date: new FormControl(''),\n        textarea: new FormControl('', [Validators.required]),\n        select: new FormControl('', [Validators.required]),\n        checkbox: new FormControl(false),\n    });\n\n    urlBack?: string;\n    callback = (data: JSONValue) => {\n        console.log(data);\n        alert('Callback appelé 🎉');\n    };\n}\n\nconst meta: Meta<StoryWrapperComponent> = {\n    title: 'dsv/Form/Reactive',\n    component: StoryWrapperComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    parameters: {\n        controls: { exclude: ['form'] },\n    },\n    decorators: [moduleMetadata({})],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n};\n\nexport default meta;\ntype Story = StoryObj<StoryWrapperComponent>;\n\nexport const Default: Story = {\n    args: {\n        urlBack: '/dashboard',\n    },\n    parameters: {\n        docs: {\n            source: {\n                code: `\n                    <dsv-form-reactive [form]=\"form\" urlBack=\"urlBack\" (callback)=\"callback($event)\">\n                        <dsv-form-reactive-input [form]=\"form\" field=\"name\" />\n                        <dsv-form-reactive-input [form]=\"form\" type=\"number\" field=\"number\" />\n                        <dsv-form-reactive-input [form]=\"form\" type=\"range\" field=\"range\" />\n                        <dsv-form-reactive-input [form]=\"form\" type=\"datetime-local\" field=\"date\" />\n                        <dsv-form-reactive-input [form]=\"form\" type=\"textarea\" field=\"textarea\" />\n                        <dsv-form-reactive-select [form]=\"form\" field=\"select\" \n                            [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n                        <dsv-form-reactive-checkbox [form]=\"form\" field=\"checkbox\" />\n                    </dsv-form-reactive>\n                `,\n            },\n        },\n    },\n};\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n            :host {\n                width: 100%;\n            }\n        \n",
@@ -826,7 +882,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\n    avatar: 'dfds',\n    title: 'un Titre',\n    subtitle: 'un subtitle',\n    image: 'https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630',\n    content:\n        '<h3>Du contenu</h3><p>un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long </p>',\n}"
+                "defaultValue": "{\n    avatar: 'dfds',\n    title: 'un Titre',\n    subtitle: 'un subtitle',\n    image: 'https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630',\n}"
             },
             {
                 "name": "ActionsData",
@@ -942,11 +998,11 @@
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/button/component/scroll-top/button.scroll-top.component.stories.ts",
+                "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "literal type",
-                "defaultValue": "{\n    scroll: 500,\n}"
+                "type": "object",
+                "defaultValue": "{}"
             },
             {
                 "name": "ActionsData",
@@ -957,16 +1013,6 @@
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n    url: 'https://api-blog.vagabond.synology.me',\n    src: '/news/1/quarkus_react.png',\n}"
-            },
-            {
-                "name": "ActionsData",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{}"
             },
             {
                 "name": "ActionsData",
@@ -997,6 +1043,16 @@
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n    id: 'modale',\n    title: 'title',\n    text: 'text',\n    button: 'oui',\n    buttonClose: 'non',\n}"
+            },
+            {
+                "name": "ActionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/scroll/component/button/button.scroll-top.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "literal type",
+                "defaultValue": "{\n    scroll: 500,\n}"
             },
             {
                 "name": "ActionsData",
@@ -1066,7 +1122,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n    args: {},\n    render: (args: any) => ({\n        template: `<dsv-card titleText=\"${args.title}\" subtitle=\"${args.subtitle}\" image=\"${args.image}\"> ${args.content} </dsv-card>`,\n    }),\n}"
+                "defaultValue": "{\n    args: {},\n    parameters: {\n        docs: {\n            source: {\n                code: `\n                    <dsv-card>\n                        <dsv-card-img src=\"https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630\" alt=\"\" />\n                        <h3>Du contenu</h3>\n                        <p>\n                            un paragraphe long un paragraphe long un paragraphe long un paragraphe \n                            long un paragraphe long un paragraphe long un paragraphe long un paragraphe \n                            long un paragraphe long un paragraphe long un paragraphe long un paragraphe \n                            long un paragraphe long un paragraphe long un paragraphe long un paragraphe \n                            long un paragraphe long un paragraphe long un paragraphe long un paragraphe \n                            long un paragraphe long\n                        </p>\n                    </dsv-card>\n                `,\n            },\n        },\n    },\n}"
             },
             {
                 "name": "Default",
@@ -1136,7 +1192,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n    args: {},\n    render: (args: any) => ({\n        template: `\n            <div style=\"height: 300px\">\n                <dsv-modal-button id=\"${args.id}\" icon=\"ri-add-line\" text=\"add\" variant=\"contained\">\n                    <dsv-modal id=\"${args.id}\" titleText=\"${args.title}\" class=\"${args.class}\">\n                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, \n                    when an unknown printer took a galley of type and scrambled it to make a type specimen book. \n                    It has survived not only five centuries, but also the leap into electronic typesetting, \n                    remaining essentially unchanged. It was popularised in the 1960s with the release of \n                    Letraset sheets containing Lorem Ipsum passages, and more recently with desktop \n                    publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n                    </dsv-modal>\n                </dsv-modal-button>\n            </div>\n        `,\n    }),\n}"
+                "defaultValue": "{\n    args: {},\n    render: (args: any) => ({\n        template: `\n            <div style=\"height: 300px\">\n                <dsv-modal-button modalName=\"${args.id}\" icon=\"ri-add-line\" text=\"add\" variant=\"contained\">\n                    <dsv-modal id=\"${args.id}\" titleText=\"${args.title}\" class=\"${args.class}\">\n                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, \n                    when an unknown printer took a galley of type and scrambled it to make a type specimen book. \n                    It has survived not only five centuries, but also the leap into electronic typesetting, \n                    remaining essentially unchanged. It was popularised in the 1960s with the release of \n                    Letraset sheets containing Lorem Ipsum passages, and more recently with desktop \n                    publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n                    </dsv-modal>\n                </dsv-modal-button>\n            </div>\n        `,\n    }),\n}"
             },
             {
                 "name": "Default",
@@ -1182,11 +1238,11 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/button/component/scroll-top/button.scroll-top.component.stories.ts",
+                "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n    args: {},\n}"
+                "defaultValue": "{\n    args: {},\n    render: (args: any) => ({\n        template: `<dsv-file-upload> \n                <img src=\"/assets/images/ic-upload-file.svg\" alt=\"\" />\n                <div>Drop your image here</div>\n              </dsv-file-upload>`,\n    }),\n}"
             },
             {
                 "name": "Default",
@@ -1197,16 +1253,6 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n    args: {},\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n    args: {},\n    render: (args: any) => ({\n        template: `<dsv-file-upload> \n                <img src=\"/assets/images/ic-upload-file.svg\" alt=\"\" />\n                <div>Drop your image here</div>\n              </dsv-file-upload>`,\n    }),\n}"
             },
             {
                 "name": "Default",
@@ -1236,7 +1282,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n    args: {},\n    render: (args: any) => ({\n        template: `\n        <div style=\"height: 300px\">\n            <dsv-modal-button id=\"${args.id}\" text=\"Clic\">\n                <dsv-modal-alert \n                    id=\"${args.id}\" \n                    titleText=\"${args.title}\" \n                    text=\"${args.text}\" \n                    button=\"${args.button}\" \n                    buttonClose=\"${args.buttonClose}\" \n                    (callback)=\"${args.callback}\">\n                </dsv-modal-alert>\n            </dsv-modal-button>\n        </div>\n        `,\n    }),\n}"
+                "defaultValue": "{\n    args: {},\n    render: (args: any) => ({\n        template: `\n        <div style=\"height: 300px\">\n            <dsv-modal-button modalName=\"${args.id}\" text=\"Clic\">\n                <dsv-modal-alert \n                    id=\"${args.id}\" \n                    titleText=\"${args.title}\" \n                    text=\"${args.text}\" \n                    button=\"${args.button}\" \n                    buttonClose=\"${args.buttonClose}\" \n                    (callback)=\"${args.callback}\">\n                </dsv-modal-alert>\n            </dsv-modal-button>\n        </div>\n        `,\n    }),\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/scroll/component/button/button.scroll-top.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n    args: {},\n}"
             },
             {
                 "name": "Default",
@@ -1266,27 +1322,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n    args: {\n        urlBack: '/dashboard',\n    },\n    parameters: {\n        docs: {\n            source: {\n                code: `\n          <dsv-form-reactive [form]=\"form\" urlBack=\"urlBack\" (callback)=\"callback($event)\">\n            <dsv-form-reactive-input [form]=\"form\" field=\"name\" />\n            <dsv-form-reactive-input [form]=\"form\" type=\"number\" field=\"number\" />\n            <dsv-form-reactive-input [form]=\"form\" type=\"range\" field=\"range\" />\n            <dsv-form-reactive-input [form]=\"form\" type=\"datetime-local\" field=\"date\" />\n            <dsv-form-reactive-input [form]=\"form\" type=\"textarea\" field=\"textarea\" />\n            <dsv-form-reactive-select [form]=\"form\" field=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-reactive-checkbox [form]=\"form\" field=\"checkbox\" />\n          </dsv-form-reactive>\n        `,\n            },\n        },\n    },\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ng-dsv/ds/form/reactive/label/component/form.reactive.label.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n    args: {\n        label: 'test',\n    },\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n    args: {\n        form: MY_FORM,\n        field: 'exampleField',\n        list: [\n            { id: 1, name: 'name' },\n            { id: 2, name: 'name 2' },\n        ],\n    },\n}"
+                "defaultValue": "{\n    args: {\n        urlBack: '/dashboard',\n    },\n    parameters: {\n        docs: {\n            source: {\n                code: `\n                    <dsv-form-reactive [form]=\"form\" urlBack=\"urlBack\" (callback)=\"callback($event)\">\n                        <dsv-form-reactive-input [form]=\"form\" field=\"name\" />\n                        <dsv-form-reactive-input [form]=\"form\" type=\"number\" field=\"number\" />\n                        <dsv-form-reactive-input [form]=\"form\" type=\"range\" field=\"range\" />\n                        <dsv-form-reactive-input [form]=\"form\" type=\"datetime-local\" field=\"date\" />\n                        <dsv-form-reactive-input [form]=\"form\" type=\"textarea\" field=\"textarea\" />\n                        <dsv-form-reactive-select [form]=\"form\" field=\"select\" \n                            [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n                        <dsv-form-reactive-checkbox [form]=\"form\" field=\"checkbox\" />\n                    </dsv-form-reactive>\n                `,\n            },\n        },\n    },\n}"
             },
             {
                 "name": "Default",
@@ -1302,11 +1338,31 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/ng-dsv/ds/form/reactive/label/component/form.reactive.label.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n    args: {\n        label: 'test',\n    },\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n    args: {\n        search: '',\n    },\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n    args: {\n        form: MY_FORM,\n        field: 'exampleField',\n        list: [\n            { id: 1, name: 'name' },\n            { id: 2, name: 'name 2' },\n        ],\n    },\n}"
             },
             {
                 "name": "Default",
@@ -1332,21 +1388,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n    args: {\n        label: 'test',\n    },\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/form/signal/input/component/form.signal.input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n    args: {\n        value: 'name',\n        type: 'text',\n    },\n    parameters: {\n        docs: {\n            source: {\n                code: `\n          <dsv-form-signal-input [form]=\"myForm\" fieldName=\"name\" [type]=\"type()\" (callbackSend)=\"onSend($event)\" />\n        `,\n            },\n        },\n    },\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n    args: {\n        label: 'test',\n    },\n}"
             },
             {
                 "name": "Default",
@@ -1405,8 +1461,8 @@
                 "file": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<DsvCardComponent>",
-                "defaultValue": "{\n    title: 'dsv/Card',\n    component: DsvCardComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    args: {\n        ...ActionsData,\n    },\n}"
+                "type": "Meta<CardWrapperComponent>",
+                "defaultValue": "{\n    title: 'dsv/Card',\n    component: CardWrapperComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    decorators: [moduleMetadata({})],\n    args: {\n        ...ActionsData,\n    },\n}"
             },
             {
                 "name": "meta",
@@ -1522,11 +1578,11 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/button/component/scroll-top/button.scroll-top.component.stories.ts",
+                "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<ButtonScrollTopComponent>",
-                "defaultValue": "{\n    title: 'dsv/Button/scrollTop',\n    component: ButtonScrollTopComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n}"
+                "type": "Meta<FileUploadComponent>",
+                "defaultValue": "{\n    title: 'dsv/File/upload',\n    component: FileUploadComponent,\n    decorators: [\n        moduleMetadata({\n            providers: [],\n        }),\n    ],\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n}"
             },
             {
                 "name": "meta",
@@ -1537,16 +1593,6 @@
                 "deprecationMessage": "",
                 "type": "Meta<FileShowComponent>",
                 "defaultValue": "{\n    title: 'dsv/File/download',\n    component: FileShowComponent,\n    decorators: [\n        moduleMetadata({\n            providers: [],\n        }),\n    ],\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<FileUploadComponent>",
-                "defaultValue": "{\n    title: 'dsv/File/upload',\n    component: FileUploadComponent,\n    decorators: [\n        moduleMetadata({\n            providers: [],\n        }),\n    ],\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n}"
             },
             {
                 "name": "meta",
@@ -1582,6 +1628,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/ng-dsv/ds/scroll/component/button/button.scroll-top.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ButtonScrollTopComponent>",
+                "defaultValue": "{\n    title: 'dsv/Button/scrollTop',\n    component: ButtonScrollTopComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/tab/tabs/component/tabs.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1612,26 +1668,6 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/form/reactive/label/component/form.reactive.label.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<FormReactiveLabelComponent>",
-                "defaultValue": "{\n    title: 'dsv/Form/Reactive/label',\n    component: FormReactiveLabelComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<FormReactiveSelectComponent>",
-                "defaultValue": "{\n    title: 'dsv/Form/Reactive/select',\n    component: FormReactiveSelectComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/form/reactive/input/component/form.reactive.input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1642,11 +1678,31 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/ng-dsv/ds/form/reactive/label/component/form.reactive.label.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<FormReactiveLabelComponent>",
+                "defaultValue": "{\n    title: 'dsv/Form/Reactive/label',\n    component: FormReactiveLabelComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ReactiveSearchbarComponent>",
                 "defaultValue": "{\n    title: 'dsv/Form/Reactive/search',\n    component: ReactiveSearchbarComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<FormReactiveSelectComponent>",
+                "defaultValue": "{\n    title: 'dsv/Form/Reactive/select',\n    component: FormReactiveSelectComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n}"
             },
             {
                 "name": "meta",
@@ -1672,21 +1728,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<FormSignalLabelComponent<Test>>",
-                "defaultValue": "{\n    title: 'dsv/Form/Signal/label',\n    component: FormSignalLabelComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/form/signal/input/component/form.signal.input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<StorySignalInput>",
                 "defaultValue": "{\n    title: 'dsv/Form/Signal/input',\n    component: StorySignalInput,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {\n        type: {\n            control: 'select',\n            options: [\n                'text',\n                'password',\n                'textarea',\n                'email',\n                'number',\n                'date',\n                'time',\n                'datetime-local',\n                'month',\n                'week',\n                'url',\n                'search',\n                'tel',\n                'color',\n                'range',\n                'file',\n                'hidden',\n            ],\n        },\n        onSend: { action: 'callbackSend' },\n    },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<FormSignalLabelComponent<Test>>",
+                "defaultValue": "{\n    title: 'dsv/Form/Signal/label',\n    component: FormSignalLabelComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n}"
             },
             {
                 "name": "meta",
@@ -1722,7 +1778,7 @@
                 "name": "MY_FORM",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts",
+                "file": "projects/ng-dsv/ds/form/reactive/input/component/form.reactive.input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "unknown",
@@ -1732,7 +1788,7 @@
                 "name": "MY_FORM",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/form/reactive/input/component/form.reactive.input.component.stories.ts",
+                "file": "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "unknown",
@@ -1868,7 +1924,7 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<DsvCardComponent>",
+                "rawtype": "StoryObj<CardWrapperComponent>",
                 "file": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2000,8 +2056,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ButtonScrollTopComponent>",
-                "file": "projects/ng-dsv/ds/button/component/scroll-top/button.scroll-top.component.stories.ts",
+                "rawtype": "StoryObj<FileUploadComponent>",
+                "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2013,17 +2069,6 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<FileShowComponent>",
                 "file": "projects/ng-dsv/ds/file/show/component/file.show.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 184
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<FileUploadComponent>",
-                "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2066,6 +2111,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<ButtonScrollTopComponent>",
+                "file": "projects/ng-dsv/ds/scroll/component/button/button.scroll-top.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<TabsComponent>",
                 "file": "projects/ng-dsv/ds/tab/tabs/component/tabs.component.stories.ts",
                 "deprecated": false,
@@ -2099,28 +2155,6 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<FormReactiveLabelComponent>",
-                "file": "projects/ng-dsv/ds/form/reactive/label/component/form.reactive.label.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 184
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<FormReactiveSelectComponent>",
-                "file": "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 184
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
                 "rawtype": "StoryObj<FormReactiveInputComponent>",
                 "file": "projects/ng-dsv/ds/form/reactive/input/component/form.reactive.input.component.stories.ts",
                 "deprecated": false,
@@ -2132,8 +2166,30 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<FormReactiveLabelComponent>",
+                "file": "projects/ng-dsv/ds/form/reactive/label/component/form.reactive.label.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<ReactiveSearchbarComponent>",
                 "file": "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<FormReactiveSelectComponent>",
+                "file": "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2165,8 +2221,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<FormSignalLabelComponent<Test>>",
-                "file": "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts",
+                "rawtype": "StoryObj<StorySignalInput>",
+                "file": "projects/ng-dsv/ds/form/signal/input/component/form.signal.input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2176,8 +2232,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<StorySignalInput>",
-                "file": "projects/ng-dsv/ds/form/signal/input/component/form.signal.input.component.stories.ts",
+                "rawtype": "StoryObj<FormSignalLabelComponent<Test>>",
+                "file": "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2343,7 +2399,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
-                    "defaultValue": "{\n    avatar: 'dfds',\n    title: 'un Titre',\n    subtitle: 'un subtitle',\n    image: 'https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630',\n    content:\n        '<h3>Du contenu</h3><p>un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long un paragraphe long </p>',\n}"
+                    "defaultValue": "{\n    avatar: 'dfds',\n    title: 'un Titre',\n    subtitle: 'un subtitle',\n    image: 'https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630',\n}"
                 },
                 {
                     "name": "Default",
@@ -2353,7 +2409,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n    args: {},\n    render: (args: any) => ({\n        template: `<dsv-card titleText=\"${args.title}\" subtitle=\"${args.subtitle}\" image=\"${args.image}\"> ${args.content} </dsv-card>`,\n    }),\n}"
+                    "defaultValue": "{\n    args: {},\n    parameters: {\n        docs: {\n            source: {\n                code: `\n                    <dsv-card>\n                        <dsv-card-img src=\"https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630\" alt=\"\" />\n                        <h3>Du contenu</h3>\n                        <p>\n                            un paragraphe long un paragraphe long un paragraphe long un paragraphe \n                            long un paragraphe long un paragraphe long un paragraphe long un paragraphe \n                            long un paragraphe long un paragraphe long un paragraphe long un paragraphe \n                            long un paragraphe long un paragraphe long un paragraphe long un paragraphe \n                            long un paragraphe long un paragraphe long un paragraphe long un paragraphe \n                            long un paragraphe long\n                        </p>\n                    </dsv-card>\n                `,\n            },\n        },\n    },\n}"
                 },
                 {
                     "name": "meta",
@@ -2362,8 +2418,8 @@
                     "file": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<DsvCardComponent>",
-                    "defaultValue": "{\n    title: 'dsv/Card',\n    component: DsvCardComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    args: {\n        ...ActionsData,\n    },\n}"
+                    "type": "Meta<CardWrapperComponent>",
+                    "defaultValue": "{\n    title: 'dsv/Card',\n    component: CardWrapperComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    decorators: [moduleMetadata({})],\n    args: {\n        ...ActionsData,\n    },\n}"
                 }
             ],
             "projects/ng-dsv/ds/chip/component/chip.component.stories.ts": [
@@ -2597,7 +2653,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n    args: {},\n    render: (args: any) => ({\n        template: `\n            <div style=\"height: 300px\">\n                <dsv-modal-button id=\"${args.id}\" icon=\"ri-add-line\" text=\"add\" variant=\"contained\">\n                    <dsv-modal id=\"${args.id}\" titleText=\"${args.title}\" class=\"${args.class}\">\n                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, \n                    when an unknown printer took a galley of type and scrambled it to make a type specimen book. \n                    It has survived not only five centuries, but also the leap into electronic typesetting, \n                    remaining essentially unchanged. It was popularised in the 1960s with the release of \n                    Letraset sheets containing Lorem Ipsum passages, and more recently with desktop \n                    publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n                    </dsv-modal>\n                </dsv-modal-button>\n            </div>\n        `,\n    }),\n}"
+                    "defaultValue": "{\n    args: {},\n    render: (args: any) => ({\n        template: `\n            <div style=\"height: 300px\">\n                <dsv-modal-button modalName=\"${args.id}\" icon=\"ri-add-line\" text=\"add\" variant=\"contained\">\n                    <dsv-modal id=\"${args.id}\" titleText=\"${args.title}\" class=\"${args.class}\">\n                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, \n                    when an unknown printer took a galley of type and scrambled it to make a type specimen book. \n                    It has survived not only five centuries, but also the leap into electronic typesetting, \n                    remaining essentially unchanged. It was popularised in the 1960s with the release of \n                    Letraset sheets containing Lorem Ipsum passages, and more recently with desktop \n                    publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n                    </dsv-modal>\n                </dsv-modal-button>\n            </div>\n        `,\n    }),\n}"
                 },
                 {
                     "name": "meta",
@@ -2738,36 +2794,36 @@
                     "defaultValue": "{\n    title: 'dsv/Tooltip',\n    component: DsvTooltipComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n}"
                 }
             ],
-            "projects/ng-dsv/ds/button/component/scroll-top/button.scroll-top.component.stories.ts": [
+            "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts": [
                 {
                     "name": "ActionsData",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/button/component/scroll-top/button.scroll-top.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "literal type",
-                    "defaultValue": "{\n    scroll: 500,\n}"
+                    "type": "object",
+                    "defaultValue": "{}"
                 },
                 {
                     "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/button/component/scroll-top/button.scroll-top.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n    args: {},\n}"
+                    "defaultValue": "{\n    args: {},\n    render: (args: any) => ({\n        template: `<dsv-file-upload> \n                <img src=\"/assets/images/ic-upload-file.svg\" alt=\"\" />\n                <div>Drop your image here</div>\n              </dsv-file-upload>`,\n    }),\n}"
                 },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/button/component/scroll-top/button.scroll-top.component.stories.ts",
+                    "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<ButtonScrollTopComponent>",
-                    "defaultValue": "{\n    title: 'dsv/Button/scrollTop',\n    component: ButtonScrollTopComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n}"
+                    "type": "Meta<FileUploadComponent>",
+                    "defaultValue": "{\n    title: 'dsv/File/upload',\n    component: FileUploadComponent,\n    decorators: [\n        moduleMetadata({\n            providers: [],\n        }),\n    ],\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n}"
                 }
             ],
             "projects/ng-dsv/ds/file/show/component/file.show.component.stories.ts": [
@@ -2800,38 +2856,6 @@
                     "deprecationMessage": "",
                     "type": "Meta<FileShowComponent>",
                     "defaultValue": "{\n    title: 'dsv/File/download',\n    component: FileShowComponent,\n    decorators: [\n        moduleMetadata({\n            providers: [],\n        }),\n    ],\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n}"
-                }
-            ],
-            "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts": [
-                {
-                    "name": "ActionsData",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{}"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n    args: {},\n    render: (args: any) => ({\n        template: `<dsv-file-upload> \n                <img src=\"/assets/images/ic-upload-file.svg\" alt=\"\" />\n                <div>Drop your image here</div>\n              </dsv-file-upload>`,\n    }),\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<FileUploadComponent>",
-                    "defaultValue": "{\n    title: 'dsv/File/upload',\n    component: FileUploadComponent,\n    decorators: [\n        moduleMetadata({\n            providers: [],\n        }),\n    ],\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n}"
                 }
             ],
             "projects/ng-dsv/ds/list/list/component/list.component.stories.ts": [
@@ -2927,7 +2951,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n    args: {},\n    render: (args: any) => ({\n        template: `\n        <div style=\"height: 300px\">\n            <dsv-modal-button id=\"${args.id}\" text=\"Clic\">\n                <dsv-modal-alert \n                    id=\"${args.id}\" \n                    titleText=\"${args.title}\" \n                    text=\"${args.text}\" \n                    button=\"${args.button}\" \n                    buttonClose=\"${args.buttonClose}\" \n                    (callback)=\"${args.callback}\">\n                </dsv-modal-alert>\n            </dsv-modal-button>\n        </div>\n        `,\n    }),\n}"
+                    "defaultValue": "{\n    args: {},\n    render: (args: any) => ({\n        template: `\n        <div style=\"height: 300px\">\n            <dsv-modal-button modalName=\"${args.id}\" text=\"Clic\">\n                <dsv-modal-alert \n                    id=\"${args.id}\" \n                    titleText=\"${args.title}\" \n                    text=\"${args.text}\" \n                    button=\"${args.button}\" \n                    buttonClose=\"${args.buttonClose}\" \n                    (callback)=\"${args.callback}\">\n                </dsv-modal-alert>\n            </dsv-modal-button>\n        </div>\n        `,\n    }),\n}"
                 },
                 {
                     "name": "meta",
@@ -2938,6 +2962,38 @@
                     "deprecationMessage": "",
                     "type": "Meta<ModalAlertComponent>",
                     "defaultValue": "{\n    title: 'dsv/Modal/alert',\n    component: ModalAlertComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    decorators: [\n        moduleMetadata({\n            imports: [ModalButtonComponent, TranslatePipe],\n        }),\n    ],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n}"
+                }
+            ],
+            "projects/ng-dsv/ds/scroll/component/button/button.scroll-top.component.stories.ts": [
+                {
+                    "name": "ActionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/scroll/component/button/button.scroll-top.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "defaultValue": "{\n    scroll: 500,\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/scroll/component/button/button.scroll-top.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n    args: {},\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/scroll/component/button/button.scroll-top.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ButtonScrollTopComponent>",
+                    "defaultValue": "{\n    title: 'dsv/Button/scrollTop',\n    component: ButtonScrollTopComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n    args: {\n        ...ActionsData,\n    },\n}"
                 }
             ],
             "projects/ng-dsv/ds/tab/tabs/component/tabs.component.stories.ts": [
@@ -2991,7 +3047,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n    args: {\n        urlBack: '/dashboard',\n    },\n    parameters: {\n        docs: {\n            source: {\n                code: `\n          <dsv-form-reactive [form]=\"form\" urlBack=\"urlBack\" (callback)=\"callback($event)\">\n            <dsv-form-reactive-input [form]=\"form\" field=\"name\" />\n            <dsv-form-reactive-input [form]=\"form\" type=\"number\" field=\"number\" />\n            <dsv-form-reactive-input [form]=\"form\" type=\"range\" field=\"range\" />\n            <dsv-form-reactive-input [form]=\"form\" type=\"datetime-local\" field=\"date\" />\n            <dsv-form-reactive-input [form]=\"form\" type=\"textarea\" field=\"textarea\" />\n            <dsv-form-reactive-select [form]=\"form\" field=\"select\" [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n            <dsv-form-reactive-checkbox [form]=\"form\" field=\"checkbox\" />\n          </dsv-form-reactive>\n        `,\n            },\n        },\n    },\n}"
+                    "defaultValue": "{\n    args: {\n        urlBack: '/dashboard',\n    },\n    parameters: {\n        docs: {\n            source: {\n                code: `\n                    <dsv-form-reactive [form]=\"form\" urlBack=\"urlBack\" (callback)=\"callback($event)\">\n                        <dsv-form-reactive-input [form]=\"form\" field=\"name\" />\n                        <dsv-form-reactive-input [form]=\"form\" type=\"number\" field=\"number\" />\n                        <dsv-form-reactive-input [form]=\"form\" type=\"range\" field=\"range\" />\n                        <dsv-form-reactive-input [form]=\"form\" type=\"datetime-local\" field=\"date\" />\n                        <dsv-form-reactive-input [form]=\"form\" type=\"textarea\" field=\"textarea\" />\n                        <dsv-form-reactive-select [form]=\"form\" field=\"select\" \n                            [list]=\"[{id: '', name: ''}, {id: '1', name: 'Test'}]\" />\n                        <dsv-form-reactive-checkbox [form]=\"form\" field=\"checkbox\" />\n                    </dsv-form-reactive>\n                `,\n            },\n        },\n    },\n}"
                 },
                 {
                     "name": "meta",
@@ -3068,6 +3124,38 @@
                     "defaultValue": "new FormGroup({\n    exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup"
                 }
             ],
+            "projects/ng-dsv/ds/form/reactive/input/component/form.reactive.input.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/form/reactive/input/component/form.reactive.input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n    args: {\n        form: MY_FORM,\n        field: 'exampleField',\n        type: 'text',\n    },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/form/reactive/input/component/form.reactive.input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<FormReactiveInputComponent>",
+                    "defaultValue": "{\n    title: 'dsv/Form/Reactive/input',\n    component: FormReactiveInputComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {\n        type: {\n            control: 'select',\n            options: [\n                'text',\n                'password',\n                'textarea',\n                'email',\n                'number',\n                'date',\n                'time',\n                'datetime-local',\n                'month',\n                'week',\n                'url',\n                'search',\n                'tel',\n                'color',\n                'range',\n                'file',\n                'hidden',\n            ],\n        },\n        callbackSend: { action: 'callbackSend' },\n    },\n}"
+                },
+                {
+                    "name": "MY_FORM",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/form/reactive/input/component/form.reactive.input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "new FormGroup({\n    exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup"
+                }
+            ],
             "projects/ng-dsv/ds/form/reactive/label/component/form.reactive.label.component.stories.ts": [
                 {
                     "name": "Default",
@@ -3088,6 +3176,28 @@
                     "deprecationMessage": "",
                     "type": "Meta<FormReactiveLabelComponent>",
                     "defaultValue": "{\n    title: 'dsv/Form/Reactive/label',\n    component: FormReactiveLabelComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n}"
+                }
+            ],
+            "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n    args: {\n        search: '',\n    },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ReactiveSearchbarComponent>",
+                    "defaultValue": "{\n    title: 'dsv/Form/Reactive/search',\n    component: ReactiveSearchbarComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n}"
                 }
             ],
             "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts": [
@@ -3122,60 +3232,6 @@
                     "defaultValue": "new FormGroup({\n    exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup"
                 }
             ],
-            "projects/ng-dsv/ds/form/reactive/input/component/form.reactive.input.component.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/form/reactive/input/component/form.reactive.input.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n    args: {\n        form: MY_FORM,\n        field: 'exampleField',\n        type: 'text',\n    },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/form/reactive/input/component/form.reactive.input.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<FormReactiveInputComponent>",
-                    "defaultValue": "{\n    title: 'dsv/Form/Reactive/input',\n    component: FormReactiveInputComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {\n        type: {\n            control: 'select',\n            options: [\n                'text',\n                'password',\n                'textarea',\n                'email',\n                'number',\n                'date',\n                'time',\n                'datetime-local',\n                'month',\n                'week',\n                'url',\n                'search',\n                'tel',\n                'color',\n                'range',\n                'file',\n                'hidden',\n            ],\n        },\n        callbackSend: { action: 'callbackSend' },\n    },\n}"
-                },
-                {
-                    "name": "MY_FORM",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/form/reactive/input/component/form.reactive.input.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "defaultValue": "new FormGroup({\n    exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup"
-                }
-            ],
-            "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n    args: {\n        search: '',\n    },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<ReactiveSearchbarComponent>",
-                    "defaultValue": "{\n    title: 'dsv/Form/Reactive/search',\n    component: ReactiveSearchbarComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n}"
-                }
-            ],
             "projects/ng-dsv/ds/form/signal/checkbox/component/form.signal.checkbox.component.stories.ts": [
                 {
                     "name": "Default",
@@ -3208,28 +3264,6 @@
                     "defaultValue": "new FormGroup({\n    exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup"
                 }
             ],
-            "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n    args: {\n        label: 'test',\n    },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<FormSignalLabelComponent<Test>>",
-                    "defaultValue": "{\n    title: 'dsv/Form/Signal/label',\n    component: FormSignalLabelComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n}"
-                }
-            ],
             "projects/ng-dsv/ds/form/signal/input/component/form.signal.input.component.stories.ts": [
                 {
                     "name": "Default",
@@ -3250,6 +3284,28 @@
                     "deprecationMessage": "",
                     "type": "Meta<StorySignalInput>",
                     "defaultValue": "{\n    title: 'dsv/Form/Signal/input',\n    component: StorySignalInput,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {\n        type: {\n            control: 'select',\n            options: [\n                'text',\n                'password',\n                'textarea',\n                'email',\n                'number',\n                'date',\n                'time',\n                'datetime-local',\n                'month',\n                'week',\n                'url',\n                'search',\n                'tel',\n                'color',\n                'range',\n                'file',\n                'hidden',\n            ],\n        },\n        onSend: { action: 'callbackSend' },\n    },\n}"
+                }
+            ],
+            "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n    args: {\n        label: 'test',\n    },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<FormSignalLabelComponent<Test>>",
+                    "defaultValue": "{\n    title: 'dsv/Form/Signal/label',\n    component: FormSignalLabelComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n}"
                 }
             ],
             "projects/ng-dsv/ds/form/signal/searchbar/component/form.signal.searchbar.component.stories.ts": [
@@ -3366,7 +3422,7 @@
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<DsvCardComponent>",
+                    "rawtype": "StoryObj<CardWrapperComponent>",
                     "file": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -3517,13 +3573,13 @@
                     "kind": 184
                 }
             ],
-            "projects/ng-dsv/ds/button/component/scroll-top/button.scroll-top.component.stories.ts": [
+            "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<ButtonScrollTopComponent>",
-                    "file": "projects/ng-dsv/ds/button/component/scroll-top/button.scroll-top.component.stories.ts",
+                    "rawtype": "StoryObj<FileUploadComponent>",
+                    "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -3537,19 +3593,6 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<FileShowComponent>",
                     "file": "projects/ng-dsv/ds/file/show/component/file.show.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
-            "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<FileUploadComponent>",
-                    "file": "projects/ng-dsv/ds/file/upload/component/file-upload.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -3595,6 +3638,19 @@
                     "kind": 184
                 }
             ],
+            "projects/ng-dsv/ds/scroll/component/button/button.scroll-top.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ButtonScrollTopComponent>",
+                    "file": "projects/ng-dsv/ds/scroll/component/button/button.scroll-top.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
             "projects/ng-dsv/ds/tab/tabs/component/tabs.component.stories.ts": [
                 {
                     "name": "Story",
@@ -3634,32 +3690,6 @@
                     "kind": 184
                 }
             ],
-            "projects/ng-dsv/ds/form/reactive/label/component/form.reactive.label.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<FormReactiveLabelComponent>",
-                    "file": "projects/ng-dsv/ds/form/reactive/label/component/form.reactive.label.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
-            "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<FormReactiveSelectComponent>",
-                    "file": "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
             "projects/ng-dsv/ds/form/reactive/input/component/form.reactive.input.component.stories.ts": [
                 {
                     "name": "Story",
@@ -3673,6 +3703,19 @@
                     "kind": 184
                 }
             ],
+            "projects/ng-dsv/ds/form/reactive/label/component/form.reactive.label.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<FormReactiveLabelComponent>",
+                    "file": "projects/ng-dsv/ds/form/reactive/label/component/form.reactive.label.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
             "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts": [
                 {
                     "name": "Story",
@@ -3680,6 +3723,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<ReactiveSearchbarComponent>",
                     "file": "projects/ng-dsv/ds/form/reactive/searchbar/component/reactive.searchbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<FormReactiveSelectComponent>",
+                    "file": "projects/ng-dsv/ds/form/reactive/select/component/form.reactive.select.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -3712,19 +3768,6 @@
                     "kind": 184
                 }
             ],
-            "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<FormSignalLabelComponent<Test>>",
-                    "file": "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
             "projects/ng-dsv/ds/form/signal/input/component/form.signal.input.component.stories.ts": [
                 {
                     "name": "Story",
@@ -3732,6 +3775,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<StorySignalInput>",
                     "file": "projects/ng-dsv/ds/form/signal/input/component/form.signal.input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<FormSignalLabelComponent<Test>>",
+                    "file": "projects/ng-dsv/ds/form/signal/label/component/form.signal.label.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -3936,41 +3992,10 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/ng-dsv/ds/button/component/scroll-top/button.scroll-top.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "ActionsData",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ng-dsv/ds/button/component/scroll-top/button.scroll-top.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Default",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ng-dsv/ds/button/component/scroll-top/button.scroll-top.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ng-dsv/ds/button/component/scroll-top/button.scroll-top.component.stories.ts",
-                "type": "type alias",
-                "linktype": "miscellaneous",
-                "linksubtype": "typealias",
-                "name": "Story",
+                "filePath": "projects/ng-dsv/ds/card/component/card.component.stories.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CardWrapperComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -5086,6 +5111,46 @@
             },
             {
                 "filePath": "projects/ng-dsv/ds/paginate/component/paginate.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/scroll/component/button/button.scroll-top.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ActionsData",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/scroll/component/button/button.scroll-top.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/scroll/component/button/button.scroll-top.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-dsv/ds/scroll/component/button/button.scroll-top.component.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",

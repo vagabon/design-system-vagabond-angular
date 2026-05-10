@@ -12,6 +12,8 @@
     --button-line-height: 1.5rem;
     --button-font-weight: 550;
 
+    position: relative;
+
     button.dsv-button {
         position: relative;
         cursor: pointer;
@@ -46,7 +48,7 @@
             font-size: var(--button-icon-size) !important;
         }
 
-        &>span:empty {
+        &>span:not(.ripple):empty {
             display: none;
         }
 

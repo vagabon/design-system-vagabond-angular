@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, input, signal, ViewChild } from '@angular/core';
+import { Component, ElementRef, input, signal, ViewChild } from '@angular/core';
 import { TooltipPosition, TooltipPositionEnum } from '../dto/tooltip.dto';
 import { getTooltipPosition } from '../utils/tooltip.utils';
 @Component({
@@ -7,6 +7,11 @@ import { getTooltipPosition } from '../utils/tooltip.utils';
     imports: [CommonModule],
     templateUrl: './tooltip.component.html',
     styleUrls: ['./tooltip.component.scss'],
+    host: {
+        '(window:resize)': 'onResize()',
+        '(mouseenter)': 'onMouseEnter()',
+        '(mouseleave)': 'onMouseLeave()',
+    },
 })
 export class DsvTooltipComponent {
     text = input<string>('');
@@ -20,24 +25,21 @@ export class DsvTooltipComponent {
     @ViewChild('tooltipBox')
     tooltipBox!: ElementRef<HTMLElement>;
 
-    @HostListener('window:resize')
-    onResize() {
+    onResize(): void {
         this.adjustPosition();
     }
 
-    @HostListener('mouseenter')
-    onMouseEnter() {
+    onMouseEnter(): void {
         this.visible.set(true);
         this.adjustPosition();
     }
 
-    @HostListener('mouseleave')
-    onMouseLeave() {
+    onMouseLeave(): void {
         this.opacity.set(0);
         this.visible.set(false);
     }
 
-    adjustPosition() {
+    private adjustPosition(): void {
         setTimeout(() => {
             const tooltipEl = this.tooltipBox?.nativeElement;
             if (!tooltipEl) return;

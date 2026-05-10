@@ -1,54 +1,47 @@
-import { Directive, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
+import { computed, Directive, input, output, signal } from '@angular/core';
 
 @Directive({
     selector: '[appDragDrop]',
+    host: {
+        '[class.dragging]': 'dragInProgress()',
+        '(dragenter)': 'onDragOver($event)',
+        '(dragover)': 'onDragOver($event)',
+        '(dragleave)': 'onDragEnd($event)',
+        '(dragend)': 'onDragEnd($event)',
+        '(drop)': 'onDrop($event)',
+    },
 })
 export class FileUploadDirective {
-    private _enabled: boolean = false;
-    private _dragInProgress: boolean = false;
+    readonly appDragDrop = input<any>();
 
-    @Input() set appDragDrop(value: any) {
-        this._enabled = value === '' ? true : !!value;
-    }
+    readonly dropped = output<DragEvent>();
 
-    @HostBinding('class.dragging') get dragInProgress() {
-        return this._dragInProgress;
-    }
+    readonly dragInProgress = signal(false);
 
-    @Output() dropped: EventEmitter<any>;
+    private readonly enabled = computed(() => {
+        const value = this.appDragDrop();
+        return value === '' ? true : !!value;
+    });
 
-    constructor() {
-        this.dropped = new EventEmitter();
-    }
-
-    @HostListener('dragenter', ['$event'])
-    @HostListener('dragover', ['$event'])
-    handleDragOver(event: DragEvent): void {
-        if (!this._enabled) {
-            return;
-        }
+    onDragOver(event: DragEvent): void {
+        if (!this.enabled()) return;
         this.stopAndPreventDefault(event);
-        this._dragInProgress = true;
+        this.dragInProgress.set(true);
     }
 
-    @HostListener('dragleave', ['$event'])
-    @HostListener('dragend', ['$event'])
-    handleDragEnd(event: DragEvent): void {
-        if (!this._enabled) {
-            return;
-        }
+    onDragEnd(event: DragEvent): void {
+        if (!this.enabled()) return;
         this.stopAndPreventDefault(event);
-        this._dragInProgress = false;
+        this.dragInProgress.set(false);
     }
 
-    @HostListener('drop', ['$event'])
-    handleDrop(event: UIEvent): void {
+    onDrop(event: DragEvent): void {
         this.stopAndPreventDefault(event);
-        this._dragInProgress = false;
+        this.dragInProgress.set(false);
         this.dropped.emit(event);
     }
 
-    stopAndPreventDefault(e: UIEvent): void {
+    private stopAndPreventDefault(e: UIEvent): void {
         e.stopPropagation();
         e.preventDefault();
     }

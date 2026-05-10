@@ -1,4 +1,4 @@
-import { Component, effect, HostBinding, input, signal } from '@angular/core';
+import { Component, effect, input, signal } from '@angular/core';
 import { ValidationError } from '@angular/forms/signals';
 import { TranslatePipe } from '@ngx-translate/core';
 
@@ -7,18 +7,15 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [TranslatePipe],
     templateUrl: './form.signal.error.component.html',
     styleUrls: ['../../../reactive/error/component/form.reactive.error.component.scss'],
+    host: {
+        class: 'text error',
+    },
 })
 export class FormSignalErrorComponent {
     errors = input.required<ValidationError[]>();
     isTouched = input<boolean>(false);
 
     error = signal<string>('');
-
-    @HostBinding('class')
-    get hostClasses(): string {
-        const classes: string[] = ['text', 'error'];
-        return classes.join(' ');
-    }
 
     constructor() {
         effect(() => {

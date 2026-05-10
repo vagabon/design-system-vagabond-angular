@@ -1,7 +1,7 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { ApiDto } from '@ng-vagabond-lab/ng-dsv/api';
 import { BaseRouteContainer } from '@ng-vagabond-lab/ng-dsv/base';
-import { DsvCardComponent } from '@ng-vagabond-lab/ng-dsv/ds/card';
+import { CardHeaderComponent, DsvCardComponent } from '@ng-vagabond-lab/ng-dsv/ds/card';
 import { TabDto } from '@ng-vagabond-lab/ng-dsv/ds/tab';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { AdminFormComponent } from '../../component/form/admin.form.component';
@@ -10,7 +10,7 @@ import { AdminService } from '../../service/admin.service';
 
 @Component({
     selector: 'dsv-admin-form-container',
-    imports: [DsvCardComponent, AdminFormComponent],
+    imports: [DsvCardComponent, CardHeaderComponent, AdminFormComponent, CardHeaderComponent],
     templateUrl: './admin.form.container.html',
     styleUrls: ['./admin.form.container.scss'],
 })

@@ -23,10 +23,6 @@ describe('FormSignalErrorComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should have correct host classes', () => {
-        expect(component.hostClasses).toBe('text error');
-    });
-
     it('should not display error if errors input is empty', () => {
         component.errors = signal([]) as unknown as InputSignal<ValidationError[]>;
         fixture.detectChanges();

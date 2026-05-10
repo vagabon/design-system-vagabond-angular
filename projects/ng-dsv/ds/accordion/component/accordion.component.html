@@ -3,12 +3,13 @@
         {{ titleText() | translate }}
         <ng-content select=".dsv-accordion-header"></ng-content>
     </div>
-    @if (isOpen() === true) {
-        <i class="ri-arrow-up-s-line" [class.disabled]="!hasContent()"></i>
-    } @else {
-        <i class="ri-arrow-down-s-line" [class.disabled]="!hasContent()"></i>
-    }
+    <i
+        [class]="isOpen() ? 'ri-arrow-up-s-line' : 'ri-arrow-down-s-line'"
+        [class.disabled]="!hasContent()"
+    ></i>
 </a>
 <div class="dsv-accordion-text" [class.open]="isOpen() === true">
-    <ng-content #accordionContent></ng-content>
+    <div class="dsv-accordion-inner">
+        <ng-content #accordionContent></ng-content>
+    </div>
 </div>

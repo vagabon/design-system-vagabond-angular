@@ -1,4 +1,9 @@
-<dsv-card [titleText]="adminService.data().id ? 'Modification' : 'Ajout'">
+<dsv-card>
+    <dsv-card-header>
+        <h2>
+            {{ adminService.data().id ? 'Modification' : 'Ajout' }}
+        </h2>
+    </dsv-card-header>
     <dsv-admin-form
         [data]="adminService.data()"
         [formConf]="tabConfig()?.form!"

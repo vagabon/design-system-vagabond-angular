@@ -13,7 +13,9 @@ const TOKEN_REGEX = new RegExp(Object.keys(FORMAT_TOKENS).join('|'), 'g');
 export const formatDate = (dateString: string, format = 'DD/MM/YYYY HH:mm:ss'): string => {
     const date = new Date(dateString);
 
-    if (Number.isNaN(date.getTime())) return '—';
+    if (Number.isNaN(date.getTime())) {
+        return '—';
+    }
 
     return format.replace(TOKEN_REGEX, (token) => FORMAT_TOKENS[token](date));
 };
@@ -25,5 +27,5 @@ export function toDateInputValue(value: string | null | undefined): string {
 
 export function toBackendDate(value: string | null | undefined): string {
     if (!value) return '';
-    return value.includes('T') ? value : `${value}T00:00:00`;
+    return value.includes('T') ? value : `${value}T00:00:00Z`;
 }

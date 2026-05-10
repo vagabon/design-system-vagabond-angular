@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, inject, input, output, signal } from '@angular/core';
+import { Component, ElementRef, inject, input, output, signal } from '@angular/core';
 import {
     CLICK_BOTH,
     CLICK_LEFT,
@@ -11,6 +11,10 @@ import {
     selector: 'dsv-menu-contextual',
     templateUrl: './menu.contextual.component.html',
     styleUrls: ['./menu.contextual.component.scss'],
+    host: {
+        '(document:click)': 'onClick($event)',
+        '(document:contextmenu)': 'onContextMenu($event)',
+    },
 })
 export class DsvMenuContextualComponent {
     readonly elementRef = inject(ElementRef);
@@ -30,7 +34,6 @@ export class DsvMenuContextualComponent {
         this.closeMenu();
     }
 
-    @HostListener('document:click', ['$event'])
     onClick(event: MouseEvent) {
         if (!this.elementRef.nativeElement.contains(event.target)) {
             this.closeMenu();
@@ -39,7 +42,6 @@ export class DsvMenuContextualComponent {
         }
     }
 
-    @HostListener('document:contextmenu', ['$event'])
     onContextMenu(event: MouseEvent) {
         event.preventDefault();
         if (!this.elementRef.nativeElement.contains(event.target)) {

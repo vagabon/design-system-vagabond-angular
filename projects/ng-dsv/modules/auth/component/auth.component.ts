@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, effect, inject, output } from '@angular/core';
 import { ID } from '@ng-vagabond-lab/ng-dsv/api';
 import { ModalAlertComponent, ModalButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/modal';
+import { RouterInternalPipe } from '@ng-vagabond-lab/ng-dsv/router';
 import { AuthGoogleService, AuthService } from '../public-api';
 
 @Component({
     selector: 'dsv-auth',
-    imports: [CommonModule, ModalButtonComponent, ModalAlertComponent],
+    imports: [CommonModule, ModalButtonComponent, ModalAlertComponent, RouterInternalPipe],
     templateUrl: './auth.component.html',
     styleUrls: ['./auth.component.scss'],
 })

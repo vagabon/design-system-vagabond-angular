@@ -57,7 +57,7 @@ describe('toBackendDate', () => {
     });
 
     it('ajoute T00:00:00 si le format est yyyy-MM-dd', () => {
-        expect(toBackendDate('2026-04-04')).toBe('2026-04-04T00:00:00');
+        expect(toBackendDate('2026-04-04')).toBe('2026-04-04T00:00:00Z');
     });
 
     it('retourne la valeur telle quelle si déjà au format ISO datetime', () => {

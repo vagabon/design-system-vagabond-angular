@@ -1,10 +1,11 @@
 import { Component, effect, input, output } from '@angular/core';
 import { BaseColorComponent } from '@ng-vagabond-lab/ng-dsv/ds/color';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ButtonRippleDirective } from '../directive/button.riddle.directive';
 
 @Component({
     selector: 'dsv-button',
-    imports: [TranslatePipe],
+    imports: [TranslatePipe, ButtonRippleDirective],
     templateUrl: './button.component.html',
     styleUrls: ['./button.component.scss'],
 })

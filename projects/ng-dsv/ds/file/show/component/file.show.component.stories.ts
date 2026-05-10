@@ -7,7 +7,7 @@ export const ActionsData = {
 };
 
 const meta: Meta<FileShowComponent> = {
-    title: 'dsv/File/download',
+    title: 'dsv/File/show',
     component: FileShowComponent,
     decorators: [
         moduleMetadata({
