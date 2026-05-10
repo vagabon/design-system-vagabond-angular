@@ -16,7 +16,7 @@ export class DsvHeaderComponent {
     readonly titleText = input<string>('');
     readonly withMenu = input<boolean>(true);
 
-    readonly titleTextParts = computed(() => this.titleText().split(' '));
+    readonly titleTextParts = computed<string[]>(() => this.titleText().split(' '));
 
     doToogleMenu(): void {
         this.menuService.toogleMenu();

@@ -9,7 +9,7 @@ import { ListDragService } from '../../../public-api';
     templateUrl: './list-item-drag.component.html',
     styleUrl: './list-item-drag.component.scss',
 })
-export class ListItemDragComponent {
+export class DsvListItemDragComponent {
     readonly listDragService = inject(ListDragService);
 
     readonly variant = input<ButtonVariantType>('text');

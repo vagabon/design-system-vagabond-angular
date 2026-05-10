@@ -27,7 +27,7 @@ const makeFieldTree = (valid: boolean, value: unknown = {}) => {
     return vi.fn().mockReturnValue(form);
 };
 
-describe('FormSignalComponent', () => {
+describe('DsvFormSignalComponent', () => {
     let fixture: ComponentFixture<DsvFormSignalComponent<unknown>>;
     let component: DsvFormSignalComponent<unknown>;
     let componentRef: ComponentRef<DsvFormSignalComponent<unknown>>;

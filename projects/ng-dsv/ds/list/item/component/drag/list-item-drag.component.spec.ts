@@ -1,7 +1,7 @@
 import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ListDragService } from '../../../list/service/list-drag.service';
-import { ListItemDragComponent } from './list-item-drag.component';
+import { DsvListItemDragComponent } from './list-item-drag.component';
 
 const mockListDragService = {
     dragSrcIndex: signal<number | null>(null),
@@ -9,19 +9,19 @@ const mockListDragService = {
 };
 
 describe('ListItemDragComponent', () => {
-    let fixture: ComponentFixture<ListItemDragComponent>;
-    let component!: ListItemDragComponent;
+    let fixture: ComponentFixture<DsvListItemDragComponent>;
+    let component!: DsvListItemDragComponent;
 
     beforeEach(async () => {
         mockListDragService.touchDragging.set(false);
         mockListDragService.dragSrcIndex.set(null);
 
         await TestBed.configureTestingModule({
-            imports: [ListItemDragComponent],
+            imports: [DsvListItemDragComponent],
             providers: [{ provide: ListDragService, useValue: mockListDragService }],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(ListItemDragComponent);
+        fixture = TestBed.createComponent(DsvListItemDragComponent);
         component = fixture.componentInstance;
         await fixture.whenStable();
     });

@@ -21,7 +21,7 @@ class MockModalService {
     }
 }
 
-describe('ModalAlertComponent', () => {
+describe('DsvModalAlertComponent', () => {
     let component: DsvModalAlertComponent;
     let fixture: ComponentFixture<DsvModalAlertComponent>;
     let modalService: ModalService;

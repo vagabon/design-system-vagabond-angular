@@ -8,7 +8,7 @@ import { ListDragService } from '../../list/service/list-drag.service';
     templateUrl: './list-item.component.html',
     styleUrl: './list-item.component.scss',
 })
-export class ListItemComponent {
+export class DsvListItemComponent {
     readonly listDragService = inject(ListDragService);
 
     readonly index = input.required<number>();

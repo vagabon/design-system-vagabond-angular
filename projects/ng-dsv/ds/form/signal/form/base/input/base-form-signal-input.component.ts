@@ -18,7 +18,8 @@ export abstract class DsvBaseFormSignalInputComponent<T> {
 
     constructor() {
         effect(() => {
-            this.isError.set(this.getSignal()().touched() && this.getSignal()().errors().length > 0);
+            this.getSignal() &&
+                this.isError.set(this.getSignal()().touched() && this.getSignal()().errors().length > 0);
         });
     }
 

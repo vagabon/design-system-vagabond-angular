@@ -25,7 +25,7 @@ export class DsvFormSignalComponent<T> {
     readonly callbackBack = output<void>();
     readonly callback = output<ApiDto>();
 
-    readonly isCallbackBack = computed(() => isCallback(this.callbackBack));
+    readonly isCallbackBack = computed<boolean>(() => isCallback(this.callbackBack));
 
     goBack(): void {
         this.callbackBack.emit();

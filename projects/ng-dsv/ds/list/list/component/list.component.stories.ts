@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { DsvCardComponent } from '@ng-vagabond-lab/ng-dsv/ds/card';
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
-import { ListItemComponent, ListItemDragComponent } from '../../public-api';
+import { DsvListItemComponent, DsvListItemDragComponent } from '../../public-api';
 import { ListItemDragDto } from '../dto/list.dto';
 import { DsvListComponent } from './list.component';
 
@@ -10,7 +10,7 @@ export const ActionsData = {};
 @Component({
     selector: 'app-list-wrapper',
     standalone: true,
-    imports: [DsvCardComponent, DsvListComponent, ListItemComponent, ListItemDragComponent],
+    imports: [DsvCardComponent, DsvListComponent, DsvListItemComponent, DsvListItemDragComponent],
     template: `
         <dsv-card>
             <dsv-list>

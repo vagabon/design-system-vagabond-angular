@@ -4,9 +4,9 @@ export class StoreMap<K, V> {
     private readonly _data = signal<Map<K, V>>(new Map());
 
     readonly data = this._data.asReadonly();
-    readonly values = computed(() => Array.from(this._data().values()));
-    readonly keys = computed(() => Array.from(this._data().keys()));
-    readonly size = computed(() => this._data().size);
+    readonly values = computed<V[]>(() => Array.from(this._data().values()));
+    readonly keys = computed<K[]>(() => Array.from(this._data().keys()));
+    readonly size = computed<number>(() => this._data().size);
 
     get(key: K): V | undefined {
         return this._data().get(key);

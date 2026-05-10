@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { DsvFormReactiveSearchbarComponent } from './form-reactive-searchbar.component';
 
-describe('ReactiveSearchbarComponent', () => {
+describe('DsvFormReactiveCheckboxComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [DsvFormReactiveSearchbarComponent],

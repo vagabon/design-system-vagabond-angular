@@ -8,7 +8,7 @@ interface TestDto {
     myCheckbox: boolean;
 }
 
-describe('FormSignalCheckboxComponent', () => {
+describe('DsvFormSignalCheckboxComponent', () => {
     let component: DsvFormSignalCheckboxComponent<TestDto>;
     let fixture: ComponentFixture<DsvFormSignalCheckboxComponent<TestDto>>;
 

@@ -30,7 +30,7 @@ function makeNativeElement(overrides = {}) {
     };
 }
 
-describe('ScrollInfiniteContainer', () => {
+describe('DsvScrollInfiniteContainer', () => {
     let fixture: ComponentFixture<DsvScrollInfiniteContainer>;
     let component: DsvScrollInfiniteContainer;
     let nativeEl: ReturnType<typeof makeNativeElement>;
