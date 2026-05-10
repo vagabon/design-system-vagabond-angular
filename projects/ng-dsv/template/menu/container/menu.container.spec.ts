@@ -30,7 +30,10 @@ describe('MenuContainer', () => {
     describe('getSlot', () => {
         it('returns the template when slot id matches', () => {
             const mockTpl = {} as any;
-            const slot = { menuSlot: 'header', tpl: mockTpl } as MenuSlotDirective;
+            const slot = {
+                menuSlot: signal('header'),
+                template: mockTpl,
+            } as unknown as MenuSlotDirective;
             vi.spyOn(component as any, 'slots', 'get').mockReturnValue(signal([slot]));
 
             expect(component.getSlot('header')).toBe(mockTpl);

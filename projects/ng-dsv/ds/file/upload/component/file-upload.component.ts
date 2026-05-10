@@ -1,4 +1,4 @@
-import { Component, ElementRef, input, output, signal, ViewChild } from '@angular/core';
+import { Component, ElementRef, input, output, signal, viewChild } from '@angular/core';
 import { FileUploadDirective } from '../directive/file-upload-directives';
 
 @Component({
@@ -15,10 +15,9 @@ export class DsvFileUploadComponent {
 
     readonly filesChanged = output<FileList>();
 
-    readonly file = signal<string | undefined>(undefined);
+    readonly inputRef = viewChild<ElementRef>('fileInput');
 
-    @ViewChild('fileInput')
-    inputRef!: ElementRef<HTMLInputElement>;
+    readonly file = signal<string | undefined>(undefined);
 
     addFiles(files: FileList): void {
         const reader = new FileReader();
@@ -32,7 +31,10 @@ export class DsvFileUploadComponent {
     handleFileDrop(event: DragEvent): void {
         if (event?.dataTransfer?.files?.length) {
             const files = event.dataTransfer.files;
-            this.inputRef.nativeElement.files = files;
+            const input = this.inputRef()?.nativeElement;
+            if (input) {
+                input.files = files;
+            }
             this.addFiles(files);
         }
     }

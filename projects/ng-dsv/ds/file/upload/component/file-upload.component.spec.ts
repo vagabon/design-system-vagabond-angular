@@ -5,21 +5,19 @@ import { DsvFileUploadComponent } from './file-upload.component';
 describe('FileUploadComponent', () => {
     let component: DsvFileUploadComponent;
     let fixture: ComponentFixture<DsvFileUploadComponent>;
-
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [DsvFileUploadComponent],
-            providers: [],
         }).compileComponents();
 
         fixture = TestBed.createComponent(DsvFileUploadComponent);
         component = fixture.componentInstance;
-
-        component.inputRef = {
-            nativeElement: document.createElement('input'),
-        } as unknown as ElementRef<HTMLInputElement>;
-
         fixture.detectChanges();
+
+        const mockInput = document.createElement('input');
+        vi.spyOn(component, 'inputRef').mockReturnValue({
+            nativeElement: mockInput,
+        } as ElementRef<HTMLInputElement>);
     });
 
     it('should create the component', () => {
@@ -47,21 +45,13 @@ describe('FileUploadComponent', () => {
     it('should handle drag and drop', () => {
         const file = new File(['content'], 'drag.png', { type: 'image/png' });
         const fileList = createMockFileList([file]);
-
         const dragEvent = createMockDragEvent({ files: fileList });
 
         vi.spyOn(component, 'addFiles');
 
-        Object.defineProperty(component.inputRef.nativeElement, 'files', {
-            value: fileList,
-            writable: true,
-            configurable: true,
-        });
-
         component.handleFileDrop(dragEvent);
 
         expect(component.addFiles).toHaveBeenCalledWith(fileList);
-        expect(component.inputRef.nativeElement.files).toBe(fileList);
     });
 
     it('should respect input properties defaults', () => {

@@ -27,11 +27,11 @@ describe('MenuSlotDirective', () => {
 
     it('When menuSlot input is set, Then should expose the correct slot id', () => {
         const directive = setup();
-        expect(directive.menuSlot).toBe('list');
+        expect(directive.menuSlot()).toBe('list');
     });
 
     it('When directive is created, Then should expose a TemplateRef', () => {
         const directive = setup();
-        expect(directive.tpl).toBeInstanceOf(TemplateRef);
+        expect(directive.template).toBeInstanceOf(TemplateRef);
     });
 });

@@ -1,4 +1,4 @@
-import { Component, ElementRef, input, signal, ViewChild } from '@angular/core';
+import { Component, ElementRef, input, signal, viewChild } from '@angular/core';
 import { TooltipPosition, TooltipPositionEnum } from '../dto/tooltip.dto';
 import { getTooltipPosition } from '../utils/tooltip.utils';
 @Component({
@@ -16,13 +16,12 @@ export class DsvTooltipComponent {
     readonly text = input<string>('');
     readonly position = input<TooltipPosition>(TooltipPositionEnum.TOP);
 
+    readonly tooltipBox = viewChild<ElementRef>('tooltipBox');
+
     readonly visible = signal<boolean>(false);
     readonly opacity = signal<number>(0);
 
     readonly positionClass = signal<TooltipPosition>(TooltipPositionEnum.TOP);
-
-    @ViewChild('tooltipBox')
-    readonly tooltipBox!: ElementRef<HTMLElement>;
 
     onResize(): void {
         this.adjustPosition();
@@ -40,7 +39,7 @@ export class DsvTooltipComponent {
 
     private adjustPosition(): void {
         setTimeout(() => {
-            const tooltipEl = this.tooltipBox?.nativeElement;
+            const tooltipEl = this.tooltipBox()?.nativeElement;
             if (!tooltipEl) return;
             const rect = tooltipEl.getBoundingClientRect();
 

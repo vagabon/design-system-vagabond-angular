@@ -1,8 +1,8 @@
-import { Directive, Input, TemplateRef } from '@angular/core';
+import { Directive, inject, input, TemplateRef } from '@angular/core';
 
 @Directive({ selector: '[menuSlot]', standalone: true })
 export class MenuSlotDirective {
-    @Input() menuSlot!: string;
+    readonly template = inject(TemplateRef);
 
-    constructor(public tpl: TemplateRef<any>) {}
+    readonly menuSlot = input.required<string>();
 }

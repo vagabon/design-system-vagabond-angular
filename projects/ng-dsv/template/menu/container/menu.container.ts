@@ -23,7 +23,7 @@ export class MenuContainer {
     readonly menu = input<MenuDto>();
 
     getSlot(id: string): TemplateRef<any> | null {
-        return this.slots()?.find((s) => s.menuSlot === id)?.tpl ?? null;
+        return this.slots()?.find((s) => s.menuSlot() === id)?.template ?? null;
     }
 
     isActive(url: string): boolean {
