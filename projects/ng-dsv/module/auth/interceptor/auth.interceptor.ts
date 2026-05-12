@@ -28,7 +28,11 @@ export const authInterceptor = (
 
             let errorMessage = error.error?.debugMessage ?? error.error?.message ?? error.message;
 
-            if (errorMessage === 'fetch failed' || errorMessage === 'Failed to fetch') {
+            if (
+                errorMessage === 'fetch failed' ||
+                errorMessage === 'Failed to fetch' ||
+                errorMessage.endsWith(': 500 Internal Server Error')
+            ) {
                 errorMessage = 'Api indisponible';
             }
             if (errorMessage === 'NO_REFRESH_TOKEN') {

@@ -1,0 +1,29 @@
+:host {
+    --button-modal-border-radius: 4px;
+    --button-modal-disabled-background: rgb(200, 200, 200);
+    --button-modal-disabled-color: rgba(0, 0, 0);
+    --button-modal-width: auto;
+    --button-modal-min-width: 10px;
+    --button-modal-min-height: 28px;
+    --button-modal-margin: 0px;
+    --button-modal-padding: 2px 4px;
+    --button-modal-font-size: 1rem;
+    --button-modal-icon-size: 1.4rem;
+    --button-modal-line-height: 1.5rem;
+    --button-modal-font-weight: 550;
+
+    dsv-button {
+        --button-border-radius: var(--button-modal-border-radius);
+        --button-disabled-background: var(--button-modal-disabled-background);
+        --button-disabled-color: var(--button-modal-disabled-color);
+        --button-width: var(--button-modal-width);
+        --button-min-width: var(--button-modal-min-width);
+        --button-min-height: var(--button-modal-min-height);
+        --button-margin: var(--button-modal-margin);
+        --button-padding: var(--button-modal-padding);
+        --button-font-size: var(--button-modal-font-size);
+        --button-icon-size: var(--button-modal-icon-size);
+        --button-line-height: var(--button-modal-line-height);
+        --button-font-weight: var(--button-modal-font-weight);
+    }
+}

@@ -32,6 +32,8 @@
         @if (icon()) {
             <i [class]="icon()"></i>
         }
-        <dsv-form-signal-error [errors]="getSignal()().errors()" [isTouched]="isTouched()" />
+        @if (withError()) {
+            <dsv-form-signal-error [errors]="getSignal()().errors()" [isTouched]="isTouched()" />
+        }
     }
 </div>

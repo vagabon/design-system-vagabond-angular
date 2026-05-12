@@ -74,7 +74,7 @@ describe('BaseSearchService', () => {
     it('should not call api if stopFetch is true', () => {
         service.stopFetch.set(true);
 
-        service.fetchByPage('test', 2);
+        service.fetchByPage('', 2);
 
         expect(apiServiceMock.get).not.toHaveBeenCalled();
     });

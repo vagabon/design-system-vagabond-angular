@@ -14,4 +14,5 @@ import { DsvFormSignalLabelComponent } from '../../label/component/form-signal-l
 export class DsvFormSignalInputComponent<T> extends DsvBaseFormSignalInputComponent<T> {
     readonly type = input<INPUT_TYPE>('text');
     readonly icon = input<string>();
+    readonly withError = input<boolean>(true);
 }

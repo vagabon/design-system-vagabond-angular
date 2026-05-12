@@ -62,6 +62,7 @@
             padding: var(--modal-content-padding);
             background: var(--background-card);
             max-height: var(--modal-max-height);
+            position: relative;
         }
 
         .modal-footer-wrapper:not(:empty) {

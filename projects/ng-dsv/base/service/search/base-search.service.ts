@@ -10,13 +10,14 @@ export abstract class BaseSearchService<T extends ApiDto> extends BaseFetchServi
 
     readonly page = signal<number>(1);
     readonly search = signal<string>('');
+    readonly lastSearch = signal<string>('');
     readonly isLoading = signal<boolean>(false);
     readonly stopFetch = signal<boolean>(false);
 
-    getUrl(): string {
+    getUrl(page: number): string {
         let url = this.getEndPoint();
         const params = this.getParams();
-        url += '?page=' + this.page() + params + '&search=';
+        url += '?page=' + page + params + '&search=';
         return url;
     }
 
@@ -26,15 +27,19 @@ export abstract class BaseSearchService<T extends ApiDto> extends BaseFetchServi
         return '';
     }
 
-    fetchByPage(search: string = '', page: number = 1): void {
+    fetchByPage(search: string, page: number): void {
         this.search.set(search);
+        if (search !== this.lastSearch()) {
+            this.lastSearch.set(search);
+            page = 1;
+        }
         if (page === 1) {
             this.stopFetch.set(false);
         }
         if (this.stopFetch()) {
             return;
         }
-        const url = this.getUrl();
+        const url = this.getUrl(page);
 
         const data = this.getDataFromState(url);
         if (data) {

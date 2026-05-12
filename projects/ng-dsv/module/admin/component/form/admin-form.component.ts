@@ -55,13 +55,11 @@ export class AdminFormComponent extends DsvBaseFormReactiveComponent {
     sendForm(data: ApiDto): void {
         this.formConf()?.forEach((conf) => {
             let value = data[conf.name as keyof ApiDto];
-            console.log(conf.name, value);
             if (conf.type === 'datetime-local' && value && !value?.toString().endsWith('Z')) {
                 value = value + 'Z';
                 data = { ...data, [conf.name]: value };
             }
         });
-        console.log(data);
         this.callback.emit(data);
     }
 

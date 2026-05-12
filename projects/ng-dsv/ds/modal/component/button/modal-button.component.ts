@@ -7,6 +7,7 @@ import { ModalService } from '../../service/modal.service';
     selector: 'dsv-modal-button',
     imports: [DsvButtonComponent],
     templateUrl: './modal-button.component.html',
+    styleUrls: ['../../../button/component/button.component.scss', './modal-button.component.scss'],
 })
 export class DsvModalButtonComponent {
     readonly modalService = inject(ModalService);

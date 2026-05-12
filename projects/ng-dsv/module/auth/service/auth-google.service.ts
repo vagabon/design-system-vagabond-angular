@@ -50,7 +50,11 @@ export class AuthGoogleService {
     }
 
     loginWithGoogle(): void {
-        if (this.authService.isRefreshTokenLoaded() && this.authService.userConnected() === null) {
+        if (
+            this.authService.isRefreshTokenLoaded() &&
+            this.authService.userConnected() === null &&
+            this.authService.isPlatformBrowser()
+        ) {
             google.accounts.id.prompt();
         }
     }

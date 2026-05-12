@@ -1,10 +1,19 @@
 :host {
     --input-width: calc(100% - 12px);
+    --input-max-width: auto;
+    --input-opacity: 1;
+    --input-flex-direction: column;
+    --input-align-center: false;
+    --input-justify-content: false;
+    --input-gap: 0;
     width: 100%;
 
     &>div {
         display: flex;
-        flex-direction: column;
+        flex-direction: var(--input-flex-direction);
+        gap: var(--input-gap);
+        align-items: var(--input-align-center);
+        justify-content: var(--input-justify-content);
         position: relative;
 
         .form-control {
@@ -13,6 +22,7 @@
             margin: 0px;
             padding: 5px 5px 5px 5px;
             width: var(--input-width);
+            max-width: var(--input-max-width);
             font-size: 1rem;
             line-height: 1.5;
             color: var(--text);
@@ -24,6 +34,7 @@
                 border-color 0.15s ease-in-out,
                 box-shadow 0.15s ease-in-out;
             outline-color: rgb(0, 0, 0, 0.3);
+            opacity: var(--input-opacity);
 
             &.icon {
                 padding-left: 25px;

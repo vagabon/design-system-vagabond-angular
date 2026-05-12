@@ -30,7 +30,7 @@ export abstract class BaseSearchContainer<
     }
 
     doFetch(search: string | undefined = this.service?.search()): void {
-        this.service?.fetchByPage(search, this.service?.page());
+        this.service?.fetchByPage(search as string, this.service?.page());
     }
 
     doSearch(search: string): void {
