@@ -71,7 +71,7 @@ export class AdminSearchContainer extends BaseRouteContainer {
         this.adminService.search.update((s) => ({ ...s, [this.tabConfig()?.name!]: search }));
         this.adminService.get(
             this.tabConfig()?.name!,
-            this.tabConfig()?.findByChamps!,
+            this.tabConfig()?.findByChamps! + '>>' + this.tabConfig()?.sortBy,
             search,
             page,
             this.adminService.tabs()?.max,

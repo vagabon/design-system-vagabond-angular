@@ -14,10 +14,10 @@ export abstract class BaseSearchService<T extends ApiDto> extends BaseFetchServi
     readonly isLoading = signal<boolean>(false);
     readonly stopFetch = signal<boolean>(false);
 
-    getUrl(page: number): string {
+    getUrl(): string {
         let url = this.getEndPoint();
         const params = this.getParams();
-        url += '?page=' + page + params + '&search=';
+        url += '?page=' + this.page() + params + '&search=';
         return url;
     }
 
@@ -39,7 +39,8 @@ export abstract class BaseSearchService<T extends ApiDto> extends BaseFetchServi
         if (this.stopFetch()) {
             return;
         }
-        const url = this.getUrl(page);
+        this.page.set(page);
+        const url = this.getUrl();
 
         const data = this.getDataFromState(url);
         if (data) {

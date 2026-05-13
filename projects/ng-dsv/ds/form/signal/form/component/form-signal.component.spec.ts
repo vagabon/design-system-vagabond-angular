@@ -83,14 +83,6 @@ describe('DsvFormSignalComponent', () => {
         });
     });
 
-    describe('goBack()', () => {
-        it('should emit callbackBack', () => {
-            const spy = vi.spyOn(component.callbackBack, 'emit');
-            component.goBack();
-            expect(spy).toHaveBeenCalledTimes(1);
-        });
-    });
-
     describe('onSubmit()', () => {
         it('should call event.preventDefault()', () => {
             const event = { preventDefault: vi.fn() } as unknown as Event;

@@ -1,23 +1,24 @@
-const FORMAT_TOKENS: Record<string, (d: Date) => string> = {
-    DD: (d) => String(d.getDate()).padStart(2, '0'),
-    MM: (d) => String(d.getMonth() + 1).padStart(2, '0'),
-    YYYY: (d) => String(d.getFullYear()),
-    YY: (d) => String(d.getFullYear()).slice(-2),
-    HH: (d) => String(d.getHours()).padStart(2, '0'),
-    mm: (d) => String(d.getMinutes()).padStart(2, '0'),
-    ss: (d) => String(d.getSeconds()).padStart(2, '0'),
-};
+export const formatDate = (value: string | Date, showTime: boolean = false): string => {
+    const date = new Date(value);
+    const datePart = date.toLocaleDateString('fr-FR', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+    });
 
-const TOKEN_REGEX = new RegExp(Object.keys(FORMAT_TOKENS).join('|'), 'g');
-
-export const formatDate = (dateString: string, format = 'DD/MM/YYYY HH:mm:ss'): string => {
-    const date = new Date(dateString);
-
-    if (Number.isNaN(date.getTime())) {
+    if (datePart == 'Invalid Date') {
         return '—';
     }
 
-    return format.replace(TOKEN_REGEX, (token) => FORMAT_TOKENS[token](date));
+    if (!showTime) {
+        return `${datePart}`;
+    }
+
+    const timePart = date.toLocaleTimeString('fr-FR', {
+        hour: '2-digit',
+        minute: '2-digit',
+    });
+    return `${datePart} à ${timePart}`;
 };
 
 export function toDateInputValue(value: string | null | undefined): string {

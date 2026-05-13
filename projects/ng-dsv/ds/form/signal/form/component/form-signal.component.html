@@ -1,34 +1,20 @@
-<form
-    (submit)="onSubmit($event)"
-    novalidate
->
+<form (submit)="onSubmit($event)" novalidate>
     <div class="form-scroll">
         <ng-content></ng-content>
     </div>
     <div class="form-buttons">
         @if (urlBack()) {
-            <dsv-button
-                color="default"
-                variant="outlined"
-                [routerLink]="urlBack()"
-                [prevent]="false"
-                >{{ 'RETOUR' | translate }}</dsv-button
-            >
+            <dsv-button color="default" variant="outlined" [routerLink]="urlBack()" [prevent]="false">{{
+                'RETOUR' | translate
+            }}</dsv-button>
         }
         @if (isCallbackBack()) {
-            <dsv-button
-                color="default"
-                variant="outlined"
-                (callback)="goBack()"
-                >{{ 'RETOUR' | translate }}</dsv-button
-            >
+            <dsv-button color="default" variant="outlined" (callback)="callbackBack.emit()">{{
+                'RETOUR' | translate
+            }}</dsv-button>
         }
         @if (textValid() && textValid() !== '') {
-            <dsv-button
-                type="submit"
-                color="primary"
-                >{{ textValid()! | translate }}</dsv-button
-            >
+            <dsv-button type="submit" color="primary">{{ textValid()! | translate }}</dsv-button>
         }
     </div>
 </form>

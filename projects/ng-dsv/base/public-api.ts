@@ -1,4 +1,3 @@
-export * from './component/base.component';
 export * from './container/base.container';
 export * from './container/main/base-main.container';
 export * from './container/route/base-route.container';

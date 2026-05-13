@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { JSONValue } from '@ng-vagabond-lab/ng-dsv/api';
 import { BaseApiService } from '@ng-vagabond-lab/ng-dsv/base/service';
 import { UserDto, UserSigninDto } from '../dto/auth.dto';
@@ -11,6 +11,8 @@ export class AuthService extends BaseApiService {
     readonly userConnected = signal<UserDto | null>(null);
     readonly userToken = signal<string>('');
     readonly isRefreshTokenLoaded = signal<boolean>(false);
+
+    readonly isAdmin = computed<boolean>(() => this.hasRole('ADMIN'));
 
     initUser(user: UserSigninDto | null = null): void {
         this.userConnected.set(user?.user ?? null);

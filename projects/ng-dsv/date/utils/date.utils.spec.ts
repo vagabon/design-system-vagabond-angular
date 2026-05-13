@@ -2,18 +2,15 @@ import { formatDate, toBackendDate, toDateInputValue } from './date.utils';
 
 describe('formatDate', () => {
     it('when called with a valid ISO string, then formats correctly', () => {
-        expect(formatDate('2024-01-05T14:30:00')).toBe('05/01/2024 14:30:00');
-        expect(formatDate('2024-12-31T23:59:00')).toBe('31/12/2024 23:59:00');
-        expect(formatDate('2024-01-05T14:30:00', 'DD/MM/YYYY')).toBe('05/01/2024');
-        expect(formatDate('2024-01-05T14:30:00', 'YYYY-MM-DD HH:mm:ss')).toBe('2024-01-05 14:30:00');
-        expect(formatDate('2024-01-05T14:30:00', 'YY/MM/DD')).toBe('24/01/05');
-        expect(formatDate('2024-01-05T14:30:45', 'ss')).toBe('45');
+        expect(formatDate('2024-01-05T14:30:00')).toBe('5 janvier 2024');
+        expect(formatDate('2024-12-31T23:59:00')).toBe('31 décembre 2024');
+        expect(formatDate('2024-01-05T14:30:00', true)).toBe('5 janvier 2024 à 14:30');
     });
 
     it('when called with an invalid string, then returns fallback', () => {
         expect(formatDate('')).toBe('—');
         expect(formatDate('not-a-date')).toBe('—');
-        expect(formatDate('invalid', 'DD/MM/YYYY')).toBe('—');
+        expect(formatDate('invalid')).toBe('—');
     });
 });
 

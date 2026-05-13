@@ -1,4 +1,4 @@
-import { ElementRef } from '@angular/core';
+import { ElementRef, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Scroll } from '@angular/router';
 import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
@@ -13,6 +13,7 @@ const mockScrollService = {
     getScroll: vi.fn().mockReturnValue({ top: 0, left: 0 }),
     saveScroll: vi.fn(),
     getRouteUuid: vi.fn().mockReturnValue('uuid-42'),
+    platformService: { isPlatformBrowser: vi.fn().mockReturnValue(true), width: signal(1500) },
 };
 
 const mockRouterService = {
@@ -42,6 +43,7 @@ describe('DsvScrollInfiniteContainer', () => {
         mockScrollService.getScroll.mockReturnValue({ top: 0, left: 0 });
         mockScrollService.isPlatformBrowser.mockReturnValue(true);
         mockScrollService.getRouteUuid.mockReturnValue('uuid-42');
+        mockScrollService.platformService.isPlatformBrowser.mockReturnValue(true);
         mockRouterService.currentUrl.mockReturnValue('/test');
 
         await TestBed.configureTestingModule({

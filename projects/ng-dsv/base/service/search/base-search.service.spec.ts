@@ -43,7 +43,7 @@ describe('BaseSearchService', () => {
             callback({ content: [] });
         });
 
-        service.fetchByPage('/');
+        service.fetchByPage('/', 1);
 
         expect(apiServiceMock.get).toHaveBeenCalled();
         expect(service.isLoading()).toBe(false);

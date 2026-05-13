@@ -11,6 +11,7 @@ import { ButtonRippleDirective } from '../directive/button-riddle.directive';
 })
 export class DsvButtonComponent extends DsvBaseColorComponent {
     readonly libelle = input<string>('');
+    readonly routerLink = input<string | undefined>(undefined);
     readonly icon = input<string>('');
     readonly iconEnd = input<string>('');
     readonly disabled = input<boolean>(false);
@@ -33,7 +34,7 @@ export class DsvButtonComponent extends DsvBaseColorComponent {
     }
 
     doClick(event: Event): void {
-        if (this.prevent() && this.type() !== 'submit') {
+        if (this.prevent() && !this.routerLink() && this.type() !== 'submit') {
             event.stopPropagation();
             event.preventDefault();
         }

@@ -21,7 +21,7 @@ import { ButtonScrollTopComponent, ScrollService } from '../public-api';
     templateUrl: './scroll-infinite.component.html',
     styleUrls: ['./scroll-infinite.component.scss'],
     host: {
-        '[id]': 'uuid()',
+        '[id]': 'id() ?? uuid()',
         class: 'scroll',
         '(scroll)': 'doScroll()',
     },
@@ -33,12 +33,13 @@ export class DsvScrollInfiniteContainer {
 
     readonly bottomOffset = input<number>(100);
     readonly loading = input<boolean | null>(null);
-    readonly skeletonCount = input<number>(10);
+    readonly id = input<string | undefined>();
+    //readonly skeletonCount = input<number>(10);
 
     readonly callback = output<void>();
-
     readonly uuid = signal<string>('');
     readonly top = signal<number>(0);
+    readonly skeletonCount = signal<number>(0);
 
     private readonly $loading = signal(false);
 
@@ -66,7 +67,7 @@ export class DsvScrollInfiniteContainer {
             });
 
         effect(() => {
-            if (this.scrollService.isPlatformBrowser()) {
+            if (this.scrollService.isPlatformBrowser() && !this.id()) {
                 const all = Array.from(document.querySelectorAll('.scroll'));
                 const index = all.indexOf(this.elementRef.nativeElement);
                 this.uuid.set(this.scrollService.getRouteUuid(index));
@@ -81,6 +82,27 @@ export class DsvScrollInfiniteContainer {
 
         effect(() => {
             this.skeletonArray.set(Array.from({ length: this.skeletonCount() }, (_, i) => i));
+        });
+
+        effect(() => {
+            let count = 0;
+            const small = this.elementRef.nativeElement.classList.contains('small');
+            if (this.scrollService.platformService.width() >= 1500) {
+                count = small ? 16 : 14;
+            } else if (this.scrollService.platformService.width() >= 1150) {
+                count = small ? 14 : 12;
+            } else if (this.scrollService.platformService.width() >= 900) {
+                count = small ? 14 : 10;
+            } else if (this.scrollService.platformService.width() >= 650) {
+                count = small ? 14 : 8;
+            } else if (this.scrollService.platformService.width() >= 350) {
+                count = small ? 8 : 6;
+            } else if (this.scrollService.platformService.width() >= 200) {
+                count = small ? 6 : 3;
+            } else {
+                count = small ? 4 : 2;
+            }
+            this.skeletonCount.set(count);
         });
     }
 

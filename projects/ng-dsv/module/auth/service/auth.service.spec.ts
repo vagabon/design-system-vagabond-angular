@@ -51,6 +51,22 @@ describe('AuthService', () => {
         });
     });
 
+    it('refreshToken should call /auth/refresh-token', () => {
+        service.userConnected.set(mockUser.user!);
+        apiServiceMock.post.mockImplementation((url: string, payload: any, cb: Function) => cb());
+
+        service.refreshToken();
+
+        expect(service.userConnected()).toBe(null);
+        expect(apiServiceMock.post).toHaveBeenCalledWith(
+            '/auth/refresh-token',
+            {},
+            expect.any(Function),
+            true,
+            expect.any(Function),
+        );
+    });
+
     it('logout should remove storage and reset userConnected', () => {
         service.userConnected.set(mockUser.user!);
         apiServiceMock.post.mockImplementation((url: string, payload: any, cb: Function) => cb());

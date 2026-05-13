@@ -43,7 +43,7 @@ export const ADMIN_USER: AdminTabDto[] = [
         name: 'user',
         label: 'AUTH.USER:TITLE',
         findByChamps: 'username%And|Email%',
-        sortBy: 'creationDate',
+        sortBy: 'creationDateDesc',
         sortByAsc: 'desc',
         cells: [
             { label: 'AUTH.FIELDS.LOGIN', name: 'username', order: true },

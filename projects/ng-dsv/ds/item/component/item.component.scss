@@ -11,11 +11,22 @@
         margin: var(--a-margin);
         padding: var(--a-padding);
         color: var(--a-color);
-        display: block;
+        display: flex;
+        justify-content: space-between;
         cursor: pointer;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+
+        span {
+            flex: 1;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        dsv-chip {
+            font-size: 0.8rem;
+            padding: 3px 7px;
+            min-width: 10px;
+        }
 
         &:hover {
             background-color: rgb(217, 217, 217);
@@ -47,6 +58,10 @@
 :host-context(body.dark) {
     & a:hover {
         background-color: rgb(49, 49, 49) !important;
+    }
+
+    & a dsv-chip {
+        color: var(--text) !important;
     }
 
     &.active .small {

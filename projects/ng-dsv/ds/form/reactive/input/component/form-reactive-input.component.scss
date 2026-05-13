@@ -6,6 +6,9 @@
     --input-align-center: false;
     --input-justify-content: false;
     --input-gap: 0;
+    --input-height: auto;
+    --input-min-height: 90px;
+    --input-max-height: 150px;
     width: 100%;
 
     &>div {
@@ -15,6 +18,7 @@
         align-items: var(--input-align-center);
         justify-content: var(--input-justify-content);
         position: relative;
+        gap: 2px;
 
         .form-control {
             font-family: inherit;
@@ -64,7 +68,9 @@
 
         textarea.form-control {
             height: auto;
-            min-height: 90px;
+            height: var(--input-height);
+            min-height: var(--input-min-height);
+            max-height: var(--input-max-height);
         }
     }
 }

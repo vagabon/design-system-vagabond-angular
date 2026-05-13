@@ -27,10 +27,6 @@ export class DsvFormSignalComponent<T> {
 
     readonly isCallbackBack = computed<boolean>(() => isCallback(this.callbackBack));
 
-    goBack(): void {
-        this.callbackBack.emit();
-    }
-
     onSubmit(event: Event): void {
         event.preventDefault();
         submit(this.form(), async (form) => {

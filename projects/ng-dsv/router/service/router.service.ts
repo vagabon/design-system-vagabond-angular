@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { inject, Injectable, signal } from '@angular/core';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { ModalService } from '@ng-vagabond-lab/ng-dsv/ds/modal';
@@ -13,6 +14,7 @@ export class RouterService {
     readonly router = inject(Router);
     readonly modalService = inject(ModalService);
     readonly plateformService = inject(PlatformService);
+    readonly location = inject(Location);
 
     readonly isLoading = signal<boolean>(true);
 
@@ -47,5 +49,9 @@ export class RouterService {
                     });
                 });
         }
+    }
+
+    goBack() {
+        this.location.back();
     }
 }
