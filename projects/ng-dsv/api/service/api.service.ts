@@ -17,6 +17,7 @@ export class ApiService {
 
     readonly baseUrl = signal<string>('/api');
     readonly nbLoaded = signal<number>(0);
+    readonly blocked = signal<boolean>(false);
 
     get<T>(url: string, callback: (data: T) => void, callbackError: () => void = () => {}) {
         this.doSubscribe(url, this.httpClient.get<T>(this.baseUrl() + url), callback, callbackError);
@@ -97,16 +98,41 @@ export class ApiService {
     }
 
     createOrUpdate<T extends ApiDto>(endPoint: string, data: T, callback: (data: T) => void, toast?: string) {
+        if (this.blocked()) {
+            return;
+        }
+        this.blocked.set(true);
         if (data.id !== null && data.id !== undefined && data.id !== '' && Number(data.id) > 0) {
-            this.put<T>('/' + endPoint + '/', data, (dateReturn: T) => {
-                this.toastService.showToast({ text: toast ?? 'UPDATE_OK', type: 'success' });
-                callback(dateReturn);
-            });
+            this.put<T>(
+                '/' + endPoint + '/',
+                data,
+                (dateReturn: T) => {
+                    this.toastService.showToast({
+                        text: toast ?? 'UPDATE_OK',
+                        type: 'success',
+                        closeAll: true,
+                    });
+                    callback(dateReturn);
+                    this.blocked.set(false);
+                },
+                () => {
+                    this.blocked.set(false);
+                },
+            );
         } else {
-            this.post<T>('/' + endPoint + '/', data, (dateReturn: T) => {
-                this.toastService.showToast({ text: toast ?? 'CREATION_OK', type: 'success' });
-                callback(dateReturn);
-            });
+            this.post<T>(
+                '/' + endPoint + '/',
+                data,
+                (dateReturn: T) => {
+                    this.toastService.showToast({ text: toast ?? 'CREATION_OK', type: 'success' });
+                    callback(dateReturn);
+                    this.blocked.set(false);
+                },
+                false,
+                () => {
+                    this.blocked.set(false);
+                },
+            );
         }
     }
 

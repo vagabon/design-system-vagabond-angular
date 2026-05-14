@@ -4,8 +4,6 @@ import { BaseApiService } from '../base/base-api.service';
 
 @Directive()
 export abstract class BaseFetchService<A extends ApiDto | ApiDto[]> extends BaseApiService {
-    //abstract fetch(id: number): D;
-
     readonly ssr = signal<boolean>(true);
 
     getStateKey(url: string): StateKey<A> {

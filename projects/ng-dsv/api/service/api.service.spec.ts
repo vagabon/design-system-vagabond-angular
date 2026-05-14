@@ -154,7 +154,11 @@ describe('ApiService', () => {
 
         service.createOrUpdate('entity', data, callback);
 
-        expect(toastServiceMock.showToast).toHaveBeenCalledWith({ text: 'UPDATE_OK', type: 'success' });
+        expect(toastServiceMock.showToast).toHaveBeenCalledWith({
+            text: 'UPDATE_OK',
+            type: 'success',
+            closeAll: true,
+        });
         expect(callback).toHaveBeenCalledWith(data);
     });
 
