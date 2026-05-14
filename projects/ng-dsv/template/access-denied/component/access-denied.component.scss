@@ -1,0 +1,18 @@
+:host {
+    width: 100%;
+
+    .dsv-card-content {
+        &>div {
+            margin: 40px 0;
+        }
+
+        .contact {
+            margin: 60px 0;
+        }
+
+        dsv-button {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
