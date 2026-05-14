@@ -53,13 +53,6 @@ describe('RouterInternalPipe', () => {
                 expect(event.preventDefault).toHaveBeenCalled();
             });
 
-            it('Then should scroll to top', () => {
-                init('/movies');
-                directive.onClick(mockEvent());
-                expect(elementRef.nativeElement.closest).toHaveBeenCalledWith('.scroll');
-                expect(mockScrollTo).toHaveBeenCalledWith(0, 0);
-            });
-
             it('Then should navigate to the url', () => {
                 init('/movies');
                 directive.onClick(mockEvent());

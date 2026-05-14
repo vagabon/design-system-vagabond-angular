@@ -10,10 +10,10 @@ import {
     signal,
     TemplateRef,
 } from '@angular/core';
-import { Scroll } from '@angular/router';
+import { NavigationStart, Scroll } from '@angular/router';
 import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
 import { filter, map } from 'rxjs';
-import { ButtonScrollTopComponent, ScrollService } from '../public-api';
+import { ButtonScrollTopComponent, getVisibleCount, ScrollService } from '../public-api';
 
 @Component({
     selector: 'dsv-scroll-infinite',
@@ -34,7 +34,6 @@ export class DsvScrollInfiniteContainer {
     readonly bottomOffset = input<number>(100);
     readonly loading = input<boolean | null>(null);
     readonly id = input<string | undefined>();
-    //readonly skeletonCount = input<number>(10);
 
     readonly callback = output<void>();
     readonly uuid = signal<string>('');
@@ -48,29 +47,35 @@ export class DsvScrollInfiniteContainer {
     readonly skeletonArray = signal<number[]>([]);
 
     constructor() {
+        this.routerService.router.events.subscribe((event) => {
+            if (event instanceof NavigationStart) {
+                this.$loading.set(true);
+            }
+        });
         this.routerService.router.events
             .pipe(
                 filter((event): event is Scroll => event instanceof Scroll),
                 map((event: Scroll) => event.position),
             )
             .subscribe(() => {
-                const value = this.scrollService.getScroll(this.uuid(), this.routerService.currentUrl());
-                if (value.top === 0 && value.left === 0) {
-                    return;
-                }
-                for (let i = 10; i < 100; i += 10) {
-                    setTimeout(() => {
-                        this.restoreScroll(value.top, value.left);
-                        this.$loading.set(true);
-                    }, i);
-                }
+                const url = this.routerService.currentUrl();
+                const value = this.scrollService.getScroll(this.uuid(), url);
+                this.restoreScroll(value?.top, value?.left);
+                setTimeout(() => {
+                    this.restoreScroll(value?.top, value?.left);
+                    this.$loading.set(false);
+                }, 100);
             });
 
         effect(() => {
-            if (this.scrollService.isPlatformBrowser() && !this.id()) {
-                const all = Array.from(document.querySelectorAll('.scroll'));
-                const index = all.indexOf(this.elementRef.nativeElement);
-                this.uuid.set(this.scrollService.getRouteUuid(index));
+            if (this.scrollService.isPlatformBrowser()) {
+                if (this.id()) {
+                    this.uuid.set(this.id()!);
+                } else {
+                    const all = Array.from(document.querySelectorAll('.scroll'));
+                    const index = all.indexOf(this.elementRef.nativeElement);
+                    this.uuid.set(this.scrollService.getRouteUuid(index));
+                }
             }
         });
 
@@ -85,41 +90,22 @@ export class DsvScrollInfiniteContainer {
         });
 
         effect(() => {
-            let count = 0;
             const small = this.elementRef.nativeElement.classList.contains('small');
-            if (this.scrollService.platformService.width() >= 1500) {
-                count = small ? 16 : 14;
-            } else if (this.scrollService.platformService.width() >= 1150) {
-                count = small ? 14 : 12;
-            } else if (this.scrollService.platformService.width() >= 900) {
-                count = small ? 14 : 10;
-            } else if (this.scrollService.platformService.width() >= 650) {
-                count = small ? 14 : 8;
-            } else if (this.scrollService.platformService.width() >= 350) {
-                count = small ? 8 : 6;
-            } else if (this.scrollService.platformService.width() >= 200) {
-                count = small ? 6 : 3;
-            } else {
-                count = small ? 4 : 2;
-            }
+            const count = getVisibleCount(this.scrollService.platformService.width(), small);
             this.skeletonCount.set(count);
         });
     }
 
     restoreScroll(top: number, left: number): void {
-        if (top === 0 && left === 0) {
-            return;
-        }
         this.top.set(top);
         this.elementRef.nativeElement.scrollTop = top;
         this.elementRef.nativeElement.scrollLeft = left;
-        this.resetLoading();
     }
 
     private resetLoading(): void {
         setTimeout(() => {
             this.$loading.set(false);
-        }, 500);
+        }, 10);
     }
 
     scrollToTop(): void {
@@ -128,17 +114,11 @@ export class DsvScrollInfiniteContainer {
     }
 
     doScroll(): void {
-        const value = this.scrollService.getScroll(this.uuid(), this.routerService.currentUrl());
-
-        const scrollTop = this.elementRef.nativeElement.scrollTop;
-        const scrollLeft = this.elementRef.nativeElement.scrollLeft;
-
-        if (scrollTop < value.top - 500 && scrollLeft < value.left - 500) {
+        if (this.$loading()) {
             return;
         }
 
         const element = this.elementRef.nativeElement;
-        const distanceToBottom = element.scrollHeight - element.scrollTop - element.clientHeight;
 
         this.scrollService.saveScroll(
             this.uuid(),
@@ -147,6 +127,8 @@ export class DsvScrollInfiniteContainer {
             element.scrollLeft,
         );
         this.top.set(element.scrollTop);
+
+        const distanceToBottom = element.scrollHeight - element.scrollTop - element.clientHeight;
 
         if (distanceToBottom < this.bottomOffset() && !this.$loading()) {
             this.$loading.set(true);

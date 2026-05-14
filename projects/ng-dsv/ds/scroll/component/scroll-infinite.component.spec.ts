@@ -145,8 +145,8 @@ describe('DsvScrollInfiniteContainer', () => {
             nativeEl.scrollTop = 100;
             nativeEl.scrollLeft = 100;
             component.doScroll();
-            expect(spy).not.toHaveBeenCalled();
-            expect(mockScrollService.saveScroll).not.toHaveBeenCalled();
+            expect(spy).toHaveBeenCalled();
+            expect(mockScrollService.saveScroll).toHaveBeenCalled();
         });
     });
 
@@ -170,7 +170,7 @@ describe('DsvScrollInfiniteContainer', () => {
             routerEvents$.next(new Scroll(undefined as any, [0, 0], null));
             vi.advanceTimersByTime(100);
 
-            expect(spy).not.toHaveBeenCalled();
+            expect(spy).toHaveBeenCalled();
         });
     });
 });

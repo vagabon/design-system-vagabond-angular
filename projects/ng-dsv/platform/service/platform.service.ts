@@ -11,11 +11,11 @@ export class PlatformService {
 
     width = this.isPlatformBrowser()
         ? toSignal(
-              fromEvent(window, 'resize').pipe(
+              fromEvent(globalThis, 'resize').pipe(
                   startWith(null),
-                  map(() => window.innerWidth),
+                  map(() => globalThis.innerWidth),
               ),
-              { initialValue: window.innerWidth },
+              { initialValue: globalThis.innerWidth },
           )
         : signal(1024);
 

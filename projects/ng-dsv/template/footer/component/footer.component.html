@@ -7,8 +7,8 @@
                 <a href="/contact" dsvLink>Contact</a>
             </div>
             <div>
-                <strong>Mail :</strong>
-                <a href="mailto:vagabond.git@gmail.com" dsvLinkExternal>vagabond.git@gmail.com</a>
+                <strong>Mail : </strong>
+                <a href="mailto:{{ contactEmail() }}" dsvLinkExternal>{{ contactEmail() }}</a>
             </div>
             @if (withMentions()) {
                 <div>
