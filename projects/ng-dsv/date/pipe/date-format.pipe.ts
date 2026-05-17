@@ -6,7 +6,7 @@ import { formatDate } from '../public-api';
     standalone: true,
 })
 export class DateFormatPipe implements PipeTransform {
-    transform(value: string, showTime: boolean = false): string {
-        return formatDate(value, showTime);
+    transform(value: string, showTime: boolean = false, technical: boolean = false): string {
+        return formatDate(value, showTime, technical);
     }
 }

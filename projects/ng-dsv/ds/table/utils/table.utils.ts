@@ -43,7 +43,7 @@ export const getValue = (obj: JSONObject, key: string, isDate: boolean): string 
         value = recurse as string;
     }
     if (isDate && value) {
-        value = formatDate(value);
+        value = formatDate(value, true, true);
     }
     return value;
 };

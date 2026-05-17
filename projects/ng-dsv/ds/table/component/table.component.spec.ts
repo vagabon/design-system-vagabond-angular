@@ -39,7 +39,7 @@ describe('TableComponent', () => {
         const result = component.showDatas();
         expect(result.length).toBe(2);
         expect(result[0][1]).toBe('Alice');
-        expect(result[0][2]).toBe('7 juin 2025');
+        expect(result[0][2]).toBe('07/06/2025 22:13:05');
     });
 
     it('should respect max rows to display', async () => {

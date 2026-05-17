@@ -1,7 +1,4 @@
-<dsv-tabs-component
-    [tabs]="tabs()"
-    [active]="tab()"
-/>
+<dsv-tabs-component [tabs]="tabs()" [active]="tab()" />
 <dsv-card>
     <div class="admin-header">
         <span>Résulat : {{ adminService.datas()[tab()]?.totalElements }}</span>
@@ -26,6 +23,6 @@
     <dsv-paginate
         [page]="adminService.page()[this.tabConfig()?.name!]"
         [max]="adminService.datas()[tab()]?.totalPages!"
-        (callback)="gotoPage($event)"
+        (callback)="gotoPage($event, this.adminService.search()[this.tabConfig()?.name!])"
     />
 </dsv-card>

@@ -5,6 +5,7 @@ describe('formatDate', () => {
         expect(formatDate('2024-01-05T14:30:00')).toBe('5 janvier 2024');
         expect(formatDate('2024-12-31T23:59:00')).toBe('31 décembre 2024');
         expect(formatDate('2024-01-05T14:30:00', true)).toBe('5 janvier 2024 à 14:30');
+        expect(formatDate('2024-01-05T14:30:00', true, true)).toBe('05/01/2024 14:30:00');
     });
 
     it('when called with an invalid string, then returns fallback', () => {

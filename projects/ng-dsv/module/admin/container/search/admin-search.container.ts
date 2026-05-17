@@ -42,9 +42,9 @@ export class AdminSearchContainer extends BaseRouteContainer {
                 this.tab.set(this.routeParams()?.['type']);
                 const tab = this.adminService.tabs()?.tabs.find((tab) => tab.name === this.tab());
                 this.tabConfig.set(tab);
-                if (!this.load()[this.routeParams()?.['type']]) {
+                if (!this.adminService.datas()[this.tab()] && !this.load()[this.routeParams()?.['type']]) {
                     this.load.update((s) => ({ ...s, [this.tabConfig()?.name!]: true }));
-                    this.gotoPage(0);
+                    this.gotoPage(0, this.adminService.search()[this.tabConfig()?.name!]);
                 }
             }
         });
