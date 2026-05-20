@@ -26,6 +26,9 @@ export abstract class BaseSearchContainer<
             ) {
                 this.doFetch();
             }
+            if (this.service?.datas()?.length! > 0) {
+                this.service?.isLoading.set(false);
+            }
         });
     }
 

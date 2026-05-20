@@ -11,6 +11,7 @@ export abstract class BaseSearchService<T extends ApiDto> extends BaseFetchServi
     readonly page = signal<number>(1);
     readonly search = signal<string>('');
     readonly lastSearch = signal<string>('');
+    readonly lasturl = signal<string>('');
     readonly isLoading = signal<boolean>(false);
     readonly stopFetch = signal<boolean>(false);
 
@@ -40,7 +41,12 @@ export abstract class BaseSearchService<T extends ApiDto> extends BaseFetchServi
             return;
         }
         this.page.set(page);
-        const url = this.getUrl();
+        const url = this.getUrl() + search;
+
+        if (this.lasturl() === url) {
+            return;
+        }
+        this.lasturl.set(url);
 
         const data = this.getDataFromState(url);
         if (data) {
@@ -51,7 +57,7 @@ export abstract class BaseSearchService<T extends ApiDto> extends BaseFetchServi
         this.isLoading.set(true);
 
         this.apiService.get<PageableDto<T[]>>(
-            url + search,
+            url,
             (data) => {
                 this.page.set(page + 1);
                 this.total.set(data.totalElements);
@@ -60,6 +66,7 @@ export abstract class BaseSearchService<T extends ApiDto> extends BaseFetchServi
                 this.updateData(page, data.content);
             },
             () => {
+                this.isLoading.set(false);
                 this.stopFetch.set(true);
             },
         );
