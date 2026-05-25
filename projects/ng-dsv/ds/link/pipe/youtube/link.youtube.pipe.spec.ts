@@ -1,15 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { DomSanitizer } from '@angular/platform-browser';
-import { YoutubeUrlPipe } from './youtube-url.pipe';
+import { LinkYoutubePipe } from './link.youtube.pipe';
 
-describe('YoutubeUrlPipe', () => {
-    let pipe: YoutubeUrlPipe;
+describe('LinkYoutubePipe', () => {
+    let pipe: LinkYoutubePipe;
     let sanitizer: DomSanitizer;
 
     beforeEach(() => {
         TestBed.configureTestingModule({});
         sanitizer = TestBed.inject(DomSanitizer);
-        pipe = TestBed.runInInjectionContext(() => new YoutubeUrlPipe());
+        pipe = TestBed.runInInjectionContext(() => new LinkYoutubePipe());
     });
 
     it('When key is null, Then returns null', () => {

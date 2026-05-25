@@ -9,8 +9,11 @@ describe('EnvironmentService', () => {
     let httpClientSpy: { get: ReturnType<typeof vi.fn>; post: ReturnType<typeof vi.fn> };
 
     const mockEnv: EnvironmentDto = {
-        API_URL: 'https://example.com/api',
-        GOOGLE_CLIENT_ID: 'AAA',
+        APP_NAME: 'APP_NAME',
+        GOOGLE_CLIENT_ID: 'GOOGLE_CLIENT_ID',
+        CONTACT: 'CONTACT',
+        COPIYRIGHT: 'COPIYRIGHT',
+        PROD: true,
     };
 
     beforeEach(() => {
@@ -34,7 +37,8 @@ describe('EnvironmentService', () => {
         httpClientSpy.get.mockReturnValue(of(mockEnv));
 
         service.loadEnv();
+        service.loadEnv();
 
-        expect(service.env()).toEqual(mockEnv);
+        expect(service.config()).toEqual(mockEnv);
     });
 });

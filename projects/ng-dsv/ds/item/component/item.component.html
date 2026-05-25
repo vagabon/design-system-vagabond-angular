@@ -3,7 +3,7 @@
         @if (icon()) {
             <i class="ri-{{ icon() }}-line"></i>
         }
-        {{ text() }}
+        {{ text() | translate }}
     </span>
     @if (nb() >= 0) {
         <dsv-chip color="secondary">{{ nb() }}</dsv-chip>

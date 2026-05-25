@@ -1,15 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ClickableUrlPipe } from './clickable-url.pipe';
+import { LinkClickablePipe } from './link.clickable.pipe';
 
-describe('ClickableUrlPipe', () => {
-    let pipe: ClickableUrlPipe;
+describe('LinkClickablePipe', () => {
+    let pipe: LinkClickablePipe;
     let sanitizer: DomSanitizer;
 
     beforeEach(() => {
         TestBed.configureTestingModule({});
         sanitizer = TestBed.inject(DomSanitizer);
-        pipe = TestBed.runInInjectionContext(() => new ClickableUrlPipe());
+        pipe = TestBed.runInInjectionContext(() => new LinkClickablePipe());
     });
 
     it('When value is null, Then returns null', () => {

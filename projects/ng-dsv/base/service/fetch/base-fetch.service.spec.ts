@@ -3,6 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { ApiDto, ApiService } from '@ng-vagabond-lab/ng-dsv/api';
 import { ToastService } from '@ng-vagabond-lab/ng-dsv/ds/toast';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
+import { provideTranslateService } from '@ngx-translate/core';
 import { BaseFetchService } from './base-fetch.service';
 
 @Directive()
@@ -40,6 +41,7 @@ describe('BaseFetchService', () => {
 
         await TestBed.configureTestingModule({
             providers: [
+                provideTranslateService(),
                 TestFetchService,
                 { provide: TransferState, useValue: transferStateMock },
                 { provide: PlatformService, useValue: platformServiceMock },

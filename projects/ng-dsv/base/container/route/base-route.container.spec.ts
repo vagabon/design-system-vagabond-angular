@@ -3,6 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { of, Subject } from 'rxjs';
 import { BaseRouteContainer } from './base-route.container';
+import { provideTranslateService } from '@ngx-translate/core';
 
 describe('BaseRouteContainer', () => {
     let routerEvents$: Subject<any>;
@@ -15,6 +16,7 @@ describe('BaseRouteContainer', () => {
 
         TestBed.configureTestingModule({
             providers: [
+                provideTranslateService(),
                 {
                     provide: ActivatedRoute,
                     useValue: {

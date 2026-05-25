@@ -1,0 +1,9 @@
+<dsv-form-signal [form]="languageForm" textValid="">
+    <dsv-form-signal-select
+        [withLabel]="false"
+        [form]="languageForm"
+        fieldName="language"
+        (callbackChange)="this.callback.emit($event)"
+        [list]="languages"
+    />
+</dsv-form-signal>

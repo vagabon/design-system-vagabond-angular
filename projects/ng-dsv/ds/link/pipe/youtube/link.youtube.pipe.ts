@@ -8,7 +8,7 @@ const YOUTUBE_KEY_PATTERN = /^[a-zA-Z0-9_-]{11}$/;
     name: 'youtubeUrl',
     standalone: true,
 })
-export class YoutubeUrlPipe implements PipeTransform {
+export class LinkYoutubePipe implements PipeTransform {
     readonly sanitizer = inject(DomSanitizer);
 
     transform(key: string | null | undefined): SafeResourceUrl | null {

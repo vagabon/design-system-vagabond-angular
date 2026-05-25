@@ -3,10 +3,11 @@ import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
 import { DsvCardComponent } from '@ng-vagabond-lab/ng-dsv/ds/card';
 import { DsvChipComponent } from '@ng-vagabond-lab/ng-dsv/ds/chip';
 import { RouterExternalPipe } from '@ng-vagabond-lab/ng-dsv/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'dsv-auth',
-    imports: [DsvCardComponent, DsvChipComponent, RouterExternalPipe, DsvButtonComponent],
+    imports: [DsvCardComponent, DsvChipComponent, RouterExternalPipe, DsvButtonComponent, TranslatePipe],
     templateUrl: './contact.component.html',
     styleUrls: ['./contact.component.scss'],
 })

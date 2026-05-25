@@ -7,7 +7,7 @@ const URL_PATTERN = /(https?:\/\/[^\s]+)/g;
     name: 'clickableUrl',
     standalone: true,
 })
-export class ClickableUrlPipe implements PipeTransform {
+export class LinkClickablePipe implements PipeTransform {
     readonly sanitizer = inject(DomSanitizer);
 
     transform(value: string | null | undefined): SafeHtml | null {

@@ -5,6 +5,7 @@ import { AuthService } from '@ng-vagabond-lab/ng-dsv/module/auth';
 import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
 import { MenuSlotDirective } from '../slot/menu.slot';
 import { MenuContainer } from './menu.container';
+import { provideTranslateService } from '@ngx-translate/core';
 
 const mockAuthService = { user: signal(null) };
 const mockRouterService = { currentUrl: signal('') };
@@ -17,6 +18,7 @@ describe('MenuContainer', () => {
         await TestBed.configureTestingModule({
             imports: [MenuContainer],
             providers: [
+                provideTranslateService(),
                 { provide: AuthService, useValue: mockAuthService },
                 { provide: RouterService, useValue: mockRouterService },
                 { provide: MenuService, useValue: mockMenuService },

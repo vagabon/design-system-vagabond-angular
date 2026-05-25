@@ -11,4 +11,12 @@
             <ng-container *ngTemplateOutlet="getSlot(item.id)"></ng-container>
         }
     }
+
+    <div class="footer">
+        <dsv-menu-language-form
+            [language]="i18nService.currentLanguage()"
+            (callback)="i18nService.switchLanguage($event)"
+        />
+        <dsv-theme-switch />
+    </div>
 </dsv-menu>

@@ -1,4 +1,7 @@
 export interface EnvironmentDto {
-    API_URL: string;
+    APP_NAME: string;
     GOOGLE_CLIENT_ID: string;
+    CONTACT: string;
+    COPIYRIGHT: string;
+    PROD: boolean;
 }

@@ -4,7 +4,11 @@
             <div class="left-side">
                 <img title="vagabond" alt="vagabond" src="/images/vagabond.png" />
                 <h2>vagabond</h2>
-                <p>passionné par les technologies du Web<br />20 ans d'expérience</p>
+                <p>
+                    {{ 'CONTACT.DESCRIPTION' | translate }}
+                    <br />
+                    {{ 'CONTACT.DESCRIPTION2' | translate }}
+                </p>
                 <div class="chips">
                     <dsv-chip text="ANGULAR" color="default" />
                     <dsv-chip text="QUARKUS" color="default" />
@@ -14,14 +18,14 @@
             </div>
             <div class="right-side">
                 <div>
-                    <h2>Me contacter</h2>
+                    <h2>{{ 'CONTACT.CONTACT_ME' | translate }}</h2>
                     <p>
-                        Pour me contacter, veuillez écrire à l'adresse mail suivante :
+                        {{ 'CONTACT.WRITE_TO_ME' | translate }}
                         <a href="mailto:{{ contactEmail() }}" dsvLinkExternal>{{ contactEmail() }}</a>
                     </p>
                 </div>
                 <div>
-                    <h2>Me suivre</h2>
+                    <h2>{{ 'CONTACT.FOLLOW_ME' | translate }}</h2>
                     <div class="follow-buttons">
                         <dsv-button variant="outlined" color="default">
                             <a href="https://discord.com/invite/TUy5MtVRt7" dsvLinkExternal>
@@ -32,7 +36,7 @@
                                     width="20px"
                                     src="/images/icons/discord.png"
                                 />
-                                Rejoindre mon serveur Discord
+                                {{ 'CONTACT.DISCORD_BUTTON' | translate }}
                             </a>
                         </dsv-button>
                         <dsv-button variant="outlined" color="default">
@@ -44,7 +48,7 @@
                                     width="20px"
                                     src="/images/icons/github.png"
                                 />
-                                Me suivre sur GitHub
+                                {{ 'CONTACT.GITHUB_BUTTON' | translate }}
                             </a>
                         </dsv-button>
                         <dsv-button>
@@ -56,7 +60,7 @@
                                     width="20px"
                                     src="/images/icons/blog.png"
                                 />
-                                Suivre mon blog
+                                {{ 'CONTACT.BLOG_BUTTON' | translate }}
                             </a>
                         </dsv-button>
                     </div>
@@ -70,13 +74,12 @@
     <dsv-card>
         <h2>
             <i class="ri-file-video-line"></i>
-            Movie Keeper
+            {{ 'CONTACT.PROJECTS.MK.TITLE' | translate }}
         </h2>
         <div class="project-content">
             <img title="logo Movie Keeper" alt="logo Movie Keeper" width="40px" src="/images/icons/mk.png" />
             <p>
-                Movie Keeper est votre espace personnel pour organiser ce que vous regardez. Créez des listes
-                personnalisées - films à voir, coups de cœur, top 10, favoris.
+                {{ 'CONTACT.PROJECTS.MK.DESCRIPTION' | translate }}
             </p>
         </div>
         <a href="https://movie-keeper.fr" title="https://movie-keeper.fr" dsvLinkExternal>
@@ -86,7 +89,7 @@
     <dsv-card>
         <h2>
             <i class="ri-news-line"></i>
-            Blog & Tools
+            {{ 'CONTACT.PROJECTS.BLOG.TITLE' | translate }}
         </h2>
         <div class="project-content">
             <img
@@ -96,8 +99,8 @@
                 src="/images/icons/blog.png"
             />
             <p>
-                Mon blog avec la liste des outils que j'utilise pour créé mes SaaS.<br />
-                Contient également une gestion des todo list à partager avec d'autre membre.
+                {{ 'CONTACT.PROJECTS.BLOG.DESCRIPTION' | translate }}<br />
+                {{ 'CONTACT.PROJECTS.BLOG.DESCRIPTION2' | translate }}
             </p>
         </div>
         <a href="https://blog.vagabond.synology.me" title="//blog.vagabond.synology.me" dsvLinkExternal>
@@ -107,7 +110,7 @@
     <dsv-card>
         <h2>
             <i class="ri-chat-1-line"></i>
-            OwnYourChatbots
+            {{ 'CONTACT.PROJECTS.OYC.TITLE' | translate }}
         </h2>
         <div class="project-content">
             <img
@@ -117,8 +120,8 @@
                 src="/images/icons/oyc.png"
             />
             <p>
-                Création et entrainement de Chatbot avec une intégration par iFrame ou bot Discord.<br />
-                Plusieurs modèles disponibles: ChatGpt, Mistral et Llama.
+                {{ 'CONTACT.PROJECTS.OYC.DESCRIPTION' | translate }}<br />
+                {{ 'CONTACT.PROJECTS.OYC.DESCRIPTION2' | translate }}
             </p>
         </div>
         <a href="https://www.ownyourchatbots.com" title="OwnYourChatbots" dsvLinkExternal>

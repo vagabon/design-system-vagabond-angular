@@ -2,12 +2,13 @@ import { Component, effect, inject, input, output, signal } from '@angular/core'
 import { Router } from '@angular/router';
 import { isCallback } from '@ng-vagabond-lab/ng-dsv/base';
 import { DsvChipComponent } from '@ng-vagabond-lab/ng-dsv/ds/chip';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'dsv-item',
+    imports: [DsvChipComponent, TranslatePipe],
     templateUrl: './item.component.html',
     styleUrls: ['./item.component.scss'],
-    imports: [DsvChipComponent],
 })
 export class DsvItemComponent {
     readonly router = inject(Router);

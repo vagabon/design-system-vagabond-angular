@@ -8,6 +8,7 @@ import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
 import { ManyToManyDto } from '../../dto/admin.dto';
 import { AdminService } from '../../service/admin.service';
 import { AdminSearchModalContainer } from './admin-search-modal.component';
+import { provideTranslateService } from '@ngx-translate/core';
 
 describe('AdminSearchModalContainer', () => {
     let fixture: ComponentFixture<AdminSearchModalContainer>;
@@ -54,6 +55,7 @@ describe('AdminSearchModalContainer', () => {
         await TestBed.configureTestingModule({
             imports: [AdminSearchModalContainer],
             providers: [
+                provideTranslateService(),
                 { provide: ModalService, useValue: modalServiceMock },
                 { provide: AdminService, useValue: adminServiceMock },
                 { provide: AuthService, useValue: authServiceMock },

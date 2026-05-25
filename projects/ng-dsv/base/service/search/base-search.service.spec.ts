@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ApiService } from '@ng-vagabond-lab/ng-dsv/api';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
+import { provideTranslateService } from '@ngx-translate/core';
 import { BaseSearchService } from './base-search.service';
 
 @Injectable()
@@ -22,6 +23,7 @@ describe('BaseSearchService', () => {
 
         TestBed.configureTestingModule({
             providers: [
+                provideTranslateService(),
                 TestSearchService,
                 { provide: ApiService, useValue: apiServiceMock },
                 { provide: PlatformService, useValue: { isPlatformBrowser: () => true } },

@@ -1,8 +1,6 @@
 <dsv-container>
     <ng-content></ng-content>
 </dsv-container>
-@if (showFooter()) {
-    <div class="footer">
-        <dsv-theme-switch></dsv-theme-switch>
-    </div>
-}
+<div class="footer">
+    <ng-content select=".footer"></ng-content>
+</div>

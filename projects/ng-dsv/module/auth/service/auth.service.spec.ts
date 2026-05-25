@@ -1,6 +1,7 @@
 import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ApiService } from '@ng-vagabond-lab/ng-dsv/api';
+import { provideTranslateService } from '@ngx-translate/core';
 import { UserSigninDto } from '../dto/auth.dto';
 import { AuthService } from './auth.service';
 
@@ -22,7 +23,11 @@ describe('AuthService', () => {
         };
 
         TestBed.configureTestingModule({
-            providers: [AuthService, { provide: ApiService, useValue: apiServiceMock }],
+            providers: [
+                AuthService,
+                provideTranslateService(),
+                { provide: ApiService, useValue: apiServiceMock },
+            ],
         });
 
         service = TestBed.inject(AuthService);

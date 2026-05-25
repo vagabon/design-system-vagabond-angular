@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
+import { provideTranslateService } from '@ngx-translate/core';
 import { ScrollService } from './scroll.service';
 
 const mockRouterService = { router: { url: '/home' } };
@@ -8,6 +9,7 @@ const mockRouterService = { router: { url: '/home' } };
 const setup = () => {
     TestBed.configureTestingModule({
         providers: [
+            provideTranslateService(),
             provideRouter([]),
             { provide: RouterService, useValue: mockRouterService },
             ScrollService,
