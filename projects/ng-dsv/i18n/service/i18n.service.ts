@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { DOCUMENT, inject, Injectable, signal } from '@angular/core';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { StorageService } from '@ng-vagabond-lab/ng-dsv/storage';
 import { TranslateService, TranslationObject } from '@ngx-translate/core';
@@ -16,6 +16,7 @@ export class I18nService {
     readonly translateService = inject(TranslateService);
     readonly platformService = inject(PlatformService);
     readonly storageService = inject(StorageService);
+    readonly document = inject(DOCUMENT);
 
     readonly currentLanguage = signal<string>('');
     readonly hasChange = signal<boolean>(false);
@@ -38,6 +39,7 @@ export class I18nService {
         this.storageService.setItem(this.LANGUAGE_STORAGE_NAME, language);
         this.translateService.use(language);
         this.currentLanguage.set(language);
+        this.document.documentElement.lang = language;
     }
 
     switchLanguage(language: string) {
