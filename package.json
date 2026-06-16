@@ -35,21 +35,21 @@
     "remixicon": "~4.9.1"
   },
   "devDependencies": {
-    "@analogjs/vite-plugin-angular": "^2.6.0",
+    "@analogjs/vite-plugin-angular": "^2.6.1",
     "@angular-devkit/build-angular": "^21.2.14",
     "@angular/build": "^22.0.1",
     "@chromatic-com/storybook": "^5.2.1",
     "@compodoc/compodoc": "^1.2.1",
-    "@storybook/addon-docs": "^10.4.4",
-    "@storybook/angular": "^10.4.4",
-    "@vitest/coverage-v8": "^4.1.8",
-    "@vitest/ui": "^4.1.8",
-    "happy-dom": "^20.10.2",
+    "@storybook/addon-docs": "^10.4.5",
+    "@storybook/angular": "^10.4.5",
+    "@vitest/coverage-v8": "^4.1.9",
+    "@vitest/ui": "^4.1.9",
+    "happy-dom": "^20.10.4",
     "ng-packagr": "^22.0.0",
     "prettier": "^3.8.4",
     "rxjs": "^7.8.2",
-    "storybook": "^10.4.4",
+    "storybook": "^10.4.5",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.8"
+    "vitest": "^4.1.9"
   }
 }

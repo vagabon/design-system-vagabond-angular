@@ -28,7 +28,7 @@ export abstract class BaseSearchService<T extends ApiDto> extends BaseFetchServi
         return '';
     }
 
-    fetchByPage(search: string, page: number): void {
+    fetchByPage(search: string, page: number, force: boolean = false): void {
         this.search.set(search);
         if (search !== this.lastSearch()) {
             this.lastSearch.set(search);
@@ -43,7 +43,7 @@ export abstract class BaseSearchService<T extends ApiDto> extends BaseFetchServi
         this.page.set(page);
         const url = this.getUrl() + search;
 
-        if (this.lasturl() === url) {
+        if (this.lasturl() === url && !force) {
             return;
         }
         this.lasturl.set(url);
