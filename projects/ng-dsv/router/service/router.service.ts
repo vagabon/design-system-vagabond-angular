@@ -44,9 +44,11 @@ export class RouterService {
             this.router.events
                 .pipe(filter((event) => event instanceof NavigationEnd))
                 .subscribe((event: NavigationEnd) => {
-                    gtag('config', key, {
-                        page_path: event.urlAfterRedirects,
-                    });
+                    if (typeof window !== 'undefined' && (window as any).gtag) {
+                        gtag('config', key, {
+                            page_path: event.urlAfterRedirects,
+                        });
+                    }
                 });
         }
     }
