@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
     selector: 'dsv-card',
@@ -8,6 +8,9 @@ import { Component } from '@angular/core';
     styleUrls: ['./card.component.scss'],
     host: {
         class: 'dsv-card',
+        '[class.border]': 'border()',
     },
 })
-export class DsvCardComponent {}
+export class DsvCardComponent {
+    readonly border = input<boolean>(false);
+}

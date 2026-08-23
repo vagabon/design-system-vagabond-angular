@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, ElementRef, inject, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { TabDto } from '../dto/tab.dto';
@@ -14,6 +14,8 @@ export class DsvTabComponent {
     readonly isSelected = input<boolean>(false);
 
     readonly callback = output<TabDto>();
+
+    readonly elementRef = inject(ElementRef);
 
     doClick(event: Event, tab: TabDto): void {
         if (!tab.url) {

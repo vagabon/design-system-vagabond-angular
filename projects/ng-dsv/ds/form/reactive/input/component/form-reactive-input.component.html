@@ -19,6 +19,7 @@
             [class.error]="form().get(field())?.touched && form().get(field())?.invalid"
             (change)="onEnter()"
             (keydown.enter)="onEnter()"
+            (input)="checkClear($event)"
             step="1"
         />
     }

@@ -1,4 +1,7 @@
 :host {
+    display: flex;
+    flex-direction: column;
+
     button {
         opacity: 0.6;
         align-items: baseline;
@@ -41,7 +44,7 @@
 
         &.selected {
             opacity: 1;
-            border-bottom: 2px solid var(--primary);
+            border-bottom: 2px solid var(--secondary);
         }
     }
 }

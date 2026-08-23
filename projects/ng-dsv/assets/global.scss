@@ -86,6 +86,12 @@ a {
     cursor: pointer;
 }
 
+a,
+button,
+li {
+    -webkit-tap-highlight-color: transparent;
+}
+
 .text-justify {
     text-align: justify;
 }
@@ -122,5 +128,35 @@ hr {
     to {
         transform: scale(4);
         opacity: 0;
+    }
+}
+
+#main-section {
+    display: flex;
+    flex-direction: column;
+    height: calc(100%);
+
+    &>*>dsv-scroll-infinite:not(.no-padding) {
+        padding: 0 5px !important;
+        width: calc(100% - 10px) !important;
+    }
+
+    &:has(.scroll:not(.list-overflow .scroll)) app-footer {
+        display: none;
+    }
+
+    @media screen and (min-width: 900px) {
+        &>* {
+            max-width: 900px;
+            margin: 0px auto;
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+        &>* {
+            margin: 0px 0 0 5px;
+            width: calc(100% - 5px);
+        }
     }
 }

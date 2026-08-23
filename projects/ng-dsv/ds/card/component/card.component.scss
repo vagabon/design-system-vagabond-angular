@@ -1,12 +1,16 @@
 :host {
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--border);
-    border-radius: 4px;
     font-size: 1rem;
-    margin: 5px;
-    padding: 10px;
-    width: calc(100% - 30px);
+    margin: 0px;
+    padding: 0px;
+    width: calc(100%);
     color: var(--text);
     background-color: var(--background-card);
+    position: relative;
+
+    &.border {
+        border: 1px solid var(--border);
+        border-radius: 4px;
+    }
 }

@@ -1,21 +1,12 @@
-<dsv-modal
-    [id]="id()"
-    [titleText]="titleText()"
->
+<dsv-modal [id]="id()" [titleText]="titleText()">
     {{ text() }}
     <div class="modal-footer">
         @if (buttonClose()) {
-            <dsv-button
-                (callback)="doClickClose()"
-                color="error"
-            >
+            <dsv-button (callback)="doClickClose()" color="error">
                 {{ buttonClose()! | translate }}
             </dsv-button>
         }
-        <dsv-button
-            (callback)="doClick()"
-            color="success"
-        >
+        <dsv-button (callback)="doClick()" color="secondary">
             {{ button() | translate }}
         </dsv-button>
     </div>

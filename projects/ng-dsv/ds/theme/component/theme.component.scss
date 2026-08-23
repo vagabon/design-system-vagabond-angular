@@ -3,6 +3,7 @@
     flex: 1;
     flex-direction: column;
     overflow: hidden;
+    --scroll-gap: 15px;
 
     background-color: var(--background);
     color: var(--text);
@@ -24,10 +25,11 @@
 }
 
 :host-context(body.light) {
-    --button-text: #ffffff;
+    --button-text: #fcfbfb;
     --background: #ffffff;
     --background-card: #ffffff;
     --background-card-light: #e9e9e9;
+    --background-card-transparent: #ffffffbc;
     --background-header: #dcdcdc;
     --background-table-tr: #000000;
     --background-table-tr-text: var(--background-card);
@@ -36,7 +38,7 @@
     --border: #cbcbcb;
     --text: #000000;
     --primary: #007bff;
-    --secondary: #7f7e7e;
+    --secondary: #504f4f;
     --success: #0da12f;
     --info: #1c7fc1;
     --warning: #a2821f;
@@ -44,9 +46,11 @@
 }
 
 :host-context(body.dark) {
+    --button-text: #000000;
     --background: #151515;
     --background-card: #151515;
     --background-card-light: #2e2e2e;
+    --background-card-transparent: #090909bc;
     --background-header: #1f1f1f;
     --background-table-tr: #DCDCDC;
     --background-table-tr-text: var(--background-card);
@@ -55,9 +59,9 @@
     --border: #606060;
     --text: #ffffff;
     --primary: #007bff;
-    --secondary: #747474;
-    --success: #3ab356;
+    --secondary: #a9a9a9;
+    --success: #48de6b;
     --info: #106694;
     --warning: #ac8a24;
-    --error: #df1126;
+    --error: #f45766;
 }

@@ -20,6 +20,13 @@ export class DsvFormReactiveInputComponent {
 
     readonly callbackSend = output<string>();
 
+    checkClear(event: Event) {
+        const target = event.target as HTMLInputElement;
+        if (target.value === '') {
+            this.onEnter();
+        }
+    }
+
     onEnter(): void {
         this.callbackSend.emit(this.form().value[this.field()]);
     }

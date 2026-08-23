@@ -78,6 +78,10 @@
                         align-items: center;
                         justify-content: center;
                     }
+
+                    &.secondary a {
+                        color: var(--button-text) !important;
+                    }
                 }
             }
         }

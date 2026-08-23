@@ -130,3 +130,29 @@ dsv-tooltip>*:not(.dsv-tooltip) {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.markdown {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    h1,
+    h2,
+    h3 {
+        margin: 10px 0;
+    }
+
+    hr {
+        margin: 10px 0;
+    }
+
+    ul {
+        margin: 0;
+    }
+}
+
+blockquote {
+    border-left: 3px solid var(--primary);
+    padding-left: 10px;
+    margin: 0;
+}
