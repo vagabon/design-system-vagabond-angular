@@ -1,29 +1,15 @@
-<form
-    [formGroup]="form()"
-    (ngSubmit)="onSubmit()"
->
+<form [formGroup]="form()" (ngSubmit)="onSubmit()">
     <div class="form-scroll">
         <ng-content></ng-content>
     </div>
-    <div
-        class="form-buttons"
-        [class.hidden]="!(urlBack() && textValid() !== '')"
-    >
+    <div class="form-buttons" [class.hidden]="!(urlBack() && textValid() !== '')">
         @if (urlBack()) {
-            <dsv-button
-                color="default"
-                variant="outlined"
-                [routerLink]="urlBack()"
-                [prevent]="false"
-                >{{ 'RETOUR' | translate }}</dsv-button
-            >
+            <dsv-button color="default" variant="outlined" [routerLink]="urlBack()" [prevent]="false">{{
+                'RETOUR' | translate
+            }}</dsv-button>
         }
         @if (textValid() && textValid() !== '') {
-            <dsv-button
-                type="submit"
-                color="primary"
-                >{{ textValid()! | translate }}</dsv-button
-            >
+            <dsv-button type="submit" color="secondary">{{ textValid()! | translate }}</dsv-button>
         }
     </div>
 </form>

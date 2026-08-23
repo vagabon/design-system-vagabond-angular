@@ -56,6 +56,10 @@
         color: var(--primary);
     }
 
+    &.secondary {
+        color: var(--secondary);
+    }
+
     &.success {
         color: var(--success);
     }
@@ -78,6 +82,10 @@
 
     &.outlined.primary {
         border: 1px solid var(--primary) !important;
+    }
+
+    &.outlined.secondary {
+        border: 1px solid var(--secondary) !important;
     }
 
     &.outlined.success {

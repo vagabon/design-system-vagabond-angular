@@ -3,8 +3,8 @@
     <div class="admin-header">
         <span>Résulat : {{ adminService.datas()[tab()]?.totalElements }}</span>
         <dsv-button
-            variant="contained"
-            color="primary"
+            color="secondary"
+            variant="outlined"
             icon="ri-add-line"
             [routerLink]="'/admin/' + tab() + '/add'"
             [prevent]="false"

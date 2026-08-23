@@ -1,4 +1,4 @@
-import { afterNextRender, Component, effect, ElementRef, input, signal, viewChild } from '@angular/core';
+import { afterNextRender, Component, effect, input, signal } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
@@ -6,21 +6,23 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [TranslatePipe],
     templateUrl: './accordion.component.html',
     styleUrls: ['./accordion.component.scss'],
+    host: {
+        '[id]': 'uuid()',
+    },
 })
 export class DsvAccordionComponent {
     readonly open = input<boolean>(false);
     readonly titleText = input<string>('');
     readonly color = input<string>('');
 
-    readonly checkboxRef = viewChild<ElementRef>('accordionContent');
-
+    readonly uuid = signal<string>('accordion-' + crypto.randomUUID());
     readonly isOpen = signal<boolean>(this.open());
     readonly hasContent = signal<boolean>(false);
 
     constructor() {
         afterNextRender(() => {
             const contentEl = document.querySelector(
-                'dsv-accordion > *:not([class*="dsv-accordion-header"])',
+                `[id="${this.uuid()}"] > *:not([class*="dsv-accordion-header"])`,
             );
             const isEmpty = contentEl?.childNodes.length === 0 || contentEl?.textContent?.trim() === '';
             this.hasContent.set(!isEmpty);
@@ -32,9 +34,6 @@ export class DsvAccordionComponent {
     }
 
     doToogle(): void {
-        if (!this.hasContent()) {
-            return;
-        }
         this.isOpen.update((tootle) => !tootle);
     }
 }

@@ -11,6 +11,12 @@
             {{ 'CONTACT_ME' | translate }}
             <a href="mailto:{{ contactEmail() }}" dsvLinkExternal>{{ contactEmail() }}</a>
         </div>
-        <dsv-button routerLink="/" color="primary" [prevent]="false" libelle="BACK_TO_HOME" />
+        <dsv-button
+            routerLink="/"
+            color="secondary"
+            variant="outlined"
+            [prevent]="false"
+            libelle="BACK_TO_HOME"
+        />
     </div>
 </dsv-card>

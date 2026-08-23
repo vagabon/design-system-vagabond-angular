@@ -1,5 +1,5 @@
 :host {
-    --accordion-header-padding: 5px 10px;
+    --accordion-header-padding: 5px;
 
     --accordion-text-display: flex;
     --accordion-text-padding: 0px 10px;
@@ -14,7 +14,6 @@
 
     .dsv-accordion-header {
         display: flex;
-        width: 95%;
         font-weight: bold;
         cursor: pointer;
         padding: var(--accordion-header-padding);
@@ -26,6 +25,7 @@
 
             &.disabled {
                 color: var(--subtitle);
+                display: none;
             }
         }
 

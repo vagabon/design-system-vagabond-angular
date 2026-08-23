@@ -1,5 +1,5 @@
 footer {
-    padding: 15px;
+    padding: 5px;
 
     hr {
         border: none;
@@ -37,7 +37,7 @@ footer {
         .created-by {
             display: flex;
             align-items: center;
-            background: #c4c4c4;
+            background: var(--background-card-light);
             color: var(--text);
             border-radius: 30px;
             padding: 5px 10px;
@@ -93,18 +93,11 @@ footer {
 
             &>div:nth-child(2) {
                 align-items: flex-end;
-                margin: 10px 10px 0px;
             }
         }
     }
 
     .copyright {
         margin-top: 20px;
-    }
-}
-
-:host-context(body.dark) {
-    .created-by {
-        background-color: #404040 !important;
     }
 }

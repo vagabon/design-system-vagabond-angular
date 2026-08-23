@@ -114,9 +114,12 @@
     .contact-projects {
         display: flex;
         flex-direction: row;
+        gap: 10px;
 
         dsv-card {
+            padding: 5px !important;
             width: 33%;
+            border: 1px solid var(--border) !important;
         }
 
         h2 {
@@ -139,7 +142,8 @@
             }
 
             dsv-card {
-                width: calc(100% - 10px) !important;
+                margin: 5px 10px !important;
+                width: calc(100% - 30px) !important;
             }
         }
     }

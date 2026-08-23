@@ -1,8 +1,4 @@
-<dsv-form-reactive
-    [form]="form"
-    [urlBack]="urlBack()!"
-    (callback)="sendForm($event)"
->
+<dsv-form-reactive [form]="form" [urlBack]="urlBack()!" (callback)="sendForm($event)">
     @for (field of formConf(); track field.name) {
         <div [class]="'item ' + (field.className ?? '')">
             @if (
@@ -19,17 +15,14 @@
                 />
             }
             @if (field.type === 'switch') {
-                <dsv-form-reactive-checkbox
-                    [form]="form"
-                    [field]="field.name"
-                />
+                <dsv-form-reactive-checkbox [form]="form" [field]="field.name" />
             }
             @if (field.type === 'm2m') {
                 <div class="m2m">
                     <div class="m2m-content">
                         @for (value of form.value[field.name]; track value.id) {
                             <dsv-chip
-                                color="default"
+                                color="secondary"
                                 [text]="value.name"
                                 (delete)="removeValue(field.name, value.id)()"
                             />

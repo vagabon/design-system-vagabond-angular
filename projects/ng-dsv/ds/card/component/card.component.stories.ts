@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { DsvButtonComponent } from '../../button';
 import { DsvCardActionComponent } from './action/card-action.component';
@@ -32,9 +32,9 @@ export const ActionsData = {
             <dsv-card-header>
                 <h2 class="no-margin">
                     <i class="fas fa-user"></i>
-                    {{ title }}
+                    {{ title() }}
                 </h2>
-                <div class="card-subtitle">{{ subtitle }}</div>
+                <div class="card-subtitle">{{ subtitle() }}</div>
             </dsv-card-header>
             <h3>Du contenu</h3>
             <p>
@@ -45,13 +45,16 @@ export const ActionsData = {
                 un paragraphe long
             </p>
             <dsv-card-action>
-                <dsv-button variant="primary">Action 1</dsv-button>
-                <dsv-button variant="primary">Action 2</dsv-button>
+                <dsv-button color="primary">Action 1</dsv-button>
+                <dsv-button color="primary">Action 2</dsv-button>
             </dsv-card-action>
         </dsv-card>
     `,
 })
-class CardWrapperComponent {}
+class CardWrapperComponent {
+    readonly title = input<string>('title');
+    readonly subtitle = input<string>('subtitle');
+}
 
 const meta: Meta<CardWrapperComponent> = {
     title: 'dsv/Card',

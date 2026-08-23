@@ -8,7 +8,7 @@
     <a href="/profil" dsvLink>
         <img [src]="authService.userConnected()?.avatar" alt="Profile" referrerpolicy="no-referrer" />
     </a>
-    <dsv-modal-button modalName="logout" icon="ri-logout-box-line" />
+    <dsv-modal-button modalName="logout" color="secondary" variant="outlined" icon="ri-logout-box-line" />
     <dsv-modal-alert
         id="logout"
         titleText="Déconnexion"
