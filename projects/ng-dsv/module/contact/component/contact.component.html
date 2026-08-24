@@ -51,7 +51,7 @@
                                 {{ 'CONTACT.GITHUB_BUTTON' | translate }}
                             </a>
                         </dsv-button>
-                        <dsv-button class="secondary" color="secondary">
+                        <dsv-button class="button-secondary" color="secondary">
                             <a href="https://blog.vagabond.synology.me/" dsvLinkExternal>
                                 <img
                                     class="button-contact"
@@ -71,7 +71,7 @@
 </section>
 
 <section class="contact-projects">
-    <dsv-card>
+    <dsv-card [border]="true">
         <h2>
             <i class="ri-file-video-line"></i>
             {{ 'CONTACT.PROJECTS.MK.TITLE' | translate }}
@@ -86,7 +86,7 @@
             https://movie-keeper.fr
         </a>
     </dsv-card>
-    <dsv-card>
+    <dsv-card [border]="true">
         <h2>
             <i class="ri-news-line"></i>
             {{ 'CONTACT.PROJECTS.BLOG.TITLE' | translate }}
@@ -107,7 +107,7 @@
             https://blog.vagabond.synology.me
         </a>
     </dsv-card>
-    <dsv-card>
+    <dsv-card [border]="true">
         <h2>
             <i class="ri-chat-1-line"></i>
             {{ 'CONTACT.PROJECTS.OYC.TITLE' | translate }}

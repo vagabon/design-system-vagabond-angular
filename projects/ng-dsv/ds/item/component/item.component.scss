@@ -52,6 +52,10 @@
 
     &:not(.active) .small {
         --a-color: #aeaeae;
+
+        dsv-chip {
+            opacity: 0.5;
+        }
     }
 }
 
@@ -61,7 +65,7 @@
     }
 
     & a dsv-chip {
-        color: var(--text) !important;
+        color: var(--button-text) !important;
     }
 
     &.active .small {

@@ -2,7 +2,7 @@
     {{ text() }}
     <div class="modal-footer">
         @if (buttonClose()) {
-            <dsv-button (callback)="doClickClose()" color="error">
+            <dsv-button (callback)="doClickClose()" color="secondary" variant="outlined">
                 {{ buttonClose()! | translate }}
             </dsv-button>
         }

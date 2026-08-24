@@ -11,7 +11,12 @@
         justify-content: space-between;
     }
 
-    dsv-form-reactive-searchbar {
-        margin: 0 0 10px;
+    dsv-card {
+        margin-right: 5px;
+        width: calc(100% - 5px);
+
+        dsv-form-signal-searchbar {
+            margin: 5px 0;
+        }
     }
 }

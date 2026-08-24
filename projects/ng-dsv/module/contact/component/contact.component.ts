@@ -6,7 +6,7 @@ import { RouterExternalPipe } from '@ng-vagabond-lab/ng-dsv/router';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
-    selector: 'dsv-auth',
+    selector: 'dsv-contact',
     imports: [DsvCardComponent, DsvChipComponent, RouterExternalPipe, DsvButtonComponent, TranslatePipe],
     templateUrl: './contact.component.html',
     styleUrls: ['./contact.component.scss'],

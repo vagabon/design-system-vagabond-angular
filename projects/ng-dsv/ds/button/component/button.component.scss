@@ -48,6 +48,10 @@
             font-size: var(--button-icon-size) !important;
         }
 
+        &>span {
+            width: 100%;
+        }
+
         &>span:not(.ripple):empty {
             display: none;
         }
