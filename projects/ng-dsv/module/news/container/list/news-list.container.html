@@ -1,0 +1,40 @@
+<dsv-card>
+    <dsv-card-header>
+        <h2>
+            <i class="ri-file-list-3-line"></i>&nbsp;&nbsp;News
+            @if (newsListService.total()) {
+                ({{ newsListService.total() }})
+            }
+        </h2>
+        @if (isAdmin()) {
+            <dsv-button icon="ri-add-line" color="secondary" variant="outlined" routerLink="/news/create" />
+        }
+    </dsv-card-header>
+    <dsv-form-reactive-searchbar [search]="newsListService.search()" (callbackSearch)="doSearch($event)" />
+</dsv-card>
+
+@if (newsListService.news().length === 0 && (!newsListService.isLoading() || newsListService.stopFetch())) {
+    <dsv-card>
+        <p>Aucun résultat trouvé</p>
+    </dsv-card>
+} @else {
+    <dsv-scroll-infinite
+        #scroll
+        class="card-miniature"
+        [loading]="newsListService.isLoading()"
+        (callback)="doFetch()"
+    >
+        @for (news of newsListService.news(); track news.id) {
+            <app-news-card-resume [news]="news">
+                @if (isAdmin()) {
+                    <dsv-button
+                        class="update-button"
+                        icon="ri-tools-line"
+                        [routerLink]="'/news/update/' + news?.id"
+                    />
+                }
+            </app-news-card-resume>
+        }
+        <ng-template #skeleton> </ng-template>
+    </dsv-scroll-infinite>
+}

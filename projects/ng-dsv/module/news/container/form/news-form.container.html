@@ -1,0 +1,19 @@
+<dsv-card>
+    <dsv-card-header>
+        <dsv-button
+            class="round"
+            icon="ri-arrow-left-s-line"
+            color="inherit"
+            [routerLink]="news()?.id ? '/news/' + news()?.id : '/news'"
+        />
+        <h1>{{ news()?.id ? 'Modifier' : 'Créer' }} une news</h1>
+    </dsv-card-header>
+    <dsv-form-signal [form]="newsForm" (callback)="doSubmit()" (callbackBack)="routerService.goBack()">
+        <dsv-form-signal-input [form]="newsForm" fieldName="title" />
+        <dsv-form-signal-input [form]="newsForm" fieldName="image" />
+        <dsv-form-signal-input [form]="newsForm" fieldName="tags" />
+        <dsv-form-signal-input [form]="newsForm" fieldName="resume" type="textarea" class="resume" />
+        <dsv-form-signal-input [form]="newsForm" fieldName="description" type="textarea" />
+        <dsv-form-signal-checkbox [form]="newsForm" fieldName="active" />
+    </dsv-form-signal>
+</dsv-card>

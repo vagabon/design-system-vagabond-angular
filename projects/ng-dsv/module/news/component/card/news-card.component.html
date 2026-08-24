@@ -1,0 +1,16 @@
+<dsv-card>
+    @if (news()?.image) {
+        <img class="news-image" [src]="news()?.image" alt="" />
+    }
+    <dsv-card-header>
+        <dsv-button class="round" icon="ri-arrow-left-s-line" color="inherit" routerLink="/news" />
+        <h1 [class.error]="!news()?.active">{{ news()?.title }}</h1>
+        <ng-content select=".update-button"></ng-content>
+    </dsv-card-header>
+    <span class="subtitle">
+        @if (news()?.creationDate) {
+            Le {{ news()?.creationDate! | formatDate: true }}
+        }
+    </span>
+    <app-news-markdown-container [data]="news()?.description" />
+</dsv-card>

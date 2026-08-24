@@ -1,0 +1,10 @@
+@if (nbRead()) {
+    <dsv-chip color="secondary" [text]="nbRead()" routerLink="/notification" />
+}
+<dsv-button
+    icon="ri-notification-line"
+    routerLink="/notification"
+    variant="text"
+    color="inherit"
+    [prevent]="false"
+/>

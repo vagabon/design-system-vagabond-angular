@@ -1,0 +1,9 @@
+<dsv-card [routerLink]="'/news/' + news()?.id">
+    @if (news()?.image) {
+        <img class="news-image" [src]="news()?.image" alt="" />
+    }
+    <h2 [class.error]="!news()?.active">{{ news()?.title }}</h2>
+    <span class="subtitle">Le {{ news()?.creationDate! | formatDate: true }}</span>
+    <app-news-markdown-container [data]="news()?.resume" />
+    <a [href]="'/news/' + news()?.id" dsvLink>Lire la suite...</a>
+</dsv-card>

@@ -1,0 +1,31 @@
+:host {
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+
+    dsv-card {
+        margin: 0px 5px 5px 5px;
+        width: calc(100% - 10px);
+        gap: 10px;
+
+        h2 {
+            margin: 0px;
+        }
+
+        dsv-form-reactive-searchbar {
+            margin: 0px;
+        }
+    }
+
+    .notification-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    dsv-scroll-infinite {
+        flex-direction: column;
+        border-radius: 5px;
+    }
+}

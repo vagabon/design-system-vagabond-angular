@@ -1,0 +1,8 @@
+@if (data()) {
+    <markdown
+        class="markdown"
+        [data]="data()"
+        (click)="handleClick($event)"
+        (keydown)="handleClick($event)"
+    />
+}

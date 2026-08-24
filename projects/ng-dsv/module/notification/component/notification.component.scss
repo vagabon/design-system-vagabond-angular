@@ -1,0 +1,39 @@
+:host {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    background: var(--background-card);
+    padding: 10px;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+
+    .notification-content {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        flex: 1;
+
+        b {
+            margin: 5px 0;
+        }
+
+        &.readonly {
+            cursor: default;
+        }
+
+        .read {
+            color: var(--secondary);
+        }
+    }
+
+    dsv-form-signal-checkbox {
+        padding: 0px !important;
+        margin-bottom: 0px !important;
+        max-width: 30px;
+    }
+
+    dsv-button {
+        --button-border-radius: 50%;
+    }
+}

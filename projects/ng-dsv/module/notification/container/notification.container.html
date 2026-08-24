@@ -1,0 +1,45 @@
+<dsv-card>
+    <div class="notification-header">
+        <h2>
+            Notifications
+            @if (notificationSearchService.total()) {
+                <span> ({{ notificationSearchService.total() }})</span>
+            }
+        </h2>
+        <dsv-modal-button
+            modalName="notification-read-all"
+            text="Tout lire ({{ notificationService.nbRead() }})"
+            color="secondary"
+            variant="outlined"
+        ></dsv-modal-button>
+        <dsv-modal-alert
+            id="notification-read-all"
+            titleText="Lire toutes les notifications"
+            text="Voulez-vous vraiment lire toute les notifications ?"
+            button="Oui"
+            buttonClose="Non"
+            (callback)="doReadAll()"
+        ></dsv-modal-alert>
+    </div>
+    <div>
+        <dsv-form-reactive-searchbar
+            [search]="notificationSearchService.search()"
+            (callbackSearch)="doSearch($event)"
+        />
+    </div>
+</dsv-card>
+
+@if (
+    notificationSearchService.notifications().length === 0 &&
+    (!notificationSearchService.isLoading() || notificationSearchService.stopFetch())
+) {
+    <dsv-card>
+        <p>Aucun résultat trouvé</p>
+    </dsv-card>
+} @else {
+    <dsv-scroll-infinite [loading]="notificationSearchService.isLoading()" (callback)="doFetch()">
+        @for (notification of notificationSearchService.notifications(); track notification.id) {
+            <app-notification [notification]="notification" (callback)="doRead($event)" />
+        }
+    </dsv-scroll-infinite>
+}

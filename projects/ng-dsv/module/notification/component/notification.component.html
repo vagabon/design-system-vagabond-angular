@@ -1,0 +1,27 @@
+@if (!readonly()) {
+    <div #checkbox>
+        <dsv-form-signal-checkbox
+            [form]="readForm"
+            fieldName="read"
+            [withLabel]="false"
+            (callbackChange)="callback.emit(notification()!)"
+        />
+    </div>
+}
+
+<div
+    class="notification-content"
+    [class.readonly]="readonly()"
+    (click)="triggerCheckbox()"
+    (keyup)="triggerCheckbox()"
+>
+    <b [class.read]="!notification()?.read && !readonly()">
+        <span class="subtitle">{{ notification()?.creationDate! | formatDate: true }} : </span>
+        {{ notification()?.title }}
+    </b>
+    <span>{{ notification()?.message }}</span>
+</div>
+
+@if (!readonly()) {
+    <dsv-button icon="ri-external-link-line" color="secondary" [routerLink]="url()" [prevent]="false" />
+}
