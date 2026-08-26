@@ -4,7 +4,7 @@ import { removeDuplicate } from '@ng-vagabond-lab/ng-dsv/storage';
 import { BaseFetchService } from '../fetch/base-fetch.service';
 
 @Directive()
-export abstract class BaseSearchService<T extends ApiDto> extends BaseFetchService<T[]> {
+export abstract class BaseSearchService<T extends ApiDto> extends BaseFetchService<PageableDto<T[]>> {
     readonly datas = signal<T[]>([]);
     readonly total = signal<number | undefined>(undefined);
 
@@ -50,7 +50,8 @@ export abstract class BaseSearchService<T extends ApiDto> extends BaseFetchServi
 
         const data = this.getDataFromState(url);
         if (data) {
-            this.updateData(page, data);
+            this.total.set(data.totalElements);
+            this.updateData(page, data.content);
             this.isLoading.set(false);
             return;
         }
@@ -61,7 +62,7 @@ export abstract class BaseSearchService<T extends ApiDto> extends BaseFetchServi
             (data) => {
                 this.page.set(page + 1);
                 this.total.set(data.totalElements);
-                this.setDataToState(url, data.content);
+                this.setDataToState(url, data);
                 this.isLoading.set(false);
                 this.updateData(page, data.content);
             },

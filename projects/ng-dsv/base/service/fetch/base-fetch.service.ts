@@ -1,9 +1,11 @@
 import { Directive, makeStateKey, signal, StateKey } from '@angular/core';
-import { ApiDto } from '@ng-vagabond-lab/ng-dsv/api';
+import { ApiDto, JSONObject, PageableDto } from '@ng-vagabond-lab/ng-dsv/api';
 import { BaseApiService } from '../base/base-api.service';
 
 @Directive()
-export abstract class BaseFetchService<A extends ApiDto | ApiDto[]> extends BaseApiService {
+export abstract class BaseFetchService<
+    A extends ApiDto | ApiDto[] | PageableDto<ApiDto[]>,
+> extends BaseApiService {
     readonly ssr = signal<boolean>(true);
 
     getStateKey(url: string): StateKey<A> {
@@ -16,7 +18,7 @@ export abstract class BaseFetchService<A extends ApiDto | ApiDto[]> extends Base
         if (this.transferState.hasKey(key)) {
             data = this.transferState.get(key, null);
             this.transferState.remove(key);
-            this.apiService.info('load state', data);
+            this.apiService.info('load state', data as JSONObject);
         }
         return data;
     }
