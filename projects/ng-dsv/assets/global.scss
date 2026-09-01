@@ -134,6 +134,7 @@ hr {
 #main-section {
     display: flex;
     flex-direction: column;
+    width: 100%;
     height: calc(100%);
 
     &>*>dsv-scroll-infinite:not(.no-padding) {

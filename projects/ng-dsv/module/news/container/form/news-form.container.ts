@@ -3,6 +3,7 @@ import { form, required, validate } from '@angular/forms/signals';
 import { RouterLink } from '@angular/router';
 import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
 import { DsvCardComponent, DsvCardHeaderComponent } from '@ng-vagabond-lab/ng-dsv/ds/card';
+import { FileUploadContainer } from '@ng-vagabond-lab/ng-dsv/ds/file';
 import {
     DsvFormSignalCheckboxComponent,
     DsvFormSignalComponent,
@@ -22,6 +23,7 @@ import { NewsContainer } from '../news.container';
         DsvButtonComponent,
         RouterLink,
         DsvFormSignalCheckboxComponent,
+        FileUploadContainer,
     ],
     templateUrl: './news-form.container.html',
     styleUrl: './news-form.container.scss',

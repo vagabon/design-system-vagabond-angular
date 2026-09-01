@@ -84,7 +84,7 @@ export abstract class BaseSearchService<T extends ApiDto> extends BaseFetchServi
         this.afterFetch(datas);
     }
 
-    afterFetch(data: T[]): void {
+    afterFetch(_: T[]): void {
         return;
     }
 }

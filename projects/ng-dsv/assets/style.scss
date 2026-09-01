@@ -132,19 +132,42 @@ dsv-tooltip>*:not(.dsv-tooltip) {
 }
 
 .markdown {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
 
     h1,
     h2,
     h3 {
-        margin: 10px 0;
+        margin: 15px 0;
     }
 
     hr {
-        margin: 10px 0;
+        margin: 20px 0;
     }
 
     ul {
         margin: 0;
+    }
+
+
+    p,
+    li {
+        text-align: justify;
+        padding: 5px 0;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    pre {
+        overflow: auto;
+    }
+
+    img {
+        max-width: 100%;
     }
 }
 

@@ -10,7 +10,11 @@
     </dsv-card-header>
     <dsv-form-signal [form]="newsForm" (callback)="doSubmit()" (callbackBack)="routerService.goBack()">
         <dsv-form-signal-input [form]="newsForm" fieldName="title" />
-        <dsv-form-signal-input [form]="newsForm" fieldName="image" />
+        <dsv-file-upload-container
+            [image]="newsForm().value().image"
+            directory="news"
+            (callback)="newsForm().value.update((news) => ({ ...news, image: $event }))"
+        />
         <dsv-form-signal-input [form]="newsForm" fieldName="tags" />
         <dsv-form-signal-input [form]="newsForm" fieldName="resume" type="textarea" class="resume" />
         <dsv-form-signal-input [form]="newsForm" fieldName="description" type="textarea" />

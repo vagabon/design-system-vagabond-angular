@@ -1,6 +1,6 @@
 <dsv-card>
     @if (news()?.image) {
-        <img class="news-image" [src]="news()?.image" alt="" />
+        <dsv-file-show url="/api/" [src]="news()?.image ?? ''" />
     }
     <dsv-card-header>
         <dsv-button class="round" icon="ri-arrow-left-s-line" color="inherit" routerLink="/news" />
@@ -12,5 +12,5 @@
             Le {{ news()?.creationDate! | formatDate: true }}
         }
     </span>
-    <app-news-markdown-container [data]="news()?.description" />
+    <dsv-markdown-container [data]="news()?.description" />
 </dsv-card>

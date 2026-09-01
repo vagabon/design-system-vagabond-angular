@@ -3,6 +3,10 @@
     flex-direction: column;
     overflow: hidden;
 
+    h2 {
+        text-transform: capitalize;
+    }
+
     dsv-card {
         margin: 5px;
         width: calc(100% - 10px);

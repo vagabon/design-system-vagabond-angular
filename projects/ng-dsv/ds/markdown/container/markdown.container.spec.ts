@@ -1,37 +1,39 @@
-import { Component, ComponentRef, Input, NO_ERRORS_SCHEMA } from '@angular/core';
+import { Component, ComponentRef, Directive, Input, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
 import { MarkdownComponent } from 'ngx-markdown';
-import { NewsMarkdownContainer } from './news-markdown.container';
+import { DsvMarkdownContainer } from './markdown.container';
 
+@Directive()
 class MarkdownMockClass {
     @Input() data: string | undefined = '';
 }
+
 const MarkdownComponentMock = Component({
     selector: 'markdown',
     template: '',
     standalone: true,
 })(MarkdownMockClass);
 
-describe('NewsMarkdownContainer', () => {
-    let fixture: ComponentFixture<NewsMarkdownContainer>;
-    let component: NewsMarkdownContainer;
-    let componentRef: ComponentRef<NewsMarkdownContainer>;
+describe('DsvMarkdownContainer', () => {
+    let fixture: ComponentFixture<DsvMarkdownContainer>;
+    let component: DsvMarkdownContainer;
+    let componentRef: ComponentRef<DsvMarkdownContainer>;
     let routerNavigate: ReturnType<typeof vi.fn>;
 
     beforeEach(() => {
         routerNavigate = vi.fn();
         TestBed.resetTestingModule();
         TestBed.configureTestingModule({
-            imports: [NewsMarkdownContainer],
+            imports: [DsvMarkdownContainer],
             providers: [{ provide: RouterService, useValue: { router: { navigate: routerNavigate } } }],
             schemas: [NO_ERRORS_SCHEMA],
-        }).overrideComponent(NewsMarkdownContainer, {
+        }).overrideComponent(DsvMarkdownContainer, {
             remove: { imports: [MarkdownComponent] },
             add: { imports: [MarkdownComponentMock] },
         });
 
-        fixture = TestBed.createComponent(NewsMarkdownContainer);
+        fixture = TestBed.createComponent(DsvMarkdownContainer);
         component = fixture.componentInstance;
         componentRef = fixture.componentRef;
     });
@@ -54,7 +56,7 @@ describe('NewsMarkdownContainer', () => {
 
     describe('when href includes movie-keeper.fr', () => {
         it('then strips domain and navigates to path', () => {
-            triggerClick('https://movie-keeper.fr/movies/456');
+            triggerClick('/movies/456');
             expect(routerNavigate).toHaveBeenCalledWith(['/movies/456']);
         });
     });

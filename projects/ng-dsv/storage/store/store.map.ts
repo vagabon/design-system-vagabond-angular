@@ -19,12 +19,17 @@ export class StoreMap<K, V> {
     set(key: K, value: V): void {
         this._data.update((map) => new Map(map).set(key, value));
     }
-
     patch(key: K, partial: Partial<V>): void {
         this._data.update((map) => {
             const existing = map.get(key);
             if (!existing) return map;
-            return new Map(map).set(key, { ...existing, ...partial });
+
+            const updatedValue =
+                Array.isArray(existing) && Array.isArray(partial)
+                    ? ([...existing, ...partial] as unknown as V)
+                    : { ...existing, ...partial };
+
+            return new Map(map).set(key, updatedValue);
         });
     }
 

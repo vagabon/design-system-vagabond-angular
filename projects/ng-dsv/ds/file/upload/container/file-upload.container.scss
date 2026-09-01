@@ -1,0 +1,36 @@
+:host {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    dsv-file-show {
+        width: 90px;
+    }
+
+    input[type="file"] {
+        width: 100%;
+        background-color: transparent;
+        color: var(--text);
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        padding: 4px 10px;
+        cursor: pointer;
+        box-sizing: border-box;
+    }
+
+    input[type="file"]::file-selector-button {
+        background-color: var(--secondary);
+        color: var(--button-text);
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        padding: 4px 10px;
+        margin-left: -5px;
+        margin-right: 10px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    input[type="file"]::file-selector-button:hover {
+        background-color: var(--secondary-light);
+    }
+}

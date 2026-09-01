@@ -3,12 +3,12 @@ import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
 import { MarkdownComponent } from 'ngx-markdown';
 
 @Component({
-    selector: 'app-news-markdown-container',
+    selector: 'dsv-markdown-container',
     imports: [MarkdownComponent],
-    templateUrl: './news-markdown.container.html',
-    styleUrl: './news-markdown.container.scss',
+    templateUrl: './markdown.container.html',
+    styleUrl: './markdown.container.scss',
 })
-export class NewsMarkdownContainer {
+export class DsvMarkdownContainer {
     readonly routerService = inject(RouterService);
 
     readonly data = input<string | undefined>('');
@@ -19,11 +19,10 @@ export class NewsMarkdownContainer {
 
         if (anchor) {
             const href = anchor.getAttribute('href');
-            if (href?.startsWith('/') || href?.includes('movie-keeper.fr')) {
+            if (href?.startsWith('/')) {
                 event.preventDefault();
                 event.stopPropagation();
-                const path = href.replace('https://movie-keeper.fr', '');
-                this.routerService.router.navigate([path]);
+                this.routerService.router.navigate([href]);
             }
         }
     }

@@ -3,7 +3,8 @@ import { RouterLink } from '@angular/router';
 import { DateFormatPipe } from '@ng-vagabond-lab/ng-dsv/date';
 import { DsvButtonComponent } from '@ng-vagabond-lab/ng-dsv/ds/button';
 import { DsvCardComponent, DsvCardHeaderComponent } from '@ng-vagabond-lab/ng-dsv/ds/card';
-import { NewsMarkdownContainer } from '../../container/markdown/news-markdown.container';
+import { DsvFileShowComponent } from '@ng-vagabond-lab/ng-dsv/ds/file';
+import { DsvMarkdownContainer } from '@ng-vagabond-lab/ng-dsv/ds/markdown';
 import { NewsDto } from '../../dto/news.dto';
 
 @Component({
@@ -11,10 +12,11 @@ import { NewsDto } from '../../dto/news.dto';
     imports: [
         DsvCardComponent,
         DateFormatPipe,
-        NewsMarkdownContainer,
         DsvCardHeaderComponent,
         DsvButtonComponent,
         RouterLink,
+        DsvFileShowComponent,
+        DsvMarkdownContainer,
     ],
     templateUrl: './news-card.component.html',
     styleUrl: './news-card.component.scss',
