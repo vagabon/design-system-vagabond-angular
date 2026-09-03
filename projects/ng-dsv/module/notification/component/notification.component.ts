@@ -30,7 +30,11 @@ export class NotificationComponent {
 
     constructor() {
         effect(() => {
-            this.url.set(new URL(this.notification()?.url!).pathname);
+            try {
+                this.notification()?.url && this.url.set(new URL(this.notification()?.url!).pathname);
+            } catch (error) {
+                console.error('Error occurred while processing notification URL:', this.notification()?.url, error);
+            }
         });
         effect(() => {
             this.readForm().reset({
