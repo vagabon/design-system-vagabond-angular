@@ -1,6 +1,7 @@
 :host {
     display: flex;
     flex-direction: column;
+    flex: 1;
 
     p {
         text-align: justify;
@@ -29,6 +30,7 @@
 
             img {
                 width: 200px;
+                height: 200px;
                 border-radius: 50%;
                 border: 3px solid var(--primary);
                 padding: 5px;
