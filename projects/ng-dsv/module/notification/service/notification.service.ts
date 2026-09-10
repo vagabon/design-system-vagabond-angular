@@ -18,6 +18,8 @@ export class NotificationService extends BaseApiService {
                 this.notificationSearchService.notifications.set([]);
                 this.notificationSearchService.search.set('');
                 this.notificationSearchService.page.set(1);
+                this.notificationSearchService.stopFetch.set(false);
+                this.notificationSearchService.lasturl.set('');
             }
             this.nbRead.set(Number(data));
         });

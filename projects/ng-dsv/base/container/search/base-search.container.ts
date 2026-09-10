@@ -26,6 +26,8 @@ export abstract class BaseSearchContainer<
             ) {
                 this.doFetch();
             }
+        });
+        effect(() => {
             if (this.service?.datas()?.length! > 0) {
                 this.service?.isLoading.set(false);
             }
