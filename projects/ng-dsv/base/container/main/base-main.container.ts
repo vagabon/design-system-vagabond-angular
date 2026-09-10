@@ -13,6 +13,8 @@ export abstract class BaseMainContainer {
 
     readonly initRefreshToken = signal<boolean>(false);
 
+    private resizeListener?: () => void;
+
     constructor() {
         this.analyticsService.init(this.environmentService.config()?.ANALYTICS_ID);
         effect(() => {
@@ -21,5 +23,22 @@ export abstract class BaseMainContainer {
                 this.authService.refreshToken();
             }
         });
+        effect(() => {
+            if (this.environmentService.platformService.isPlatformBrowser() && window.visualViewport) {
+                this.resizeListener = () => {
+                    const vh = window.visualViewport?.height;
+                    document.documentElement.style.setProperty('--app-height', `${vh}px`);
+                };
+
+                window.visualViewport.addEventListener('resize', this.resizeListener);
+                this.resizeListener();
+            }
+        });
+    }
+
+    ngOnDestroy() {
+        if (this.resizeListener && window.visualViewport) {
+            window.visualViewport.removeEventListener('resize', this.resizeListener);
+        }
     }
 }
