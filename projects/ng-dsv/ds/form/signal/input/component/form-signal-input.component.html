@@ -22,7 +22,7 @@
                 class="form-control"
                 [class.error]="isError()"
                 [formField]="getSignal()"
-                [placeholder]="placeholder()"
+                [placeholder]="placeholder() | translate"
                 [class.icon]="icon()"
                 (blur)="doOnSend()"
                 (change)="doChange()"

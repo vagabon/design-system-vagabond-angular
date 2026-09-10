@@ -20,7 +20,7 @@ export class ApiService {
     readonly blocked = signal<boolean>(false);
 
     get<T>(url: string, callback: (data: T) => void, callbackError: () => void = () => {}) {
-        this.doSubscribe(url, this.httpClient.get<T>(this.baseUrl() + url), callback, callbackError);
+        this.doSubscribe(url, '', this.httpClient.get<T>(this.baseUrl() + url), callback, callbackError);
     }
 
     post<TBody, TResponse = TBody>(
@@ -32,6 +32,7 @@ export class ApiService {
     ) {
         this.doSubscribe(
             url,
+            data as JSONObject,
             this.httpClient.post<TResponse>(this.baseUrl() + url, data, { withCredentials }),
             callback,
             callbackError,
@@ -46,6 +47,7 @@ export class ApiService {
     ) {
         this.doSubscribe(
             url,
+            data as JSONObject,
             this.httpClient.put<TResponse>(this.baseUrl() + url, data),
             callback,
             callbackError,
@@ -53,7 +55,7 @@ export class ApiService {
     }
 
     delete<T>(url: string, callback: (data: T) => void, callbackError: () => void = () => {}) {
-        this.doSubscribe(url, this.httpClient.delete<T>(this.baseUrl() + url), callback, callbackError);
+        this.doSubscribe(url, '', this.httpClient.delete<T>(this.baseUrl() + url), callback, callbackError);
     }
 
     findById<T>(endPoint: string, id: ID, callback: (data: T) => void) {
@@ -107,11 +109,12 @@ export class ApiService {
                 '/' + endPoint + '/',
                 data,
                 (dateReturn: T) => {
-                    this.toastService.showToast({
-                        text: toast ?? 'UPDATE_OK',
-                        type: 'success',
-                        closeAll: true,
-                    });
+                    toast &&
+                        this.toastService.showToast({
+                            text: toast ?? 'UPDATE_OK',
+                            type: 'success',
+                            closeAll: true,
+                        });
                     callback(dateReturn);
                     this.blocked.set(false);
                 },
@@ -124,7 +127,7 @@ export class ApiService {
                 '/' + endPoint + '/',
                 data,
                 (dateReturn: T) => {
-                    this.toastService.showToast({ text: toast ?? 'CREATION_OK', type: 'success' });
+                    toast && this.toastService.showToast({ text: toast ?? 'CREATION_OK', type: 'success' });
                     callback(dateReturn);
                     this.blocked.set(false);
                 },
@@ -138,6 +141,7 @@ export class ApiService {
 
     doSubscribe<T>(
         url: string,
+        data: JSONObject | '',
         observable: Observable<T>,
         callback: (data: T) => void,
         callbackError: () => void = () => {},
@@ -146,26 +150,26 @@ export class ApiService {
         observable.subscribe({
             next: (res) => {
                 this.nbLoaded.update((loaded) => loaded - 1);
-                this.info(url, res as JSONObject);
+                this.info(url, data, res as JSONObject);
                 callback(res);
             },
             error: (error: JSONObject) => {
                 this.nbLoaded.update((loaded) => loaded - 1);
-                this.error(url, error);
+                this.error(url, data, error);
                 callbackError();
             },
         });
     }
 
-    info(url: string, data: JSONObject | null) {
+    info(url: string, body: JSONObject | '', data: JSONObject | null = null) {
         if (this.platformService.isPlatformBrowser()) {
-            console.log(url, data);
+            console.log(url, body, data);
         }
     }
 
-    error(url: string, error: JSONObject) {
+    error(url: string, body: JSONObject | '', error: JSONObject) {
         if (this.platformService.isPlatformBrowser()) {
-            console.error(url, error);
+            console.error(url, body, error);
         }
     }
 }

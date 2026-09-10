@@ -1,11 +1,12 @@
 import { TestBed } from '@angular/core/testing';
+import { provideTranslateService } from '@ngx-translate/core';
 import { DsvFormSignalSearchbarComponent } from './form-signal-searchbar.component';
 
 describe('FormSignalSearchbarComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [DsvFormSignalSearchbarComponent],
-            providers: [],
+            providers: [provideTranslateService()],
         }).compileComponents();
     });
 

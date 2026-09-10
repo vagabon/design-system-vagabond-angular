@@ -4,6 +4,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FieldTree, form } from '@angular/forms/signals';
 import { DsvFormSignalInputComponent } from './form-signal-input.component';
+import { provideTranslateService } from '@ngx-translate/core';
 
 interface TestDto {
     title: string;
@@ -16,7 +17,7 @@ describe('DsvFormSignalInputComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [DsvFormSignalInputComponent, ReactiveFormsModule],
-            providers: [provideHttpClient()],
+            providers: [provideHttpClient(), provideTranslateService()],
         }).compileComponents();
 
         fixture = TestBed.createComponent(DsvFormSignalInputComponent<TestDto>);

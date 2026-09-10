@@ -33,7 +33,7 @@ describe('FormReactiveInputComponent', () => {
         vi.spyOn(component.callbackSend, 'emit');
         component.form().get('testField')?.setValue('test value');
 
-        component.onEnter();
+        component.checkClear({ target: { value: '' } } as unknown as Event);
 
         expect(component.callbackSend.emit).toHaveBeenCalledWith('test value');
     });

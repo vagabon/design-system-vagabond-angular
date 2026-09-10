@@ -1,6 +1,8 @@
 :host {
     display: flex;
     user-select: none;
+    margin-right: 5px;
+    width: calc(100% - 5px);
 
     dsv-form-reactive-input,
     dsv-form-signal-input {

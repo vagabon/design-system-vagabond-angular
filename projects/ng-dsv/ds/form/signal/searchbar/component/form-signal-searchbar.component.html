@@ -1,11 +1,9 @@
-<dsv-form-signal
-    [form]="form"
-    textValid=""
->
+<dsv-form-signal [form]="form" textValid="">
     <dsv-form-signal-input
         [form]="form"
         fieldName="search"
         type="search"
+        placeholder="SEARCH..."
         [withLabel]="false"
         (callbackChange)="onSend($event)"
         (callbackSend)="onSend($event)"
