@@ -24,7 +24,7 @@ export abstract class BaseMainContainer {
             }
         });
         effect(() => {
-            if (this.environmentService.platformService.isPlatformBrowser() && window.visualViewport) {
+            if (this.authService.isPlatformBrowser() && window.visualViewport) {
                 this.resizeListener = () => {
                     const vh = window.visualViewport?.height;
                     document.documentElement.style.setProperty('--app-height', `${vh}px`);
