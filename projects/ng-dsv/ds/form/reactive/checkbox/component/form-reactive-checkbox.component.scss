@@ -1,4 +1,7 @@
 :host {
+    --checkbox-width: 20px;
+    --checkbox-height: 20px;
+
     display: flex;
     flex: 1;
     width: 100%;
@@ -19,8 +22,8 @@
 
         input {
             accent-color: var(--primary);
-            width: 20px !important;
-            height: 20px !important;
+            width: var(--checkbox-width) !important;
+            height: var(--checkbox-height) !important;
             margin-right: 5px !important;
 
             &[type="checkbox"]:checked {
