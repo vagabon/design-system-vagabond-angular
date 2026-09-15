@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, ElementRef, input, viewChild } from '@angular/core';
 import { FormField } from '@angular/forms/signals';
 import { INPUT_TYPE } from '@ng-vagabond-lab/ng-dsv/type';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -16,4 +16,10 @@ export class DsvFormSignalInputComponent<T> extends DsvBaseFormSignalInputCompon
     readonly type = input<INPUT_TYPE>('text');
     readonly icon = input<string>();
     readonly withError = input<boolean>(true);
+
+    private inputRef = viewChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
+
+    public focus(): void {
+        this.inputRef()?.nativeElement.focus();
+    }
 }

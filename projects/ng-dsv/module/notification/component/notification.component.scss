@@ -1,9 +1,7 @@
 :host {
     display: flex;
     flex-direction: row;
-    gap: 15px;
     background: var(--background-card);
-    padding: 10px;
     border-bottom: 1px solid var(--border);
     align-items: center;
 
@@ -13,6 +11,7 @@
         flex-direction: column;
         gap: 5px;
         flex: 1;
+        padding: 5px;
 
         &.readonly {
             cursor: default;
@@ -23,10 +22,16 @@
         }
     }
 
-    dsv-form-signal-checkbox {
-        padding: 0px !important;
-        margin-bottom: 0px !important;
-        max-width: 30px;
+    .checkbox {
+        display: flex;
+        width: auto;
+        height: 100%;
+        min-width: 30px;
+
+        dsv-form-signal-checkbox {
+            --checkbox-width: 17px;
+            --checkbox-height: 17px;
+        }
     }
 
     dsv-button {

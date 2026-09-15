@@ -1,11 +1,12 @@
 import { TestBed } from '@angular/core/testing';
+import { provideTranslateService } from '@ngx-translate/core';
 import { DsvFormReactiveSearchbarComponent } from './form-reactive-searchbar.component';
 
 describe('DsvFormReactiveCheckboxComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [DsvFormReactiveSearchbarComponent],
-            providers: [],
+            providers: [provideTranslateService()],
         }).compileComponents();
     });
 

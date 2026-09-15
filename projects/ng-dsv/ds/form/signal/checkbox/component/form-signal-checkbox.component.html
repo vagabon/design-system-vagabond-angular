@@ -1,4 +1,4 @@
-<div>
+<div #checkbox (click)="triggerCheckbox()">
     @if (getSignal()) {
         <dsv-form-signal-label
             [name]="fieldName()"
@@ -13,6 +13,7 @@
                 class="form-control"
                 [class.error]="isError()"
                 [formField]="getBooleanSignal()"
+                (click)="$event.stopPropagation()"
                 (change)="doChange()"
             />
         </div>

@@ -9,10 +9,12 @@
         }
         @if (type() === 'textarea') {
             <textarea
+                #input
                 [id]="fieldName()"
                 [formField]="getSignal()"
                 [placeholder]="placeholder()"
                 class="form-control"
+                (blur)="doOnSend()"
             ></textarea>
         } @else {
             <input

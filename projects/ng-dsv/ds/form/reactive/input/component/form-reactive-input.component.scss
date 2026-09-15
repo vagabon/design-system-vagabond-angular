@@ -9,6 +9,8 @@
     --input-height: auto;
     --input-min-height: 90px;
     --input-max-height: 150px;
+    --input-resize: vertical;
+    --input-background: var(--background-card);
     width: 100%;
 
     &>div {
@@ -30,7 +32,7 @@
             font-size: 1rem;
             line-height: 1.5;
             color: var(--text);
-            background-color: var(--background-card);
+            background-color: var(--input-background);
             background-clip: padding-box;
             border: 1px solid var(--border);
             border-radius: 5px;
@@ -63,7 +65,8 @@
         textarea {
             overflow: auto;
             scrollbar-width: thin;
-            resize: vertical;
+            resize: var(--input-resize);
+            field-sizing: content;
         }
 
         textarea.form-control {

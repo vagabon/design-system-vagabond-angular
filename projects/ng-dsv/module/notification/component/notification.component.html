@@ -1,5 +1,5 @@
 @if (!readonly()) {
-    <div #checkbox>
+    <div #checkbox class="checkbox">
         <dsv-form-signal-checkbox
             [form]="readForm"
             fieldName="read"
@@ -15,11 +15,11 @@
     (click)="triggerCheckbox()"
     (keyup)="triggerCheckbox()"
 >
-    <b [class.read]="!notification()?.read && !readonly()">
+    <span>{{ notification()?.message }}</span>
+    <div [class.read]="!notification()?.read && !readonly()">
         <span class="subtitle">{{ notification()?.creationDate! | formatDate: true }} : </span>
         {{ notification()?.title }}
-    </b>
-    <span>{{ notification()?.message }}</span>
+    </div>
 </div>
 
 @if (!readonly()) {

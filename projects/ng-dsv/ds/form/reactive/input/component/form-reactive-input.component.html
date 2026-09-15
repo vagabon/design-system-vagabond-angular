@@ -8,12 +8,14 @@
             [formControlName]="field()"
             class="form-control"
             [class.error]="form().get(field())?.touched && form().get(field())?.invalid"
+            (blur)="onEnter()"
         ></textarea>
     } @else {
         <input
             [id]="field()"
             [type]="type()"
             [formControlName]="field()"
+            [placeholder]="placeholder() | translate"
             class="form-control"
             [class.icon]="icon()"
             [class.error]="form().get(field())?.touched && form().get(field())?.invalid"

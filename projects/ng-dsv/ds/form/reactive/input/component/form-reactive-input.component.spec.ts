@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { provideTranslateService } from '@ngx-translate/core';
 import { DsvFormReactiveInputComponent } from './form-reactive-input.component';
 
 describe('FormReactiveInputComponent', () => {
@@ -9,7 +10,7 @@ describe('FormReactiveInputComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [DsvFormReactiveInputComponent, ReactiveFormsModule],
-            providers: [],
+            providers: [provideTranslateService()],
         }).compileComponents();
 
         fixture = TestBed.createComponent(DsvFormReactiveInputComponent);
