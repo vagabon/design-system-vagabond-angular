@@ -1,11 +1,11 @@
-import { Directive, effect, inject, signal } from '@angular/core';
+import { Directive, effect, inject, OnDestroy, signal } from '@angular/core';
 import { EnvironmentService } from '@ng-vagabond-lab/ng-dsv/environment';
 import { AuthService } from '@ng-vagabond-lab/ng-dsv/module/auth';
 import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
 import { AnalyticsService } from '../../service/analytics/analytics.service';
 
 @Directive()
-export abstract class BaseMainContainer {
+export abstract class BaseMainContainer implements OnDestroy {
     readonly authService = inject(AuthService);
     readonly routerService = inject(RouterService);
     readonly environmentService = inject(EnvironmentService);

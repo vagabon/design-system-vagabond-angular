@@ -24,6 +24,8 @@ import { ButtonScrollTopComponent, getVisibleCount, ScrollService } from '../pub
         '[id]': 'id() ?? uuid()',
         class: 'scroll',
         '(scroll)': 'doScroll()',
+        '(touchstart)': 'stopPropagation() ? onTouchStart($event) : null',
+        '(touchend)': 'stopPropagation() ? onTouchEnd($event) : null',
     },
 })
 export class DsvScrollInfiniteContainer {
@@ -34,6 +36,7 @@ export class DsvScrollInfiniteContainer {
     readonly bottomOffset = input<number>(100);
     readonly loading = input<boolean | null>(null);
     readonly id = input<string | undefined>();
+    readonly stopPropagation = input<boolean>(false);
 
     readonly callback = output<void>();
     readonly uuid = signal<string>('');
@@ -43,7 +46,6 @@ export class DsvScrollInfiniteContainer {
     private readonly $loading = signal(false);
 
     readonly skeletonTemplate = contentChild<TemplateRef<void>>('skeleton');
-
     readonly skeletonArray = signal<number[]>([]);
 
     constructor() {
@@ -134,6 +136,37 @@ export class DsvScrollInfiniteContainer {
             this.$loading.set(true);
             this.callback.emit();
             this.resetLoading();
+        }
+    }
+
+    touchStartX: number = 0;
+
+    onTouchStart(event: TouchEvent): void {
+        if (event.touches.length > 0) {
+            this.touchStartX = event.touches[0].clientX;
+        }
+
+        const element = this.elementRef.nativeElement as HTMLElement;
+
+        if (element.scrollLeft > 0) {
+            event.stopPropagation();
+        }
+    }
+
+    onTouchEnd(event: TouchEvent): void {
+        const element = this.elementRef.nativeElement as HTMLElement;
+
+        if (element.scrollLeft > 0) {
+            event.stopPropagation();
+            return;
+        }
+
+        if (event.changedTouches.length > 0) {
+            const touchEndX = event.changedTouches[0].clientX;
+            const deltaX = touchEndX - this.touchStartX;
+            if (deltaX < 0) {
+                event.stopPropagation();
+            }
         }
     }
 }

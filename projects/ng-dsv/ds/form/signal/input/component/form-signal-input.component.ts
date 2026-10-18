@@ -17,7 +17,7 @@ export class DsvFormSignalInputComponent<T> extends DsvBaseFormSignalInputCompon
     readonly icon = input<string>();
     readonly withError = input<boolean>(true);
 
-    private inputRef = viewChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
+    private readonly inputRef = viewChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
 
     public focus(): void {
         this.inputRef()?.nativeElement.focus();

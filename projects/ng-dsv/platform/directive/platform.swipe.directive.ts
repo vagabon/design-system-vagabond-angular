@@ -5,8 +5,8 @@ import { Directive, ElementRef, inject, output, Renderer2 } from '@angular/core'
     standalone: true,
 })
 export class PlatformSwipeDirective {
-    private el = inject(ElementRef);
-    private renderer = inject(Renderer2);
+    private readonly el = inject(ElementRef);
+    private readonly renderer = inject(Renderer2);
 
     readonly swipeLeft = output<void>();
     readonly swipeRight = output<void>();
