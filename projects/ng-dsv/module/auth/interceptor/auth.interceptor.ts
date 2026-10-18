@@ -83,7 +83,6 @@ const handle401Error = <T>(
             catchError((error) => {
                 isRefreshing = false;
                 refreshSubject$.next(null);
-                authService.logout(false);
                 return throwError(() => error);
             }),
         );
