@@ -19,6 +19,8 @@
         [datas]="adminService.datas()[tab()]?.content!"
         [max]="adminService.tabs().max!"
         [url]="'/admin/' + tab()"
+        (touchstart)="$event.stopPropagation()"
+        (touchend)="$event.stopPropagation()"
     ></dsv-table>
     <dsv-paginate
         [page]="adminService.page()[this.tabConfig()?.name!]"

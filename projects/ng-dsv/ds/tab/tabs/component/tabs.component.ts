@@ -52,7 +52,12 @@ export class DsvTabsComponent {
             }
         });
     }
+
     doClick(tab: TabDto): void {
         this.callback.emit(tab);
+    }
+
+    stopPropagation(event: Event): void {
+        event.stopPropagation();
     }
 }

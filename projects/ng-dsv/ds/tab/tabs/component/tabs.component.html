@@ -1,5 +1,5 @@
 <div>
-    <div #scrollContainer>
+    <div #scrollContainer (touchstart)="$event.stopPropagation()" (touchend)="$event.stopPropagation()">
         @for (tab of tabs(); track tab.id) {
             <dsv-tab-component
                 #tabElement
