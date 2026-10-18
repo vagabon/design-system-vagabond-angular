@@ -11,6 +11,10 @@ import { getValue, initTable } from '../public-api';
     imports: [RouterLink, TranslatePipe],
     templateUrl: './table.component.html',
     styleUrls: ['./table.component.scss'],
+    host: {
+        '(touchstart)': '$event.stopPropagation()',
+        '(touchend)': '$event.stopPropagation()',
+    },
 })
 export class DsvTableComponent {
     readonly url = input.required<string>();
