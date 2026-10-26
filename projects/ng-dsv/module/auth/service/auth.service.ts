@@ -11,6 +11,7 @@ export class AuthService extends BaseApiService {
     readonly userConnected = signal<UserDto | null>(null);
     readonly userToken = signal<string>('');
     readonly isRefreshTokenLoaded = signal<boolean>(false);
+    readonly refreshTokenUri = '/auth/refresh-token';
 
     readonly isAdmin = computed<boolean>(() => this.hasRole('ADMIN'));
 
@@ -41,7 +42,7 @@ export class AuthService extends BaseApiService {
 
     refreshToken(): void {
         this.apiService.post<UserSigninDto>(
-            '/auth/refresh-token',
+            this.refreshTokenUri,
             {},
             (data) => this.initUser(data),
             true,

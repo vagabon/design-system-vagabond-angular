@@ -20,9 +20,9 @@ export const authInterceptor = (
             if (
                 error instanceof HttpErrorResponse &&
                 !request.url.includes('auth/') &&
-                request.url.includes(authService.apiService.baseUrl()) &&
-                error.status === 401 &&
-                !isRefreshing
+                (request.url.includes(authService.apiService.baseUrl()) ||
+                    request.url.includes(authService.apiService.baseGwUrl())) &&
+                error.status === 401
             ) {
                 return handle401Error(httpClient, authService, request, next);
             }
@@ -73,17 +73,19 @@ const handle401Error = <T>(
     isRefreshing = true;
     refreshSubject$.next(null);
 
-    return httpClient.post('/v1/auth/refresh-token', {}, { withCredentials: true }).pipe(
-        switchMap((response) => {
-            authService.initUser(response);
-            isRefreshing = false;
-            refreshSubject$.next(authService.userToken());
-            return next(getToken(request, authService));
-        }),
-        catchError((error) => {
-            isRefreshing = false;
-            refreshSubject$.next(null);
-            return throwError(() => error);
-        }),
-    );
+    return httpClient
+        .post(authService.apiService.baseGwUrl() + authService.refreshTokenUri, {}, { withCredentials: true })
+        .pipe(
+            switchMap((response) => {
+                authService.initUser(response);
+                isRefreshing = false;
+                refreshSubject$.next(authService.userToken());
+                return next(getToken(request, authService));
+            }),
+            catchError((error) => {
+                isRefreshing = false;
+                refreshSubject$.next(null);
+                return throwError(() => error);
+            }),
+        );
 };

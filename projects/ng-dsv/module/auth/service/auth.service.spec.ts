@@ -20,8 +20,8 @@ describe('AuthService', () => {
             info: vi.fn(),
             initUser: vi.fn(),
             toastService: { showToast: vi.fn() },
-            baseUrl: signal('/api'),
-            baseGwUrl: signal('/gw'),
+            baseUrl: signal('/api/v1'),
+            baseGwUrl: signal('/gw/v1'),
         };
 
         TestBed.configureTestingModule({
@@ -73,7 +73,7 @@ describe('AuthService', () => {
             expect.any(Function),
             true,
             expect.any(Function),
-            apiServiceMock.baseGwUrl(),
+            '/gw/v1',
         );
     });
 

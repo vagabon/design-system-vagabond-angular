@@ -12,10 +12,10 @@ const mockAuthService: Partial<AuthService> = {
     apiService: {
         baseUrl: signal(BASE_URL),
         baseGwUrl: signal(BASE_GW_URL),
-        refreshUrl: signal(`${BASE_GW_URL}/auth/refresh-token`),
     } as unknown as AuthService['apiService'],
     userConnected: signal(null),
     userToken: signal(''),
+    refreshTokenUri: '/auth/refresh-token',
 };
 
 const mockToastService: Partial<ToastService> = {

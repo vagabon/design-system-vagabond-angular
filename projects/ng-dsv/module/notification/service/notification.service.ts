@@ -1,18 +1,22 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { JSONObject } from '@ng-vagabond-lab/ng-dsv/api';
 import { BaseApiService } from '@ng-vagabond-lab/ng-dsv/base/service';
-import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
 import { NotificationDto } from '../dto/notification.dto';
 import { NotificationSearchService } from './notification-search.service';
 
 @Injectable({ providedIn: 'root' })
 export class NotificationService extends BaseApiService {
     readonly notificationSearchService = inject(NotificationSearchService);
-    readonly routerService = inject(RouterService);
 
     readonly nbRead = signal<number>(0);
 
-    fetchNbRead(): void {
+    readonly lastUrlNotification = signal<string>('');
+
+    fetchNbRead(currentUrl?: string): void {
+        if (currentUrl && this.lastUrlNotification() === currentUrl) {
+            return;
+        }
+        this.lastUrlNotification.set(currentUrl!);
         this.apiService.get<number>('/notifications/count', (data) => {
             if (data !== this.nbRead()) {
                 this.notificationSearchService.notifications.set([]);
