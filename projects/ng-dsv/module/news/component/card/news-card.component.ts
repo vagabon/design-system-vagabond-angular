@@ -23,4 +23,5 @@ import { NewsDto } from '../../dto/news.dto';
 })
 export class NewsCardComponent {
     readonly news = input<NewsDto>();
+    readonly url = input.required<string>();
 }

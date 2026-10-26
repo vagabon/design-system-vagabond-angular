@@ -25,7 +25,7 @@
         (callback)="doFetch()"
     >
         @for (news of newsListService.news(); track news.id) {
-            <app-news-card-resume [news]="news">
+            <app-news-card-resume [news]="news" [url]="newsListService.apiService.baseUrl()">
                 @if (isAdmin()) {
                     <dsv-button
                         class="update-button"

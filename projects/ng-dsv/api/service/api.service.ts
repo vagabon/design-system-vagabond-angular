@@ -16,11 +16,17 @@ export class ApiService {
     readonly environmentService = inject(EnvironmentService);
 
     readonly baseUrl = signal<string>('/api');
+    readonly baseGwUrl = signal<string>('/api');
     readonly nbLoaded = signal<number>(0);
     readonly blocked = signal<boolean>(false);
 
-    get<T>(url: string, callback: (data: T) => void, callbackError: () => void = () => {}) {
-        this.doSubscribe(url, '', this.httpClient.get<T>(this.baseUrl() + url), callback, callbackError);
+    get<T>(
+        url: string,
+        callback: (data: T) => void,
+        callbackError: () => void = () => {},
+        baseUrl: string = this.baseUrl(),
+    ) {
+        this.doSubscribe(url, '', this.httpClient.get<T>(baseUrl + url), callback, callbackError);
     }
 
     post<TBody, TResponse = TBody>(
@@ -29,11 +35,12 @@ export class ApiService {
         callback: (data: TResponse) => void = () => {},
         withCredentials: boolean = false,
         callbackError: () => void = () => {},
+        baseUrl: string = this.baseUrl(),
     ) {
         this.doSubscribe(
             url,
             data as JSONObject,
-            this.httpClient.post<TResponse>(this.baseUrl() + url, data, { withCredentials }),
+            this.httpClient.post<TResponse>(baseUrl + url, data, { withCredentials }),
             callback,
             callbackError,
         );
@@ -44,11 +51,12 @@ export class ApiService {
         data: TBody,
         callback: (data: TResponse) => void = () => {},
         callbackError: () => void = () => {},
+        baseUrl: string = this.baseUrl(),
     ) {
         this.doSubscribe(
             url,
             data as JSONObject,
-            this.httpClient.put<TResponse>(this.baseUrl() + url, data),
+            this.httpClient.put<TResponse>(baseUrl + url, data),
             callback,
             callbackError,
         );

@@ -34,6 +34,8 @@ export class AuthService extends BaseApiService {
                 });
             },
             true,
+            () => {},
+            this.apiService.baseGwUrl(),
         );
     }
 
@@ -44,6 +46,7 @@ export class AuthService extends BaseApiService {
             (data) => this.initUser(data),
             true,
             () => this.initUser(),
+            this.apiService.baseGwUrl(),
         );
     }
 
@@ -61,6 +64,8 @@ export class AuthService extends BaseApiService {
                 }
             },
             true,
+            () => {},
+            this.apiService.baseGwUrl(),
         );
     }
 

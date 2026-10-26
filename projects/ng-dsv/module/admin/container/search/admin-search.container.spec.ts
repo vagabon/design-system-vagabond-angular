@@ -1,7 +1,6 @@
 import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { ApiDto, PageableDto } from '@ng-vagabond-lab/ng-dsv/api';
 import { provideTranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { AdminTabConfDto } from '../../dto/admin.dto';
@@ -20,12 +19,6 @@ describe('AdminSearchContainer', () => {
     };
 
     beforeEach(async () => {
-        const pageable: PageableDto<ApiDto[]> = {
-            totalPages: 2,
-            totalElements: 5,
-            content: [{ id: 123 }],
-        };
-
         mockAdminService = {
             get: vi.fn(),
             findById: vi.fn(),
@@ -42,7 +35,7 @@ describe('AdminSearchContainer', () => {
                 { provide: AdminService, useValue: mockAdminService },
                 {
                     provide: ActivatedRoute,
-                    useValue: { params: of({ type: 'user', id: '42' }) },
+                    useValue: { params: of({ type: 'users', id: '42' }) },
                 },
             ],
         }).compileComponents();
@@ -50,7 +43,7 @@ describe('AdminSearchContainer', () => {
         fixture = TestBed.createComponent(AdminSearchContainer);
         component = fixture.componentInstance;
 
-        (component as any).routeParams = () => ({ type: 'user' });
+        (component as any).routeParams = () => ({ type: 'users' });
 
         fixture.detectChanges();
     });
@@ -60,8 +53,8 @@ describe('AdminSearchContainer', () => {
     });
 
     it('should initialize tab and tabConfig from routeParams', () => {
-        expect(component.tab()).toBe('user');
-        expect(component.tabConfig()?.name).toBe('user');
+        expect(component.tab()).toBe('users');
+        expect(component.tabConfig()?.name).toBe('users');
     });
 
     it('should call adminService.get on gotoPage', () => {
@@ -72,6 +65,6 @@ describe('AdminSearchContainer', () => {
     it('should generate tab list based on service config', () => {
         const tabs = component.tabs();
         expect(tabs.length).toBe(1);
-        expect(tabs[0].title).toBe('user');
+        expect(tabs[0].title).toBe('users');
     });
 });

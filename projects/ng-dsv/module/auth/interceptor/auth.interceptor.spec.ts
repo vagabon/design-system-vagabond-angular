@@ -5,12 +5,14 @@ import { of, throwError } from 'rxjs';
 import { AuthService } from '../public-api';
 import { authInterceptor } from './auth.interceptor';
 
-const BASE_URL = 'https://api.example.com';
+const BASE_GW_URL = 'https://api.example.com/v1';
+const BASE_URL = 'https://api.example.com/blog/v1';
 
 const mockAuthService: Partial<AuthService> = {
     apiService: {
         baseUrl: signal(BASE_URL),
-        refreshUrl: signal(`${BASE_URL}/auth/refresh-token`),
+        baseGwUrl: signal(BASE_GW_URL),
+        refreshUrl: signal(`${BASE_GW_URL}/auth/refresh-token`),
     } as unknown as AuthService['apiService'],
     userConnected: signal(null),
     userToken: signal(''),

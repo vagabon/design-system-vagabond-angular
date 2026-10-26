@@ -13,7 +13,7 @@ export class NotificationService extends BaseApiService {
     readonly nbRead = signal<number>(0);
 
     fetchNbRead(): void {
-        this.apiService.get<number>('/notification/count', (data) => {
+        this.apiService.get<number>('/notifications/count', (data) => {
             if (data !== this.nbRead()) {
                 this.notificationSearchService.notifications.set([]);
                 this.notificationSearchService.search.set('');
@@ -26,14 +26,14 @@ export class NotificationService extends BaseApiService {
     }
 
     readAll(callback: () => void): void {
-        this.apiService.put<JSONObject>('/notification/read-all', {}, () => {
+        this.apiService.put<JSONObject>('/notifications/read-all', {}, () => {
             this.nbRead.set(0);
             callback();
         });
     }
 
     notificationRead(notification: NotificationDto): void {
-        this.apiService.put('/notification/read/' + notification.id, {}, () => {
+        this.apiService.put('/notifications/read/' + notification.id, {}, () => {
             this.nbRead.update((nb) => nb + (notification.read ? -1 : 1));
         });
     }

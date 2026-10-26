@@ -1,3 +1,4 @@
+import { signal, WritableSignal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ApiService } from '@ng-vagabond-lab/ng-dsv/api';
 import { provideTranslateService } from '@ngx-translate/core';
@@ -5,12 +6,17 @@ import { AdminService } from './admin.service';
 
 describe('AdminService', () => {
     let service: AdminService;
-    let apiServiceSpy: { get: ReturnType<typeof vi.fn>; put: ReturnType<typeof vi.fn> };
+    let apiServiceSpy: {
+        get: ReturnType<typeof vi.fn>;
+        put: ReturnType<typeof vi.fn>;
+        baseUrl: WritableSignal<string>;
+    };
 
     beforeEach(() => {
         apiServiceSpy = {
             get: vi.fn(),
             put: vi.fn(),
+            baseUrl: signal('/api'),
         };
 
         TestBed.configureTestingModule({
@@ -37,6 +43,8 @@ describe('AdminService', () => {
         expect(apiServiceSpy.get).toHaveBeenCalledWith(
             '/admin/findBy?fields=name&values=test&first=0&max=10',
             expect.any(Function),
+            expect.any(Function),
+            apiServiceSpy.baseUrl(),
         );
     });
 
@@ -47,7 +55,13 @@ describe('AdminService', () => {
 
         service.put('admin', payload as any);
 
-        expect(apiServiceSpy.put).toHaveBeenCalledWith('/admin', payload, expect.any(Function));
+        expect(apiServiceSpy.put).toHaveBeenCalledWith(
+            '/admin',
+            payload,
+            expect.any(Function),
+            expect.any(Function),
+            apiServiceSpy.baseUrl(),
+        );
         expect(service.data()).toEqual(responseMock);
     });
 
@@ -57,7 +71,12 @@ describe('AdminService', () => {
 
         service.findById('admin', '2');
 
-        expect(apiServiceSpy.get).toHaveBeenCalledWith('/admin/2', expect.any(Function));
+        expect(apiServiceSpy.get).toHaveBeenCalledWith(
+            '/admin/2',
+            expect.any(Function),
+            expect.any(Function),
+            apiServiceSpy.baseUrl(),
+        );
         expect(service.data()).toEqual(responseMock);
     });
 

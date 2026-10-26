@@ -22,4 +22,5 @@ import { NewsDto } from '../../../dto/news.dto';
 })
 export class NewsCardResumeComponent {
     readonly news = input<NewsDto>();
+    readonly url = input.required<string>();
 }

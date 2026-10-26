@@ -14,13 +14,19 @@ export class ToastService {
 
     readonly duration = signal<number>(DURATION_DEFAULT);
 
+    readonly lastToastMessage = signal<string>('');
+
     showToast(toast: ToastDto): void {
+        if (toast.text === this.lastToastMessage()) {
+            return;
+        }
         toast.uuid = crypto.randomUUID();
         toast.open = true;
         toast.type = toast.type ?? 'success';
         toast.duration = toast.duration ?? this.duration();
         toast.remainingDuration = toast.duration;
         toast.filled = toast.filled ?? false;
+        this.lastToastMessage.set(toast.text);
         if (toast.closeAll) {
             this.toastShows().forEach((toastShow) => this.closeToast(toastShow));
         }

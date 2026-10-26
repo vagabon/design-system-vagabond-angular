@@ -1,6 +1,6 @@
 <dsv-card>
     @if (news()?.image) {
-        <dsv-file-show url="/api/" [src]="news()?.image ?? ''" />
+        <dsv-file-show [url]="url()" [src]="news()?.image ?? ''" />
     }
     <dsv-card-header>
         <dsv-button class="round" icon="ri-arrow-left-s-line" color="inherit" routerLink="/news" />

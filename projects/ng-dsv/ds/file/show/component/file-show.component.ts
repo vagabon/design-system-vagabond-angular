@@ -9,5 +9,5 @@ export class DsvFileShowComponent {
     readonly src = input.required<string>();
     readonly alt = input<string>('Exemple du dsv file show');
 
-    readonly fileUrl = computed<string>(() => this.url() + '/file/download?fileName=' + this.src());
+    readonly fileUrl = computed<string>(() => this.url() + '/files/download?fileName=' + this.src());
 }

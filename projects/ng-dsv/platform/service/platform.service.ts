@@ -1,4 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { computed, inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { fromEvent, map, startWith } from 'rxjs';
@@ -25,5 +25,9 @@ export class PlatformService {
 
     isPlatformBrowser(): boolean {
         return isPlatformBrowser(this.platformId);
+    }
+
+    isPlatformServer(): boolean {
+        return isPlatformServer(this.platformId);
     }
 }

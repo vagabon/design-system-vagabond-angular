@@ -18,6 +18,10 @@ const mockNews: NewsDto = {
 
 let paramsSubject: Subject<Record<string, string>>;
 
+const mockApiService = {
+    baseUrl: vi.fn(),
+};
+
 describe('NewsContainer', () => {
     let fixture: ComponentFixture<NewsContainer>;
     let component: NewsContainer;
@@ -59,6 +63,7 @@ describe('NewsContainer', () => {
                             set: (id: number, val: NewsDto) => newsMap.set(id, val),
                         },
                         doFetchNews,
+                        apiService: mockApiService,
                     },
                 },
             ],

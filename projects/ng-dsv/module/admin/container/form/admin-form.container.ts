@@ -40,7 +40,7 @@ export class AdminFormContainer extends BaseRouteContainer {
     }
 
     findById(id: string): void {
-        this.adminService.findById(this.tabConfig()?.name!, id);
+        this.adminService.findById(this.tabConfig()?.endPoint ?? this.tabConfig()?.name!, id);
     }
 
     sendForm(data: ApiDto): void {
@@ -49,9 +49,9 @@ export class AdminFormContainer extends BaseRouteContainer {
             ...data,
         };
         if (dataFusion.id) {
-            this.adminService.put(this.tabConfig()?.name!, dataFusion);
+            this.adminService.put(this.tabConfig()?.endPoint ?? this.tabConfig()?.name!, dataFusion);
         } else {
-            this.adminService.post(this.tabConfig()?.name!, dataFusion);
+            this.adminService.post(this.tabConfig()?.endPoint ?? this.tabConfig()?.name!, dataFusion);
         }
     }
 }

@@ -50,7 +50,6 @@ describe('ApiService', () => {
         });
 
         service = TestBed.inject(ApiService);
-        service.baseUrl.set('/api');
     });
 
     it('should be created', () => {

@@ -35,7 +35,7 @@ describe('AdminFormContainer', () => {
                 { provide: AdminService, useValue: adminServiceMock },
                 {
                     provide: ActivatedRoute,
-                    useValue: { params: of({ type: 'user', id: '42' }) },
+                    useValue: { params: of({ type: 'users', id: '42' }) },
                 },
             ],
         }).compileComponents();
@@ -50,12 +50,12 @@ describe('AdminFormContainer', () => {
     });
 
     it('should set tab and tabConfig based on route', () => {
-        expect(component.tab()).toBe('user');
-        expect(component.tabConfig()?.name).toBe('user');
+        expect(component.tab()).toBe('users');
+        expect(component.tabConfig()?.name).toBe('users');
     });
 
     it('should call findById with correct tab and id', () => {
-        expect(adminServiceMock.findById).toHaveBeenCalledWith('user', '42');
+        expect(adminServiceMock.findById).toHaveBeenCalledWith('users', '42');
     });
 
     it('should call sendForm and merge data correctly', () => {

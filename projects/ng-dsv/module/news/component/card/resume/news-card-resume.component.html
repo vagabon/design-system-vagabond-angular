@@ -1,6 +1,6 @@
 <dsv-card [routerLink]="'/news/' + news()?.id">
     @if (news()?.image) {
-        <dsv-file-show url="/api/" [src]="news()?.image ?? ''" />
+        <dsv-file-show [url]="url()" [src]="news()?.image ?? ''" />
     }
     <h2 [class.error]="!news()?.active">{{ news()?.title }}</h2>
     <span class="subtitle">Le {{ news()?.creationDate! | formatDate: true }}</span>

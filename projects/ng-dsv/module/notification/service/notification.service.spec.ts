@@ -36,7 +36,7 @@ describe('NotificationService', () => {
 
         service.fetchNbRead();
 
-        expect(mockApiService.get).toHaveBeenCalledWith('/notification/count', expect.any(Function));
+        expect(mockApiService.get).toHaveBeenCalledWith('/notifications/count', expect.any(Function));
         expect(service.nbRead()).toBe(42);
     });
 
@@ -47,7 +47,7 @@ describe('NotificationService', () => {
 
         service.readAll(callback);
 
-        expect(mockApiService.put).toHaveBeenCalledWith('/notification/read-all', {}, expect.any(Function));
+        expect(mockApiService.put).toHaveBeenCalledWith('/notifications/read-all', {}, expect.any(Function));
         expect(service.nbRead()).toBe(0);
         expect(callback).toHaveBeenCalledTimes(1);
     });
@@ -58,7 +58,7 @@ describe('NotificationService', () => {
 
         service.notificationRead({ ...mockNotification, read: true });
 
-        expect(mockApiService.put).toHaveBeenCalledWith('/notification/read/1', {}, expect.any(Function));
+        expect(mockApiService.put).toHaveBeenCalledWith('/notifications/read/1', {}, expect.any(Function));
         expect(service.nbRead()).toBe(2);
     });
 

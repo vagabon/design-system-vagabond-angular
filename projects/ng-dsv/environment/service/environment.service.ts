@@ -1,14 +1,17 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, makeStateKey, signal, TransferState } from '@angular/core';
+import { inject, Injectable, InjectionToken, makeStateKey, signal, TransferState } from '@angular/core';
 import { PlatformService } from '@ng-vagabond-lab/ng-dsv/platform';
 import { lastValueFrom, tap } from 'rxjs';
 import { EnvironmentDto } from '../public-api';
+
+export const SSR_CONFIG = new InjectionToken<EnvironmentDto>('SSR_CONFIG');
 
 @Injectable({ providedIn: 'root' })
 export class EnvironmentService {
     readonly httpClient = inject(HttpClient);
     readonly transferState = inject(TransferState);
     readonly platformService = inject(PlatformService);
+    private readonly ssrConfig = inject(SSR_CONFIG, { optional: true });
 
     readonly config = signal<EnvironmentDto | undefined>(undefined);
     readonly baseUrl = signal<string>('');
@@ -20,6 +23,16 @@ export class EnvironmentService {
             this.transferState.remove(key);
             this.initConfig(config);
             return Promise.resolve(config);
+        }
+
+        if (
+            this.platformService.isPlatformServer() &&
+            this.ssrConfig &&
+            Object.keys(this.ssrConfig).length > 0
+        ) {
+            this.transferState.set(key, this.ssrConfig);
+            this.initConfig(this.ssrConfig);
+            return Promise.resolve(this.ssrConfig);
         }
 
         return lastValueFrom(

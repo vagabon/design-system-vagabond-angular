@@ -27,9 +27,13 @@ export class FileUploadContainer {
                 const formData = new FormData();
                 formData.append('fileForm', this.file()!);
 
-                return this.apiService.post(`/file/upload?directory=${this.directory()}`, formData, (res) => {
-                    this.callback.emit(res['path' as keyof JSONObject]);
-                });
+                return this.apiService.post(
+                    `/files/upload?directory=${this.directory()}`,
+                    formData,
+                    (res) => {
+                        this.callback.emit(res['path' as keyof JSONObject]);
+                    },
+                );
             };
             reader.readAsDataURL(file);
         });

@@ -20,6 +20,8 @@ describe('AuthService', () => {
             info: vi.fn(),
             initUser: vi.fn(),
             toastService: { showToast: vi.fn() },
+            baseUrl: signal('/api'),
+            baseGwUrl: signal('/gw'),
         };
 
         TestBed.configureTestingModule({
@@ -48,6 +50,8 @@ describe('AuthService', () => {
             { googleToken: 'fake-credential' },
             expect.any(Function),
             true,
+            expect.any(Function),
+            apiServiceMock.baseGwUrl(),
         );
         expect(service.userConnected()).toEqual(mockUser.user!);
         expect(apiServiceMock.toastService.showToast).toHaveBeenCalledWith({
@@ -69,6 +73,7 @@ describe('AuthService', () => {
             expect.any(Function),
             true,
             expect.any(Function),
+            apiServiceMock.baseGwUrl(),
         );
     });
 

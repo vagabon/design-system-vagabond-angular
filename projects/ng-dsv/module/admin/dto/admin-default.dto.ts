@@ -7,7 +7,7 @@ export const ADMIN_COL = [
 
 export const ADMIN_PROFILE_M2M = {
     name: 'name',
-    endPoint: 'profile',
+    endPoint: 'roles',
     fields: 'name%',
     order: 'name',
     orderBy: 'asc',
@@ -40,7 +40,7 @@ export const ADMIN_INPUT = [
 
 export const ADMIN_USER: AdminTabDto[] = [
     {
-        name: 'user',
+        name: 'users',
         label: 'AUTH.USER:TITLE',
         findByChamps: 'username%And|Email%',
         sortBy: 'creationDateDesc',
@@ -109,7 +109,7 @@ export const ADMIN_USER: AdminTabDto[] = [
 
 export const ADMIN_PROFILE: AdminTabDto[] = [
     {
-        name: 'profile',
+        name: 'roles',
         label: 'AUTH.PROFILE:TITLE',
         findByChamps: 'name%',
         sortBy: 'name',

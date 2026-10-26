@@ -109,12 +109,12 @@
         },
         {
             "name": "TestDto",
-            "id": "interface-TestDto-67de8881e62db05d1d82caaae58dbc40efe0a2941a7ec213c55ac7063e3a447323c0d2a7a76967bcd142c07d813fad1f4584634d22c1fa3f088653d7aedffb58",
+            "id": "interface-TestDto-f2c891d18761edf532dd21e3853d1e2295fe04b2f4c96e94e56153ee8ba80f6b94ab61a0f66bcf4094f6cde1cde2fc894eb6dae8bc27aa44396032da17c6ded0",
             "file": "projects/ng-dsv/ds/form/signal/checkbox/component/form-signal-checkbox.component.stories.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component, input, signal } from '@angular/core';\nimport { FormControl, FormGroup } from '@angular/forms';\nimport { FormField, form } from '@angular/forms/signals';\nimport { type Meta, type StoryObj } from '@storybook/angular';\nimport { CustomFormGroup } from '../../../reactive/input/component/form-reactive-input.component.stories';\nimport { DsvFormSignalCheckboxComponent } from './form-signal-checkbox.component';\n\ninterface TestDto {\n    myCheckbox: boolean;\n}\n\n@Component({\n    selector: 'story-signal-checkbox',\n    standalone: true,\n    imports: [DsvFormSignalCheckboxComponent, FormField],\n    template: `\n        @if (myForm) {\n            <dsv-form-signal-checkbox\n                [form]=\"myForm\"\n                fieldName=\"myCheckbox\"\n                (callbackSend)=\"onSend($event)\"\n            />\n        }\n    `,\n})\nclass StorySignalChecbox {\n    value = input<boolean>(false);\n    myForm = form<TestDto>(signal({ myCheckbox: this.value() }), (path) => {});\n    onSend = () => {};\n}\n\nconst meta: Meta<StorySignalChecbox> = {\n    title: 'dsv/Form/Signal/checkbox',\n    component: StorySignalChecbox,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n};\n\nexport default meta;\ntype Story = StoryObj<StorySignalChecbox>;\n\nconst MY_FORM = new FormGroup({\n    exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup;\n\nMY_FORM['toJSON'] = () => null;\n\nexport const Default: Story = {\n    args: {\n        value: true,\n    },\n    parameters: {\n        docs: {\n            source: {\n                code: `\n          <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"myCheckbox\" (onSend)=\"onSend($event)\" />\n        `,\n            },\n        },\n    },\n};\n",
+            "sourceCode": "import { Component, input, signal } from '@angular/core';\nimport { FormControl, FormGroup } from '@angular/forms';\nimport { form } from '@angular/forms/signals';\nimport { type Meta, type StoryObj } from '@storybook/angular';\nimport { CustomFormGroup } from '../../../reactive/input/component/form-reactive-input.component.stories';\nimport { DsvFormSignalCheckboxComponent } from './form-signal-checkbox.component';\n\ninterface TestDto {\n    myCheckbox: boolean;\n}\n\n@Component({\n    selector: 'story-signal-checkbox',\n    standalone: true,\n    imports: [DsvFormSignalCheckboxComponent],\n    template: `\n        @if (myForm()) {\n            <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"myCheckbox\" (callbackSend)=\"onSend()\" />\n        }\n    `,\n})\nclass StorySignalChecbox {\n    value = input<boolean>(false);\n    myForm = form<TestDto>(signal({ myCheckbox: this.value() }), (path) => {});\n    onSend = () => {};\n}\n\nconst meta: Meta<StorySignalChecbox> = {\n    title: 'dsv/Form/Signal/checkbox',\n    component: StorySignalChecbox,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n};\n\nexport default meta;\ntype Story = StoryObj<StorySignalChecbox>;\n\nconst MY_FORM = new FormGroup({\n    exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup;\n\nMY_FORM['toJSON'] = () => null;\n\nexport const Default: Story = {\n    args: {\n        value: true,\n    },\n    parameters: {\n        docs: {\n            source: {\n                code: `\n          <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"myCheckbox\" (onSend)=\"onSend($event)\" />\n        `,\n            },\n        },\n    },\n};\n",
             "displayName": "TestDto",
             "properties": [
                 {
@@ -671,7 +671,7 @@
         },
         {
             "name": "StorySignalChecbox",
-            "id": "component-StorySignalChecbox-67de8881e62db05d1d82caaae58dbc40efe0a2941a7ec213c55ac7063e3a447323c0d2a7a76967bcd142c07d813fad1f4584634d22c1fa3f088653d7aedffb58",
+            "id": "component-StorySignalChecbox-f2c891d18761edf532dd21e3853d1e2295fe04b2f4c96e94e56153ee8ba80f6b94ab61a0f66bcf4094f6cde1cde2fc894eb6dae8bc27aa44396032da17c6ded0",
             "file": "projects/ng-dsv/ds/form/signal/checkbox/component/form-signal-checkbox.component.stories.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -682,7 +682,7 @@
             "selector": "story-signal-checkbox",
             "styleUrls": [],
             "styles": [],
-            "template": "@if (myForm) {\n    <dsv-form-signal-checkbox\n        [form]=\"myForm\"\n        fieldName=\"myCheckbox\"\n        (callbackSend)=\"onSend($event)\"\n    />\n}\n",
+            "template": "@if (myForm()) {\n    <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"myCheckbox\" (callbackSend)=\"onSend()\" />\n}\n",
             "templateUrl": [],
             "templateVariables": [],
             "viewProviders": [],
@@ -698,7 +698,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 27,
+                    "line": 23,
                     "rawdescription": "\n",
                     "required": false
                 }
@@ -715,7 +715,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 28,
+                    "line": 24,
                     "rawdescription": "\n"
                 },
                 {
@@ -728,7 +728,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 29,
+                    "line": 25,
                     "rawdescription": "\n"
                 }
             ],
@@ -743,15 +743,12 @@
                 {
                     "name": "DsvFormSignalCheckboxComponent",
                     "type": "component"
-                },
-                {
-                    "name": "FormField"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, input, signal } from '@angular/core';\nimport { FormControl, FormGroup } from '@angular/forms';\nimport { FormField, form } from '@angular/forms/signals';\nimport { type Meta, type StoryObj } from '@storybook/angular';\nimport { CustomFormGroup } from '../../../reactive/input/component/form-reactive-input.component.stories';\nimport { DsvFormSignalCheckboxComponent } from './form-signal-checkbox.component';\n\ninterface TestDto {\n    myCheckbox: boolean;\n}\n\n@Component({\n    selector: 'story-signal-checkbox',\n    standalone: true,\n    imports: [DsvFormSignalCheckboxComponent, FormField],\n    template: `\n        @if (myForm) {\n            <dsv-form-signal-checkbox\n                [form]=\"myForm\"\n                fieldName=\"myCheckbox\"\n                (callbackSend)=\"onSend($event)\"\n            />\n        }\n    `,\n})\nclass StorySignalChecbox {\n    value = input<boolean>(false);\n    myForm = form<TestDto>(signal({ myCheckbox: this.value() }), (path) => {});\n    onSend = () => {};\n}\n\nconst meta: Meta<StorySignalChecbox> = {\n    title: 'dsv/Form/Signal/checkbox',\n    component: StorySignalChecbox,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n};\n\nexport default meta;\ntype Story = StoryObj<StorySignalChecbox>;\n\nconst MY_FORM = new FormGroup({\n    exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup;\n\nMY_FORM['toJSON'] = () => null;\n\nexport const Default: Story = {\n    args: {\n        value: true,\n    },\n    parameters: {\n        docs: {\n            source: {\n                code: `\n          <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"myCheckbox\" (onSend)=\"onSend($event)\" />\n        `,\n            },\n        },\n    },\n};\n",
+            "sourceCode": "import { Component, input, signal } from '@angular/core';\nimport { FormControl, FormGroup } from '@angular/forms';\nimport { form } from '@angular/forms/signals';\nimport { type Meta, type StoryObj } from '@storybook/angular';\nimport { CustomFormGroup } from '../../../reactive/input/component/form-reactive-input.component.stories';\nimport { DsvFormSignalCheckboxComponent } from './form-signal-checkbox.component';\n\ninterface TestDto {\n    myCheckbox: boolean;\n}\n\n@Component({\n    selector: 'story-signal-checkbox',\n    standalone: true,\n    imports: [DsvFormSignalCheckboxComponent],\n    template: `\n        @if (myForm()) {\n            <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"myCheckbox\" (callbackSend)=\"onSend()\" />\n        }\n    `,\n})\nclass StorySignalChecbox {\n    value = input<boolean>(false);\n    myForm = form<TestDto>(signal({ myCheckbox: this.value() }), (path) => {});\n    onSend = () => {};\n}\n\nconst meta: Meta<StorySignalChecbox> = {\n    title: 'dsv/Form/Signal/checkbox',\n    component: StorySignalChecbox,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {},\n};\n\nexport default meta;\ntype Story = StoryObj<StorySignalChecbox>;\n\nconst MY_FORM = new FormGroup({\n    exampleField: new FormControl(''),\n}) as unknown as CustomFormGroup;\n\nMY_FORM['toJSON'] = () => null;\n\nexport const Default: Story = {\n    args: {\n        value: true,\n    },\n    parameters: {\n        docs: {\n            source: {\n                code: `\n          <dsv-form-signal-checkbox [form]=\"myForm\" fieldName=\"myCheckbox\" (onSend)=\"onSend($event)\" />\n        `,\n            },\n        },\n    },\n};\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -762,10 +759,6 @@
                     {
                         "name": "DsvFormSignalCheckboxComponent",
                         "type": "component"
-                    },
-                    {
-                        "name": "FormField",
-                        "type": "module"
                     }
                 ]
             }
@@ -1137,23 +1130,23 @@
                 "name": "ActionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n    avatar: 'vagabond',\n    color: 'primary',\n}"
-            },
-            {
-                "name": "ActionsData",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
                 "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n    libelle: 'Click me',\n    width: 'small',\n    variant: 'contained',\n    color: 'primary',\n    icon: 'ri-spam-fill',\n    iconEnd: '',\n    noHover: false,\n    show: true,\n    disabled: false,\n    callback: () => {},\n}"
+            },
+            {
+                "name": "ActionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n    avatar: 'vagabond',\n    color: 'primary',\n}"
             },
             {
                 "name": "ActionsData",
@@ -1401,23 +1394,23 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n    args: {\n        callback: () => {},\n    },\n    render: (args: any) => ({\n        props: {\n            callback: args.callback,\n        },\n        template: `\n      <div class=\"flex flex-row gap10\">\n        <dsv-avatar avatar=\"${args.avatar}\" color=\"${args.color}\" variant=\"${args.variant}\" width=\"${args.width}\" show=\"${args.show}\" show=\"${args.show}\"></dsv-avatar>\n        <dsv-avatar avatar=\"${args.avatar}\" color=\"${args.color}\" variant=\"${args.variant}\" width=\"${args.width}\" show=\"${args.show}\" show=\"${args.show}\" (callback)=\"callback\"></dsv-avatar>\n      </div>\n    `,\n    }),\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
                 "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n    args: {\n        libelle: 'Click me',\n    },\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n    args: {\n        callback: () => {},\n    },\n    render: (args: any) => ({\n        props: {\n            callback: args.callback,\n        },\n        template: `\n      <div class=\"flex flex-row gap10\">\n        <dsv-avatar avatar=\"${args.avatar}\" color=\"${args.color}\" variant=\"${args.variant}\" width=\"${args.width}\" show=\"${args.show}\" show=\"${args.show}\"></dsv-avatar>\n        <dsv-avatar avatar=\"${args.avatar}\" color=\"${args.color}\" variant=\"${args.variant}\" width=\"${args.width}\" show=\"${args.show}\" show=\"${args.show}\" (callback)=\"callback\"></dsv-avatar>\n      </div>\n    `,\n    }),\n}"
             },
             {
                 "name": "Default",
@@ -1775,23 +1768,23 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
-                "coverageIgnore": false,
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<DsvAvatarComponent>",
-                "defaultValue": "{\n    title: 'dsv/Avatar',\n    component: DsvAvatarComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {\n        ...(colorControls as Meta<DsvAvatarComponent>['argTypes']),\n        callback: { action: 'callback' },\n    },\n    args: {\n        ...(ActionsData as any),\n    },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
                 "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<DsvButtonComponent>",
                 "defaultValue": "{\n    title: 'dsv/Button',\n    component: DsvButtonComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {\n        ...(colorControls as Meta<DsvButtonComponent>['argTypes']),\n    },\n    args: {\n        ...(ActionsData as Meta<DsvButtonComponent>['args']),\n    },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<DsvAvatarComponent>",
+                "defaultValue": "{\n    title: 'dsv/Avatar',\n    component: DsvAvatarComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {\n        ...(colorControls as Meta<DsvAvatarComponent>['argTypes']),\n        callback: { action: 'callback' },\n    },\n    args: {\n        ...(ActionsData as any),\n    },\n}"
             },
             {
                 "name": "meta",
@@ -2287,8 +2280,8 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "coverageIgnore": false,
-                "rawtype": "StoryObj<DsvAvatarComponent>",
-                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
+                "rawtype": "StoryObj<DsvButtonComponent>",
+                "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "rawdescription": "",
@@ -2300,8 +2293,8 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "coverageIgnore": false,
-                "rawtype": "StoryObj<DsvButtonComponent>",
-                "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
+                "rawtype": "StoryObj<DsvAvatarComponent>",
+                "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "rawdescription": "",
@@ -2760,6 +2753,41 @@
                     "defaultValue": "{\n    args: {\n        open: true,\n    },\n    render: (args: any) => ({\n        template: `<dsv-accordion [open]=\"${args.open}\" titleText=\"${args.title}\"> ${args.content} </dsv-accordion>`,\n    }),\n}"
                 }
             ],
+            "projects/ng-dsv/ds/button/component/button.component.stories.ts": [
+                {
+                    "name": "ActionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n    libelle: 'Click me',\n    width: 'small',\n    variant: 'contained',\n    color: 'primary',\n    icon: 'ri-spam-fill',\n    iconEnd: '',\n    noHover: false,\n    show: true,\n    disabled: false,\n    callback: () => {},\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n    args: {\n        libelle: 'Click me',\n    },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<DsvButtonComponent>",
+                    "defaultValue": "{\n    title: 'dsv/Button',\n    component: DsvButtonComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {\n        ...(colorControls as Meta<DsvButtonComponent>['argTypes']),\n    },\n    args: {\n        ...(ActionsData as Meta<DsvButtonComponent>['args']),\n    },\n}"
+                }
+            ],
             "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts": [
                 {
                     "name": "ActionsData",
@@ -2815,41 +2843,6 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n    args: {\n        callback: () => {},\n    },\n}"
-                }
-            ],
-            "projects/ng-dsv/ds/button/component/button.component.stories.ts": [
-                {
-                    "name": "ActionsData",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n    libelle: 'Click me',\n    width: 'small',\n    variant: 'contained',\n    color: 'primary',\n    icon: 'ri-spam-fill',\n    iconEnd: '',\n    noHover: false,\n    show: true,\n    disabled: false,\n    callback: () => {},\n}"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n    args: {\n        libelle: 'Click me',\n    },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<DsvButtonComponent>",
-                    "defaultValue": "{\n    title: 'dsv/Button',\n    component: DsvButtonComponent,\n    excludeStories: /.*Data$/,\n    tags: ['autodocs'],\n    argTypes: {\n        ...(colorControls as Meta<DsvButtonComponent>['argTypes']),\n    },\n    args: {\n        ...(ActionsData as Meta<DsvButtonComponent>['args']),\n    },\n}"
                 }
             ],
             "projects/ng-dsv/ds/card/component/card.component.stories.ts": [
@@ -3947,21 +3940,6 @@
                     "kind": 184
                 }
             ],
-            "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "coverageIgnore": false,
-                    "rawtype": "StoryObj<DsvAvatarComponent>",
-                    "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
             "projects/ng-dsv/ds/button/component/button.component.stories.ts": [
                 {
                     "name": "Story",
@@ -3970,6 +3948,21 @@
                     "coverageIgnore": false,
                     "rawtype": "StoryObj<DsvButtonComponent>",
                     "file": "projects/ng-dsv/ds/button/component/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "StoryObj<DsvAvatarComponent>",
+                    "file": "projects/ng-dsv/ds/avatar/component/avatar.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "",

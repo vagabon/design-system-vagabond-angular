@@ -16,6 +16,6 @@ describe('NotificationSearchService', () => {
 
     it('When getEndPoint, Then GET /notification/search', () => {
         const result = service.getEndPoint();
-        expect(result).toBe('/notification/search');
+        expect(result).toBe('/notifications/search');
     });
 });

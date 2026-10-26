@@ -8,22 +8,23 @@ let isRefreshing = false;
 const refreshSubject$ = new BehaviorSubject<string | null>(null);
 
 export const authInterceptor = (
-    req: HttpRequest<unknown>,
+    request: HttpRequest<unknown>,
     next: HttpHandlerFn,
 ): Observable<HttpEvent<unknown>> => {
     const httpClient = inject(HttpClient);
     const authService = inject(AuthService);
     const toastService = inject(ToastService);
 
-    return next(getToken(req, authService)).pipe(
+    return next(getToken(request, authService)).pipe(
         catchError((error) => {
             if (
                 error instanceof HttpErrorResponse &&
-                !req.url.includes('auth/') &&
-                req.url.includes(authService.apiService.baseUrl()) &&
-                error.status === 401
+                !request.url.includes('auth/') &&
+                request.url.includes(authService.apiService.baseUrl()) &&
+                error.status === 401 &&
+                !isRefreshing
             ) {
-                return handle401Error(httpClient, authService, req, next);
+                return handle401Error(httpClient, authService, request, next);
             }
 
             let errorMessage = error.error?.debugMessage ?? error.error?.message ?? error.message;
@@ -35,9 +36,7 @@ export const authInterceptor = (
             ) {
                 errorMessage = 'Api indisponible';
             }
-            if (errorMessage === 'NO_REFRESH_TOKEN') {
-                authService.logout(false);
-            } else {
+            if (errorMessage !== 'NO_REFRESH_TOKEN') {
                 toastService.showToast({ type: 'error', text: errorMessage, closeAll: true });
             }
 
@@ -48,7 +47,10 @@ export const authInterceptor = (
 
 const getToken = <T>(req: HttpRequest<T>, authService: AuthService) => {
     const jwt = authService.userToken();
-    if (!req.url.includes('/auth/') && req.url.includes(authService.apiService.baseUrl()) && jwt) {
+    const isUrlWithToken =
+        req.url.includes(authService.apiService.baseUrl()) ||
+        req.url.includes(authService.apiService.baseGwUrl());
+    if (!req.url.includes('/auth/') && isUrlWithToken && jwt) {
         return req.clone({ headers: req.headers.set('Authorization', `Bearer ${jwt}`) });
     }
     return req;
@@ -71,19 +73,17 @@ const handle401Error = <T>(
     isRefreshing = true;
     refreshSubject$.next(null);
 
-    return httpClient
-        .post(authService.apiService.baseUrl() + '/auth/refresh-token', {}, { withCredentials: true })
-        .pipe(
-            switchMap((response) => {
-                authService.initUser(response);
-                isRefreshing = false;
-                refreshSubject$.next(authService.userToken());
-                return next(getToken(request, authService));
-            }),
-            catchError((error) => {
-                isRefreshing = false;
-                refreshSubject$.next(null);
-                return throwError(() => error);
-            }),
-        );
+    return httpClient.post('/v1/auth/refresh-token', {}, { withCredentials: true }).pipe(
+        switchMap((response) => {
+            authService.initUser(response);
+            isRefreshing = false;
+            refreshSubject$.next(authService.userToken());
+            return next(getToken(request, authService));
+        }),
+        catchError((error) => {
+            isRefreshing = false;
+            refreshSubject$.next(null);
+            return throwError(() => error);
+        }),
+    );
 };

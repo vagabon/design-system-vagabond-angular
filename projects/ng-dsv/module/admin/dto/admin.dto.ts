@@ -36,6 +36,7 @@ export interface FormDto extends YupValidator {
 
 export interface AdminTabDto {
     name: string;
+    endPoint?: string;
     label: string;
     findByChamps: string;
     sortBy: string;

@@ -41,27 +41,57 @@ export class AdminService {
             ((data: PageableDto<ApiDto[]>) => {
                 this.datas.update((s) => ({ ...s, [endpoint]: data }));
             });
-        this.apiService.get<PageableDto<ApiDto[]>>(encodeURI(url), callbackResponse);
+        this.apiService.get<PageableDto<ApiDto[]>>(
+            encodeURI(url),
+            callbackResponse,
+            () => {},
+            this.getBaseUrl(url),
+        );
     }
 
     post(endpoint: string, data: ApiDto): void {
         const url = '/' + endpoint;
-        this.apiService.post<ApiDto>(encodeURI(url), data, (response) => {
-            this.data.set(response);
-        });
+        this.apiService.post<ApiDto>(
+            encodeURI(url),
+            data,
+            (response) => {
+                this.data.set(response);
+            },
+            false,
+            () => {},
+            this.getBaseUrl(url),
+        );
     }
 
     put(endpoint: string, data: ApiDto): void {
         const url = '/' + endpoint;
-        this.apiService.put<ApiDto>(encodeURI(url), data, (response) => {
-            this.data.set(response);
-        });
+        this.apiService.put<ApiDto>(
+            encodeURI(url),
+            data,
+            (response) => {
+                this.data.set(response);
+            },
+            () => {},
+            this.getBaseUrl(url),
+        );
     }
 
     findById(endpoint: string, id: string): void {
         const url = '/' + endpoint + '/' + id;
-        this.apiService.get<ApiDto>(encodeURI(url), (data) => {
-            this.data.set(data);
-        });
+        this.apiService.get<ApiDto>(
+            encodeURI(url),
+            (data) => {
+                this.data.set(data);
+            },
+            () => {},
+            this.getBaseUrl(url),
+        );
+    }
+
+    private getBaseUrl(url: string) {
+        if (url.includes('/users') || url.includes('/roles')) {
+            return this.apiService.baseGwUrl();
+        }
+        return this.apiService.baseUrl();
     }
 }

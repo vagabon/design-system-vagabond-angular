@@ -7,6 +7,6 @@ export class NotificationSearchService extends BaseSearchService<NotificationDto
     readonly notifications = this.datas;
 
     override getEndPoint(): string {
-        return '/notification/search';
+        return '/notifications/search';
     }
 }

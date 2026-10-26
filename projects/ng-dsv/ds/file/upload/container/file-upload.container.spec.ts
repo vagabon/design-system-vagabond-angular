@@ -11,6 +11,7 @@ describe('FileUploadContainer', () => {
 
     const mockApiService = {
         post: vi.fn(),
+        baseUrl: vi.fn(),
     };
 
     beforeEach(async () => {
@@ -55,7 +56,7 @@ describe('FileUploadContainer', () => {
         await new Promise((resolve) => setTimeout(resolve, 50));
 
         expect(mockApiService.post).toHaveBeenCalledWith(
-            `/file/upload?directory=${mockDirectory}`,
+            `/files/upload?directory=${mockDirectory}`,
             expect.any(FormData),
             expect.any(Function),
         );
