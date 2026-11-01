@@ -10,7 +10,7 @@ export class AdminService {
 
     readonly tabs = signal<AdminTabConfDto>({} as AdminTabConfDto);
 
-    readonly datas = signal<Record<string, PageableDto<ApiDto[]>>>({});
+    readonly datas = signal<Record<string, PageableDto<ApiDto[]> | null>>({});
     readonly data = signal<ApiDto>({} as ApiDto);
 
     readonly page = signal<Record<string, number>>({});

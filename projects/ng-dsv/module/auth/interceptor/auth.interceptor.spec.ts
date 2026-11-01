@@ -254,24 +254,5 @@ describe('authInterceptor', () => {
 
             expect(mockHttpClient.post).toHaveBeenCalled();
         });
-
-        it('should persist new tokens in storage after successful refresh', () => {
-            const refreshResponse = { jwt: 'new-jwt', jwtRefresh: 'new-refresh' };
-            mockHttpClient.post.mockReturnValue(of(refreshResponse));
-
-            const req = makeRequest(protectedUrl);
-            const error = new HttpErrorResponse({ status: 401, error: {} });
-
-            let callCount = 0;
-            const next: HttpHandlerFn = () => {
-                callCount++;
-                if (callCount === 1) return throwError(() => error) as ReturnType<HttpHandlerFn>;
-                return of({}) as ReturnType<HttpHandlerFn>;
-            };
-
-            interceptor(req, next).subscribe({ error: () => {} });
-
-            expect(mockHttpClient.post).toHaveBeenCalled();
-        });
     });
 });

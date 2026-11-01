@@ -6,7 +6,8 @@ export interface UserDto extends ApiDto {
     facebookId?: string;
     googleId?: string;
     username?: string;
-    profiles?: [];
+    roles?: [];
+    profiles?: []; // @Deprecated
 }
 
 export interface UserSigninDto extends BaseUserTokenDto {

@@ -5,6 +5,7 @@ import { BehaviorSubject, catchError, filter, Observable, switchMap, take, throw
 import { AuthService } from '../public-api';
 
 let isRefreshing = false;
+let isRefreshRejected = false;
 const refreshSubject$ = new BehaviorSubject<string | null>(null);
 
 export const authInterceptor = (
@@ -22,7 +23,8 @@ export const authInterceptor = (
                 !request.url.includes('auth/') &&
                 (request.url.includes(authService.apiService.baseUrl()) ||
                     request.url.includes(authService.apiService.baseGwUrl())) &&
-                error.status === 401
+                error.status === 401 &&
+                !isRefreshRejected
             ) {
                 return handle401Error(httpClient, authService, request, next);
             }
@@ -36,7 +38,7 @@ export const authInterceptor = (
             ) {
                 errorMessage = 'Api indisponible';
             }
-            if (errorMessage !== 'NO_REFRESH_TOKEN') {
+            if (!errorMessage.startsWith('ERROR.USER_REFRESH')) {
                 toastService.showToast({ type: 'error', text: errorMessage, closeAll: true });
             }
 
@@ -79,11 +81,13 @@ const handle401Error = <T>(
             switchMap((response) => {
                 authService.initUser(response);
                 isRefreshing = false;
+                isRefreshRejected = false;
                 refreshSubject$.next(authService.userToken());
                 return next(getToken(request, authService));
             }),
             catchError((error) => {
                 isRefreshing = false;
+                isRefreshRejected = true;
                 refreshSubject$.next(null);
                 return throwError(() => error);
             }),

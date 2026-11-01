@@ -10,7 +10,7 @@ describe('AuthService', () => {
     let apiServiceMock: any;
 
     const mockUser: UserSigninDto = {
-        user: { id: '1', profiles: [] },
+        user: { id: '1', roles: [] },
     };
 
     beforeEach(() => {

@@ -8,7 +8,8 @@ export const hasRole = (roles: string, userRoles?: ApiDto[]): boolean => {
             userRoles?.find(
                 (userRole) =>
                     userRole['roles' as keyof ApiDto]?.toString().includes(role) ||
-                    userRole['name' as keyof ApiDto] === role,
+                    userRole['name' as keyof ApiDto] === role ||
+                    userRole['roleName' as keyof ApiDto] === role,
             )
         ) {
             find = true;

@@ -72,7 +72,7 @@ export class AuthService extends BaseApiService {
 
     hasRole(role: string): boolean {
         const user = this.userConnected() ?? null;
-        return !!user && hasRole(role, user.profiles);
+        return !!user && hasRole(role, user.roles ?? user.profiles);
     }
 
     canFetch(ssr: boolean = true): boolean {

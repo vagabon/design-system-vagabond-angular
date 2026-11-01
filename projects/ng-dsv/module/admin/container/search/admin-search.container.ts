@@ -30,7 +30,7 @@ export class AdminSearchContainer extends BaseRouteContainer {
     readonly platformService = inject(PlatformService);
 
     readonly tabs = signal<TabDto[]>([]);
-    readonly tab = signal<string>('user');
+    readonly tab = signal<string>('');
     readonly tabConfig = signal<AdminTabDto | undefined>(undefined);
 
     readonly load = signal<Record<string, boolean>>({});
@@ -38,16 +38,31 @@ export class AdminSearchContainer extends BaseRouteContainer {
     constructor() {
         super();
         effect(() => {
-            if (this.platformService.isPlatformBrowser()) {
-                this.tab.set(this.routeParams()?.['type']);
-                const tab = this.adminService.tabs()?.tabs.find((tab) => tab.name === this.tab());
-                this.tabConfig.set(tab);
-                if (!this.adminService.datas()[this.tab()] && !this.load()[this.routeParams()?.['type']]) {
-                    this.load.update((s) => ({ ...s, [this.tabConfig()?.name!]: true }));
-                    this.gotoPage(0, this.adminService.search()[this.tabConfig()?.name!]);
-                }
+            if (this.platformService.isPlatformBrowser() && this.tabs().length > 0) {
+                this.tab.set(this.routeParams()?.['type'] ?? this.tabs()[0].id);
             }
         });
+
+        effect(() => {
+            if (this.tab() !== '') {
+                const tab = this.adminService.tabs()?.tabs.find((tab) => tab.name === this.tab());
+                this.tabConfig.set(tab);
+                this.load.update((s) => ({ ...s, [tab?.name!]: false }));
+                this.adminService.datas.update((s) => ({ ...s, [this.tab()]: null }));
+            }
+        });
+
+        effect(() => {
+            if (
+                !this.adminService.datas()[this.tab()] &&
+                !this.load()[this.tabConfig()?.name!] &&
+                this.tabConfig()?.name
+            ) {
+                this.load.update((s) => ({ ...s, [this.tabConfig()?.name!]: true }));
+                this.gotoPage(undefined, this.adminService.search()[this.tabConfig()?.name!]);
+            }
+        });
+
         effect(() => {
             if (this.platformService.isPlatformBrowser()) {
                 const tabs = this.adminService.tabs()?.tabs;
@@ -66,14 +81,16 @@ export class AdminSearchContainer extends BaseRouteContainer {
         });
     }
 
-    gotoPage(page: number, search: string = ''): void {
-        this.adminService.page.update((s) => ({ ...s, [this.tabConfig()?.name!]: page }));
+    gotoPage(page: number | undefined, search: string = ''): void {
+        if ((!page && !this.adminService.page()[this.tabConfig()?.name!]) || page) {
+            this.adminService.page.update((s) => ({ ...s, [this.tabConfig()?.name!]: page ?? 0 }));
+        }
         this.adminService.search.update((s) => ({ ...s, [this.tabConfig()?.name!]: search }));
         this.adminService.get(
             this.tabConfig()?.endPoint ?? this.tabConfig()?.name!,
             this.tabConfig()?.findByChamps! + '>>' + this.tabConfig()?.sortBy,
             search,
-            page,
+            this.adminService.page()[this.tabConfig()?.name!],
             this.adminService.tabs()?.max,
         );
     }

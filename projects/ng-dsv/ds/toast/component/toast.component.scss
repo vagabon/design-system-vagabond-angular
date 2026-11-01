@@ -14,11 +14,13 @@
         border-radius: 2px;
         box-shadow: 0 0px 0px 0.5px rgba(0, 0, 0, 0.4);
         min-width: 200px;
-        max-width: 200px;
+        max-width: 250px;
         padding: 10px 32px 10px 15px;
         pointer-events: all;
         position: relative;
         display: flex;
+        word-break: break-all;
+        overflow-wrap: break-word;
         align-items: center;
         flex-direction: row;
         gap: 8px;

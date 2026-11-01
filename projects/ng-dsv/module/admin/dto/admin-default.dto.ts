@@ -48,7 +48,7 @@ export const ADMIN_USER: AdminTabDto[] = [
         cells: [
             { label: 'AUTH.FIELDS.LOGIN', name: 'username', order: true },
             { label: 'AUTH.FIELDS.EMAIL', width: '240px', name: 'email', order: true },
-            { label: 'AUTH.FIELDS.PROFILES', name: 'profiles.name' },
+            { label: 'AUTH.FIELDS.PROFILES', name: 'roles.name' },
             {
                 label: 'AUTH.FIELDS.LAST_CONNEXION_DATE',
                 width: '150px',
@@ -63,7 +63,7 @@ export const ADMIN_USER: AdminTabDto[] = [
             { name: 'password', label: 'AUTH.FIELDS.PASSWORD', type: 'password', required: false },
             { name: 'email', label: 'AUTH.FIELDS.EMAIL', type: 'text', email: true, required: true },
             {
-                name: 'profiles',
+                name: 'roles',
                 label: 'AUTH.FIELDS.PFOFILES',
                 type: 'm2m',
                 required: false,
@@ -107,6 +107,24 @@ export const ADMIN_USER: AdminTabDto[] = [
     },
 ];
 
+export const ADMIN_USER_OLD: AdminTabDto[] = [
+    ...ADMIN_USER.map((tab) => ({
+        ...tab,
+        cells: tab.cells.map((cell) => {
+            if (cell.name === 'roles.name') {
+                return { ...cell, name: 'profiles.name' };
+            }
+            return cell;
+        }),
+        form: tab.form.map((field) => {
+            if (field.name === 'roles') {
+                return { ...field, name: 'profiles' };
+            }
+            return field;
+        }),
+    })),
+];
+
 export const ADMIN_PROFILE: AdminTabDto[] = [
     {
         name: 'roles',
@@ -115,13 +133,37 @@ export const ADMIN_PROFILE: AdminTabDto[] = [
         sortBy: 'name',
         cells: [
             { label: 'AUTH.FIELDS.NAME', name: 'name', order: true },
-            { label: 'AUTH.FIELDS.ROLES', name: 'roles', order: true },
+            { label: 'AUTH.FIELDS.ROLE', name: 'roleName', order: true },
+            { label: 'AUTH.FIELDS.ORIGIN', name: 'origin', order: true },
             ...ADMIN_COL,
         ],
         form: [
             { name: 'name', label: 'AUTH.FIELDS.NAME', type: 'text', required: true },
-            { name: 'roles', label: 'AUTH.FIELDS.ROLES', type: 'text', required: true },
+            { name: 'roleName', label: 'AUTH.FIELDS.ROLE', type: 'text', required: true },
+            { name: 'origin', label: 'AUTH.FIELDS.ORIGIN', type: 'text', required: true },
             ...ADMIN_INPUT,
         ],
     },
+];
+
+export const ADMIN_PROFILE_OLD: AdminTabDto[] = [
+    ...ADMIN_PROFILE.map((tab) => ({
+        ...tab,
+        cells: tab.cells
+            .filter((cell) => cell.name !== 'origin')
+            .map((cell) => {
+                if (cell.name === 'roleName') {
+                    return { ...cell, name: 'roles' };
+                }
+                return cell;
+            }),
+        form: tab.form
+            .filter((field) => field.name !== 'origin')
+            .map((field) => {
+                if (field.name === 'roleName') {
+                    return { ...field, name: 'roles' };
+                }
+                return field;
+            }),
+    })),
 ];
