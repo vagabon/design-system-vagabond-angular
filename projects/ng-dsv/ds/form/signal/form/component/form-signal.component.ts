@@ -29,7 +29,7 @@ export class DsvFormSignalComponent<T> {
 
     onSubmit(event: Event): void {
         event.preventDefault();
-        submit(this.form(), async (form) => {
+        void submit(this.form(), (form) => {
             if (form().valid()) {
                 this.callback.emit(form().value() as ApiDto);
                 if (this.formValid() !== '') {
@@ -43,6 +43,7 @@ export class DsvFormSignalComponent<T> {
                     type: 'error',
                 });
             }
+            return Promise.resolve();
         });
     }
 }

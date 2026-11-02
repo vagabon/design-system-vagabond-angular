@@ -19,7 +19,7 @@ export abstract class BaseContainer {
     constructor() {
         effect(() => {
             if (!this.hasAccess()) {
-                this.routerService.router.navigate(['/']);
+                this.routerService.navigate(['/']);
             }
         });
     }

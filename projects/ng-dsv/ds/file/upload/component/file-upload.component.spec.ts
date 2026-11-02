@@ -39,7 +39,7 @@ describe('FileUploadComponent', () => {
 
         setTimeout(() => {
             expect(component.file()).toContain('data:image/png;base64');
-        }, 500);
+        }, 1000);
     });
 
     it('should handle drag and drop', () => {

@@ -1,6 +1,6 @@
 import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
+import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
 import { provideTranslateService } from '@ngx-translate/core';
 import { DsvItemComponent } from './item.component';
 
@@ -18,7 +18,7 @@ const mockEvent = {
 describe('DsvItemComponent', () => {
     let component: DsvItemComponent;
     let fixture: ComponentFixture<DsvItemComponent>;
-    let router: Router;
+    let routerService: RouterService;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
@@ -26,7 +26,7 @@ describe('DsvItemComponent', () => {
             providers: [
                 provideTranslateService(),
                 {
-                    provide: Router,
+                    provide: RouterService,
                     useValue: {
                         navigate: vi.fn(),
                     },
@@ -34,7 +34,7 @@ describe('DsvItemComponent', () => {
             ],
         }).compileComponents();
 
-        router = TestBed.inject(Router);
+        routerService = TestBed.inject(RouterService);
         fixture = TestBed.createComponent(DsvItemComponent);
         component = fixture.componentInstance;
     });
@@ -106,7 +106,7 @@ describe('DsvItemComponent', () => {
 
     describe('doClick method', () => {
         it('should navigate when url is provided', () => {
-            const navigateSpy = vi.spyOn(router, 'navigate');
+            const navigateSpy = vi.spyOn(routerService, 'navigate');
 
             (component as any)['url'] = signal('/dashboard');
             fixture.detectChanges();
@@ -117,7 +117,7 @@ describe('DsvItemComponent', () => {
         });
 
         it('should not navigate when url is not provided', () => {
-            const navigateSpy = vi.spyOn(router, 'navigate');
+            const navigateSpy = vi.spyOn(routerService, 'navigate');
 
             (component as any)['url'] = signal(undefined);
             fixture.detectChanges();
@@ -128,7 +128,7 @@ describe('DsvItemComponent', () => {
         });
 
         it('should not navigate when url is empty string', () => {
-            const navigateSpy = vi.spyOn(router, 'navigate');
+            const navigateSpy = vi.spyOn(routerService, 'navigate');
 
             (component as any)['url'] = signal('');
             fixture.detectChanges();
@@ -163,7 +163,7 @@ describe('DsvItemComponent', () => {
         });
 
         it('should navigate and emit callback when both url and callback are present', () => {
-            const navigateSpy = vi.spyOn(router, 'navigate');
+            const navigateSpy = vi.spyOn(routerService, 'navigate');
 
             (component as any)['url'] = signal('/settings');
             component.isCallback.set(true);
@@ -177,7 +177,7 @@ describe('DsvItemComponent', () => {
 
     describe('Edge cases', () => {
         it('should handle multiple clicks', () => {
-            const navigateSpy = vi.spyOn(router, 'navigate');
+            const navigateSpy = vi.spyOn(routerService, 'navigate');
 
             (component as any)['url'] = signal('/home');
             fixture.detectChanges();
@@ -190,7 +190,7 @@ describe('DsvItemComponent', () => {
         });
 
         it('should handle special characters in url', () => {
-            const navigateSpy = vi.spyOn(router, 'navigate');
+            const navigateSpy = vi.spyOn(routerService, 'navigate');
 
             (component as any)['url'] = signal('/items/123?query=test&filter=active');
             fixture.detectChanges();

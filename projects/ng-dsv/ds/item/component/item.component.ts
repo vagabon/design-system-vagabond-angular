@@ -1,7 +1,7 @@
 import { Component, effect, inject, input, output, signal } from '@angular/core';
-import { Router } from '@angular/router';
 import { isCallback } from '@ng-vagabond-lab/ng-dsv/base';
 import { DsvChipComponent } from '@ng-vagabond-lab/ng-dsv/ds/chip';
+import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
@@ -11,7 +11,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     styleUrls: ['./item.component.scss'],
 })
 export class DsvItemComponent {
-    readonly router = inject(Router);
+    readonly routerService = inject(RouterService);
 
     readonly icon = input<string>('');
     readonly text = input<string>('');
@@ -33,7 +33,7 @@ export class DsvItemComponent {
         event.stopPropagation();
         event.preventDefault();
         if (this.url()) {
-            this.router.navigate([this.url()]);
+            this.routerService.navigate([this.url()]);
         }
         this.isCallback() && this.callback.emit();
     }

@@ -22,7 +22,7 @@ describe('AnalyticsService', () => {
             service.init('G-123456');
 
             const scripts = document.head.querySelectorAll('script');
-            expect(scripts.length).toBe(2);
+            expect(scripts).toHaveLength(2);
 
             expect(scripts[0].src).toBe('https://www.googletagmanager.com/gtag/js?id=G-123456');
             expect(scripts[0].async).toBe(true);
@@ -34,7 +34,7 @@ describe('AnalyticsService', () => {
             service.init(undefined);
 
             const scripts = document.head.querySelectorAll('script');
-            expect(scripts.length).toBe(0);
+            expect(scripts).toHaveLength(0);
         });
 
         it('when platform is server, then does not append scripts', () => {
@@ -47,7 +47,7 @@ describe('AnalyticsService', () => {
             serverService.init('G-123456');
 
             const scripts = document.head.querySelectorAll('script');
-            expect(scripts.length).toBe(0);
+            expect(scripts).toHaveLength(0);
         });
     });
 });

@@ -1,5 +1,5 @@
 import { Directive, ElementRef, inject, output } from '@angular/core';
-import { Router } from '@angular/router';
+import { RouterService } from '../public-api';
 
 @Directive({
     selector: 'a[dsvLink]',
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
     },
 })
 export class RouterInternalPipe {
-    readonly router = inject(Router);
+    readonly routerService = inject(RouterService);
     readonly element = inject(ElementRef);
 
     readonly dsvLink = output<void>();
@@ -19,7 +19,7 @@ export class RouterInternalPipe {
         event.preventDefault();
         const url = this.element.nativeElement.getAttribute('href');
         if (url && url !== '#') {
-            this.router.navigate([url]);
+            this.routerService.navigate([url]);
         } else {
             this.dsvLink.emit();
         }

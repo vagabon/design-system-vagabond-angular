@@ -32,15 +32,15 @@ export const getValue = (obj: JSONObject, key: string, isDate: boolean): string 
         keys.forEach((key2) => {
             if (recurse) {
                 if (Array.isArray(recurse)) {
-                    recurse = (recurse as JSONObject[])
+                    recurse = (recurse as unknown as JSONObject[])
                         .map((item) => item[key2 as keyof JSONObject])
-                        .join(',') as JSONObject;
+                        .join(',') as unknown as JSONObject;
                 } else {
                     recurse = recurse[key2 as keyof JSONObject];
                 }
             }
         });
-        value = recurse as string;
+        value = recurse as unknown as string;
     }
     if (isDate && value) {
         value = formatDate(value, true, true);

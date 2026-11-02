@@ -30,15 +30,13 @@ describe('NewsFormContainer', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should create', () => {
-        component
-            .newsForm()
-            .value.update((data) => ({
-                ...data,
-                title: 'title',
-                resume: 'resume',
-                description: 'description',
-            }));
+    it('should doSubmit', () => {
+        component.newsForm().value.update((data) => ({
+            ...data,
+            title: 'title',
+            resume: 'resume',
+            description: 'description',
+        }));
 
         component.doSubmit();
         expect(component).toBeTruthy();

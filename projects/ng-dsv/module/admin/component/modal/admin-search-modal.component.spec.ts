@@ -5,10 +5,10 @@ import { SeoService } from '@ng-vagabond-lab/ng-dsv/base/service/seo/seo.service
 import { ModalService } from '@ng-vagabond-lab/ng-dsv/ds/modal';
 import { AuthService } from '@ng-vagabond-lab/ng-dsv/module/auth';
 import { RouterService } from '@ng-vagabond-lab/ng-dsv/router';
+import { provideTranslateService } from '@ngx-translate/core';
 import { ManyToManyDto } from '../../dto/admin.dto';
 import { AdminService } from '../../service/admin.service';
 import { AdminSearchModalContainer } from './admin-search-modal.component';
-import { provideTranslateService } from '@ngx-translate/core';
 
 describe('AdminSearchModalContainer', () => {
     let fixture: ComponentFixture<AdminSearchModalContainer>;
@@ -20,7 +20,10 @@ describe('AdminSearchModalContainer', () => {
     let modalServiceMock: { getSignal: ReturnType<typeof vi.fn>; close: ReturnType<typeof vi.fn> };
     let adminServiceMock: { get: ReturnType<typeof vi.fn> };
     let authServiceMock: { hasRole: ReturnType<typeof vi.fn> };
-    let routerServiceMock: { router: { navigate: ReturnType<typeof vi.fn> } };
+    let routerServiceMock: {
+        router: { navigate: ReturnType<typeof vi.fn> };
+        navigate: ReturnType<typeof vi.fn>;
+    };
     let seoServiceMock: object;
 
     const m2mDto: ManyToManyDto = {
@@ -48,6 +51,7 @@ describe('AdminSearchModalContainer', () => {
 
         routerServiceMock = {
             router: { navigate: vi.fn() },
+            navigate: vi.fn(),
         };
 
         seoServiceMock = {};
@@ -158,14 +162,14 @@ describe('AdminSearchModalContainer', () => {
             authServiceMock.hasRole.mockReturnValue(false);
             fixture.detectChanges();
 
-            expect(routerServiceMock.router.navigate).toHaveBeenCalledWith(['/']);
+            expect(routerServiceMock.navigate).toHaveBeenCalledWith(['/']);
         });
 
         it('should not redirect if user has ADMIN role', () => {
             authServiceMock.hasRole.mockReturnValue(true);
             fixture.detectChanges();
 
-            expect(routerServiceMock.router.navigate).not.toHaveBeenCalled();
+            expect(routerServiceMock.navigate).not.toHaveBeenCalled();
         });
     });
 });

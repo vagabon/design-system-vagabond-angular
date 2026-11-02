@@ -2,7 +2,7 @@ export type ID = string | number | undefined | null;
 export type Primitif = string | number | boolean | undefined | null;
 
 export interface BaseDto {
-    id?: ID;
+    id: ID;
 }
 
 export interface ApiDto extends BaseDto {

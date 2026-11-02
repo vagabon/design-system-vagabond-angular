@@ -59,7 +59,7 @@ export class NewsFormContainer extends NewsContainer {
     doSubmit() {
         if (this.newsForm().valid()) {
             this.newsService.createOrUpdate(this.newsForm().value(), (data: NewsDto) => {
-                this.routerService.router.navigate(['news', data.id]);
+                this.routerService.navigate(['news', data.id]);
                 document.getElementById('main-scroll')?.scrollTo(0, 0);
             });
         }

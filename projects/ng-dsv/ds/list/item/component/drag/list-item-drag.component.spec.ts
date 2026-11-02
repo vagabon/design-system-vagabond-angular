@@ -66,7 +66,7 @@ describe('ListItemDragComponent', () => {
             expect(li.draggable).toBe(true);
         });
 
-        it('should do nothing if no closest li found', () => {
+        it('should do nothing if currentTarget is a button', () => {
             const div = document.createElement('div');
             const button = document.createElement('button');
             div.appendChild(button);

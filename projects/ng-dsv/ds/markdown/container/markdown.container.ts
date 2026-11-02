@@ -22,7 +22,7 @@ export class DsvMarkdownContainer {
             if (href?.startsWith('/')) {
                 event.preventDefault();
                 event.stopPropagation();
-                this.routerService.router.navigate([href]);
+                this.routerService.navigate([href]);
             }
         }
     }

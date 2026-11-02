@@ -26,7 +26,12 @@ describe('DsvMarkdownContainer', () => {
         TestBed.resetTestingModule();
         TestBed.configureTestingModule({
             imports: [DsvMarkdownContainer],
-            providers: [{ provide: RouterService, useValue: { router: { navigate: routerNavigate } } }],
+            providers: [
+                {
+                    provide: RouterService,
+                    useValue: { router: { navigate: routerNavigate }, navigate: routerNavigate },
+                },
+            ],
             schemas: [NO_ERRORS_SCHEMA],
         }).overrideComponent(DsvMarkdownContainer, {
             remove: { imports: [MarkdownComponent] },

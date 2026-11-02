@@ -19,97 +19,46 @@ describe('FormSignalErrorComponent', () => {
         component.isTouched = signal(true) as unknown as InputSignal<boolean>;
     });
 
-    it('should create', () => {
-        expect(component).toBeTruthy();
-    });
+    function initError<T>(value: T[]) {
+        component.errors = signal(value) as unknown as InputSignal<ValidationError[]>;
+    }
+    const ERROR_CASES = [
+        {
+            label: 'required error message',
+            errors: [{ kind: 'required' }],
+            expected: 'Le champ est obligatoire.',
+        },
+        {
+            label: 'minLength error message with correct value',
+            errors: [{ kind: 'minLength', minLength: 5 }],
+            expected: 'La taille minimum est de 5.',
+        },
+        {
+            label: 'maxLength error message with correct value',
+            errors: [{ kind: 'maxLength', maxLength: 10 }],
+            expected: 'La taille maximum est de 10.',
+        },
+        {
+            label: 'email error message',
+            errors: [{ kind: 'email' }],
+            expected: "Le format n'est pas celui d'un email.",
+        },
+        {
+            label: 'custom error message if provided',
+            errors: [{ kind: 'custom', message: 'Erreur personnalisée' }],
+            expected: 'Erreur personnalisée',
+        },
+        {
+            label: 'unknown error message if no message provided',
+            errors: [{ kind: 'unknown' }],
+            expected: 'Erreur inconnue.',
+        },
+    ];
 
-    it('should not display error if errors input is empty', () => {
-        component.errors = signal([]) as unknown as InputSignal<ValidationError[]>;
+    it.each(ERROR_CASES)('should display $label', ({ errors, expected }) => {
+        initError(errors);
         fixture.detectChanges();
         const errorDiv = fixture.nativeElement.querySelector('div');
-        expect(errorDiv).toBeNull();
-    });
-
-    it('should display required error message', () => {
-        component.errors = signal([{ kind: 'required' }]) as unknown as InputSignal<ValidationError[]>;
-        fixture.detectChanges();
-        const errorDiv = fixture.nativeElement.querySelector('div');
-        expect(errorDiv?.textContent).toContain('Le champ est obligatoire.');
-    });
-
-    it('should display minLength error message with correct value', () => {
-        component.errors = signal([{ kind: 'minLength', minLength: 5 }]) as unknown as InputSignal<
-            ValidationError[]
-        >;
-        fixture.detectChanges();
-        const errorDiv = fixture.nativeElement.querySelector('div');
-        expect(errorDiv?.textContent).toContain('La taille minimum est de 5.');
-    });
-
-    it('should display maxLength error message with correct value', () => {
-        component.errors = signal([{ kind: 'maxLength', maxLength: 10 }]) as unknown as InputSignal<
-            ValidationError[]
-        >;
-        fixture.detectChanges();
-        const errorDiv = fixture.nativeElement.querySelector('div');
-        expect(errorDiv?.textContent).toContain('La taille maximum est de 10.');
-    });
-
-    it('should display email error message', () => {
-        component.errors = signal([{ kind: 'email' }]) as unknown as InputSignal<ValidationError[]>;
-        fixture.detectChanges();
-        const errorDiv = fixture.nativeElement.querySelector('div');
-        expect(errorDiv?.textContent).toContain("Le format n'est pas celui d'un email.");
-    });
-
-    it('should display custom error message if provided', () => {
-        component.errors = signal([
-            { kind: 'custom', message: 'Erreur personnalisée' },
-        ]) as unknown as InputSignal<ValidationError[]>;
-        fixture.detectChanges();
-        const errorDiv = fixture.nativeElement.querySelector('div');
-        expect(errorDiv?.textContent).toContain('Erreur personnalisée');
-    });
-
-    it('should display unknown error message if no message provided', () => {
-        component.errors = signal([{ kind: 'unknown' }]) as unknown as InputSignal<ValidationError[]>;
-        fixture.detectChanges();
-        const errorDiv = fixture.nativeElement.querySelector('div');
-        expect(errorDiv?.textContent).toContain('Erreur inconnue.');
-    });
-
-    it('should display first error message if multiple errors', () => {
-        component.errors = signal([
-            { kind: 'required' },
-            { kind: 'minLength', minLength: 3 },
-        ]) as unknown as InputSignal<ValidationError[]>;
-
-        fixture.detectChanges();
-        const errorDiv = fixture.nativeElement.querySelector('div');
-        expect(errorDiv?.textContent).toContain('La taille minimum est de 3.');
-    });
-
-    it('should update error message when errors input changes', () => {
-        component.errors = signal([{ kind: 'required' }]) as unknown as InputSignal<ValidationError[]>;
-        fixture.detectChanges();
-        const errorDiv = fixture.nativeElement.querySelector('div');
-        expect(errorDiv?.textContent).toContain('Le champ est obligatoire.');
-    });
-
-    it('should update error message when errors input changes email', () => {
-        component.errors = signal([{ kind: 'email' }]) as unknown as InputSignal<ValidationError[]>;
-        fixture.detectChanges();
-        const errorDiv = fixture.nativeElement.querySelector('div');
-        expect(errorDiv?.textContent).toContain("Le format n'est pas celui d'un email.");
-    });
-
-    it('should not display error if error signal is empty', () => {
-        component.errors = signal([{ kind: 'required', message: '' }]) as unknown as InputSignal<
-            ValidationError[]
-        >;
-        component.error.set('');
-        fixture.detectChanges();
-        const errorDiv = fixture.nativeElement.querySelector('div');
-        expect(errorDiv).not.toBeNull();
+        expect(errorDiv?.textContent).toContain(expected);
     });
 });

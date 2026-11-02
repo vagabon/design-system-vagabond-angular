@@ -70,7 +70,7 @@ export class AdminFormComponent extends DsvBaseFormReactiveComponent {
     addValue =
         (name: string) =>
         (data: ApiDto): void => {
-            const find = this.form.value[name].find((value: ApiDto) => value.id === data.id);
+            const find = this.form.value[name].some((value: ApiDto) => value.id === data.id);
             if (!find) {
                 this.form.value[name].push(data);
             }

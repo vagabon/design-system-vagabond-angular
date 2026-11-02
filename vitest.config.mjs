@@ -28,6 +28,15 @@ export default defineConfig({
                 '**/*.route*.ts',
                 '**/*.spec.ts',
             ],
+            poolOptions: {
+                forks: {
+                    maxWorkers: 2,
+                    minWorkers: 1,
+                    execArgv: ['--max-old-space-size=768'],
+                },
+            },
+            isolate: true,
+            fileParallelism: true,
         },
     },
     resolve: {

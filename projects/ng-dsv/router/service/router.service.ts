@@ -56,4 +56,8 @@ export class RouterService {
     goBack() {
         this.location.back();
     }
+
+    navigate<T>(commands: readonly T[]) {
+        this.router.navigate(commands).catch((err) => console.error(err));
+    }
 }

@@ -8,6 +8,7 @@ const routerEvents$ = new Subject<any>();
 const mockRouter = {
     url: '/initial',
     events: routerEvents$.asObservable(),
+    navigate: vi.fn(),
 };
 
 describe('RouterService', () => {

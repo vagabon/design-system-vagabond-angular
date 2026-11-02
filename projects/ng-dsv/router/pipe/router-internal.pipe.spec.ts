@@ -1,6 +1,6 @@
 import { ElementRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
+import { RouterService } from '../public-api';
 import { RouterInternalPipe } from './router-internal.pipe';
 
 const mockNavigate = vi.fn();
@@ -31,7 +31,10 @@ describe('RouterInternalPipe', () => {
         TestBed.configureTestingModule({
             providers: [
                 RouterInternalPipe,
-                { provide: Router, useValue: { navigate: mockNavigate } },
+                {
+                    provide: RouterService,
+                    useValue: { navigate: mockNavigate },
+                },
                 { provide: ElementRef, useValue: elementRef },
             ],
         });
